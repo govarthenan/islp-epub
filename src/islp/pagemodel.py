@@ -40,7 +40,14 @@ COLOUR_MARGIN = 0x595959
 
 # Ligatures are kept as single glyphs so that each glyph keeps one honest pen position;
 # they are expanded to plain letters later, when the text is written out.
-TEXT_FLAGS = pymupdf.TEXT_PRESERVE_WHITESPACE | pymupdf.TEXT_MEDIABOX_CLIP | pymupdf.TEXT_PRESERVE_LIGATURES
+# TEXT_PRESERVE_IMAGES matters: without it the extractor reports no image blocks at all, and
+# the four figures in this book that really are raster images become invisible.
+TEXT_FLAGS = (
+    pymupdf.TEXT_PRESERVE_WHITESPACE
+    | pymupdf.TEXT_MEDIABOX_CLIP
+    | pymupdf.TEXT_PRESERVE_LIGATURES
+    | pymupdf.TEXT_PRESERVE_IMAGES
+)
 
 
 class Zone(StrEnum):

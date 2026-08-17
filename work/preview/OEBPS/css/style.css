@@ -42,10 +42,13 @@ p.noindent { text-indent: 0; }
 p.li         { text-indent: -1.1em; margin-left: 1.6em; margin-top: 0.35em; }
 p.li-cont    { text-indent: 0;      margin-left: 1.6em; }
 p.li-cont-in { text-indent: 1.2em;  margin-left: 1.6em; }
-p.li2         { text-indent: -1.1em; margin-left: 3.0em; margin-top: 0.35em; }
-p.li2-cont    { text-indent: 0;      margin-left: 3.0em; }
-p.li2-cont-in { text-indent: 1.2em;  margin-left: 3.0em; }
-p.li .marker, p.li2 .marker { font-weight: bold; }
+p.li2         { text-indent: -1.1em; margin-left: 2.9em; margin-top: 0.35em; }
+p.li2-cont    { text-indent: 0;      margin-left: 2.9em; }
+p.li2-cont-in { text-indent: 1.2em;  margin-left: 2.9em; }
+p.li3         { text-indent: -1.3em; margin-left: 4.4em; margin-top: 0.3em; }
+p.li3-cont    { text-indent: 0;      margin-left: 4.4em; }
+p.li3-cont-in { text-indent: 1.2em;  margin-left: 4.4em; }
+p.li .marker, p.li2 .marker, p.li3 .marker { font-weight: bold; }
 
 /* Display equations. The number is pushed to the right of its own line. */
 div.eq {

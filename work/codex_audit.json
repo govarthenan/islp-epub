@@ -1,15 +1,8 @@
 {
- "sampled": 45,
- "answered": 45,
- "agreed": 44,
- "agreement": 97.77777777777777,
- "disagreements": [
-  {
-   "id": "m00240",
-   "status": "ok",
-   "match": false,
-   "issue": "TOP is a fraction with denominator 2!, while BOTTOM is only 2!."
-  }
- ],
+ "sampled": 50,
+ "answered": 50,
+ "agreed": 50,
+ "agreement": 100.0,
+ "disagreements": [],
  "problems": []
 }
