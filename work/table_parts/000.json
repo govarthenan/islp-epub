@@ -1,0 +1,56 @@
+[
+ {
+  "key": "t1-1-p23",
+  "html": "<table><thead><tr><th scope=\"col\">Name</th><th scope=\"col\">Description</th></tr></thead><tbody><tr><th scope=\"row\"><code>Auto</code></th><td>Gas mileage, horsepower, and other information for cars.</td></tr><tr><th scope=\"row\"><code>Bikeshare</code></th><td>Hourly usage of a bike sharing program in Washington, DC.</td></tr><tr><th scope=\"row\"><code>Boston</code></th><td>Housing values and other information about Boston census tracts.</td></tr><tr><th scope=\"row\"><code>BrainCancer</code></th><td>Survival times for patients diagnosed with brain cancer.</td></tr><tr><th scope=\"row\"><code>Caravan</code></th><td>Information about individuals offered caravan insurance.</td></tr><tr><th scope=\"row\"><code>Carseats</code></th><td>Information about car seat sales in 400 stores.</td></tr><tr><th scope=\"row\"><code>College</code></th><td>Demographic characteristics, tuition, and more for USA colleges.</td></tr><tr><th scope=\"row\"><code>Credit</code></th><td>Information about credit card debt for 400 customers.</td></tr><tr><th scope=\"row\"><code>Default</code></th><td>Customer default records for a credit card company.</td></tr><tr><th scope=\"row\"><code>Fund</code></th><td>Returns of 2,000 hedge fund managers over 50 months.</td></tr><tr><th scope=\"row\"><code>Hitters</code></th><td>Records and salaries for baseball players.</td></tr><tr><th scope=\"row\"><code>Khan</code></th><td>Gene expression measurements for four cancer types.</td></tr><tr><th scope=\"row\"><code>NCI60</code></th><td>Gene expression measurements for 64 cancer cell lines.</td></tr><tr><th scope=\"row\"><code>NYSE</code></th><td>Returns, volatility, and volume for the New York Stock Exchange.</td></tr><tr><th scope=\"row\"><code>OJ</code></th><td>Sales information for Citrus Hill and Minute Maid orange juice.</td></tr><tr><th scope=\"row\"><code>Portfolio</code></th><td>Past values of financial assets, for use in portfolio allocation.</td></tr><tr><th scope=\"row\"><code>Publication</code></th><td>Time to publication for 244 clinical trials.</td></tr><tr><th scope=\"row\"><code>Smarket</code></th><td>Daily percentage returns for S&amp;P 500 over a 5-year period.</td></tr><tr><th scope=\"row\"><code>USArrests</code></th><td>Crime statistics per 100,000 residents in 50 states of USA.</td></tr><tr><th scope=\"row\"><code>Wage</code></th><td>Income survey data for men in central Atlantic region of USA.</td></tr><tr><th scope=\"row\"><code>Weekly</code></th><td>1,089 weekly stock market returns for 21 years.</td></tr></tbody></table>",
+  "columns": 2,
+  "rows": 22
+ },
+ {
+  "key": "t3-1-p86",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\">Coefficient</th><th scope=\"col\">Std. error</th><th scope=\"col\"><i>t</i>-statistic</th><th scope=\"col\"><i>p</i>-value</th></tr></thead><tbody><tr><th scope=\"row\"><code>Intercept</code></th><td class=\"num\">7.0325</td><td class=\"num\">0.4578</td><td class=\"num\">15.36</td><td class=\"num\">&lt; 0.0001</td></tr><tr><th scope=\"row\"><code>TV</code></th><td class=\"num\">0.0475</td><td class=\"num\">0.0027</td><td class=\"num\">17.67</td><td class=\"num\">&lt; 0.0001</td></tr></tbody></table>",
+  "columns": 5,
+  "rows": 3
+ },
+ {
+  "key": "t3-2-p87",
+  "html": "<table><thead><tr><th scope=\"col\">Quantity</th><th scope=\"col\">Value</th></tr></thead><tbody><tr><th scope=\"row\">Residual standard error</th><td class=\"num\">3.26</td></tr><tr><th scope=\"row\">R<sup>2</sup></th><td class=\"num\">0.612</td></tr><tr><th scope=\"row\"><i>F</i>-statistic</th><td class=\"num\">312.1</td></tr></tbody></table>",
+  "columns": 2,
+  "rows": 4
+ },
+ {
+  "key": "t3-3-p89",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\">Coefficient</th><th scope=\"col\">Std. error</th><th scope=\"col\"><i>t</i>-statistic</th><th scope=\"col\"><i>p</i>-value</th></tr></thead><tbody><tr><th scope=\"row\"><code>Intercept</code></th><td class=\"num\">9.312</td><td class=\"num\">0.563</td><td class=\"num\">16.54</td><td class=\"num\">&lt; 0.0001</td></tr><tr><th scope=\"row\"><code>radio</code></th><td class=\"num\">0.203</td><td class=\"num\">0.020</td><td class=\"num\">9.92</td><td class=\"num\">&lt; 0.0001</td></tr></tbody></table><p class=\"tablepart\">Simple regression of sales on newspaper</p><table><thead><tr><th scope=\"col\"></th><th scope=\"col\">Coefficient</th><th scope=\"col\">Std. error</th><th scope=\"col\"><i>t</i>-statistic</th><th scope=\"col\"><i>p</i>-value</th></tr></thead><tbody><tr><th scope=\"row\"><code>Intercept</code></th><td class=\"num\">12.351</td><td class=\"num\">0.621</td><td class=\"num\">19.88</td><td class=\"num\">&lt; 0.0001</td></tr><tr><th scope=\"row\"><code>newspaper</code></th><td class=\"num\">0.055</td><td class=\"num\">0.017</td><td class=\"num\">3.30</td><td class=\"num\">0.00115</td></tr></tbody></table>",
+  "columns": 5,
+  "rows": 6
+ },
+ {
+  "key": "t3-4-p92",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\">Coefficient</th><th scope=\"col\">Std. error</th><th scope=\"col\"><i>t</i>-statistic</th><th scope=\"col\"><i>p</i>-value</th></tr></thead><tbody><tr><th scope=\"row\"><code>Intercept</code></th><td class=\"num\">2.939</td><td class=\"num\">0.3119</td><td class=\"num\">9.42</td><td class=\"num\">&lt; 0.0001</td></tr><tr><th scope=\"row\"><code>TV</code></th><td class=\"num\">0.046</td><td class=\"num\">0.0014</td><td class=\"num\">32.81</td><td class=\"num\">&lt; 0.0001</td></tr><tr><th scope=\"row\"><code>radio</code></th><td class=\"num\">0.189</td><td class=\"num\">0.0086</td><td class=\"num\">21.89</td><td class=\"num\">&lt; 0.0001</td></tr><tr><th scope=\"row\"><code>newspaper</code></th><td class=\"num\">−0.001</td><td class=\"num\">0.0059</td><td class=\"num\">−0.18</td><td class=\"num\">0.8599</td></tr></tbody></table>",
+  "columns": 5,
+  "rows": 5
+ },
+ {
+  "key": "t3-5-p92",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\"><code>TV</code></th><th scope=\"col\"><code>radio</code></th><th scope=\"col\"><code>newspaper</code></th><th scope=\"col\"><code>sales</code></th></tr></thead><tbody><tr><th scope=\"row\"><code>TV</code></th><td class=\"num\">1.0000</td><td class=\"num\">0.0548</td><td class=\"num\">0.0567</td><td class=\"num\">0.7822</td></tr><tr><th scope=\"row\"><code>radio</code></th><td></td><td class=\"num\">1.0000</td><td class=\"num\">0.3541</td><td class=\"num\">0.5762</td></tr><tr><th scope=\"row\"><code>newspaper</code></th><td></td><td></td><td class=\"num\">1.0000</td><td class=\"num\">0.2283</td></tr><tr><th scope=\"row\"><code>sales</code></th><td></td><td></td><td></td><td class=\"num\">1.0000</td></tr></tbody></table>",
+  "columns": 5,
+  "rows": 5
+ },
+ {
+  "key": "t3-6-p94",
+  "html": "<table><thead><tr><th scope=\"col\">Quantity</th><th scope=\"col\">Value</th></tr></thead><tbody><tr><th scope=\"row\">Residual standard error</th><td class=\"num\">1.69</td></tr><tr><th scope=\"row\">R<sup>2</sup></th><td class=\"num\">0.897</td></tr><tr><th scope=\"row\"><i>F</i>-statistic</th><td class=\"num\">570</td></tr></tbody></table>",
+  "columns": 2,
+  "rows": 4
+ },
+ {
+  "key": "t3-7-p102",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\">Coefficient</th><th scope=\"col\">Std. error</th><th scope=\"col\"><i>t</i>-statistic</th><th scope=\"col\"><i>p</i>-value</th></tr></thead><tbody><tr><th scope=\"row\"><code>Intercept</code></th><td class=\"num\">509.80</td><td class=\"num\">33.13</td><td class=\"num\">15.389</td><td class=\"num\">&lt; 0.0001</td></tr><tr><th scope=\"row\"><code>own[Yes]</code></th><td class=\"num\">19.73</td><td class=\"num\">46.05</td><td class=\"num\">0.429</td><td class=\"num\">0.6690</td></tr></tbody></table>",
+  "columns": 5,
+  "rows": 3
+ },
+ {
+  "key": "t3-8-p103",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\">Coefficient</th><th scope=\"col\">Std. error</th><th scope=\"col\"><i>t</i>-statistic</th><th scope=\"col\"><i>p</i>-value</th></tr></thead><tbody><tr><th scope=\"row\"><code>Intercept</code></th><td class=\"num\">531.00</td><td class=\"num\">46.32</td><td class=\"num\">11.464</td><td class=\"num\">&lt; 0.0001</td></tr><tr><th scope=\"row\"><code>region[South]</code></th><td class=\"num\">−12.50</td><td class=\"num\">56.68</td><td class=\"num\">−0.221</td><td class=\"num\">0.8260</td></tr><tr><th scope=\"row\"><code>region[West]</code></th><td class=\"num\">−18.69</td><td class=\"num\">65.02</td><td class=\"num\">−0.287</td><td class=\"num\">0.7740</td></tr></tbody></table>",
+  "columns": 5,
+  "rows": 4
+ }
+]

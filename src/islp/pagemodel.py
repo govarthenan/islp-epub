@@ -385,7 +385,9 @@ def load_page(doc: pymupdf.Document, index: int, two_column: bool = False) -> Pa
                     line.cell_fill = cell.kind
                     break
             else:
-                if line.x0 < PROMPT_X1:
+                # A cell's output sometimes overflows its shaded rectangle. A line that is
+                # almost entirely typewriter is code wherever it sits.
+                if line.x0 < PROMPT_X1 or line.role_fraction(Role.MONO) > 0.85:
                     line.zone = Zone.CODE
                     line.cell_fill = "output"
         lines.append(line)

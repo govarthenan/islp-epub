@@ -139,8 +139,6 @@ def classify_line(line: VLine) -> Kind:
         share = math_fraction(line)
         if share > 0.6 or _all_dots(line) or (_has_extension(line) and share > 0.35):
             return Kind.DISPLAY
-    if size < 9.5 and line.y0 > 520 and not has_prose_word(line):
-        return Kind.OTHER
     return Kind.PROSE
 
 
