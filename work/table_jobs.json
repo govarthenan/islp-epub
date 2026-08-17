@@ -1,0 +1,352 @@
+[
+ {
+  "key": "t1-1-p23",
+  "image": "work/table_crops/t1-1-p23.png",
+  "number": "1.1",
+  "page_pdf": 23,
+  "chapter": "Introduction",
+  "caption": "TABLE 1.1. A list of data sets needed to perform the labs and exercises in this textbook. All data sets are available in the ISLP package, with the exception of USArrests, which is part of the base R distribution, but accessible from Python.",
+  "width_pt": 339.1,
+  "height_pt": 235.6
+ },
+ {
+  "key": "t3-1-p86",
+  "image": "work/table_crops/t3-1-p86.png",
+  "number": "3.1",
+  "page_pdf": 86,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.1. For the Advertising data, coefficients of the least squares model for the regression of number of units sold on TV advertising budget. An increase of $1,000 in the TV advertising budget is associated with an increase in sales by around 50 units. (Recall that the sales variable is in thousands of units, and the TV variable is in thousands of dollars.)",
+  "width_pt": 278.3,
+  "height_pt": 47.5
+ },
+ {
+  "key": "t3-2-p87",
+  "image": "work/table_crops/t3-2-p87.png",
+  "number": "3.2",
+  "page_pdf": 87,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.2. For the Advertising data, more information about the least squares model for the regression of number of units sold on TV advertising budget.",
+  "width_pt": 160.1,
+  "height_pt": 59.4
+ },
+ {
+  "key": "t3-3-p89",
+  "image": "work/table_crops/t3-3-p89.png",
+  "number": "3.3",
+  "page_pdf": 89,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.3. More simple linear regression models for the Advertising data. Coefficients of the simple linear regression model for number of units sold on Top: radio advertising budget and Bottom: newspaper advertising budget. A $1,000 in- crease in spending on radio advertising is associated with an average increase in sales by around 203 units, while the same increase in spending on newspaper ad- ",
+  "width_pt": 278.3,
+  "height_pt": 145.1
+ },
+ {
+  "key": "t3-4-p92",
+  "image": "work/table_crops/t3-4-p92.png",
+  "number": "3.4",
+  "page_pdf": 92,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.4. For the Advertising data, least squares coefficient estimates of the",
+  "width_pt": 278.3,
+  "height_pt": 71.4
+ },
+ {
+  "key": "t3-5-p92",
+  "image": "work/table_crops/t3-5-p92.png",
+  "number": "3.5",
+  "page_pdf": 92,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.5. Correlation matrix for TV, radio, newspaper, and sales for the Advertising data.",
+  "width_pt": 330.8,
+  "height_pt": 112.5
+ },
+ {
+  "key": "t3-6-p94",
+  "image": "work/table_crops/t3-6-p94.png",
+  "number": "3.6",
+  "page_pdf": 94,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.6. More information about the least squares model for the regression of number of units sold on TV, newspaper, and radio advertising budgets in the Advertising data. Other information about this model was displayed in Table 3.4.",
+  "width_pt": 160.1,
+  "height_pt": 59.4
+ },
+ {
+  "key": "t3-7-p102",
+  "image": "work/table_crops/t3-7-p102.png",
+  "number": "3.7",
+  "page_pdf": 102,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.7. Least squares coefficient estimates associated with the regression of balance onto own in the Credit data set. The linear model is given in (3.27). That is, ownership is encoded as a dummy variable, as in (3.26).",
+  "width_pt": 278.3,
+  "height_pt": 47.5
+ },
+ {
+  "key": "t3-8-p103",
+  "image": "work/table_crops/t3-8-p103.png",
+  "number": "3.8",
+  "page_pdf": 103,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.8. Least squares coefficient estimates associated with the regression of",
+  "width_pt": 297.1,
+  "height_pt": 59.4
+ },
+ {
+  "key": "t3-9-p105",
+  "image": "work/table_crops/t3-9-p105.png",
+  "number": "3.9",
+  "page_pdf": 105,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.9. For the Advertising data, least squares coefficient estimates asso- ciated with the regression of sales onto TV and radio, with an interaction term, as in (3.33).",
+  "width_pt": 278.3,
+  "height_pt": 71.4
+ },
+ {
+  "key": "t3-10-p108",
+  "image": "work/table_crops/t3-10-p108.png",
+  "number": "3.10",
+  "page_pdf": 108,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.10. For the Auto data set, least squares coefficient estimates associated with the regression of mpg onto horsepower and horsepower2.",
+  "width_pt": 330.8,
+  "height_pt": 124.8
+ },
+ {
+  "key": "t3-11-p117",
+  "image": "work/table_crops/t3-11-p117.png",
+  "number": "3.11",
+  "page_pdf": 117,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.11. The results for two multiple regression models involving the Credit data set are shown. Model 1 is a regression of balance on age and limit, and Model 2 a regression of balance on rating and limit. The standard error of {{MATH:m00144}} increases 12-fold in the second regression, due to collinearity.",
+  "width_pt": 325.6,
+  "height_pt": 95.8
+ },
+ {
+  "key": "t4-1-p151",
+  "image": "work/table_crops/t4-1-p151.png",
+  "number": "4.1",
+  "page_pdf": 151,
+  "chapter": "Classification",
+  "caption": "TABLE 4.1. For the Default data, estimated coefficients of the logistic regres-",
+  "width_pt": 277.0,
+  "height_pt": 47.5
+ },
+ {
+  "key": "t4-2-p151",
+  "image": "work/table_crops/t4-2-p151.png",
+  "number": "4.2",
+  "page_pdf": 151,
+  "chapter": "Classification",
+  "caption": "TABLE 4.2. For the Default data, estimated coefficients of the logistic regression model that predicts the probability of default using student status. Student status is encoded as a dummy variable, with a value of 1 for a student and a value of 0 for a non-student, and represented by the variable student[Yes] in the table.",
+  "width_pt": 330.8,
+  "height_pt": 95.1
+ },
+ {
+  "key": "t4-3-p152",
+  "image": "work/table_crops/t4-3-p152.png",
+  "number": "4.3",
+  "page_pdf": 152,
+  "chapter": "Classification",
+  "caption": "TABLE 4.3. For the Default data, estimated coefficients of the logistic regression model that predicts the probability of default using balance, income, and student status. Student status is encoded as a dummy variable student[Yes], with a value of 1 for a student and a value of 0 for a non-student. In fitting this model, income was measured in thousands of dollars.",
+  "width_pt": 278.6,
+  "height_pt": 70.4
+ },
+ {
+  "key": "t4-4-p161",
+  "image": "work/table_crops/t4-4-p161.png",
+  "number": "4.4",
+  "page_pdf": 161,
+  "chapter": "Classification",
+  "caption": "TABLE 4.4. A confusion matrix compares the LDA predictions to the true default statuses for the 10,000 training observations in the Default data set. Elements on the diagonal of the matrix represent individuals whose default statuses were correctly predicted, while off-diagonal elements represent individuals that were misclassified. LDA made incorrect predictions for 23 individuals who did not def",
+  "width_pt": 209.5,
+  "height_pt": 71.4
+ },
+ {
+  "key": "t4-5-p163",
+  "image": "work/table_crops/t4-5-p163.png",
+  "number": "4.5",
+  "page_pdf": 163,
+  "chapter": "Classification",
+  "caption": "TABLE 4.5. A confusion matrix compares the LDA predictions to the true",
+  "width_pt": 209.6,
+  "height_pt": 71.4
+ },
+ {
+  "key": "t4-6-p165",
+  "image": "work/table_crops/t4-6-p165.png",
+  "number": "4.6",
+  "page_pdf": 165,
+  "chapter": "Classification",
+  "caption": "TABLE 4.6. Possible results when applying a classifier or diagnostic test to a",
+  "width_pt": 312.4,
+  "height_pt": 65.5
+ },
+ {
+  "key": "t4-7-p165",
+  "image": "work/table_crops/t4-7-p165.png",
+  "number": "4.7",
+  "page_pdf": 165,
+  "chapter": "Classification",
+  "caption": "TABLE 4.7. Important measures for classification and diagnostic testing, derived from quantities in Table 4.6.",
+  "width_pt": 330.8,
+  "height_pt": 94.7
+ },
+ {
+  "key": "t4-8-p169",
+  "image": "work/table_crops/t4-8-p169.png",
+  "number": "4.8",
+  "page_pdf": 169,
+  "chapter": "Classification",
+  "caption": "TABLE 4.8. Comparison of the naive Bayes predictions to the true default status for the 10, 000 training observations in the Default data set, when we predict default for any observation for which P(Y = default|X = x) &gt; 0.5.",
+  "width_pt": 330.8,
+  "height_pt": 143.6
+ },
+ {
+  "key": "t4-9-p170",
+  "image": "work/table_crops/t4-9-p170.png",
+  "number": "4.9",
+  "page_pdf": 170,
+  "chapter": "Classification",
+  "caption": "TABLE 4.9. Comparison of the naive Bayes predictions to the true default status for the 10, 000 training observations in the Default data set, when we predict default for any observation for which P(Y = default|X = x) &gt; 0.2.",
+  "width_pt": 209.5,
+  "height_pt": 71.4
+ },
+ {
+  "key": "t4-10-p176",
+  "image": "work/table_crops/t4-10-p176.png",
+  "number": "4.10",
+  "page_pdf": 176,
+  "chapter": "Classification",
+  "caption": "TABLE 4.10. Results for a least squares linear model fit to predict bikers in the Bikeshare data. The predictors mnth and hr are omitted from this table due to space constraints, and can be seen in Figure 4.13. For the qualitative variable weathersit, the baseline level corresponds to clear skies.",
+  "width_pt": 323.2,
+  "height_pt": 94.3
+ },
+ {
+  "key": "t4-11-p180",
+  "image": "work/table_crops/t4-11-p180.png",
+  "number": "4.11",
+  "page_pdf": 180,
+  "chapter": "Classification",
+  "caption": "TABLE 4.11. Results for a Poisson regression model fit to predict bikers in",
+  "width_pt": 324.6,
+  "height_pt": 94.3
+ },
+ {
+  "key": "t6-1-p242",
+  "image": "work/table_crops/t6-1-p242.png",
+  "number": "6.1",
+  "page_pdf": 242,
+  "chapter": "Linear Model Selection and Regularization",
+  "caption": "TABLE 6.1. The first four selected models for best subset selection and forward stepwise selection on the Credit data set. The first three models are identical but the fourth models differ.",
+  "width_pt": 299.1,
+  "height_pt": 83.3
+ },
+ {
+  "key": "t10-1-p413",
+  "image": "work/table_crops/t10-1-p413.png",
+  "number": "10.1",
+  "page_pdf": 413,
+  "chapter": "Deep Learning",
+  "caption": "TABLE 10.1. Test error rate on the MNIST data, for neural networks with two",
+  "width_pt": 264.4,
+  "height_pt": 73.4
+ },
+ {
+  "key": "t10-2-p433",
+  "image": "work/table_crops/t10-2-p433.png",
+  "number": "10.2",
+  "page_pdf": 433,
+  "chapter": "Deep Learning",
+  "caption": "TABLE 10.2. Prediction results on the Hitters test data for linear models fit",
+  "width_pt": 307.2,
+  "height_pt": 60.5
+ },
+ {
+  "key": "t10-3-p433",
+  "image": "work/table_crops/t10-3-p433.png",
+  "number": "10.3",
+  "page_pdf": 433,
+  "chapter": "Deep Learning",
+  "caption": "TABLE 10.3. Least squares coefficient estimates associated with the regres- sion of Salary on four variables chosen by lasso on the Hitters data set. This model achieved the best performance on the test data, with a mean absolute error of 224.8. The results reported here were obtained from a regression on the test data, which was not used in fitting the lasso model.",
+  "width_pt": 330.8,
+  "height_pt": 124.4
+ },
+ {
+  "key": "t11-1-p481",
+  "image": "work/table_crops/t11-1-p481.png",
+  "number": "11.1",
+  "page_pdf": 481,
+  "chapter": "Survival Analysis and Censored Data",
+  "caption": "TABLE 11.1. Among the set of patients at risk at time dk, the number of patients who died and survived in each of two groups is reported.",
+  "width_pt": 190.8,
+  "height_pt": 59.3
+ },
+ {
+  "key": "t11-4-p506",
+  "image": "work/table_crops/t11-4-p506.png",
+  "number": "11.4",
+  "page_pdf": 506,
+  "chapter": "Survival Analysis and Censored Data",
+  "caption": "TABLE 11.4. Data used in Exercise 4.",
+  "width_pt": 267.1,
+  "height_pt": 94.3
+ },
+ {
+  "key": "t12-1-p514",
+  "image": "work/table_crops/t12-1-p514.png",
+  "number": "12.1",
+  "page_pdf": 514,
+  "chapter": "Unsupervised Learning",
+  "caption": "TABLE 12.1. The principal component loading vectors, φ1 and φ2, for the USArrests data. These are also displayed in Figure 12.1.",
+  "width_pt": 162.6,
+  "height_pt": 70.4
+ },
+ {
+  "key": "t12-2-p526",
+  "image": "work/table_crops/t12-2-p526.png",
+  "number": "12.2",
+  "page_pdf": 526,
+  "chapter": "Unsupervised Learning",
+  "caption": "TABLE 12.2. Excerpt of the Netflix movie rating data. The movies are rated from 1 (worst) to 5 (best). The symbol • represents a missing value: a movie that was not rated by the corresponding customer.",
+  "width_pt": 306.5,
+  "height_pt": 127.3
+ },
+ {
+  "key": "t13-1-p568",
+  "image": "work/table_crops/t13-1-p568.png",
+  "number": "13.1",
+  "page_pdf": 568,
+  "chapter": "Multiple Testing",
+  "caption": "TABLE 13.1. A summary of the possible scenarios associated with testing the null hypothesis H0. Type I errors are also known as false positives, and Type II errors as false negatives.",
+  "width_pt": 281.8,
+  "height_pt": 58.9
+ },
+ {
+  "key": "t13-2-p571",
+  "image": "work/table_crops/t13-2-p571.png",
+  "number": "13.2",
+  "page_pdf": 571,
+  "chapter": "Multiple Testing",
+  "caption": "TABLE 13.2. A summary of the results of testing m null hypotheses. A given null hypothesis is either true or false, and a test of that null hypothesis can either reject or fail to reject it. In practice, the individual values of V , S, U, and W are unknown. However, we do have access to V + S = R and U + W = m −R, which are the numbers of null hypotheses rejected and not rejected, respectively.",
+  "width_pt": 246.7,
+  "height_pt": 53.2
+ },
+ {
+  "key": "t13-3-p573",
+  "image": "work/table_crops/t13-3-p573.png",
+  "number": "13.3",
+  "page_pdf": 573,
+  "chapter": "Multiple Testing",
+  "caption": "TABLE 13.3. The first two columns correspond to the sample mean and sample standard deviation of the percentage excess return, over n = 50 months, for the first five managers in the Fund dataset. The last two columns provide the t-statistic ({{MATH:m00701}}) and associated p-value for testing H0j : μj = 0, the null hypothesis that the (population) mean return for the jth hedge fund manager equals ",
+  "width_pt": 310.4,
+  "height_pt": 83.3
+ },
+ {
+  "key": "t13-4-p600",
+  "image": "work/table_crops/t13-4-p600.png",
+  "number": "13.4",
+  "page_pdf": 600,
+  "chapter": "Multiple Testing",
+  "caption": "TABLE 13.4. p-values for Exercise 4.",
+  "width_pt": 318.6,
+  "height_pt": 316.3
+ }
+]

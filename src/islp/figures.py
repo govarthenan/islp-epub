@@ -92,16 +92,18 @@ def detect_regions(page: Page, pdf_page: pymupdf.Page) -> list[Region]:
             continue
 
         pieces: list[tuple[float, float, float, float]] = []
+        # Overlap, not containment: a header row whose glyph boxes start a little above the
+        # band still belongs to the table, and testing containment clipped it away.
         for rect in page.drawing_rects + page.image_rects:
-            if rect[1] >= band[0] - 3 and rect[3] <= band[1] + 3 and rect[0] >= CONTENT_X0:
+            if rect[3] > band[0] and rect[1] < band[1] and rect[0] >= CONTENT_X0:
                 if rect[2] - rect[0] > 0.2 and rect[3] - rect[1] > 0.2:
                     pieces.append(rect)
         for other in page.lines:
             if other is line:
                 continue
-            if other.zone in (Zone.HEADER, Zone.FOOTER):
+            if other.zone in (Zone.HEADER, Zone.FOOTER, Zone.MARGIN):
                 continue
-            if other.y0 >= band[0] - 3 and other.y1 <= band[1] + 3:
+            if other.y1 > band[0] and other.y0 < band[1]:
                 pieces.append(other.bbox)
         for box in ruled:
             if box[1] >= band[0] - 6 and box[3] <= band[1] + 6:
@@ -112,7 +114,7 @@ def detect_regions(page: Page, pdf_page: pymupdf.Page) -> list[Region]:
             continue
         bbox = (
             max(CONTENT_X0, bbox[0] - 4),
-            max(band[0] - 2, bbox[1] - 4),
+            max(band[0] - 8, bbox[1] - 4),
             min(CONTENT_X1, bbox[2] + 4),
             min(band[1] + 2, bbox[3] + 4),
         )
