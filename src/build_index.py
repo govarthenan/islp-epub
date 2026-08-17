@@ -9,6 +9,7 @@ work/math_verification.json for the numbers, so the page never drifts from the b
 from __future__ import annotations
 
 import json
+import sys
 from datetime import date
 from html import escape
 from pathlib import Path
@@ -43,8 +44,10 @@ def pipeline_svg(stages: list[dict]) -> str:
         box_width = step - 34
         boxes.append(f'''
     <g>
-      <rect x="{x:.0f}" y="40" width="{box_width:.0f}" height="176" rx="10"
-            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <rect x="{x:.0f}" y="40" width="{box_width:.0f}" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="{x:.0f}" y="40" width="{box_width:.0f}" height="2" fill="var(--link)"
+            opacity="0.35"/>
       <text x="{x + 16:.0f}" y="70" class="svg-step">{index + 1}</text>
       <foreignObject x="{x + 14:.0f}" y="80" width="{box_width - 28:.0f}" height="130">
         <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
@@ -56,7 +59,7 @@ def pipeline_svg(stages: list[dict]) -> str:
             arrow_x = x + box_width + 4
             boxes.append(
                 f'<path d="M{arrow_x:.0f} 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" '
-                f'stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>'
+                f'stroke="var(--rule-strong)" stroke-width="1.4" stroke-linecap="square"/>'
             )
     return (
         f'<svg viewBox="0 0 {width} {height}" role="img" '
@@ -220,7 +223,7 @@ def build() -> str:
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ISLP to EPUB</title>
+<title>Reflowing ISLP</title>
 <style>
 /* The palette is the book's own colour table, measured out of the PDF during the conversion:
    #000000 prose, #0068b4 cross-references, #984100 lab code, #595959 margin notes. The ground
@@ -292,7 +295,14 @@ h1 {{ font-size: clamp(33px, 5vw, 54px); line-height: 1.06; margin: 0 0 16px; le
   text-transform: uppercase; padding: 7px 12px; border: 1px solid var(--rule-strong);
   color: var(--muted);
 }}
-h2 {{ font-size: 27px; margin: 76px 0 6px; letter-spacing: -.012em; text-wrap: balance; }}
+h2 {{
+  font-size: 27px; margin: 76px 0 6px; letter-spacing: -.012em; text-wrap: balance;
+  padding-top: 16px; border-top: 1px solid var(--rule); position: relative;
+}}
+h2::before {{
+  content: ""; position: absolute; left: 0; top: -4px; width: 1px; height: 9px;
+  background: var(--link);
+}}
 h2 + .sub {{ color: var(--muted); margin: 0 0 28px; max-width: 68ch; font-size: 16.5px; }}
 h3 {{ font-size: 17px; margin: 0; }}
 
@@ -437,9 +447,30 @@ uv run python src/validate_epub.py output/ISLP.epub</pre>
 """
 
 
+def inline_assets(html: str) -> str:
+    """Fold the pictures into the page as data URIs, for publishing somewhere that has no
+    access to the repository's assets directory."""
+    import base64
+    import re as regex
+
+    def replace(match: regex.Match) -> str:
+        path = ROOT / match.group(1)
+        if not path.exists():
+            return match.group(0)
+        encoded = base64.b64encode(path.read_bytes()).decode("ascii")
+        return f'src="data:image/png;base64,{encoded}"'
+
+    return regex.sub(r'src="(assets/[^"]+)"', replace, html)
+
+
 def main() -> None:
-    (ROOT / "index.html").write_text(build(), encoding="utf-8")
+    html = build()
+    (ROOT / "index.html").write_text(html, encoding="utf-8")
     print(f"wrote {ROOT / 'index.html'}")
+    if "--inline" in sys.argv:
+        target = ROOT / "work" / "reflowing-islp.html"
+        target.write_text(inline_assets(html), encoding="utf-8")
+        print(f"wrote {target} ({target.stat().st_size // 1024} KB, self-contained)")
 
 
 if __name__ == "__main__":

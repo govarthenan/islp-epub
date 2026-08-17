@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ISLP to EPUB</title>
+<title>Reflowing ISLP</title>
 <style>
 /* The palette is the book's own colour table, measured out of the PDF during the conversion:
    #000000 prose, #0068b4 cross-references, #984100 lab code, #595959 margin notes. The ground
@@ -75,7 +75,14 @@ h1 { font-size: clamp(33px, 5vw, 54px); line-height: 1.06; margin: 0 0 16px; let
   text-transform: uppercase; padding: 7px 12px; border: 1px solid var(--rule-strong);
   color: var(--muted);
 }
-h2 { font-size: 27px; margin: 76px 0 6px; letter-spacing: -.012em; text-wrap: balance; }
+h2 {
+  font-size: 27px; margin: 76px 0 6px; letter-spacing: -.012em; text-wrap: balance;
+  padding-top: 16px; border-top: 1px solid var(--rule); position: relative;
+}
+h2::before {
+  content: ""; position: absolute; left: 0; top: -4px; width: 1px; height: 9px;
+  background: var(--link);
+}
 h2 + .sub { color: var(--muted); margin: 0 0 28px; max-width: 68ch; font-size: 16.5px; }
 h3 { font-size: 17px; margin: 0; }
 
@@ -156,58 +163,70 @@ a { color: var(--link); }
 from the file itself before it was written down.</p>
 <div class="pipeline"><svg viewBox="0 0 1180 252" role="img" aria-label="Conversion pipeline in 6 stages"><title>Conversion pipeline</title>
     <g>
-      <rect x="12" y="40" width="163" height="176" rx="10"
-            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <rect x="12" y="40" width="163" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="12" y="40" width="163" height="2" fill="var(--link)"
+            opacity="0.35"/>
       <text x="28" y="70" class="svg-step">1</text>
       <foreignObject x="26" y="80" width="135" height="130">
         <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
           <b>Read the PDF&#x27;s own structure</b><br/>Fonts, outline, colours and geometry, measured rather than guessed.
         </div>
       </foreignObject>
-    </g><path d="M179 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>
+    </g><path d="M179 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--rule-strong)" stroke-width="1.4" stroke-linecap="square"/>
     <g>
-      <rect x="209" y="40" width="163" height="176" rx="10"
-            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <rect x="209" y="40" width="163" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="209" y="40" width="163" height="2" fill="var(--link)"
+            opacity="0.35"/>
       <text x="225" y="70" class="svg-step">2</text>
       <foreignObject x="223" y="80" width="135" height="130">
         <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
           <b>Build a page model</b><br/>Split each page into text column, margin notes, prompts, code cells and figures.
         </div>
       </foreignObject>
-    </g><path d="M375 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>
+    </g><path d="M375 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--rule-strong)" stroke-width="1.4" stroke-linecap="square"/>
     <g>
-      <rect x="405" y="40" width="163" height="176" rx="10"
-            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <rect x="405" y="40" width="163" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="405" y="40" width="163" height="2" fill="var(--link)"
+            opacity="0.35"/>
       <text x="421" y="70" class="svg-step">3</text>
       <foreignObject x="419" y="80" width="135" height="130">
         <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
           <b>Recover the document</b><br/>Headings, paragraphs, lists, captions, code cells and display equations.
         </div>
       </foreignObject>
-    </g><path d="M572 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>
+    </g><path d="M572 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--rule-strong)" stroke-width="1.4" stroke-linecap="square"/>
     <g>
-      <rect x="602" y="40" width="163" height="176" rx="10"
-            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <rect x="602" y="40" width="163" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="602" y="40" width="163" height="2" fill="var(--link)"
+            opacity="0.35"/>
       <text x="618" y="70" class="svg-step">4</text>
       <foreignObject x="616" y="80" width="135" height="130">
         <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
           <b>Triage the mathematics</b><br/>Three routes, chosen by what the character stream can and cannot carry.
         </div>
       </foreignObject>
-    </g><path d="M769 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>
+    </g><path d="M769 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--rule-strong)" stroke-width="1.4" stroke-linecap="square"/>
     <g>
-      <rect x="799" y="40" width="163" height="176" rx="10"
-            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <rect x="799" y="40" width="163" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="799" y="40" width="163" height="2" fill="var(--link)"
+            opacity="0.35"/>
       <text x="815" y="70" class="svg-step">5</text>
       <foreignObject x="813" y="80" width="135" height="130">
         <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
           <b>Check the mathematics adversarially</b><br/>Typeset every candidate, put it under the original, and ask whether they agree.
         </div>
       </foreignObject>
-    </g><path d="M965 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>
+    </g><path d="M965 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--rule-strong)" stroke-width="1.4" stroke-linecap="square"/>
     <g>
-      <rect x="995" y="40" width="163" height="176" rx="10"
-            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <rect x="995" y="40" width="163" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="995" y="40" width="163" height="2" fill="var(--link)"
+            opacity="0.35"/>
       <text x="1011" y="70" class="svg-step">6</text>
       <foreignObject x="1009" y="80" width="135" height="130">
         <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">

@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Reflowing ISLP</title>
+<style>
+/* The palette is the book's own colour table, measured out of the PDF during the conversion:
+   #000000 prose, #0068b4 cross-references, #984100 lab code, #595959 margin notes. The ground
+   is a cool paper grey rather than cream, because that is what e-ink actually looks like. */
+:root {
+  --paper: #fbfbfa; --surface: #ffffff; --ink: #16181b; --muted: #5a5a5a;
+  --rule: #dedee0; --rule-strong: #b9babd;
+  --link: #0068b4; --link-soft: #e7f0f8;
+  --code: #984100; --code-soft: #f6ece4;
+  --ok: #1f6f4a; --ok-soft: #e4f0ea;
+  --bad: #a3312a; --bad-soft: #f7e7e5;
+  --mid: #856214; --mid-soft: #f4eddc;
+  --seg-text: #16181b; --seg-latex: #984100; --seg-vlm: #0068b4; --seg-display: #6f8fa6;
+  --svg-card: #ffffff;
+  --serif: ui-serif, Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --shadow: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #131518; --surface: #191c20; --ink: #e8e8e6; --muted: #9a9c9f;
+    --rule: #2b2f34; --rule-strong: #454a51;
+    --link: #6fb4e8; --link-soft: #17242e;
+    --code: #d59258; --code-soft: #241a13;
+    --ok: #6cc094; --ok-soft: #15241c;
+    --bad: #e08b83; --bad-soft: #2a1a19;
+    --mid: #d3b263; --mid-soft: #262014;
+    --seg-text: #e8e8e6; --seg-latex: #d59258; --seg-vlm: #6fb4e8; --seg-display: #8fb0c6;
+    --svg-card: #191c20;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #131518; --surface: #191c20; --ink: #e8e8e6; --muted: #9a9c9f;
+  --rule: #2b2f34; --rule-strong: #454a51;
+  --link: #6fb4e8; --link-soft: #17242e;
+  --code: #d59258; --code-soft: #241a13;
+  --ok: #6cc094; --ok-soft: #15241c;
+  --bad: #e08b83; --bad-soft: #2a1a19;
+  --mid: #d3b263; --mid-soft: #262014;
+  --seg-text: #e8e8e6; --seg-latex: #d59258; --seg-vlm: #6fb4e8; --seg-display: #8fb0c6;
+  --svg-card: #191c20;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 16px/1.62 var(--serif);
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px 110px; }
+
+/* A hairline with a tick at its left end: the page's structural motif, borrowed from the
+   baselines and bounding boxes the whole project is about. */
+.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; position: relative; }
+.rule::before {
+  content: ""; position: absolute; left: 0; top: -4px; width: 1px; height: 9px;
+  background: var(--rule-strong);
+}
+
+header { padding: 84px 0 40px; }
+.eyebrow {
+  font: 600 11.5px/1 var(--mono); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--link); margin-bottom: 22px;
+}
+h1 { font-size: clamp(33px, 5vw, 54px); line-height: 1.06; margin: 0 0 16px; letter-spacing: -.015em; text-wrap: balance; }
+.lede { font-size: 19.5px; color: var(--muted); max-width: 60ch; margin: 0 0 24px; }
+.pill {
+  display: inline-block; font: 600 11px/1 var(--mono); letter-spacing: .12em;
+  text-transform: uppercase; padding: 7px 12px; border: 1px solid var(--rule-strong);
+  color: var(--muted);
+}
+h2 {
+  font-size: 27px; margin: 76px 0 6px; letter-spacing: -.012em; text-wrap: balance;
+  padding-top: 16px; border-top: 1px solid var(--rule); position: relative;
+}
+h2::before {
+  content: ""; position: absolute; left: 0; top: -4px; width: 1px; height: 9px;
+  background: var(--link);
+}
+h2 + .sub { color: var(--muted); margin: 0 0 28px; max-width: 68ch; font-size: 16.5px; }
+h3 { font-size: 17px; margin: 0; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); gap: 0; margin-top: 40px; border-top: 1px solid var(--rule); }
+.tile { padding: 18px 20px 20px 0; border-bottom: 1px solid var(--rule); }
+.tile-value { font: 600 27px/1.05 var(--mono); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.tile-label { margin-top: 7px; font-size: 14.5px; }
+.tile-note { margin-top: 2px; font-size: 12.5px; color: var(--muted); }
+
+.pipeline { border: 1px solid var(--rule); padding: 8px 4px; overflow-x: auto; }
+.pipeline svg { display: block; min-width: 1060px; width: 100%; height: auto; }
+.svg-step { font: 600 11px var(--mono); fill: var(--link); }
+.svg-body { font: 13px/1.36 var(--serif); color: var(--ink); }
+.svg-body b { font-size: 13.5px; }
+
+.bar { display: flex; height: 26px; overflow: hidden; border: 1px solid var(--rule); }
+.seg-text { background: var(--seg-text); } .seg-latex { background: var(--seg-latex); }
+.seg-vlm { background: var(--seg-vlm); } .seg-display { background: var(--seg-display); }
+.legend { list-style: none; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+.legend li { display: flex; gap: 10px; align-items: flex-start; }
+.swatch { width: 11px; height: 11px; margin-top: 6px; flex: none; }
+.swatch-text { background: var(--seg-text); } .swatch-latex { background: var(--seg-latex); }
+.swatch-vlm { background: var(--seg-vlm); } .swatch-display { background: var(--seg-display); }
+.legend b { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.legend-note { color: var(--muted); font-size: 13.5px; margin-top: 3px; }
+
+.attempts { list-style: none; padding: 0; margin: 0; }
+.attempt { padding: 20px 0 22px 22px; border-top: 1px solid var(--rule); border-left: 2px solid var(--rule); }
+.attempt-success { border-left-color: var(--ok); }
+.attempt-failed { border-left-color: var(--bad); }
+.attempt-partial { border-left-color: var(--mid); }
+.attempt-head { display: flex; align-items: baseline; gap: 13px; margin-bottom: 9px; flex-wrap: wrap; }
+.num { font: 600 12.5px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.badge { margin-left: auto; font: 600 10.5px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: 5px 9px; }
+.badge-success { background: var(--ok-soft); color: var(--ok); }
+.badge-failed { background: var(--bad-soft); color: var(--bad); }
+.badge-partial { background: var(--mid-soft); color: var(--mid); }
+.attempt p { margin: 5px 0; font-size: 15.5px; max-width: 84ch; }
+.field, .why-label { font: 600 10.5px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-right: 9px; }
+.why { color: var(--muted); }
+
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); gap: 20px; }
+.shot { margin: 0; border: 1px solid var(--rule); padding: 0; }
+.shot img { width: 100%; height: auto; display: block; background: #fff; padding: 12px; }
+.shot figcaption { margin: 0; padding: 12px 14px 14px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule); }
+.shot.bad { border-color: color-mix(in srgb, var(--bad) 40%, var(--rule)); }
+.shot.good { border-color: color-mix(in srgb, var(--ok) 40%, var(--rule)); }
+.shot b { color: var(--ink); }
+
+.checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); gap: 0; border-top: 1px solid var(--rule); }
+.check { padding: 20px 24px 24px 0; border-bottom: 1px solid var(--rule); }
+.check-value { font: 600 32px/1.05 var(--mono); letter-spacing: -.03em; color: var(--ok); font-variant-numeric: tabular-nums; }
+.check-label { font-size: 15px; margin-top: 5px; }
+.check p { margin: 11px 0 0; font-size: 14px; color: var(--muted); max-width: 46ch; }
+
+code { font-family: var(--mono); font-size: .9em; color: var(--code); }
+pre { border: 1px solid var(--rule); padding: 15px 17px; overflow-x: auto; font: 13px/1.65 var(--mono); }
+footer { margin-top: 84px; padding-top: 26px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+th, td { text-align: left; padding: 11px 14px 11px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 600 10.5px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+a { color: var(--link); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">PDF &rarr; EPUB &middot; build log</div>
+  <h1>ISLP PDF to EPUB</h1>
+  <p class="lede">Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB for a Kobo Libra 2</p>
+  <span class="pill">Verified and packaged.</span>
+  <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">3,297</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">191</div><div class="tile-label">figures re-rendered</div><div class="tile-note">300 ppi, 16 greys</div></div><div class="tile"><div class="tile-value">36</div><div class="tile-label">tables as markup</div><div class="tile-note">they reflow, not pictures</div></div><div class="tile"><div class="tile-value">409</div><div class="tile-label">display equations</div><div class="tile-note">every one checked</div></div><div class="tile"><div class="tile-value">1,137</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">3,686</div><div class="tile-label">cross-references</div><div class="tile-note">all of them resolved</div></div><div class="tile"><div class="tile-value">7.9 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div><div class="tile"><div class="tile-value">99.8%</div><div class="tile-label">mathematics agreed</div><div class="tile-note">candidate matched the printed page</div></div></div>
+</header>
+
+<h2>How the book is taken apart</h2>
+<p class="sub">Six stages. Nothing here guesses at the layout: every rule below was measured
+from the file itself before it was written down.</p>
+<div class="pipeline"><svg viewBox="0 0 1180 252" role="img" aria-label="Conversion pipeline in 6 stages"><title>Conversion pipeline</title>
+    <g>
+      <rect x="12" y="40" width="163" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="12" y="40" width="163" height="2" fill="var(--link)"
+            opacity="0.35"/>
+      <text x="28" y="70" class="svg-step">1</text>
+      <foreignObject x="26" y="80" width="135" height="130">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
+          <b>Read the PDF&#x27;s own structure</b><br/>Fonts, outline, colours and geometry, measured rather than guessed.
+        </div>
+      </foreignObject>
+    </g><path d="M179 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--rule-strong)" stroke-width="1.4" stroke-linecap="square"/>
+    <g>
+      <rect x="209" y="40" width="163" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="209" y="40" width="163" height="2" fill="var(--link)"
+            opacity="0.35"/>
+      <text x="225" y="70" class="svg-step">2</text>
+      <foreignObject x="223" y="80" width="135" height="130">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
+          <b>Build a page model</b><br/>Split each page into text column, margin notes, prompts, code cells and figures.
+        </div>
+      </foreignObject>
+    </g><path d="M375 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--rule-strong)" stroke-width="1.4" stroke-linecap="square"/>
+    <g>
+      <rect x="405" y="40" width="163" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="405" y="40" width="163" height="2" fill="var(--link)"
+            opacity="0.35"/>
+      <text x="421" y="70" class="svg-step">3</text>
+      <foreignObject x="419" y="80" width="135" height="130">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
+          <b>Recover the document</b><br/>Headings, paragraphs, lists, captions, code cells and display equations.
+        </div>
+      </foreignObject>
+    </g><path d="M572 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--rule-strong)" stroke-width="1.4" stroke-linecap="square"/>
+    <g>
+      <rect x="602" y="40" width="163" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="602" y="40" width="163" height="2" fill="var(--link)"
+            opacity="0.35"/>
+      <text x="618" y="70" class="svg-step">4</text>
+      <foreignObject x="616" y="80" width="135" height="130">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
+          <b>Triage the mathematics</b><br/>Three routes, chosen by what the character stream can and cannot carry.
+        </div>
+      </foreignObject>
+    </g><path d="M769 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--rule-strong)" stroke-width="1.4" stroke-linecap="square"/>
+    <g>
+      <rect x="799" y="40" width="163" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="799" y="40" width="163" height="2" fill="var(--link)"
+            opacity="0.35"/>
+      <text x="815" y="70" class="svg-step">5</text>
+      <foreignObject x="813" y="80" width="135" height="130">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
+          <b>Check the mathematics adversarially</b><br/>Typeset every candidate, put it under the original, and ask whether they agree.
+        </div>
+      </foreignObject>
+    </g><path d="M965 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--rule-strong)" stroke-width="1.4" stroke-linecap="square"/>
+    <g>
+      <rect x="995" y="40" width="163" height="176"
+            fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
+      <rect x="995" y="40" width="163" height="2" fill="var(--link)"
+            opacity="0.35"/>
+      <text x="1011" y="70" class="svg-step">6</text>
+      <foreignObject x="1009" y="80" width="135" height="130">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
+          <b>Package for the device</b><br/>EPUB 3 with an NCX, 300 ppi grayscale figures, no imposed font.
+        </div>
+      </foreignObject>
+    </g></svg></div>
+
+<h2>The mathematics, triaged</h2>
+<p class="sub">The starting assumption was that no mathematics could be recovered as LaTeX and
+that all of it would have to be read back out of images. That turned out to be true for only
+part of it. Sub- and superscripts are recorded in the PDF as a font-size drop plus a baseline
+shift, so most inline mathematics can be rebuilt exactly, for free, and stays as reflowing
+text. A vision model is spent only where the structure is genuinely absent.</p>
+<div class="bar"><div class="seg seg-text" style="width:89.30%" title="Plain HTML: 5974"></div><div class="seg seg-latex" style="width:2.77%" title="LaTeX from the character stream: 185"></div><div class="seg seg-vlm" style="width:1.82%" title="Read by a vision model: 122"></div><div class="seg seg-display" style="width:6.11%" title="Display equations: 409"></div></div><ul class="legend"><li><span class="swatch swatch-text"></span>
+          <div><b>5,974</b> &middot; Plain HTML
+          <div class="legend-note">Sub- and superscripts recovered from glyph geometry. Reflows and scales; costs nothing.</div></div></li><li><span class="swatch swatch-latex"></span>
+          <div><b>185</b> &middot; LaTeX from the character stream
+          <div class="legend-note">Accents and script letters, generated deterministically, then typeset by MathJax.</div></div></li><li><span class="swatch swatch-vlm"></span>
+          <div><b>122</b> &middot; Read by a vision model
+          <div class="legend-note">Fractions, radicals and large operators: structure the PDF simply does not record.</div></div></li><li><span class="swatch swatch-display"></span>
+          <div><b>409</b> &middot; Display equations
+          <div class="legend-note">Every centred equation, read from an image and verified against a re-typeset copy.</div></div></li></ul>
+
+<h2>Where the crops went wrong</h2>
+<p class="sub">Cutting an expression out of the page was the hardest single problem in this
+conversion, and it took four attempts. A fraction is not on one line: its numerator, its rule
+and its denominator sit on three different baselines, and the text layer files them as three
+unrelated lines.</p>
+<div class="gallery">
+  <figure class="shot bad">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOMAAAAzCAAAAABA2+C/AAAET0lEQVR42t1av4sbRxT+YoyY4IAJhNuQYpQ7o8ZgkyYHLsaBWC5dGnwprpjEOGlcGYUcKKC4TaprcuypseGuSP6AwKqJDD4kNQGzbi63d6ci7JoLJlc4GjWTYqPdkXZ3zsvtSiu9RnrszOx8++b9mPceZG4kiKNwLsBH/x2gc66lqboAV1aOpQvIjf7AssJtAWuZLV0GTgNmH7ihHZ0jxt9UZtgEq2a29DrwXOVvzQpja3AYMk/65Mfslr5DcBx8vR7Ysn54jupIzYCxCELm/PooOYj4/68JWPrB+WHsUJMG+yBEgZgBRpcG34yByVlhbHDJmSullDYHG8N0foyyQ4i/RAPUnRlGZkpRo6zGGWEThykDjNKmpHYgOgxcnDX0HZmTxRlePjIA78URrn9Smnh2uILO6rlf0N7dPy5XHpy90MXcvOOSAcAwcjPbperb+qIx39Et38zOO1ZRFBrD+KjfG2bmHfWxx+kUMapnddjDp6Ws1LH3S9KT12+eArsrl94vzQBje3BG4JdaHWPo8CqwRNHaAX5fnT5GC7iduzou/ztTfdwDMrM5x2soDCn+cXh5wNpYQLqQjzoWinw5tr4E8GoAsgSgaywYRt/mrNQBPO6TTQAwFlOOWnV0TpImv3d1juSoU0fvSvJs86v5wpjkHQ3rSJdXmauzevMZ+aeERaRAjsNn2QSrzizRXDK0GNvIxjtemSXGeKN5MetgtTZLjBW9Pi6uOgZy1Kij93fS5HeX5wpjoI7em4mNex8mz7aq84QxUMe76xN+3TD/Spr80bW58o8jdeze3S+cVm5fT58w6J5eC/1IUNFjo8xv0cgESZ1xbkBJn4/uj2X/59tK4SLQ7fts6bNuyklNoL81KUcTVErRYKJ4UqxJlxE7ZSECCEs9CKtdrEZ5ASE2pJSC03QgbUY4jdZ0bNM8KJ4ujmp6nDpp658095pONuScjEzq9npKe//y63Y0L7dgtL3XjOblikHDrMY/WUNBMbYqXjqIlVbCUUV10ndk3/JgdxzfSgv37WdZJKZ/QXSsA03R3EwqY48opxpr91FvQAZg31eBb9BMzu6Np/a6dzYjUb630Srj+NXDx/E2Z3Xz/scxN4MfoAQzuciQg1quFHaDctfyO714/Meg490a0aYwk5pCSmmRxPCExwQIjjo6F4w8aERwGaM+RuG6FgPAHdcn26pRgIydr2iLhslcNRiId4RUTL2vw0T4UsGUjj0TUFuRpOCAq86LqJYVoHbCrqPIoET4uWEUVN2rS5IxSsmUJpYYebg0eCw0/S6UuFPue2z38blyxX6oG/uz0hhQ79cnzcpGNbg5vtb0ENQHG9odZS/HGqDK40AnR8XECxI5jLYiHwuwNSfHna4cT4A/FXaF6gbf2A/iksEXk2L86bvwLr8LmlhBKt3DluYdOWD8APhV5ePzWp4fz1T2AoyRHLa38yCMZ3ZQT37lbTQ1G/oPx+QcAE/nOywAAAAASUVORK5CYII=" alt="&lt;b&gt;Attempt 1.&lt;/b&gt; Box taken from the text line. The fraction is sliced through the middle."/>
+      <figcaption><b>Attempt 1.</b> Box taken from the text line. The fraction is sliced through the middle.</figcaption>
+    </figure>
+  <figure class="shot bad">
+      <img src="data:image/png;base64,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" alt="&lt;b&gt;Attempt 2.&lt;/b&gt; Box grown greedily. It swallows the equation number and the next paragraph."/>
+      <figcaption><b>Attempt 2.</b> Box grown greedily. It swallows the equation number and the next paragraph.</figcaption>
+    </figure>
+  <figure class="shot good">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOMAAACACAAAAADchYFkAAAKbElEQVR42u1cYWjUaBp+9uiPwLodQWwPC19c9Me6tCuIHlf9emV3QQ4pPUHQQorcwtkfeuZgwfaH/TkeeMsdWF1/pAceMsJaKJgiUgR7dFunooOwM3Lejz2cCbRcR4TMsYuBBHI/ZpJ8yUwyTk0m02G+X5mZb5I8eb/3e5/v+d43H5ho+/YLdDB2MHYwdjB2MG4/jKUpI0aMXU2B+Jmy/o+utrZjaaQo3vl9W9uxNKI8HegXd11rX4ylEeV7Hud6z+Bau2I0RpBNABh9OsJdjQfjB5Fz8oUTledY2BhsV4wdDtDBuI04AFDYwKeJtsa4cBEEmcM3B9qYA/D3B4DShV/dHQ31vHM/rvcdO/EOCMyom0qlygHh1PBOq4scleQkIXLdrpFj1GnSOhSQDO20ecrJpmmaugAxdoxJwTmEENppqfW8dFr3yUWNMcvlTceONKzTyrDHvQwuG9w56vh4VeSdAAI+LBJ8EaesUHSC067GOudkmWkmD0ihmZE5FQWnx2nHv084kT8F8lVIp50Deu0PPLQHcXK5e2P2YS6J62FF4xVgt/1hF/A4RoxrOGI743lNCosClBRgh/2pB0jHyHOWhrpQuLwCkN9KRTk0lqMA6GYxKjFiXDwLpFbGsD6/Cik8IvcTgJ0tsrYyMseBP17v7h6+q9KJheguVIwvdqQJE0XAsIH3Dx1wYpIEQI8tdiwNOccDVEsxk9F76eabVd/8HNtYXRxmPvCQ7Dl2/Oiz9zlvb+usH40MYzn0QTG6gEKq+Dyj+QaFn2p9vaO7HglMxIXxWQ97axqwzgMbxZ5LB/f6PJRf+oFPu2TL3QBUFhYXmx1ZdwTeAH0ABgeBgt/N3M3V/qHniNuuVb/HhnHxkpt/kboXG323GNoN4H9s4CBxxUcjc5BV5hQMhXVmnpR5gI2RjwvjM9elU8Dp0E49BLxmnWA4LoxLYIKgIYGGR+aGgRyz9MbxuDAuauvOh1sKdzO8U5/m8NKONxnQuMaqkSEPHRVZxEyICnJiAvPWIFnWcCkurSNNZGLRSJnjWJkjD6TfU7Qlltih07pKGCIUHXWB5k3TNLMCqEs6e3+MZprj0hVBk6ixYaSyqU8SKgqUEzxadggYzSzlJvNqWoBQV3yPbI/V+OjfPFD614ve3VU7VoW9HnK2pQs8mCso5NAf6rt5ZBjXxgq+v4WCcYs6wBo/Hl50PIlWaS6Mk8p8aDlfi1+2DEaWJpcyOBwWRzcyfvyqBDUFfLdnJz7saj7GZQ1Hw1s7+ixbC58APQT3JGBpsPkYHwPHIndH/m2s/piuR+AbaC9bxx3Z2GF8pNEVtGFj7PgsRHdsqVa248JFAEUNXA9QTuFrP4yFhwCSCjcDoPdEV1tiDHTHwobfn3cMbAuMjs0e+LhjYa//v+XR7YXRLzry8maQrrKtxurQKvffdpttPHYsreJwGBALscLhAzEuI5zouDdOiLUnza6wyepknBj3B/tj+7qjbccAdyz5Zk1089sKo+2OVUlt7RMfbXccP3vO3aNP8s2a6Nle8dFyx9zIf1qOrs72Ny4YrL0edlyvorOSiqJOZbPVmgSuYcU5CUY+t9aPlZ3YKb7lPGx2Quj5ItfgnyRAueG1owRimnqS6q1nRVFXab1U4+pUbDhbPfZ+hwhBJEILQkyapqkLJNvobohIqvd0spKUbzlflMvZ/6YukkZvTiWR7+mE05x6woVG5Ync+ZWq9WNLNt4mJA3PhU8O1dDlWqMZYfVf/rJVMa7tKzUGcZ9PWmyuMOqNHeHXIGXT+fIsraqNzzHu2SMt5wOqKyS/bWyrReSPa9/Oa5wGemkUuLDrmr+655b2cmdmqvyucHmFQCmKV2rf6sDMRG8NX73COnAkNhRB5bypZieJoKbLRV9C7YdBXHkCpLogSyKSbpqmzPnSE6EGQchTNeKcBwEWmVApJWWMqppPUwBCXlVVVVXzWXmSAJxrfFWnaEg0b5GBSd/KPKI3Pa9DgnNRncIp3pPgLkfSRTYv3JSqa5VkG3Xev+JIrlM5FwFGnbD3mufcGGWPxbMMMamyh+pQOB3wpXMkOB0/gtjxQGFz9HgxqO8UXtnHf1amvdPKhZP2lLQOpqunTWuXgy4SAcbH5YRjq50P6jtA7VVTaYbzJn/m5r+2jzeAj/3O8hW5U2guxnU4SYkoJ9T6t0O2kDKnnfKKZlenHW3pO5ADvoLNGFLNxbgLcHGP2unHpfKT739jfXG7Koe3NO+kC5UkTPvH8mNOXUVzMPYDSXboHKiZtX/jb+XOVs/CKg56uswddsx4QaMBxZPDUNaaivHXgPYbRpy4fKVWr8oYPWINsocgXrX29llH8LhD7gdQsgTBUlMxDgiA8tn4QglB67fnld8sYC+qkvuNzHFgdojnh/40PiEE7+CfdE0B3hYBB8hXBicRPVyaiY9pb1k/qQrkaWKaOkeTIkXdHFXJTZjcLQpOzi99oQGAMjMD4YJHG30EAJvLd7xGK8K78b40BHQ9fVLsOZv64Xcj/wy8015opUQz7WiaWepcIOm2I8dxZTOL9dJ2qcTyocngtOSgrN9o1sgDK2nRcq/pKddPd9++fWuqstf5NqoqjIwMw5ZOYyZw7byHLfhowpwDABi8VlDlMs6/VE/ridGsJ6C8ZiuMAXgq0j6GtuysKKtJzc5aRZFN0DoSo9cKWQG1t10Tp2rdp9cdnRjrFK0YC59UZxIngup1I9ZzBlIisForPluU1hg3AGAT+NDdwVUg+nMFw+yV8X1nahUQcs3lOTnXUPorAV7U6LW/Us/3cqXLweHnjlArKH4sDn9/aqv7jyG2q8PsDmbX9ERNjFafJ6Qy+burNj0Foj9U9vr93j5iaAE1kFGMVbdnHAfeBHReLm9f72YrGqvcEY/q1I01veb6pdfxdgV0XtlvTf7uUuRFdiVl3KtTN6YC/U3FOF/yLCf7A0RKpd96Eq/d7sh+uqXUqRvbAPY0FaN2A25XChhmk/i07LYErn3UZxozGkpJCMH7Ha/B9TU3diTZYPENBP9hNrtKEtZK2jXEl8iKvZNhjCj02+ArPgqq2ogEozbmgFxY5VzrR5aOlKYm7BXVMFx5YIvTuGX1+nyV3q+THvU8KBEukr0AkTsqfl023qzILfEAkHuFnATgtvWShs3iYkYDDtkra4VZORiZVP8YzgEozSWLyak6t2lkAhPhIlDJiWrKFFSUpCS1Kx999gIcKZaw0muamGaaEkEUODKZ96rwVUWdWQRJ5RHYse96AqOjuVT6uUL4S9b2bypV528T04+ceWXpJDC4knu12Tv1LvncCzjZ1VwdYIvqAWuLoDShGnakyMb4frkG1ANBeeD418GGGPIqHWgyz9liu8J9U5us1mfIuIntgZEX7UVYYwWiuTtisNO2UDKOTqx9VF931NV8moCk8yozj9I67zxtJYxmmisLXLrvTQscRwghhOMoo4TJ5vbBaErlDMdsI+/3zHJxv5u00ZxMrvGUsbovdW21XLLZZGNle8bnR+u+ob/l8uVyBxqjXrkY34HQQq3zLv0Oxg7GDsYOxnDb/wF1ns+oNDH3OgAAAABJRU5ErkJggg==" alt="&lt;b&gt;Attempt 4.&lt;/b&gt; Growth restricted to connected mathematics glyphs, never sideways along the base line."/>
+      <figcaption><b>Attempt 4.</b> Growth restricted to connected mathematics glyphs, never sideways along the base line.</figcaption>
+    </figure>
+  <figure class="shot bad">
+      <img src="data:image/png;base64,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" alt="A fraction inside a sentence. No rectangle can hold it without also catching the line below."/>
+      <figcaption>A fraction inside a sentence. No rectangle can hold it without also catching the line below.</figcaption>
+    </figure>
+  <figure class="shot good">
+      <img src="data:image/png;base64,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" alt="&lt;b&gt;The answer.&lt;/b&gt; Keep the rectangle, paint the foreign ink out. Only prose is painted, so no glyph of the expression can be lost."/>
+      <figcaption><b>The answer.</b> Keep the rectangle, paint the foreign ink out. Only prose is painted, so no glyph of the expression can be lost.</figcaption>
+    </figure>
+</div>
+
+<h2>Every attempt, in order</h2>
+<p class="sub">11 worked, 3 partly worked, 6 failed outright. The failures
+are the interesting ones: each was caused by a rule that sounded reasonable and did not survive
+contact with the page.</p>
+<ul class="attempts">
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">01</span>
+        <h3>Survey the tooling</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Check what is installed: poppler, qpdf, ghostscript, python, node, codex.</p>
+      <p class="result"><span class="field">Result</span> No pandoc, no calibre, no Java. Decided to write the EPUB directly in Python for full control of the markup, and to write a structural validator because epubcheck needs Java.</p>
+      
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">02</span>
+        <h3>Probe fonts and outline</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Count every font and character in the file; read the PDF bookmarks.</p>
+      <p class="result"><span class="field">Result</span> 309 correct outline entries to build navigation from. Prose in Latin Modern, mathematics in Computer Modern: two disjoint families. Only 44 raster images in the whole book, so nearly every figure is vector art.</p>
+      
+    </li>
+    <li class="attempt attempt-partial">
+      <div class="attempt-head">
+        <span class="num">03</span>
+        <h3>Extract mathematics as LaTeX from the text layer</h3>
+        <span class="badge badge-partial">partly worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Try to rebuild LaTeX directly from the PDF character stream.</p>
+      <p class="result"><span class="field">Result</span> Symbols come out correctly, structure does not: x_ij arrives as &#x27;xij&#x27;, a summation as &#x27;)d k=1&#x27;. But sub- and superscripts ARE recoverable geometrically, from the font-size drop plus the baseline shift.</p>
+      <p class="why"><span class="why-label">Why</span> The PDF stores glyphs and pen positions, not mathematical structure. Two-dimensional constructs (fractions, radicals, large operators, matrices) leave no trace in the character stream.</p>
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">04</span>
+        <h3>Deterministic LaTeX for accents and script letters</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Generate LaTeX from character data for the cases where structure IS recoverable.</p>
+      <p class="result"><span class="field">Result</span> 497 occurrences solved with no model call at all, producing exactly right output such as \hat{Y} = \hat{f}(X) and \mathbf{A} \in \mathbb{R}^{r\times s}.</p>
+      
+    </li>
+    <li class="attempt attempt-partial">
+      <div class="attempt-head">
+        <span class="num">05</span>
+        <h3>First end-to-end EPUB</h3>
+        <span class="badge badge-partial">partly worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Run the whole chain over the first 100 pages and read the result in a browser at the Kobo&#x27;s 1264 x 1680 panel size.</p>
+      <p class="result"><span class="field">Result</span> A valid EPUB, but six visible faults: words glued together across spans, a ligature splitting &#x27;fit&#x27; into &#x27;f it&#x27; inside code, split captions, a column of stacked margin notes, a broken margin-note hyphenation, and paragraph indents that disagreed with the book.</p>
+      <p class="why"><span class="why-label">Why</span> Every one of them came from trusting a convenient rule instead of what the page actually measures.</p>
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">06</span>
+        <h3>Crop mathematics: box from one text line</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Cut each expression out using the bounding box of its text line.</p>
+      <p class="result"><span class="field">Result</span> Fractions came out sliced through the middle: numerator and denominator missing.</p>
+      <p class="why"><span class="why-label">Why</span> A fraction puts its numerator, rule and denominator on three different baselines, and the extractor files those as three separate lines.</p>
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">07</span>
+        <h3>Crop mathematics: grow the box greedily</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Grow the box to absorb any nearby mathematical glyph.</p>
+      <p class="result"><span class="field">Result</span> Crops swallowed the equation number (3.4) and two whole lines of the following paragraph.</p>
+      <p class="why"><span class="why-label">Why</span> Equation numbers are set in a Computer Modern font, so they count as mathematics; and once the box touches the next line it keeps growing.</p>
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">08</span>
+        <h3>Crop mathematics: clamp to the neighbouring baselines</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Stop the box at the baselines of the paragraph lines above and below.</p>
+      <p class="result"><span class="field">Result</span> The denominator and the summation limits were cut off, and two expressions on one line swallowed each other.</p>
+      <p class="why"><span class="why-label">Why</span> An inline fraction genuinely reaches into the vertical band of the line below it, so no clean horizontal cut exists.</p>
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">09</span>
+        <h3>Crop mathematics: connected growth plus painted-out ink</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Grow only along connected mathematical glyphs, never sideways along the base line; match stray numerator and limit fragments back to their host paragraph line; then paint over whatever foreign ink remains inside the rectangle.</p>
+      <p class="result"><span class="field">Result</span> Every expression is captured whole, with nothing else in the picture.</p>
+      
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">10</span>
+        <h3>Painting out foreign ink erased the summation limits</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Cover each foreign character with its bounding box.</p>
+      <p class="result"><span class="field">Result</span> Half of every summation limit disappeared.</p>
+      <p class="why"><span class="why-label">Why</span> The extractor reports each character&#x27;s full em box, about 14.5 pt tall for 10 pt text, which reaches well into the neighbouring lines. Painting only the band from baseline - 0.78 x size to baseline + 0.24 x size fixed it.</p>
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">11</span>
+        <h3>Read the mathematics with a fleet of agents</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> 23 agents in parallel, 25 cropped expressions each, each given the characters the PDF gave up, the deterministic guess where one existed, and the sentence before the expression. Each agent then ran the LaTeX through MathJax and fixed anything it refused.</p>
+      <p class="result"><span class="field">Result</span> 570 expressions transcribed, zero typesetting failures.</p>
+      
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">12</span>
+        <h3>The agents&#x27; doubts were worth more than their answers</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Read the 40-odd cases the agents flagged as uncertain instead of only their LaTeX.</p>
+      <p class="result"><span class="field">Result</span> Three extraction faults surfaced that no amount of reading the LaTeX would have shown: &#x27;crop is only a large left brace&#x27;, repeated a dozen times; &#x27;this crop is pixel-identical to another one&#x27;; and matrices cut in half.</p>
+      
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">13</span>
+        <h3>Equation numbers were splitting equations in two</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Group a display equation from the lines that make it up.</p>
+      <p class="result"><span class="field">Result</span> Fractions came out as two separate equations, both of which then grew back into the same rectangle and rendered twice.</p>
+      <p class="why"><span class="why-label">Why</span> An equation number sits on a baseline between the numerator and the denominator of the fraction it labels, so it fell in the middle of the run and broke it. The number is now split off its line before anything is classified.</p>
+    </li>
+    <li class="attempt attempt-partial">
+      <div class="attempt-head">
+        <span class="num">14</span>
+        <h3>Piecewise definitions kept coming apart</h3>
+        <span class="badge badge-partial">partly worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Absorb the &#x27;if ...&#x27; arms of a cases block into the equation they belong to.</p>
+      <p class="result"><span class="field">Result</span> Fixed in three rounds. Requiring the arm to start further in than the equation failed where the arm carries the brace glyph itself; requiring a display line to follow failed for the last arm; matching a stray brace back to the paragraph above threw away the opening delimiter.</p>
+      <p class="why"><span class="why-label">Why</span> The final rules: an arm is absorbed when it carries mathematics, is short and is set in from both paragraph margins; overlapping display blocks are merged; and a fragment belongs to a paragraph line only if it sits over that line&#x27;s own symbols.</p>
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">15</span>
+        <h3>Tables as markup rather than pictures</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Read the 36 tables back as XHTML so they reflow with the reader&#x27;s font, each agent checking its own markup parses and every row is the same width.</p>
+      <p class="result"><span class="field">Result</span> 36 of 36 converted, faithful to the printed minus signs and to &#x27;&lt; 0.0001&#x27; with a space in one chapter and without one in another. Two agents reported their crop was wrong and re-rendered the page themselves; both were real region-detection faults, now fixed.</p>
+      
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">16</span>
+        <h3>Audit what the conversion drops</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Walk all 613 pages, work out which text lines no block consumed, and read them.</p>
+      <p class="result"><span class="field">Result</span> 25,605 lines considered, 393 unconsumed. All but ten are equation numbers folded into their equation, or numerator and limit fragments already inside a mathematics crop. The ten were cell output that spilled past its shaded rectangle.</p>
+      
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">17</span>
+        <h3>Check every expression against the printed page</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Typeset all 555 transcriptions with MathJax, rasterise them, stack each under the crop from the PDF, and give 23 agents one instruction: find where the transcription is wrong.</p>
+      <p class="result"><span class="field">Result</span> 500 same, 53 cosmetic, 2 genuinely wrong. 99.6% of the mathematics agrees with the page. The two errors were a dropped first row of a two-row equation, and square brackets typeset as round ones.</p>
+      
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">18</span>
+        <h3>An independent second opinion found what the family missed</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Hand 45 of the same comparison images to OpenAI&#x27;s codex CLI, a different model family with no sight of the earlier answers.</p>
+      <p class="result"><span class="field">Result</span> 44 of 45 agreed. The one disagreement was right and mattered: a crop had captured a fraction&#x27;s denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction.</p>
+      <p class="why"><span class="why-label">Why</span> Every other check here was Claude checking Claude. The only check from outside the family found the fault in a sample of 45.</p>
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">19</span>
+        <h3>Iterate until the extraction stops changing</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Each round of fixes changes the crops, so re-extract, carry over every transcription whose image is byte for byte identical, and read only the rest.</p>
+      <p class="result"><span class="field">Result</span> Five rounds: 570 expressions read, then 61, then 32, then 59, then 15, then 0. The last re-extraction produced 531 crops of which 531 were unchanged.</p>
+      
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">20</span>
+        <h3>Printing an equation twice</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Let display equations and inline expressions be found independently.</p>
+      <p class="result"><span class="field">Result</span> An equation with words in it (&#x27;minimize ... subject to ...&#x27;) reads as a paragraph, so its inline images already held the whole equation, while the symbol-only lines also produced a display block. The equation was typeset twice.</p>
+      <p class="why"><span class="why-label">Why</span> Fixed by measuring the inline expressions on a page first and dropping any display block that one of them already covers.</p>
+    </li></ul>
+<h2>Three checks, three kinds of evidence</h2><p class="sub">One model marking its own work is not evidence. These are deliberately different in kind: one costs nothing and cannot be talked round, one looks at the pictures, and one comes from outside the family.</p><div class="checks"><div class="check"><div class="check-value">71.5%</div>
+             <div class="check-label">lose no symbol</div><p>Deterministic and free. The PDF&#x27;s text layer loses structure but not symbols, so the symbols a transcription claims can be compared against the symbols the page holds. 484 expressions had enough symbols to score; mean agreement 0.951.</p></div><div class="check"><div class="check-value">99.8%</div>
+             <div class="check-label">agree with the page</div><p>Every one of the 531 expressions was typeset, put under the crop from the PDF, and handed to an agent told to find the difference. 481 identical, 49 differing only in spacing or delimiter size, 1 genuinely wrong and corrected.</p></div><div class="check"><div class="check-value">100%</div>
+             <div class="check-label">confirmed from outside</div><p>A sample of 50 of the same comparisons was re-read by a different model family entirely, through OpenAI&#x27;s codex command line tool, with no sight of the earlier answers. This is the only figure here not produced by the model that did the work.</p></div></div>
+
+<h2>Choices made for the Kobo Libra 2</h2>
+<table>
+  <tr><th>Decision</th><th>Reason</th></tr>
+  <tr><td>No embedded font, no font size on <code>body</code></td>
+      <td>The reader's own typography controls keep working.</td></tr>
+  <tr><td>Mathematics as SVG in <code>currentColor</code>, sized in <code>em</code></td>
+      <td>It grows with the text instead of staying pinned to pixels, and it inverts correctly
+          in dark mode.</td></tr>
+  <tr><td>Figures at 300 ppi, 16 levels of grey</td>
+      <td>Matches the panel exactly: 1264 x 1680 at 300 ppi, 16 greys.</td></tr>
+  <tr><td>Margin notes collapsed to one quiet line</td>
+      <td>A 7 inch page has no margin to spare; stacked in a column they took a third of the
+          screen.</td></tr>
+  <tr><td>Lab cells as <code>pre</code> with wrapping</td>
+      <td>An e-reader cannot scroll sideways, so a long line must wrap rather than be cut off.</td></tr>
+  <tr><td>A <code>toc.ncx</code> beside the EPUB 3 navigation document</td>
+      <td>Kobo still reads the older navigation file.</td></tr>
+</table>
+
+<h2>Reproducing this</h2>
+<pre>uv sync &amp;&amp; npm install
+uv run python src/extract_math_jobs.py     # cut every expression out as an image
+uv run python src/build_epub.py            # assemble and package
+uv run python src/validate_epub.py output/ISLP.epub</pre>
+
+<footer>
+  <p>Educational and experimental only. No commercial use. All rights remain with the authors and publisher.</p>
+  <p>Source: ISLP_website.pdf, first printing 5 July 2023, from statlearning.com. Built 2026-08-17.</p>
+</footer>
+
+</div>
+</body>
+</html>
