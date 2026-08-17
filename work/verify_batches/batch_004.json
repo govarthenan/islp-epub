@@ -1,0 +1,227 @@
+[
+ {
+  "id": "m00153",
+  "compare": "work/math_compare/m00153.png",
+  "latex": "\\mathrm{SE}(\\hat{\\beta}) = \\sqrt{\\frac{\\sum_{i=1}^{n}(y_i - x_i\\hat{\\beta})^2}{(n-1)\\sum_{i'=1}^{n} x_{i'}^2}}.",
+  "characters": "��n\ni=1(yi −xi βˆ)2\nSE(βˆ) =\n(n −1) �ni′=1 x2i′ .",
+  "kind": "display",
+  "page_pdf": 140,
+  "equation_number": ""
+ },
+ {
+  "id": "m00154",
+  "compare": "work/math_compare/m00154.png",
+  "latex": "\\frac{\\left(\\sqrt{n-1}\\right)\\sum_{i=1}^{n} x_i y_i}{\\sqrt{\\left(\\sum_{i=1}^{n} x_i^2\\right)\\left(\\sum_{i'=1}^{n} y_{i'}^2\\right) - \\left(\\sum_{i'=1}^{n} x_{i'} y_{i'}\\right)^2}}.",
+  "characters": "(√n −1) �ni=1 xiyi\n�\ni′=1 xi′yi′)2 .\n(�ni=1 x2i )(�ni′=1 yi2′) −(�n",
+  "kind": "display",
+  "page_pdf": 140,
+  "equation_number": ""
+ },
+ {
+  "id": "m00155",
+  "compare": "work/math_compare/m00155.png",
+  "latex": "Y = -1 + 0.5X + \\epsilon.",
+  "characters": "Y = −1 + 0.5X + ϵ.",
+  "kind": "display",
+  "page_pdf": 141,
+  "equation_number": "3.39"
+ },
+ {
+  "id": "m00156",
+  "compare": "work/math_compare/m00156.png",
+  "latex": "\\beta_1?",
+  "characters": "β1?",
+  "kind": "display",
+  "page_pdf": 141,
+  "equation_number": ""
+ },
+ {
+  "id": "m00158",
+  "compare": "work/math_compare/m00158.png",
+  "latex": "H_0 : \\beta_1 = 0?",
+  "characters": "H0 : β1 = 0?",
+  "kind": "display",
+  "page_pdf": 142,
+  "equation_number": ""
+ },
+ {
+  "id": "m00159",
+  "compare": "work/math_compare/m00159.png",
+  "latex": "H_0 : \\beta_1 = 0?",
+  "characters": "H0 : β1 = 0?",
+  "kind": "display",
+  "page_pdf": 142,
+  "equation_number": ""
+ },
+ {
+  "id": "m00160",
+  "compare": "work/math_compare/m00160.png",
+  "latex": "Y = \\beta_0 + \\beta_1 X + \\beta_2 X^2 + \\beta_3 X^3 + \\epsilon.",
+  "characters": "Y = β0 + β1X + β2X2 + β3X3 + ϵ.",
+  "kind": "display",
+  "page_pdf": 143,
+  "equation_number": ""
+ },
+ {
+  "id": "m00161",
+  "compare": "work/math_compare/m00161.png",
+  "latex": "Y = \\begin{cases} 1 & \\text{if } \\texttt{stroke}; \\\\ 2 & \\text{if } \\texttt{drug overdose}; \\\\ 3 & \\text{if } \\texttt{epileptic seizure}. \\end{cases}",
+  "characters": "\n1if stroke;\n\nY =2if drug overdose;\n\n\n3if epileptic seizure.",
+  "kind": "display",
+  "page_pdf": 146,
+  "equation_number": ""
+ },
+ {
+  "id": "m00162",
+  "compare": "work/math_compare/m00162.png",
+  "latex": "Y = \\begin{cases} 1 & \\text{if } \\texttt{epileptic seizure}; \\\\ 2 & \\text{if } \\texttt{stroke}; \\\\ 3 & \\text{if } \\texttt{drug overdose}, \\end{cases}",
+  "characters": "\n1if epileptic seizure;\n\nY =2if stroke;\n\n\n3if drug overdose,",
+  "kind": "display",
+  "page_pdf": 146,
+  "equation_number": ""
+ },
+ {
+  "id": "m00163",
+  "compare": "work/math_compare/m00163.png",
+  "latex": "Y = \\begin{cases} 0 & \\text{if stroke;} \\\\ 1 & \\text{if drug overdose.} \\end{cases}",
+  "characters": "�\n0if stroke;\nY =\n1if drug overdose.",
+  "kind": "display",
+  "page_pdf": 147,
+  "equation_number": ""
+ },
+ {
+  "id": "m00166",
+  "compare": "work/math_compare/m00166.png",
+  "latex": "p(X) = \\beta_0 + \\beta_1 X.",
+  "characters": "p(X) = β0 + β1X.",
+  "kind": "display",
+  "page_pdf": 148,
+  "equation_number": "4.1"
+ },
+ {
+  "id": "m00167",
+  "compare": "work/math_compare/m00167.png",
+  "latex": "p(X) = \\frac{e^{\\beta_0 + \\beta_1 X}}{1 + e^{\\beta_0 + \\beta_1 X}}.",
+  "characters": "eβ0+β1X\np(X) =\n1 + eβ0+β1X .",
+  "kind": "display",
+  "page_pdf": 148,
+  "equation_number": "4.2"
+ },
+ {
+  "id": "m00168",
+  "compare": "work/math_compare/m00168.png",
+  "latex": "\\frac{p(X)}{1-p(X)} = e^{\\beta_0+\\beta_1X}.",
+  "characters": "p(X)\n1 −p(X) = eβ0+β1X.",
+  "kind": "display",
+  "page_pdf": 149,
+  "equation_number": "4.3"
+ },
+ {
+  "id": "m00169",
+  "compare": "work/math_compare/m00169.png",
+  "latex": "\\frac{0.2}{1-0.2} = 1/4.",
+  "characters": "1−0.2 = 1/4",
+  "kind": "inline",
+  "page_pdf": 149,
+  "equation_number": ""
+ },
+ {
+  "id": "m00170",
+  "compare": "work/math_compare/m00170.png",
+  "latex": "\\frac{0.9}{1-0.9} = 9.",
+  "characters": "1−0.9 = 9",
+  "kind": "inline",
+  "page_pdf": 149,
+  "equation_number": ""
+ },
+ {
+  "id": "m00171",
+  "compare": "work/math_compare/m00171.png",
+  "latex": "\\log\\left(\\frac{p(X)}{1-p(X)}\\right) = \\beta_0 + \\beta_1 X.",
+  "characters": "��\np(X)\nlog= β0 + β1X.\n1 −p(X)",
+  "kind": "display",
+  "page_pdf": 149,
+  "equation_number": "4.4"
+ },
+ {
+  "id": "m00173",
+  "compare": "work/math_compare/m00173.png",
+  "latex": "\\ell(\\beta_0, \\beta_1) = \\prod_{i:y_i=1} p(x_i) \\prod_{i':y_{i'}=0} (1 - p(x_{i'})).",
+  "characters": "��\nℓ(β0, β1) =p(xi)(1 −p(xi′)).\ni:yi=1i′:yi′=0",
+  "kind": "display",
+  "page_pdf": 150,
+  "equation_number": "4.5"
+ },
+ {
+  "id": "m00176",
+  "compare": "work/math_compare/m00176.png",
+  "latex": "p(X) = \\frac{e^{\\beta_0}}{1+e^{\\beta_0}}",
+  "characters": "p(X) =1+eβ0",
+  "kind": "inline",
+  "page_pdf": 150,
+  "equation_number": ""
+ },
+ {
+  "id": "m00177",
+  "compare": "work/math_compare/m00177.png",
+  "latex": "\\hat{p}(X) = \\frac{e^{\\hat{\\beta}_0+\\hat{\\beta}_1 X}}{1+e^{\\hat{\\beta}_0+\\hat{\\beta}_1 X}} = \\frac{e^{-10.6513+0.0055\\times1,000}}{1+e^{-10.6513+0.0055\\times1,000}} = 0.00576,",
+  "characters": "e βˆ0+β ˆ1Xe−10.6513+0.0055×1,000\npˆ(X) =1 + e−10.6513+0.0055×1,000 = 0.00576,\n1 + e βˆ0+β ˆ1X =",
+  "kind": "display",
+  "page_pdf": 151,
+  "equation_number": ""
+ },
+ {
+  "id": "m00178",
+  "compare": "work/math_compare/m00178.png",
+  "latex": ") = \\frac{e^{-3.5041+0.4049\\times1}}{1+e^{-3.5041+0.4049\\times1}} = 0.0431,",
+  "characters": ") =1 + e−3.5041+0.4049×1 = 0.0431,",
+  "kind": "inline",
+  "page_pdf": 151,
+  "equation_number": ""
+ },
+ {
+  "id": "m00179",
+  "compare": "work/math_compare/m00179.png",
+  "latex": "\\widehat{\\mathrm{Pr}}(\\texttt{default}=\\texttt{Yes}\\mid\\texttt{student}=\\texttt{No}) = \\dfrac{e^{-3.5041+0.4049\\times 0}}{1 + e^{-3.5041+0.4049\\times 0}} = 0.0292.",
+  "characters": "e−3.5041+0.4049×0\n�\nPr(default=Yes|student=No) =1 + e−3.5041+0.4049×0 = 0.0292.",
+  "kind": "display",
+  "page_pdf": 151,
+  "equation_number": ""
+ },
+ {
+  "id": "m00180",
+  "compare": "work/math_compare/m00180.png",
+  "latex": "\\log\\left(\\frac{p(X)}{1-p(X)}\\right) = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p,",
+  "characters": "��\np(X)\nlog= β0 + β1X1 + · · · + βpXp,\n1 −p(X)",
+  "kind": "display",
+  "page_pdf": 151,
+  "equation_number": "4.6"
+ },
+ {
+  "id": "m00181",
+  "compare": "work/math_compare/m00181.png",
+  "latex": "p(X) = \\frac{e^{\\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p}}{1 + e^{\\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p}}.",
+  "characters": "eβ0+β1X1+···+βpXp\np(X) =\n1 + eβ0+β1X1+···+βpXp .",
+  "kind": "display",
+  "page_pdf": 151,
+  "equation_number": "4.7"
+ },
+ {
+  "id": "m00182",
+  "compare": "work/math_compare/m00182.png",
+  "latex": "\\hat{p}(X) = \\frac{e^{-10.869 + 0.00574 \\times 1,500 + 0.003 \\times 40 - 0.6468 \\times 1}}{1 + e^{-10.869 + 0.00574 \\times 1,500 + 0.003 \\times 40 - 0.6468 \\times 1}} = 0.058.",
+  "characters": "e−10.869+0.00574×1,500+0.003×40−0.6468×1\npˆ(X) =\n1 + e−10.869+0.00574×1,500+0.003×40−0.6468×1 = 0.058.",
+  "kind": "display",
+  "page_pdf": 153,
+  "equation_number": "4.8"
+ },
+ {
+  "id": "m00183",
+  "compare": "work/math_compare/m00183.png",
+  "latex": "\\hat{p}(X) = \\frac{e^{-10.869 + 0.00574 \\times 1,500 + 0.003 \\times 40 - 0.6468 \\times 0}}{1 + e^{-10.869 + 0.00574 \\times 1,500 + 0.003 \\times 40 - 0.6468 \\times 0}} = 0.105.",
+  "characters": "e−10.869+0.00574×1,500+0.003×40−0.6468×0\npˆ(X) =\n1 + e−10.869+0.00574×1,500+0.003×40−0.6468×0 = 0.105.",
+  "kind": "display",
+  "page_pdf": 153,
+  "equation_number": "4.9"
+ }
+]

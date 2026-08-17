@@ -1,0 +1,47 @@
+[
+ {
+  "id": "m00737",
+  "compare": "work/math_compare/m00737.png",
+  "latex": "\\binom{5}{2}",
+  "characters": "2",
+  "kind": "display",
+  "page_pdf": 593,
+  "equation_number": ""
+ },
+ {
+  "id": "m00738",
+  "compare": "work/math_compare/m00738.png",
+  "latex": "\\hat{V}",
+  "characters": "V�",
+  "kind": "inline",
+  "page_pdf": 598,
+  "equation_number": ""
+ },
+ {
+  "id": "m00739",
+  "compare": "work/math_compare/m00739.png",
+  "latex": "\\mathrm{Pr}(A)\\,\\mathrm{Pr}(B).",
+  "characters": "Pr(A) Pr(B).",
+  "kind": "display",
+  "page_pdf": 599,
+  "equation_number": ""
+ },
+ {
+  "id": "m00740",
+  "compare": "work/math_compare/m00740.png",
+  "latex": "0.05?",
+  "characters": "0.05?",
+  "kind": "display",
+  "page_pdf": 601,
+  "equation_number": ""
+ },
+ {
+  "id": "m00741",
+  "compare": "work/math_compare/m00741.png",
+  "latex": "0.001?",
+  "characters": "0.001?",
+  "kind": "display",
+  "page_pdf": 601,
+  "equation_number": ""
+ }
+]

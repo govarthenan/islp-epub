@@ -1,0 +1,227 @@
+[
+ {
+  "id": "m00046",
+  "compare": "work/math_compare/m00046.png",
+  "latex": "\\Pr(Y = j \\mid X = x_0)",
+  "characters": "Pr(Y = j|X = x0)",
+  "kind": "display",
+  "page_pdf": 45,
+  "equation_number": "2.10"
+ },
+ {
+  "id": "m00047",
+  "compare": "work/math_compare/m00047.png",
+  "latex": "1 - E\\left(\\max_{j}\\Pr(Y = j \\mid X)\\right),",
+  "characters": "��\n1 −EmaxPr(Y = j|X),\nj",
+  "kind": "display",
+  "page_pdf": 46,
+  "equation_number": "2.11"
+ },
+ {
+  "id": "m00049",
+  "compare": "work/math_compare/m00049.png",
+  "latex": "\\Pr(Y = j \\mid X = x_0) = \\frac{1}{K}\\sum_{i \\in \\mathcal{N}_0} I(y_i = j).",
+  "characters": "�\nPr(Y = j|X = x0) = 1I(yi = j).\nK\ni∈N0",
+  "kind": "display",
+  "page_pdf": 47,
+  "equation_number": "2.12"
+ },
+ {
+  "id": "m00050",
+  "compare": "work/math_compare/m00050.png",
+  "latex": "\\begin{array}{c|cccc} \\text{Obs.} & X_1 & X_2 & X_3 & Y \\\\ \\hline 1 & 0 & 3 & 0 & \\text{Red} \\\\ 2 & 2 & 0 & 0 & \\text{Red} \\\\ 3 & 0 & 1 & 3 & \\text{Red} \\\\ 4 & 0 & 1 & 2 & \\text{Green} \\\\ 5 & -1 & 0 & 1 & \\text{Green} \\\\ 6 & 1 & 1 & 1 & \\text{Red} \\end{array}",
+  "characters": "Obs.X1X2X3Y\n1030Red\n2200Red\n3013Red\n4012Green\n5−101Green\n6111Red",
+  "kind": "display",
+  "page_pdf": 74,
+  "equation_number": ""
+ },
+ {
+  "id": "m00051",
+  "compare": "work/math_compare/m00051.png",
+  "latex": "Y \\approx \\beta_0 + \\beta_1 X.",
+  "characters": "Y ≈β0 + β1X.",
+  "kind": "display",
+  "page_pdf": 79,
+  "equation_number": "3.1"
+ },
+ {
+  "id": "m00052",
+  "compare": "work/math_compare/m00052.png",
+  "latex": "\\texttt{sales} \\approx \\beta_0 + \\beta_1 \\times \\texttt{TV}.",
+  "characters": "sales ≈β0 + β1 × TV.",
+  "kind": "display",
+  "page_pdf": 80,
+  "equation_number": ""
+ },
+ {
+  "id": "m00055",
+  "compare": "work/math_compare/m00055.png",
+  "latex": "\\hat{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 x,",
+  "characters": "yˆ = βˆ0 + βˆ1x,",
+  "kind": "display",
+  "page_pdf": 80,
+  "equation_number": "3.2"
+ },
+ {
+  "id": "m00057",
+  "compare": "work/math_compare/m00057.png",
+  "latex": "(x_1, y_1),\\ (x_2, y_2),\\ \\ldots,\\ (x_n, y_n)",
+  "characters": "(x1, y1), (x2, y2), . . . , (xn, yn)",
+  "kind": "display",
+  "page_pdf": 80,
+  "equation_number": ""
+ },
+ {
+  "id": "m00061",
+  "compare": "work/math_compare/m00061.png",
+  "latex": "\\mathrm{RSS} = e_1^2 + e_2^2 + \\cdots + e_n^2,",
+  "characters": "RSS = e21 + e22 + · · · + e2n,",
+  "kind": "display",
+  "page_pdf": 80,
+  "equation_number": ""
+ },
+ {
+  "id": "m00062",
+  "compare": "work/math_compare/m00062.png",
+  "latex": "\\mathrm{RSS} = (y_1 - \\hat{\\beta}_0 - \\hat{\\beta}_1 x_1)^2 + (y_2 - \\hat{\\beta}_0 - \\hat{\\beta}_1 x_2)^2 + \\cdots + (y_n - \\hat{\\beta}_0 - \\hat{\\beta}_1 x_n)^2.",
+  "characters": "RSS = (y1 −βˆ0 −βˆ1x1)2 +(y2 −βˆ0 −βˆ1x2)2 +· · ·+(yn −βˆ0 −βˆ1xn)2. (3.3)",
+  "kind": "display",
+  "page_pdf": 80,
+  "equation_number": ""
+ },
+ {
+  "id": "m00063",
+  "compare": "work/math_compare/m00063.png",
+  "latex": "\\begin{aligned} \\hat{\\beta}_1 &= \\frac{\\sum_{i=1}^{n}(x_i - \\bar{x})(y_i - \\bar{y})}{\\sum_{i=1}^{n}(x_i - \\bar{x})^2}, \\\\ \\hat{\\beta}_0 &= \\bar{y} - \\hat{\\beta}_1 \\bar{x}, \\end{aligned}",
+  "characters": "�n\ni=1(xi −x¯)(yi −y¯)\nβˆ1 =\n�n,\ni=1(xi −x¯)2\nβˆ0 = y¯ −βˆ1x¯,",
+  "kind": "display",
+  "page_pdf": 80,
+  "equation_number": "3.4"
+ },
+ {
+  "id": "m00064",
+  "compare": "work/math_compare/m00064.png",
+  "latex": "\\bar{y} \\equiv \\frac{1}{n}\\sum_{i=1}^{n} y_i",
+  "characters": "y ≡1i=1 yi",
+  "kind": "inline",
+  "page_pdf": 81,
+  "equation_number": ""
+ },
+ {
+  "id": "m00065",
+  "compare": "work/math_compare/m00065.png",
+  "latex": "\\bar{x} \\equiv \\frac{1}{n}\\sum_{i=1}^{n} x_i",
+  "characters": "x ≡1i=1 xi",
+  "kind": "inline",
+  "page_pdf": 81,
+  "equation_number": ""
+ },
+ {
+  "id": "m00069",
+  "compare": "work/math_compare/m00069.png",
+  "latex": "Y = \\beta_0 + \\beta_1 X + \\epsilon.",
+  "characters": "Y = β0 + β1X + ϵ.",
+  "kind": "display",
+  "page_pdf": 81,
+  "equation_number": "3.5"
+ },
+ {
+  "id": "m00070",
+  "compare": "work/math_compare/m00070.png",
+  "latex": "Y = 2 + 3X + \\epsilon,",
+  "characters": "Y = 2 + 3X + ϵ,",
+  "kind": "display",
+  "page_pdf": 82,
+  "equation_number": "3.6"
+ },
+ {
+  "id": "m00072",
+  "compare": "work/math_compare/m00072.png",
+  "latex": "\\bar{y} = \\frac{1}{n}\\sum_{i=1}^{n} y_i",
+  "characters": "y = 1i=1 yi",
+  "kind": "inline",
+  "page_pdf": 83,
+  "equation_number": ""
+ },
+ {
+  "id": "m00075",
+  "compare": "work/math_compare/m00075.png",
+  "latex": "\\mathrm{Var}(\\hat{\\mu}) = \\mathrm{SE}(\\hat{\\mu})^2 = \\frac{\\sigma^2}{n},",
+  "characters": "Var(µˆ) = SE(µˆ)2 = σ2\nn ,",
+  "kind": "display",
+  "page_pdf": 84,
+  "equation_number": "3.7"
+ },
+ {
+  "id": "m00076",
+  "compare": "work/math_compare/m00076.png",
+  "latex": "\\mathrm{SE}(\\hat{\\beta}_0)^2 = \\sigma^2\\left[\\frac{1}{n} + \\frac{\\bar{x}^2}{\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\right], \\quad \\mathrm{SE}(\\hat{\\beta}_1)^2 = \\frac{\\sigma^2}{\\sum_{i=1}^{n}(x_i - \\bar{x})^2},",
+  "characters": "�1�\nx¯2σ2\nSE(βˆ0)2 = σ2�n,SE(βˆ1)2 =�ni=1(xi −x¯)2 , (3.8)\nn +\ni=1(xi −x¯)2",
+  "kind": "display",
+  "page_pdf": 84,
+  "equation_number": ""
+ },
+ {
+  "id": "m00081",
+  "compare": "work/math_compare/m00081.png",
+  "latex": "\\mathrm{RSE} = \\sqrt{\\mathrm{RSS}/(n - 2)}.",
+  "characters": "RSE = RSS/(n − 2)",
+  "kind": "inline",
+  "page_pdf": 84,
+  "equation_number": ""
+ },
+ {
+  "id": "m00082",
+  "compare": "work/math_compare/m00082.png",
+  "latex": "\\widehat{\\mathrm{SE}}(\\hat{\\beta}_1)",
+  "characters": "S�E(β1)",
+  "kind": "inline",
+  "page_pdf": 84,
+  "equation_number": ""
+ },
+ {
+  "id": "m00083",
+  "compare": "work/math_compare/m00083.png",
+  "latex": "\\hat{\\beta}_1 \\pm 2 \\cdot \\mathrm{SE}(\\hat{\\beta}_1).",
+  "characters": "βˆ1 ± 2 · SE(βˆ1).",
+  "kind": "display",
+  "page_pdf": 84,
+  "equation_number": "3.9"
+ },
+ {
+  "id": "m00084",
+  "compare": "work/math_compare/m00084.png",
+  "latex": "\\left[\\hat{\\beta}_1 - 2 \\cdot \\mathrm{SE}(\\hat{\\beta}_1),\\ \\hat{\\beta}_1 + 2 \\cdot \\mathrm{SE}(\\hat{\\beta}_1)\\right]",
+  "characters": "��\nβˆ1 −2 · SE(βˆ1), βˆ1 + 2 · SE(βˆ1)",
+  "kind": "display",
+  "page_pdf": 85,
+  "equation_number": "3.10"
+ },
+ {
+  "id": "m00085",
+  "compare": "work/math_compare/m00085.png",
+  "latex": "\\hat{\\beta}_0 \\pm 2 \\cdot \\mathrm{SE}(\\hat{\\beta}_0).",
+  "characters": "βˆ0 ± 2 · SE(βˆ0).",
+  "kind": "display",
+  "page_pdf": 85,
+  "equation_number": "3.11"
+ },
+ {
+  "id": "m00086",
+  "compare": "work/math_compare/m00086.png",
+  "latex": "H_0 : \\beta_1 = 0",
+  "characters": "H0 : β1 = 0",
+  "kind": "display",
+  "page_pdf": 85,
+  "equation_number": ""
+ },
+ {
+  "id": "m00087",
+  "compare": "work/math_compare/m00087.png",
+  "latex": "H_a : \\beta_1 \\neq 0,",
+  "characters": "Ha : β1̸ = 0,",
+  "kind": "display",
+  "page_pdf": 85,
+  "equation_number": ""
+ }
+]

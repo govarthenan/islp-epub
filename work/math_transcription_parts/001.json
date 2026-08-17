@@ -1,0 +1,152 @@
+[
+  {
+    "id": "m00345",
+    "latex": "\\binom{p}{s}",
+    "confidence": 0.9,
+    "notes": ""
+  },
+  {
+    "id": "m00400",
+    "latex": "\\int",
+    "confidence": 0.6,
+    "notes": "Crop shows only the integral sign, apparently a fragment split out of a larger displayed integral in the surrounding sentence."
+  },
+  {
+    "id": "m00402",
+    "latex": "\\int",
+    "confidence": 0.6,
+    "notes": "Crop shows only the integral sign; context describes the same integral notation."
+  },
+  {
+    "id": "m00403",
+    "latex": "\\int",
+    "confidence": 0.6,
+    "notes": "Crop shows only the integral sign, a fragment of the g''(t)^2 dt expression discussed in the surrounding text."
+  },
+  {
+    "id": "m00405",
+    "latex": "\\int",
+    "confidence": 0.6,
+    "notes": "Crop shows only the integral sign, a fragment of the g''(t)^2 dt expression discussed in the surrounding text."
+  },
+  {
+    "id": "m00440",
+    "latex": "\\begin{aligned}\n\\hat{g}_1 &= \\operatorname*{argmin}_{g}\\left(\\sum_{i=1}^{n}(y_i - g(x_i))^2 + \\lambda \\int \\left[g^{(3)}(x)\\right]^2 dx\\right), \\\\\n\\hat{g}_2 &= \\operatorname*{argmin}_{g}\\left(\\sum_{i=1}^{n}(y_i - g(x_i))^2 + \\lambda \\int \\left[g^{(4)}(x)\\right]^2 dx\\right), \\\\\n&\\text{where } g^{(m)} \\text{ represents the } m\\text{th derivative of } g.\n\\end{aligned}",
+    "confidence": 0.9,
+    "notes": ""
+  },
+  {
+    "id": "m00475",
+    "latex": "\\sum_{k=1}^{K}\\hat{f}_{k}^{b}",
+    "confidence": 0.55,
+    "notes": "Crop is cut very tight around just the summation limits and the summand; no visible (x) argument."
+  },
+  {
+    "id": "m00476",
+    "latex": "\\hat{f}^{b}(x) = \\sum_{k=1}^{K}\\hat{f}_{k}^{b}(x)",
+    "confidence": 0.9,
+    "notes": ""
+  },
+  {
+    "id": "m00477",
+    "latex": "\\frac{1}{nK}",
+    "confidence": 0.85,
+    "notes": "Text layer only recovered the digit 1, but the image clearly shows the fraction 1/(nK)."
+  },
+  {
+    "id": "m00489",
+    "latex": "\\text{1. Let } \\hat{f}_1^{1}(x) = \\hat{f}_2^{1}(x) = \\cdots = \\hat{f}_K^{1}(x) = \\frac{1}{nK}\\sum_{i=1}^{n} y_i.",
+    "confidence": 0.85,
+    "notes": "Algorithm step label '1. Let' is printed as part of the display line, so it is kept as text."
+  },
+  {
+    "id": "m00493",
+    "latex": "\\text{(b) Compute } \\hat{f}^{b}(x) = \\sum_{k=1}^{K}\\hat{f}_{k}^{b}(x).",
+    "confidence": 0.85,
+    "notes": "Algorithm step label '(b) Compute' is printed as part of the display line, so it is kept as text."
+  },
+  {
+    "id": "m00495",
+    "latex": "\\frac{1}{B-L}",
+    "confidence": 0.85,
+    "notes": ""
+  },
+  {
+    "id": "m00509",
+    "latex": "(x_1^{*}",
+    "confidence": 0.4,
+    "notes": "Crop shows only an opening parenthesis and x_1^*, apparently the start of a vector x* = (x_1*, ..., x_p*)^T that continues in a different crop; left as an unmatched literal open paren since that is what is printed."
+  },
+  {
+    "id": "m00515",
+    "latex": "\\begin{aligned}\n&\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,M}\\ M\\\\\n&\\text{subject to}\\quad \\sum_{j=1}^{p}\\beta_j^2 = 1,\\\\\n&y_i(\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\cdots+\\beta_px_{ip})\\ge M\\quad\\forall\\, i=1,\\ldots,n.\n\\end{aligned}",
+    "confidence": 0.85,
+    "notes": "Equation numbers (9.10)/(9.11) visible in the source are omitted per instructions."
+  },
+  {
+    "id": "m00519",
+    "latex": "\\begin{aligned}\n&\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,\\epsilon_1,\\ldots,\\epsilon_n,\\,M}\\ M\\\\\n&\\text{subject to}\\quad \\sum_{j=1}^{p}\\beta_j^2 = 1,\\\\\n&y_i(\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\cdots+\\beta_px_{ip})\\ge M(1-\\epsilon_i),\\\\\n&\\epsilon_i\\ge 0,\\quad \\sum_{i=1}^{n}\\epsilon_i\\le C,\n\\end{aligned}",
+    "confidence": 0.85,
+    "notes": "Equation number (9.15) omitted per instructions."
+  },
+  {
+    "id": "m00528",
+    "latex": "\\begin{aligned}\n&\\binom{n}{2}\\ \\left\\langle x_i, x_{i'}\\right\\rangle\\\\\n&\\binom{n}{2}\\ \\text{among a set of } n \\text{ items.)}\n\\end{aligned}",
+    "confidence": 0.35,
+    "notes": "Crop appears to merge two adjacent page elements (a body-text fragment with an inner-product term, and a footnote sentence), both containing binom(n,2); transcribed as best effort from the visible glyphs and extracted characters."
+  },
+  {
+    "id": "m00539",
+    "latex": "\\binom{n}{2}",
+    "confidence": 0.9,
+    "notes": ""
+  },
+  {
+    "id": "m00543",
+    "latex": "\\binom{K}{2}",
+    "confidence": 0.9,
+    "notes": ""
+  },
+  {
+    "id": "m00544",
+    "latex": "\\binom{K}{2}",
+    "confidence": 0.6,
+    "notes": "Very tight crop showing only a corner of the binomial coefficient (K over 2); read as a second occurrence of binom(K,2) from context."
+  },
+  {
+    "id": "m00578",
+    "latex": "\\text{Max pool}\\quad \\begin{bmatrix} 1 & 2 & 5 & 3 \\\\ 3 & 0 & 1 & 2 \\\\ 2 & 1 & 3 & 4 \\\\ 1 & 1 & 2 & 0 \\end{bmatrix} \\rightarrow \\begin{bmatrix} 3 & 5 \\\\ 2 & 4 \\end{bmatrix}.",
+    "confidence": 0.9,
+    "notes": ""
+  },
+  {
+    "id": "m00632",
+    "latex": "\\begin{aligned}\nL_i &= \\begin{cases} f(y_i) & \\text{if the } i\\text{th observation is not censored} \\\\ S(y_i) & \\text{if the } i\\text{th observation is censored} \\end{cases} \\\\\n&= f(y_i)^{\\delta_i} S(y_i)^{1-\\delta_i}.\n\\end{aligned}",
+    "confidence": 0.9,
+    "notes": ""
+  },
+  {
+    "id": "m00635",
+    "latex": "\\left(\\sum\\right)",
+    "confidence": 0.35,
+    "notes": "Crop shows a bare parenthesized summation sign with no legible sub/superscript limits; likely a fragment of a hazard-function formula split across crops."
+  },
+  {
+    "id": "m00639",
+    "latex": "\\left(\\sum^{p}\\right)",
+    "confidence": 0.4,
+    "notes": "Crop shows a parenthesized summation with a superscript p but no legible subscript lower limit; likely a fragment of the Cox proportional-hazards exponent split across crops."
+  },
+  {
+    "id": "m00655",
+    "latex": "\\binom{p}{2}",
+    "confidence": 0.85,
+    "notes": ""
+  },
+  {
+    "id": "m00660",
+    "latex": "\\operatorname*{maximize}_{\\phi_{11},\\ldots,\\phi_{p1}}\\left\\{\\frac{1}{n}\\sum_{i=1}^{n}\\left(\\sum_{j=1}^{p}\\phi_{j1}x_{ij}\\right)^{2}\\right\\}\\quad\\text{subject to}\\quad\\sum_{j=1}^{p}\\phi_{j1}^{2}=1.",
+    "confidence": 0.85,
+    "notes": "Equation number (12.3) omitted per instructions; a faint duplicate/ghost of part of the formula visible at the bottom of the crop was treated as a rendering artifact and not transcribed separately."
+  }
+]

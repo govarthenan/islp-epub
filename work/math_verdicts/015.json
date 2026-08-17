@@ -1,0 +1,152 @@
+[
+ {
+  "id": "m00533",
+  "verdict": "cosmetic",
+  "issue": "Bottom renders in bold font; same sum and product of subscripted x terms.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00534",
+  "verdict": "cosmetic",
+  "issue": "Bottom renders in bold font and uses larger auto-sized parentheses; same equation.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00535",
+  "verdict": "cosmetic",
+  "issue": "Bottom renders in bold font; same equation.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00536",
+  "verdict": "cosmetic",
+  "issue": "Bottom renders in bold font and uses larger auto-sized parentheses; same equation.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00537",
+  "verdict": "cosmetic",
+  "issue": "Bottom renders in bold font; same expression.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00538",
+  "verdict": "cosmetic",
+  "issue": "Top image is cut off at the right edge; visible content matches the bold-rendered bottom, only spacing/parenthesis-size differ.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00539",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00543",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00544",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00545",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00546",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00547",
+  "verdict": "cosmetic",
+  "issue": "Bottom renders in bold font; same minimize expression with identical terms, limits and braces.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00548",
+  "verdict": "cosmetic",
+  "issue": "Bottom renders in bold font; same expression.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00549",
+  "verdict": "cosmetic",
+  "issue": "Bottom renders in bold font; same minimize expression.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00550",
+  "verdict": "cosmetic",
+  "issue": "Bottom renders in bold font; same equation, sums and exponent.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00551",
+  "verdict": "cosmetic",
+  "issue": "Top image includes surrounding paragraph text cut into view; the equation itself matches bottom aside from bold font.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00552",
+  "verdict": "cosmetic",
+  "issue": "Top image includes surrounding paragraph text cut into view; the equation itself matches bottom aside from bold font.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00553",
+  "verdict": "cosmetic",
+  "issue": "Bottom renders in bold font; same equation with identical max[...] term.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00554",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00556",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00557",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00558",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00559",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00560",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00561",
+  "verdict": "cosmetic",
+  "issue": "Top uses an eqnarray-style layout with = signs vertically aligned; bottom uses \\begin{aligned} with a normal alignment point. Same two lines of mathematics (f(X) definition and its expansion via g and w weights).",
+  "corrected_latex": ""
+ }
+]

@@ -1,0 +1,227 @@
+[
+ {
+  "id": "m00340",
+  "compare": "work/math_compare/m00340.png",
+  "latex": "\\operatorname*{minimize}_{\\beta} \\left\\{ \\sum_{i=1}^{n} \\left( y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij} \\right)^2 + \\lambda \\sum_{j=1}^{p} |\\beta_j| \\right\\}",
+  "characters": "2\n\n\nnpp\n\ni=1j=1j=1",
+  "kind": "display",
+  "page_pdf": 254,
+  "equation_number": "6.10"
+ },
+ {
+  "id": "m00341",
+  "compare": "work/math_compare/m00341.png",
+  "latex": "\\operatorname*{minimize}_{\\beta}\\left\\{\\sum_{i=1}^{n}\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_j x_{ij}\\right)^{2}\\right\\}",
+  "characters": "minimize yi − β0 − βjxij",
+  "kind": "inline",
+  "page_pdf": 254,
+  "equation_number": ""
+ },
+ {
+  "id": "m00342",
+  "compare": "work/math_compare/m00342.png",
+  "latex": "\\sum_{j=1}^{p} I(\\beta_j \\neq 0) \\leq s.",
+  "characters": "I(βj̸ = 0) ≤ s.",
+  "kind": "inline",
+  "page_pdf": 254,
+  "equation_number": ""
+ },
+ {
+  "id": "m00343",
+  "compare": "work/math_compare/m00343.png",
+  "latex": "I(\\beta_j \\neq 0)",
+  "characters": "I(βj̸ = 0)",
+  "kind": "inline",
+  "page_pdf": 254,
+  "equation_number": ""
+ },
+ {
+  "id": "m00344",
+  "compare": "work/math_compare/m00344.png",
+  "latex": "\\beta_j \\neq 0,",
+  "characters": "βj̸ = 0",
+  "kind": "inline",
+  "page_pdf": 254,
+  "equation_number": ""
+ },
+ {
+  "id": "m00345",
+  "compare": "work/math_compare/m00345.png",
+  "latex": "\\binom{p}{s}",
+  "characters": "�p�\ns",
+  "kind": "display",
+  "page_pdf": 254,
+  "equation_number": ""
+ },
+ {
+  "id": "m00346",
+  "compare": "work/math_compare/m00346.png",
+  "latex": "\\sum_{j=1}^{p} (y_j - \\beta_j)^2.",
+  "characters": "p\n�\n(yj −βj)2.\nj=1",
+  "kind": "display",
+  "page_pdf": 257,
+  "equation_number": "6.11"
+ },
+ {
+  "id": "m00347",
+  "compare": "work/math_compare/m00347.png",
+  "latex": "\\hat{\\beta}_j = y_j.",
+  "characters": "βˆj = yj.",
+  "kind": "display",
+  "page_pdf": 257,
+  "equation_number": ""
+ },
+ {
+  "id": "m00348",
+  "compare": "work/math_compare/m00348.png",
+  "latex": "\\sum_{j=1}^{p}(y_j-\\beta_j)^{2} + \\lambda\\sum_{j=1}^{p}\\beta_j^{2}",
+  "characters": "pp\n��\n(yj −βj)2 + λβ2\nj\nj=1j=1",
+  "kind": "display",
+  "page_pdf": 257,
+  "equation_number": "6.12"
+ },
+ {
+  "id": "m00349",
+  "compare": "work/math_compare/m00349.png",
+  "latex": "\\sum_{j=1}^{p}(y_j-\\beta_j)^{2} + \\lambda\\sum_{j=1}^{p}|\\beta_j|",
+  "characters": "pp\n��\n(yj −βj)2 + λ|βj|\nj=1j=1",
+  "kind": "display",
+  "page_pdf": 257,
+  "equation_number": "6.13"
+ },
+ {
+  "id": "m00350",
+  "compare": "work/math_compare/m00350.png",
+  "latex": "\\hat{\\beta}_j^{R} = y_j/(1+\\lambda),",
+  "characters": "βˆR\nj = yj/(1 + λ),",
+  "kind": "display",
+  "page_pdf": 258,
+  "equation_number": "6.14"
+ },
+ {
+  "id": "m00351",
+  "compare": "work/math_compare/m00351.png",
+  "latex": "\\hat{\\beta}_j^{L} = \\begin{cases} y_j - \\lambda/2 & \\text{if } y_j > \\lambda/2; \\\\ y_j + \\lambda/2 & \\text{if } y_j < -\\lambda/2; \\\\ 0 & \\text{if } |y_j| \\leq \\lambda/2. \\end{cases}",
+  "characters": "\nyj −λ/2if yj > λ/2;\n\nβˆL\nj =yj + λ/2if yj < −λ/2;\n\n\n0if |yj| ≤λ/2.",
+  "kind": "display",
+  "page_pdf": 258,
+  "equation_number": "6.15"
+ },
+ {
+  "id": "m00352",
+  "compare": "work/math_compare/m00352.png",
+  "latex": "p(\\beta|X, Y) \\propto f(Y|X, \\beta)p(\\beta|X) = f(Y|X, \\beta)p(\\beta),",
+  "characters": "p(β|X, Y ) ∝f(Y |X, β)p(β|X) = f(Y |X, β)p(β),",
+  "kind": "display",
+  "page_pdf": 259,
+  "equation_number": ""
+ },
+ {
+  "id": "m00353",
+  "compare": "work/math_compare/m00353.png",
+  "latex": "Y = \\beta_0 + X_1\\beta_1 + \\cdots + X_p\\beta_p + \\epsilon,",
+  "characters": "Y = β0 + X1β1 + · · · + Xpβp + ϵ,",
+  "kind": "display",
+  "page_pdf": 259,
+  "equation_number": ""
+ },
+ {
+  "id": "m00354",
+  "compare": "work/math_compare/m00354.png",
+  "latex": "p(\\beta) = \\prod_{j=1}^{p} g(\\beta_j),",
+  "characters": "p(β) = �pj=1 g(βj)",
+  "kind": "inline",
+  "page_pdf": 259,
+  "equation_number": ""
+ },
+ {
+  "id": "m00355",
+  "compare": "work/math_compare/m00355.png",
+  "latex": "Z_m = \\sum_{j=1}^{p} \\phi_{jm} X_j",
+  "characters": "p\n�\nZm =φjmXj\nj=1",
+  "kind": "display",
+  "page_pdf": 261,
+  "equation_number": "6.16"
+ },
+ {
+  "id": "m00356",
+  "compare": "work/math_compare/m00356.png",
+  "latex": "y_i = \\theta_0 + \\sum_{m=1}^{M} \\theta_m z_{im} + \\epsilon_i, \\quad i = 1, \\dots, n,",
+  "characters": "M\n�\nyi = θ0 +θmzim + ϵi,i = 1, . . . , n,\nm=1",
+  "kind": "display",
+  "page_pdf": 261,
+  "equation_number": "6.17"
+ },
+ {
+  "id": "m00357",
+  "compare": "work/math_compare/m00357.png",
+  "latex": "\\sum_{m=1}^{M} \\theta_m z_{im} = \\sum_{m=1}^{M} \\theta_m \\sum_{j=1}^{p} \\phi_{jm} x_{ij} = \\sum_{j=1}^{p} \\sum_{m=1}^{M} \\theta_m \\phi_{jm} x_{ij} = \\sum_{j=1}^{p} \\beta_j x_{ij},",
+  "characters": "MMppMp\n������\nθmzim =θmφjmxij =θmφjmxij =βjxij,\nm=1m=1j=1j=1m=1j=1",
+  "kind": "display",
+  "page_pdf": 262,
+  "equation_number": ""
+ },
+ {
+  "id": "m00358",
+  "compare": "work/math_compare/m00358.png",
+  "latex": "\\beta_j = \\sum_{m=1}^{M} \\theta_m \\phi_{jm}.",
+  "characters": "M\n�\nβj =θmφjm.\nm=1",
+  "kind": "display",
+  "page_pdf": 262,
+  "equation_number": "6.18"
+ },
+ {
+  "id": "m00359",
+  "compare": "work/math_compare/m00359.png",
+  "latex": "Z_1 = 0.839 \\times (\\texttt{pop} - \\overline{\\texttt{pop}}) + 0.544 \\times (\\texttt{ad} - \\overline{\\texttt{ad}}).",
+  "characters": "Z1 = 0.839 × (pop −pop) + 0.544 × (ad −ad).",
+  "kind": "display",
+  "page_pdf": 263,
+  "equation_number": "6.19"
+ },
+ {
+  "id": "m00360",
+  "compare": "work/math_compare/m00360.png",
+  "latex": "\\overline{\\texttt{pop}}",
+  "characters": "pop",
+  "kind": "inline",
+  "page_pdf": 263,
+  "equation_number": ""
+ },
+ {
+  "id": "m00361",
+  "compare": "work/math_compare/m00361.png",
+  "latex": "\\overline{\\texttt{ad}}",
+  "characters": "ad",
+  "kind": "inline",
+  "page_pdf": 263,
+  "equation_number": ""
+ },
+ {
+  "id": "m00362",
+  "compare": "work/math_compare/m00362.png",
+  "latex": "\\mathrm{Var}\\left(\\phi_{11} \\times (\\texttt{pop} - \\overline{\\texttt{pop}}) + \\phi_{21} \\times (\\texttt{ad} - \\overline{\\texttt{ad}})\\right)",
+  "characters": "Var(φ11 × (pop − pop) + φ21 × (ad − ad))",
+  "kind": "inline",
+  "page_pdf": 263,
+  "equation_number": ""
+ },
+ {
+  "id": "m00363",
+  "compare": "work/math_compare/m00363.png",
+  "latex": "z_{i1} = 0.839 \\times (\\texttt{pop}_i - \\overline{\\texttt{pop}}) + 0.544 \\times (\\texttt{ad}_i - \\overline{\\texttt{ad}}).",
+  "characters": "zi1 = 0.839 × (popi −pop) + 0.544 × (adi −ad).",
+  "kind": "display",
+  "page_pdf": 263,
+  "equation_number": "6.20"
+ },
+ {
+  "id": "m00364",
+  "compare": "work/math_compare/m00364.png",
+  "latex": "(\\overline{\\texttt{pop}}, \\overline{\\texttt{ad}})",
+  "characters": "(pop, ad)",
+  "kind": "inline",
+  "page_pdf": 264,
+  "equation_number": ""
+ }
+]

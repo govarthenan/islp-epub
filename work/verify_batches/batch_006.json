@@ -1,0 +1,227 @@
+[
+ {
+  "id": "m00222",
+  "compare": "work/math_compare/m00222.png",
+  "latex": "\\log\\left(\\frac{\\Pr(Y = k \\mid X = x)}{\\Pr(Y = K \\mid X = x)}\\right)",
+  "characters": "�\n�Pr(Y = k|X = x)\nlog\nPr(Y = K|X = x)",
+  "kind": "display",
+  "page_pdf": 170,
+  "equation_number": "4.31"
+ },
+ {
+  "id": "m00223",
+  "compare": "work/math_compare/m00223.png",
+  "latex": "\\begin{aligned} \\log\\left(\\frac{\\mathrm{Pr}(Y=k\\mid X=x)}{\\mathrm{Pr}(Y=K\\mid X=x)}\\right) &= \\log\\left(\\frac{\\pi_k f_k(x)}{\\pi_K f_K(x)}\\right) \\\\ &= \\log\\left(\\frac{\\pi_k \\exp\\left(-\\frac{1}{2}(x-\\mu_k)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_k)\\right)}{\\pi_K \\exp\\left(-\\frac{1}{2}(x-\\mu_K)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_K)\\right)}\\right) \\\\ &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(x-\\mu_k)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_k) \\\\ &\\quad + \\frac{1}{2}(x-\\mu_K)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_K) \\\\ &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(\\mu_k+\\mu_K)^T \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K) \\\\ &\\quad + x^T \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K) \\\\ &= a_k + \\sum_{j=1}^{p} b_{kj} x_j, \\\\[1em] a_k &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(\\mu_k+\\mu_K)^T \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K), \\quad \\text{and} \\quad b_{kj} \\text{ is the } j\\text{th component of } \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K). \\end{aligned}",
+  "characters": "��πkfk(x)�\n�Pr(Y = k|X = x)\nPr(Y = K|X = x)πKfK(x)\n��\n��\nπk exp−21(x −µk)T Σ−1(x −µk)\n=log��\nπK exp−12(x −µK)T Σ−1(x −µK)\n�πk�\n=log−12(x −µk)T Σ−1(x −µk)\nπK\n+12(x −µK)T Σ−1(x −µK)\n�πk�\n=log−12(µk + µK)T Σ−1(µk −µK)\nπK\n+ xT Σ−1(µk −µK)\np\n�\n=ak +bkjxj,\nj=1\n��\nπk\nπK",
+  "kind": "display",
+  "page_pdf": 171,
+  "equation_number": "4.32"
+ },
+ {
+  "id": "m00224",
+  "compare": "work/math_compare/m00224.png",
+  "latex": "\\log\\left(\\frac{\\mathrm{Pr}(Y = k|X = x)}{\\mathrm{Pr}(Y = K|X = x)}\\right) = \\log\\left(\\frac{\\pi_k f_k(x)}{\\pi_K f_K(x)}\\right)",
+  "characters": "log = log",
+  "kind": "inline",
+  "page_pdf": 171,
+  "equation_number": ""
+ },
+ {
+  "id": "m00225",
+  "compare": "work/math_compare/m00225.png",
+  "latex": "a_k = \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(\\mu_k + \\mu_K)^T \\mathbf{\\Sigma}^{-1}(\\mu_k - \\mu_K)",
+  "characters": "ak = log −12(µk + µK)T Σ−1(µk − µK)",
+  "kind": "inline",
+  "page_pdf": 171,
+  "equation_number": ""
+ },
+ {
+  "id": "m00226",
+  "compare": "work/math_compare/m00226.png",
+  "latex": "\\log\\left(\\frac{\\mathrm{Pr}(Y = k|X = x)}{\\mathrm{Pr}(Y = K|X = x)}\\right) = a_k + \\sum_{j=1}^{p} b_{kj} x_j + \\sum_{j=1}^{p}\\sum_{l=1}^{p} c_{kjl} x_j x_l,",
+  "characters": "�\nppp\n���\n�Pr(Y = k|X = x)\nlog= ak +bkjxj +ckjlxjxl,\nPr(Y = K|X = x)\nj=1j=1l=1",
+  "kind": "display",
+  "page_pdf": 171,
+  "equation_number": "4.33"
+ },
+ {
+  "id": "m00227",
+  "compare": "work/math_compare/m00227.png",
+  "latex": "\\begin{aligned} \\log\\left(\\frac{\\Pr(Y = k \\mid X = x)}{\\Pr(Y = K \\mid X = x)}\\right) &= \\log\\left(\\frac{\\pi_k f_k(x)}{\\pi_K f_K(x)}\\right) \\\\ &= \\log\\left(\\frac{\\pi_k \\prod_{j=1}^{p} f_{kj}(x_j)}{\\pi_K \\prod_{j=1}^{p} f_{Kj}(x_j)}\\right) \\\\ &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) + \\sum_{j=1}^{p} \\log\\left(\\frac{f_{kj}(x_j)}{f_{Kj}(x_j)}\\right) \\\\ &= a_k + \\sum_{j=1}^{p} g_{kj}(x_j), \\end{aligned}",
+  "characters": "��πkfk(x)�\n�Pr(Y = k|X = x)\nlog=log\nPr(Y = K|X = x)πKfK(x)\n��p�\nπkj=1 fkj(xj)\n=log�p\nπKj=1 fKj(xj)\n�πk��fkj(xj)�\np\n�\n=log+log\nπKfKj(xj)\nj=1\np\n�\n=ak +gkj(xj),\nj=1\n����",
+  "kind": "display",
+  "page_pdf": 171,
+  "equation_number": "4.34"
+ },
+ {
+  "id": "m00228",
+  "compare": "work/math_compare/m00228.png",
+  "latex": "j \\neq l",
+  "characters": "j̸ = l",
+  "kind": "inline",
+  "page_pdf": 172,
+  "equation_number": ""
+ },
+ {
+  "id": "m00229",
+  "compare": "work/math_compare/m00229.png",
+  "latex": "\\log\\left(\\frac{\\mathrm{Pr}(Y = k|X = x)}{\\mathrm{Pr}(Y = K|X = x)}\\right) = \\beta_{k0} + \\sum_{j=1}^{p}\\beta_{kj}x_j.",
+  "characters": "�\np\n�\n�Pr(Y = k|X = x)\nlog= βk0 +βkjxj.\nPr(Y = K|X = x)\nj=1",
+  "kind": "display",
+  "page_pdf": 172,
+  "equation_number": ""
+ },
+ {
+  "id": "m00230",
+  "compare": "work/math_compare/m00230.png",
+  "latex": "\\left( \\frac{\\mathrm{Pr}(Y=k\\mid X=x)}{\\mathrm{Pr}(Y=K\\mid X=x)} \\right)",
+  "characters": "��\nPr(Y =k|X=x)\nPr(Y =K|X=x)",
+  "kind": "display",
+  "page_pdf": 172,
+  "equation_number": ""
+ },
+ {
+  "id": "m00231",
+  "compare": "work/math_compare/m00231.png",
+  "latex": "Y = \\sum_{j=1}^{p} X_j\\beta_j + \\epsilon",
+  "characters": "Y = �pj=1 Xjβj +ϵ",
+  "kind": "inline",
+  "page_pdf": 177,
+  "equation_number": ""
+ },
+ {
+  "id": "m00232",
+  "compare": "work/math_compare/m00232.png",
+  "latex": "Y = \\beta_0 + \\sum_{j=1}^{p} X_j\\beta_j + \\epsilon",
+  "characters": "Y = β0 + �jp=1 Xjβj + ϵ",
+  "kind": "inline",
+  "page_pdf": 177,
+  "equation_number": ""
+ },
+ {
+  "id": "m00233",
+  "compare": "work/math_compare/m00233.png",
+  "latex": "\\log(Y) = \\sum_{j=1}^{p} X_j\\beta_j + \\epsilon.",
+  "characters": "p\n�\nlog(Y ) =Xjβj + ϵ.\nj=1",
+  "kind": "display",
+  "page_pdf": 178,
+  "equation_number": ""
+ },
+ {
+  "id": "m00234",
+  "compare": "work/math_compare/m00234.png",
+  "latex": "\\mathrm{Pr}(Y = k) = \\frac{e^{-\\lambda}\\lambda^{k}}{k!} \\quad \\text{for } k = 0, 1, 2, \\ldots.",
+  "characters": "Pr(Y = k) = e−λλkfor k = 0, 1, 2, . . . .\nk!",
+  "kind": "display",
+  "page_pdf": 178,
+  "equation_number": "4.35"
+ },
+ {
+  "id": "m00235",
+  "compare": "work/math_compare/m00235.png",
+  "latex": "\\frac{e^{-5}5^0}{0!}",
+  "characters": "e−550",
+  "kind": "display",
+  "page_pdf": 179,
+  "equation_number": ""
+ },
+ {
+  "id": "m00236",
+  "compare": "work/math_compare/m00236.png",
+  "latex": "\\mathrm{Pr}(Y = 0) = \\frac{e^{-5}5^{0}}{0!} = e^{-5} = 0.0067",
+  "characters": "Pr(Y = 0) = = e−5 = 0.0067",
+  "kind": "inline",
+  "page_pdf": 179,
+  "equation_number": ""
+ },
+ {
+  "id": "m00237",
+  "compare": "work/math_compare/m00237.png",
+  "latex": "\\frac{e^{-5}5^1}{1!}",
+  "characters": "e−551",
+  "kind": "display",
+  "page_pdf": 179,
+  "equation_number": ""
+ },
+ {
+  "id": "m00238",
+  "compare": "work/math_compare/m00238.png",
+  "latex": "\\mathrm{Pr}(Y = 1) = \\frac{e^{-5}5^{1}}{1!} = 5e^{-5} = 0.034",
+  "characters": "Pr(Y = 1) = = 5e−5 = 0.034",
+  "kind": "inline",
+  "page_pdf": 179,
+  "equation_number": ""
+ },
+ {
+  "id": "m00239",
+  "compare": "work/math_compare/m00239.png",
+  "latex": "\\mathrm{Pr}(Y = 2) = \\frac{e^{-5}5^{2}}{2!} = 0.084",
+  "characters": "Pr(Y = 2) = e−552= 0.084",
+  "kind": "inline",
+  "page_pdf": 179,
+  "equation_number": ""
+ },
+ {
+  "id": "m00240",
+  "compare": "work/math_compare/m00240.png",
+  "latex": "2!",
+  "characters": "2!",
+  "kind": "display",
+  "page_pdf": 179,
+  "equation_number": ""
+ },
+ {
+  "id": "m00241",
+  "compare": "work/math_compare/m00241.png",
+  "latex": "\\log(\\lambda(X_1, \\ldots, X_p)) = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p",
+  "characters": "log(λ(X1, . . . , Xp)) = β0 + β1X1 + · · · + βpXp",
+  "kind": "display",
+  "page_pdf": 179,
+  "equation_number": "4.36"
+ },
+ {
+  "id": "m00242",
+  "compare": "work/math_compare/m00242.png",
+  "latex": "\\lambda(X_1, \\ldots, X_p) = e^{\\beta_0+\\beta_1 X_1+\\cdots+\\beta_p X_p}.",
+  "characters": "λ(X1, . . . , Xp) = eβ0+β1X1+···+βpXp.",
+  "kind": "display",
+  "page_pdf": 179,
+  "equation_number": "4.37"
+ },
+ {
+  "id": "m00243",
+  "compare": "work/math_compare/m00243.png",
+  "latex": "\\ell(\\beta_0, \\beta_1, \\ldots, \\beta_p) = \\prod_{i=1}^{n} \\frac{e^{-\\lambda(x_i)}\\lambda(x_i)^{y_i}}{y_i!},",
+  "characters": "n\n�\ne−λ(xi)λ(xi)yi\nℓ(β0, β1, . . . , βp) =,\nyi!\ni=1",
+  "kind": "display",
+  "page_pdf": 179,
+  "equation_number": "4.38"
+ },
+ {
+  "id": "m00244",
+  "compare": "work/math_compare/m00244.png",
+  "latex": "\\mathrm{E}(Y|X_1, \\ldots, X_p) = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p,",
+  "characters": "E(Y |X1, . . . , Xp) = β0 + β1X1 + · · · + βpXp,",
+  "kind": "display",
+  "page_pdf": 181,
+  "equation_number": "4.39"
+ },
+ {
+  "id": "m00245",
+  "compare": "work/math_compare/m00245.png",
+  "latex": "\\begin{aligned}\n\\mathrm{E}(Y|X_1, \\ldots, X_p) &= \\mathrm{Pr}(Y = 1|X_1, \\ldots, X_p) \\\\\n&= \\frac{e^{\\beta_0+\\beta_1 X_1+\\cdots+\\beta_p X_p}}{1 + e^{\\beta_0+\\beta_1 X_1+\\cdots+\\beta_p X_p}},\n\\end{aligned}",
+  "characters": "E(Y |X1, . . . , Xp)=Pr(Y = 1|X1, . . . , Xp)\neβ0+β1X1+···+βpXp\n=\n1 + eβ0+β1X1+···+βpXp ,",
+  "kind": "display",
+  "page_pdf": 181,
+  "equation_number": "4.40"
+ },
+ {
+  "id": "m00246",
+  "compare": "work/math_compare/m00246.png",
+  "latex": "\\mathrm{E}(Y|X_1, \\ldots, X_p) = \\lambda(X_1, \\ldots, X_p) = e^{\\beta_0+\\beta_1 X_1+\\cdots+\\beta_p X_p}.",
+  "characters": "E(Y |X1, . . . , Xp) = λ(X1, . . . , Xp) = eβ0+β1X1+···+βpXp.",
+  "kind": "display",
+  "page_pdf": 181,
+  "equation_number": "4.41"
+ }
+]

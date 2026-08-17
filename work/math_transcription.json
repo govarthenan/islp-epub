@@ -2473,5 +2473,305 @@
   "latex": "0.001?",
   "confidence": 0.97,
   "notes": ""
+ },
+ "m00001": {
+  "latex": "\\mathbf{X} = \\begin{pmatrix} x_{11} & x_{12} & \\cdots & x_{1p} \\\\ x_{21} & x_{22} & \\cdots & x_{2p} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ x_{n1} & x_{n2} & \\cdots & x_{np} \\end{pmatrix}.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00004": {
+  "latex": "\\begin{gathered} \\mathbf{X} = \\begin{pmatrix} \\mathbf{x}_1 & \\mathbf{x}_2 & \\cdots & \\mathbf{x}_p \\end{pmatrix}, \\\\[2em] \\mathbf{X} = \\begin{pmatrix} x_1^T \\\\ x_2^T \\\\ \\vdots \\\\ x_n^T \\end{pmatrix}. \\end{gathered}",
+  "confidence": 0.93,
+  "notes": "Two stacked display equations in one crop; second-line row vectors are printed non-bold in the source image, kept as-is."
+ },
+ "m00024": {
+  "latex": "\\begin{aligned} \\mathrm{E}(Y-\\hat{Y})^2 &= \\mathrm{E}[f(X)+\\epsilon-\\hat{f}(X)]^2 \\\\ &= \\underbrace{[f(X)-\\hat{f}(X)]^2} + \\underbrace{\\mathrm{Var}(\\epsilon)}, \\end{aligned}",
+  "confidence": 0.82,
+  "notes": "Image shows underbrace marks below both terms but the label text beneath them (likely 'Reducible'/'Irreducible' in the original book) is cut off/illegible in the crop, so labels were omitted rather than guessed."
+ },
+ "m00050": {
+  "latex": "\\begin{array}{c|cccc} \\text{Obs.} & X_1 & X_2 & X_3 & Y \\\\ \\hline 1 & 0 & 3 & 0 & \\text{Red} \\\\ 2 & 2 & 0 & 0 & \\text{Red} \\\\ 3 & 0 & 1 & 3 & \\text{Red} \\\\ 4 & 0 & 1 & 2 & \\text{Green} \\\\ 5 & -1 & 0 & 1 & \\text{Green} \\\\ 6 & 1 & 1 & 1 & \\text{Red} \\end{array}",
+  "confidence": 0.97,
+  "notes": "Rendered as a table via array since this is tabular data, not an equation."
+ },
+ "m00116": {
+  "latex": "\\begin{cases} \\beta_0 + \\beta_1 + \\epsilon_i & \\text{if } i\\text{th person owns a house} \\end{cases}",
+  "confidence": 0.85,
+  "notes": "Crop shows only the top brace row of what is normally a two-case brace in the book; transcribed exactly what is visible without inventing the missing second case."
+ },
+ "m00119": {
+  "latex": "\\begin{cases} \\beta_0 + \\beta_1 + \\epsilon_i & \\text{if } i\\text{th person is from the South} \\end{cases}",
+  "confidence": 0.85,
+  "notes": "Crop shows only the top brace row (single case visible); second case not shown in the image so not invented."
+ },
+ "m00129": {
+  "latex": "\\begin{aligned} &\\approx \\beta_0 + \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_2 & \\text{if } i\\text{th person is a student} \\end{cases} \\\\ &= \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_0 + \\beta_2 & \\text{if } i\\text{th person is a student} \\end{cases} \\end{aligned}",
+  "confidence": 0.75,
+  "notes": "First line has a blank gap where 'income' should sit before the subscript i (rendering dropout in the source); filled in from the identical term on the second line, which is fully visible."
+ },
+ "m00130": {
+  "latex": "\\begin{aligned} &\\approx \\beta_0 + \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_2 + \\beta_3 \\times \\texttt{income}_i & \\text{if student} \\end{cases} \\\\ &= \\begin{cases} (\\beta_0 + \\beta_2) + (\\beta_1 + \\beta_3) \\times \\texttt{income}_i & \\text{if student} \\\\ \\beta_0 + \\beta_1 \\times \\texttt{income}_i & \\text{if not student.} \\end{cases} \\end{aligned}",
+  "confidence": 0.8,
+  "notes": "First line has the same rendering gap before 'income_i' as m00129, filled in by analogy; only one case shown on line 1 (matches image), both cases shown on line 2 (matches image)."
+ },
+ "m00132": {
+  "latex": "\\sqrt{X},",
+  "confidence": 0.6,
+  "notes": "Tiny inline crop; extracted_characters only captured the letter X (radical sign not text-extractable, per why_model_needed=fraction-or-radical-rule). Trailing comma is faint in the crop but appears present."
+ },
+ "m00149": {
+  "latex": "\\log(X), \\sqrt{X}, X^2. \\text{ Comment on your findings.}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00161": {
+  "latex": "Y = \\begin{cases} 1 & \\text{if } \\texttt{stroke}; \\\\ 2 & \\text{if } \\texttt{drug overdose}; \\\\ 3 & \\text{if } \\texttt{epileptic seizure}. \\end{cases}",
+  "confidence": 0.96,
+  "notes": ""
+ },
+ "m00162": {
+  "latex": "Y = \\begin{cases} 1 & \\text{if } \\texttt{epileptic seizure}; \\\\ 2 & \\text{if } \\texttt{stroke}; \\\\ 3 & \\text{if } \\texttt{drug overdose}, \\end{cases}",
+  "confidence": 0.96,
+  "notes": ""
+ },
+ "m00184": {
+  "latex": "\\begin{gathered} \\mathrm{Pr}(Y = k \\mid X = x) = \\dfrac{e^{\\beta_{k0}+\\beta_{k1}x_1+\\cdots+\\beta_{kp}x_p}}{1 + \\sum_{l=1}^{K-1} e^{\\beta_{l0}+\\beta_{l1}x_1+\\cdots+\\beta_{lp}x_p}} \\\\[2em] \\mathrm{Pr}(Y = K \\mid X = x) = \\dfrac{1}{1 + \\sum_{l=1}^{K-1} e^{\\beta_{l0}+\\beta_{l1}x_1+\\cdots+\\beta_{lp}x_p}}\\,. \\\\[2em] \\log\\left( \\dfrac{\\mathrm{Pr}(Y = k \\mid X = x)}{\\mathrm{Pr}(Y = K \\mid X = x)} \\right) = \\beta_{k0} + \\beta_{k1}x_1 + \\cdots + \\beta_{kp}x_p. \\end{gathered}",
+  "confidence": 0.9,
+  "notes": "Single crop contains three stacked display equations (the multinomial logistic model, its Kth-class special case, and the resulting log-odds form); combined with vertical spacing to match the image."
+ },
+ "m00185": {
+  "latex": "\\frac{\\mathrm{Pr}(Y = \\texttt{stroke} \\mid X = x)}{\\mathrm{Pr}(Y = \\texttt{epileptic seizure} \\mid X = x)}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00187": {
+  "latex": "\\log\\left( \\frac{\\mathrm{Pr}(Y=k\\mid X=x)}{\\mathrm{Pr}(Y=k'\\mid X=x)} \\right)",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00223": {
+  "latex": "\\begin{aligned} \\log\\left(\\frac{\\mathrm{Pr}(Y=k\\mid X=x)}{\\mathrm{Pr}(Y=K\\mid X=x)}\\right) &= \\log\\left(\\frac{\\pi_k f_k(x)}{\\pi_K f_K(x)}\\right) \\\\ &= \\log\\left(\\frac{\\pi_k \\exp\\left(-\\frac{1}{2}(x-\\mu_k)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_k)\\right)}{\\pi_K \\exp\\left(-\\frac{1}{2}(x-\\mu_K)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_K)\\right)}\\right) \\\\ &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(x-\\mu_k)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_k) \\\\ &\\quad + \\frac{1}{2}(x-\\mu_K)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_K) \\\\ &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(\\mu_k+\\mu_K)^T \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K) \\\\ &\\quad + x^T \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K) \\\\ &= a_k + \\sum_{j=1}^{p} b_{kj} x_j, \\\\[1em] a_k &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(\\mu_k+\\mu_K)^T \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K), \\quad \\text{and} \\quad b_{kj} \\text{ is the } j\\text{th component of } \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K). \\end{aligned}",
+  "confidence": 0.6,
+  "notes": "Main seven-line derivation (through '= a_k + sum b_kj x_j,') is fully legible in the image. The final row below it only shows fragments 'a_k = ... b_kj  j' with the connecting words dropped out in the source rendering; reconstructed the standard textbook sentence ('and b_kj is the jth component of ...') from context since the surrounding prose text itself was not legible/printed in the crop. Flagged as a hard case."
+ },
+ "m00230": {
+  "latex": "\\left( \\frac{\\mathrm{Pr}(Y=k\\mid X=x)}{\\mathrm{Pr}(Y=K\\mid X=x)} \\right)",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00235": {
+  "latex": "\\frac{e^{-5}5^0}{0!}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00237": {
+  "latex": "\\frac{e^{-5}5^1}{1!}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00240": {
+  "latex": "2!",
+  "confidence": 0.9,
+  "notes": "Very small crop (denominator fragment of a Poisson-probability fraction); only '2!' is legible."
+ },
+ "m00265": {
+  "latex": "\\text{estimates } \\hat{\\alpha}_{\\texttt{orange}0} = 1.2, \\hat{\\alpha}_{\\texttt{orange}1} = -2, \\hat{\\alpha}_{\\texttt{orange}0} = 3, \\hat{\\alpha}_{\\texttt{orange}1} = 0.6. \\text{ What are the coefficient estimates in your model?}",
+  "confidence": 0.88,
+  "notes": "All four subscripts read 'orange' in the source image (the third and fourth terms might be expected to read 'apple' but the crop clearly repeats 'orange'); transcribed exactly as printed."
+ },
+ "m00296": {
+  "latex": "\\binom{p}{2}",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00298": {
+  "latex": "\\begin{gathered} \\text{(a) Fit all } \\binom{p}{k} \\text{ models that contain exactly } k \\text{ predictors.} \\\\[1em] \\text{(b) Pick the best among these } \\binom{p}{k} \\text{ models, and call it } \\mathcal{M}_k. \\end{gathered}",
+  "confidence": 0.65,
+  "notes": "Row (a) is fully legible. Row (b) in the crop shows only the isolated math fragments 'binom(p,k)' and a calligraphic M with a subscript cut at the image's right edge, with the connecting words dropped out in the source rendering; reconstructed the standard textbook sentence for algorithm step (b) from context. Flagged as a hard case."
+ },
+ "m00326": {
+  "latex": "\\ell_2 \\sqrt{\\sum_{j=1}^{p} \\beta_j^2}",
+  "confidence": 0.45,
+  "notes": "Very narrow crop (50.7pt wide); only 'ell_2' and a square root over 'Sigma^p' are actually legible, with the summation's lower limit and summand cut off at the crop edge / dropped in the source rendering. Completed the well-known ISLR definition of the l2 norm from context. Flagged as a hard case; low confidence."
+ },
+ "m00340": {
+  "latex": "\\operatorname*{minimize}_{\\beta} \\left\\{ \\sum_{i=1}^{n} \\left( y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij} \\right)^2 + \\lambda \\sum_{j=1}^{p} |\\beta_j| \\right\\}",
+  "confidence": 0.65,
+  "notes": "This is equation 6.10 (lasso in Lagrangian form). The crop shows only the braces/parentheses/summation scaffolding (superscript 2, limits n, p, p / i=1, j=1, j=1 match the extracted_characters exactly) with the variable content (y_i, beta_0, beta_j x_ij, lambda, |beta_j|) and the word 'minimize' dropped out in the source rendering; reconstructed from the known formula and the matching scaffolding. Flagged as a hard case."
+ },
+ "m00345": {
+  "latex": "\\binom{p}{s}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00400": {
+  "latex": "\\int",
+  "confidence": 0.6,
+  "notes": "Crop shows only the integral sign, apparently a fragment split out of a larger displayed integral in the surrounding sentence."
+ },
+ "m00402": {
+  "latex": "\\int",
+  "confidence": 0.6,
+  "notes": "Crop shows only the integral sign; context describes the same integral notation."
+ },
+ "m00403": {
+  "latex": "\\int",
+  "confidence": 0.6,
+  "notes": "Crop shows only the integral sign, a fragment of the g''(t)^2 dt expression discussed in the surrounding text."
+ },
+ "m00405": {
+  "latex": "\\int",
+  "confidence": 0.6,
+  "notes": "Crop shows only the integral sign, a fragment of the g''(t)^2 dt expression discussed in the surrounding text."
+ },
+ "m00440": {
+  "latex": "\\begin{aligned}\n\\hat{g}_1 &= \\operatorname*{argmin}_{g}\\left(\\sum_{i=1}^{n}(y_i - g(x_i))^2 + \\lambda \\int \\left[g^{(3)}(x)\\right]^2 dx\\right), \\\\\n\\hat{g}_2 &= \\operatorname*{argmin}_{g}\\left(\\sum_{i=1}^{n}(y_i - g(x_i))^2 + \\lambda \\int \\left[g^{(4)}(x)\\right]^2 dx\\right), \\\\\n&\\text{where } g^{(m)} \\text{ represents the } m\\text{th derivative of } g.\n\\end{aligned}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00475": {
+  "latex": "\\sum_{k=1}^{K}\\hat{f}_{k}^{b}",
+  "confidence": 0.55,
+  "notes": "Crop is cut very tight around just the summation limits and the summand; no visible (x) argument."
+ },
+ "m00476": {
+  "latex": "\\hat{f}^{b}(x) = \\sum_{k=1}^{K}\\hat{f}_{k}^{b}(x)",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00477": {
+  "latex": "\\frac{1}{nK}",
+  "confidence": 0.85,
+  "notes": "Text layer only recovered the digit 1, but the image clearly shows the fraction 1/(nK)."
+ },
+ "m00489": {
+  "latex": "\\text{1. Let } \\hat{f}_1^{1}(x) = \\hat{f}_2^{1}(x) = \\cdots = \\hat{f}_K^{1}(x) = \\frac{1}{nK}\\sum_{i=1}^{n} y_i.",
+  "confidence": 0.85,
+  "notes": "Algorithm step label '1. Let' is printed as part of the display line, so it is kept as text."
+ },
+ "m00493": {
+  "latex": "\\text{(b) Compute } \\hat{f}^{b}(x) = \\sum_{k=1}^{K}\\hat{f}_{k}^{b}(x).",
+  "confidence": 0.85,
+  "notes": "Algorithm step label '(b) Compute' is printed as part of the display line, so it is kept as text."
+ },
+ "m00495": {
+  "latex": "\\frac{1}{B-L}",
+  "confidence": 0.85,
+  "notes": ""
+ },
+ "m00509": {
+  "latex": "(x_1^{*}",
+  "confidence": 0.4,
+  "notes": "Crop shows only an opening parenthesis and x_1^*, apparently the start of a vector x* = (x_1*, ..., x_p*)^T that continues in a different crop; left as an unmatched literal open paren since that is what is printed."
+ },
+ "m00515": {
+  "latex": "\\begin{aligned}\n&\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,M}\\ M\\\\\n&\\text{subject to}\\quad \\sum_{j=1}^{p}\\beta_j^2 = 1,\\\\\n&y_i(\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\cdots+\\beta_px_{ip})\\ge M\\quad\\forall\\, i=1,\\ldots,n.\n\\end{aligned}",
+  "confidence": 0.85,
+  "notes": "Equation numbers (9.10)/(9.11) visible in the source are omitted per instructions."
+ },
+ "m00519": {
+  "latex": "\\begin{aligned}\n&\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,\\epsilon_1,\\ldots,\\epsilon_n,\\,M}\\ M\\\\\n&\\text{subject to}\\quad \\sum_{j=1}^{p}\\beta_j^2 = 1,\\\\\n&y_i(\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\cdots+\\beta_px_{ip})\\ge M(1-\\epsilon_i),\\\\\n&\\epsilon_i\\ge 0,\\quad \\sum_{i=1}^{n}\\epsilon_i\\le C,\n\\end{aligned}",
+  "confidence": 0.85,
+  "notes": "Equation number (9.15) omitted per instructions."
+ },
+ "m00528": {
+  "latex": "\\begin{aligned}\n&\\binom{n}{2}\\ \\left\\langle x_i, x_{i'}\\right\\rangle\\\\\n&\\binom{n}{2}\\ \\text{among a set of } n \\text{ items.)}\n\\end{aligned}",
+  "confidence": 0.35,
+  "notes": "Crop appears to merge two adjacent page elements (a body-text fragment with an inner-product term, and a footnote sentence), both containing binom(n,2); transcribed as best effort from the visible glyphs and extracted characters."
+ },
+ "m00539": {
+  "latex": "\\binom{n}{2}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00543": {
+  "latex": "\\binom{K}{2}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00544": {
+  "latex": "\\binom{K}{2}",
+  "confidence": 0.6,
+  "notes": "Very tight crop showing only a corner of the binomial coefficient (K over 2); read as a second occurrence of binom(K,2) from context."
+ },
+ "m00578": {
+  "latex": "\\text{Max pool}\\quad \\begin{bmatrix} 1 & 2 & 5 & 3 \\\\ 3 & 0 & 1 & 2 \\\\ 2 & 1 & 3 & 4 \\\\ 1 & 1 & 2 & 0 \\end{bmatrix} \\rightarrow \\begin{bmatrix} 3 & 5 \\\\ 2 & 4 \\end{bmatrix}.",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00632": {
+  "latex": "\\begin{aligned}\nL_i &= \\begin{cases} f(y_i) & \\text{if the } i\\text{th observation is not censored} \\\\ S(y_i) & \\text{if the } i\\text{th observation is censored} \\end{cases} \\\\\n&= f(y_i)^{\\delta_i} S(y_i)^{1-\\delta_i}.\n\\end{aligned}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00635": {
+  "latex": "\\left(\\sum\\right)",
+  "confidence": 0.35,
+  "notes": "Crop shows a bare parenthesized summation sign with no legible sub/superscript limits; likely a fragment of a hazard-function formula split across crops."
+ },
+ "m00639": {
+  "latex": "\\left(\\sum^{p}\\right)",
+  "confidence": 0.4,
+  "notes": "Crop shows a parenthesized summation with a superscript p but no legible subscript lower limit; likely a fragment of the Cox proportional-hazards exponent split across crops."
+ },
+ "m00655": {
+  "latex": "\\binom{p}{2}",
+  "confidence": 0.85,
+  "notes": ""
+ },
+ "m00660": {
+  "latex": "\\operatorname*{maximize}_{\\phi_{11},\\ldots,\\phi_{p1}}\\left\\{\\frac{1}{n}\\sum_{i=1}^{n}\\left(\\sum_{j=1}^{p}\\phi_{j1}x_{ij}\\right)^{2}\\right\\}\\quad\\text{subject to}\\quad\\sum_{j=1}^{p}\\phi_{j1}^{2}=1.",
+  "confidence": 0.85,
+  "notes": "Equation number (12.3) omitted per instructions; a faint duplicate/ghost of part of the formula visible at the bottom of the crop was treated as a rendering artifact and not transcribed separately."
+ },
+ "m00674": {
+  "latex": "\\underbrace{\\sum_{j=1}^{p}\\frac{1}{n}\\sum_{i=1}^{n} x_{ij}^{2}}_{\\text{Var. of data}} = \\underbrace{\\sum_{m=1}^{M}\\frac{1}{n}\\sum_{i=1}^{n} z_{im}^{2}}_{\\text{Var. of first } M \\text{ PCs}} + \\underbrace{\\frac{1}{n}\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(x_{ij} - \\sum_{m=1}^{M} z_{im}\\phi_{jm}\\right)^{2}}_{\\text{MSE of } M\\text{-dimensional approximation}}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00696": {
+  "latex": "\\frac{1}{|C_k|}",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00698": {
+  "latex": "\\binom{n}{2}",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00699": {
+  "latex": "\\binom{6{,}830}{2}",
+  "confidence": 0.95,
+  "notes": "kept comma as 6{,}830 to avoid extra math-mode spacing after the comma"
+ },
+ "m00701": {
+  "latex": "\\begin{aligned} T &= \\frac{\\hat{\\mu}_t - \\hat{\\mu}_c}{s\\sqrt{\\dfrac{1}{n_t}+\\dfrac{1}{n_c}}} \\\\ \\hat{\\mu}_t &= \\frac{1}{n_t}\\sum_{i=1}^{n_t} x_{i}^{t}, \\quad \\hat{\\mu}_c = \\frac{1}{n_c}\\sum_{i=1}^{n_c} x_{i}^{c} \\\\ s &= \\sqrt{\\frac{(n_t -1)s_t^{2} + (n_c -1)s_c^{2}}{n_t + n_c -2}} \\end{aligned}",
+  "confidence": 0.75,
+  "notes": "the crop cuts off the leading 'hat{mu}_t =' on the second line (left edge of the image); reconstructed it by symmetry with the printed hat{mu}_c = term and the context defining sample means for treatment/control groups"
+ },
+ "m00724": {
+  "latex": "p\\text{-value} = \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B},",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00726": {
+  "latex": "\\text{3. The } p\\text{-value is given by } \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B}\\text{.}",
+  "confidence": 0.9,
+  "notes": "printed as a numbered algorithm step, so the '3.' and surrounding sentence words are kept as \\text{...}"
+ },
+ "m00727": {
+  "latex": "\\mathrm{FDR} = E\\left(\\frac{V}{R}\\right) \\approx \\frac{\\mathrm{E}(V)}{R}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00734": {
+  "latex": "\\text{4. Compute } \\widehat{V} = \\frac{\\sum_{b=1}^{B}\\sum_{j=1}^{m} 1_{\\left(|T^{(j),*b}| \\ge c\\right)}}{B}\\text{.}",
+  "confidence": 0.9,
+  "notes": "printed as a numbered algorithm step, so the '4. Compute' text is kept as \\text{...}"
+ },
+ "m00737": {
+  "latex": "\\binom{5}{2}",
+  "confidence": 0.75,
+  "notes": "extracted_characters only captured the trailing '2', but the crop clearly shows a stacked 5 over 2 with parenthesis edges visible, matching the surrounding sentence's 5(5-1)/2 = 10 computation"
  }
 }

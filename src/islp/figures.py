@@ -17,7 +17,7 @@ from dataclasses import dataclass
 
 import pymupdf
 
-from .pagemodel import Page, Zone
+from .pagemodel import Page, VLine, Zone
 
 CAPTION_RE = re.compile(r"^\s*(FIGURE|TABLE)\s+([A-Z]?\.?\d+\.\d+)\.")
 CONTENT_X0 = 45.0
@@ -56,6 +56,25 @@ def _caption_lines(page: Page):
             yield line, match.group(1).lower(), match.group(2)
 
 
+def _caption_bottom(page: Page, first: VLine) -> float:
+    """How far down the page a caption runs: its own line plus the lines that continue it, all
+    set at the same smaller size."""
+    bottom = first.y1
+    previous = first
+    for other in sorted(page.lines, key=lambda ln: ln.baseline):
+        if other.baseline <= previous.baseline + 0.1:
+            continue
+        if other.zone not in (Zone.MAIN, Zone.CODE):
+            continue
+        if abs(other.size - first.size) > 0.6:
+            break
+        if other.baseline - previous.baseline > 16.0:
+            break
+        bottom = max(bottom, other.y1)
+        previous = other
+    return bottom
+
+
 def _ruled_table_boxes(pdf_page: pymupdf.Page) -> list[tuple[float, float, float, float]]:
     try:
         finder = pdf_page.find_tables(strategy="lines_strict")
@@ -69,15 +88,17 @@ def detect_regions(page: Page, pdf_page: pymupdf.Page) -> list[Region]:
     regions: list[Region] = []
     ruled = _ruled_table_boxes(pdf_page)
     captions = list(_caption_lines(page))
-    caption_tops = sorted(line.y0 for line, _, _ in captions)
+    caption_extents = [(line.y0, _caption_bottom(page, line)) for line, _, _ in captions]
 
     for line, kind, number in captions:
         caption_top = line.y0
-        # the region cannot reach above the previous caption on this page
+        # The region cannot reach above the previous caption, and must clear the whole of it:
+        # a caption runs to several lines, and stopping at its first line left the previous
+        # figure's caption sitting inside this figure's picture.
         floor = TOP_MARGIN
-        for other_top in caption_tops:
+        for other_top, other_bottom in caption_extents:
             if other_top < caption_top - 4:
-                floor = max(floor, other_top)
+                floor = max(floor, other_bottom)
 
         caption_floor = floor
         # a body-text line above the caption ends the region

@@ -1,0 +1,227 @@
+[
+ {
+  "id": "m00247",
+  "compare": "work/math_compare/m00247.png",
+  "latex": "\\eta(\\mathrm{E}(Y|X_1, \\ldots, X_p)) = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p.",
+  "characters": "η(E(Y |X1, . . . , Xp)) = β0 + β1X1 + · · · + βpXp.",
+  "kind": "display",
+  "page_pdf": 182,
+  "equation_number": "4.42"
+ },
+ {
+  "id": "m00250",
+  "compare": "work/math_compare/m00250.png",
+  "latex": "\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\quad \\text{and} \\quad \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2",
+  "characters": "�n �n",
+  "kind": "inline",
+  "page_pdf": 192,
+  "equation_number": ""
+ },
+ {
+  "id": "m00251",
+  "compare": "work/math_compare/m00251.png",
+  "latex": "\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\quad \\text{and} \\quad \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2",
+  "characters": "1 1",
+  "kind": "inline",
+  "page_pdf": 192,
+  "equation_number": ""
+ },
+ {
+  "id": "m00253",
+  "compare": "work/math_compare/m00253.png",
+  "latex": "\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\quad \\text{and} \\quad \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2",
+  "characters": "n n−1",
+  "kind": "inline",
+  "page_pdf": 192,
+  "equation_number": ""
+ },
+ {
+  "id": "m00254",
+  "compare": "work/math_compare/m00254.png",
+  "latex": "\\text{coefficient,}\\ \\hat{\\beta}_0 = -6, \\hat{\\beta}_1 = 0.05, \\hat{\\beta}_2 = 1.",
+  "characters": "coefficient, βˆ0 = −6, βˆ1 = 0.05, βˆ2 = 1.",
+  "kind": "display",
+  "page_pdf": 204,
+  "equation_number": ""
+ },
+ {
+  "id": "m00258",
+  "compare": "work/math_compare/m00258.png",
+  "latex": "f(x) = \\frac{1}{\\sqrt{2\\pi\\sigma^{2}}} e^{-(x-\\mu)^{2}/2\\sigma^{2}}",
+  "characters": "f(x) =2πσ2 e−(x−µ)2/2σ2",
+  "kind": "inline",
+  "page_pdf": 204,
+  "equation_number": ""
+ },
+ {
+  "id": "m00259",
+  "compare": "work/math_compare/m00259.png",
+  "latex": "\\left(\\frac{\\mathrm{Pr}(Y=k|X=x)}{\\mathrm{Pr}(Y=K|X=x)}\\right)",
+  "characters": "��\nPr(Y =k|X=x)\nPr(Y =K|X=x)",
+  "kind": "display",
+  "page_pdf": 205,
+  "equation_number": ""
+ },
+ {
+  "id": "m00261",
+  "compare": "work/math_compare/m00261.png",
+  "latex": "\\widehat{\\mathrm{Pr}}(Y = \\texttt{orange}|X = x) = \\frac{\\exp(\\hat{\\beta}_0+\\hat{\\beta}_1 x)}{1+\\exp(\\hat{\\beta}_0+\\hat{\\beta}_1 x)}.",
+  "characters": "exp(βˆ0 + βˆ1x)\n�\nPr(Y = orange|X = x) =.\n1 + exp(βˆ0 + βˆ1x)",
+  "kind": "display",
+  "page_pdf": 205,
+  "equation_number": ""
+ },
+ {
+  "id": "m00262",
+  "compare": "work/math_compare/m00262.png",
+  "latex": "\\widehat{\\mathrm{Pr}}(Y = \\texttt{orange}|X = x) = \\frac{\\exp(\\hat{\\alpha}_{\\texttt{orange}0}+\\hat{\\alpha}_{\\texttt{orange}1} x)}{\\exp(\\hat{\\alpha}_{\\texttt{orange}0}+\\hat{\\alpha}_{\\texttt{orange}1} x) + \\exp(\\hat{\\alpha}_{\\texttt{apple}0}+\\hat{\\alpha}_{\\texttt{apple}1} x)}.",
+  "characters": "�\nPr(Y = orange|X = x) =\nexp(αˆorange0 + αˆorange1x)\nexp(αˆorange0 + αˆorange1x) + exp(αˆapple0 + αˆapple1x).",
+  "kind": "display",
+  "page_pdf": 205,
+  "equation_number": ""
+ },
+ {
+  "id": "m00265",
+  "compare": "work/math_compare/m00265.png",
+  "latex": "\\text{estimates } \\hat{\\alpha}_{\\texttt{orange}0} = 1.2, \\hat{\\alpha}_{\\texttt{orange}1} = -2, \\hat{\\alpha}_{\\texttt{orange}0} = 3, \\hat{\\alpha}_{\\texttt{orange}1} = 0.6. \\text{ What are the coefficient estimates in your model?}",
+  "characters": "estimates αˆorange0 = 1.2, αˆorange1 = −2, αˆorange0 = 3, αˆorange1 =\n0.6. What are the coefficient estimates in your model?",
+  "kind": "display",
+  "page_pdf": 205,
+  "equation_number": ""
+ },
+ {
+  "id": "m00266",
+  "compare": "work/math_compare/m00266.png",
+  "latex": "6,561.",
+  "characters": "6, 561.",
+  "kind": "display",
+  "page_pdf": 207,
+  "equation_number": ""
+ },
+ {
+  "id": "m00270",
+  "compare": "work/math_compare/m00270.png",
+  "latex": "\\mathrm{CV}_{(n)} = \\frac{1}{n}\\sum_{i=1}^{n} \\mathrm{MSE}_i.",
+  "characters": "n\n�\nCV(n) = 1MSEi.\nn\ni=1",
+  "kind": "display",
+  "page_pdf": 212,
+  "equation_number": "5.1"
+ },
+ {
+  "id": "m00271",
+  "compare": "work/math_compare/m00271.png",
+  "latex": "\\mathrm{CV}_{(n)} = \\frac{1}{n}\\sum_{i=1}^{n}\\left(\\frac{y_i - \\hat{y}_i}{1 - h_i}\\right)^{2},",
+  "characters": "�2\nn\n�\n�yi −yˆi\nCV(n) = 1,\nn1 −hi\ni=1",
+  "kind": "display",
+  "page_pdf": 213,
+  "equation_number": "5.2"
+ },
+ {
+  "id": "m00272",
+  "compare": "work/math_compare/m00272.png",
+  "latex": "\\mathrm{CV}_{(k)} = \\frac{1}{k}\\sum_{i=1}^{k}\\mathrm{MSE}_{i}.",
+  "characters": "k\n�\nCV(k) = 1MSEi.\nk\ni=1",
+  "kind": "display",
+  "page_pdf": 214,
+  "equation_number": "5.3"
+ },
+ {
+  "id": "m00273",
+  "compare": "work/math_compare/m00273.png",
+  "latex": "\\mathrm{CV}_{(n)} = \\frac{1}{n}\\sum_{i=1}^{n}\\mathrm{Err}_{i},",
+  "characters": "n\n�\nCV(n) = 1Erri,\nn\ni=1",
+  "kind": "display",
+  "page_pdf": 217,
+  "equation_number": "5.4"
+ },
+ {
+  "id": "m00274",
+  "compare": "work/math_compare/m00274.png",
+  "latex": "\\mathrm{Err}_{i} = I(y_i \\neq \\hat{y}_i).",
+  "characters": "Erri = I(yi̸ = yi)",
+  "kind": "inline",
+  "page_pdf": 217,
+  "equation_number": ""
+ },
+ {
+  "id": "m00275",
+  "compare": "work/math_compare/m00275.png",
+  "latex": "\\log\\left(\\frac{p}{1 - p}\\right) = \\beta_{0} + \\beta_{1}X_{1} + \\beta_{2}X_{1}^{2} + \\beta_{3}X_{2} + \\beta_{4}X_{2}^{2}.",
+  "characters": "��\np\nlog= β0 + β1X1 + β2X12 + β3X2 + β4X22.\n1 −p",
+  "kind": "display",
+  "page_pdf": 218,
+  "equation_number": "5.5"
+ },
+ {
+  "id": "m00276",
+  "compare": "work/math_compare/m00276.png",
+  "latex": "\\alpha = \\frac{\\sigma_Y^2 - \\sigma_{XY}}{\\sigma_X^2 + \\sigma_Y^2 - 2\\sigma_{XY}},",
+  "characters": "σY2 −σXY\nα =,\nσX2 + σY2 −2σXY",
+  "kind": "display",
+  "page_pdf": 220,
+  "equation_number": "5.6"
+ },
+ {
+  "id": "m00280",
+  "compare": "work/math_compare/m00280.png",
+  "latex": "\\hat{\\alpha} = \\frac{\\hat{\\sigma}_Y^2 - \\hat{\\sigma}_{XY}}{\\hat{\\sigma}_X^2 + \\hat{\\sigma}_Y^2 - 2\\hat{\\sigma}_{XY}}.",
+  "characters": "σˆY2 −σˆXY\nαˆ =.\nσˆX2 + σˆY2 −2σˆXY",
+  "kind": "display",
+  "page_pdf": 220,
+  "equation_number": "5.7"
+ },
+ {
+  "id": "m00283",
+  "compare": "work/math_compare/m00283.png",
+  "latex": "\\bar{\\alpha} = \\frac{1}{1000}\\sum_{r=1}^{1000}\\hat{\\alpha}_{r} = 0.5996,",
+  "characters": "1000\n�\n1\nα¯ =αˆr = 0.5996,\n1000\nr=1",
+  "kind": "display",
+  "page_pdf": 221,
+  "equation_number": ""
+ },
+ {
+  "id": "m00284",
+  "compare": "work/math_compare/m00284.png",
+  "latex": "\\sqrt{\\frac{1}{1000 - 1}\\sum_{r=1}^{1000}\\left(\\hat{\\alpha}_{r} - \\bar{\\alpha}\\right)^{2}} = 0.083.",
+  "characters": "�\n�\n1000\n��\n1\n�\n(αˆr −α¯)2 = 0.083.\n1000 −1\nr=1",
+  "kind": "display",
+  "page_pdf": 221,
+  "equation_number": ""
+ },
+ {
+  "id": "m00289",
+  "compare": "work/math_compare/m00289.png",
+  "latex": "\\mathrm{SE}_{B}(\\hat{\\alpha}) = \\sqrt{\\frac{1}{B-1}\\sum_{r=1}^{B}\\left(\\hat{\\alpha}^{*r} - \\frac{1}{B}\\sum_{r'=1}^{B}\\hat{\\alpha}^{*r'}\\right)^{2}}.",
+  "characters": "�\n���2\nBB\n���\n1\n�\nSEB(αˆ) =αˆ∗r −1αˆ∗r′.\nB −1B\nr=1r′=1",
+  "kind": "display",
+  "page_pdf": 222,
+  "equation_number": "5.8"
+ },
+ {
+  "id": "m00291",
+  "compare": "work/math_compare/m00291.png",
+  "latex": "\\begin{aligned}\n\\text{i.}\\quad Y &= \\beta_{0} + \\beta_{1}X + \\epsilon \\\\\n\\text{ii.}\\quad Y &= \\beta_{0} + \\beta_{1}X + \\beta_{2}X^{2} + \\epsilon \\\\\n\\text{iii.}\\quad Y &= \\beta_{0} + \\beta_{1}X + \\beta_{2}X^{2} + \\beta_{3}X^{3} + \\epsilon \\\\\n\\text{iv.}\\quad Y &= \\beta_{0} + \\beta_{1}X + \\beta_{2}X^{2} + \\beta_{3}X^{3} + \\beta_{4}X^{4} + \\epsilon.\n\\end{aligned}",
+  "characters": "i. Y = β0 + β1X + ϵ\nii. Y = β0 + β1X + β2X2 + ϵ\niii. Y = β0 + β1X + β2X2 + β3X3 + ϵ\niv. Y = β0 + β1X + β2X2 + β3X3 + β4X4 + ϵ.",
+  "kind": "display",
+  "page_pdf": 235,
+  "equation_number": ""
+ },
+ {
+  "id": "m00292",
+  "compare": "work/math_compare/m00292.png",
+  "latex": "\\text{formula } \\left[\\hat{\\mu} - 2\\mathrm{SE}(\\hat{\\mu}),\\ \\hat{\\mu} + 2\\mathrm{SE}(\\hat{\\mu})\\right].",
+  "characters": "formula [µˆ −2SE(µˆ), µˆ + 2SE(µˆ)].",
+  "kind": "display",
+  "page_pdf": 236,
+  "equation_number": ""
+ },
+ {
+  "id": "m00295",
+  "compare": "work/math_compare/m00295.png",
+  "latex": "Y = \\beta_{0} + \\beta_{1}X_{1} + \\cdots + \\beta_{p}X_{p} + \\epsilon",
+  "characters": "Y = β0 + β1X1 + · · · + βpXp + ϵ",
+  "kind": "display",
+  "page_pdf": 237,
+  "equation_number": "6.1"
+ }
+]

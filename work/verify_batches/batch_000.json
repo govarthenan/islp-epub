@@ -1,0 +1,227 @@
+[
+ {
+  "id": "m00001",
+  "compare": "work/math_compare/m00001.png",
+  "latex": "\\mathbf{X} = \\begin{pmatrix} x_{11} & x_{12} & \\cdots & x_{1p} \\\\ x_{21} & x_{22} & \\cdots & x_{2p} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ x_{n1} & x_{n2} & \\cdots & x_{np} \\end{pmatrix}.",
+  "characters": "\nx11x12. . .x1p\n\nx21x22. . .x2p\n\nX =.........\n...\n.\nxn1xn2. . .xnp",
+  "kind": "display",
+  "page_pdf": 20,
+  "equation_number": ""
+ },
+ {
+  "id": "m00002",
+  "compare": "work/math_compare/m00002.png",
+  "latex": "x_i = \\begin{pmatrix} x_{i1} \\\\ x_{i2} \\\\ \\vdots \\\\ x_{ip} \\end{pmatrix}.",
+  "characters": "\nxi1\n\nxi2\n\nxi =...\n.\nxip",
+  "kind": "display",
+  "page_pdf": 20,
+  "equation_number": "1.1"
+ },
+ {
+  "id": "m00003",
+  "compare": "work/math_compare/m00003.png",
+  "latex": "\\mathbf{x}_j = \\begin{pmatrix} x_{1j} \\\\ x_{2j} \\\\ \\vdots \\\\ x_{nj} \\end{pmatrix}.",
+  "characters": "\nx1j\n\nx2j\n\nxj =...\n.\nxnj",
+  "kind": "display",
+  "page_pdf": 20,
+  "equation_number": ""
+ },
+ {
+  "id": "m00004",
+  "compare": "work/math_compare/m00004.png",
+  "latex": "\\begin{gathered} \\mathbf{X} = \\begin{pmatrix} \\mathbf{x}_1 & \\mathbf{x}_2 & \\cdots & \\mathbf{x}_p \\end{pmatrix}, \\\\[2em] \\mathbf{X} = \\begin{pmatrix} x_1^T \\\\ x_2^T \\\\ \\vdots \\\\ x_n^T \\end{pmatrix}. \\end{gathered}",
+  "characters": "�x1�\nX =x2· · ·xp,\n\nxT\n1\n\nxT\n2\n\nX =...\n.\nxT\nn",
+  "kind": "display",
+  "page_pdf": 20,
+  "equation_number": ""
+ },
+ {
+  "id": "m00005",
+  "compare": "work/math_compare/m00005.png",
+  "latex": "\\mathbf{X}^T = \\begin{pmatrix} x_{11} & x_{21} & \\cdots & x_{n1} \\\\ x_{12} & x_{22} & \\cdots & x_{n2} \\\\ \\vdots & \\vdots & & \\vdots \\\\ x_{1p} & x_{2p} & \\cdots & x_{np} \\end{pmatrix},",
+  "characters": "\nx11x21. . .xn1\n\nx12x22. . .xn2\n\nXT =.........\n,\nx1px2p. . .xnp",
+  "kind": "display",
+  "page_pdf": 20,
+  "equation_number": ""
+ },
+ {
+  "id": "m00006",
+  "compare": "work/math_compare/m00006.png",
+  "latex": "x_i^T = \\begin{pmatrix} x_{i1} & x_{i2} & \\cdots & x_{ip} \\end{pmatrix}.",
+  "characters": "�xi1�\nxTi =xi2· · ·xip.",
+  "kind": "display",
+  "page_pdf": 21,
+  "equation_number": ""
+ },
+ {
+  "id": "m00007",
+  "compare": "work/math_compare/m00007.png",
+  "latex": "\\mathbf{y} = \\begin{pmatrix} y_1 \\\\ y_2 \\\\ \\vdots \\\\ y_n \\end{pmatrix}.",
+  "characters": "\ny1\n\ny2\n\ny =...\n.\nyn",
+  "kind": "display",
+  "page_pdf": 21,
+  "equation_number": ""
+ },
+ {
+  "id": "m00008",
+  "compare": "work/math_compare/m00008.png",
+  "latex": "\\mathbf{a} = \\begin{pmatrix} a_1 \\\\ a_2 \\\\ \\vdots \\\\ a_n \\end{pmatrix}.",
+  "characters": "\na1\n\na2\n\na =...\n.\nan",
+  "kind": "display",
+  "page_pdf": 21,
+  "equation_number": ""
+ },
+ {
+  "id": "m00015",
+  "compare": "work/math_compare/m00015.png",
+  "latex": "(\\mathbf{A}\\mathbf{B})_{ij} = \\sum_{k=1}^{d} a_{ik} b_{kj}",
+  "characters": "(AB)ij = �dk=1 aikbkj",
+  "kind": "inline",
+  "page_pdf": 21,
+  "equation_number": ""
+ },
+ {
+  "id": "m00016",
+  "compare": "work/math_compare/m00016.png",
+  "latex": "\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\quad\\text{and}\\quad \\mathbf{B} = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}.",
+  "characters": "�1��5�\n26\nA =andB =.\n3478",
+  "kind": "display",
+  "page_pdf": 21,
+  "equation_number": ""
+ },
+ {
+  "id": "m00017",
+  "compare": "work/math_compare/m00017.png",
+  "latex": "\\mathbf{AB} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix} = \\begin{pmatrix} 1\\times 5+2\\times 7 & 1\\times 6+2\\times 8 \\\\ 3\\times 5+4\\times 7 & 3\\times 6+4\\times 8 \\end{pmatrix} = \\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}.",
+  "characters": "�1��5���\n26�1 × 5 + 2 × 71 × 6 + 2 × 8�1922\nAB ===.\n34783 × 5 + 4 × 73 × 6 + 4 × 84350",
+  "kind": "display",
+  "page_pdf": 21,
+  "equation_number": ""
+ },
+ {
+  "id": "m00018",
+  "compare": "work/math_compare/m00018.png",
+  "latex": "Y = f(X) + \\epsilon.",
+  "characters": "Y = f(X) + ϵ.",
+  "kind": "display",
+  "page_pdf": 25,
+  "equation_number": "2.1"
+ },
+ {
+  "id": "m00019",
+  "compare": "work/math_compare/m00019.png",
+  "latex": "\\hat{Y} = \\hat{f}(X),",
+  "characters": "Yˆ = fˆ(X),",
+  "kind": "display",
+  "page_pdf": 27,
+  "equation_number": "2.2"
+ },
+ {
+  "id": "m00024",
+  "compare": "work/math_compare/m00024.png",
+  "latex": "\\begin{aligned} \\mathrm{E}(Y-\\hat{Y})^2 &= \\mathrm{E}[f(X)+\\epsilon-\\hat{f}(X)]^2 \\\\ &= \\underbrace{[f(X)-\\hat{f}(X)]^2} + \\underbrace{\\mathrm{Var}(\\epsilon)}, \\end{aligned}",
+  "characters": "E(Y −Yˆ )2=E[f(X) + ϵ −fˆ(X)]2\n=[f(X) −fˆ(X)]2+Var(ϵ),\n��������",
+  "kind": "display",
+  "page_pdf": 28,
+  "equation_number": "2.3"
+ },
+ {
+  "id": "m00027",
+  "compare": "work/math_compare/m00027.png",
+  "latex": "f(X) = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p.",
+  "characters": "f(X) = β0 + β1X1 + β2X2 + · · · + βpXp.",
+  "kind": "display",
+  "page_pdf": 30,
+  "equation_number": "2.4"
+ },
+ {
+  "id": "m00028",
+  "compare": "work/math_compare/m00028.png",
+  "latex": "Y \\approx \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p.",
+  "characters": "Y ≈β0 + β1X1 + β2X2 + · · · + βpXp.",
+  "kind": "display",
+  "page_pdf": 31,
+  "equation_number": ""
+ },
+ {
+  "id": "m00029",
+  "compare": "work/math_compare/m00029.png",
+  "latex": "\\texttt{income} \\approx \\beta_0 + \\beta_1 \\times \\texttt{education} + \\beta_2 \\times \\texttt{seniority}.",
+  "characters": "income ≈β0 + β1 × education + β2 × seniority.",
+  "kind": "display",
+  "page_pdf": 31,
+  "equation_number": ""
+ },
+ {
+  "id": "m00030",
+  "compare": "work/math_compare/m00030.png",
+  "latex": "\\mathrm{MSE} = \\frac{1}{n}\\sum_{i=1}^{n}(y_i - \\hat{f}(x_i))^2,",
+  "characters": "n\n�\nMSE = 1(yi −fˆ(xi))2,\nn\ni=1",
+  "kind": "display",
+  "page_pdf": 38,
+  "equation_number": "2.5"
+ },
+ {
+  "id": "m00035",
+  "compare": "work/math_compare/m00035.png",
+  "latex": "\\mathrm{Ave}(y_0 - \\hat{f}(x_0))^2,",
+  "characters": "Ave(y0 −fˆ(x0))2,",
+  "kind": "display",
+  "page_pdf": 39,
+  "equation_number": "2.6"
+ },
+ {
+  "id": "m00036",
+  "compare": "work/math_compare/m00036.png",
+  "latex": "\\mathrm{E}\\left(y_0 - \\hat{f}(x_0)\\right)^2 = \\mathrm{Var}(\\hat{f}(x_0)) + [\\mathrm{Bias}(\\hat{f}(x_0))]^2 + \\mathrm{Var}(\\epsilon).",
+  "characters": "��2\nEy0 −fˆ(x0)= Var( fˆ(x0)) + [Bias( fˆ(x0))]2 + Var(ϵ).\n��2",
+  "kind": "display",
+  "page_pdf": 42,
+  "equation_number": "2.7"
+ },
+ {
+  "id": "m00038",
+  "compare": "work/math_compare/m00038.png",
+  "latex": "\\frac{1}{n}\\sum_{i=1}^{n} I(y_i \\neq \\hat{y}_i).",
+  "characters": "n\n�\n1\nI(yi̸ = yˆi).\nn\ni=1",
+  "kind": "display",
+  "page_pdf": 45,
+  "equation_number": "2.8"
+ },
+ {
+  "id": "m00040",
+  "compare": "work/math_compare/m00040.png",
+  "latex": "I(y_i \\neq \\hat{y}_i)",
+  "characters": "I(yi̸ = yi)",
+  "kind": "inline",
+  "page_pdf": 45,
+  "equation_number": ""
+ },
+ {
+  "id": "m00041",
+  "compare": "work/math_compare/m00041.png",
+  "latex": "y_i \\neq \\hat{y}_i",
+  "characters": "yi̸ = yi",
+  "kind": "inline",
+  "page_pdf": 45,
+  "equation_number": ""
+ },
+ {
+  "id": "m00043",
+  "compare": "work/math_compare/m00043.png",
+  "latex": "I(y_i \\neq \\hat{y}_i) = 0",
+  "characters": "I(yi̸ = yi) = 0",
+  "kind": "inline",
+  "page_pdf": 45,
+  "equation_number": ""
+ },
+ {
+  "id": "m00044",
+  "compare": "work/math_compare/m00044.png",
+  "latex": "\\mathrm{Ave}\\left(I(y_0 \\neq \\hat{y}_0)\\right),",
+  "characters": "Ave (I(y0̸ = yˆ0)) ,",
+  "kind": "display",
+  "page_pdf": 45,
+  "equation_number": "2.9"
+ }
+]

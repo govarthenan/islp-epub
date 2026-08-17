@@ -1,0 +1,227 @@
+[
+ {
+  "id": "m00533",
+  "compare": "work/math_compare/m00533.png",
+  "latex": "\\sum_{j=1}^{p} x_{ij} x_{i'j}",
+  "characters": "�pj=1 xijxi′j",
+  "kind": "inline",
+  "page_pdf": 387,
+  "equation_number": ""
+ },
+ {
+  "id": "m00534",
+  "compare": "work/math_compare/m00534.png",
+  "latex": "K(x_i, x_{i'}) = \\left(1 + \\sum_{j=1}^{p} x_{ij} x_{i'j}\\right)^d.",
+  "characters": "p\n�\nK(xi, xi′) = (1 +xijxi′j)d.\nj=1",
+  "kind": "display",
+  "page_pdf": 387,
+  "equation_number": "9.22"
+ },
+ {
+  "id": "m00535",
+  "compare": "work/math_compare/m00535.png",
+  "latex": "f(x) = \\beta_0 + \\sum_{i \\in \\mathcal{S}} \\alpha_i K(x, x_i).",
+  "characters": "�\nf(x) = β0 +αiK(x, xi).\ni∈S",
+  "kind": "display",
+  "page_pdf": 388,
+  "equation_number": "9.23"
+ },
+ {
+  "id": "m00536",
+  "compare": "work/math_compare/m00536.png",
+  "latex": "K(x_i, x_{i'}) = \\exp\\left(-\\gamma \\sum_{j=1}^{p} (x_{ij} - x_{i'j})^2\\right).",
+  "characters": "p\n�\nK(xi, xi′) = exp(−γ(xij −xi′j)2).\nj=1",
+  "kind": "display",
+  "page_pdf": 388,
+  "equation_number": "9.24"
+ },
+ {
+  "id": "m00537",
+  "compare": "work/math_compare/m00537.png",
+  "latex": "\\sum_{j=1}^{p} (x_j^* - x_{ij})^2",
+  "characters": "�pj=1(x∗j −xij)2",
+  "kind": "inline",
+  "page_pdf": 388,
+  "equation_number": ""
+ },
+ {
+  "id": "m00538",
+  "compare": "work/math_compare/m00538.png",
+  "latex": "\\exp\\left(-\\gamma \\sum_{j=1}^{p} (x_j^* - x_{ij})^2\\right)",
+  "characters": "exp(−γ �pj=1(x∗j − xij)2)",
+  "kind": "inline",
+  "page_pdf": 388,
+  "equation_number": ""
+ },
+ {
+  "id": "m00539",
+  "compare": "work/math_compare/m00539.png",
+  "latex": "\\binom{n}{2}",
+  "characters": "�n�\n2",
+  "kind": "display",
+  "page_pdf": 389,
+  "equation_number": ""
+ },
+ {
+  "id": "m00543",
+  "compare": "work/math_compare/m00543.png",
+  "latex": "\\binom{K}{2}",
+  "characters": "�K�\n2",
+  "kind": "display",
+  "page_pdf": 391,
+  "equation_number": ""
+ },
+ {
+  "id": "m00544",
+  "compare": "work/math_compare/m00544.png",
+  "latex": "\\binom{K}{2}",
+  "characters": "2",
+  "kind": "display",
+  "page_pdf": 391,
+  "equation_number": ""
+ },
+ {
+  "id": "m00545",
+  "compare": "work/math_compare/m00545.png",
+  "latex": "\\binom{K}{2}",
+  "characters": "�K�",
+  "kind": "inline",
+  "page_pdf": 391,
+  "equation_number": ""
+ },
+ {
+  "id": "m00546",
+  "compare": "work/math_compare/m00546.png",
+  "latex": "\\binom{K}{2}",
+  "characters": "2",
+  "kind": "display",
+  "page_pdf": 391,
+  "equation_number": ""
+ },
+ {
+  "id": "m00547",
+  "compare": "work/math_compare/m00547.png",
+  "latex": "\\operatorname*{minimize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p} \\left\\{ \\sum_{i=1}^{n} \\max\\left[0, 1 - y_i f(x_i)\\right] + \\lambda \\sum_{j=1}^{p} \\beta_j^2 \\right\\},",
+  "characters": "\nnp\n\n��\nminimizemax [0, 1 −yif(xi)] + λβ2\nj\nβ0,β1,...,βp\n,\ni=1j=1",
+  "kind": "display",
+  "page_pdf": 391,
+  "equation_number": "9.25"
+ },
+ {
+  "id": "m00548",
+  "compare": "work/math_compare/m00548.png",
+  "latex": "\\lambda \\sum_{j=1}^{p} \\beta_j^2",
+  "characters": "λ �pj=1 βj2",
+  "kind": "inline",
+  "page_pdf": 392,
+  "equation_number": ""
+ },
+ {
+  "id": "m00549",
+  "compare": "work/math_compare/m00549.png",
+  "latex": "\\operatorname*{minimize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p} \\left\\{ L(\\mathbf{X}, \\mathbf{y}, \\beta) + \\lambda P(\\beta) \\right\\}.",
+  "characters": "βm0,iβn1i,m...i,zβep {L(X, y, β) + λP(β)} .",
+  "kind": "display",
+  "page_pdf": 392,
+  "equation_number": "9.26"
+ },
+ {
+  "id": "m00550",
+  "compare": "work/math_compare/m00550.png",
+  "latex": "L(\\mathbf{X}, \\mathbf{y}, \\beta) = \\sum_{i=1}^{n} \\left( y_i - \\beta_0 - \\sum_{j=1}^{p} x_{ij}\\beta_j \\right)^2",
+  "characters": "\n2\nnp\n��\n\nL(X, y, β) =yi −β0 −xijβj\ni=1j=1",
+  "kind": "display",
+  "page_pdf": 392,
+  "equation_number": ""
+ },
+ {
+  "id": "m00551",
+  "compare": "work/math_compare/m00551.png",
+  "latex": "P(\\beta) = \\sum_{j=1}^{p} \\beta_j^2",
+  "characters": "P(β) = �pj=1 βj2",
+  "kind": "inline",
+  "page_pdf": 392,
+  "equation_number": ""
+ },
+ {
+  "id": "m00552",
+  "compare": "work/math_compare/m00552.png",
+  "latex": "P(\\beta) = \\sum_{j=1}^{p} |\\beta_j|",
+  "characters": "P(β) = �pj=1 |βj|",
+  "kind": "inline",
+  "page_pdf": 392,
+  "equation_number": ""
+ },
+ {
+  "id": "m00553",
+  "compare": "work/math_compare/m00553.png",
+  "latex": "L(\\mathbf{X}, \\mathbf{y}, \\beta) = \\sum_{i=1}^{n} \\max\\left[0, 1 - y_i(\\beta_0 + \\beta_1 x_{i1} + \\cdots + \\beta_p x_{ip})\\right].",
+  "characters": "n\n�\nL(X, y, β) =max [0, 1 −yi(β0 + β1xi1 + · · · + βpxip)] .\ni=1",
+  "kind": "display",
+  "page_pdf": 392,
+  "equation_number": ""
+ },
+ {
+  "id": "m00554",
+  "compare": "work/math_compare/m00554.png",
+  "latex": "\\sum \\beta_j^2",
+  "characters": "�βj2",
+  "kind": "inline",
+  "page_pdf": 392,
+  "equation_number": ""
+ },
+ {
+  "id": "m00556",
+  "compare": "work/math_compare/m00556.png",
+  "latex": "(1 + X_1)^2 + (2 - X_2)^2 = 4.",
+  "characters": "(1 + X1)2 + (2 −X2)2 = 4.",
+  "kind": "display",
+  "page_pdf": 402,
+  "equation_number": ""
+ },
+ {
+  "id": "m00557",
+  "compare": "work/math_compare/m00557.png",
+  "latex": "(1 + X_1)^2 + (2 - X_2)^2 > 4,",
+  "characters": "(1 + X1)2 + (2 −X2)2 > 4,",
+  "kind": "display",
+  "page_pdf": 402,
+  "equation_number": ""
+ },
+ {
+  "id": "m00558",
+  "compare": "work/math_compare/m00558.png",
+  "latex": "(1 + X_1)^2 + (2 - X_2)^2 \\leq 4.",
+  "characters": "(1 + X1)2 + (2 −X2)2 ≤4.",
+  "kind": "display",
+  "page_pdf": 402,
+  "equation_number": ""
+ },
+ {
+  "id": "m00559",
+  "compare": "work/math_compare/m00559.png",
+  "latex": "(1 + X_1)^2 + (2 - X_2)^2 > 4,",
+  "characters": "(1 + X1)2 + (2 −X2)2 > 4,",
+  "kind": "display",
+  "page_pdf": 402,
+  "equation_number": ""
+ },
+ {
+  "id": "m00560",
+  "compare": "work/math_compare/m00560.png",
+  "latex": "X_{2}^{2}.",
+  "characters": "X22.",
+  "kind": "display",
+  "page_pdf": 402,
+  "equation_number": ""
+ },
+ {
+  "id": "m00561",
+  "compare": "work/math_compare/m00561.png",
+  "latex": "\\begin{aligned} f(X) &= \\beta_0 + \\sum_{k=1}^{K} \\beta_k h_k(X) \\\\ &= \\beta_0 + \\sum_{k=1}^{K} \\beta_k g\\!\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} X_j\\right). \\end{aligned}",
+  "characters": "f(X)=β0 + �kK=1 βkhk(X)\n=β0 + �kK=1 βkg(wk0 + �jp=1 wkjXj).",
+  "kind": "display",
+  "page_pdf": 407,
+  "equation_number": "10.1"
+ }
+]

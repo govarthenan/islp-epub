@@ -1,0 +1,227 @@
+[
+ {
+  "id": "m00430",
+  "compare": "work/math_compare/m00430.png",
+  "latex": "f_{1}''(x) = 2c_{1} + 6d_{1}x.",
+  "characters": "f 1′′ (x) = 2c1 + 6d1x.",
+  "kind": "display",
+  "page_pdf": 334,
+  "equation_number": ""
+ },
+ {
+  "id": "m00432",
+  "compare": "work/math_compare/m00432.png",
+  "latex": "\\hat{g} = \\operatorname*{argmin}_{g} \\left( \\sum_{i=1}^{n} (y_{i} - g(x_{i}))^{2} + \\lambda \\int \\left[g^{(m)}(x)\\right]^{2} dx \\right),",
+  "characters": "�n�\n��\n�2\n�\ngˆ = arg min(yi −g(xi))2 + λg(m)(x)dx,\ng\ni=1",
+  "kind": "display",
+  "page_pdf": 334,
+  "equation_number": ""
+ },
+ {
+  "id": "m00433",
+  "compare": "work/math_compare/m00433.png",
+  "latex": "Y = \\beta_{0} + \\beta_{1}b_{1}(X) + \\beta_{2}b_{2}(X) + \\epsilon,",
+  "characters": "Y = β0 + β1b1(X) + β2b2(X) + ϵ,",
+  "kind": "display",
+  "page_pdf": 334,
+  "equation_number": ""
+ },
+ {
+  "id": "m00435",
+  "compare": "work/math_compare/m00435.png",
+  "latex": "(X-1)I(1 \\leq X \\leq 2), \\ b_{2}(X) = (X-3)I(3 \\leq X \\leq 4) + I(4 < X \\leq 5).",
+  "characters": "(X −1)I(1 ≤X ≤2), b2(X) = (X −3)I(3 ≤X ≤4)+I(4 < X ≤5).",
+  "kind": "display",
+  "page_pdf": 334,
+  "equation_number": ""
+ },
+ {
+  "id": "m00436",
+  "compare": "work/math_compare/m00436.png",
+  "latex": "Y = \\beta_{0} + \\beta_{1}b_{1}(X) + \\beta_{2}b_{2}(X) + \\epsilon,",
+  "characters": "Y = β0 + β1b1(X) + β2b2(X) + ϵ,",
+  "kind": "display",
+  "page_pdf": 334,
+  "equation_number": ""
+ },
+ {
+  "id": "m00440",
+  "compare": "work/math_compare/m00440.png",
+  "latex": "\\begin{aligned}\n\\hat{g}_1 &= \\operatorname*{argmin}_{g}\\left(\\sum_{i=1}^{n}(y_i - g(x_i))^2 + \\lambda \\int \\left[g^{(3)}(x)\\right]^2 dx\\right), \\\\\n\\hat{g}_2 &= \\operatorname*{argmin}_{g}\\left(\\sum_{i=1}^{n}(y_i - g(x_i))^2 + \\lambda \\int \\left[g^{(4)}(x)\\right]^2 dx\\right), \\\\\n&\\text{where } g^{(m)} \\text{ represents the } m\\text{th derivative of } g.\n\\end{aligned}",
+  "characters": "�n�\n��\n�2\n�\ngˆ1 = arg min(yi −g(xi))2 + λg(3)(x)dx,\ng\ni=1\n�n�\n��\n�2\n�\ngˆ2 = arg min(yi −g(xi))2 + λg(4)(x)dx,\ng\ni=1\nwhere g(m) represents the mth derivative of g.",
+  "kind": "display",
+  "page_pdf": 334,
+  "equation_number": ""
+ },
+ {
+  "id": "m00441",
+  "compare": "work/math_compare/m00441.png",
+  "latex": "n = 100.",
+  "characters": "n = 100.",
+  "kind": "display",
+  "page_pdf": 336,
+  "equation_number": ""
+ },
+ {
+  "id": "m00442",
+  "compare": "work/math_compare/m00442.png",
+  "latex": "Y - \\texttt{beta1} \\cdot X_{1} = \\beta_{0} + \\beta_{2}X_{2} + \\epsilon.",
+  "characters": "Y −beta1 · X1 = β0 + β2X2 + ϵ.",
+  "kind": "display",
+  "page_pdf": 336,
+  "equation_number": ""
+ },
+ {
+  "id": "m00443",
+  "compare": "work/math_compare/m00443.png",
+  "latex": "Y - \\texttt{beta2} \\cdot X_{2} = \\beta_{0} + \\beta_{1}X_{1} + \\epsilon.",
+  "characters": "Y −beta2 · X2 = β0 + β1X1 + ϵ.",
+  "kind": "display",
+  "page_pdf": 336,
+  "equation_number": ""
+ },
+ {
+  "id": "m00444",
+  "compare": "work/math_compare/m00444.png",
+  "latex": "R_{1}, R_{2}, \\ldots, R_{J}.",
+  "characters": "R1, R2, . . . , RJ.",
+  "kind": "display",
+  "page_pdf": 340,
+  "equation_number": ""
+ },
+ {
+  "id": "m00445",
+  "compare": "work/math_compare/m00445.png",
+  "latex": "\\sum_{j=1}^{J} \\sum_{i \\in R_{j}} (y_{i} - \\hat{y}_{R_{j}})^{2},",
+  "characters": "J\n��\n(yi −yˆRj)2,\nj=1i∈Rj",
+  "kind": "display",
+  "page_pdf": 341,
+  "equation_number": "8.1"
+ },
+ {
+  "id": "m00447",
+  "compare": "work/math_compare/m00447.png",
+  "latex": "R_{1}(j, s) = \\{X|X_{j} < s\\} \\quad \\text{and} \\quad R_{2}(j, s) = \\{X|X_{j} \\geq s\\},",
+  "characters": "R1(j, s) = {X|Xj < s} and R2(j, s) = {X|Xj ≥s},",
+  "kind": "display",
+  "page_pdf": 341,
+  "equation_number": "8.2"
+ },
+ {
+  "id": "m00448",
+  "compare": "work/math_compare/m00448.png",
+  "latex": "\\sum_{i:\\, x_{i}\\in R_{1}(j,s)} (y_{i} - \\hat{y}_{R_{1}})^{2} + \\sum_{i:\\, x_{i}\\in R_{2}(j,s)} (y_{i} - \\hat{y}_{R_{2}})^{2},",
+  "characters": "��\n(yi −yˆR1)2 +(yi −yˆR2)2,\ni: xi∈R1(j,s)i: xi∈R2(j,s)",
+  "kind": "display",
+  "page_pdf": 341,
+  "equation_number": "8.3"
+ },
+ {
+  "id": "m00451",
+  "compare": "work/math_compare/m00451.png",
+  "latex": "\\sum_{m=1}^{|T|} \\sum_{i:\\, x_{i}\\in R_{m}} (y_{i} - \\hat{y}_{R_{m}})^{2} + \\alpha|T|",
+  "characters": "|T |\n��\n(yi −yˆRm)2 + α|T|\nm=1i: xi∈Rm",
+  "kind": "display",
+  "page_pdf": 343,
+  "equation_number": "8.4"
+ },
+ {
+  "id": "m00453",
+  "compare": "work/math_compare/m00453.png",
+  "latex": "E = 1 - \\max_{k}(\\hat{p}_{mk}).",
+  "characters": "E = 1 −mka x(pˆmk).",
+  "kind": "display",
+  "page_pdf": 345,
+  "equation_number": "8.5"
+ },
+ {
+  "id": "m00455",
+  "compare": "work/math_compare/m00455.png",
+  "latex": "G = \\sum_{k=1}^{K} \\hat{p}_{mk}(1 - \\hat{p}_{mk}),",
+  "characters": "K\n�\nG =pˆmk(1 −pˆmk),\nk=1",
+  "kind": "display",
+  "page_pdf": 345,
+  "equation_number": "8.6"
+ },
+ {
+  "id": "m00456",
+  "compare": "work/math_compare/m00456.png",
+  "latex": "D = -\\sum_{k=1}^{K} \\hat{p}_{mk} \\log \\hat{p}_{mk}.",
+  "characters": "K\n�\nD = −pˆmk log pˆmk.\nk=1",
+  "kind": "display",
+  "page_pdf": 346,
+  "equation_number": "8.7"
+ },
+ {
+  "id": "m00459",
+  "compare": "work/math_compare/m00459.png",
+  "latex": "f(X) = \\beta_{0} + \\sum_{j=1}^{p} X_{j}\\beta_{j},",
+  "characters": "p\n�\nf(X) = β0 +Xjβj,\nj=1",
+  "kind": "display",
+  "page_pdf": 348,
+  "equation_number": "8.8"
+ },
+ {
+  "id": "m00460",
+  "compare": "work/math_compare/m00460.png",
+  "latex": "f(X) = \\sum_{m=1}^{M} c_{m} \\cdot 1_{(X \\in R_{m})}",
+  "characters": "M\n�\nf(X) =cm · 1(X∈Rm)\nm=1",
+  "kind": "display",
+  "page_pdf": 348,
+  "equation_number": "8.9"
+ },
+ {
+  "id": "m00463",
+  "compare": "work/math_compare/m00463.png",
+  "latex": "\\hat{f}_{\\mathrm{avg}}(x) = \\frac{1}{B}\\sum_{b=1}^{B} \\hat{f}^{b}(x).",
+  "characters": "B\n�\nfˆ b(x).\nfˆavg(x) = 1\nB\nb=1",
+  "kind": "display",
+  "page_pdf": 350,
+  "equation_number": ""
+ },
+ {
+  "id": "m00465",
+  "compare": "work/math_compare/m00465.png",
+  "latex": "\\hat{f}_{\\mathrm{bag}}(x) = \\frac{1}{B}\\sum_{b=1}^{B} \\hat{f}^{*b}(x).",
+  "characters": "B\n�\nfˆ ∗b(x).\nfˆbag(x) = 1\nB\nb=1",
+  "kind": "display",
+  "page_pdf": 350,
+  "equation_number": ""
+ },
+ {
+  "id": "m00466",
+  "compare": "work/math_compare/m00466.png",
+  "latex": "m = \\sqrt{p}",
+  "characters": "m = √p",
+  "kind": "inline",
+  "page_pdf": 351,
+  "equation_number": ""
+ },
+ {
+  "id": "m00467",
+  "compare": "work/math_compare/m00467.png",
+  "latex": "m \\approx \\sqrt{p}",
+  "characters": "m ≈√p",
+  "kind": "inline",
+  "page_pdf": 353,
+  "equation_number": ""
+ },
+ {
+  "id": "m00471",
+  "compare": "work/math_compare/m00471.png",
+  "latex": "\\hat{f}(x) \\leftarrow \\hat{f}(x) + \\lambda \\hat{f}^{b}(x).",
+  "characters": "fˆ(x) ←fˆ(x) + λ fˆ b(x).",
+  "kind": "display",
+  "page_pdf": 356,
+  "equation_number": "8.10"
+ },
+ {
+  "id": "m00472",
+  "compare": "work/math_compare/m00472.png",
+  "latex": "r_{i} \\leftarrow r_{i} - \\lambda \\hat{f}^{b}(x_{i}).",
+  "characters": "ri ←ri −λ fˆ b(xi).",
+  "kind": "display",
+  "page_pdf": 356,
+  "equation_number": "8.11"
+ }
+]

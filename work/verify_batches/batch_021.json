@@ -1,0 +1,227 @@
+[
+ {
+  "id": "m00712",
+  "compare": "work/math_compare/m00712.png",
+  "latex": "L = \\min\\left\\{ j : p_{(j)} > \\frac{\\alpha}{m+1-j} \\right\\}.",
+  "characters": "��\nα\nL = minj : p(j) >.\nm + 1 −j",
+  "kind": "display",
+  "page_pdf": 575,
+  "equation_number": "13.7"
+ },
+ {
+  "id": "m00713",
+  "compare": "work/math_compare/m00713.png",
+  "latex": "\\mu_{1} = \\mu_{2} = \\mu_{3} = \\mu_{4} = \\mu_{5} \\neq \\mu_{6}",
+  "characters": "µ1 = µ2 = µ3 = µ4 = µ5̸ = µ6",
+  "kind": "inline",
+  "page_pdf": 577,
+  "equation_number": ""
+ },
+ {
+  "id": "m00714",
+  "compare": "work/math_compare/m00714.png",
+  "latex": "H_{0} : \\frac{1}{2}(\\mu_{1}+\\mu_{3}) = \\frac{1}{3}(\\mu_{2}+\\mu_{4}+\\mu_{5}).",
+  "characters": "H0 : 12 (µ1 + µ3) = 1\n3 (µ2 + µ4 + µ5) .",
+  "kind": "display",
+  "page_pdf": 577,
+  "equation_number": "13.8"
+ },
+ {
+  "id": "m00715",
+  "compare": "work/math_compare/m00715.png",
+  "latex": "H_{0} : \\frac{1}{3}(\\mu_{1}+\\mu_{2}+\\mu_{3}) = \\frac{1}{2}(\\mu_{4}+\\mu_{5})",
+  "characters": "H0 : 31 (µ1 + µ2 + µ3) = 12 (µ4 + µ5)",
+  "kind": "inline",
+  "page_pdf": 578,
+  "equation_number": ""
+ },
+ {
+  "id": "m00716",
+  "compare": "work/math_compare/m00716.png",
+  "latex": "H_{0} : \\frac{1}{4}(\\mu_{1}+\\mu_{2}+\\mu_{3}+\\mu_{4}) = \\mu_{5}",
+  "characters": "H0 : 14 (µ1 + µ2 + µ3 + µ4) = µ5",
+  "kind": "inline",
+  "page_pdf": 578,
+  "equation_number": ""
+ },
+ {
+  "id": "m00717",
+  "compare": "work/math_compare/m00717.png",
+  "latex": "\\mathrm{FDR} = \\mathrm{E}(\\mathrm{FDP}) = \\mathrm{E}(V/R).",
+  "characters": "FDR = E(FDP) = E(V/R).",
+  "kind": "display",
+  "page_pdf": 580,
+  "equation_number": "13.9"
+ },
+ {
+  "id": "m00718",
+  "compare": "work/math_compare/m00718.png",
+  "latex": "H_{01}, \\ldots, H_{0m}.",
+  "characters": "H01, . . . , H0m.",
+  "kind": "display",
+  "page_pdf": 581,
+  "equation_number": ""
+ },
+ {
+  "id": "m00719",
+  "compare": "work/math_compare/m00719.png",
+  "latex": "L = \\max\\{j : p_{(j)} < qj/m\\}.",
+  "characters": "L = max{j : p(j) < qj/m}.",
+  "kind": "display",
+  "page_pdf": 581,
+  "equation_number": "13.10"
+ },
+ {
+  "id": "m00720",
+  "compare": "work/math_compare/m00720.png",
+  "latex": "H_{a} : \\mathrm{E}(X) \\neq \\mathrm{E}(Y)",
+  "characters": "Ha : E(X)̸ = E(Y )",
+  "kind": "inline",
+  "page_pdf": 584,
+  "equation_number": ""
+ },
+ {
+  "id": "m00721",
+  "compare": "work/math_compare/m00721.png",
+  "latex": "T = \\frac{\\hat{\\mu}_X - \\hat{\\mu}_Y}{s\\sqrt{\\frac{1}{n_X}+\\frac{1}{n_Y}}}.",
+  "characters": "µˆX −µˆY\nT =�\n11\nsnX +\nnY\n�",
+  "kind": "display",
+  "page_pdf": 584,
+  "equation_number": "13.11"
+ },
+ {
+  "id": "m00722",
+  "compare": "work/math_compare/m00722.png",
+  "latex": "\\hat{\\mu}_{X} = \\frac{1}{n_{X}} \\sum_{i=1}^{n_{X}} x_{i}",
+  "characters": "µX =i=1 xi",
+  "kind": "inline",
+  "page_pdf": 584,
+  "equation_number": ""
+ },
+ {
+  "id": "m00723",
+  "compare": "work/math_compare/m00723.png",
+  "latex": "\\hat{\\mu}_{Y} = \\frac{1}{n_{Y}} \\sum_{i=1}^{n_{Y}} y_{i}",
+  "characters": "µY =i=1 yi",
+  "kind": "inline",
+  "page_pdf": 584,
+  "equation_number": ""
+ },
+ {
+  "id": "m00724",
+  "compare": "work/math_compare/m00724.png",
+  "latex": "p\\text{-value} = \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B},",
+  "characters": "�B\nb=1 1(|T ∗b|≥|T |)\np-value =,\nB",
+  "kind": "display",
+  "page_pdf": 584,
+  "equation_number": "13.12"
+ },
+ {
+  "id": "m00725",
+  "compare": "work/math_compare/m00725.png",
+  "latex": "y_1, \\ldots, y_{n_Y}.",
+  "characters": "y1, . . . , ynY .",
+  "kind": "display",
+  "page_pdf": 585,
+  "equation_number": ""
+ },
+ {
+  "id": "m00726",
+  "compare": "work/math_compare/m00726.png",
+  "latex": "\\text{3. The } p\\text{-value is given by } \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B}\\text{.}",
+  "characters": "�B\nb=1 1(|T ∗b|≥|T |)\n3. The p-value is given by.\nB",
+  "kind": "display",
+  "page_pdf": 585,
+  "equation_number": ""
+ },
+ {
+  "id": "m00727",
+  "compare": "work/math_compare/m00727.png",
+  "latex": "\\mathrm{FDR} = E\\left(\\frac{V}{R}\\right) \\approx \\frac{\\mathrm{E}(V)}{R}.",
+  "characters": "�V�\n≈E(V )\nFDR = E.\nRR",
+  "kind": "display",
+  "page_pdf": 586,
+  "equation_number": "13.13"
+ },
+ {
+  "id": "m00728",
+  "compare": "work/math_compare/m00728.png",
+  "latex": "R = \\sum_{j=1}^{m} 1_{\\left(|T_j| \\ge c\\right)}",
+  "characters": "R = �mj=1 1(|Tj|≥c)",
+  "kind": "inline",
+  "page_pdf": 586,
+  "equation_number": ""
+ },
+ {
+  "id": "m00729",
+  "compare": "work/math_compare/m00729.png",
+  "latex": "p_j = \\frac{\\sum_{j'=1}^{m} \\sum_{b=1}^{B} 1_{\\left(|T_{j'}^{*b}| \\geq |T_j|\\right)}}{Bm}",
+  "characters": "�m�B\nb=1 1(|T ∗b\nj′=1j′ |≥|Tj|)\npj =\nBm",
+  "kind": "display",
+  "page_pdf": 587,
+  "equation_number": "13.14"
+ },
+ {
+  "id": "m00730",
+  "compare": "work/math_compare/m00730.png",
+  "latex": "\\text{and } y_1^{(j)}, \\ldots, y_{n_Y}^{(j)}.",
+  "characters": "and y1(j ), . . . , yn(jY) .",
+  "kind": "display",
+  "page_pdf": 588,
+  "equation_number": ""
+ },
+ {
+  "id": "m00731",
+  "compare": "work/math_compare/m00731.png",
+  "latex": "\\text{servations } y_1^{*(j)}, \\ldots, y_{n_Y}^{*(j)}.",
+  "characters": "servations y∗(j), . . . , yn∗(Yj ).\n1",
+  "kind": "display",
+  "page_pdf": 588,
+  "equation_number": ""
+ },
+ {
+  "id": "m00732",
+  "compare": "work/math_compare/m00732.png",
+  "latex": "1",
+  "characters": "1",
+  "kind": "display",
+  "page_pdf": 588,
+  "equation_number": ""
+ },
+ {
+  "id": "m00733",
+  "compare": "work/math_compare/m00733.png",
+  "latex": "R = \\sum_{j=1}^{m} 1_{\\left(|T^{(j)}| \\ge c\\right)}.",
+  "characters": "R = �mj=1 1(|T (j)|≥c)",
+  "kind": "inline",
+  "page_pdf": 588,
+  "equation_number": ""
+ },
+ {
+  "id": "m00734",
+  "compare": "work/math_compare/m00734.png",
+  "latex": "\\text{4. Compute } \\widehat{V} = \\frac{\\sum_{b=1}^{B}\\sum_{j=1}^{m} 1_{\\left(|T^{(j),*b}| \\ge c\\right)}}{B}\\text{.}",
+  "characters": "�B�m\nb=1\nj=1 1(|T (j),∗b|≥c)\n4. Compute V� =.\nB",
+  "kind": "display",
+  "page_pdf": 588,
+  "equation_number": ""
+ },
+ {
+  "id": "m00735",
+  "compare": "work/math_compare/m00735.png",
+  "latex": "\\hat{V}/R.",
+  "characters": "V� /R",
+  "kind": "inline",
+  "page_pdf": 588,
+  "equation_number": ""
+ },
+ {
+  "id": "m00736",
+  "compare": "work/math_compare/m00736.png",
+  "latex": "\\binom{5}{2}",
+  "characters": "�5�",
+  "kind": "inline",
+  "page_pdf": 593,
+  "equation_number": ""
+ }
+]

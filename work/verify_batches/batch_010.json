@@ -1,0 +1,227 @@
+[
+ {
+  "id": "m00365",
+  "compare": "work/math_compare/m00365.png",
+  "latex": "z_{i1} = 0.839 \\times (\\texttt{pop}_i - \\overline{\\texttt{pop}}) + 0.544 \\times (\\texttt{ad}_i - \\overline{\\texttt{ad}}) < 0",
+  "characters": "zi1 = 0.839 × (popi − pop) + 0.544 × (adi − ad) < 0",
+  "kind": "inline",
+  "page_pdf": 264,
+  "equation_number": ""
+ },
+ {
+  "id": "m00366",
+  "compare": "work/math_compare/m00366.png",
+  "latex": "Z_2 = 0.544 \\times (\\texttt{pop} - \\overline{\\texttt{pop}}) - 0.839 \\times (\\texttt{ad} - \\overline{\\texttt{ad}}).",
+  "characters": "Z2 = 0.544 × (pop −pop) −0.839 × (ad −ad).",
+  "kind": "display",
+  "page_pdf": 265,
+  "equation_number": ""
+ },
+ {
+  "id": "m00367",
+  "compare": "work/math_compare/m00367.png",
+  "latex": "Z_1 = \\sum_{j=1}^{p} \\phi_{j1} X_j",
+  "characters": "Z1 = �pj=1 φj1Xj",
+  "kind": "inline",
+  "page_pdf": 269,
+  "equation_number": ""
+ },
+ {
+  "id": "m00369",
+  "compare": "work/math_compare/m00369.png",
+  "latex": "\\sum_{i=1}^{n} \\left(y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij}\\right)^2 \\quad \\text{subject to} \\quad \\sum_{j=1}^{p} |\\beta_j| \\le s",
+  "characters": "\n2\nnpp\n���\n\nyi −β0 −βjxijsubject to|βj| ≤s\ni=1j=1j=1",
+  "kind": "display",
+  "page_pdf": 292,
+  "equation_number": ""
+ },
+ {
+  "id": "m00370",
+  "compare": "work/math_compare/m00370.png",
+  "latex": "\\sum_{i=1}^{n} \\left(y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij}\\right)^2 + \\lambda \\sum_{j=1}^{p} \\beta_j^2",
+  "characters": "\n2\nnpp\n���\n\nyi −β0 −βjxij+ λβ2\nj\ni=1j=1j=1",
+  "kind": "display",
+  "page_pdf": 292,
+  "equation_number": ""
+ },
+ {
+  "id": "m00372",
+  "compare": "work/math_compare/m00372.png",
+  "latex": "\\hat{\\beta}_1 = \\hat{\\beta}_2.",
+  "characters": "βˆ1 = βˆ2.",
+  "kind": "display",
+  "page_pdf": 293,
+  "equation_number": ""
+ },
+ {
+  "id": "m00373",
+  "compare": "work/math_compare/m00373.png",
+  "latex": "y_i = \\beta_0 + \\sum_{j=1}^{p} x_{ij} \\beta_j + \\epsilon_i",
+  "characters": "yi = β0+�pj=1 xijβj +ϵi",
+  "kind": "inline",
+  "page_pdf": 293,
+  "equation_number": ""
+ },
+ {
+  "id": "m00374",
+  "compare": "work/math_compare/m00374.png",
+  "latex": "p(\\beta) = \\frac{1}{2b} \\exp(-|\\beta|/b).",
+  "characters": "p(β) =2b exp(−|β|/b)",
+  "kind": "inline",
+  "page_pdf": 293,
+  "equation_number": ""
+ },
+ {
+  "id": "m00375",
+  "compare": "work/math_compare/m00375.png",
+  "latex": "Y = \\beta_0 + \\beta_1 X + \\beta_2 X^2 + \\beta_3 X^3 + \\epsilon,",
+  "characters": "Y = β0 + β1X + β2X2 + β3X3 + ϵ,",
+  "kind": "display",
+  "page_pdf": 294,
+  "equation_number": ""
+ },
+ {
+  "id": "m00376",
+  "compare": "work/math_compare/m00376.png",
+  "latex": "Y = \\beta_0 + \\beta_7 X^7 + \\epsilon,",
+  "characters": "Y = β0 + β7X7 + ϵ,",
+  "kind": "display",
+  "page_pdf": 294,
+  "equation_number": ""
+ },
+ {
+  "id": "m00377",
+  "compare": "work/math_compare/m00377.png",
+  "latex": "Y = X\\beta + \\epsilon,",
+  "characters": "Y = Xβ + ϵ,",
+  "kind": "display",
+  "page_pdf": 295,
+  "equation_number": ""
+ },
+ {
+  "id": "m00378",
+  "compare": "work/math_compare/m00378.png",
+  "latex": "\\sqrt{\\sum^{p}}",
+  "characters": "��p",
+  "kind": "display",
+  "page_pdf": 295,
+  "equation_number": ""
+ },
+ {
+  "id": "m00381",
+  "compare": "work/math_compare/m00381.png",
+  "latex": "y_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i",
+  "characters": "yi = β0 + β1xi + ϵi",
+  "kind": "display",
+  "page_pdf": 298,
+  "equation_number": ""
+ },
+ {
+  "id": "m00382",
+  "compare": "work/math_compare/m00382.png",
+  "latex": "y_i = \\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\beta_3 x_i^3 + \\cdots + \\beta_d x_i^d + \\epsilon_i,",
+  "characters": "yi = β0 + β1xi + β2x2i + β3x3i + · · · + βdxdi + ϵi,",
+  "kind": "display",
+  "page_pdf": 298,
+  "equation_number": "7.1"
+ },
+ {
+  "id": "m00383",
+  "compare": "work/math_compare/m00383.png",
+  "latex": "\\hat{f}(x_0) = \\hat{\\beta}_0 + \\hat{\\beta}_1 x_0 + \\hat{\\beta}_2 x_0^2 + \\hat{\\beta}_3 x_0^3 + \\hat{\\beta}_4 x_0^4.",
+  "characters": "fˆ(x0) = βˆ0 + βˆ1x0 + βˆ2x20 + βˆ3x30 + βˆ4x40.",
+  "kind": "display",
+  "page_pdf": 299,
+  "equation_number": "7.2"
+ },
+ {
+  "id": "m00388",
+  "compare": "work/math_compare/m00388.png",
+  "latex": "\\mathrm{Pr}(y_i > 250 \\mid x_i) = \\frac{\\exp(\\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\cdots + \\beta_d x_i^d)}{1 + \\exp(\\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\cdots + \\beta_d x_i^d)}.",
+  "characters": "exp(β0 + β1xi + β2x2i + · · · + βdxdi )\nPr(yi > 250|xi) =\n1 + exp(β0 + β1xi + β2x2i + · · · + βdxdi ).",
+  "kind": "display",
+  "page_pdf": 300,
+  "equation_number": "7.3"
+ },
+ {
+  "id": "m00389",
+  "compare": "work/math_compare/m00389.png",
+  "latex": "\\begin{aligned} C_0(X) &= I(X < c_1), \\\\ C_1(X) &= I(c_1 \\leq X < c_2), \\\\ C_2(X) &= I(c_2 \\leq X < c_3), \\\\ &\\ \\ \\vdots \\\\ C_{K-1}(X) &= I(c_{K-1} \\leq X < c_K), \\\\ C_K(X) &= I(c_K \\leq X), \\end{aligned}",
+  "characters": "C0(X)=I(X < c1),\nC1(X)=I(c1 ≤X < c2),\nC2(X)=I(c2 ≤X < c3),\n...\nCK−1(X)=I(cK−1 ≤X < cK),\nCK(X)=I(cK ≤X),",
+  "kind": "display",
+  "page_pdf": 300,
+  "equation_number": "7.4"
+ },
+ {
+  "id": "m00390",
+  "compare": "work/math_compare/m00390.png",
+  "latex": "y_i = \\beta_0 + \\beta_1 C_1(x_i) + \\beta_2 C_2(x_i) + \\cdots + \\beta_K C_K(x_i) + \\epsilon_i.",
+  "characters": "yi = β0 + β1C1(xi) + β2C2(xi) + · · · + βKCK(xi) + ϵi.",
+  "kind": "display",
+  "page_pdf": 300,
+  "equation_number": "7.5"
+ },
+ {
+  "id": "m00391",
+  "compare": "work/math_compare/m00391.png",
+  "latex": "\\mathrm{Pr}(y_i > 250 \\mid x_i) = \\frac{\\exp(\\beta_0 + \\beta_1 C_1(x_i) + \\cdots + \\beta_K C_K(x_i))}{1 + \\exp(\\beta_0 + \\beta_1 C_1(x_i) + \\cdots + \\beta_K C_K(x_i))}",
+  "characters": "exp(β0 + β1C1(xi) + · · · + βKCK(xi))\nPr(yi > 250|xi) =\n1 + exp(β0 + β1C1(xi) + · · · + βKCK(xi))",
+  "kind": "display",
+  "page_pdf": 301,
+  "equation_number": "7.6"
+ },
+ {
+  "id": "m00392",
+  "compare": "work/math_compare/m00392.png",
+  "latex": "y_i = \\beta_0 + \\beta_1 b_1(x_i) + \\beta_2 b_2(x_i) + \\beta_3 b_3(x_i) + \\cdots + \\beta_K b_K(x_i) + \\epsilon_i.",
+  "characters": "yi = β0 + β1b1(xi) + β2b2(xi) + β3b3(xi) + · · · + βKbK(xi) + ϵi.",
+  "kind": "display",
+  "page_pdf": 302,
+  "equation_number": "7.7"
+ },
+ {
+  "id": "m00393",
+  "compare": "work/math_compare/m00393.png",
+  "latex": "y_i = \\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\beta_3 x_i^3 + \\epsilon_i,",
+  "characters": "yi = β0 + β1xi + β2x2i + β3x3i + ϵi,",
+  "kind": "display",
+  "page_pdf": 302,
+  "equation_number": "7.8"
+ },
+ {
+  "id": "m00394",
+  "compare": "work/math_compare/m00394.png",
+  "latex": "y_i = \\begin{cases} \\beta_{01} + \\beta_{11} x_i + \\beta_{21} x_i^2 + \\beta_{31} x_i^3 + \\epsilon_i & \\text{if } x_i < c \\\\ \\beta_{02} + \\beta_{12} x_i + \\beta_{22} x_i^2 + \\beta_{32} x_i^3 + \\epsilon_i & \\text{if } x_i \\ge c. \\end{cases}",
+  "characters": "�\nβ01 + β11xi + β21xi2 + β31x3i + ϵiif xi < c\nyi =\nβ02 + β12xi + β22xi2 + β32x3i + ϵiif xi ≥c.",
+  "kind": "display",
+  "page_pdf": 302,
+  "equation_number": ""
+ },
+ {
+  "id": "m00395",
+  "compare": "work/math_compare/m00395.png",
+  "latex": "y_i = \\beta_0 + \\beta_1 b_1(x_i) + \\beta_2 b_2(x_i) + \\cdots + \\beta_{K+3} b_{K+3}(x_i) + \\epsilon_i,",
+  "characters": "yi = β0 + β1b1(xi) + β2b2(xi) + · · · + βK+3bK+3(xi) + ϵi,",
+  "kind": "display",
+  "page_pdf": 304,
+  "equation_number": "7.9"
+ },
+ {
+  "id": "m00396",
+  "compare": "work/math_compare/m00396.png",
+  "latex": "h(x, \\xi) = (x - \\xi)_+^3 = \\begin{cases} (x - \\xi)^3 & \\text{if } x > \\xi \\\\ 0 & \\text{otherwise,} \\end{cases}",
+  "characters": "�\n(x −ξ)3if x > ξ\nh(x, ξ) = (x −ξ)3+ =\n0otherwise,",
+  "kind": "display",
+  "page_pdf": 305,
+  "equation_number": "7.10"
+ },
+ {
+  "id": "m00397",
+  "compare": "work/math_compare/m00397.png",
+  "latex": "\\mathrm{RSS} = \\sum_{i=1}^{n} (y_i - g(x_i))^2",
+  "characters": "RSS = �ni=1(yi − g(xi))2",
+  "kind": "inline",
+  "page_pdf": 308,
+  "equation_number": ""
+ }
+]

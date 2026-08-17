@@ -1,0 +1,555 @@
+{
+ "checked": 555,
+ "scored": 498,
+ "no_symbol_lost": 354,
+ "share_no_symbol_lost": 71.1,
+ "mean_agreement": 0.95,
+ "weakest": [
+  {
+   "id": "m00224",
+   "page_pdf": 171,
+   "symbols_on_page": 6,
+   "missing": {
+    "l": 2,
+    "o": 2,
+    "g": 2
+   },
+   "invented": {
+    "P": 2,
+    "r": 2,
+    "Y": 2,
+    "k": 3,
+    "X": 2,
+    "x": 4,
+    "K": 3,
+    "π": 2,
+    "f": 2
+   },
+   "agreement": 0.0
+  },
+  {
+   "id": "m00567",
+   "page_pdf": 409,
+   "symbols_on_page": 18,
+   "missing": {
+    "h": 1,
+    "1": 2,
+    "X": 3,
+    "0": 1,
+    "2": 2
+   },
+   "invented": {},
+   "agreement": 0.5
+  },
+  {
+   "id": "m00600",
+   "page_pdf": 439,
+   "symbols_on_page": 6,
+   "missing": {
+    "s": 1,
+    "i": 1,
+    "n": 1
+   },
+   "invented": {},
+   "agreement": 0.5
+  },
+  {
+   "id": "m00608",
+   "page_pdf": 476,
+   "symbols_on_page": 6,
+   "missing": {
+    "m": 1,
+    "i": 1,
+    "n": 1
+   },
+   "invented": {},
+   "agreement": 0.5
+  },
+  {
+   "id": "m00638",
+   "page_pdf": 485,
+   "symbols_on_page": 2,
+   "missing": {
+    "p": 1
+   },
+   "invented": {
+    "j": 3,
+    "1": 1,
+    "x": 1,
+    "i": 1,
+    "β": 1
+   },
+   "agreement": 0.5
+  },
+  {
+   "id": "m00222",
+   "page_pdf": 170,
+   "symbols_on_page": 15,
+   "missing": {
+    "P": 2,
+    "r": 2,
+    "l": 1,
+    "o": 1,
+    "g": 1
+   },
+   "invented": {},
+   "agreement": 0.533
+  },
+  {
+   "id": "m00047",
+   "page_pdf": 46,
+   "symbols_on_page": 11,
+   "missing": {
+    "m": 1,
+    "a": 1,
+    "x": 1,
+    "P": 1,
+    "r": 1
+   },
+   "invented": {},
+   "agreement": 0.545
+  },
+  {
+   "id": "m00019",
+   "page_pdf": 27,
+   "symbols_on_page": 5,
+   "missing": {
+    "ˆ": 2
+   },
+   "invented": {},
+   "agreement": 0.6
+  },
+  {
+   "id": "m00453",
+   "page_pdf": 345,
+   "symbols_on_page": 10,
+   "missing": {
+    "m": 1,
+    "a": 1,
+    "x": 1,
+    "ˆ": 1
+   },
+   "invented": {},
+   "agreement": 0.6
+  },
+  {
+   "id": "m00197",
+   "page_pdf": 158,
+   "symbols_on_page": 25,
+   "missing": {
+    "ˆ": 6,
+    "l": 1,
+    "o": 1,
+    "g": 1
+   },
+   "invented": {},
+   "agreement": 0.64
+  },
+  {
+   "id": "m00630",
+   "page_pdf": 483,
+   "symbols_on_page": 14,
+   "missing": {
+    "P": 1,
+    "r": 1,
+    "l": 1,
+    "i": 1,
+    "m": 1
+   },
+   "invented": {
+    "Δ": 3
+   },
+   "agreement": 0.643
+  },
+  {
+   "id": "m00055",
+   "page_pdf": 80,
+   "symbols_on_page": 9,
+   "missing": {
+    "ˆ": 3
+   },
+   "invented": {},
+   "agreement": 0.667
+  },
+  {
+   "id": "m00372",
+   "page_pdf": 293,
+   "symbols_on_page": 6,
+   "missing": {
+    "ˆ": 2
+   },
+   "invented": {},
+   "agreement": 0.667
+  },
+  {
+   "id": "m00374",
+   "page_pdf": 293,
+   "symbols_on_page": 9,
+   "missing": {
+    "p": 1,
+    "e": 1,
+    "x": 1
+   },
+   "invented": {
+    "1": 1
+   },
+   "agreement": 0.667
+  },
+  {
+   "id": "m00456",
+   "page_pdf": 346,
+   "symbols_on_page": 15,
+   "missing": {
+    "ˆ": 2,
+    "l": 1,
+    "o": 1,
+    "g": 1
+   },
+   "invented": {},
+   "agreement": 0.667
+  },
+  {
+   "id": "m00610",
+   "page_pdf": 478,
+   "symbols_on_page": 6,
+   "missing": {
+    "P": 1,
+    "r": 1
+   },
+   "invented": {},
+   "agreement": 0.667
+  },
+  {
+   "id": "m00261",
+   "page_pdf": 205,
+   "symbols_on_page": 32,
+   "missing": {
+    "e": 2,
+    "x": 2,
+    "p": 2,
+    "ˆ": 4
+   },
+   "invented": {},
+   "agreement": 0.688
+  },
+  {
+   "id": "m00626",
+   "page_pdf": 482,
+   "symbols_on_page": 16,
+   "missing": {
+    "P": 1,
+    "r": 1,
+    "l": 1,
+    "i": 1,
+    "m": 1
+   },
+   "invented": {
+    "Δ": 3
+   },
+   "agreement": 0.688
+  },
+  {
+   "id": "m00498",
+   "page_pdf": 363,
+   "symbols_on_page": 13,
+   "missing": {
+    "l": 1,
+    "o": 1,
+    "g": 1,
+    "ˆ": 1
+   },
+   "invented": {},
+   "agreement": 0.692
+  },
+  {
+   "id": "m00719",
+   "page_pdf": 581,
+   "symbols_on_page": 10,
+   "missing": {
+    "m": 1,
+    "a": 1,
+    "x": 1
+   },
+   "invented": {},
+   "agreement": 0.7
+  },
+  {
+   "id": "m00046",
+   "page_pdf": 45,
+   "symbols_on_page": 7,
+   "missing": {
+    "P": 1,
+    "r": 1
+   },
+   "invented": {},
+   "agreement": 0.714
+  },
+  {
+   "id": "m00144",
+   "page_pdf": 137,
+   "symbols_on_page": 7,
+   "missing": {
+    "ˆ": 2
+   },
+   "invented": {},
+   "agreement": 0.714
+  },
+  {
+   "id": "m00611",
+   "page_pdf": 479,
+   "symbols_on_page": 35,
+   "missing": {
+    "P": 5,
+    "r": 5
+   },
+   "invented": {
+    "a": 2,
+    "l": 2,
+    "i": 2,
+    "g": 2,
+    "n": 2,
+    "e": 2,
+    "d": 2
+   },
+   "agreement": 0.714
+  },
+  {
+   "id": "m00471",
+   "page_pdf": 356,
+   "symbols_on_page": 11,
+   "missing": {
+    "ˆ": 3
+   },
+   "invented": {},
+   "agreement": 0.727
+  },
+  {
+   "id": "m00712",
+   "page_pdf": 575,
+   "symbols_on_page": 11,
+   "missing": {
+    "m": 1,
+    "i": 1,
+    "n": 1
+   },
+   "invented": {},
+   "agreement": 0.727
+  },
+  {
+   "id": "m00111",
+   "page_pdf": 98,
+   "symbols_on_page": 15,
+   "missing": {
+    "ˆ": 4
+   },
+   "invented": {},
+   "agreement": 0.733
+  },
+  {
+   "id": "m00280",
+   "page_pdf": 220,
+   "symbols_on_page": 23,
+   "missing": {
+    "ˆ": 6
+   },
+   "invented": {},
+   "agreement": 0.739
+  },
+  {
+   "id": "m00612",
+   "page_pdf": 479,
+   "symbols_on_page": 23,
+   "missing": {
+    "P": 3,
+    "r": 3
+   },
+   "invented": {},
+   "agreement": 0.739
+  },
+  {
+   "id": "m00100",
+   "page_pdf": 90,
+   "symbols_on_page": 20,
+   "missing": {
+    "ˆ": 5
+   },
+   "invented": {},
+   "agreement": 0.75
+  },
+  {
+   "id": "m00233",
+   "page_pdf": 178,
+   "symbols_on_page": 12,
+   "missing": {
+    "l": 1,
+    "o": 1,
+    "g": 1
+   },
+   "invented": {},
+   "agreement": 0.75
+  },
+  {
+   "id": "m00314",
+   "page_pdf": 245,
+   "symbols_on_page": 16,
+   "missing": {
+    "l": 1,
+    "o": 1,
+    "g": 1,
+    "ˆ": 1
+   },
+   "invented": {},
+   "agreement": 0.75
+  },
+  {
+   "id": "m00629",
+   "page_pdf": 483,
+   "symbols_on_page": 40,
+   "missing": {
+    "P": 4,
+    "r": 4,
+    "m": 2
+   },
+   "invented": {
+    "a": 2,
+    "g": 2,
+    "n": 2,
+    "e": 2,
+    "d": 2,
+    "Δ": 6
+   },
+   "agreement": 0.75
+  },
+  {
+   "id": "m00643",
+   "page_pdf": 490,
+   "symbols_on_page": 37,
+   "missing": {
+    "p": 2,
+    "e": 2,
+    "x": 2,
+    "l": 1,
+    "o": 1,
+    "g": 1
+   },
+   "invented": {},
+   "agreement": 0.757
+  },
+  {
+   "id": "m00171",
+   "page_pdf": 149,
+   "symbols_on_page": 13,
+   "missing": {
+    "l": 1,
+    "o": 1,
+    "g": 1
+   },
+   "invented": {},
+   "agreement": 0.769
+  },
+  {
+   "id": "m00538",
+   "page_pdf": 388,
+   "symbols_on_page": 13,
+   "missing": {
+    "e": 1,
+    "x": 1,
+    "p": 1
+   },
+   "invented": {},
+   "agreement": 0.769
+  },
+  {
+   "id": "m00083",
+   "page_pdf": 84,
+   "symbols_on_page": 9,
+   "missing": {
+    "ˆ": 2
+   },
+   "invented": {},
+   "agreement": 0.778
+  },
+  {
+   "id": "m00084",
+   "page_pdf": 85,
+   "symbols_on_page": 18,
+   "missing": {
+    "ˆ": 4
+   },
+   "invented": {},
+   "agreement": 0.778
+  },
+  {
+   "id": "m00085",
+   "page_pdf": 85,
+   "symbols_on_page": 9,
+   "missing": {
+    "ˆ": 2
+   },
+   "invented": {},
+   "agreement": 0.778
+  },
+  {
+   "id": "m00062",
+   "page_pdf": 80,
+   "symbols_on_page": 38,
+   "missing": {
+    "ˆ": 6,
+    "3": 2
+   },
+   "invented": {},
+   "agreement": 0.789
+  },
+  {
+   "id": "m00588",
+   "page_pdf": 431,
+   "symbols_on_page": 24,
+   "missing": {
+    "ˆ": 5
+   },
+   "invented": {},
+   "agreement": 0.792
+  }
+ ],
+ "weak_ids": [
+  "m00224",
+  "m00567",
+  "m00600",
+  "m00608",
+  "m00222",
+  "m00047",
+  "m00019",
+  "m00453",
+  "m00197",
+  "m00630",
+  "m00055",
+  "m00372",
+  "m00374",
+  "m00456",
+  "m00610",
+  "m00261",
+  "m00626",
+  "m00498",
+  "m00719",
+  "m00046",
+  "m00144",
+  "m00611",
+  "m00471",
+  "m00712",
+  "m00111",
+  "m00280",
+  "m00612",
+  "m00100",
+  "m00233",
+  "m00314",
+  "m00629",
+  "m00643",
+  "m00171",
+  "m00538",
+  "m00083",
+  "m00084",
+  "m00085",
+  "m00062",
+  "m00588"
+ ]
+}
