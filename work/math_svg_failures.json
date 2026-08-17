@@ -1,0 +1,7 @@
+[
+ {
+  "id": "m00395",
+  "tex": "X_{j} \\hat{\\beta}_{j}^{R}_{,\\lambda}",
+  "error": "Double subscripts: use braces to clarify"
+ }
+]

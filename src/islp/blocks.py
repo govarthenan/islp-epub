@@ -56,6 +56,7 @@ class TaggedLine:
     kind: Kind
     is_new_paragraph: bool = False
     list_marker: str = ""
+    group: list[VLine] = field(default_factory=list)
 
 
 @dataclass
@@ -166,6 +167,7 @@ def _bbox_union(boxes: list[tuple[float, float, float, float]]) -> tuple[float, 
 
 
 DISPLAY_GAP = 24.0
+MARGIN_NOTE_GAP = 16.0
 
 
 def _detach_equation_number(lines: list[VLine]) -> str:
@@ -183,9 +185,28 @@ def _detach_equation_number(lines: list[VLine]) -> str:
     return ""
 
 
+def _group_margin_notes(tagged: list[TaggedLine], page: Page) -> list[TaggedLine]:
+    """Margin notes are interleaved with body lines once everything is sorted by baseline, so
+    the lines of one note are rarely adjacent. Group them by vertical proximity instead."""
+    notes = [entry for entry in tagged if entry.kind == Kind.MARGIN]
+    others = [entry for entry in tagged if entry.kind != Kind.MARGIN]
+    notes.sort(key=lambda entry: entry.line.baseline)
+    grouped: list[TaggedLine] = []
+    for entry in notes:
+        if len(entry.line.text.strip()) < 2:
+            continue  # stray single glyphs are not notes
+        if grouped and entry.line.baseline - grouped[-1].group[-1].baseline < MARGIN_NOTE_GAP:
+            grouped[-1].group.append(entry.line)
+        else:
+            grouped.append(TaggedLine(line=entry.line, kind=Kind.MARGIN, group=[entry.line]))
+    merged = others + grouped
+    merged.sort(key=lambda entry: (round(entry.line.baseline, 1), entry.line.x0))
+    return merged
+
+
 def assemble(page: Page) -> list[Block]:
     """Turn one page into blocks, in reading order."""
-    tagged = tag_lines(page)
+    tagged = _group_margin_notes(tag_lines(page), page)
     blocks: list[Block] = []
     index = 0
 
@@ -203,13 +224,8 @@ def assemble(page: Page) -> list[Block]:
             continue
 
         if kind == Kind.MARGIN:
-            run = [entry.line]
+            push(Block(kind="margin", page=page.index, lines=entry.group or [entry.line]))
             index += 1
-            while index < len(tagged) and tagged[index].kind == Kind.MARGIN and \
-                    tagged[index].line.baseline - run[-1].baseline < 13.0:
-                run.append(tagged[index].line)
-                index += 1
-            push(Block(kind="margin", page=page.index, lines=run))
             continue
 
         if kind == Kind.EQNUM:
@@ -307,8 +323,8 @@ def assemble(page: Page) -> list[Block]:
         while index < len(tagged):
             following = tagged[index]
             if following.kind == Kind.MARGIN:
-                push_margin = Block(kind="margin", page=page.index, lines=[following.line])
-                blocks.append(push_margin)
+                blocks.append(Block(kind="margin", page=page.index,
+                                    lines=following.group or [following.line]))
                 index += 1
                 continue
             if following.kind != Kind.PROSE or following.is_new_paragraph:

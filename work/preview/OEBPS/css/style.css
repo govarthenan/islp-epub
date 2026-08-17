@@ -1,0 +1,123 @@
+/* ISLP - reflowable EPUB tuned for a 7 inch e-ink screen.
+   No font-family and no absolute font-size on body: the reader stays in control. */
+
+html { -webkit-hyphens: auto; hyphens: auto; }
+
+body {
+  margin: 0 0.35em;
+  line-height: 1.4;
+  text-align: justify;
+  widows: 2;
+  orphans: 2;
+}
+
+h1, h2, h3, h4, h5 {
+  text-align: left;
+  line-height: 1.25;
+  page-break-after: avoid;
+  break-after: avoid;
+  -webkit-hyphens: none;
+  hyphens: none;
+}
+
+h1 { font-size: 1.6em; margin: 1.2em 0 0.8em; }
+h2 { font-size: 1.3em; margin: 1.4em 0 0.5em; }
+h3 { font-size: 1.12em; margin: 1.2em 0 0.4em; font-style: italic; }
+h4 { font-size: 1em;    margin: 1.1em 0 0.3em; }
+
+h1 .chapnum {
+  display: block;
+  font-size: 0.6em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+  font-weight: normal;
+}
+
+/* Indentation follows the printed page rather than a sibling rule, so a paragraph is
+   indented here exactly when it was indented there. */
+p { margin: 0; text-indent: 1.2em; }
+p.noindent { text-indent: 0; }
+
+p.li         { text-indent: -1.1em; margin-left: 1.6em; margin-top: 0.35em; }
+p.li-cont    { text-indent: 0;      margin-left: 1.6em; }
+p.li-cont-in { text-indent: 1.2em;  margin-left: 1.6em; }
+p.li2         { text-indent: -1.1em; margin-left: 3.0em; margin-top: 0.35em; }
+p.li2-cont    { text-indent: 0;      margin-left: 3.0em; }
+p.li2-cont-in { text-indent: 1.2em;  margin-left: 3.0em; }
+p.li .marker, p.li2 .marker { font-weight: bold; }
+
+/* Display equations. The number is pushed to the right of its own line. */
+div.eq {
+  margin: 0.9em 0;
+  text-align: center;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+div.eq img, div.eq svg { max-width: 100%; height: auto; vertical-align: middle; }
+div.eq .eqno { font-size: 0.85em; margin-left: 0.7em; vertical-align: middle; }
+
+img.mi { vertical-align: baseline; max-width: 100%; }
+
+/* Figures and tables */
+div.figure {
+  margin: 1.1em 0;
+  text-align: center;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+div.figure img { max-width: 100%; height: auto; }
+p.caption {
+  font-size: 0.82em;
+  font-style: italic;
+  text-align: left;
+  text-indent: 0;
+  margin: 0.45em 0 0;
+  line-height: 1.35;
+}
+p.caption .label { font-style: normal; font-weight: bold; }
+
+/* Jupyter cells from the labs */
+div.codeblock {
+  margin: 0.8em 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+pre {
+  font-family: monospace;
+  font-size: 0.68em;
+  line-height: 1.32;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 0;
+  padding: 0.4em 0.5em;
+  text-align: left;
+  -webkit-hyphens: none;
+  hyphens: none;
+}
+pre.input  { border-left: 3px solid #999; background: #f4f4f4; }
+pre.output { border-left: 3px solid #ddd; }
+
+code { font-family: monospace; font-size: 0.88em; -webkit-hyphens: none; hyphens: none; }
+
+/* Margin notes become small asides, since a 7 inch page has no margin to spare */
+p.marginnote {
+  font-size: 0.78em;
+  font-style: italic;
+  text-align: right;
+  text-indent: 0;
+  margin: 0.15em 0 0.5em;
+  color: #555;
+  line-height: 1.3;
+  -webkit-hyphens: none;
+  hyphens: none;
+}
+
+/* Index */
+p.index-entry { text-indent: -1em; margin-left: 1em; text-align: left; font-size: 0.92em; }
+
+div.cover { text-align: center; margin: 0; padding: 0; }
+div.cover img { max-width: 100%; max-height: 100%; }
+
+p.dedication { text-align: center; text-indent: 0; margin: 0.4em 0; font-style: italic; }

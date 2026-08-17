@@ -18,6 +18,7 @@ import pymupdf
 from .blocks import Block, Kind, assemble, classify_line
 from .fonts import Role
 from .inline import Tier, build_inline
+from .symbols import fix_unicode
 from .pagemodel import Page, VLine, Zone, load_page
 
 WORD_RE = re.compile(r"[A-Za-z][A-Za-z'’]*")
@@ -196,11 +197,12 @@ def code_block_text(lines: list[VLine]) -> str:
         buffer = (prompt + " ").ljust(prompt_width) if prompt else " " * prompt_width
         previous = None
         for char in ordered:
+            char_text = fix_unicode(char.c)
             if previous is None:
                 buffer += " " * max(0, round((char.ox - origin) / advance))
-            else:
+            elif char.x0 - previous.x1 > 0.35 * advance:
                 buffer += " " * max(0, round((char.ox - previous.ox) / advance) - 1)
-            buffer += char.c
+            buffer += char_text
             previous = char
         if buffer.strip():
             rendered.append(buffer.rstrip())
@@ -424,7 +426,8 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                     body_lines = block.lines[1:] if len(block.lines) > 1 else block.lines
                     left = min(line.x0 for line in body_lines)
                     doc_block = DocBlock(kind="para", html=html, page=page.index,
-                                         list_marker=marker, meta={"left": round(left, 1)})
+                                         list_marker=marker,
+                                         meta={"left": round(left, 1), "indented": indented})
                     chapter.blocks.append(doc_block)
                     last_para = doc_block
                 previous_context = _strip_tags(html)

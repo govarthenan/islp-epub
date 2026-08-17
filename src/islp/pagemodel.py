@@ -34,8 +34,10 @@ COLOUR_CODE = 0x984100
 COLOUR_ACCENT = 0x0068B4
 COLOUR_MARGIN = 0x595959
 
-# Text extraction flags: expand ligatures (fi -> f i) but keep whitespace and clip to mediabox.
-TEXT_FLAGS = pymupdf.TEXT_PRESERVE_WHITESPACE | pymupdf.TEXT_MEDIABOX_CLIP
+# Ligatures are kept as single glyphs so that each glyph keeps one honest pen position;
+# they are expanded to plain letters later, when the text is written out.
+TEXT_FLAGS = (pymupdf.TEXT_PRESERVE_WHITESPACE | pymupdf.TEXT_MEDIABOX_CLIP
+              | pymupdf.TEXT_PRESERVE_LIGATURES)
 
 
 class Zone(str, Enum):
