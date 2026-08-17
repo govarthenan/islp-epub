@@ -31,6 +31,7 @@ FOOTER_Y = 648.0
 PROMPT_X1 = 90.0
 COLUMN_GAP = 200.0        # body pages: effectively no limit
 INDEX_COLUMN_GAP = 28.0   # the index is set in two columns that share baselines
+INDEX_GUTTER_X = 252.0    # nothing crosses the gutter between those two columns
 
 COLOUR_PROSE = 0x000000
 COLOUR_CODE = 0x984100
@@ -357,10 +358,14 @@ def load_page(doc: pymupdf.Document, index: int, two_column: bool = False) -> Pa
     gap_limit = INDEX_COLUMN_GAP if two_column else COLUMN_GAP
     merged: list[tuple[float, float, list[Char]]] = []
     for baseline, size, chars in groups:
+        start = min(c.x0 for c in chars)
         joins = (merged
                  and abs(merged[-1][0] - baseline) <= 1.5
                  and abs(merged[-1][1] - size) < 0.6
-                 and min(c.x0 for c in chars) - max(c.x1 for c in merged[-1][2]) < gap_limit)
+                 and start - max(c.x1 for c in merged[-1][2]) < gap_limit)
+        if joins and two_column:
+            previous_start = min(c.x0 for c in merged[-1][2])
+            joins = (previous_start >= INDEX_GUTTER_X) == (start >= INDEX_GUTTER_X)
         if joins:
             merged[-1][2].extend(chars)
         else:
