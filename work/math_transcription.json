@@ -1,4 +1,9 @@
 {
+ "m00001": {
+  "latex": "\\mathbf{X} = \\begin{pmatrix} x_{11} & x_{12} & \\cdots & x_{1p} \\\\ x_{21} & x_{22} & \\cdots & x_{2p} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ x_{n1} & x_{n2} & \\cdots & x_{np} \\end{pmatrix}.",
+  "confidence": 0.98,
+  "notes": ""
+ },
  "m00002": {
   "latex": "x_i = \\begin{pmatrix} x_{i1} \\\\ x_{i2} \\\\ \\vdots \\\\ x_{ip} \\end{pmatrix}.",
   "confidence": 0.95,
@@ -8,6 +13,11 @@
   "latex": "\\mathbf{x}_j = \\begin{pmatrix} x_{1j} \\\\ x_{2j} \\\\ \\vdots \\\\ x_{nj} \\end{pmatrix}.",
   "confidence": 0.95,
   "notes": ""
+ },
+ "m00004": {
+  "latex": "\\begin{gathered} \\mathbf{X} = \\begin{pmatrix} \\mathbf{x}_1 & \\mathbf{x}_2 & \\cdots & \\mathbf{x}_p \\end{pmatrix}, \\\\[2em] \\mathbf{X} = \\begin{pmatrix} x_1^T \\\\ x_2^T \\\\ \\vdots \\\\ x_n^T \\end{pmatrix}. \\end{gathered}",
+  "confidence": 0.93,
+  "notes": "Two stacked display equations in one crop; second-line row vectors are printed non-bold in the source image, kept as-is."
  },
  "m00005": {
   "latex": "\\mathbf{X}^T = \\begin{pmatrix} x_{11} & x_{21} & \\cdots & x_{n1} \\\\ x_{12} & x_{22} & \\cdots & x_{n2} \\\\ \\vdots & \\vdots & & \\vdots \\\\ x_{1p} & x_{2p} & \\cdots & x_{np} \\end{pmatrix},",
@@ -29,11 +39,6 @@
   "confidence": 0.95,
   "notes": ""
  },
- "m00015": {
-  "latex": "(\\mathbf{A}\\mathbf{B})_{ij} = \\sum_{k=1}^{d} a_{ik} b_{kj}",
-  "confidence": 0.9,
-  "notes": "A stray glyph fragment from the following word ('such') bleeds into the top-right of the crop; not part of the expression."
- },
  "m00016": {
   "latex": "\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\quad\\text{and}\\quad \\mathbf{B} = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}.",
   "confidence": 0.95,
@@ -53,6 +58,11 @@
   "latex": "\\hat{Y} = \\hat{f}(X),",
   "confidence": 0.95,
   "notes": ""
+ },
+ "m00024": {
+  "latex": "\\begin{aligned} \\mathrm{E}(Y-\\hat{Y})^2 &= \\mathrm{E}[f(X)+\\epsilon-\\hat{f}(X)]^2 \\\\ &= \\underbrace{[f(X)-\\hat{f}(X)]^2} + \\underbrace{\\mathrm{Var}(\\epsilon)}, \\end{aligned}",
+  "confidence": 0.82,
+  "notes": "Image shows underbrace marks below both terms but the label text beneath them (likely 'Reducible'/'Irreducible' in the original book) is cut off/illegible in the crop, so labels were omitted rather than guessed."
  },
  "m00027": {
   "latex": "f(X) = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p.",
@@ -124,6 +134,11 @@
   "confidence": 0.93,
   "notes": "N_0 rendered calligraphic per book convention for the neighbor-index set"
  },
+ "m00050": {
+  "latex": "\\begin{array}{c|cccc} \\text{Obs.} & X_1 & X_2 & X_3 & Y \\\\ \\hline 1 & 0 & 3 & 0 & \\text{Red} \\\\ 2 & 2 & 0 & 0 & \\text{Red} \\\\ 3 & 0 & 1 & 3 & \\text{Red} \\\\ 4 & 0 & 1 & 2 & \\text{Green} \\\\ 5 & -1 & 0 & 1 & \\text{Green} \\\\ 6 & 1 & 1 & 1 & \\text{Red} \\end{array}",
+  "confidence": 0.97,
+  "notes": "Rendered as a table via array since this is tabular data, not an equation."
+ },
  "m00051": {
   "latex": "Y \\approx \\beta_0 + \\beta_1 X.",
   "confidence": 0.98,
@@ -193,11 +208,6 @@
   "latex": "\\mathrm{SE}(\\hat{\\beta}_0)^2 = \\sigma^2\\left[\\frac{1}{n} + \\frac{\\bar{x}^2}{\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\right], \\quad \\mathrm{SE}(\\hat{\\beta}_1)^2 = \\frac{\\sigma^2}{\\sum_{i=1}^{n}(x_i - \\bar{x})^2},",
   "confidence": 0.94,
   "notes": "equation number (3.8) excluded per instructions"
- },
- "m00081": {
-  "latex": "\\mathrm{RSE} = \\sqrt{\\mathrm{RSS}/(n - 2)}.",
-  "confidence": 0.95,
-  "notes": ""
  },
  "m00082": {
   "latex": "\\widehat{\\mathrm{SE}}(\\hat{\\beta}_1)",
@@ -354,6 +364,11 @@
   "confidence": 0.95,
   "notes": ""
  },
+ "m00116": {
+  "latex": "\\begin{cases} \\beta_0 + \\beta_1 + \\epsilon_i & \\text{if } i\\text{th person owns a house} \\end{cases}",
+  "confidence": 0.85,
+  "notes": "Crop shows only the top brace row of what is normally a two-case brace in the book; transcribed exactly what is visible without inventing the missing second case."
+ },
  "m00117": {
   "latex": "x_{i1} = \\begin{cases} 1 & \\text{if } i\\text{th person is from the South} \\\\ 0 & \\text{if } i\\text{th person is not from the South,} \\end{cases}",
   "confidence": 0.95,
@@ -379,25 +394,30 @@
   "confidence": 0.9,
   "notes": ""
  },
- "m00125": {
-  "latex": "= \\beta_0 + (\\beta_1 + \\beta_3 \\times \\texttt{radio}) \\times \\texttt{TV} + \\beta_2 \\times \\texttt{radio} + \\epsilon.",
-  "confidence": 0.9,
-  "notes": "crop's top row is bleed from the preceding unnumbered equation (sales = beta0 + beta1 TV + ...); transcribed only the (3.33) line, matching extracted_characters"
- },
  "m00126": {
   "latex": "H_a : \\beta_3 \\neq 0.",
   "confidence": 0.85,
   "notes": "trailing period as shown in the crop"
  },
+ "m00129": {
+  "latex": "\\begin{aligned} &\\approx \\beta_0 + \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_2 & \\text{if } i\\text{th person is a student} \\end{cases} \\\\ &= \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_0 + \\beta_2 & \\text{if } i\\text{th person is a student} \\end{cases} \\end{aligned}",
+  "confidence": 0.75,
+  "notes": "First line has a blank gap where 'income' should sit before the subscript i (rendering dropout in the source); filled in from the identical term on the second line, which is fully visible."
+ },
+ "m00130": {
+  "latex": "\\begin{aligned} &\\approx \\beta_0 + \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_2 + \\beta_3 \\times \\texttt{income}_i & \\text{if student} \\end{cases} \\\\ &= \\begin{cases} (\\beta_0 + \\beta_2) + (\\beta_1 + \\beta_3) \\times \\texttt{income}_i & \\text{if student} \\\\ \\beta_0 + \\beta_1 \\times \\texttt{income}_i & \\text{if not student.} \\end{cases} \\end{aligned}",
+  "confidence": 0.8,
+  "notes": "First line has the same rendering gap before 'income_i' as m00129, filled in by analogy; only one case shown on line 1 (matches image), both cases shown on line 2 (matches image)."
+ },
+ "m00132": {
+  "latex": "\\sqrt{X},",
+  "confidence": 0.6,
+  "notes": "Tiny inline crop; extracted_characters only captured the letter X (radical sign not text-extractable, per why_model_needed=fraction-or-radical-rule). Trailing comma is faint in the crop but appears present."
+ },
  "m00133": {
   "latex": "n",
   "confidence": 0.85,
   "notes": "Crop bleeds the following line's sqrt(2) at the bottom; per extracted_characters and context ('...for the n samples') the actual target is just n."
- },
- "m00134": {
-  "latex": "\\sqrt{2}",
-  "confidence": 0.95,
-  "notes": ""
  },
  "m00135": {
   "latex": "h_i = \\frac{1}{n} + \\frac{(x_i - \\bar{x})^2}{\\sum_{i'=1}^{n}(x_{i'} - \\bar{x})^2}.",
@@ -444,6 +464,11 @@
   "confidence": 0.95,
   "notes": ""
  },
+ "m00149": {
+  "latex": "\\log(X), \\sqrt{X}, X^2. \\text{ Comment on your findings.}",
+  "confidence": 0.95,
+  "notes": ""
+ },
  "m00150": {
   "latex": "H_0 : \\beta_j = 0?",
   "confidence": 0.95,
@@ -482,6 +507,16 @@
  "m00160": {
   "latex": "Y = \\beta_0 + \\beta_1 X + \\beta_2 X^2 + \\beta_3 X^3 + \\epsilon.",
   "confidence": 0.95,
+  "notes": ""
+ },
+ "m00161": {
+  "latex": "Y = \\begin{cases} 1 & \\text{if } \\texttt{stroke}; \\\\ 2 & \\text{if } \\texttt{drug overdose}; \\\\ 3 & \\text{if } \\texttt{epileptic seizure}. \\end{cases}",
+  "confidence": 0.96,
+  "notes": ""
+ },
+ "m00162": {
+  "latex": "Y = \\begin{cases} 1 & \\text{if } \\texttt{epileptic seizure}; \\\\ 2 & \\text{if } \\texttt{stroke}; \\\\ 3 & \\text{if } \\texttt{drug overdose}, \\end{cases}",
+  "confidence": 0.96,
   "notes": ""
  },
  "m00163": {
@@ -534,16 +569,6 @@
   "confidence": 0.9,
   "notes": ""
  },
- "m00178": {
-  "latex": ") = \\frac{e^{-3.5041+0.4049\\times1}}{1+e^{-3.5041+0.4049\\times1}} = 0.0431,",
-  "confidence": 0.75,
-  "notes": "Continues literal text 'Pr(default=Yes|student=Yes' that precedes it. Crop bleeds into the start of the next line (the student=No equation); that bled second row duplicates m00199 and is excluded here."
- },
- "m00179": {
-  "latex": "\\widehat{\\mathrm{Pr}}(\\texttt{default}=\\texttt{Yes}\\mid\\texttt{student}=\\texttt{No}) = \\dfrac{e^{-3.5041+0.4049\\times 0}}{1 + e^{-3.5041+0.4049\\times 0}} = 0.0292.",
-  "confidence": 0.9,
-  "notes": ""
- },
  "m00180": {
   "latex": "\\log\\left(\\frac{p(X)}{1-p(X)}\\right) = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p,",
   "confidence": 0.9,
@@ -564,15 +589,20 @@
   "confidence": 0.97,
   "notes": ""
  },
+ "m00184": {
+  "latex": "\\begin{gathered} \\mathrm{Pr}(Y = k \\mid X = x) = \\dfrac{e^{\\beta_{k0}+\\beta_{k1}x_1+\\cdots+\\beta_{kp}x_p}}{1 + \\sum_{l=1}^{K-1} e^{\\beta_{l0}+\\beta_{l1}x_1+\\cdots+\\beta_{lp}x_p}} \\\\[2em] \\mathrm{Pr}(Y = K \\mid X = x) = \\dfrac{1}{1 + \\sum_{l=1}^{K-1} e^{\\beta_{l0}+\\beta_{l1}x_1+\\cdots+\\beta_{lp}x_p}}\\,. \\\\[2em] \\log\\left( \\dfrac{\\mathrm{Pr}(Y = k \\mid X = x)}{\\mathrm{Pr}(Y = K \\mid X = x)} \\right) = \\beta_{k0} + \\beta_{k1}x_1 + \\cdots + \\beta_{kp}x_p. \\end{gathered}",
+  "confidence": 0.9,
+  "notes": "Single crop contains three stacked display equations (the multinomial logistic model, its Kth-class special case, and the resulting log-odds form); combined with vertical spacing to match the image."
+ },
+ "m00185": {
+  "latex": "\\frac{\\mathrm{Pr}(Y = \\texttt{stroke} \\mid X = x)}{\\mathrm{Pr}(Y = \\texttt{epileptic seizure} \\mid X = x)}",
+  "confidence": 0.95,
+  "notes": ""
+ },
  "m00186": {
   "latex": "\\mathrm{Pr}(Y = k|X = x) = \\frac{e^{\\beta_{k0}+\\beta_{k1}x_1+\\cdots+\\beta_{kp}x_p}}{\\sum_{l=1}^{K} e^{\\beta_{l0}+\\beta_{l1}x_1+\\cdots+\\beta_{lp}x_p}}.",
   "confidence": 0.9,
   "notes": ""
- },
- "m00188": {
-  "latex": "\\log\\left(\\frac{\\mathrm{Pr}(Y = k|X = x)}{\\mathrm{Pr}(Y = k'|X = x)}\\right) = (\\beta_{k0} - \\beta_{k'0}) + (\\beta_{k1} - \\beta_{k'1})x_1 + \\cdots + (\\beta_{kp} - \\beta_{k'p})x_p.",
-  "confidence": 0.85,
-  "notes": "Wide duplicate crop of the complete equation 4.14, overlapping content already partly shown in m00207."
  },
  "m00189": {
   "latex": "\\mathrm{Pr}(Y = k|X = x) = \\frac{\\pi_k f_k(x)}{\\sum_{l=1}^{K} \\pi_l f_l(x)}.",
@@ -679,16 +709,6 @@
   "confidence": 0.96,
   "notes": ""
  },
- "m00224": {
-  "latex": "\\log\\left(\\frac{\\mathrm{Pr}(Y = k|X = x)}{\\mathrm{Pr}(Y = K|X = x)}\\right) = \\log\\left(\\frac{\\pi_k f_k(x)}{\\pi_K f_K(x)}\\right)",
-  "confidence": 0.8,
-  "notes": "crop bleeds into the start of the next display line (partial 'log(pi_k exp(...' fragment); that incomplete continuation is excluded since it duplicates the fuller equation shown separately in m00245"
- },
- "m00225": {
-  "latex": "a_k = \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(\\mu_k + \\mu_K)^T \\mathbf{\\Sigma}^{-1}(\\mu_k - \\mu_K)",
-  "confidence": 0.93,
-  "notes": "a floating 'j=1' fragment above the equation is bleed from the summation limit on the adjacent line and was excluded"
- },
  "m00226": {
   "latex": "\\log\\left(\\frac{\\mathrm{Pr}(Y = k|X = x)}{\\mathrm{Pr}(Y = K|X = x)}\\right) = a_k + \\sum_{j=1}^{p} b_{kj} x_j + \\sum_{j=1}^{p}\\sum_{l=1}^{p} c_{kjl} x_j x_l,",
   "confidence": 0.95,
@@ -706,6 +726,11 @@
  },
  "m00229": {
   "latex": "\\log\\left(\\frac{\\mathrm{Pr}(Y = k|X = x)}{\\mathrm{Pr}(Y = K|X = x)}\\right) = \\beta_{k0} + \\sum_{j=1}^{p}\\beta_{kj}x_j.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00230": {
+  "latex": "\\left( \\frac{\\mathrm{Pr}(Y=k\\mid X=x)}{\\mathrm{Pr}(Y=K\\mid X=x)} \\right)",
   "confidence": 0.95,
   "notes": ""
  },
@@ -729,2049 +754,1701 @@
   "confidence": 0.95,
   "notes": ""
  },
- "m00236": {
+ "m00235": {
   "latex": "\\mathrm{Pr}(Y = 0) = \\frac{e^{-5}5^{0}}{0!} = e^{-5} = 0.0067",
   "confidence": 0.95,
   "notes": ""
  },
- "m00238": {
+ "m00236": {
   "latex": "\\mathrm{Pr}(Y = 1) = \\frac{e^{-5}5^{1}}{1!} = 5e^{-5} = 0.034",
   "confidence": 0.95,
   "notes": ""
  },
- "m00239": {
-  "latex": "\\mathrm{Pr}(Y = 2) = \\frac{e^{-5}5^{2}}{2!} = 0.084",
-  "confidence": 0.9,
-  "notes": "a small fraction visible above the main line in the crop is bleed-through from the equation on the line above (m00256) and is not part of this expression"
- },
- "m00241": {
+ "m00238": {
   "latex": "\\log(\\lambda(X_1, \\ldots, X_p)) = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p",
   "confidence": 0.95,
   "notes": ""
  },
- "m00242": {
+ "m00239": {
   "latex": "\\lambda(X_1, \\ldots, X_p) = e^{\\beta_0+\\beta_1 X_1+\\cdots+\\beta_p X_p}.",
   "confidence": 0.95,
   "notes": ""
  },
- "m00243": {
+ "m00240": {
   "latex": "\\ell(\\beta_0, \\beta_1, \\ldots, \\beta_p) = \\prod_{i=1}^{n} \\frac{e^{-\\lambda(x_i)}\\lambda(x_i)^{y_i}}{y_i!},",
   "confidence": 0.95,
   "notes": ""
  },
- "m00244": {
+ "m00241": {
   "latex": "\\mathrm{E}(Y|X_1, \\ldots, X_p) = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p,",
   "confidence": 0.95,
   "notes": ""
  },
- "m00245": {
+ "m00242": {
   "latex": "\\begin{aligned}\n\\mathrm{E}(Y|X_1, \\ldots, X_p) &= \\mathrm{Pr}(Y = 1|X_1, \\ldots, X_p) \\\\\n&= \\frac{e^{\\beta_0+\\beta_1 X_1+\\cdots+\\beta_p X_p}}{1 + e^{\\beta_0+\\beta_1 X_1+\\cdots+\\beta_p X_p}},\n\\end{aligned}",
   "confidence": 0.9,
   "notes": "equation (4.40); the crop shows both aligned lines with the full fraction"
  },
- "m00246": {
+ "m00243": {
   "latex": "\\mathrm{E}(Y|X_1, \\ldots, X_p) = \\lambda(X_1, \\ldots, X_p) = e^{\\beta_0+\\beta_1 X_1+\\cdots+\\beta_p X_p}.",
   "confidence": 0.95,
   "notes": ""
  },
- "m00247": {
+ "m00244": {
   "latex": "\\eta(\\mathrm{E}(Y|X_1, \\ldots, X_p)) = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p.",
   "confidence": 0.95,
   "notes": ""
  },
- "m00250": {
-  "latex": "\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\quad \\text{and} \\quad \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2",
-  "confidence": 0.7,
-  "notes": "Crop shows only two unlabeled summation signs (a zoomed-out view); full expression reconstructed from footnote 6 on the same page (PDF p.192), which gives both sample-variance formulas."
- },
  "m00251": {
-  "latex": "\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\quad \\text{and} \\quad \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2",
-  "confidence": 0.72,
-  "notes": "Crop is truncated after '1/(n-1)'; completed using footnote 6 on the same page (PDF p.192). Image is pixel-identical to m00261's crop (same source span, flagged for different characters)."
- },
- "m00253": {
-  "latex": "\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\quad \\text{and} \\quad \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2",
-  "confidence": 0.72,
-  "notes": "Crop is truncated after '1/(n-1)'; completed using footnote 6 on the same page (PDF p.192). Image is pixel-identical to m00261's crop (same source span, flagged for different characters)."
- },
- "m00254": {
   "latex": "\\text{coefficient,}\\ \\hat{\\beta}_0 = -6, \\hat{\\beta}_1 = 0.05, \\hat{\\beta}_2 = 1.",
   "confidence": 0.9,
   "notes": "leading word 'coefficient,' is sentence text carried into the display crop"
  },
- "m00258": {
+ "m00256": {
   "latex": "f(x) = \\frac{1}{\\sqrt{2\\pi\\sigma^{2}}} e^{-(x-\\mu)^{2}/2\\sigma^{2}}",
   "confidence": 0.95,
   "notes": ""
  },
- "m00259": {
+ "m00257": {
   "latex": "\\left(\\frac{\\mathrm{Pr}(Y=k|X=x)}{\\mathrm{Pr}(Y=K|X=x)}\\right)",
   "confidence": 0.85,
   "notes": "image content (a bare parenthesized log-odds-style ratio) does not match the stated context about credit-default odds; transcribed exactly what is shown in the crop"
  },
- "m00261": {
+ "m00259": {
   "latex": "\\widehat{\\mathrm{Pr}}(Y = \\texttt{orange}|X = x) = \\frac{\\exp(\\hat{\\beta}_0+\\hat{\\beta}_1 x)}{1+\\exp(\\hat{\\beta}_0+\\hat{\\beta}_1 x)}.",
   "confidence": 0.95,
   "notes": ""
  },
- "m00262": {
+ "m00260": {
   "latex": "\\widehat{\\mathrm{Pr}}(Y = \\texttt{orange}|X = x) = \\frac{\\exp(\\hat{\\alpha}_{\\texttt{orange}0}+\\hat{\\alpha}_{\\texttt{orange}1} x)}{\\exp(\\hat{\\alpha}_{\\texttt{orange}0}+\\hat{\\alpha}_{\\texttt{orange}1} x) + \\exp(\\hat{\\alpha}_{\\texttt{apple}0}+\\hat{\\alpha}_{\\texttt{apple}1} x)}.",
   "confidence": 0.9,
   "notes": ""
  },
- "m00266": {
+ "m00263": {
+  "latex": "\\text{estimates } \\hat{\\alpha}_{\\texttt{orange}0} = 1.2, \\hat{\\alpha}_{\\texttt{orange}1} = -2, \\hat{\\alpha}_{\\texttt{orange}0} = 3, \\hat{\\alpha}_{\\texttt{orange}1} = 0.6. \\text{ What are the coefficient estimates in your model?}",
+  "confidence": 0.88,
+  "notes": "All four subscripts read 'orange' in the source image (the third and fourth terms might be expected to read 'apple' but the crop clearly repeats 'orange'); transcribed exactly as printed."
+ },
+ "m00264": {
   "latex": "6,561.",
   "confidence": 0.9,
   "notes": "answer to 3^8 (mis-OCR'd as '38' in context text)"
  },
- "m00270": {
+ "m00268": {
   "latex": "\\mathrm{CV}_{(n)} = \\frac{1}{n}\\sum_{i=1}^{n} \\mathrm{MSE}_i.",
   "confidence": 0.95,
   "notes": ""
  },
- "m00271": {
+ "m00269": {
   "latex": "\\mathrm{CV}_{(n)} = \\frac{1}{n}\\sum_{i=1}^{n}\\left(\\frac{y_i - \\hat{y}_i}{1 - h_i}\\right)^{2},",
   "confidence": 0.97,
   "notes": ""
  },
- "m00272": {
+ "m00270": {
   "latex": "\\mathrm{CV}_{(k)} = \\frac{1}{k}\\sum_{i=1}^{k}\\mathrm{MSE}_{i}.",
   "confidence": 0.97,
   "notes": ""
  },
- "m00273": {
+ "m00271": {
   "latex": "\\mathrm{CV}_{(n)} = \\frac{1}{n}\\sum_{i=1}^{n}\\mathrm{Err}_{i},",
   "confidence": 0.97,
   "notes": ""
  },
- "m00274": {
+ "m00272": {
   "latex": "\\mathrm{Err}_{i} = I(y_i \\neq \\hat{y}_i).",
   "confidence": 0.85,
   "notes": "Trailing period inferred from crop; extracted_characters gave no punctuation."
  },
- "m00275": {
+ "m00273": {
   "latex": "\\log\\left(\\frac{p}{1 - p}\\right) = \\beta_{0} + \\beta_{1}X_{1} + \\beta_{2}X_{1}^{2} + \\beta_{3}X_{2} + \\beta_{4}X_{2}^{2}.",
   "confidence": 0.97,
   "notes": ""
  },
- "m00276": {
+ "m00274": {
   "latex": "\\alpha = \\frac{\\sigma_Y^2 - \\sigma_{XY}}{\\sigma_X^2 + \\sigma_Y^2 - 2\\sigma_{XY}},",
   "confidence": 0.97,
   "notes": ""
  },
- "m00280": {
+ "m00278": {
   "latex": "\\hat{\\alpha} = \\frac{\\hat{\\sigma}_Y^2 - \\hat{\\sigma}_{XY}}{\\hat{\\sigma}_X^2 + \\hat{\\sigma}_Y^2 - 2\\hat{\\sigma}_{XY}}.",
   "confidence": 0.97,
   "notes": ""
  },
- "m00283": {
+ "m00281": {
   "latex": "\\bar{\\alpha} = \\frac{1}{1000}\\sum_{r=1}^{1000}\\hat{\\alpha}_{r} = 0.5996,",
   "confidence": 0.97,
   "notes": ""
  },
- "m00284": {
+ "m00282": {
   "latex": "\\sqrt{\\frac{1}{1000 - 1}\\sum_{r=1}^{1000}\\left(\\hat{\\alpha}_{r} - \\bar{\\alpha}\\right)^{2}} = 0.083.",
   "confidence": 0.96,
   "notes": ""
  },
- "m00289": {
+ "m00287": {
   "latex": "\\mathrm{SE}_{B}(\\hat{\\alpha}) = \\sqrt{\\frac{1}{B-1}\\sum_{r=1}^{B}\\left(\\hat{\\alpha}^{*r} - \\frac{1}{B}\\sum_{r'=1}^{B}\\hat{\\alpha}^{*r'}\\right)^{2}}.",
   "confidence": 0.95,
   "notes": ""
  },
- "m00291": {
+ "m00289": {
   "latex": "\\begin{aligned}\n\\text{i.}\\quad Y &= \\beta_{0} + \\beta_{1}X + \\epsilon \\\\\n\\text{ii.}\\quad Y &= \\beta_{0} + \\beta_{1}X + \\beta_{2}X^{2} + \\epsilon \\\\\n\\text{iii.}\\quad Y &= \\beta_{0} + \\beta_{1}X + \\beta_{2}X^{2} + \\beta_{3}X^{3} + \\epsilon \\\\\n\\text{iv.}\\quad Y &= \\beta_{0} + \\beta_{1}X + \\beta_{2}X^{2} + \\beta_{3}X^{3} + \\beta_{4}X^{4} + \\epsilon.\n\\end{aligned}",
   "confidence": 0.95,
   "notes": "Four-line list of nested models i-iv rendered as an aligned block."
  },
- "m00292": {
+ "m00290": {
   "latex": "\\text{formula } \\left[\\hat{\\mu} - 2\\mathrm{SE}(\\hat{\\mu}),\\ \\hat{\\mu} + 2\\mathrm{SE}(\\hat{\\mu})\\right].",
   "confidence": 0.9,
   "notes": "Italic word 'formula' from surrounding sentence kept as \\text{}."
  },
- "m00295": {
+ "m00293": {
   "latex": "Y = \\beta_{0} + \\beta_{1}X_{1} + \\cdots + \\beta_{p}X_{p} + \\epsilon",
   "confidence": 0.98,
   "notes": ""
  },
- "m00303": {
+ "m00294": {
+  "latex": "\\binom{p}{2}",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00296": {
+  "latex": "\\begin{gathered} \\text{(a) Fit all } \\binom{p}{k} \\text{ models that contain exactly } k \\text{ predictors.} \\\\[1em] \\text{(b) Pick the best among these } \\binom{p}{k} \\text{ models, and call it } \\mathcal{M}_k. \\end{gathered}",
+  "confidence": 0.65,
+  "notes": "Row (a) is fully legible. Row (b) in the crop shows only the isolated math fragments 'binom(p,k)' and a calligraphic M with a subscript cut at the image's right edge, with the connecting words dropped out in the source rendering; reconstructed the standard textbook sentence for algorithm step (b) from context. Flagged as a hard case."
+ },
+ "m00301": {
   "latex": "\\sum^{p-1}",
   "confidence": 0.85,
   "notes": "Crop shows only the superscript p-1 with no lower limit visible; reproduced as printed."
  },
- "m00309": {
+ "m00307": {
   "latex": "C_{p} = \\frac{1}{n}\\left(\\mathrm{RSS} + 2d\\hat{\\sigma}^{2}\\right),",
   "confidence": 0.97,
   "notes": ""
  },
- "m00311": {
+ "m00309": {
   "latex": "C_{p}' = \\mathrm{RSS}/\\hat{\\sigma}^{2} + 2d - n.",
   "confidence": 0.85,
   "notes": "Trailing period taken from crop; extracted_characters omitted punctuation."
  },
- "m00312": {
+ "m00310": {
   "latex": "C_{p} = \\frac{1}{n}\\hat{\\sigma}^{2}\\left(C_{p}' + n\\right),",
   "confidence": 0.85,
   "notes": "Trailing comma taken from crop; extracted_characters omitted punctuation."
  },
- "m00313": {
+ "m00311": {
   "latex": "\\mathrm{AIC} = \\frac{1}{n}\\left(\\mathrm{RSS} + 2d\\hat{\\sigma}^{2}\\right),",
   "confidence": 0.97,
   "notes": ""
  },
- "m00314": {
+ "m00312": {
   "latex": "\\mathrm{BIC} = \\frac{1}{n}\\left(\\mathrm{RSS} + \\log(n)d\\hat{\\sigma}^{2}\\right).",
   "confidence": 0.97,
   "notes": ""
  },
- "m00316": {
+ "m00314": {
   "latex": "\\sum(y_{i} - \\bar{y})^{2}",
   "confidence": 0.95,
   "notes": ""
  },
- "m00317": {
+ "m00315": {
   "latex": "\\text{Adjusted } R^2 = 1 - \\frac{\\mathrm{RSS}/(n-d-1)}{\\mathrm{TSS}/(n-1)}.",
   "confidence": 0.95,
   "notes": ""
  },
- "m00318": {
+ "m00316": {
   "latex": "\\frac{\\mathrm{RSS}}{n-d-1}",
   "confidence": 0.96,
   "notes": ""
  },
- "m00319": {
+ "m00317": {
   "latex": "\\mathrm{RSS} = \\sum_{i=1}^{n}\\left(y_{i} - \\beta_{0} - \\sum_{j=1}^{p}\\beta_{j}x_{ij}\\right)^{2}.",
   "confidence": 0.97,
   "notes": ""
  },
- "m00321": {
+ "m00319": {
   "latex": "\\sum_{i=1}^{n}\\left(y_{i} - \\beta_{0} - \\sum_{j=1}^{p}\\beta_{j}x_{ij}\\right)^{2} + \\lambda\\sum_{j=1}^{p}\\beta_{j}^{2} = \\mathrm{RSS} + \\lambda\\sum_{j=1}^{p}\\beta_{j}^{2},",
   "confidence": 0.96,
   "notes": ""
  },
- "m00322": {
+ "m00320": {
   "latex": "\\lambda\\sum_{j}\\beta_{j}^{2}",
   "confidence": 0.9,
   "notes": ""
  },
- "m00325": {
+ "m00323": {
   "latex": "\\hat{\\beta}_0 = \\bar{y} = \\sum_{i=1}^{n} y_i/n.",
   "confidence": 0.97,
   "notes": ""
  },
  "m00327": {
-  "latex": "\\|\\beta\\|_2 = \\sqrt{\\sum_{j=1}^{p} \\beta_j^{2}}.",
-  "confidence": 0.85,
-  "notes": "trailing mark after the radical is faint; read as a full stop ending the definition sentence"
- },
- "m00330": {
   "latex": "\\tilde{x}_{ij} = \\frac{x_{ij}}{\\sqrt{\\frac{1}{n}\\sum_{i=1}^{n}\\left(x_{ij}-\\bar{x}_{j}\\right)^{2}}},",
   "confidence": 0.95,
   "notes": ""
  },
- "m00331": {
+ "m00328": {
   "latex": "\\lambda \\sum \\beta_j^{2}",
   "confidence": 0.85,
   "notes": "sum shown without explicit index/limit in this crop, reproduced as printed"
  },
- "m00333": {
+ "m00330": {
   "latex": "\\sum_{i=1}^{n}\\left(y_i - \\beta_0 - \\sum_{j=1}^{p}\\beta_j x_{ij}\\right)^{2} + \\lambda\\sum_{j=1}^{p}|\\beta_j| \\; = \\; \\mathrm{RSS} + \\lambda\\sum_{j=1}^{p}|\\beta_j|.",
   "confidence": 0.95,
   "notes": ""
  },
- "m00334": {
+ "m00331": {
   "latex": "\\|\\beta\\|_1 = \\sum |\\beta_j|.",
   "confidence": 0.85,
   "notes": "faint trailing mark read as a full stop ending the sentence"
  },
- "m00336": {
+ "m00333": {
   "latex": "\\operatorname*{minimize}_{\\beta} \\left\\{ \\sum_{i=1}^{n}\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_j x_{ij}\\right)^{2} \\right\\} \\quad \\text{subject to} \\quad \\sum_{j=1}^{p}|\\beta_j| \\leq s",
   "confidence": 0.95,
   "notes": ""
  },
- "m00337": {
+ "m00334": {
   "latex": "\\operatorname*{minimize}_{\\beta} \\left\\{ \\sum_{i=1}^{n}\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_j x_{ij}\\right)^{2} \\right\\} \\quad \\text{subject to} \\quad \\sum_{j=1}^{p}\\beta_j^{2} \\leq s,",
   "confidence": 0.95,
   "notes": ""
  },
- "m00338": {
+ "m00335": {
   "latex": "\\sum_{j=1}^{p} |\\beta_j|",
   "confidence": 0.9,
   "notes": "crop includes surrounding body-text lines as padding; only this inline sum is the expression"
  },
- "m00339": {
+ "m00336": {
   "latex": "\\sum^{p}",
   "confidence": 0.4,
   "notes": "crop shows only the summation symbol with its upper bound p, no visible lower limit or summand; likely a partial/duplicate capture of the nearby sum_{j=1}^p |beta_j| expression"
  },
  "m00341": {
-  "latex": "\\operatorname*{minimize}_{\\beta}\\left\\{\\sum_{i=1}^{n}\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_j x_{ij}\\right)^{2}\\right\\}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00342": {
-  "latex": "\\sum_{j=1}^{p} I(\\beta_j \\neq 0) \\leq s.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00343": {
-  "latex": "I(\\beta_j \\neq 0)",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00344": {
   "latex": "\\beta_j \\neq 0,",
   "confidence": 0.75,
   "notes": "faint mark after the crop suggests a trailing comma, consistent with 'if beta_j != 0, and equals zero otherwise' in the surrounding sentence"
  },
- "m00346": {
-  "latex": "\\sum_{j=1}^{p} (y_j - \\beta_j)^2.",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00347": {
-  "latex": "\\hat{\\beta}_j = y_j.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00348": {
-  "latex": "\\sum_{j=1}^{p}(y_j-\\beta_j)^{2} + \\lambda\\sum_{j=1}^{p}\\beta_j^{2}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00349": {
-  "latex": "\\sum_{j=1}^{p}(y_j-\\beta_j)^{2} + \\lambda\\sum_{j=1}^{p}|\\beta_j|",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00350": {
-  "latex": "\\hat{\\beta}_j^{R} = y_j/(1+\\lambda),",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00351": {
-  "latex": "\\hat{\\beta}_j^{L} = \\begin{cases} y_j - \\lambda/2 & \\text{if } y_j > \\lambda/2; \\\\ y_j + \\lambda/2 & \\text{if } y_j < -\\lambda/2; \\\\ 0 & \\text{if } |y_j| \\leq \\lambda/2. \\end{cases}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00352": {
-  "latex": "p(\\beta|X, Y) \\propto f(Y|X, \\beta)p(\\beta|X) = f(Y|X, \\beta)p(\\beta),",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00353": {
-  "latex": "Y = \\beta_0 + X_1\\beta_1 + \\cdots + X_p\\beta_p + \\epsilon,",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00354": {
-  "latex": "p(\\beta) = \\prod_{j=1}^{p} g(\\beta_j),",
-  "confidence": 0.85,
-  "notes": "Trailing comma is part of the sentence; a faint mark below the main line in the crop looked like stray noise from the following line and was not transcribed."
- },
- "m00355": {
-  "latex": "Z_m = \\sum_{j=1}^{p} \\phi_{jm} X_j",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00356": {
-  "latex": "y_i = \\theta_0 + \\sum_{m=1}^{M} \\theta_m z_{im} + \\epsilon_i, \\quad i = 1, \\dots, n,",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00357": {
-  "latex": "\\sum_{m=1}^{M} \\theta_m z_{im} = \\sum_{m=1}^{M} \\theta_m \\sum_{j=1}^{p} \\phi_{jm} x_{ij} = \\sum_{j=1}^{p} \\sum_{m=1}^{M} \\theta_m \\phi_{jm} x_{ij} = \\sum_{j=1}^{p} \\beta_j x_{ij},",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00358": {
-  "latex": "\\beta_j = \\sum_{m=1}^{M} \\theta_m \\phi_{jm}.",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00359": {
-  "latex": "Z_1 = 0.839 \\times (\\texttt{pop} - \\overline{\\texttt{pop}}) + 0.544 \\times (\\texttt{ad} - \\overline{\\texttt{ad}}).",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00360": {
-  "latex": "\\overline{\\texttt{pop}}",
-  "confidence": 0.9,
-  "notes": "Overline visible over the typewriter word, denoting the sample mean of pop."
- },
- "m00361": {
-  "latex": "\\overline{\\texttt{ad}}",
-  "confidence": 0.9,
-  "notes": "Overline visible over the typewriter word, denoting the sample mean of ad."
- },
- "m00362": {
-  "latex": "\\mathrm{Var}\\left(\\phi_{11} \\times (\\texttt{pop} - \\overline{\\texttt{pop}}) + \\phi_{21} \\times (\\texttt{ad} - \\overline{\\texttt{ad}})\\right)",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00363": {
-  "latex": "z_{i1} = 0.839 \\times (\\texttt{pop}_i - \\overline{\\texttt{pop}}) + 0.544 \\times (\\texttt{ad}_i - \\overline{\\texttt{ad}}).",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00364": {
-  "latex": "(\\overline{\\texttt{pop}}, \\overline{\\texttt{ad}})",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00365": {
-  "latex": "z_{i1} = 0.839 \\times (\\texttt{pop}_i - \\overline{\\texttt{pop}}) + 0.544 \\times (\\texttt{ad}_i - \\overline{\\texttt{ad}}) < 0",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00366": {
-  "latex": "Z_2 = 0.544 \\times (\\texttt{pop} - \\overline{\\texttt{pop}}) - 0.839 \\times (\\texttt{ad} - \\overline{\\texttt{ad}}).",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00367": {
-  "latex": "Z_1 = \\sum_{j=1}^{p} \\phi_{j1} X_j",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00369": {
-  "latex": "\\sum_{i=1}^{n} \\left(y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij}\\right)^2 \\quad \\text{subject to} \\quad \\sum_{j=1}^{p} |\\beta_j| \\le s",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00370": {
-  "latex": "\\sum_{i=1}^{n} \\left(y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij}\\right)^2 + \\lambda \\sum_{j=1}^{p} \\beta_j^2",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00372": {
-  "latex": "\\hat{\\beta}_1 = \\hat{\\beta}_2.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00373": {
-  "latex": "y_i = \\beta_0 + \\sum_{j=1}^{p} x_{ij} \\beta_j + \\epsilon_i",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00374": {
-  "latex": "p(\\beta) = \\frac{1}{2b} \\exp(-|\\beta|/b).",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00375": {
-  "latex": "Y = \\beta_0 + \\beta_1 X + \\beta_2 X^2 + \\beta_3 X^3 + \\epsilon,",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00376": {
-  "latex": "Y = \\beta_0 + \\beta_7 X^7 + \\epsilon,",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00377": {
-  "latex": "Y = X\\beta + \\epsilon,",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00378": {
-  "latex": "\\sqrt{\\sum^{p}}",
-  "confidence": 0.3,
-  "notes": "Crop appears truncated: only the radical sign and \\sum^{p} are visible, with no lower limit or summand shown (likely part of a larger norm/distance expression such as sqrt(sum_{j=1}^p (beta_j-hat beta_j^r)^2) whose remainder was not captured in this bounding box). Transcribed only what is visibly printed."
- },
- "m00381": {
-  "latex": "y_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00382": {
-  "latex": "y_i = \\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\beta_3 x_i^3 + \\cdots + \\beta_d x_i^d + \\epsilon_i,",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00383": {
-  "latex": "\\hat{f}(x_0) = \\hat{\\beta}_0 + \\hat{\\beta}_1 x_0 + \\hat{\\beta}_2 x_0^2 + \\hat{\\beta}_3 x_0^3 + \\hat{\\beta}_4 x_0^4.",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00388": {
-  "latex": "\\mathrm{Pr}(y_i > 250 \\mid x_i) = \\frac{\\exp(\\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\cdots + \\beta_d x_i^d)}{1 + \\exp(\\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\cdots + \\beta_d x_i^d)}.",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00389": {
-  "latex": "\\begin{aligned} C_0(X) &= I(X < c_1), \\\\ C_1(X) &= I(c_1 \\leq X < c_2), \\\\ C_2(X) &= I(c_2 \\leq X < c_3), \\\\ &\\ \\ \\vdots \\\\ C_{K-1}(X) &= I(c_{K-1} \\leq X < c_K), \\\\ C_K(X) &= I(c_K \\leq X), \\end{aligned}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00390": {
-  "latex": "y_i = \\beta_0 + \\beta_1 C_1(x_i) + \\beta_2 C_2(x_i) + \\cdots + \\beta_K C_K(x_i) + \\epsilon_i.",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00391": {
-  "latex": "\\mathrm{Pr}(y_i > 250 \\mid x_i) = \\frac{\\exp(\\beta_0 + \\beta_1 C_1(x_i) + \\cdots + \\beta_K C_K(x_i))}{1 + \\exp(\\beta_0 + \\beta_1 C_1(x_i) + \\cdots + \\beta_K C_K(x_i))}",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00392": {
-  "latex": "y_i = \\beta_0 + \\beta_1 b_1(x_i) + \\beta_2 b_2(x_i) + \\beta_3 b_3(x_i) + \\cdots + \\beta_K b_K(x_i) + \\epsilon_i.",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00393": {
-  "latex": "y_i = \\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\beta_3 x_i^3 + \\epsilon_i,",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00394": {
-  "latex": "y_i = \\begin{cases} \\beta_{01} + \\beta_{11} x_i + \\beta_{21} x_i^2 + \\beta_{31} x_i^3 + \\epsilon_i & \\text{if } x_i < c \\\\ \\beta_{02} + \\beta_{12} x_i + \\beta_{22} x_i^2 + \\beta_{32} x_i^3 + \\epsilon_i & \\text{if } x_i \\ge c. \\end{cases}",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00395": {
-  "latex": "y_i = \\beta_0 + \\beta_1 b_1(x_i) + \\beta_2 b_2(x_i) + \\cdots + \\beta_{K+3} b_{K+3}(x_i) + \\epsilon_i,",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00396": {
-  "latex": "h(x, \\xi) = (x - \\xi)_+^3 = \\begin{cases} (x - \\xi)^3 & \\text{if } x > \\xi \\\\ 0 & \\text{otherwise,} \\end{cases}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00397": {
-  "latex": "\\mathrm{RSS} = \\sum_{i=1}^{n} (y_i - g(x_i))^2",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00398": {
-  "latex": "\\sum_{i=1}^{n} (y_i - g(x_i))^2 + \\lambda \\int g''(t)^2\\, dt",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00399": {
-  "latex": "\\sum_{i=1}^{n} (y_i - g(x_i))^2",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00401": {
-  "latex": "\\int",
-  "confidence": 0.95,
-  "notes": "Crop shows only the isolated integral sign; the integrand g''(t)^2 dt was extracted as plain text elsewhere and is not reproduced here."
- },
- "m00404": {
-  "latex": "\\int",
-  "confidence": 0.95,
-  "notes": "Crop shows only the isolated integral sign; the integrand g''(t)^2 dt was extracted as plain text elsewhere and is not reproduced here."
- },
- "m00406": {
-  "latex": "\\hat{\\mathbf{g}}_\\lambda = \\mathbf{S}_\\lambda \\mathbf{y},",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00408": {
-  "latex": "df_\\lambda = \\sum_{i=1}^{n} \\{\\mathbf{S}_\\lambda\\}_{ii},",
-  "confidence": 0.9,
-  "notes": "S rendered bold in the source image (matrix)."
- },
- "m00409": {
-  "latex": "\\mathrm{RSS}_{cv}(\\lambda) = \\sum_{i=1}^{n} (y_i - \\hat{g}_\\lambda^{(-i)}(x_i))^2 = \\sum_{i=1}^{n} \\left[ \\frac{y_i - \\hat{g}_\\lambda(x_i)}{1 - \\{\\mathbf{S}_\\lambda\\}_{ii}} \\right]^2.",
-  "confidence": 0.92,
-  "notes": ""
- },
- "m00415": {
-  "latex": "y_i = \\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} + \\epsilon_i",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00416": {
-  "latex": "\\begin{aligned}\ny_i &= \\beta_0 + \\sum_{j=1}^{p} f_j(x_{ij}) + \\epsilon_i \\\\\n&= \\beta_0 + f_1(x_{i1}) + f_2(x_{i2}) + \\cdots + f_p(x_{ip}) + \\epsilon_i.\n\\end{aligned}",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00417": {
-  "latex": "\\texttt{wage} = \\beta_0 + f_1(\\texttt{year}) + f_2(\\texttt{age}) + f_3(\\texttt{education}) + \\epsilon",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00418": {
-  "latex": "\\log\\left( \\frac{p(X)}{1 - p(X)} \\right) = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p.",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00419": {
-  "latex": "\\log\\left( \\frac{p(X)}{1 - p(X)} \\right) = \\beta_0 + f_1(X_1) + f_2(X_2) + \\cdots + f_p(X_p).",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00420": {
-  "latex": "\\log\\left( \\frac{p(X)}{1 - p(X)} \\right) = \\beta_0 + \\beta_1 \\times \\texttt{year} + f_2(\\texttt{age}) + f_3(\\texttt{education}),",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00421": {
-  "latex": "p(X) = \\mathrm{Pr}(\\texttt{wage} > 250|\\texttt{year}, \\texttt{age}, \\texttt{education}).",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00423": {
-  "latex": "f(x) = \\beta_{0} + \\beta_{1}x + \\beta_{2}x^{2} + \\beta_{3}x^{3} + \\beta_{4}(x - \\xi)_{+}^{3}",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00424": {
-  "latex": "\\beta_{3}, \\beta_{4}.",
-  "confidence": 0.99,
-  "notes": ""
- },
- "m00425": {
-  "latex": "f_{1}(x) = a_{1} + b_{1}x + c_{1}x^{2} + d_{1}x^{3}",
-  "confidence": 0.99,
-  "notes": ""
- },
- "m00426": {
-  "latex": "\\text{terms of } \\beta_{0}, \\beta_{1}, \\beta_{2}, \\beta_{3}, \\beta_{4}.",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00427": {
-  "latex": "f_{2}(x) = a_{2} + b_{2}x + c_{2}x^{2} + d_{2}x^{3}",
-  "confidence": 0.99,
-  "notes": ""
- },
- "m00428": {
-  "latex": "f_{1}(x) = a_{1} + b_{1}x + c_{1}x^{2} + d_{1}x^{3},",
-  "confidence": 0.99,
-  "notes": ""
- },
- "m00429": {
-  "latex": "f_{1}'(x) = b_{1} + 2c_{1}x + 3d_{1}x^{2}",
-  "confidence": 0.99,
-  "notes": ""
- },
- "m00430": {
-  "latex": "f_{1}''(x) = 2c_{1} + 6d_{1}x.",
-  "confidence": 0.99,
-  "notes": ""
- },
- "m00432": {
-  "latex": "\\hat{g} = \\operatorname*{argmin}_{g} \\left( \\sum_{i=1}^{n} (y_{i} - g(x_{i}))^{2} + \\lambda \\int \\left[g^{(m)}(x)\\right]^{2} dx \\right),",
-  "confidence": 0.95,
-  "notes": "argmin g rendered with subscript g under the operator, matching image"
- },
- "m00433": {
-  "latex": "Y = \\beta_{0} + \\beta_{1}b_{1}(X) + \\beta_{2}b_{2}(X) + \\epsilon,",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00435": {
-  "latex": "(X-1)I(1 \\leq X \\leq 2), \\ b_{2}(X) = (X-3)I(3 \\leq X \\leq 4) + I(4 < X \\leq 5).",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00436": {
-  "latex": "Y = \\beta_{0} + \\beta_{1}b_{1}(X) + \\beta_{2}b_{2}(X) + \\epsilon,",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00441": {
-  "latex": "n = 100.",
-  "confidence": 0.99,
-  "notes": ""
- },
- "m00442": {
-  "latex": "Y - \\texttt{beta1} \\cdot X_{1} = \\beta_{0} + \\beta_{2}X_{2} + \\epsilon.",
-  "confidence": 0.95,
-  "notes": "beta1 is a python variable name, set in typewriter font per rule 4"
- },
- "m00443": {
-  "latex": "Y - \\texttt{beta2} \\cdot X_{2} = \\beta_{0} + \\beta_{1}X_{1} + \\epsilon.",
-  "confidence": 0.95,
-  "notes": "beta2 is a python variable name, set in typewriter font per rule 4"
- },
- "m00444": {
-  "latex": "R_{1}, R_{2}, \\ldots, R_{J}.",
-  "confidence": 0.99,
-  "notes": ""
- },
- "m00445": {
-  "latex": "\\sum_{j=1}^{J} \\sum_{i \\in R_{j}} (y_{i} - \\hat{y}_{R_{j}})^{2},",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00447": {
-  "latex": "R_{1}(j, s) = \\{X|X_{j} < s\\} \\quad \\text{and} \\quad R_{2}(j, s) = \\{X|X_{j} \\geq s\\},",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00448": {
-  "latex": "\\sum_{i:\\, x_{i}\\in R_{1}(j,s)} (y_{i} - \\hat{y}_{R_{1}})^{2} + \\sum_{i:\\, x_{i}\\in R_{2}(j,s)} (y_{i} - \\hat{y}_{R_{2}})^{2},",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00451": {
-  "latex": "\\sum_{m=1}^{|T|} \\sum_{i:\\, x_{i}\\in R_{m}} (y_{i} - \\hat{y}_{R_{m}})^{2} + \\alpha|T|",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00453": {
-  "latex": "E = 1 - \\max_{k}(\\hat{p}_{mk}).",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00455": {
-  "latex": "G = \\sum_{k=1}^{K} \\hat{p}_{mk}(1 - \\hat{p}_{mk}),",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00456": {
-  "latex": "D = -\\sum_{k=1}^{K} \\hat{p}_{mk} \\log \\hat{p}_{mk}.",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00459": {
-  "latex": "f(X) = \\beta_{0} + \\sum_{j=1}^{p} X_{j}\\beta_{j},",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00460": {
-  "latex": "f(X) = \\sum_{m=1}^{M} c_{m} \\cdot 1_{(X \\in R_{m})}",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00463": {
-  "latex": "\\hat{f}_{\\mathrm{avg}}(x) = \\frac{1}{B}\\sum_{b=1}^{B} \\hat{f}^{b}(x).",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00465": {
-  "latex": "\\hat{f}_{\\mathrm{bag}}(x) = \\frac{1}{B}\\sum_{b=1}^{B} \\hat{f}^{*b}(x).",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00466": {
-  "latex": "m = \\sqrt{p}",
-  "confidence": 0.95,
-  "notes": "image crop includes bleed from surrounding text lines, ignored"
- },
- "m00467": {
-  "latex": "m \\approx \\sqrt{p}",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00471": {
-  "latex": "\\hat{f}(x) \\leftarrow \\hat{f}(x) + \\lambda \\hat{f}^{b}(x).",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00472": {
-  "latex": "r_{i} \\leftarrow r_{i} - \\lambda \\hat{f}^{b}(x_{i}).",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00473": {
-  "latex": "\\hat{f}(x) = \\sum_{b=1}^{B} \\lambda \\hat{f}^{b}(x).",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00478": {
-  "latex": "\\hat{f}^{1}_{k}(x) = \\frac{1}{nK}\\sum_{i=1}^{n} y_{i}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00481": {
-  "latex": "k",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00482": {
-  "latex": "\\hat{f}^{1}(x) = \\sum_{k=1}^{K} \\hat{f}^{1}_{k}(x) =",
-  "confidence": 0.95,
-  "notes": "trailing equals sign continues onto next fragment"
- },
- "m00483": {
-  "latex": "\\sum_{i=1}^{n}",
-  "confidence": 0.85,
-  "notes": "small crop bled into surrounding paragraph text; transcribed only the math fragment"
- },
- "m00484": {
-  "latex": "\\frac{1}{n}",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00485": {
-  "latex": "\\sum_{i=1}^{n} y_i.",
-  "confidence": 0.7,
-  "notes": "crop's left edge cuts off the summation sign itself, showing only its limits (n above, i=1 below) and the summand y_i.; \\sum reconstructed from context (sample-mean-style formula, continues from ids m00477/m00478)"
- },
- "m00486": {
-  "latex": "r_{i} = y_{i} - \\sum_{k'<k} \\hat{f}^{b}_{k'}(x_{i}) - \\sum_{k'>k} \\hat{f}^{b-1}_{k'}(x_{i})",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00488": {
-  "latex": "\\hat{f}^{b}(x) = \\sum_{k=1}^{K} \\hat{f}^{b}_{k}(x), \\quad\\text{for}\\quad b = 1, 2, \\ldots, B.",
-  "confidence": 0.96,
-  "notes": ""
- },
- "m00490": {
-  "latex": "\\hat{f}^{1}(x) = \\sum_{k=1}^{K} \\hat{f}^{1}_{k}(x) = \\frac{1}{n}\\sum_{i=1}^{n} y_{i}.",
-  "confidence": 0.9,
-  "notes": "crop includes a stray fragment of an adjacent equation in the top-right corner, excluded as bleed"
- },
- "m00491": {
-  "latex": "r_{i} = y_{i} - \\sum_{k'<k} \\hat{f}^{b}_{k'}(x_{i}) - \\sum_{k'>k} \\hat{f}^{b-1}_{k'}(x_{i}).",
-  "confidence": 0.96,
-  "notes": ""
- },
- "m00494": {
-  "latex": "\\hat{f}(x) = \\frac{1}{B-L}\\sum_{b=L+1}^{B} \\hat{f}^{b}(x).",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00496": {
-  "latex": "\\hat{f}(x) = \\frac{1}{B-L}\\sum_{b=L+1}^{B} \\hat{f}^{b}(x)",
-  "confidence": 0.95,
-  "notes": "identical formula to m00502 but crop truncated before trailing period"
- },
- "m00498": {
-  "latex": "-2\\sum_{m}\\sum_{k} n_{mk} \\log \\hat{p}_{mk},",
-  "confidence": 0.96,
-  "notes": ""
- },
- "m00499": {
-  "latex": "\\sqrt{p}",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00500": {
-  "latex": "f(X) = \\sum_{j=1}^{p} f_j(X_j).",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00503": {
-  "latex": "0.1, 0.15, 0.2, 0.2, 0.55, 0.6, 0.6, 0.65, 0.7, \\text{ and } 0.75.",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00504": {
-  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 = 0",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00505": {
-  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p = 0",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00506": {
-  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p > 0.",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00507": {
-  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p < 0,",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00508": {
-  "latex": "x_1 = \\begin{pmatrix} x_{11} \\\\ \\vdots \\\\ x_{1p} \\end{pmatrix}, \\ldots, x_n = \\begin{pmatrix} x_{n1} \\\\ \\vdots \\\\ x_{np} \\end{pmatrix},",
-  "confidence": 0.96,
-  "notes": ""
- },
- "m00510": {
-  "latex": "x_p^{*})^{T}",
-  "confidence": 0.4,
-  "notes": "Image is a very narrow crop showing only the tail of a larger inline expression (subscript p, superscript asterisk, closing paren, superscript T). Based on ISLR context (the test observation vector introduced just before Eq. 9.6, x* = (x_1^*, ..., x_p^*)^T), the base symbol x is inferred but not fully visible in the crop."
- },
- "m00511": {
-  "latex": "\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} > 0 \\text{ if } y_i = 1,",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00512": {
-  "latex": "\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} < 0 \\text{ if } y_i = -1.",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00513": {
-  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}) > 0",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00516": {
-  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}) \\geq M \\quad \\forall\\, i = 1, \\ldots, n",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00517": {
-  "latex": "k \\neq 0.",
-  "confidence": 0.9,
-  "notes": "Trailing period confirmed present in crop."
- },
- "m00518": {
-  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}).",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00520": {
-  "latex": "\\sum_{i=1}^{n} \\epsilon_i \\leq C",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00521": {
-  "latex": "X_1, X_2, \\ldots, X_p,",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00522": {
-  "latex": "X_1, X_1^{2}, X_2, X_2^{2}, \\ldots, X_p, X_p^{2}.",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00523": {
-  "latex": "\\begin{aligned} &\\operatorname*{maximize}_{\\beta_0,\\beta_{11},\\beta_{12},\\ldots,\\beta_{p1},\\beta_{p2},\\epsilon_1,\\ldots,\\epsilon_n,\\,M}\\ M\\\\ &\\text{subject to } y_i\\left(\\beta_0 + \\sum_{j=1}^{p}\\beta_{j1}x_{ij} + \\sum_{j=1}^{p}\\beta_{j2}x_{ij}^{2}\\right) \\geq M(1-\\epsilon_i),\\\\ &\\sum_{i=1}^{n}\\epsilon_i \\leq C, \\quad \\epsilon_i \\geq 0, \\quad \\sum_{j=1}^{p}\\sum_{k=1}^{2}\\beta_{jk}^{2} = 1. \\end{aligned}",
-  "confidence": 0.94,
-  "notes": ""
- },
- "m00524": {
-  "latex": "j \\neq j'",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00525": {
-  "latex": "\\langle a, b \\rangle = \\sum_{i=1}^{r} a_i b_i.",
-  "confidence": 0.93,
-  "notes": "A faint partial fragment of the next formula (⟨x_i, x_i'⟩) bleeds into the bottom of the crop; not part of this expression and omitted."
- },
- "m00526": {
-  "latex": "\\langle x_i, x_{i'} \\rangle = \\sum_{j=1}^{p} x_{ij} x_{i'j}.",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00527": {
-  "latex": "f(x) = \\beta_0 + \\sum_{i=1}^{n} \\alpha_i \\langle x, x_i \\rangle,",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00530": {
-  "latex": "f(x) = \\beta_0 + \\sum_{i \\in \\mathcal{S}} \\alpha_i \\langle x, x_i \\rangle,",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00531": {
-  "latex": "K(x_i, x_{i'}),",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00532": {
-  "latex": "K(x_i, x_{i'}) = \\sum_{j=1}^{p} x_{ij} x_{i'j},",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00533": {
-  "latex": "\\sum_{j=1}^{p} x_{ij} x_{i'j}",
-  "confidence": 0.95,
-  "notes": "inline crop also showed a faint neighboring K(x_i,x_i') fragment from the next display; not part of this expression"
- },
- "m00534": {
-  "latex": "K(x_i, x_{i'}) = \\left(1 + \\sum_{j=1}^{p} x_{ij} x_{i'j}\\right)^d.",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00535": {
-  "latex": "f(x) = \\beta_0 + \\sum_{i \\in \\mathcal{S}} \\alpha_i K(x, x_i).",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00536": {
-  "latex": "K(x_i, x_{i'}) = \\exp\\left(-\\gamma \\sum_{j=1}^{p} (x_{ij} - x_{i'j})^2\\right).",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00537": {
-  "latex": "\\sum_{j=1}^{p} (x_j^* - x_{ij})^2",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00538": {
-  "latex": "\\exp\\left(-\\gamma \\sum_{j=1}^{p} (x_j^* - x_{ij})^2\\right)",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00545": {
-  "latex": "\\binom{K}{2}",
-  "confidence": 0.9,
-  "notes": "duplicate binomial coefficient K choose 2, appears as its own display crop"
- },
- "m00546": {
-  "latex": "\\binom{K}{2}",
-  "confidence": 0.75,
-  "notes": "very narrow crop shows only the stacked K over 2 without surrounding parentheses; standard binomial-coefficient macro used, matching context (K choose 2 pairwise classifiers in one-versus-one SVM)"
- },
- "m00547": {
-  "latex": "\\operatorname*{minimize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p} \\left\\{ \\sum_{i=1}^{n} \\max\\left[0, 1 - y_i f(x_i)\\right] + \\lambda \\sum_{j=1}^{p} \\beta_j^2 \\right\\},",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00548": {
-  "latex": "\\lambda \\sum_{j=1}^{p} \\beta_j^2",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00549": {
-  "latex": "\\operatorname*{minimize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p} \\left\\{ L(\\mathbf{X}, \\mathbf{y}, \\beta) + \\lambda P(\\beta) \\right\\}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00550": {
-  "latex": "L(\\mathbf{X}, \\mathbf{y}, \\beta) = \\sum_{i=1}^{n} \\left( y_i - \\beta_0 - \\sum_{j=1}^{p} x_{ij}\\beta_j \\right)^2",
-  "confidence": 0.95,
-  "notes": "trailing content (comma continuing sentence) not visible in crop"
- },
- "m00551": {
-  "latex": "P(\\beta) = \\sum_{j=1}^{p} \\beta_j^2",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00552": {
-  "latex": "P(\\beta) = \\sum_{j=1}^{p} |\\beta_j|",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00553": {
-  "latex": "L(\\mathbf{X}, \\mathbf{y}, \\beta) = \\sum_{i=1}^{n} \\max\\left[0, 1 - y_i(\\beta_0 + \\beta_1 x_{i1} + \\cdots + \\beta_p x_{ip})\\right].",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00554": {
-  "latex": "\\sum \\beta_j^2",
-  "confidence": 0.9,
-  "notes": "sum shown without explicit limits in this crop"
- },
- "m00556": {
-  "latex": "(1 + X_1)^2 + (2 - X_2)^2 = 4.",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00557": {
-  "latex": "(1 + X_1)^2 + (2 - X_2)^2 > 4,",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00558": {
-  "latex": "(1 + X_1)^2 + (2 - X_2)^2 \\leq 4.",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00559": {
-  "latex": "(1 + X_1)^2 + (2 - X_2)^2 > 4,",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00560": {
-  "latex": "X_{2}^{2}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00561": {
-  "latex": "\\begin{aligned} f(X) &= \\beta_0 + \\sum_{k=1}^{K} \\beta_k h_k(X) \\\\ &= \\beta_0 + \\sum_{k=1}^{K} \\beta_k g\\!\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} X_j\\right). \\end{aligned}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00562": {
-  "latex": "A_k = h_k(X) = g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} X_j\\right),",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00563": {
-  "latex": "f(X) = \\beta_0 + \\sum_{k=1}^{K} \\beta_k A_k,",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00564": {
-  "latex": "g(z) = \\frac{e^{z}}{1+e^{z}} = \\frac{1}{1+e^{-z}},",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00565": {
-  "latex": "g(z) = (z)_+ = \\begin{cases} 0 & \\text{if } z < 0 \\\\ z & \\text{otherwise.} \\end{cases}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00566": {
-  "latex": "\\begin{aligned} \\beta_0 &= 0, & \\beta_1 &= \\frac{1}{4}, & \\beta_2 &= -\\frac{1}{4}, \\\\ w_{10} &= 0, & w_{11} &= 1, & w_{12} &= 1, \\\\ w_{20} &= 0, & w_{21} &= 1, & w_{22} &= -1. \\end{aligned}",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00567": {
-  "latex": "h_2(X) = (0 + X_1 - X_2)^2.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00568": {
-  "latex": "\\begin{aligned} f(X) &= 0 + \\frac{1}{4}\\cdot(0 + X_1 + X_2)^2 - \\frac{1}{4}\\cdot(0 + X_1 - X_2)^2 \\\\ &= \\frac{1}{4}\\left[(X_1 + X_2)^2 - (X_1 - X_2)^2\\right] \\\\ &= X_1 X_2. \\end{aligned}",
-  "confidence": 0.92,
-  "notes": ""
- },
- "m00569": {
-  "latex": "\\sum_{i=1}^{n} \\left(y_i - f(x_i)\\right)^2.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00570": {
-  "latex": "\\begin{aligned} A_k^{(1)} &= h_k^{(1)}(X) \\\\ &= g\\!\\left(w_{k0}^{(1)} + \\sum_{j=1}^{p} w_{kj}^{(1)} X_j\\right) \\end{aligned}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00571": {
-  "latex": "\\begin{aligned} A_\\ell^{(2)} &= h_\\ell^{(2)}(X) \\\\ &= g\\!\\left(w_{\\ell 0}^{(2)} + \\sum_{k=1}^{K_1} w_{\\ell k}^{(2)} A_k^{(1)}\\right) \\end{aligned}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00572": {
-  "latex": "\\begin{aligned} Z_m &= \\beta_{m0} + \\sum_{\\ell=1}^{K_2} \\beta_{m\\ell} h_\\ell^{(2)}(X) \\\\ &= \\beta_{m0} + \\sum_{\\ell=1}^{K_2} \\beta_{m\\ell} A_\\ell^{(2)}, \\end{aligned}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00573": {
-  "latex": "f_m(X) = \\mathrm{Pr}(Y = m \\mid X) = \\dfrac{e^{Z_m}}{\\sum_{\\ell=0}^{9} e^{Z_\\ell}},",
-  "confidence": 0.93,
-  "notes": ""
- },
- "m00574": {
-  "latex": "-\\sum_{i=1}^{n}\\sum_{m=0}^{9} y_{im} \\log(f_m(x_i)),",
-  "confidence": 0.93,
-  "notes": ""
- },
- "m00575": {
-  "latex": "\\text{Original Image} = \\begin{bmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\\\ j & k & l \\end{bmatrix}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00576": {
-  "latex": "\\text{Convolution Filter} = \\begin{bmatrix} \\alpha & \\beta \\\\ \\gamma & \\delta \\end{bmatrix}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00577": {
-  "latex": "\\text{Convolved Image} = \\begin{bmatrix} a\\alpha + b\\beta + d\\gamma + e\\delta & b\\alpha + c\\beta + e\\gamma + f\\delta \\\\ d\\alpha + e\\beta + g\\gamma + h\\delta & e\\alpha + f\\beta + h\\gamma + i\\delta \\\\ g\\alpha + h\\beta + j\\gamma + k\\delta & h\\alpha + i\\beta + k\\gamma + l\\delta \\end{bmatrix}.",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00579": {
-  "latex": "\\begin{aligned} \\log\\left(\\frac{\\Pr(Y=1|X)}{\\Pr(Y=0|X)}\\right) &= Z_1 - Z_0 \\\\ &= (\\beta_{10}-\\beta_{00}) + \\sum_{\\ell=1}^{K_2} (\\beta_{1\\ell}-\\beta_{0\\ell}) A_\\ell^{(2)}. \\end{aligned}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00580": {
-  "latex": "A_{\\ell k} = g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} X_{\\ell j} + \\sum_{s=1}^{K} u_{ks} A_{\\ell-1,s}\\right),",
-  "confidence": 0.92,
-  "notes": ""
- },
- "m00581": {
-  "latex": "O_{\\ell} = \\beta_{0} + \\sum_{k=1}^{K} \\beta_{k} A_{\\ell k}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00582": {
-  "latex": "(Y - O_L)^2,",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00583": {
-  "latex": "O_{L} = \\beta_{0} + \\sum_{k=1}^{K} \\beta_{k} A_{Lk}",
-  "confidence": 0.85,
-  "notes": "Image crop also shows a stray fragment '(O_L)^2,' above the main line, bleeding in from the neighboring display equation (m00595); excluded as not part of this expression per extracted_characters."
- },
- "m00584": {
-  "latex": "\\sum_{i=1}^{n} (y_i - o_{iL})^2 = \\sum_{i=1}^{n}\\left(y_i - \\left(\\beta_0 + \\sum_{k=1}^{K} \\beta_k g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} x_{iLj} + \\sum_{s=1}^{K} u_{ks} a_{i,L-1,s}\\right)\\right)\\right)^2",
-  "confidence": 0.85,
-  "notes": "Lowercase o_{iL} and a_{i,L-1,s} as printed."
- },
- "m00585": {
-  "latex": "\\sum_{i=1}^{n}(y_i-o_{iL})^{2} = \\sum_{i=1}^{n}\\left(y_i-\\left(\\beta_0+\\sum_{k=1}^{K}\\beta_k g\\left(w_{k0}+\\sum_{j=1}^{p}w_{kj}x_{iLj}+\\sum_{s=1}^{K}u_{ks}a_{i,L-1,s}\\right)\\right)\\right)^{2}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00586": {
-  "latex": "X_{1} = \\begin{pmatrix} v_{t-L} \\\\ r_{t-L} \\\\ z_{t-L} \\end{pmatrix}, \\ X_{2} = \\begin{pmatrix} v_{t-L+1} \\\\ r_{t-L+1} \\\\ z_{t-L+1} \\end{pmatrix}, \\cdots, X_{L} = \\begin{pmatrix} v_{t-1} \\\\ r_{t-1} \\\\ z_{t-1} \\end{pmatrix}, \\quad\\text{and}\\quad Y = v_{t}.",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00587": {
-  "latex": "\\mathbf{y} = \\begin{pmatrix} v_{L+1} \\\\ v_{L+2} \\\\ v_{L+3} \\\\ \\vdots \\\\ v_T \\end{pmatrix} \\qquad \\mathbf{M} = \\begin{pmatrix} 1 & v_L & v_{L-1} & \\cdots & v_1 \\\\ 1 & v_{L+1} & v_L & \\cdots & v_2 \\\\ 1 & v_{L+2} & v_{L+1} & \\cdots & v_3 \\\\ \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\ 1 & v_{T-1} & v_{T-2} & \\cdots & v_{T-L} \\end{pmatrix}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00588": {
-  "latex": "\\hat{v}_{t} = \\hat{\\beta}_{0} + \\hat{\\beta}_{1} v_{t-1} + \\hat{\\beta}_{2} v_{t-2} + \\cdots + \\hat{\\beta}_{L} v_{t-L},",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00589": {
-  "latex": "\\operatorname*{minimize}_{\\{w_k\\}_1^K,\\ \\beta} \\ \\frac{1}{2}\\sum_{i=1}^{n}(y_i - f(x_i))^2,",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00590": {
-  "latex": "f(x_i) = \\beta_0 + \\sum_{k=1}^{K} \\beta_k g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} x_{ij}\\right).",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00591": {
-  "latex": "R(\\theta) = \\frac{1}{2}\\sum_{i=1}^{n}(y_i - f_\\theta(x_i))^2,",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00592": {
-  "latex": "\\nabla R(\\theta^m) = \\frac{\\partial R(\\theta)}{\\partial \\theta}\\Big|_{\\theta=\\theta^m}.",
-  "confidence": 0.92,
-  "notes": ""
- },
- "m00593": {
-  "latex": "\\theta^{m+1} \\leftarrow \\theta^m - \\rho \\nabla R(\\theta^m).",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00594": {
-  "latex": "R(\\theta) = \\sum_{i=1}^n R_i(\\theta) = \\frac{1}{2}\\sum_{i=1}^n (y_i - f_\\theta(x_i))^2",
-  "confidence": 0.93,
-  "notes": ""
- },
- "m00595": {
-  "latex": "R_i(\\theta) = \\frac{1}{2}\\left(y_i - \\beta_0 - \\sum_{k=1}^{K} \\beta_k g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} x_{ij}\\right)\\right)^2.",
-  "confidence": 0.92,
-  "notes": ""
- },
- "m00596": {
-  "latex": "z_{ik} = w_{k0} + \\sum_{j=1}^{p} w_{kj} x_{ij}",
-  "confidence": 0.85,
-  "notes": "Crop shows stray fragments from neighboring equations (m00606 above, m00608 below); only the main line is transcribed, matching extracted_characters."
- },
- "m00597": {
-  "latex": "\\begin{aligned} \\frac{\\partial R_i(\\theta)}{\\partial \\beta_k} &= \\frac{\\partial R_i(\\theta)}{\\partial f_\\theta(x_i)} \\cdot \\frac{\\partial f_\\theta(x_i)}{\\partial \\beta_k} \\\\ &= -(y_i - f_\\theta(x_i)) \\cdot g(z_{ik}). \\end{aligned}",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00598": {
-  "latex": "\\begin{aligned} \\frac{\\partial R_i(\\theta)}{\\partial w_{kj}} &= \\frac{\\partial R_i(\\theta)}{\\partial f_\\theta(x_i)} \\cdot \\frac{\\partial f_\\theta(x_i)}{\\partial g(z_{ik})} \\cdot \\frac{\\partial g(z_{ik})}{\\partial z_{ik}} \\cdot \\frac{\\partial z_{ik}}{\\partial w_{kj}} \\\\ &= -(y_i - f_\\theta(x_i)) \\cdot \\beta_k \\cdot g'(z_{ik}) \\cdot x_{ij}. \\end{aligned}",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00599": {
-  "latex": "R(\\theta; \\lambda) = -\\sum_{i=1}^{n}\\sum_{m=0}^{9} y_{im} \\log(f_m(x_i)) + \\lambda \\sum_j \\theta_j^2.",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00600": {
-  "latex": "Y = \\sin(X) + \\epsilon,",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00604": {
-  "latex": "\\sum_{j=1}^{d} \\hat{\\beta}_j^2",
-  "confidence": 0.93,
-  "notes": ""
- },
- "m00607": {
-  "latex": "\\mathrm{MAE}(y, \\hat{y}) = \\frac{1}{n}\\sum_{i=1}^{n} |y_i - \\hat{y}_i|.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00608": {
-  "latex": "Y = \\min(T, C).",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00609": {
-  "latex": "\\delta = \\begin{cases} 1 & \\text{if } T \\le C \\\\ 0 & \\text{if } T > C. \\end{cases}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00610": {
-  "latex": "S(t) = \\Pr(T > t).",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00611": {
-  "latex": "\\begin{aligned} \\Pr(T > d_k) &= \\Pr(T > d_k \\mid T > d_{k-1})\\,\\Pr(T > d_{k-1}) \\\\ &{}+ \\Pr(T > d_k \\mid T \\le d_{k-1})\\,\\Pr(T \\le d_{k-1}). \\end{aligned}",
-  "confidence": 0.92,
-  "notes": ""
- },
- "m00612": {
-  "latex": "S(d_k) = \\Pr(T > d_k) = \\Pr(T > d_k \\mid T > d_{k-1})\\,\\Pr(T > d_{k-1}).",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00613": {
-  "latex": "S(d_k) = \\Pr(T > d_k \\mid T > d_{k-1})S(d_{k-1}).",
-  "confidence": 0.96,
-  "notes": ""
- },
- "m00614": {
-  "latex": "\\widehat{\\Pr}(T > d_j \\mid T > d_{j-1}) = (r_j - q_j)/r_j,",
-  "confidence": 0.92,
-  "notes": "hat over Pr matches printed accent"
- },
- "m00615": {
-  "latex": "\\widehat{S}(d_k) = \\prod_{j=1}^{k}\\left(\\frac{r_j-q_j}{r_j}\\right).",
-  "confidence": 0.96,
-  "notes": ""
- },
- "m00616": {
-  "latex": "\\widehat{S}(t) = \\widehat{S}(d_k).",
-  "confidence": 0.9,
-  "notes": "trailing period per crop"
- },
- "m00617": {
-  "latex": "W = \\frac{X-\\mu}{\\sqrt{\\mathrm{Var}(X)}}.",
-  "confidence": 0.96,
-  "notes": ""
- },
- "m00618": {
-  "latex": "X = \\sum_{k=1}^{K} q_{1k},",
-  "confidence": 0.93,
-  "notes": ""
- },
- "m00619": {
-  "latex": "\\mu_{k} = \\frac{r_{1k}}{r_{k}} q_{k}.",
-  "confidence": 0.93,
-  "notes": "deterministic guess mis-parsed the fraction as a superscript; image shows r_1k/r_k as a fraction"
- },
- "m00620": {
-  "latex": "\\mu = \\sum_{k=1}^{K} \\frac{r_{1k}}{r_{k}} q_{k}",
-  "confidence": 0.8,
-  "notes": "crop is an oversized region bleeding in adjacent lines; transcribed the clearly-legible target line matching extracted_characters and equation (11.5) context"
- },
- "m00621": {
-  "latex": "\\mathrm{Var}\\left(q_{1k}\\right) = \\frac{q_k(r_{1k}/r_k)(1-r_{1k}/r_k)(r_k-q_k)}{r_k-1}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00622": {
-  "latex": "\\mathrm{Var}\\left(\\sum_{k=1}^{K} q_{1k}\\right) \\approx \\sum_{k=1}^{K} \\mathrm{Var}\\left(q_{1k}\\right) = \\sum_{k=1}^{K} \\frac{q_k(r_{1k}/r_k)(1-r_{1k}/r_k)(r_k-q_k)}{r_k-1}.",
-  "confidence": 0.93,
-  "notes": "this crop shows the complete equation (11.7) including the fraction"
- },
- "m00623": {
-  "latex": "\\mathrm{Var}\\left(\\sum_{k=1}^{K} q_{1k}\\right) \\approx \\sum_{k=1}^{K} \\mathrm{Var}\\left(q_{1k}\\right) = \\sum_{k=1}^{K} \\frac{q_k(r_{1k}/r_k)(1-r_{1k}/r_k)(r_k-q_k)}{r_k-1}.",
-  "confidence": 0.93,
-  "notes": "this crop shows the complete equation (11.7) including the fraction"
- },
- "m00624": {
-  "latex": "W = \\frac{\\sum_{k=1}^{K}(q_{1k}-\\mu_k)}{\\sqrt{\\sum_{k=1}^{K}\\mathrm{Var}(q_{1k})}} = \\frac{\\sum_{k=1}^{K}\\left(q_{1k}-\\dfrac{q_k}{r_k}r_{1k}\\right)}{\\sqrt{\\sum_{k=1}^{K}\\dfrac{q_k(r_{1k}/r_k)(1-r_{1k}/r_k)(r_k-q_k)}{r_k-1}}}.",
-  "confidence": 0.88,
-  "notes": "dense nested-fraction display equation (11.8)"
- },
- "m00626": {
-  "latex": "h(t) = \\lim_{\\Delta t \\to 0} \\frac{\\Pr(t < T \\le t+\\Delta t \\mid T > t)}{\\Delta t},",
-  "confidence": 0.92,
-  "notes": ""
- },
- "m00627": {
-  "latex": "\\Delta t",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00628": {
-  "latex": "h(t) \\approx \\frac{\\Pr(t < T \\le t + \\Delta t \\mid T > t)}{\\Delta t}",
-  "confidence": 0.94,
-  "notes": ""
- },
- "m00629": {
-  "latex": "\\begin{aligned} h(t) &= \\lim_{\\Delta t \\to 0} \\frac{\\Pr\\left((t < T \\le t + \\Delta t) \\cap (T > t)\\right)/\\Delta t}{\\Pr(T > t)} \\\\ &= \\lim_{\\Delta t \\to 0} \\frac{\\Pr(t < T \\le t + \\Delta t)/\\Delta t}{\\Pr(T > t)} \\\\ &= \\frac{f(t)}{S(t)}, \\end{aligned}",
-  "confidence": 0.9,
-  "notes": "third alignment row (=f(t)/S(t),) not captured by the unreliable text layer but clearly printed in the image"
- },
- "m00630": {
-  "latex": "f(t) = \\lim_{\\Delta t \\to 0} \\frac{\\Pr(t < T \\leq t + \\Delta t)}{\\Delta t}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00631": {
-  "latex": "t < T \\le t + \\Delta t.",
-  "confidence": 0.93,
-  "notes": ""
- },
- "m00633": {
-  "latex": "\\Delta t",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00634": {
-  "latex": "L = \\prod_{i=1}^{n} f(y_i)^{\\delta_i} S(y_i)^{1-\\delta_i} = \\prod_{i=1}^{n} h(y_i)^{\\delta_i} S(y_i),",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00636": {
-  "latex": "h(t|x_i) = \\exp\\left(\\beta_0 + \\sum_{j=1}^{p} \\beta_j x_{ij}\\right),",
-  "confidence": 0.93,
-  "notes": "trailing comma confirmed against source text (sentence continues with 'where the exponent function...')"
- },
- "m00637": {
-  "latex": "h(t|x_i) = h_0(t) \\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right),",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00638": {
-  "latex": "\\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)",
-  "confidence": 0.55,
-  "notes": "Crop is badly bounded: it shows only the tops of two separate '(sum^p ...)' fragments with no exp/xijbetaj/j=1 glyphs visible. Cross-checked against the source PDF text (page 479 print): 'h0(t) times the factor exp(sum_{j=1}^p x_ij beta_j). The quantity exp(sum_{j=1}^p x_ij beta_j) is called the relative risk...' -- the same expression occurs twice in that sentence; I transcribed the first occurrence. Low confidence due to the corrupted crop."
- },
- "m00640": {
-  "latex": "\\sum_{i':\\,y_{i'}\\geq y_i} h_0(y_i) \\exp\\left(\\sum_{j=1}^{p} x_{i'j}\\beta_j\\right).",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00641": {
-  "latex": "\\frac{h_0(y_i)\\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)}{\\sum_{i':y_{i'}\\ge y_i} h_0(y_i)\\exp\\left(\\sum_{j=1}^{p} x_{i'j}\\beta_j\\right)} = \\frac{\\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)}{\\sum_{i':y_{i'}\\ge y_i} \\exp\\left(\\sum_{j=1}^{p} x_{i'j}\\beta_j\\right)}.",
-  "confidence": 0.92,
-  "notes": "equation 11.15, number omitted per instructions"
- },
- "m00642": {
-  "latex": "PL(\\beta) = \\prod_{i:\\delta_i=1} \\frac{\\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)}{\\sum_{i':y_{i'}\\ge y_i} \\exp\\left(\\sum_{j=1}^{p} x_{i'j}\\beta_j\\right)}.",
-  "confidence": 0.93,
-  "notes": "equation 11.16, number omitted per instructions"
- },
- "m00643": {
-  "latex": "-\\log\\left(\\prod_{i:\\delta_i=1} \\frac{\\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)}{\\sum_{i':y_{i'}\\ge y_i} \\exp\\left(\\sum_{j=1}^{p} x_{i'j}\\beta_j\\right)}\\right) + \\lambda P(\\beta),",
-  "confidence": 0.92,
-  "notes": "equation 11.17, number omitted per instructions"
- },
- "m00644": {
-  "latex": "\\texttt{budget}_i \\cdot \\hat{\\beta}_{\\texttt{budget}} + \\texttt{impact}_i \\cdot \\hat{\\beta}_{\\texttt{impact}},",
-  "confidence": 0.9,
-  "notes": "budget and impact are Publication dataset column names, set in typewriter font"
- },
- "m00650": {
-  "latex": "C = \\frac{\\sum_{i,i':y_i>y_{i'}} I(\\hat{\\eta}_{i'} > \\hat{\\eta}_i)\\delta_{i'}}{\\sum_{i,i':y_i>y_{i'}} \\delta_{i'}},",
-  "confidence": 0.93,
-  "notes": ""
- },
- "m00652": {
-  "latex": "\\begin{aligned} f(t) &= dF(t)/dt \\\\ S(t) &= \\exp\\left(-\\int_0^t h(u)\\,du\\right). \\end{aligned}",
-  "confidence": 0.92,
-  "notes": ""
- },
- "m00653": {
-  "latex": "\\hat{\\lambda} = \\sum_{i=1}^{n} \\delta_i / \\sum_{i=1}^{n} y_i.",
-  "confidence": 0.93,
-  "notes": ""
- },
- "m00654": {
-  "latex": "1/\\lambda.",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00656": {
-  "latex": "Z_1 = \\phi_{11}X_1 + \\phi_{21}X_2 + \\cdots + \\phi_{p1}X_p",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00657": {
-  "latex": "\\sum_{j=1}^{p} \\phi_{j1}^{2} = 1",
-  "confidence": 0.85,
-  "notes": "Crop shows only the sum expression; no trailing period captured in extracted_characters so omitted."
- },
- "m00658": {
-  "latex": "z_{i1} = \\phi_{11}x_{i1} + \\phi_{21}x_{i2} + \\cdots + \\phi_{p1}x_{ip}",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00659": {
-  "latex": "\\sum_{j=1}^{p} \\phi_{j1}^{2} = 1.",
-  "confidence": 0.93,
-  "notes": ""
- },
- "m00661": {
-  "latex": "z_{i2} = \\phi_{12}x_{i1} + \\phi_{22}x_{i2} + \\cdots + \\phi_{p2}x_{ip},",
-  "confidence": 0.96,
-  "notes": ""
- },
- "m00662": {
-  "latex": "x_{ij} \\approx \\sum_{m=1}^{M} z_{im}\\phi_{jm}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00663": {
-  "latex": "x_{ij} \\approx \\sum_{m=1}^{M} a_{im}b_{jm}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00664": {
-  "latex": "\\operatorname*{minimize}_{\\mathbf{A}\\in\\mathbb{R}^{n\\times M},\\,\\mathbf{B}\\in\\mathbb{R}^{p\\times M}} \\left\\{\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(x_{ij} - \\sum_{m=1}^{M} a_{im}b_{jm}\\right)^{2}\\right\\}.",
-  "confidence": 0.93,
-  "notes": "equation 12.6, number omitted per instructions"
- },
- "m00669": {
-  "latex": "\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(x_{ij}-\\sum_{m=1}^{M}z_{im}\\phi_{jm}\\right)^{2}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00670": {
-  "latex": "x_{ij}=\\sum_{m=1}^{M}z_{im}\\phi_{jm}",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00671": {
-  "latex": "\\sum_{j=1}^{p} \\mathrm{Var}(X_j) = \\sum_{j=1}^{p} \\frac{1}{n} \\sum_{i=1}^{n} x_{ij}^{2},",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00672": {
-  "latex": "\\frac{1}{n}\\sum_{i=1}^{n}z_{im}^{2}=\\frac{1}{n}\\sum_{i=1}^{n}\\left(\\sum_{j=1}^{p}\\phi_{jm}x_{ij}\\right)^{2}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00673": {
-  "latex": "\\frac{\\sum_{i=1}^{n}z_{im}^{2}}{\\sum_{j=1}^{p}\\sum_{i=1}^{n}x_{ij}^{2}}=\\frac{\\sum_{i=1}^{n}\\left(\\sum_{j=1}^{p}\\phi_{jm}x_{ij}\\right)^{2}}{\\sum_{j=1}^{p}\\sum_{i=1}^{n}x_{ij}^{2}}.",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00675": {
-  "latex": "1-\\frac{\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(x_{ij}-\\sum_{m=1}^{M}z_{im}\\phi_{jm}\\right)^{2}}{\\sum_{j=1}^{p}\\sum_{i=1}^{n}x_{ij}^{2}}=1-\\frac{\\mathrm{RSS}}{\\mathrm{TSS}},",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00676": {
-  "latex": "\\operatorname*{minimize}_{\\mathbf{A}\\in\\mathbb{R}^{n\\times M},\\,\\mathbf{B}\\in\\mathbb{R}^{p\\times M}}\\left\\{\\sum_{(i,j)\\in\\mathcal{O}}\\left(x_{ij}-\\sum_{m=1}^{M}a_{im}b_{jm}\\right)^{2}\\right\\},",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00678": {
-  "latex": "\\hat{x}_{ij}=\\sum_{m=1}^{M}\\hat{a}_{im}\\hat{b}_{jm}",
-  "confidence": 0.85,
-  "notes": "Crop also contains stray bled-in words ('elements, respectively', 'd') from surrounding prose; excluded as not part of the math expression."
- },
- "m00682": {
-  "latex": "\\tilde{x}_{ij}=\\begin{cases}x_{ij}&\\text{if }(i,j)\\in\\mathcal{O}\\\\ \\bar{x}_{j}&\\text{if }(i,j)\\notin\\mathcal{O},\\end{cases}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00684": {
-  "latex": "\\operatorname*{minimize}_{\\mathbf{A}\\in\\mathbb{R}^{n\\times M},\\,\\mathbf{B}\\in\\mathbb{R}^{p\\times M}}\\left\\{\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(\\tilde{x}_{ij}-\\sum_{m=1}^{M}a_{im}b_{jm}\\right)^{2}\\right\\}",
-  "confidence": 0.85,
-  "notes": ""
- },
- "m00686": {
-  "latex": "\\tilde{x}_{ij}\\leftarrow\\sum_{m=1}^{M}\\hat{a}_{im}\\hat{b}_{jm}.",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00687": {
-  "latex": "\\sum_{(i,j)\\in\\mathcal{O}}\\left(x_{ij}-\\sum_{m=1}^{M}\\hat{a}_{im}\\hat{b}_{jm}\\right)^{2}.",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00691": {
-  "latex": "k\\neq k'",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00692": {
-  "latex": "\\operatorname*{minimize}_{C_{1},\\ldots,C_{K}}\\left\\{\\sum_{k=1}^{K}W(C_{k})\\right\\}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00693": {
-  "latex": "W(C_{k})=\\frac{1}{|C_{k}|}\\sum_{i,i'\\in C_{k}}\\sum_{j=1}^{p}(x_{ij}-x_{i'j})^{2},",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00694": {
-  "latex": "\\operatorname*{minimize}_{C_{1},\\ldots,C_{K}}\\left\\{\\sum_{k=1}^{K}\\frac{1}{|C_{k}|}\\sum_{i,i'\\in C_{k}}\\sum_{j=1}^{p}(x_{ij}-x_{i'j})^{2}\\right\\}.",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00695": {
-  "latex": "\\frac{1}{|C_k|}\\sum_{i,i' \\in C_k}\\sum_{j=1}^{p}(x_{ij}-x_{i'j})^{2} = 2\\sum_{i \\in C_k}\\sum_{j=1}^{p}(x_{ij}-\\bar{x}_{kj})^{2},",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00697": {
-  "latex": "\\bar{x}_{kj}=\\frac{1}{|C_{k}|}\\sum_{i\\in C_{k}}x_{ij}",
-  "confidence": 0.85,
-  "notes": "Crop also shows a stray bled-in fragment of the preceding equation (top of image); excluded as not part of this expression."
- },
- "m00700": {
-  "latex": "\\begin{pmatrix} & 0.3 & 0.4 & 0.7\\\\ 0.3 & & 0.5 & 0.8\\\\ 0.4 & 0.5 & & 0.45\\\\ 0.7 & 0.8 & 0.45 & \\end{pmatrix}.",
-  "confidence": 0.85,
-  "notes": "Diagonal entries are blank in the printed matrix (implicit zero dissimilarity); printed with square brackets in the book, rendered as pmatrix per house style."
- },
- "m00702": {
-  "latex": "\\hat{\\mu}_{t} = \\frac{1}{n_{t}} \\sum_{i=1}^{n_{t}} x_{i}^{t}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00703": {
-  "latex": "\\hat{\\mu}_{c} = \\frac{1}{n_{c}} \\sum_{i=1}^{n_{c}} x_{i}^{c}",
-  "confidence": 0.9,
-  "notes": "crop image includes bleed from the adjacent s-sqrt term above; transcribed only this expression's own line"
- },
- "m00704": {
-  "latex": "H_{a} : \\mu_{t} \\neq \\mu_{c}",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00705": {
-  "latex": "\\mathrm{FWER} = \\mathrm{Pr}(V \\geq 1).",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00706": {
-  "latex": "\\begin{aligned} \\mathrm{FWER}(\\alpha) &= 1 - \\mathrm{Pr}(V = 0) \\\\ &= 1 - \\mathrm{Pr}(\\text{do not falsely reject any null hypotheses}) \\end{aligned}",
-  "confidence": 0.9,
-  "notes": "Bottom edge of crop shows a sliver of a further line (intersection notation) not included in extracted_characters; only the two lines matching the given equation are transcribed."
- },
- "m00707": {
-  "latex": "\\mathrm{FWER}(\\alpha) = 1 - \\prod_{j=1}^{m} (1-\\alpha) = 1 - (1-\\alpha)^{m}.",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00708": {
-  "latex": "\\sqrt{n} \\cdot \\bar{X}/S",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00709": {
-  "latex": "\\begin{aligned}\n&= \\mathrm{Pr}\\left(\\bigcup_{j=1}^{m} A_j\\right) \\\\\n&\\leq \\sum_{j=1}^{m} \\mathrm{Pr}(A_j).\n\\end{aligned}",
-  "confidence": 0.9,
-  "notes": "Continuation of a multi-line aligned derivation of FWER; crop begins mid-equation with the second and third lines."
- },
- "m00710": {
-  "latex": "\\mathrm{FWER}(\\alpha/m) \\leq m \\times \\frac{\\alpha}{m} = \\alpha,",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00711": {
-  "latex": "H_{01}, \\ldots, H_{0m}.",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00712": {
-  "latex": "L = \\min\\left\\{ j : p_{(j)} > \\frac{\\alpha}{m+1-j} \\right\\}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00713": {
-  "latex": "\\mu_{1} = \\mu_{2} = \\mu_{3} = \\mu_{4} = \\mu_{5} \\neq \\mu_{6}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00714": {
-  "latex": "H_{0} : \\frac{1}{2}(\\mu_{1}+\\mu_{3}) = \\frac{1}{3}(\\mu_{2}+\\mu_{4}+\\mu_{5}).",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00715": {
-  "latex": "H_{0} : \\frac{1}{3}(\\mu_{1}+\\mu_{2}+\\mu_{3}) = \\frac{1}{2}(\\mu_{4}+\\mu_{5})",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00716": {
-  "latex": "H_{0} : \\frac{1}{4}(\\mu_{1}+\\mu_{2}+\\mu_{3}+\\mu_{4}) = \\mu_{5}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00717": {
-  "latex": "\\mathrm{FDR} = \\mathrm{E}(\\mathrm{FDP}) = \\mathrm{E}(V/R).",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00718": {
-  "latex": "H_{01}, \\ldots, H_{0m}.",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00719": {
-  "latex": "L = \\max\\{j : p_{(j)} < qj/m\\}.",
-  "confidence": 0.9,
-  "notes": ""
- },
- "m00720": {
-  "latex": "H_{a} : \\mathrm{E}(X) \\neq \\mathrm{E}(Y)",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00721": {
-  "latex": "T = \\frac{\\hat{\\mu}_X - \\hat{\\mu}_Y}{s\\sqrt{\\frac{1}{n_X}+\\frac{1}{n_Y}}}.",
-  "confidence": 0.9,
-  "notes": "Crop image included stray bleed fragments from neighboring content below (partial sum and sqrt of eq 13.2); transcribed only the target T-statistic formula, with trailing period visible to the right in the crop."
- },
- "m00722": {
-  "latex": "\\hat{\\mu}_{X} = \\frac{1}{n_{X}} \\sum_{i=1}^{n_{X}} x_{i}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00723": {
-  "latex": "\\hat{\\mu}_{Y} = \\frac{1}{n_{Y}} \\sum_{i=1}^{n_{Y}} y_{i}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00725": {
-  "latex": "y_1, \\ldots, y_{n_Y}.",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00728": {
-  "latex": "R = \\sum_{j=1}^{m} 1_{\\left(|T_j| \\ge c\\right)}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00729": {
-  "latex": "p_j = \\frac{\\sum_{j'=1}^{m} \\sum_{b=1}^{B} 1_{\\left(|T_{j'}^{*b}| \\geq |T_j|\\right)}}{Bm}",
-  "confidence": 0.9,
-  "notes": "Indicator function rendered as plain 1(...) matching the book's typesetting, not blackboard-bold."
- },
- "m00730": {
-  "latex": "\\text{and } y_1^{(j)}, \\ldots, y_{n_Y}^{(j)}.",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00731": {
-  "latex": "\\text{servations } y_1^{*(j)}, \\ldots, y_{n_Y}^{*(j)}.",
-  "confidence": 0.8,
-  "notes": "crop shows a stray floating '1' bleeding in from the superscript of the line above (x_{n_X}^{*(j)}); treated as an artifact and not transcribed, per extracted_characters which places it on a separate line"
- },
- "m00732": {
-  "latex": "1",
-  "confidence": 0.6,
-  "notes": "tiny isolated glyph (4pt x 7pt); appears to be a stray numeral fragment/bleed-through matching the top of m00747's crop; transcribed literally as printed since deterministic_guess agrees"
- },
- "m00733": {
-  "latex": "R = \\sum_{j=1}^{m} 1_{\\left(|T^{(j)}| \\ge c\\right)}.",
-  "confidence": 0.8,
-  "notes": "crop bleeds a stray '1' above and a fraction fragment below (from neighboring equations m00748/m00750); transcribed only the R= sum expression per extracted_characters"
- },
- "m00735": {
-  "latex": "\\hat{V}/R.",
-  "confidence": 0.85,
-  "notes": "a stray horizontal rule appears below the glyphs in the crop, bleeding from an adjacent fraction bar; not transcribed as it is not part of this expression"
- },
- "m00736": {
-  "latex": "\\binom{5}{2}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00738": {
-  "latex": "\\hat{V}",
-  "confidence": 0.85,
-  "notes": "a stray period appears below in the crop, bleeding from surrounding body text; not transcribed"
- },
- "m00739": {
-  "latex": "\\mathrm{Pr}(A)\\,\\mathrm{Pr}(B).",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00740": {
-  "latex": "0.05?",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00741": {
-  "latex": "0.001?",
-  "confidence": 0.97,
-  "notes": ""
- },
- "m00001": {
-  "latex": "\\mathbf{X} = \\begin{pmatrix} x_{11} & x_{12} & \\cdots & x_{1p} \\\\ x_{21} & x_{22} & \\cdots & x_{2p} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ x_{n1} & x_{n2} & \\cdots & x_{np} \\end{pmatrix}.",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00004": {
-  "latex": "\\begin{gathered} \\mathbf{X} = \\begin{pmatrix} \\mathbf{x}_1 & \\mathbf{x}_2 & \\cdots & \\mathbf{x}_p \\end{pmatrix}, \\\\[2em] \\mathbf{X} = \\begin{pmatrix} x_1^T \\\\ x_2^T \\\\ \\vdots \\\\ x_n^T \\end{pmatrix}. \\end{gathered}",
-  "confidence": 0.93,
-  "notes": "Two stacked display equations in one crop; second-line row vectors are printed non-bold in the source image, kept as-is."
- },
- "m00024": {
-  "latex": "\\begin{aligned} \\mathrm{E}(Y-\\hat{Y})^2 &= \\mathrm{E}[f(X)+\\epsilon-\\hat{f}(X)]^2 \\\\ &= \\underbrace{[f(X)-\\hat{f}(X)]^2} + \\underbrace{\\mathrm{Var}(\\epsilon)}, \\end{aligned}",
-  "confidence": 0.82,
-  "notes": "Image shows underbrace marks below both terms but the label text beneath them (likely 'Reducible'/'Irreducible' in the original book) is cut off/illegible in the crop, so labels were omitted rather than guessed."
- },
- "m00050": {
-  "latex": "\\begin{array}{c|cccc} \\text{Obs.} & X_1 & X_2 & X_3 & Y \\\\ \\hline 1 & 0 & 3 & 0 & \\text{Red} \\\\ 2 & 2 & 0 & 0 & \\text{Red} \\\\ 3 & 0 & 1 & 3 & \\text{Red} \\\\ 4 & 0 & 1 & 2 & \\text{Green} \\\\ 5 & -1 & 0 & 1 & \\text{Green} \\\\ 6 & 1 & 1 & 1 & \\text{Red} \\end{array}",
-  "confidence": 0.97,
-  "notes": "Rendered as a table via array since this is tabular data, not an equation."
- },
- "m00116": {
-  "latex": "\\begin{cases} \\beta_0 + \\beta_1 + \\epsilon_i & \\text{if } i\\text{th person owns a house} \\end{cases}",
-  "confidence": 0.85,
-  "notes": "Crop shows only the top brace row of what is normally a two-case brace in the book; transcribed exactly what is visible without inventing the missing second case."
- },
- "m00119": {
-  "latex": "\\begin{cases} \\beta_0 + \\beta_1 + \\epsilon_i & \\text{if } i\\text{th person is from the South} \\end{cases}",
-  "confidence": 0.85,
-  "notes": "Crop shows only the top brace row (single case visible); second case not shown in the image so not invented."
- },
- "m00129": {
-  "latex": "\\begin{aligned} &\\approx \\beta_0 + \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_2 & \\text{if } i\\text{th person is a student} \\end{cases} \\\\ &= \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_0 + \\beta_2 & \\text{if } i\\text{th person is a student} \\end{cases} \\end{aligned}",
-  "confidence": 0.75,
-  "notes": "First line has a blank gap where 'income' should sit before the subscript i (rendering dropout in the source); filled in from the identical term on the second line, which is fully visible."
- },
- "m00130": {
-  "latex": "\\begin{aligned} &\\approx \\beta_0 + \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_2 + \\beta_3 \\times \\texttt{income}_i & \\text{if student} \\end{cases} \\\\ &= \\begin{cases} (\\beta_0 + \\beta_2) + (\\beta_1 + \\beta_3) \\times \\texttt{income}_i & \\text{if student} \\\\ \\beta_0 + \\beta_1 \\times \\texttt{income}_i & \\text{if not student.} \\end{cases} \\end{aligned}",
-  "confidence": 0.8,
-  "notes": "First line has the same rendering gap before 'income_i' as m00129, filled in by analogy; only one case shown on line 1 (matches image), both cases shown on line 2 (matches image)."
- },
- "m00132": {
-  "latex": "\\sqrt{X},",
-  "confidence": 0.6,
-  "notes": "Tiny inline crop; extracted_characters only captured the letter X (radical sign not text-extractable, per why_model_needed=fraction-or-radical-rule). Trailing comma is faint in the crop but appears present."
- },
- "m00149": {
-  "latex": "\\log(X), \\sqrt{X}, X^2. \\text{ Comment on your findings.}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00161": {
-  "latex": "Y = \\begin{cases} 1 & \\text{if } \\texttt{stroke}; \\\\ 2 & \\text{if } \\texttt{drug overdose}; \\\\ 3 & \\text{if } \\texttt{epileptic seizure}. \\end{cases}",
-  "confidence": 0.96,
-  "notes": ""
- },
- "m00162": {
-  "latex": "Y = \\begin{cases} 1 & \\text{if } \\texttt{epileptic seizure}; \\\\ 2 & \\text{if } \\texttt{stroke}; \\\\ 3 & \\text{if } \\texttt{drug overdose}, \\end{cases}",
-  "confidence": 0.96,
-  "notes": ""
- },
- "m00184": {
-  "latex": "\\begin{gathered} \\mathrm{Pr}(Y = k \\mid X = x) = \\dfrac{e^{\\beta_{k0}+\\beta_{k1}x_1+\\cdots+\\beta_{kp}x_p}}{1 + \\sum_{l=1}^{K-1} e^{\\beta_{l0}+\\beta_{l1}x_1+\\cdots+\\beta_{lp}x_p}} \\\\[2em] \\mathrm{Pr}(Y = K \\mid X = x) = \\dfrac{1}{1 + \\sum_{l=1}^{K-1} e^{\\beta_{l0}+\\beta_{l1}x_1+\\cdots+\\beta_{lp}x_p}}\\,. \\\\[2em] \\log\\left( \\dfrac{\\mathrm{Pr}(Y = k \\mid X = x)}{\\mathrm{Pr}(Y = K \\mid X = x)} \\right) = \\beta_{k0} + \\beta_{k1}x_1 + \\cdots + \\beta_{kp}x_p. \\end{gathered}",
-  "confidence": 0.9,
-  "notes": "Single crop contains three stacked display equations (the multinomial logistic model, its Kth-class special case, and the resulting log-odds form); combined with vertical spacing to match the image."
- },
- "m00185": {
-  "latex": "\\frac{\\mathrm{Pr}(Y = \\texttt{stroke} \\mid X = x)}{\\mathrm{Pr}(Y = \\texttt{epileptic seizure} \\mid X = x)}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00187": {
-  "latex": "\\log\\left( \\frac{\\mathrm{Pr}(Y=k\\mid X=x)}{\\mathrm{Pr}(Y=k'\\mid X=x)} \\right)",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00223": {
-  "latex": "\\begin{aligned} \\log\\left(\\frac{\\mathrm{Pr}(Y=k\\mid X=x)}{\\mathrm{Pr}(Y=K\\mid X=x)}\\right) &= \\log\\left(\\frac{\\pi_k f_k(x)}{\\pi_K f_K(x)}\\right) \\\\ &= \\log\\left(\\frac{\\pi_k \\exp\\left(-\\frac{1}{2}(x-\\mu_k)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_k)\\right)}{\\pi_K \\exp\\left(-\\frac{1}{2}(x-\\mu_K)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_K)\\right)}\\right) \\\\ &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(x-\\mu_k)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_k) \\\\ &\\quad + \\frac{1}{2}(x-\\mu_K)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_K) \\\\ &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(\\mu_k+\\mu_K)^T \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K) \\\\ &\\quad + x^T \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K) \\\\ &= a_k + \\sum_{j=1}^{p} b_{kj} x_j, \\\\[1em] a_k &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(\\mu_k+\\mu_K)^T \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K), \\quad \\text{and} \\quad b_{kj} \\text{ is the } j\\text{th component of } \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K). \\end{aligned}",
-  "confidence": 0.6,
-  "notes": "Main seven-line derivation (through '= a_k + sum b_kj x_j,') is fully legible in the image. The final row below it only shows fragments 'a_k = ... b_kj  j' with the connecting words dropped out in the source rendering; reconstructed the standard textbook sentence ('and b_kj is the jth component of ...') from context since the surrounding prose text itself was not legible/printed in the crop. Flagged as a hard case."
- },
- "m00230": {
-  "latex": "\\left( \\frac{\\mathrm{Pr}(Y=k\\mid X=x)}{\\mathrm{Pr}(Y=K\\mid X=x)} \\right)",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00235": {
-  "latex": "\\frac{e^{-5}5^0}{0!}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00237": {
-  "latex": "\\frac{e^{-5}5^1}{1!}",
-  "confidence": 0.95,
-  "notes": ""
- },
- "m00240": {
-  "latex": "2!",
-  "confidence": 0.9,
-  "notes": "Very small crop (denominator fragment of a Poisson-probability fraction); only '2!' is legible."
- },
- "m00265": {
-  "latex": "\\text{estimates } \\hat{\\alpha}_{\\texttt{orange}0} = 1.2, \\hat{\\alpha}_{\\texttt{orange}1} = -2, \\hat{\\alpha}_{\\texttt{orange}0} = 3, \\hat{\\alpha}_{\\texttt{orange}1} = 0.6. \\text{ What are the coefficient estimates in your model?}",
-  "confidence": 0.88,
-  "notes": "All four subscripts read 'orange' in the source image (the third and fourth terms might be expected to read 'apple' but the crop clearly repeats 'orange'); transcribed exactly as printed."
- },
- "m00296": {
-  "latex": "\\binom{p}{2}",
-  "confidence": 0.98,
-  "notes": ""
- },
- "m00298": {
-  "latex": "\\begin{gathered} \\text{(a) Fit all } \\binom{p}{k} \\text{ models that contain exactly } k \\text{ predictors.} \\\\[1em] \\text{(b) Pick the best among these } \\binom{p}{k} \\text{ models, and call it } \\mathcal{M}_k. \\end{gathered}",
-  "confidence": 0.65,
-  "notes": "Row (a) is fully legible. Row (b) in the crop shows only the isolated math fragments 'binom(p,k)' and a calligraphic M with a subscript cut at the image's right edge, with the connecting words dropped out in the source rendering; reconstructed the standard textbook sentence for algorithm step (b) from context. Flagged as a hard case."
- },
- "m00326": {
-  "latex": "\\ell_2 \\sqrt{\\sum_{j=1}^{p} \\beta_j^2}",
-  "confidence": 0.45,
-  "notes": "Very narrow crop (50.7pt wide); only 'ell_2' and a square root over 'Sigma^p' are actually legible, with the summation's lower limit and summand cut off at the crop edge / dropped in the source rendering. Completed the well-known ISLR definition of the l2 norm from context. Flagged as a hard case; low confidence."
- },
- "m00340": {
-  "latex": "\\operatorname*{minimize}_{\\beta} \\left\\{ \\sum_{i=1}^{n} \\left( y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij} \\right)^2 + \\lambda \\sum_{j=1}^{p} |\\beta_j| \\right\\}",
-  "confidence": 0.65,
-  "notes": "This is equation 6.10 (lasso in Lagrangian form). The crop shows only the braces/parentheses/summation scaffolding (superscript 2, limits n, p, p / i=1, j=1, j=1 match the extracted_characters exactly) with the variable content (y_i, beta_0, beta_j x_ij, lambda, |beta_j|) and the word 'minimize' dropped out in the source rendering; reconstructed from the known formula and the matching scaffolding. Flagged as a hard case."
- },
- "m00345": {
+ "m00342": {
   "latex": "\\binom{p}{s}",
   "confidence": 0.9,
   "notes": ""
  },
- "m00400": {
+ "m00343": {
+  "latex": "\\sum_{j=1}^{p} (y_j - \\beta_j)^2.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00344": {
+  "latex": "\\hat{\\beta}_j = y_j.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00345": {
+  "latex": "\\sum_{j=1}^{p}(y_j-\\beta_j)^{2} + \\lambda\\sum_{j=1}^{p}\\beta_j^{2}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00346": {
+  "latex": "\\sum_{j=1}^{p}(y_j-\\beta_j)^{2} + \\lambda\\sum_{j=1}^{p}|\\beta_j|",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00347": {
+  "latex": "\\hat{\\beta}_j^{R} = y_j/(1+\\lambda),",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00348": {
+  "latex": "\\hat{\\beta}_j^{L} = \\begin{cases} y_j - \\lambda/2 & \\text{if } y_j > \\lambda/2; \\\\ y_j + \\lambda/2 & \\text{if } y_j < -\\lambda/2; \\\\ 0 & \\text{if } |y_j| \\leq \\lambda/2. \\end{cases}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00349": {
+  "latex": "p(\\beta|X, Y) \\propto f(Y|X, \\beta)p(\\beta|X) = f(Y|X, \\beta)p(\\beta),",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00350": {
+  "latex": "Y = \\beta_0 + X_1\\beta_1 + \\cdots + X_p\\beta_p + \\epsilon,",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00351": {
+  "latex": "p(\\beta) = \\prod_{j=1}^{p} g(\\beta_j),",
+  "confidence": 0.85,
+  "notes": "Trailing comma is part of the sentence; a faint mark below the main line in the crop looked like stray noise from the following line and was not transcribed."
+ },
+ "m00352": {
+  "latex": "Z_m = \\sum_{j=1}^{p} \\phi_{jm} X_j",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00353": {
+  "latex": "y_i = \\theta_0 + \\sum_{m=1}^{M} \\theta_m z_{im} + \\epsilon_i, \\quad i = 1, \\dots, n,",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00354": {
+  "latex": "\\sum_{m=1}^{M} \\theta_m z_{im} = \\sum_{m=1}^{M} \\theta_m \\sum_{j=1}^{p} \\phi_{jm} x_{ij} = \\sum_{j=1}^{p} \\sum_{m=1}^{M} \\theta_m \\phi_{jm} x_{ij} = \\sum_{j=1}^{p} \\beta_j x_{ij},",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00355": {
+  "latex": "\\beta_j = \\sum_{m=1}^{M} \\theta_m \\phi_{jm}.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00356": {
+  "latex": "Z_1 = 0.839 \\times (\\texttt{pop} - \\overline{\\texttt{pop}}) + 0.544 \\times (\\texttt{ad} - \\overline{\\texttt{ad}}).",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00357": {
+  "latex": "\\overline{\\texttt{pop}}",
+  "confidence": 0.9,
+  "notes": "Overline visible over the typewriter word, denoting the sample mean of pop."
+ },
+ "m00358": {
+  "latex": "\\overline{\\texttt{ad}}",
+  "confidence": 0.9,
+  "notes": "Overline visible over the typewriter word, denoting the sample mean of ad."
+ },
+ "m00359": {
+  "latex": "\\mathrm{Var}\\left(\\phi_{11} \\times (\\texttt{pop} - \\overline{\\texttt{pop}}) + \\phi_{21} \\times (\\texttt{ad} - \\overline{\\texttt{ad}})\\right)",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00360": {
+  "latex": "z_{i1} = 0.839 \\times (\\texttt{pop}_i - \\overline{\\texttt{pop}}) + 0.544 \\times (\\texttt{ad}_i - \\overline{\\texttt{ad}}).",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00361": {
+  "latex": "(\\overline{\\texttt{pop}}, \\overline{\\texttt{ad}})",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00362": {
+  "latex": "z_{i1} = 0.839 \\times (\\texttt{pop}_i - \\overline{\\texttt{pop}}) + 0.544 \\times (\\texttt{ad}_i - \\overline{\\texttt{ad}}) < 0",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00363": {
+  "latex": "Z_2 = 0.544 \\times (\\texttt{pop} - \\overline{\\texttt{pop}}) - 0.839 \\times (\\texttt{ad} - \\overline{\\texttt{ad}}).",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00364": {
+  "latex": "Z_1 = \\sum_{j=1}^{p} \\phi_{j1} X_j",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00366": {
+  "latex": "\\sum_{i=1}^{n} \\left(y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij}\\right)^2 \\quad \\text{subject to} \\quad \\sum_{j=1}^{p} |\\beta_j| \\le s",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00367": {
+  "latex": "\\sum_{i=1}^{n} \\left(y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij}\\right)^2 + \\lambda \\sum_{j=1}^{p} \\beta_j^2",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00369": {
+  "latex": "\\hat{\\beta}_1 = \\hat{\\beta}_2.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00370": {
+  "latex": "y_i = \\beta_0 + \\sum_{j=1}^{p} x_{ij} \\beta_j + \\epsilon_i",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00373": {
+  "latex": "Y = \\beta_0 + \\beta_1 X + \\beta_2 X^2 + \\beta_3 X^3 + \\epsilon,",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00374": {
+  "latex": "Y = \\beta_0 + \\beta_7 X^7 + \\epsilon,",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00375": {
+  "latex": "Y = X\\beta + \\epsilon,",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00376": {
+  "latex": "\\sqrt{\\sum^{p}}",
+  "confidence": 0.3,
+  "notes": "Crop appears truncated: only the radical sign and \\sum^{p} are visible, with no lower limit or summand shown (likely part of a larger norm/distance expression such as sqrt(sum_{j=1}^p (beta_j-hat beta_j^r)^2) whose remainder was not captured in this bounding box). Transcribed only what is visibly printed."
+ },
+ "m00379": {
+  "latex": "y_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00380": {
+  "latex": "y_i = \\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\beta_3 x_i^3 + \\cdots + \\beta_d x_i^d + \\epsilon_i,",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00381": {
+  "latex": "\\hat{f}(x_0) = \\hat{\\beta}_0 + \\hat{\\beta}_1 x_0 + \\hat{\\beta}_2 x_0^2 + \\hat{\\beta}_3 x_0^3 + \\hat{\\beta}_4 x_0^4.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00386": {
+  "latex": "\\mathrm{Pr}(y_i > 250 \\mid x_i) = \\frac{\\exp(\\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\cdots + \\beta_d x_i^d)}{1 + \\exp(\\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\cdots + \\beta_d x_i^d)}.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00387": {
+  "latex": "\\begin{aligned} C_0(X) &= I(X < c_1), \\\\ C_1(X) &= I(c_1 \\leq X < c_2), \\\\ C_2(X) &= I(c_2 \\leq X < c_3), \\\\ &\\ \\ \\vdots \\\\ C_{K-1}(X) &= I(c_{K-1} \\leq X < c_K), \\\\ C_K(X) &= I(c_K \\leq X), \\end{aligned}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00388": {
+  "latex": "y_i = \\beta_0 + \\beta_1 C_1(x_i) + \\beta_2 C_2(x_i) + \\cdots + \\beta_K C_K(x_i) + \\epsilon_i.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00389": {
+  "latex": "\\mathrm{Pr}(y_i > 250 \\mid x_i) = \\frac{\\exp(\\beta_0 + \\beta_1 C_1(x_i) + \\cdots + \\beta_K C_K(x_i))}{1 + \\exp(\\beta_0 + \\beta_1 C_1(x_i) + \\cdots + \\beta_K C_K(x_i))}",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00390": {
+  "latex": "y_i = \\beta_0 + \\beta_1 b_1(x_i) + \\beta_2 b_2(x_i) + \\beta_3 b_3(x_i) + \\cdots + \\beta_K b_K(x_i) + \\epsilon_i.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00391": {
+  "latex": "y_i = \\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\beta_3 x_i^3 + \\epsilon_i,",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00392": {
+  "latex": "y_i = \\begin{cases} \\beta_{01} + \\beta_{11} x_i + \\beta_{21} x_i^2 + \\beta_{31} x_i^3 + \\epsilon_i & \\text{if } x_i < c \\\\ \\beta_{02} + \\beta_{12} x_i + \\beta_{22} x_i^2 + \\beta_{32} x_i^3 + \\epsilon_i & \\text{if } x_i \\ge c. \\end{cases}",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00393": {
+  "latex": "y_i = \\beta_0 + \\beta_1 b_1(x_i) + \\beta_2 b_2(x_i) + \\cdots + \\beta_{K+3} b_{K+3}(x_i) + \\epsilon_i,",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00394": {
+  "latex": "h(x, \\xi) = (x - \\xi)_+^3 = \\begin{cases} (x - \\xi)^3 & \\text{if } x > \\xi \\\\ 0 & \\text{otherwise,} \\end{cases}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00395": {
+  "latex": "\\mathrm{RSS} = \\sum_{i=1}^{n} (y_i - g(x_i))^2",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00396": {
+  "latex": "\\sum_{i=1}^{n} (y_i - g(x_i))^2 + \\lambda \\int g''(t)^2\\, dt",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00397": {
+  "latex": "\\sum_{i=1}^{n} (y_i - g(x_i))^2",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00398": {
   "latex": "\\int",
   "confidence": 0.6,
   "notes": "Crop shows only the integral sign, apparently a fragment split out of a larger displayed integral in the surrounding sentence."
  },
- "m00402": {
+ "m00399": {
+  "latex": "\\int",
+  "confidence": 0.95,
+  "notes": "Crop shows only the isolated integral sign; the integrand g''(t)^2 dt was extracted as plain text elsewhere and is not reproduced here."
+ },
+ "m00400": {
   "latex": "\\int",
   "confidence": 0.6,
   "notes": "Crop shows only the integral sign; context describes the same integral notation."
+ },
+ "m00401": {
+  "latex": "\\int",
+  "confidence": 0.6,
+  "notes": "Crop shows only the integral sign, a fragment of the g''(t)^2 dt expression discussed in the surrounding text."
+ },
+ "m00402": {
+  "latex": "\\int",
+  "confidence": 0.95,
+  "notes": "Crop shows only the isolated integral sign; the integrand g''(t)^2 dt was extracted as plain text elsewhere and is not reproduced here."
  },
  "m00403": {
   "latex": "\\int",
   "confidence": 0.6,
   "notes": "Crop shows only the integral sign, a fragment of the g''(t)^2 dt expression discussed in the surrounding text."
  },
- "m00405": {
-  "latex": "\\int",
-  "confidence": 0.6,
-  "notes": "Crop shows only the integral sign, a fragment of the g''(t)^2 dt expression discussed in the surrounding text."
+ "m00404": {
+  "latex": "\\hat{\\mathbf{g}}_\\lambda = \\mathbf{S}_\\lambda \\mathbf{y},",
+  "confidence": 0.95,
+  "notes": ""
  },
- "m00440": {
+ "m00406": {
+  "latex": "df_\\lambda = \\sum_{i=1}^{n} \\{\\mathbf{S}_\\lambda\\}_{ii},",
+  "confidence": 0.9,
+  "notes": "S rendered bold in the source image (matrix)."
+ },
+ "m00407": {
+  "latex": "\\mathrm{RSS}_{cv}(\\lambda) = \\sum_{i=1}^{n} (y_i - \\hat{g}_\\lambda^{(-i)}(x_i))^2 = \\sum_{i=1}^{n} \\left[ \\frac{y_i - \\hat{g}_\\lambda(x_i)}{1 - \\{\\mathbf{S}_\\lambda\\}_{ii}} \\right]^2.",
+  "confidence": 0.92,
+  "notes": ""
+ },
+ "m00413": {
+  "latex": "y_i = \\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} + \\epsilon_i",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00414": {
+  "latex": "\\begin{aligned}\ny_i &= \\beta_0 + \\sum_{j=1}^{p} f_j(x_{ij}) + \\epsilon_i \\\\\n&= \\beta_0 + f_1(x_{i1}) + f_2(x_{i2}) + \\cdots + f_p(x_{ip}) + \\epsilon_i.\n\\end{aligned}",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00415": {
+  "latex": "\\texttt{wage} = \\beta_0 + f_1(\\texttt{year}) + f_2(\\texttt{age}) + f_3(\\texttt{education}) + \\epsilon",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00416": {
+  "latex": "\\log\\left( \\frac{p(X)}{1 - p(X)} \\right) = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00417": {
+  "latex": "\\log\\left( \\frac{p(X)}{1 - p(X)} \\right) = \\beta_0 + f_1(X_1) + f_2(X_2) + \\cdots + f_p(X_p).",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00418": {
+  "latex": "\\log\\left( \\frac{p(X)}{1 - p(X)} \\right) = \\beta_0 + \\beta_1 \\times \\texttt{year} + f_2(\\texttt{age}) + f_3(\\texttt{education}),",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00419": {
+  "latex": "p(X) = \\mathrm{Pr}(\\texttt{wage} > 250|\\texttt{year}, \\texttt{age}, \\texttt{education}).",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00421": {
+  "latex": "f(x) = \\beta_{0} + \\beta_{1}x + \\beta_{2}x^{2} + \\beta_{3}x^{3} + \\beta_{4}(x - \\xi)_{+}^{3}",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00422": {
+  "latex": "\\beta_{3}, \\beta_{4}.",
+  "confidence": 0.99,
+  "notes": ""
+ },
+ "m00423": {
+  "latex": "f_{1}(x) = a_{1} + b_{1}x + c_{1}x^{2} + d_{1}x^{3}",
+  "confidence": 0.99,
+  "notes": ""
+ },
+ "m00424": {
+  "latex": "\\text{terms of } \\beta_{0}, \\beta_{1}, \\beta_{2}, \\beta_{3}, \\beta_{4}.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00425": {
+  "latex": "f_{2}(x) = a_{2} + b_{2}x + c_{2}x^{2} + d_{2}x^{3}",
+  "confidence": 0.99,
+  "notes": ""
+ },
+ "m00426": {
+  "latex": "f_{1}(x) = a_{1} + b_{1}x + c_{1}x^{2} + d_{1}x^{3},",
+  "confidence": 0.99,
+  "notes": ""
+ },
+ "m00427": {
+  "latex": "f_{1}'(x) = b_{1} + 2c_{1}x + 3d_{1}x^{2}",
+  "confidence": 0.99,
+  "notes": ""
+ },
+ "m00428": {
+  "latex": "f_{1}''(x) = 2c_{1} + 6d_{1}x.",
+  "confidence": 0.99,
+  "notes": ""
+ },
+ "m00430": {
+  "latex": "\\hat{g} = \\operatorname*{argmin}_{g} \\left( \\sum_{i=1}^{n} (y_{i} - g(x_{i}))^{2} + \\lambda \\int \\left[g^{(m)}(x)\\right]^{2} dx \\right),",
+  "confidence": 0.95,
+  "notes": "argmin g rendered with subscript g under the operator, matching image"
+ },
+ "m00431": {
+  "latex": "Y = \\beta_{0} + \\beta_{1}b_{1}(X) + \\beta_{2}b_{2}(X) + \\epsilon,",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00433": {
+  "latex": "(X-1)I(1 \\leq X \\leq 2), \\ b_{2}(X) = (X-3)I(3 \\leq X \\leq 4) + I(4 < X \\leq 5).",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00434": {
+  "latex": "Y = \\beta_{0} + \\beta_{1}b_{1}(X) + \\beta_{2}b_{2}(X) + \\epsilon,",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00438": {
   "latex": "\\begin{aligned}\n\\hat{g}_1 &= \\operatorname*{argmin}_{g}\\left(\\sum_{i=1}^{n}(y_i - g(x_i))^2 + \\lambda \\int \\left[g^{(3)}(x)\\right]^2 dx\\right), \\\\\n\\hat{g}_2 &= \\operatorname*{argmin}_{g}\\left(\\sum_{i=1}^{n}(y_i - g(x_i))^2 + \\lambda \\int \\left[g^{(4)}(x)\\right]^2 dx\\right), \\\\\n&\\text{where } g^{(m)} \\text{ represents the } m\\text{th derivative of } g.\n\\end{aligned}",
   "confidence": 0.9,
   "notes": ""
  },
- "m00475": {
-  "latex": "\\sum_{k=1}^{K}\\hat{f}_{k}^{b}",
-  "confidence": 0.55,
-  "notes": "Crop is cut very tight around just the summation limits and the summand; no visible (x) argument."
+ "m00439": {
+  "latex": "n = 100.",
+  "confidence": 0.99,
+  "notes": ""
  },
- "m00476": {
+ "m00440": {
+  "latex": "Y - \\texttt{beta1} \\cdot X_{1} = \\beta_{0} + \\beta_{2}X_{2} + \\epsilon.",
+  "confidence": 0.95,
+  "notes": "beta1 is a python variable name, set in typewriter font per rule 4"
+ },
+ "m00441": {
+  "latex": "Y - \\texttt{beta2} \\cdot X_{2} = \\beta_{0} + \\beta_{1}X_{1} + \\epsilon.",
+  "confidence": 0.95,
+  "notes": "beta2 is a python variable name, set in typewriter font per rule 4"
+ },
+ "m00442": {
+  "latex": "R_{1}, R_{2}, \\ldots, R_{J}.",
+  "confidence": 0.99,
+  "notes": ""
+ },
+ "m00443": {
+  "latex": "\\sum_{j=1}^{J} \\sum_{i \\in R_{j}} (y_{i} - \\hat{y}_{R_{j}})^{2},",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00445": {
+  "latex": "R_{1}(j, s) = \\{X|X_{j} < s\\} \\quad \\text{and} \\quad R_{2}(j, s) = \\{X|X_{j} \\geq s\\},",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00446": {
+  "latex": "\\sum_{i:\\, x_{i}\\in R_{1}(j,s)} (y_{i} - \\hat{y}_{R_{1}})^{2} + \\sum_{i:\\, x_{i}\\in R_{2}(j,s)} (y_{i} - \\hat{y}_{R_{2}})^{2},",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00449": {
+  "latex": "\\sum_{m=1}^{|T|} \\sum_{i:\\, x_{i}\\in R_{m}} (y_{i} - \\hat{y}_{R_{m}})^{2} + \\alpha|T|",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00451": {
+  "latex": "E = 1 - \\max_{k}(\\hat{p}_{mk}).",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00453": {
+  "latex": "G = \\sum_{k=1}^{K} \\hat{p}_{mk}(1 - \\hat{p}_{mk}),",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00454": {
+  "latex": "D = -\\sum_{k=1}^{K} \\hat{p}_{mk} \\log \\hat{p}_{mk}.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00457": {
+  "latex": "f(X) = \\beta_{0} + \\sum_{j=1}^{p} X_{j}\\beta_{j},",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00458": {
+  "latex": "f(X) = \\sum_{m=1}^{M} c_{m} \\cdot 1_{(X \\in R_{m})}",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00461": {
+  "latex": "\\hat{f}_{\\mathrm{avg}}(x) = \\frac{1}{B}\\sum_{b=1}^{B} \\hat{f}^{b}(x).",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00463": {
+  "latex": "\\hat{f}_{\\mathrm{bag}}(x) = \\frac{1}{B}\\sum_{b=1}^{B} \\hat{f}^{*b}(x).",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00464": {
+  "latex": "m = \\sqrt{p}",
+  "confidence": 0.95,
+  "notes": "image crop includes bleed from surrounding text lines, ignored"
+ },
+ "m00465": {
+  "latex": "m \\approx \\sqrt{p}",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00469": {
+  "latex": "\\hat{f}(x) \\leftarrow \\hat{f}(x) + \\lambda \\hat{f}^{b}(x).",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00470": {
+  "latex": "r_{i} \\leftarrow r_{i} - \\lambda \\hat{f}^{b}(x_{i}).",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00471": {
+  "latex": "\\hat{f}(x) = \\sum_{b=1}^{B} \\lambda \\hat{f}^{b}(x).",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00473": {
   "latex": "\\hat{f}^{b}(x) = \\sum_{k=1}^{K}\\hat{f}_{k}^{b}(x)",
   "confidence": 0.9,
   "notes": ""
  },
+ "m00474": {
+  "latex": "\\hat{f}^{1}_{k}(x) = \\frac{1}{nK}\\sum_{i=1}^{n} y_{i}",
+  "confidence": 0.95,
+  "notes": ""
+ },
  "m00477": {
-  "latex": "\\frac{1}{nK}",
-  "confidence": 0.85,
-  "notes": "Text layer only recovered the digit 1, but the image clearly shows the fraction 1/(nK)."
+  "latex": "\\hat{f}^{1}(x) = \\sum_{k=1}^{K} \\hat{f}^{1}_{k}(x) =",
+  "confidence": 0.95,
+  "notes": "trailing equals sign continues onto next fragment"
  },
- "m00489": {
-  "latex": "\\text{1. Let } \\hat{f}_1^{1}(x) = \\hat{f}_2^{1}(x) = \\cdots = \\hat{f}_K^{1}(x) = \\frac{1}{nK}\\sum_{i=1}^{n} y_i.",
-  "confidence": 0.85,
-  "notes": "Algorithm step label '1. Let' is printed as part of the display line, so it is kept as text."
+ "m00480": {
+  "latex": "\\sum_{i=1}^{n} y_i.",
+  "confidence": 0.7,
+  "notes": "crop's left edge cuts off the summation sign itself, showing only its limits (n above, i=1 below) and the summand y_i.; \\sum reconstructed from context (sample-mean-style formula, continues from ids m00477/m00478)"
  },
- "m00493": {
+ "m00481": {
+  "latex": "r_{i} = y_{i} - \\sum_{k'<k} \\hat{f}^{b}_{k'}(x_{i}) - \\sum_{k'>k} \\hat{f}^{b-1}_{k'}(x_{i})",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00483": {
+  "latex": "\\hat{f}^{b}(x) = \\sum_{k=1}^{K} \\hat{f}^{b}_{k}(x), \\quad\\text{for}\\quad b = 1, 2, \\ldots, B.",
+  "confidence": 0.96,
+  "notes": ""
+ },
+ "m00485": {
+  "latex": "r_{i} = y_{i} - \\sum_{k'<k} \\hat{f}^{b}_{k'}(x_{i}) - \\sum_{k'>k} \\hat{f}^{b-1}_{k'}(x_{i}).",
+  "confidence": 0.96,
+  "notes": ""
+ },
+ "m00488": {
   "latex": "\\text{(b) Compute } \\hat{f}^{b}(x) = \\sum_{k=1}^{K}\\hat{f}_{k}^{b}(x).",
   "confidence": 0.85,
   "notes": "Algorithm step label '(b) Compute' is printed as part of the display line, so it is kept as text."
  },
- "m00495": {
-  "latex": "\\frac{1}{B-L}",
-  "confidence": 0.85,
+ "m00489": {
+  "latex": "\\hat{f}(x) = \\frac{1}{B-L}\\sum_{b=L+1}^{B} \\hat{f}^{b}(x).",
+  "confidence": 0.97,
   "notes": ""
  },
- "m00509": {
+ "m00490": {
+  "latex": "\\hat{f}(x) = \\frac{1}{B-L}\\sum_{b=L+1}^{B} \\hat{f}^{b}(x)",
+  "confidence": 0.95,
+  "notes": "identical formula to m00502 but crop truncated before trailing period"
+ },
+ "m00492": {
+  "latex": "-2\\sum_{m}\\sum_{k} n_{mk} \\log \\hat{p}_{mk},",
+  "confidence": 0.96,
+  "notes": ""
+ },
+ "m00493": {
+  "latex": "\\sqrt{p}",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00494": {
+  "latex": "f(X) = \\sum_{j=1}^{p} f_j(X_j).",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00497": {
+  "latex": "0.1, 0.15, 0.2, 0.2, 0.55, 0.6, 0.6, 0.65, 0.7, \\text{ and } 0.75.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00498": {
+  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 = 0",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00499": {
+  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p = 0",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00500": {
+  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p > 0.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00501": {
+  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p < 0,",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00502": {
+  "latex": "x_1 = \\begin{pmatrix} x_{11} \\\\ \\vdots \\\\ x_{1p} \\end{pmatrix}, \\ldots, x_n = \\begin{pmatrix} x_{n1} \\\\ \\vdots \\\\ x_{np} \\end{pmatrix},",
+  "confidence": 0.96,
+  "notes": ""
+ },
+ "m00503": {
   "latex": "(x_1^{*}",
   "confidence": 0.4,
   "notes": "Crop shows only an opening parenthesis and x_1^*, apparently the start of a vector x* = (x_1*, ..., x_p*)^T that continues in a different crop; left as an unmatched literal open paren since that is what is printed."
  },
- "m00515": {
+ "m00505": {
+  "latex": "\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} > 0 \\text{ if } y_i = 1,",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00506": {
+  "latex": "\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} < 0 \\text{ if } y_i = -1.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00507": {
+  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}) > 0",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00509": {
   "latex": "\\begin{aligned}\n&\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,M}\\ M\\\\\n&\\text{subject to}\\quad \\sum_{j=1}^{p}\\beta_j^2 = 1,\\\\\n&y_i(\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\cdots+\\beta_px_{ip})\\ge M\\quad\\forall\\, i=1,\\ldots,n.\n\\end{aligned}",
   "confidence": 0.85,
   "notes": "Equation numbers (9.10)/(9.11) visible in the source are omitted per instructions."
  },
- "m00519": {
+ "m00510": {
+  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}) \\geq M \\quad \\forall\\, i = 1, \\ldots, n",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00511": {
+  "latex": "k \\neq 0.",
+  "confidence": 0.9,
+  "notes": "Trailing period confirmed present in crop."
+ },
+ "m00512": {
+  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}).",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00513": {
   "latex": "\\begin{aligned}\n&\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,\\epsilon_1,\\ldots,\\epsilon_n,\\,M}\\ M\\\\\n&\\text{subject to}\\quad \\sum_{j=1}^{p}\\beta_j^2 = 1,\\\\\n&y_i(\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\cdots+\\beta_px_{ip})\\ge M(1-\\epsilon_i),\\\\\n&\\epsilon_i\\ge 0,\\quad \\sum_{i=1}^{n}\\epsilon_i\\le C,\n\\end{aligned}",
   "confidence": 0.85,
   "notes": "Equation number (9.15) omitted per instructions."
  },
- "m00528": {
+ "m00514": {
+  "latex": "\\sum_{i=1}^{n} \\epsilon_i \\leq C",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00515": {
+  "latex": "X_1, X_2, \\ldots, X_p,",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00516": {
+  "latex": "X_1, X_1^{2}, X_2, X_2^{2}, \\ldots, X_p, X_p^{2}.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00517": {
+  "latex": "\\begin{aligned} &\\operatorname*{maximize}_{\\beta_0,\\beta_{11},\\beta_{12},\\ldots,\\beta_{p1},\\beta_{p2},\\epsilon_1,\\ldots,\\epsilon_n,\\,M}\\ M\\\\ &\\text{subject to } y_i\\left(\\beta_0 + \\sum_{j=1}^{p}\\beta_{j1}x_{ij} + \\sum_{j=1}^{p}\\beta_{j2}x_{ij}^{2}\\right) \\geq M(1-\\epsilon_i),\\\\ &\\sum_{i=1}^{n}\\epsilon_i \\leq C, \\quad \\epsilon_i \\geq 0, \\quad \\sum_{j=1}^{p}\\sum_{k=1}^{2}\\beta_{jk}^{2} = 1. \\end{aligned}",
+  "confidence": 0.94,
+  "notes": ""
+ },
+ "m00518": {
+  "latex": "j \\neq j'",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00520": {
+  "latex": "\\langle x_i, x_{i'} \\rangle = \\sum_{j=1}^{p} x_{ij} x_{i'j}.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00521": {
+  "latex": "f(x) = \\beta_0 + \\sum_{i=1}^{n} \\alpha_i \\langle x, x_i \\rangle,",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00522": {
   "latex": "\\begin{aligned}\n&\\binom{n}{2}\\ \\left\\langle x_i, x_{i'}\\right\\rangle\\\\\n&\\binom{n}{2}\\ \\text{among a set of } n \\text{ items.)}\n\\end{aligned}",
   "confidence": 0.35,
   "notes": "Crop appears to merge two adjacent page elements (a body-text fragment with an inner-product term, and a footnote sentence), both containing binom(n,2); transcribed as best effort from the visible glyphs and extracted characters."
  },
- "m00539": {
+ "m00524": {
+  "latex": "f(x) = \\beta_0 + \\sum_{i \\in \\mathcal{S}} \\alpha_i \\langle x, x_i \\rangle,",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00525": {
+  "latex": "K(x_i, x_{i'}),",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00526": {
+  "latex": "K(x_i, x_{i'}) = \\sum_{j=1}^{p} x_{ij} x_{i'j},",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00528": {
+  "latex": "K(x_i, x_{i'}) = \\left(1 + \\sum_{j=1}^{p} x_{ij} x_{i'j}\\right)^d.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00529": {
+  "latex": "f(x) = \\beta_0 + \\sum_{i \\in \\mathcal{S}} \\alpha_i K(x, x_i).",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00530": {
+  "latex": "K(x_i, x_{i'}) = \\exp\\left(-\\gamma \\sum_{j=1}^{p} (x_{ij} - x_{i'j})^2\\right).",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00531": {
+  "latex": "\\sum_{j=1}^{p} (x_j^* - x_{ij})^2",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00532": {
+  "latex": "\\exp\\left(-\\gamma \\sum_{j=1}^{p} (x_j^* - x_{ij})^2\\right)",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00533": {
   "latex": "\\binom{n}{2}",
   "confidence": 0.9,
   "notes": ""
  },
- "m00543": {
+ "m00537": {
   "latex": "\\binom{K}{2}",
   "confidence": 0.9,
   "notes": ""
  },
- "m00544": {
+ "m00538": {
   "latex": "\\binom{K}{2}",
   "confidence": 0.6,
   "notes": "Very tight crop showing only a corner of the binomial coefficient (K over 2); read as a second occurrence of binom(K,2) from context."
  },
- "m00578": {
+ "m00540": {
+  "latex": "\\binom{K}{2}",
+  "confidence": 0.75,
+  "notes": "very narrow crop shows only the stacked K over 2 without surrounding parentheses; standard binomial-coefficient macro used, matching context (K choose 2 pairwise classifiers in one-versus-one SVM)"
+ },
+ "m00541": {
+  "latex": "\\operatorname*{minimize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p} \\left\\{ \\sum_{i=1}^{n} \\max\\left[0, 1 - y_i f(x_i)\\right] + \\lambda \\sum_{j=1}^{p} \\beta_j^2 \\right\\},",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00542": {
+  "latex": "\\lambda \\sum_{j=1}^{p} \\beta_j^2",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00543": {
+  "latex": "\\operatorname*{minimize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p} \\left\\{ L(\\mathbf{X}, \\mathbf{y}, \\beta) + \\lambda P(\\beta) \\right\\}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00544": {
+  "latex": "L(\\mathbf{X}, \\mathbf{y}, \\beta) = \\sum_{i=1}^{n} \\left( y_i - \\beta_0 - \\sum_{j=1}^{p} x_{ij}\\beta_j \\right)^2",
+  "confidence": 0.95,
+  "notes": "trailing content (comma continuing sentence) not visible in crop"
+ },
+ "m00547": {
+  "latex": "L(\\mathbf{X}, \\mathbf{y}, \\beta) = \\sum_{i=1}^{n} \\max\\left[0, 1 - y_i(\\beta_0 + \\beta_1 x_{i1} + \\cdots + \\beta_p x_{ip})\\right].",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00548": {
+  "latex": "\\sum \\beta_j^2",
+  "confidence": 0.9,
+  "notes": "sum shown without explicit limits in this crop"
+ },
+ "m00550": {
+  "latex": "(1 + X_1)^2 + (2 - X_2)^2 = 4.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00551": {
+  "latex": "(1 + X_1)^2 + (2 - X_2)^2 > 4,",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00552": {
+  "latex": "(1 + X_1)^2 + (2 - X_2)^2 \\leq 4.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00553": {
+  "latex": "(1 + X_1)^2 + (2 - X_2)^2 > 4,",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00554": {
+  "latex": "X_{2}^{2}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00555": {
+  "latex": "\\begin{aligned} f(X) &= \\beta_0 + \\sum_{k=1}^{K} \\beta_k h_k(X) \\\\ &= \\beta_0 + \\sum_{k=1}^{K} \\beta_k g\\!\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} X_j\\right). \\end{aligned}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00556": {
+  "latex": "A_k = h_k(X) = g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} X_j\\right),",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00557": {
+  "latex": "f(X) = \\beta_0 + \\sum_{k=1}^{K} \\beta_k A_k,",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00558": {
+  "latex": "g(z) = \\frac{e^{z}}{1+e^{z}} = \\frac{1}{1+e^{-z}},",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00559": {
+  "latex": "g(z) = (z)_+ = \\begin{cases} 0 & \\text{if } z < 0 \\\\ z & \\text{otherwise.} \\end{cases}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00560": {
+  "latex": "\\begin{aligned} \\beta_0 &= 0, & \\beta_1 &= \\frac{1}{4}, & \\beta_2 &= -\\frac{1}{4}, \\\\ w_{10} &= 0, & w_{11} &= 1, & w_{12} &= 1, \\\\ w_{20} &= 0, & w_{21} &= 1, & w_{22} &= -1. \\end{aligned}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00561": {
+  "latex": "\\begin{aligned} h_1(X) &= (0 + X_1 + X_2)^2, \\\\ h_2(X) &= (0 + X_1 - X_2)^2. \\end{aligned}",
+  "confidence": 0.95,
+  "notes": "",
+  "corrected": true
+ },
+ "m00562": {
+  "latex": "\\begin{aligned} f(X) &= 0 + \\frac{1}{4}\\cdot(0 + X_1 + X_2)^2 - \\frac{1}{4}\\cdot(0 + X_1 - X_2)^2 \\\\ &= \\frac{1}{4}\\left[(X_1 + X_2)^2 - (X_1 - X_2)^2\\right] \\\\ &= X_1 X_2. \\end{aligned}",
+  "confidence": 0.92,
+  "notes": ""
+ },
+ "m00563": {
+  "latex": "\\sum_{i=1}^{n} \\left(y_i - f(x_i)\\right)^2.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00564": {
+  "latex": "\\begin{aligned} A_k^{(1)} &= h_k^{(1)}(X) \\\\ &= g\\!\\left(w_{k0}^{(1)} + \\sum_{j=1}^{p} w_{kj}^{(1)} X_j\\right) \\end{aligned}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00565": {
+  "latex": "\\begin{aligned} A_\\ell^{(2)} &= h_\\ell^{(2)}(X) \\\\ &= g\\!\\left(w_{\\ell 0}^{(2)} + \\sum_{k=1}^{K_1} w_{\\ell k}^{(2)} A_k^{(1)}\\right) \\end{aligned}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00566": {
+  "latex": "\\begin{aligned} Z_m &= \\beta_{m0} + \\sum_{\\ell=1}^{K_2} \\beta_{m\\ell} h_\\ell^{(2)}(X) \\\\ &= \\beta_{m0} + \\sum_{\\ell=1}^{K_2} \\beta_{m\\ell} A_\\ell^{(2)}, \\end{aligned}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00567": {
+  "latex": "f_m(X) = \\mathrm{Pr}(Y = m \\mid X) = \\dfrac{e^{Z_m}}{\\sum_{\\ell=0}^{9} e^{Z_\\ell}},",
+  "confidence": 0.93,
+  "notes": ""
+ },
+ "m00568": {
+  "latex": "-\\sum_{i=1}^{n}\\sum_{m=0}^{9} y_{im} \\log(f_m(x_i)),",
+  "confidence": 0.93,
+  "notes": ""
+ },
+ "m00569": {
+  "latex": "\\text{Original Image} = \\begin{bmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\\\ j & k & l \\end{bmatrix}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00570": {
+  "latex": "\\text{Convolution Filter} = \\begin{bmatrix} \\alpha & \\beta \\\\ \\gamma & \\delta \\end{bmatrix}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00571": {
+  "latex": "\\text{Convolved Image} = \\begin{bmatrix} a\\alpha + b\\beta + d\\gamma + e\\delta & b\\alpha + c\\beta + e\\gamma + f\\delta \\\\ d\\alpha + e\\beta + g\\gamma + h\\delta & e\\alpha + f\\beta + h\\gamma + i\\delta \\\\ g\\alpha + h\\beta + j\\gamma + k\\delta & h\\alpha + i\\beta + k\\gamma + l\\delta \\end{bmatrix}.",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00572": {
   "latex": "\\text{Max pool}\\quad \\begin{bmatrix} 1 & 2 & 5 & 3 \\\\ 3 & 0 & 1 & 2 \\\\ 2 & 1 & 3 & 4 \\\\ 1 & 1 & 2 & 0 \\end{bmatrix} \\rightarrow \\begin{bmatrix} 3 & 5 \\\\ 2 & 4 \\end{bmatrix}.",
   "confidence": 0.9,
   "notes": ""
  },
- "m00632": {
+ "m00573": {
+  "latex": "\\begin{aligned} \\log\\left(\\frac{\\Pr(Y=1|X)}{\\Pr(Y=0|X)}\\right) &= Z_1 - Z_0 \\\\ &= (\\beta_{10}-\\beta_{00}) + \\sum_{\\ell=1}^{K_2} (\\beta_{1\\ell}-\\beta_{0\\ell}) A_\\ell^{(2)}. \\end{aligned}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00574": {
+  "latex": "A_{\\ell k} = g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} X_{\\ell j} + \\sum_{s=1}^{K} u_{ks} A_{\\ell-1,s}\\right),",
+  "confidence": 0.92,
+  "notes": ""
+ },
+ "m00575": {
+  "latex": "O_{\\ell} = \\beta_{0} + \\sum_{k=1}^{K} \\beta_{k} A_{\\ell k}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00576": {
+  "latex": "(Y - O_L)^2,",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00581": {
+  "latex": "\\mathbf{y} = \\begin{pmatrix} v_{L+1} \\\\ v_{L+2} \\\\ v_{L+3} \\\\ \\vdots \\\\ v_T \\end{pmatrix} \\qquad \\mathbf{M} = \\begin{pmatrix} 1 & v_L & v_{L-1} & \\cdots & v_1 \\\\ 1 & v_{L+1} & v_L & \\cdots & v_2 \\\\ 1 & v_{L+2} & v_{L+1} & \\cdots & v_3 \\\\ \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\ 1 & v_{T-1} & v_{T-2} & \\cdots & v_{T-L} \\end{pmatrix}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00582": {
+  "latex": "\\hat{v}_{t} = \\hat{\\beta}_{0} + \\hat{\\beta}_{1} v_{t-1} + \\hat{\\beta}_{2} v_{t-2} + \\cdots + \\hat{\\beta}_{L} v_{t-L},",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00583": {
+  "latex": "\\operatorname*{minimize}_{\\{w_k\\}_1^K,\\ \\beta} \\ \\frac{1}{2}\\sum_{i=1}^{n}(y_i - f(x_i))^2,",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00584": {
+  "latex": "f(x_i) = \\beta_0 + \\sum_{k=1}^{K} \\beta_k g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} x_{ij}\\right).",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00585": {
+  "latex": "R(\\theta) = \\frac{1}{2}\\sum_{i=1}^{n}(y_i - f_\\theta(x_i))^2,",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00586": {
+  "latex": "\\nabla R(\\theta^m) = \\frac{\\partial R(\\theta)}{\\partial \\theta}\\Big|_{\\theta=\\theta^m}.",
+  "confidence": 0.92,
+  "notes": ""
+ },
+ "m00587": {
+  "latex": "\\theta^{m+1} \\leftarrow \\theta^m - \\rho \\nabla R(\\theta^m).",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00588": {
+  "latex": "R(\\theta) = \\sum_{i=1}^n R_i(\\theta) = \\frac{1}{2}\\sum_{i=1}^n (y_i - f_\\theta(x_i))^2",
+  "confidence": 0.93,
+  "notes": ""
+ },
+ "m00589": {
+  "latex": "R_i(\\theta) = \\frac{1}{2}\\left(y_i - \\beta_0 - \\sum_{k=1}^{K} \\beta_k g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} x_{ij}\\right)\\right)^2.",
+  "confidence": 0.92,
+  "notes": ""
+ },
+ "m00591": {
+  "latex": "\\begin{aligned} \\frac{\\partial R_i(\\theta)}{\\partial \\beta_k} &= \\frac{\\partial R_i(\\theta)}{\\partial f_\\theta(x_i)} \\cdot \\frac{\\partial f_\\theta(x_i)}{\\partial \\beta_k} \\\\ &= -(y_i - f_\\theta(x_i)) \\cdot g(z_{ik}). \\end{aligned}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00592": {
+  "latex": "\\begin{aligned} \\frac{\\partial R_i(\\theta)}{\\partial w_{kj}} &= \\frac{\\partial R_i(\\theta)}{\\partial f_\\theta(x_i)} \\cdot \\frac{\\partial f_\\theta(x_i)}{\\partial g(z_{ik})} \\cdot \\frac{\\partial g(z_{ik})}{\\partial z_{ik}} \\cdot \\frac{\\partial z_{ik}}{\\partial w_{kj}} \\\\ &= -(y_i - f_\\theta(x_i)) \\cdot \\beta_k \\cdot g'(z_{ik}) \\cdot x_{ij}. \\end{aligned}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00593": {
+  "latex": "R(\\theta; \\lambda) = -\\sum_{i=1}^{n}\\sum_{m=0}^{9} y_{im} \\log(f_m(x_i)) + \\lambda \\sum_j \\theta_j^2.",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00594": {
+  "latex": "Y = \\sin(X) + \\epsilon,",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00598": {
+  "latex": "\\sum_{j=1}^{d} \\hat{\\beta}_j^2",
+  "confidence": 0.93,
+  "notes": ""
+ },
+ "m00601": {
+  "latex": "\\mathrm{MAE}(y, \\hat{y}) = \\frac{1}{n}\\sum_{i=1}^{n} |y_i - \\hat{y}_i|.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00602": {
+  "latex": "Y = \\min(T, C).",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00603": {
+  "latex": "\\delta = \\begin{cases} 1 & \\text{if } T \\le C \\\\ 0 & \\text{if } T > C. \\end{cases}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00604": {
+  "latex": "S(t) = \\Pr(T > t).",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00605": {
+  "latex": "\\begin{aligned} \\Pr(T > d_k) &= \\Pr(T > d_k \\mid T > d_{k-1})\\,\\Pr(T > d_{k-1}) \\\\ &{}+ \\Pr(T > d_k \\mid T \\le d_{k-1})\\,\\Pr(T \\le d_{k-1}). \\end{aligned}",
+  "confidence": 0.92,
+  "notes": ""
+ },
+ "m00606": {
+  "latex": "S(d_k) = \\Pr(T > d_k) = \\Pr(T > d_k \\mid T > d_{k-1})\\,\\Pr(T > d_{k-1}).",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00607": {
+  "latex": "S(d_k) = \\Pr(T > d_k \\mid T > d_{k-1})S(d_{k-1}).",
+  "confidence": 0.96,
+  "notes": ""
+ },
+ "m00608": {
+  "latex": "\\widehat{\\Pr}(T > d_j \\mid T > d_{j-1}) = (r_j - q_j)/r_j,",
+  "confidence": 0.92,
+  "notes": "hat over Pr matches printed accent"
+ },
+ "m00609": {
+  "latex": "\\widehat{S}(d_k) = \\prod_{j=1}^{k}\\left(\\frac{r_j-q_j}{r_j}\\right).",
+  "confidence": 0.96,
+  "notes": ""
+ },
+ "m00610": {
+  "latex": "\\widehat{S}(t) = \\widehat{S}(d_k).",
+  "confidence": 0.9,
+  "notes": "trailing period per crop"
+ },
+ "m00611": {
+  "latex": "W = \\frac{X-\\mu}{\\sqrt{\\mathrm{Var}(X)}}.",
+  "confidence": 0.96,
+  "notes": ""
+ },
+ "m00613": {
+  "latex": "\\mu_{k} = \\frac{r_{1k}}{r_{k}} q_{k}.",
+  "confidence": 0.93,
+  "notes": "deterministic guess mis-parsed the fraction as a superscript; image shows r_1k/r_k as a fraction"
+ },
+ "m00615": {
+  "latex": "\\mathrm{Var}\\left(q_{1k}\\right) = \\frac{q_k(r_{1k}/r_k)(1-r_{1k}/r_k)(r_k-q_k)}{r_k-1}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00618": {
+  "latex": "W = \\frac{\\sum_{k=1}^{K}(q_{1k}-\\mu_k)}{\\sqrt{\\sum_{k=1}^{K}\\mathrm{Var}(q_{1k})}} = \\frac{\\sum_{k=1}^{K}\\left(q_{1k}-\\dfrac{q_k}{r_k}r_{1k}\\right)}{\\sqrt{\\sum_{k=1}^{K}\\dfrac{q_k(r_{1k}/r_k)(1-r_{1k}/r_k)(r_k-q_k)}{r_k-1}}}.",
+  "confidence": 0.88,
+  "notes": "dense nested-fraction display equation (11.8)"
+ },
+ "m00620": {
+  "latex": "h(t) = \\lim_{\\Delta t \\to 0} \\frac{\\Pr(t < T \\le t+\\Delta t \\mid T > t)}{\\Delta t},",
+  "confidence": 0.92,
+  "notes": ""
+ },
+ "m00621": {
+  "latex": "\\Delta t",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00622": {
+  "latex": "h(t) \\approx \\frac{\\Pr(t < T \\le t + \\Delta t \\mid T > t)}{\\Delta t}",
+  "confidence": 0.94,
+  "notes": ""
+ },
+ "m00623": {
+  "latex": "\\begin{aligned} h(t) &= \\lim_{\\Delta t \\to 0} \\frac{\\Pr\\left((t < T \\le t + \\Delta t) \\cap (T > t)\\right)/\\Delta t}{\\Pr(T > t)} \\\\ &= \\lim_{\\Delta t \\to 0} \\frac{\\Pr(t < T \\le t + \\Delta t)/\\Delta t}{\\Pr(T > t)} \\\\ &= \\frac{f(t)}{S(t)}, \\end{aligned}",
+  "confidence": 0.9,
+  "notes": "third alignment row (=f(t)/S(t),) not captured by the unreliable text layer but clearly printed in the image"
+ },
+ "m00624": {
+  "latex": "f(t) = \\lim_{\\Delta t \\to 0} \\frac{\\Pr(t < T \\leq t + \\Delta t)}{\\Delta t}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00625": {
+  "latex": "t < T \\le t + \\Delta t.",
+  "confidence": 0.93,
+  "notes": ""
+ },
+ "m00626": {
   "latex": "\\begin{aligned}\nL_i &= \\begin{cases} f(y_i) & \\text{if the } i\\text{th observation is not censored} \\\\ S(y_i) & \\text{if the } i\\text{th observation is censored} \\end{cases} \\\\\n&= f(y_i)^{\\delta_i} S(y_i)^{1-\\delta_i}.\n\\end{aligned}",
   "confidence": 0.9,
   "notes": ""
  },
- "m00635": {
+ "m00627": {
+  "latex": "\\Delta t",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00628": {
+  "latex": "L = \\prod_{i=1}^{n} f(y_i)^{\\delta_i} S(y_i)^{1-\\delta_i} = \\prod_{i=1}^{n} h(y_i)^{\\delta_i} S(y_i),",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00629": {
   "latex": "\\left(\\sum\\right)",
   "confidence": 0.35,
   "notes": "Crop shows a bare parenthesized summation sign with no legible sub/superscript limits; likely a fragment of a hazard-function formula split across crops."
  },
- "m00639": {
+ "m00631": {
+  "latex": "h(t|x_i) = h_0(t) \\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right),",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00632": {
+  "latex": "\\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)",
+  "confidence": 0.55,
+  "notes": "Crop is badly bounded: it shows only the tops of two separate '(sum^p ...)' fragments with no exp/xijbetaj/j=1 glyphs visible. Cross-checked against the source PDF text (page 479 print): 'h0(t) times the factor exp(sum_{j=1}^p x_ij beta_j). The quantity exp(sum_{j=1}^p x_ij beta_j) is called the relative risk...' -- the same expression occurs twice in that sentence; I transcribed the first occurrence. Low confidence due to the corrupted crop."
+ },
+ "m00633": {
   "latex": "\\left(\\sum^{p}\\right)",
   "confidence": 0.4,
   "notes": "Crop shows a parenthesized summation with a superscript p but no legible subscript lower limit; likely a fragment of the Cox proportional-hazards exponent split across crops."
  },
- "m00655": {
+ "m00634": {
+  "latex": "\\sum_{i':\\,y_{i'}\\geq y_i} h_0(y_i) \\exp\\left(\\sum_{j=1}^{p} x_{i'j}\\beta_j\\right).",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00636": {
+  "latex": "PL(\\beta) = \\prod_{i:\\delta_i=1} \\frac{\\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)}{\\sum_{i':y_{i'}\\ge y_i} \\exp\\left(\\sum_{j=1}^{p} x_{i'j}\\beta_j\\right)}.",
+  "confidence": 0.93,
+  "notes": "equation 11.16, number omitted per instructions"
+ },
+ "m00637": {
+  "latex": "-\\log\\left(\\prod_{i:\\delta_i=1} \\frac{\\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)}{\\sum_{i':y_{i'}\\ge y_i} \\exp\\left(\\sum_{j=1}^{p} x_{i'j}\\beta_j\\right)}\\right) + \\lambda P(\\beta),",
+  "confidence": 0.92,
+  "notes": "equation 11.17, number omitted per instructions"
+ },
+ "m00638": {
+  "latex": "\\texttt{budget}_i \\cdot \\hat{\\beta}_{\\texttt{budget}} + \\texttt{impact}_i \\cdot \\hat{\\beta}_{\\texttt{impact}},",
+  "confidence": 0.9,
+  "notes": "budget and impact are Publication dataset column names, set in typewriter font"
+ },
+ "m00644": {
+  "latex": "C = \\frac{\\sum_{i,i':y_i>y_{i'}} I(\\hat{\\eta}_{i'} > \\hat{\\eta}_i)\\delta_{i'}}{\\sum_{i,i':y_i>y_{i'}} \\delta_{i'}},",
+  "confidence": 0.93,
+  "notes": ""
+ },
+ "m00646": {
+  "latex": "\\begin{aligned} f(t) &= dF(t)/dt \\\\ S(t) &= \\exp\\left(-\\int_0^t h(u)\\,du\\right). \\end{aligned}",
+  "confidence": 0.92,
+  "notes": ""
+ },
+ "m00647": {
+  "latex": "\\hat{\\lambda} = \\sum_{i=1}^{n} \\delta_i / \\sum_{i=1}^{n} y_i.",
+  "confidence": 0.93,
+  "notes": ""
+ },
+ "m00648": {
+  "latex": "1/\\lambda.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00649": {
   "latex": "\\binom{p}{2}",
   "confidence": 0.85,
   "notes": ""
  },
- "m00660": {
-  "latex": "\\operatorname*{maximize}_{\\phi_{11},\\ldots,\\phi_{p1}}\\left\\{\\frac{1}{n}\\sum_{i=1}^{n}\\left(\\sum_{j=1}^{p}\\phi_{j1}x_{ij}\\right)^{2}\\right\\}\\quad\\text{subject to}\\quad\\sum_{j=1}^{p}\\phi_{j1}^{2}=1.",
-  "confidence": 0.85,
-  "notes": "Equation number (12.3) omitted per instructions; a faint duplicate/ghost of part of the formula visible at the bottom of the crop was treated as a rendering artifact and not transcribed separately."
+ "m00650": {
+  "latex": "Z_1 = \\phi_{11}X_1 + \\phi_{21}X_2 + \\cdots + \\phi_{p1}X_p",
+  "confidence": 0.97,
+  "notes": ""
  },
- "m00674": {
+ "m00651": {
+  "latex": "\\sum_{j=1}^{p} \\phi_{j1}^{2} = 1",
+  "confidence": 0.85,
+  "notes": "Crop shows only the sum expression; no trailing period captured in extracted_characters so omitted."
+ },
+ "m00652": {
+  "latex": "z_{i1} = \\phi_{11}x_{i1} + \\phi_{21}x_{i2} + \\cdots + \\phi_{p1}x_{ip}",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00653": {
+  "latex": "\\sum_{j=1}^{p} \\phi_{j1}^{2} = 1.",
+  "confidence": 0.93,
+  "notes": ""
+ },
+ "m00655": {
+  "latex": "z_{i2} = \\phi_{12}x_{i1} + \\phi_{22}x_{i2} + \\cdots + \\phi_{p2}x_{ip},",
+  "confidence": 0.96,
+  "notes": ""
+ },
+ "m00656": {
+  "latex": "x_{ij} \\approx \\sum_{m=1}^{M} z_{im}\\phi_{jm}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00658": {
+  "latex": "\\operatorname*{minimize}_{\\mathbf{A}\\in\\mathbb{R}^{n\\times M},\\,\\mathbf{B}\\in\\mathbb{R}^{p\\times M}} \\left\\{\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(x_{ij} - \\sum_{m=1}^{M} a_{im}b_{jm}\\right)^{2}\\right\\}.",
+  "confidence": 0.93,
+  "notes": "equation 12.6, number omitted per instructions"
+ },
+ "m00663": {
+  "latex": "\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(x_{ij}-\\sum_{m=1}^{M}z_{im}\\phi_{jm}\\right)^{2}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00664": {
+  "latex": "x_{ij}=\\sum_{m=1}^{M}z_{im}\\phi_{jm}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00665": {
+  "latex": "\\sum_{j=1}^{p} \\mathrm{Var}(X_j) = \\sum_{j=1}^{p} \\frac{1}{n} \\sum_{i=1}^{n} x_{ij}^{2},",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00666": {
+  "latex": "\\frac{1}{n}\\sum_{i=1}^{n}z_{im}^{2}=\\frac{1}{n}\\sum_{i=1}^{n}\\left(\\sum_{j=1}^{p}\\phi_{jm}x_{ij}\\right)^{2}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00667": {
+  "latex": "\\frac{\\sum_{i=1}^{n}z_{im}^{2}}{\\sum_{j=1}^{p}\\sum_{i=1}^{n}x_{ij}^{2}}=\\frac{\\sum_{i=1}^{n}\\left(\\sum_{j=1}^{p}\\phi_{jm}x_{ij}\\right)^{2}}{\\sum_{j=1}^{p}\\sum_{i=1}^{n}x_{ij}^{2}}.",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00668": {
   "latex": "\\underbrace{\\sum_{j=1}^{p}\\frac{1}{n}\\sum_{i=1}^{n} x_{ij}^{2}}_{\\text{Var. of data}} = \\underbrace{\\sum_{m=1}^{M}\\frac{1}{n}\\sum_{i=1}^{n} z_{im}^{2}}_{\\text{Var. of first } M \\text{ PCs}} + \\underbrace{\\frac{1}{n}\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(x_{ij} - \\sum_{m=1}^{M} z_{im}\\phi_{jm}\\right)^{2}}_{\\text{MSE of } M\\text{-dimensional approximation}}",
   "confidence": 0.95,
   "notes": ""
  },
- "m00696": {
-  "latex": "\\frac{1}{|C_k|}",
-  "confidence": 0.97,
+ "m00669": {
+  "latex": "1-\\frac{\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(x_{ij}-\\sum_{m=1}^{M}z_{im}\\phi_{jm}\\right)^{2}}{\\sum_{j=1}^{p}\\sum_{i=1}^{n}x_{ij}^{2}}=1-\\frac{\\mathrm{RSS}}{\\mathrm{TSS}},",
+  "confidence": 0.95,
   "notes": ""
  },
- "m00698": {
+ "m00670": {
+  "latex": "\\operatorname*{minimize}_{\\mathbf{A}\\in\\mathbb{R}^{n\\times M},\\,\\mathbf{B}\\in\\mathbb{R}^{p\\times M}}\\left\\{\\sum_{(i,j)\\in\\mathcal{O}}\\left(x_{ij}-\\sum_{m=1}^{M}a_{im}b_{jm}\\right)^{2}\\right\\},",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00672": {
+  "latex": "\\hat{x}_{ij}=\\sum_{m=1}^{M}\\hat{a}_{im}\\hat{b}_{jm}",
+  "confidence": 0.85,
+  "notes": "Crop also contains stray bled-in words ('elements, respectively', 'd') from surrounding prose; excluded as not part of the math expression."
+ },
+ "m00676": {
+  "latex": "\\tilde{x}_{ij}=\\begin{cases}x_{ij}&\\text{if }(i,j)\\in\\mathcal{O}\\\\ \\bar{x}_{j}&\\text{if }(i,j)\\notin\\mathcal{O},\\end{cases}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00678": {
+  "latex": "\\operatorname*{minimize}_{\\mathbf{A}\\in\\mathbb{R}^{n\\times M},\\,\\mathbf{B}\\in\\mathbb{R}^{p\\times M}}\\left\\{\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(\\tilde{x}_{ij}-\\sum_{m=1}^{M}a_{im}b_{jm}\\right)^{2}\\right\\}",
+  "confidence": 0.85,
+  "notes": ""
+ },
+ "m00681": {
+  "latex": "\\sum_{(i,j)\\in\\mathcal{O}}\\left(x_{ij}-\\sum_{m=1}^{M}\\hat{a}_{im}\\hat{b}_{jm}\\right)^{2}.",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00685": {
+  "latex": "k\\neq k'",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00686": {
+  "latex": "\\operatorname*{minimize}_{C_{1},\\ldots,C_{K}}\\left\\{\\sum_{k=1}^{K}W(C_{k})\\right\\}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00687": {
+  "latex": "W(C_{k})=\\frac{1}{|C_{k}|}\\sum_{i,i'\\in C_{k}}\\sum_{j=1}^{p}(x_{ij}-x_{i'j})^{2},",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00688": {
+  "latex": "\\operatorname*{minimize}_{C_{1},\\ldots,C_{K}}\\left\\{\\sum_{k=1}^{K}\\frac{1}{|C_{k}|}\\sum_{i,i'\\in C_{k}}\\sum_{j=1}^{p}(x_{ij}-x_{i'j})^{2}\\right\\}.",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00689": {
+  "latex": "\\frac{1}{|C_k|}\\sum_{i,i' \\in C_k}\\sum_{j=1}^{p}(x_{ij}-x_{i'j})^{2} = 2\\sum_{i \\in C_k}\\sum_{j=1}^{p}(x_{ij}-\\bar{x}_{kj})^{2},",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00691": {
   "latex": "\\binom{n}{2}",
   "confidence": 0.97,
   "notes": ""
  },
- "m00699": {
+ "m00692": {
   "latex": "\\binom{6{,}830}{2}",
   "confidence": 0.95,
   "notes": "kept comma as 6{,}830 to avoid extra math-mode spacing after the comma"
  },
- "m00701": {
-  "latex": "\\begin{aligned} T &= \\frac{\\hat{\\mu}_t - \\hat{\\mu}_c}{s\\sqrt{\\dfrac{1}{n_t}+\\dfrac{1}{n_c}}} \\\\ \\hat{\\mu}_t &= \\frac{1}{n_t}\\sum_{i=1}^{n_t} x_{i}^{t}, \\quad \\hat{\\mu}_c = \\frac{1}{n_c}\\sum_{i=1}^{n_c} x_{i}^{c} \\\\ s &= \\sqrt{\\frac{(n_t -1)s_t^{2} + (n_c -1)s_c^{2}}{n_t + n_c -2}} \\end{aligned}",
-  "confidence": 0.75,
-  "notes": "the crop cuts off the leading 'hat{mu}_t =' on the second line (left edge of the image); reconstructed it by symmetry with the printed hat{mu}_c = term and the context defining sample means for treatment/control groups"
+ "m00693": {
+  "latex": "\\begin{bmatrix} & 0.3 & 0.4 & 0.7\\\\ 0.3 & & 0.5 & 0.8\\\\ 0.4 & 0.5 & & 0.45\\\\ 0.7 & 0.8 & 0.45 & \\end{bmatrix}.",
+  "confidence": 0.85,
+  "notes": "Diagonal entries are blank in the printed matrix (implicit zero dissimilarity); printed with square brackets in the book, rendered as pmatrix per house style.",
+  "corrected": true
  },
- "m00724": {
+ "m00695": {
+  "latex": "\\hat{\\mu}_{t} = \\frac{1}{n_{t}} \\sum_{i=1}^{n_{t}} x_{i}^{t}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00698": {
+  "latex": "H_{a} : \\mu_{t} \\neq \\mu_{c}",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00699": {
+  "latex": "\\mathrm{FWER} = \\mathrm{Pr}(V \\geq 1).",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00701": {
+  "latex": "\\mathrm{FWER}(\\alpha) = 1 - \\prod_{j=1}^{m} (1-\\alpha) = 1 - (1-\\alpha)^{m}.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00702": {
+  "latex": "\\sqrt{n} \\cdot \\bar{X}/S",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00703": {
+  "latex": "\\begin{aligned}\n&= \\mathrm{Pr}\\left(\\bigcup_{j=1}^{m} A_j\\right) \\\\\n&\\leq \\sum_{j=1}^{m} \\mathrm{Pr}(A_j).\n\\end{aligned}",
+  "confidence": 0.9,
+  "notes": "Continuation of a multi-line aligned derivation of FWER; crop begins mid-equation with the second and third lines."
+ },
+ "m00704": {
+  "latex": "\\mathrm{FWER}(\\alpha/m) \\leq m \\times \\frac{\\alpha}{m} = \\alpha,",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00705": {
+  "latex": "H_{01}, \\ldots, H_{0m}.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00706": {
+  "latex": "L = \\min\\left\\{ j : p_{(j)} > \\frac{\\alpha}{m+1-j} \\right\\}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00707": {
+  "latex": "\\mu_{1} = \\mu_{2} = \\mu_{3} = \\mu_{4} = \\mu_{5} \\neq \\mu_{6}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00708": {
+  "latex": "H_{0} : \\frac{1}{2}(\\mu_{1}+\\mu_{3}) = \\frac{1}{3}(\\mu_{2}+\\mu_{4}+\\mu_{5}).",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00709": {
+  "latex": "H_{0} : \\frac{1}{3}(\\mu_{1}+\\mu_{2}+\\mu_{3}) = \\frac{1}{2}(\\mu_{4}+\\mu_{5})",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00710": {
+  "latex": "H_{0} : \\frac{1}{4}(\\mu_{1}+\\mu_{2}+\\mu_{3}+\\mu_{4}) = \\mu_{5}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00711": {
+  "latex": "\\mathrm{FDR} = \\mathrm{E}(\\mathrm{FDP}) = \\mathrm{E}(V/R).",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ "m00712": {
+  "latex": "H_{01}, \\ldots, H_{0m}.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00713": {
+  "latex": "L = \\max\\{j : p_{(j)} < qj/m\\}.",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00714": {
+  "latex": "H_{a} : \\mathrm{E}(X) \\neq \\mathrm{E}(Y)",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00715": {
+  "latex": "T = \\frac{\\hat{\\mu}_X - \\hat{\\mu}_Y}{s\\sqrt{\\frac{1}{n_X}+\\frac{1}{n_Y}}}.",
+  "confidence": 0.9,
+  "notes": "Crop image included stray bleed fragments from neighboring content below (partial sum and sqrt of eq 13.2); transcribed only the target T-statistic formula, with trailing period visible to the right in the crop."
+ },
+ "m00716": {
+  "latex": "\\hat{\\mu}_{X} = \\frac{1}{n_{X}} \\sum_{i=1}^{n_{X}} x_{i}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00717": {
+  "latex": "\\hat{\\mu}_{Y} = \\frac{1}{n_{Y}} \\sum_{i=1}^{n_{Y}} y_{i}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00718": {
   "latex": "p\\text{-value} = \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B},",
   "confidence": 0.95,
   "notes": ""
  },
- "m00726": {
-  "latex": "\\text{3. The } p\\text{-value is given by } \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B}\\text{.}",
-  "confidence": 0.9,
-  "notes": "printed as a numbered algorithm step, so the '3.' and surrounding sentence words are kept as \\text{...}"
+ "m00719": {
+  "latex": "y_1, \\ldots, y_{n_Y}.",
+  "confidence": 0.97,
+  "notes": ""
  },
- "m00727": {
+ "m00721": {
   "latex": "\\mathrm{FDR} = E\\left(\\frac{V}{R}\\right) \\approx \\frac{\\mathrm{E}(V)}{R}.",
   "confidence": 0.95,
   "notes": ""
  },
- "m00734": {
+ "m00722": {
+  "latex": "R = \\sum_{j=1}^{m} 1_{\\left(|T_j| \\ge c\\right)}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00723": {
+  "latex": "p_j = \\frac{\\sum_{j'=1}^{m} \\sum_{b=1}^{B} 1_{\\left(|T_{j'}^{*b}| \\geq |T_j|\\right)}}{Bm}",
+  "confidence": 0.9,
+  "notes": "Indicator function rendered as plain 1(...) matching the book's typesetting, not blackboard-bold."
+ },
+ "m00728": {
   "latex": "\\text{4. Compute } \\widehat{V} = \\frac{\\sum_{b=1}^{B}\\sum_{j=1}^{m} 1_{\\left(|T^{(j),*b}| \\ge c\\right)}}{B}\\text{.}",
   "confidence": 0.9,
   "notes": "printed as a numbered algorithm step, so the '4. Compute' text is kept as \\text{...}"
  },
- "m00737": {
+ "m00729": {
+  "latex": "\\hat{V}/R.",
+  "confidence": 0.85,
+  "notes": "a stray horizontal rule appears below the glyphs in the crop, bleeding from an adjacent fraction bar; not transcribed as it is not part of this expression"
+ },
+ "m00731": {
   "latex": "\\binom{5}{2}",
   "confidence": 0.75,
   "notes": "extracted_characters only captured the trailing '2', but the crop clearly shows a stacked 5 over 2 with parenthesis edges visible, matching the surrounding sentence's 5(5-1)/2 = 10 computation"
+ },
+ "m00732": {
+  "latex": "\\hat{V}",
+  "confidence": 0.85,
+  "notes": "a stray period appears below in the crop, bleeding from surrounding body text; not transcribed"
+ },
+ "m00733": {
+  "latex": "\\mathrm{Pr}(A)\\,\\mathrm{Pr}(B).",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00734": {
+  "latex": "0.05?",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00735": {
+  "latex": "0.001?",
+  "confidence": 0.97,
+  "notes": ""
  }
 }

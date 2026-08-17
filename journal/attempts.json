@@ -169,6 +169,22 @@
       "what": "Walk all 613 pages, work out which text lines no block consumed, and read them.",
       "result": "25,605 lines considered, 393 unconsumed. All but ten are equation numbers folded into their equation, or numerator and limit fragments already inside a mathematics crop. The ten were cell output that spilled past its shaded rectangle.",
       "why": ""
+    },
+    {
+      "n": 17,
+      "title": "Check every expression against the printed page",
+      "status": "success",
+      "what": "Typeset all 555 transcriptions with MathJax, rasterise them, stack each under the crop from the PDF, and give 23 agents one instruction: find where the transcription is wrong.",
+      "result": "500 same, 53 cosmetic, 2 genuinely wrong. 99.6% of the mathematics agrees with the page. The two errors were a dropped first row of a two-row equation, and square brackets typeset as round ones.",
+      "why": ""
+    },
+    {
+      "n": 18,
+      "title": "An independent second opinion found what the family missed",
+      "status": "success",
+      "what": "Hand 45 of the same comparison images to OpenAI's codex CLI, a different model family with no sight of the earlier answers.",
+      "result": "44 of 45 agreed. The one disagreement was right and mattered: a crop had captured a fraction's denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction.",
+      "why": "Every other check here was Claude checking Claude. The only check from outside the family found the fault in a sample of 45."
     }
   ]
 }

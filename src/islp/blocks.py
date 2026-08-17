@@ -30,7 +30,9 @@ COLOUR_ACCENT = 0x0068B4
 
 CAPTION_RE = re.compile(r"^\s*(FIGURE|TABLE)\s+([A-Z]?\.?\d+\.\d+)\.")
 EQNUM_RE = re.compile(r"^\s*\((\d+\.\d+)\)\s*$")
-LIST_MARKER_RE = re.compile(r"^\s*(\(?[a-z]\)|\(?[ivx]+\)|\d+\.)\s")
+# Exercise items run "1.", then "(a)", then "i." for the innermost level. The trailing \s
+# matters: it is what keeps "i.e." from being read as a list marker.
+LIST_MARKER_RE = re.compile(r"^\s*(\(?[a-z]\)|\(?[ivxlcdm]+[.)]|\d+\.)\s")
 PROSE_WORD_RE = re.compile(r"[A-Za-zÀ-ɏ]{2,}")
 
 

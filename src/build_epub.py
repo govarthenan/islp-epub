@@ -207,20 +207,41 @@ def table_key(block) -> str:
     return f"t{block.number.replace('.', '-')}-p{block.page + 1}"
 
 
-def paragraph_class(block) -> str:
-    """Indent level comes from the printed page: the left margin of the body lines gives the
-    list depth, and the 9.9 pt first-line indent says whether a paragraph is a fresh one."""
+ROMAN_MARKER_RE = re.compile(r"^\(?[ivxlcdm]+[.)]$")
+LETTER_MARKER_RE = re.compile(r"^\(?[a-z]\)$")
+
+
+def list_level(block) -> int:
+    """Depth of an exercise item.
+
+    The marker itself says which level it is - "1.", then "(a)", then "i." - and that is far
+    steadier than the left margin, which drifts by twenty points from item to item. Only
+    unmarked continuation paragraphs fall back to the measured indent."""
+    marker = block.list_marker.strip()
+    if marker:
+        if ROMAN_MARKER_RE.match(marker):
+            return 3
+        if LETTER_MARKER_RE.match(marker):
+            return 2
+        return 1
     left = block.meta.get("left", 91.0)
-    level = 0
-    if left >= 125:
-        level = 2
-    elif left >= 96:
-        level = 1
+    if left >= 150:
+        return 3
+    if left >= 132:
+        return 2
+    if left >= 108:
+        return 1
+    return 0
+
+
+def paragraph_class(block) -> str:
+    level = list_level(block)
     if block.list_marker:
-        return {0: "noindent", 1: "li", 2: "li2"}[level]
-    if block.meta.get("indented", False):
-        return {0: "", 1: "li-cont-in", 2: "li2-cont-in"}[level]
-    return {0: "noindent", 1: "li-cont", 2: "li2-cont"}[level]
+        return {1: "li", 2: "li2", 3: "li3"}[level]
+    if level:
+        suffix = "-cont-in" if block.meta.get("indented", False) else "-cont"
+        return {1: "li", 2: "li2", 3: "li3"}[level] + suffix
+    return "" if block.meta.get("indented", False) else "noindent"
 
 
 def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint],

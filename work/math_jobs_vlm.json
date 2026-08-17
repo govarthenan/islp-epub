@@ -141,7 +141,7 @@
   "context_before": "Occasionally we will want to indicate the dimension of a particular object. To indicate that an object is a scalar, we will use the notation {{MATH:m00009}}. To indicate that it is a vector of length k, we will use {{MATH:m00010}} (or {{MATH:m00011}} if it is of length n). We will indicate that an object is an r × s matrix using {{MATH:m00012}}.",
   "occurrences": 1,
   "width_pt": 98.8,
-  "height_pt": 45.2
+  "height_pt": 44.7
  },
  {
   "id": "m00016",
@@ -701,7 +701,7 @@
   "context_before": "out; intuitively we have more leverage to estimate a slope when this is the case. We also see that {{MATH:m00078}} would be the same as {{MATH:m00074}} if {{MATH:m00079}} were zero (in which case {{MATH:m00053}} would be equal to {{MATH:m00080}}). In general, σ2 is not known, but can be estimated from the data. This estimate of σ is known as the residual standard error, and is given by the formula",
   "occurrences": 1,
   "width_pt": 99.3,
-  "height_pt": 37.2
+  "height_pt": 18.3
  },
  {
   "id": "m00082",
@@ -1255,13 +1255,13 @@
   "chapter_number": "3",
   "chapter_title": "Linear Regression",
   "equation_number": "3.30",
-  "extracted_characters": "\nβ0+β1+ϵiif ith person is from the South\n",
+  "extracted_characters": "\nβ0+β1+ϵiif ith person is from the South\n\n\n\nβ0+ϵiif ith person is from the East.",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
   "context_before": "Then both of these variables can be used in the regression equation, in order to obtain the model",
   "occurrences": 1,
   "width_pt": 180.5,
-  "height_pt": 44.2
+  "height_pt": 63.0
  },
  {
   "id": "m00120",
@@ -1420,8 +1420,8 @@
   "why_model_needed": "fraction-or-radical-rule",
   "context_before": "As an extreme example, suppose we accidentally doubled our data, leading to observations and error terms identical in pairs. If we ignored this, our standard error calculations would be as if we had a sample of size 2n, when in fact we have only n samples. Our estimated parameters would be the same for the 2n samples as for the {{MATH:m00133}} samples, but the confidence intervals",
   "occurrences": 1,
-  "width_pt": 13.3,
-  "height_pt": 18.5
+  "width_pt": 5.0,
+  "height_pt": 10.9
  },
  {
   "id": "m00135",
@@ -1906,6 +1906,22 @@
  {
   "id": "m00178",
   "image": "work/math_crops/m00178.png",
+  "kind": "display",
+  "page_pdf": 151,
+  "chapter_number": "4",
+  "chapter_title": "Classification",
+  "equation_number": "",
+  "extracted_characters": "e−3.5041+0.4049×1\n�\ne−3.5041+0.4049×0\n�\nPr(default=Yes|student=No) =1 + e−3.5041+0.4049×0 = 0.0292.",
+  "deterministic_guess": "",
+  "why_model_needed": "display-equation",
+  "context_before": "at takes on a value of 1 for students and 0 for non-students. The logistic regression model that results from predicting probability of default from student status can be seen in Table 4.2. The coefficient associated with the dummy variable is positive, and the associated p-value is statistically significant. This indicates that students tend to have higher default probabilities than non-students:",
+  "occurrences": 1,
+  "width_pt": 279.5,
+  "height_pt": 69.3
+ },
+ {
+  "id": "m00179",
+  "image": "work/math_crops/m00179.png",
   "kind": "inline",
   "page_pdf": 151,
   "chapter_number": "4",
@@ -1917,23 +1933,7 @@
   "context_before": "at takes on a value of 1 for students and 0 for non-students. The logistic regression model that results from predicting probability of default from student status can be seen in Table 4.2. The coefficient associated with the dummy variable is positive, and the associated p-value is statistically significant. This indicates that students tend to have higher default probabilities than non-students:",
   "occurrences": 1,
   "width_pt": 152.5,
-  "height_pt": 45.8
- },
- {
-  "id": "m00179",
-  "image": "work/math_crops/m00179.png",
-  "kind": "display",
-  "page_pdf": 151,
-  "chapter_number": "4",
-  "chapter_title": "Classification",
-  "equation_number": "",
-  "extracted_characters": "e−3.5041+0.4049×0\n�\nPr(default=Yes|student=No) =1 + e−3.5041+0.4049×0 = 0.0292.",
-  "deterministic_guess": "",
-  "why_model_needed": "display-equation",
-  "context_before": "Pr(default=Yes|student=Yes{{MATH:m00178}}",
-  "occurrences": 1,
-  "width_pt": 274.8,
-  "height_pt": 54.7
+  "height_pt": 18.1
  },
  {
   "id": "m00180",
@@ -2055,12 +2055,12 @@
   "chapter_number": "4",
   "chapter_title": "Classification",
   "equation_number": "4.14",
-  "extracted_characters": "�\n�Pr(Y = k|X = x)\nPr(Y = k′|X = x)",
+  "extracted_characters": "�",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
   "context_before": "Thus, rather than estimating coefficients for K − 1 classes, we actually estimate coefficients for all K classes. It is not hard to see that as a result of (4.13), the log odds ratio between the kth and k′th classes equals",
   "occurrences": 1,
-  "width_pt": 102.2,
+  "width_pt": 80.8,
   "height_pt": 34.2
  },
  {
@@ -2423,12 +2423,12 @@
   "chapter_number": "4",
   "chapter_title": "Classification",
   "equation_number": "4.32",
-  "extracted_characters": "��πkfk(x)�\n�Pr(Y = k|X = x)\nPr(Y = K|X = x)πKfK(x)\n��\n��\nπk exp−21(x −µk)T Σ−1(x −µk)\n=log��\nπK exp−12(x −µK)T Σ−1(x −µK)\n�πk�\n=log−12(x −µk)T Σ−1(x −µk)\nπK\n+12(x −µK)T Σ−1(x −µK)\n�πk�\n=log−12(µk + µK)T Σ−1(µk −µK)\nπK\n+ xT Σ−1(µk −µK)\np\n�\n=ak +bkjxj,\nj=1\n��\nπk\nπK",
+  "extracted_characters": "��πkfk(x)�\nPr(Y = K|X = x)πKfK(x)\n��\n��\nπk exp−21(x −µk)T Σ−1(x −µk)\n=log��\nπK exp−12(x −µK)T Σ−1(x −µK)\n�πk�\n=log−12(x −µk)T Σ−1(x −µk)\nπK\n+12(x −µK)T Σ−1(x −µK)\n�πk�\n=log−12(µk + µK)T Σ−1(µk −µK)\nπK\n+ xT Σ−1(µk −µK)\np\n�\n=ak +bkjxj,\nj=1\n��",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
   "context_before": "variance matrix in order to show that",
   "occurrences": 1,
-  "width_pt": 330.6,
+  "width_pt": 307.6,
   "height_pt": 235.3
  },
  {
@@ -2444,8 +2444,8 @@
   "why_model_needed": "fraction-or-radical-rule",
   "context_before": "variance matrix in order to show that",
   "occurrences": 1,
-  "width_pt": 224.1,
-  "height_pt": 48.5
+  "width_pt": 151.6,
+  "height_pt": 37.2
  },
  {
   "id": "m00225",
@@ -2461,7 +2461,7 @@
   "context_before": "{{MATH:m00224}}",
   "occurrences": 1,
   "width_pt": 205.9,
-  "height_pt": 48.4
+  "height_pt": 22.1
  },
  {
   "id": "m00226",
@@ -2535,7 +2535,7 @@
   "chapter_number": "4",
   "chapter_title": "Classification",
   "equation_number": "",
-  "extracted_characters": "��\nPr(Y =k|X=x)\nPr(Y =K|X=x)",
+  "extracted_characters": "��",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
   "context_before": "This is identical to the linear form of LDA (4.32): in both cases,",
@@ -2610,22 +2610,6 @@
  {
   "id": "m00235",
   "image": "work/math_crops/m00235.png",
-  "kind": "display",
-  "page_pdf": 179,
-  "chapter_number": "4",
-  "chapter_title": "Classification",
-  "equation_number": "",
-  "extracted_characters": "e−550",
-  "deterministic_guess": "",
-  "why_model_needed": "display-equation",
-  "context_before": "ake on nonnegative integer values. To see how we might use the Poisson distribution in practice, let Y denote the number of users of the bike sharing program during a particular hour of the day, under a particular set of weather conditions, and during a particular month of the year. We might model Y as a Poisson distribution with mean E(Y ) = λ = 5. This means that the probability of no users dur-",
-  "occurrences": 1,
-  "width_pt": 20.9,
-  "height_pt": 16.0
- },
- {
-  "id": "m00236",
-  "image": "work/math_crops/m00236.png",
   "kind": "inline",
   "page_pdf": 179,
   "chapter_number": "4",
@@ -2640,24 +2624,8 @@
   "height_pt": 16.3
  },
  {
-  "id": "m00237",
-  "image": "work/math_crops/m00237.png",
-  "kind": "display",
-  "page_pdf": 179,
-  "chapter_number": "4",
-  "chapter_title": "Classification",
-  "equation_number": "",
-  "extracted_characters": "e−551",
-  "deterministic_guess": "",
-  "why_model_needed": "display-equation",
-  "context_before": "0! = 1 by convention). The probability that there is exactly one user",
-  "occurrences": 1,
-  "width_pt": 20.9,
-  "height_pt": 16.0
- },
- {
-  "id": "m00238",
-  "image": "work/math_crops/m00238.png",
+  "id": "m00236",
+  "image": "work/math_crops/m00236.png",
   "kind": "inline",
   "page_pdf": 179,
   "chapter_number": "4",
@@ -2672,8 +2640,8 @@
   "height_pt": 16.3
  },
  {
-  "id": "m00239",
-  "image": "work/math_crops/m00239.png",
+  "id": "m00237",
+  "image": "work/math_crops/m00237.png",
   "kind": "inline",
   "page_pdf": 179,
   "chapter_number": "4",
@@ -2682,30 +2650,14 @@
   "extracted_characters": "Pr(Y = 2) = e−552= 0.084",
   "deterministic_guess": "\\mathrm{Pr}(Y = 2) = ^{e^{-5}5^{2}}= 0.084",
   "why_model_needed": "fraction-or-radical-rule",
-  "context_before": "is {{MATH:m00238}}, the probability of two users is",
+  "context_before": "is {{MATH:m00236}}, the probability of two users is",
   "occurrences": 1,
   "width_pt": 117.3,
-  "height_pt": 30.7
+  "height_pt": 16.0
  },
  {
-  "id": "m00240",
-  "image": "work/math_crops/m00240.png",
-  "kind": "display",
-  "page_pdf": 179,
-  "chapter_number": "4",
-  "chapter_title": "Classification",
-  "equation_number": "",
-  "extracted_characters": "2!",
-  "deterministic_guess": "2!",
-  "why_model_needed": "display-equation",
-  "context_before": "{{MATH:m00239}}, and so on.",
-  "occurrences": 1,
-  "width_pt": 20.9,
-  "height_pt": 7.7
- },
- {
-  "id": "m00241",
-  "image": "work/math_crops/m00241.png",
+  "id": "m00238",
+  "image": "work/math_crops/m00238.png",
   "kind": "display",
   "page_pdf": 179,
   "chapter_number": "4",
@@ -2720,8 +2672,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00242",
-  "image": "work/math_crops/m00242.png",
+  "id": "m00239",
+  "image": "work/math_crops/m00239.png",
   "kind": "display",
   "page_pdf": 179,
   "chapter_number": "4",
@@ -2736,8 +2688,8 @@
   "height_pt": 12.8
  },
  {
-  "id": "m00243",
-  "image": "work/math_crops/m00243.png",
+  "id": "m00240",
+  "image": "work/math_crops/m00240.png",
   "kind": "display",
   "page_pdf": 179,
   "chapter_number": "4",
@@ -2752,8 +2704,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00244",
-  "image": "work/math_crops/m00244.png",
+  "id": "m00241",
+  "image": "work/math_crops/m00241.png",
   "kind": "display",
   "page_pdf": 181,
   "chapter_number": "4",
@@ -2768,8 +2720,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00245",
-  "image": "work/math_crops/m00245.png",
+  "id": "m00242",
+  "image": "work/math_crops/m00242.png",
   "kind": "display",
   "page_pdf": 181,
   "chapter_number": "4",
@@ -2784,8 +2736,8 @@
   "height_pt": 40.2
  },
  {
-  "id": "m00246",
-  "image": "work/math_crops/m00246.png",
+  "id": "m00243",
+  "image": "work/math_crops/m00243.png",
   "kind": "display",
   "page_pdf": 181,
   "chapter_number": "4",
@@ -2800,8 +2752,8 @@
   "height_pt": 19.1
  },
  {
-  "id": "m00247",
-  "image": "work/math_crops/m00247.png",
+  "id": "m00244",
+  "image": "work/math_crops/m00244.png",
   "kind": "display",
   "page_pdf": 182,
   "chapter_number": "4",
@@ -2816,8 +2768,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00250",
-  "image": "work/math_crops/m00250.png",
+  "id": "m00247",
+  "image": "work/math_crops/m00247.png",
   "kind": "inline",
   "page_pdf": 192,
   "chapter_number": "4",
@@ -2828,12 +2780,12 @@
   "why_model_needed": "extension-font",
   "context_before": "",
   "occurrences": 1,
-  "width_pt": 110.3,
+  "width_pt": 117.5,
   "height_pt": 29.7
  },
  {
-  "id": "m00251",
-  "image": "work/math_crops/m00251.png",
+  "id": "m00248",
+  "image": "work/math_crops/m00248.png",
   "kind": "inline",
   "page_pdf": 192,
   "chapter_number": "4",
@@ -2845,11 +2797,11 @@
   "context_before": "",
   "occurrences": 1,
   "width_pt": 101.4,
-  "height_pt": 29.7
+  "height_pt": 6.0
  },
  {
-  "id": "m00253",
-  "image": "work/math_crops/m00253.png",
+  "id": "m00250",
+  "image": "work/math_crops/m00250.png",
   "kind": "inline",
   "page_pdf": 192,
   "chapter_number": "4",
@@ -2861,11 +2813,11 @@
   "context_before": "",
   "occurrences": 1,
   "width_pt": 101.4,
-  "height_pt": 29.7
+  "height_pt": 10.8
  },
  {
-  "id": "m00254",
-  "image": "work/math_crops/m00254.png",
+  "id": "m00251",
+  "image": "work/math_crops/m00251.png",
   "kind": "display",
   "page_pdf": 204,
   "chapter_number": "4",
@@ -2880,8 +2832,24 @@
   "height_pt": 20.8
  },
  {
-  "id": "m00258",
-  "image": "work/math_crops/m00258.png",
+  "id": "m00255",
+  "image": "work/math_crops/m00255.png",
+  "kind": "display",
+  "page_pdf": 204,
+  "chapter_number": "4",
+  "chapter_title": "Classification",
+  "equation_number": "",
+  "extracted_characters": "1\n√",
+  "deterministic_guess": "1\n√",
+  "why_model_needed": "display-equation",
+  "context_before": "Hint: Recall that the density function for a normal random variable",
+  "occurrences": 1,
+  "width_pt": 24.2,
+  "height_pt": 14.6
+ },
+ {
+  "id": "m00256",
+  "image": "work/math_crops/m00256.png",
   "kind": "inline",
   "page_pdf": 204,
   "chapter_number": "4",
@@ -2896,8 +2864,8 @@
   "height_pt": 17.0
  },
  {
-  "id": "m00259",
-  "image": "work/math_crops/m00259.png",
+  "id": "m00257",
+  "image": "work/math_crops/m00257.png",
   "kind": "display",
   "page_pdf": 205,
   "chapter_number": "4",
@@ -2912,8 +2880,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00261",
-  "image": "work/math_crops/m00261.png",
+  "id": "m00259",
+  "image": "work/math_crops/m00259.png",
   "kind": "display",
   "page_pdf": 205,
   "chapter_number": "4",
@@ -2922,14 +2890,14 @@
   "extracted_characters": "exp(βˆ0 + βˆ1x)\n�\nPr(Y = orange|X = x) =.\n1 + exp(βˆ0 + βˆ1x)",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "Suppose that you wish to classify an observation {{MATH:m00260}} into apples and oranges. You fit a logistic regression model and find that",
+  "context_before": "Suppose that you wish to classify an observation {{MATH:m00258}} into apples and oranges. You fit a logistic regression model and find that",
   "occurrences": 1,
   "width_pt": 198.5,
   "height_pt": 43.8
  },
  {
-  "id": "m00262",
-  "image": "work/math_crops/m00262.png",
+  "id": "m00260",
+  "image": "work/math_crops/m00260.png",
   "kind": "display",
   "page_pdf": 205,
   "chapter_number": "4",
@@ -2944,8 +2912,8 @@
   "height_pt": 43.0
  },
  {
-  "id": "m00265",
-  "image": "work/math_crops/m00265.png",
+  "id": "m00263",
+  "image": "work/math_crops/m00263.png",
   "kind": "display",
   "page_pdf": 205,
   "chapter_number": "4",
@@ -2960,8 +2928,8 @@
   "height_pt": 26.1
  },
  {
-  "id": "m00266",
-  "image": "work/math_crops/m00266.png",
+  "id": "m00264",
+  "image": "work/math_crops/m00264.png",
   "kind": "display",
   "page_pdf": 207,
   "chapter_number": "4",
@@ -2976,8 +2944,8 @@
   "height_pt": 14.1
  },
  {
-  "id": "m00270",
-  "image": "work/math_crops/m00270.png",
+  "id": "m00268",
+  "image": "work/math_crops/m00268.png",
   "kind": "display",
   "page_pdf": 212,
   "chapter_number": "5",
@@ -2986,14 +2954,14 @@
   "extracted_characters": "n\n�\nCV(n) = 1MSEi.\nn\ni=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "We can repeat the procedure by selecting (x2, y2) for the validation data, training the statistical learning procedure on the n − 1 observations {(x1, y1), (x3, y3), . . . , (xn, yn)}, and computing {{MATH:m00269}}. Repeating this approach n times produces n squared errors, MSE1, . . . , MSEn. The LOOCV estimate for the test MSE is the average of these n test error estimates:",
+  "context_before": "We can repeat the procedure by selecting (x2, y2) for the validation data, training the statistical learning procedure on the n − 1 observations {(x1, y1), (x3, y3), . . . , (xn, yn)}, and computing {{MATH:m00267}}. Repeating this approach n times produces n squared errors, MSE1, . . . , MSEn. The LOOCV estimate for the test MSE is the average of these n test error estimates:",
   "occurrences": 1,
   "width_pt": 93.3,
   "height_pt": 37.7
  },
  {
-  "id": "m00271",
-  "image": "work/math_crops/m00271.png",
+  "id": "m00269",
+  "image": "work/math_crops/m00269.png",
   "kind": "display",
   "page_pdf": 213,
   "chapter_number": "5",
@@ -3008,8 +2976,8 @@
   "height_pt": 41.8
  },
  {
-  "id": "m00272",
-  "image": "work/math_crops/m00272.png",
+  "id": "m00270",
+  "image": "work/math_crops/m00270.png",
   "kind": "display",
   "page_pdf": 214,
   "chapter_number": "5",
@@ -3024,8 +2992,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00273",
-  "image": "work/math_crops/m00273.png",
+  "id": "m00271",
+  "image": "work/math_crops/m00271.png",
   "kind": "display",
   "page_pdf": 217,
   "chapter_number": "5",
@@ -3040,8 +3008,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00274",
-  "image": "work/math_crops/m00274.png",
+  "id": "m00272",
+  "image": "work/math_crops/m00272.png",
   "kind": "inline",
   "page_pdf": 217,
   "chapter_number": "5",
@@ -3056,8 +3024,8 @@
   "height_pt": 18.5
  },
  {
-  "id": "m00275",
-  "image": "work/math_crops/m00275.png",
+  "id": "m00273",
+  "image": "work/math_crops/m00273.png",
   "kind": "display",
   "page_pdf": 218,
   "chapter_number": "5",
@@ -3072,8 +3040,8 @@
   "height_pt": 38.1
  },
  {
-  "id": "m00276",
-  "image": "work/math_crops/m00276.png",
+  "id": "m00274",
+  "image": "work/math_crops/m00274.png",
   "kind": "display",
   "page_pdf": 220,
   "chapter_number": "5",
@@ -3088,8 +3056,8 @@
   "height_pt": 34.9
  },
  {
-  "id": "m00280",
-  "image": "work/math_crops/m00280.png",
+  "id": "m00278",
+  "image": "work/math_crops/m00278.png",
   "kind": "display",
   "page_pdf": 220,
   "chapter_number": "5",
@@ -3098,14 +3066,14 @@
   "extracted_characters": "σˆY2 −σˆXY\nαˆ =.\nσˆX2 + σˆY2 −2σˆXY",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "In reality, the quantities σX2, σY2 , and σXY are unknown. We can compute estimates for these quantities, {{MATH:m00277}}, {{MATH:m00278}} , and {{MATH:m00279}} , using a data set that contains past measurements for X and Y . We can then estimate the value of α that minimizes the variance of our investment using",
+  "context_before": "In reality, the quantities σX2, σY2 , and σXY are unknown. We can compute estimates for these quantities, {{MATH:m00275}}, {{MATH:m00276}} , and {{MATH:m00277}} , using a data set that contains past measurements for X and Y . We can then estimate the value of α that minimizes the variance of our investment using",
   "occurrences": 1,
   "width_pt": 99.7,
   "height_pt": 34.9
  },
  {
-  "id": "m00283",
-  "image": "work/math_crops/m00283.png",
+  "id": "m00281",
+  "image": "work/math_crops/m00281.png",
   "kind": "display",
   "page_pdf": 221,
   "chapter_number": "5",
@@ -3120,8 +3088,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00284",
-  "image": "work/math_crops/m00284.png",
+  "id": "m00282",
+  "image": "work/math_crops/m00282.png",
   "kind": "display",
   "page_pdf": 221,
   "chapter_number": "5",
@@ -3136,8 +3104,8 @@
   "height_pt": 54.7
  },
  {
-  "id": "m00289",
-  "image": "work/math_crops/m00289.png",
+  "id": "m00287",
+  "image": "work/math_crops/m00287.png",
   "kind": "display",
   "page_pdf": 222,
   "chapter_number": "5",
@@ -3146,14 +3114,14 @@
   "extracted_characters": "�\n���2\nBB\n���\n1\n�\nSEB(αˆ) =αˆ∗r −1αˆ∗r′.\nB −1B\nr=1r′=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "then both its X and Y values are included. We can use Z∗1 to produce a new bootstrap estimate for α, which we call {{MATH:m00287}}. This procedure is repeated B times for some large value of B, in order to produce B different bootstrap data sets, Z∗1, Z∗2, . . . , Z∗B, and B corresponding α estimates, {{MATH:m00288}}. We can compute the standard error of these bootstrap estimates using the formula",
+  "context_before": "then both its X and Y values are included. We can use Z∗1 to produce a new bootstrap estimate for α, which we call {{MATH:m00285}}. This procedure is repeated B times for some large value of B, in order to produce B different bootstrap data sets, Z∗1, Z∗2, . . . , Z∗B, and B corresponding α estimates, {{MATH:m00286}}. We can compute the standard error of these bootstrap estimates using the formula",
   "occurrences": 1,
   "width_pt": 200.6,
   "height_pt": 54.7
  },
  {
-  "id": "m00291",
-  "image": "work/math_crops/m00291.png",
+  "id": "m00289",
+  "image": "work/math_crops/m00289.png",
   "kind": "display",
   "page_pdf": 235,
   "chapter_number": "5",
@@ -3168,8 +3136,8 @@
   "height_pt": 58.8
  },
  {
-  "id": "m00292",
-  "image": "work/math_crops/m00292.png",
+  "id": "m00290",
+  "image": "work/math_crops/m00290.png",
   "kind": "display",
   "page_pdf": 236,
   "chapter_number": "5",
@@ -3184,8 +3152,8 @@
   "height_pt": 20.8
  },
  {
-  "id": "m00295",
-  "image": "work/math_crops/m00295.png",
+  "id": "m00293",
+  "image": "work/math_crops/m00293.png",
   "kind": "display",
   "page_pdf": 237,
   "chapter_number": "6",
@@ -3200,8 +3168,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00296",
-  "image": "work/math_crops/m00296.png",
+  "id": "m00294",
+  "image": "work/math_crops/m00294.png",
   "kind": "display",
   "page_pdf": 239,
   "chapter_number": "6",
@@ -3216,8 +3184,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00298",
-  "image": "work/math_crops/m00298.png",
+  "id": "m00296",
+  "image": "work/math_crops/m00296.png",
   "kind": "display",
   "page_pdf": 239,
   "chapter_number": "6",
@@ -3232,8 +3200,8 @@
   "height_pt": 54.1
  },
  {
-  "id": "m00303",
-  "image": "work/math_crops/m00303.png",
+  "id": "m00301",
+  "image": "work/math_crops/m00301.png",
   "kind": "inline",
   "page_pdf": 241,
   "chapter_number": "6",
@@ -3248,8 +3216,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00309",
-  "image": "work/math_crops/m00309.png",
+  "id": "m00307",
+  "image": "work/math_crops/m00307.png",
   "kind": "display",
   "page_pdf": 244,
   "chapter_number": "6",
@@ -3264,8 +3232,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00311",
-  "image": "work/math_crops/m00311.png",
+  "id": "m00309",
+  "image": "work/math_crops/m00309.png",
   "kind": "inline",
   "page_pdf": 244,
   "chapter_number": "6",
@@ -3280,8 +3248,8 @@
   "height_pt": 18.1
  },
  {
-  "id": "m00312",
-  "image": "work/math_crops/m00312.png",
+  "id": "m00310",
+  "image": "work/math_crops/m00310.png",
   "kind": "inline",
   "page_pdf": 244,
   "chapter_number": "6",
@@ -3296,8 +3264,8 @@
   "height_pt": 12.9
  },
  {
-  "id": "m00313",
-  "image": "work/math_crops/m00313.png",
+  "id": "m00311",
+  "image": "work/math_crops/m00311.png",
   "kind": "display",
   "page_pdf": 245,
   "chapter_number": "6",
@@ -3312,8 +3280,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00314",
-  "image": "work/math_crops/m00314.png",
+  "id": "m00312",
+  "image": "work/math_crops/m00312.png",
   "kind": "display",
   "page_pdf": 245,
   "chapter_number": "6",
@@ -3328,8 +3296,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00316",
-  "image": "work/math_crops/m00316.png",
+  "id": "m00314",
+  "image": "work/math_crops/m00314.png",
   "kind": "inline",
   "page_pdf": 246,
   "chapter_number": "6",
@@ -3344,8 +3312,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00317",
-  "image": "work/math_crops/m00317.png",
+  "id": "m00315",
+  "image": "work/math_crops/m00315.png",
   "kind": "display",
   "page_pdf": 246,
   "chapter_number": "6",
@@ -3354,14 +3322,14 @@
   "extracted_characters": "Adjusted R2 = 1 −RSS/(n −d −1).\nTSS/(n −1)",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "odels that contain different numbers of variables. Recall from Chapter 3 that the usual R2 is defined as 1 − RSS/TSS, where TSS = {{MATH:m00316}} is the total sum of squares for the response. Since RSS always decreases as more variables are added to the model, the R2 always increases as more variables are added. For a least squares model with d variables, the adjusted R2 statistic is calculated as",
+  "context_before": "odels that contain different numbers of variables. Recall from Chapter 3 that the usual R2 is defined as 1 − RSS/TSS, where TSS = {{MATH:m00314}} is the total sum of squares for the response. Since RSS always decreases as more variables are added to the model, the R2 always increases as more variables are added. For a least squares model with d variables, the adjusted R2 statistic is calculated as",
   "occurrences": 1,
   "width_pt": 161.7,
   "height_pt": 30.9
  },
  {
-  "id": "m00318",
-  "image": "work/math_crops/m00318.png",
+  "id": "m00316",
+  "image": "work/math_crops/m00316.png",
   "kind": "inline",
   "page_pdf": 246,
   "chapter_number": "6",
@@ -3376,8 +3344,8 @@
   "height_pt": 19.2
  },
  {
-  "id": "m00319",
-  "image": "work/math_crops/m00319.png",
+  "id": "m00317",
+  "image": "work/math_crops/m00317.png",
   "kind": "display",
   "page_pdf": 248,
   "chapter_number": "6",
@@ -3392,8 +3360,8 @@
   "height_pt": 55.1
  },
  {
-  "id": "m00321",
-  "image": "work/math_crops/m00321.png",
+  "id": "m00319",
+  "image": "work/math_crops/m00319.png",
   "kind": "display",
   "page_pdf": 248,
   "chapter_number": "6",
@@ -3402,14 +3370,14 @@
   "extracted_characters": "\n2\nnppp\n����\n\nyi −β0 −βjxij+ λβj2 = RSS + λβj2 ,\ni=1j=1j=1j=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "Ridge regression is very similar to least squares, except that the coefficients are estimated by minimizing a slightly different quantity. In particular, the ridge regression coefficient estimates {{MATH:m00320}} are the values that minimize",
+  "context_before": "Ridge regression is very similar to least squares, except that the coefficients are estimated by minimizing a slightly different quantity. In particular, the ridge regression coefficient estimates {{MATH:m00318}} are the values that minimize",
   "occurrences": 1,
   "width_pt": 246.3,
   "height_pt": 55.1
  },
  {
-  "id": "m00322",
-  "image": "work/math_crops/m00322.png",
+  "id": "m00320",
+  "image": "work/math_crops/m00320.png",
   "kind": "inline",
   "page_pdf": 248,
   "chapter_number": "6",
@@ -3418,14 +3386,14 @@
   "extracted_characters": "λ �j βj2",
   "deterministic_guess": "",
   "why_model_needed": "extension-font",
-  "context_before": "Ridge regression is very similar to least squares, except that the coefficients are estimated by minimizing a slightly different quantity. In particular, the ridge regression coefficient estimates {{MATH:m00320}} are the values that minimize",
+  "context_before": "Ridge regression is very similar to least squares, except that the coefficients are estimated by minimizing a slightly different quantity. In particular, the ridge regression coefficient estimates {{MATH:m00318}} are the values that minimize",
   "occurrences": 1,
   "width_pt": 34.0,
   "height_pt": 44.7
  },
  {
-  "id": "m00325",
-  "image": "work/math_crops/m00325.png",
+  "id": "m00323",
+  "image": "work/math_crops/m00323.png",
   "kind": "inline",
   "page_pdf": 249,
   "chapter_number": "6",
@@ -3434,30 +3402,14 @@
   "extracted_characters": "β0 = y = �ni=1 yi/n",
   "deterministic_guess": "",
   "why_model_needed": "extension-font",
-  "context_before": " the shrinkage penalty grows, and the ridge regression coefficient estimates will approach zero. Unlike least squares, which generates only one set of coefficient estimates, ridge regression will produce a different set of coefficient estimates, {{MATH:m00324}} , for each value of λ. Selecting a good value for λ is critical; we defer this discussion to Section 6.2.3, where we use cross-validation.",
+  "context_before": " the shrinkage penalty grows, and the ridge regression coefficient estimates will approach zero. Unlike least squares, which generates only one set of coefficient estimates, ridge regression will produce a different set of coefficient estimates, {{MATH:m00322}} , for each value of λ. Selecting a good value for λ is critical; we defer this discussion to Section 6.2.3, where we use cross-validation.",
   "occurrences": 1,
   "width_pt": 86.7,
   "height_pt": 44.7
  },
  {
-  "id": "m00326",
-  "image": "work/math_crops/m00326.png",
-  "kind": "display",
-  "page_pdf": 250,
-  "chapter_number": "6",
-  "chapter_title": "Linear Model Selection and Regularization",
-  "equation_number": "",
-  "extracted_characters": "��p",
-  "deterministic_guess": "",
-  "why_model_needed": "display-equation",
-  "context_before": "The right-hand panel of Figure 6.4 displays the same ridge coefficient estimates as the left-hand panel, but instead of displaying λ on the x-axis, we now display {{MATH:m00323}}, where {{MATH:m00151}} denotes the vector of least squares coefficient estimates. The notation ∥β∥2 denotes the ℓ2 norm (pronounced",
-  "occurrences": 1,
-  "width_pt": 50.7,
-  "height_pt": 37.7
- },
- {
-  "id": "m00327",
-  "image": "work/math_crops/m00327.png",
+  "id": "m00324",
+  "image": "work/math_crops/m00324.png",
   "kind": "inline",
   "page_pdf": 250,
   "chapter_number": "6",
@@ -3466,14 +3418,14 @@
   "extracted_characters": "∥β∥2 =j=1 βj2",
   "deterministic_guess": "\\|\\beta\\|_{2} =_{j=1} \\beta_{j}^{2}",
   "why_model_needed": "fraction-or-radical-rule",
-  "context_before": "The right-hand panel of Figure 6.4 displays the same ridge coefficient estimates as the left-hand panel, but instead of displaying λ on the x-axis, we now display {{MATH:m00323}}, where {{MATH:m00151}} denotes the vector of least squares coefficient estimates. The notation ∥β∥2 denotes the ℓ2 norm (pronounced",
+  "context_before": "The right-hand panel of Figure 6.4 displays the same ridge coefficient estimates as the left-hand panel, but instead of displaying λ on the x-axis, we now display {{MATH:m00321}}, where {{MATH:m00151}} denotes the vector of least squares coefficient estimates. The notation ∥β∥2 denotes the ℓ2 norm (pronounced",
   "occurrences": 1,
   "width_pt": 85.0,
-  "height_pt": 41.0
+  "height_pt": 21.1
  },
  {
-  "id": "m00330",
-  "image": "work/math_crops/m00330.png",
+  "id": "m00327",
+  "image": "work/math_crops/m00327.png",
   "kind": "display",
   "page_pdf": 250,
   "chapter_number": "6",
@@ -3482,14 +3434,14 @@
   "extracted_characters": "xij\nx˜ij =�,\n�n\n1\ni=1(xij −xj)2\nn",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "e the ridge regression coefficient estimate for income to change by a factor of 1,000. In other words, {{MATH:m00329}} will depend not only on the value of λ, but also on the scaling of the jth predictor. In fact, the value of {{MATH:m00329}} may even depend on the scaling of the other predictors! Therefore, it is best to apply ridge regression after standardizing the predictors, using the formula",
+  "context_before": "e the ridge regression coefficient estimate for income to change by a factor of 1,000. In other words, {{MATH:m00326}} will depend not only on the value of λ, but also on the scaling of the jth predictor. In fact, the value of {{MATH:m00326}} may even depend on the scaling of the other predictors! Therefore, it is best to apply ridge regression after standardizing the predictors, using the formula",
   "occurrences": 1,
   "width_pt": 121.0,
   "height_pt": 47.4
  },
  {
-  "id": "m00331",
-  "image": "work/math_crops/m00331.png",
+  "id": "m00328",
+  "image": "work/math_crops/m00328.png",
   "kind": "inline",
   "page_pdf": 252,
   "chapter_number": "6",
@@ -3504,8 +3456,8 @@
   "height_pt": 44.7
  },
  {
-  "id": "m00333",
-  "image": "work/math_crops/m00333.png",
+  "id": "m00330",
+  "image": "work/math_crops/m00330.png",
   "kind": "display",
   "page_pdf": 252,
   "chapter_number": "6",
@@ -3514,14 +3466,14 @@
   "extracted_characters": "\n2\nnppp\n����\n\nyi −β0 −βjxij+ λ|βj| = RSS + λ|βj|.\ni=1j=1j=1j=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "The lasso is a relatively recent alternative to ridge regression that overcomes this disadvantage. The lasso coefficients, {{MATH:m00332}} , minimize the quantity",
+  "context_before": "The lasso is a relatively recent alternative to ridge regression that overcomes this disadvantage. The lasso coefficients, {{MATH:m00329}} , minimize the quantity",
   "occurrences": 1,
   "width_pt": 259.1,
   "height_pt": 55.1
  },
  {
-  "id": "m00334",
-  "image": "work/math_crops/m00334.png",
+  "id": "m00331",
+  "image": "work/math_crops/m00331.png",
   "kind": "inline",
   "page_pdf": 252,
   "chapter_number": "6",
@@ -3530,14 +3482,14 @@
   "extracted_characters": "∥β∥1 = �|βj|",
   "deterministic_guess": "",
   "why_model_needed": "extension-font",
-  "context_before": "The lasso is a relatively recent alternative to ridge regression that overcomes this disadvantage. The lasso coefficients, {{MATH:m00332}} , minimize the quantity",
+  "context_before": "The lasso is a relatively recent alternative to ridge regression that overcomes this disadvantage. The lasso coefficients, {{MATH:m00329}} , minimize the quantity",
   "occurrences": 1,
   "width_pt": 61.4,
   "height_pt": 44.7
  },
  {
-  "id": "m00336",
-  "image": "work/math_crops/m00336.png",
+  "id": "m00333",
+  "image": "work/math_crops/m00333.png",
   "kind": "display",
   "page_pdf": 253,
   "chapter_number": "6",
@@ -3552,8 +3504,8 @@
   "height_pt": 70.1
  },
  {
-  "id": "m00337",
-  "image": "work/math_crops/m00337.png",
+  "id": "m00334",
+  "image": "work/math_crops/m00334.png",
   "kind": "display",
   "page_pdf": 253,
   "chapter_number": "6",
@@ -3568,8 +3520,8 @@
   "height_pt": 70.1
  },
  {
-  "id": "m00338",
-  "image": "work/math_crops/m00338.png",
+  "id": "m00335",
+  "image": "work/math_crops/m00335.png",
   "kind": "inline",
   "page_pdf": 254,
   "chapter_number": "6",
@@ -3584,8 +3536,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00339",
-  "image": "work/math_crops/m00339.png",
+  "id": "m00336",
+  "image": "work/math_crops/m00336.png",
   "kind": "inline",
   "page_pdf": 254,
   "chapter_number": "6",
@@ -3600,24 +3552,24 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00340",
-  "image": "work/math_crops/m00340.png",
+  "id": "m00337",
+  "image": "work/math_crops/m00337.png",
   "kind": "display",
   "page_pdf": 254,
   "chapter_number": "6",
   "chapter_title": "Linear Model Selection and Regularization",
   "equation_number": "6.10",
-  "extracted_characters": "2\n\n\nnpp\n\ni=1j=1j=1",
+  "extracted_characters": "2\n\n\nnpp\n\n���\n\n\nβ\n\ni=1j=1j=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
   "context_before": "The formulations (6.8) and (6.9) reveal a close connection between the lasso, ridge regression, and best subset selection. Consider the problem",
   "occurrences": 1,
-  "width_pt": 217.8,
-  "height_pt": 58.5
+  "width_pt": 241.5,
+  "height_pt": 70.1
  },
  {
-  "id": "m00341",
-  "image": "work/math_crops/m00341.png",
+  "id": "m00338",
+  "image": "work/math_crops/m00338.png",
   "kind": "inline",
   "page_pdf": 254,
   "chapter_number": "6",
@@ -3628,12 +3580,12 @@
   "why_model_needed": "extension-font",
   "context_before": "The formulations (6.8) and (6.9) reveal a close connection between the lasso, ridge regression, and best subset selection. Consider the problem",
   "occurrences": 1,
-  "width_pt": 177.9,
-  "height_pt": 60.0
+  "width_pt": 154.9,
+  "height_pt": 37.2
  },
  {
-  "id": "m00342",
-  "image": "work/math_crops/m00342.png",
+  "id": "m00339",
+  "image": "work/math_crops/m00339.png",
   "kind": "inline",
   "page_pdf": 254,
   "chapter_number": "6",
@@ -3644,12 +3596,12 @@
   "why_model_needed": "unmapped-glyph",
   "context_before": "The formulations (6.8) and (6.9) reveal a close connection between the lasso, ridge regression, and best subset selection. Consider the problem",
   "occurrences": 1,
-  "width_pt": 77.8,
-  "height_pt": 38.2
+  "width_pt": 61.7,
+  "height_pt": 18.8
  },
  {
-  "id": "m00343",
-  "image": "work/math_crops/m00343.png",
+  "id": "m00340",
+  "image": "work/math_crops/m00340.png",
   "kind": "inline",
   "page_pdf": 254,
   "chapter_number": "6",
@@ -3658,14 +3610,14 @@
   "extracted_characters": "I(βj̸ = 0)",
   "deterministic_guess": "",
   "why_model_needed": "unmapped-glyph",
-  "context_before": "{{MATH:m00341}} subject to {{MATH:m00342}}",
+  "context_before": "{{MATH:m00338}} subject to {{MATH:m00339}}",
   "occurrences": 1,
-  "width_pt": 46.2,
-  "height_pt": 41.1
+  "width_pt": 41.0,
+  "height_pt": 18.5
  },
  {
-  "id": "m00344",
-  "image": "work/math_crops/m00344.png",
+  "id": "m00341",
+  "image": "work/math_crops/m00341.png",
   "kind": "inline",
   "page_pdf": 254,
   "chapter_number": "6",
@@ -3674,14 +3626,14 @@
   "extracted_characters": "βj̸ = 0",
   "deterministic_guess": "",
   "why_model_needed": "unmapped-glyph",
-  "context_before": "{{MATH:m00341}} subject to {{MATH:m00342}}",
+  "context_before": "{{MATH:m00338}} subject to {{MATH:m00339}}",
   "occurrences": 1,
   "width_pt": 28.1,
   "height_pt": 18.5
  },
  {
-  "id": "m00345",
-  "image": "work/math_crops/m00345.png",
+  "id": "m00342",
+  "image": "work/math_crops/m00342.png",
   "kind": "display",
   "page_pdf": 254,
   "chapter_number": "6",
@@ -3690,14 +3642,14 @@
   "extracted_characters": "�p�\ns",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "Here {{MATH:m00343}} is an indicator variable: it takes on a value of 1 if {{MATH:m00344}}, and equals zero otherwise. Then (6.10) amounts to finding a set of coefficient estimates such that RSS is as small as possible, subject to the constraint that no more than s coefficients can be nonzero. The problem (6.10) is equivalent to best subset selection. Unfortunately, solving (6.10) is com-",
+  "context_before": "Here {{MATH:m00340}} is an indicator variable: it takes on a value of 1 if {{MATH:m00341}}, and equals zero otherwise. Then (6.10) amounts to finding a set of coefficient estimates such that RSS is as small as possible, subject to the constraint that no more than s coefficients can be nonzero. The problem (6.10) is equivalent to best subset selection. Unfortunately, solving (6.10) is com-",
   "occurrences": 1,
   "width_pt": 13.2,
   "height_pt": 37.2
  },
  {
-  "id": "m00346",
-  "image": "work/math_crops/m00346.png",
+  "id": "m00343",
+  "image": "work/math_crops/m00343.png",
   "kind": "display",
   "page_pdf": 257,
   "chapter_number": "6",
@@ -3712,8 +3664,8 @@
   "height_pt": 38.2
  },
  {
-  "id": "m00347",
-  "image": "work/math_crops/m00347.png",
+  "id": "m00344",
+  "image": "work/math_crops/m00344.png",
   "kind": "display",
   "page_pdf": 257,
   "chapter_number": "6",
@@ -3728,8 +3680,8 @@
   "height_pt": 14.1
  },
  {
-  "id": "m00348",
-  "image": "work/math_crops/m00348.png",
+  "id": "m00345",
+  "image": "work/math_crops/m00345.png",
   "kind": "display",
   "page_pdf": 257,
   "chapter_number": "6",
@@ -3744,8 +3696,8 @@
   "height_pt": 38.2
  },
  {
-  "id": "m00349",
-  "image": "work/math_crops/m00349.png",
+  "id": "m00346",
+  "image": "work/math_crops/m00346.png",
   "kind": "display",
   "page_pdf": 257,
   "chapter_number": "6",
@@ -3760,8 +3712,8 @@
   "height_pt": 38.2
  },
  {
-  "id": "m00350",
-  "image": "work/math_crops/m00350.png",
+  "id": "m00347",
+  "image": "work/math_crops/m00347.png",
   "kind": "display",
   "page_pdf": 258,
   "chapter_number": "6",
@@ -3776,8 +3728,8 @@
   "height_pt": 15.1
  },
  {
-  "id": "m00351",
-  "image": "work/math_crops/m00351.png",
+  "id": "m00348",
+  "image": "work/math_crops/m00348.png",
   "kind": "display",
   "page_pdf": 258,
   "chapter_number": "6",
@@ -3792,8 +3744,8 @@
   "height_pt": 70.1
  },
  {
-  "id": "m00352",
-  "image": "work/math_crops/m00352.png",
+  "id": "m00349",
+  "image": "work/math_crops/m00349.png",
   "kind": "display",
   "page_pdf": 259,
   "chapter_number": "6",
@@ -3808,8 +3760,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00353",
-  "image": "work/math_crops/m00353.png",
+  "id": "m00350",
+  "image": "work/math_crops/m00350.png",
   "kind": "display",
   "page_pdf": 259,
   "chapter_number": "6",
@@ -3824,8 +3776,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00354",
-  "image": "work/math_crops/m00354.png",
+  "id": "m00351",
+  "image": "work/math_crops/m00351.png",
   "kind": "inline",
   "page_pdf": 259,
   "chapter_number": "6",
@@ -3840,8 +3792,8 @@
   "height_pt": 44.7
  },
  {
-  "id": "m00355",
-  "image": "work/math_crops/m00355.png",
+  "id": "m00352",
+  "image": "work/math_crops/m00352.png",
   "kind": "display",
   "page_pdf": 261,
   "chapter_number": "6",
@@ -3856,8 +3808,8 @@
   "height_pt": 38.2
  },
  {
-  "id": "m00356",
-  "image": "work/math_crops/m00356.png",
+  "id": "m00353",
+  "image": "work/math_crops/m00353.png",
   "kind": "display",
   "page_pdf": 261,
   "chapter_number": "6",
@@ -3872,8 +3824,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00357",
-  "image": "work/math_crops/m00357.png",
+  "id": "m00354",
+  "image": "work/math_crops/m00354.png",
   "kind": "display",
   "page_pdf": 262,
   "chapter_number": "6",
@@ -3888,8 +3840,8 @@
   "height_pt": 38.2
  },
  {
-  "id": "m00358",
-  "image": "work/math_crops/m00358.png",
+  "id": "m00355",
+  "image": "work/math_crops/m00355.png",
   "kind": "display",
   "page_pdf": 262,
   "chapter_number": "6",
@@ -3904,8 +3856,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00359",
-  "image": "work/math_crops/m00359.png",
+  "id": "m00356",
+  "image": "work/math_crops/m00356.png",
   "kind": "display",
   "page_pdf": 263,
   "chapter_number": "6",
@@ -3920,8 +3872,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00360",
-  "image": "work/math_crops/m00360.png",
+  "id": "m00357",
+  "image": "work/math_crops/m00357.png",
   "kind": "inline",
   "page_pdf": 263,
   "chapter_number": "6",
@@ -3936,8 +3888,8 @@
   "height_pt": 10.0
  },
  {
-  "id": "m00361",
-  "image": "work/math_crops/m00361.png",
+  "id": "m00358",
+  "image": "work/math_crops/m00358.png",
   "kind": "inline",
   "page_pdf": 263,
   "chapter_number": "6",
@@ -3952,8 +3904,8 @@
   "height_pt": 10.0
  },
  {
-  "id": "m00362",
-  "image": "work/math_crops/m00362.png",
+  "id": "m00359",
+  "image": "work/math_crops/m00359.png",
   "kind": "inline",
   "page_pdf": 263,
   "chapter_number": "6",
@@ -3968,8 +3920,8 @@
   "height_pt": 18.8
  },
  {
-  "id": "m00363",
-  "image": "work/math_crops/m00363.png",
+  "id": "m00360",
+  "image": "work/math_crops/m00360.png",
   "kind": "display",
   "page_pdf": 263,
   "chapter_number": "6",
@@ -3984,8 +3936,8 @@
   "height_pt": 18.8
  },
  {
-  "id": "m00364",
-  "image": "work/math_crops/m00364.png",
+  "id": "m00361",
+  "image": "work/math_crops/m00361.png",
   "kind": "inline",
   "page_pdf": 264,
   "chapter_number": "6",
@@ -4000,8 +3952,8 @@
   "height_pt": 9.0
  },
  {
-  "id": "m00365",
-  "image": "work/math_crops/m00365.png",
+  "id": "m00362",
+  "image": "work/math_crops/m00362.png",
   "kind": "inline",
   "page_pdf": 264,
   "chapter_number": "6",
@@ -4016,8 +3968,8 @@
   "height_pt": 18.8
  },
  {
-  "id": "m00366",
-  "image": "work/math_crops/m00366.png",
+  "id": "m00363",
+  "image": "work/math_crops/m00363.png",
   "kind": "display",
   "page_pdf": 265,
   "chapter_number": "6",
@@ -4032,8 +3984,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00367",
-  "image": "work/math_crops/m00367.png",
+  "id": "m00364",
+  "image": "work/math_crops/m00364.png",
   "kind": "inline",
   "page_pdf": 269,
   "chapter_number": "6",
@@ -4048,8 +4000,8 @@
   "height_pt": 44.7
  },
  {
-  "id": "m00369",
-  "image": "work/math_crops/m00369.png",
+  "id": "m00366",
+  "image": "work/math_crops/m00366.png",
   "kind": "display",
   "page_pdf": 292,
   "chapter_number": "6",
@@ -4064,8 +4016,8 @@
   "height_pt": 55.1
  },
  {
-  "id": "m00370",
-  "image": "work/math_crops/m00370.png",
+  "id": "m00367",
+  "image": "work/math_crops/m00367.png",
   "kind": "display",
   "page_pdf": 292,
   "chapter_number": "6",
@@ -4080,8 +4032,8 @@
   "height_pt": 55.1
  },
  {
-  "id": "m00372",
-  "image": "work/math_crops/m00372.png",
+  "id": "m00369",
+  "image": "work/math_crops/m00369.png",
   "kind": "display",
   "page_pdf": 293,
   "chapter_number": "6",
@@ -4096,8 +4048,8 @@
   "height_pt": 15.2
  },
  {
-  "id": "m00373",
-  "image": "work/math_crops/m00373.png",
+  "id": "m00370",
+  "image": "work/math_crops/m00370.png",
   "kind": "inline",
   "page_pdf": 293,
   "chapter_number": "6",
@@ -4112,8 +4064,24 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00374",
-  "image": "work/math_crops/m00374.png",
+  "id": "m00371",
+  "image": "work/math_crops/m00371.png",
+  "kind": "display",
+  "page_pdf": 293,
+  "chapter_number": "6",
+  "chapter_title": "Linear Model Selection and Regularization",
+  "equation_number": "",
+  "extracted_characters": "1",
+  "deterministic_guess": "",
+  "why_model_needed": "display-equation",
+  "context_before": "Assume the following prior for β: β1, . . . , βp are independent and identically distributed according to a double-exponential distribution with mean 0 and common scale parameter b: i.e.",
+  "occurrences": 1,
+  "width_pt": 7.5,
+  "height_pt": 7.0
+ },
+ {
+  "id": "m00372",
+  "image": "work/math_crops/m00372.png",
   "kind": "inline",
   "page_pdf": 293,
   "chapter_number": "6",
@@ -4125,11 +4093,11 @@
   "context_before": "Assume the following prior for β: β1, . . . , βp are independent and identically distributed according to a double-exponential distribution with mean 0 and common scale parameter b: i.e.",
   "occurrences": 1,
   "width_pt": 100.6,
-  "height_pt": 18.7
+  "height_pt": 17.3
  },
  {
-  "id": "m00375",
-  "image": "work/math_crops/m00375.png",
+  "id": "m00373",
+  "image": "work/math_crops/m00373.png",
   "kind": "display",
   "page_pdf": 294,
   "chapter_number": "6",
@@ -4144,8 +4112,8 @@
   "height_pt": 15.6
  },
  {
-  "id": "m00376",
-  "image": "work/math_crops/m00376.png",
+  "id": "m00374",
+  "image": "work/math_crops/m00374.png",
   "kind": "display",
   "page_pdf": 294,
   "chapter_number": "6",
@@ -4160,8 +4128,8 @@
   "height_pt": 15.6
  },
  {
-  "id": "m00377",
-  "image": "work/math_crops/m00377.png",
+  "id": "m00375",
+  "image": "work/math_crops/m00375.png",
   "kind": "display",
   "page_pdf": 295,
   "chapter_number": "6",
@@ -4176,8 +4144,8 @@
   "height_pt": 10.0
  },
  {
-  "id": "m00378",
-  "image": "work/math_crops/m00378.png",
+  "id": "m00376",
+  "image": "work/math_crops/m00376.png",
   "kind": "display",
   "page_pdf": 295,
   "chapter_number": "6",
@@ -4192,8 +4160,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00381",
-  "image": "work/math_crops/m00381.png",
+  "id": "m00379",
+  "image": "work/math_crops/m00379.png",
   "kind": "display",
   "page_pdf": 298,
   "chapter_number": "7",
@@ -4208,8 +4176,8 @@
   "height_pt": 11.5
  },
  {
-  "id": "m00382",
-  "image": "work/math_crops/m00382.png",
+  "id": "m00380",
+  "image": "work/math_crops/m00380.png",
   "kind": "display",
   "page_pdf": 298,
   "chapter_number": "7",
@@ -4224,8 +4192,8 @@
   "height_pt": 18.9
  },
  {
-  "id": "m00383",
-  "image": "work/math_crops/m00383.png",
+  "id": "m00381",
+  "image": "work/math_crops/m00381.png",
   "kind": "display",
   "page_pdf": 299,
   "chapter_number": "7",
@@ -4240,8 +4208,8 @@
   "height_pt": 15.1
  },
  {
-  "id": "m00388",
-  "image": "work/math_crops/m00388.png",
+  "id": "m00386",
+  "image": "work/math_crops/m00386.png",
   "kind": "display",
   "page_pdf": 300,
   "chapter_number": "7",
@@ -4256,8 +4224,8 @@
   "height_pt": 32.3
  },
  {
-  "id": "m00389",
-  "image": "work/math_crops/m00389.png",
+  "id": "m00387",
+  "image": "work/math_crops/m00387.png",
   "kind": "display",
   "page_pdf": 300,
   "chapter_number": "7",
@@ -4272,8 +4240,8 @@
   "height_pt": 84.9
  },
  {
-  "id": "m00390",
-  "image": "work/math_crops/m00390.png",
+  "id": "m00388",
+  "image": "work/math_crops/m00388.png",
   "kind": "display",
   "page_pdf": 300,
   "chapter_number": "7",
@@ -4288,8 +4256,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00391",
-  "image": "work/math_crops/m00391.png",
+  "id": "m00389",
+  "image": "work/math_crops/m00389.png",
   "kind": "display",
   "page_pdf": 301,
   "chapter_number": "7",
@@ -4304,8 +4272,8 @@
   "height_pt": 30.9
  },
  {
-  "id": "m00392",
-  "image": "work/math_crops/m00392.png",
+  "id": "m00390",
+  "image": "work/math_crops/m00390.png",
   "kind": "display",
   "page_pdf": 302,
   "chapter_number": "7",
@@ -4320,8 +4288,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00393",
-  "image": "work/math_crops/m00393.png",
+  "id": "m00391",
+  "image": "work/math_crops/m00391.png",
   "kind": "display",
   "page_pdf": 302,
   "chapter_number": "7",
@@ -4336,8 +4304,8 @@
   "height_pt": 14.3
  },
  {
-  "id": "m00394",
-  "image": "work/math_crops/m00394.png",
+  "id": "m00392",
+  "image": "work/math_crops/m00392.png",
   "kind": "display",
   "page_pdf": 302,
   "chapter_number": "7",
@@ -4352,8 +4320,8 @@
   "height_pt": 43.3
  },
  {
-  "id": "m00395",
-  "image": "work/math_crops/m00395.png",
+  "id": "m00393",
+  "image": "work/math_crops/m00393.png",
   "kind": "display",
   "page_pdf": 304,
   "chapter_number": "7",
@@ -4368,8 +4336,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00396",
-  "image": "work/math_crops/m00396.png",
+  "id": "m00394",
+  "image": "work/math_crops/m00394.png",
   "kind": "display",
   "page_pdf": 305,
   "chapter_number": "7",
@@ -4384,8 +4352,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00397",
-  "image": "work/math_crops/m00397.png",
+  "id": "m00395",
+  "image": "work/math_crops/m00395.png",
   "kind": "inline",
   "page_pdf": 308,
   "chapter_number": "7",
@@ -4400,8 +4368,8 @@
   "height_pt": 44.7
  },
  {
-  "id": "m00398",
-  "image": "work/math_crops/m00398.png",
+  "id": "m00396",
+  "image": "work/math_crops/m00396.png",
   "kind": "display",
   "page_pdf": 308,
   "chapter_number": "7",
@@ -4416,8 +4384,8 @@
   "height_pt": 41.3
  },
  {
-  "id": "m00399",
-  "image": "work/math_crops/m00399.png",
+  "id": "m00397",
+  "image": "work/math_crops/m00397.png",
   "kind": "inline",
   "page_pdf": 308,
   "chapter_number": "7",
@@ -4432,8 +4400,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00400",
-  "image": "work/math_crops/m00400.png",
+  "id": "m00398",
+  "image": "work/math_crops/m00398.png",
   "kind": "display",
   "page_pdf": 308,
   "chapter_number": "7",
@@ -4442,7 +4410,39 @@
   "extracted_characters": "�",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "What does (7.11) mean? Equation 7.11 takes the “Loss+Penalty” formulation that we encounter in the context of ridge regression and the lasso in Chapter 6. The term {{MATH:m00399}} is a loss function that encour-",
+  "context_before": "What does (7.11) mean? Equation 7.11 takes the “Loss+Penalty” formulation that we encounter in the context of ridge regression and the lasso in Chapter 6. The term {{MATH:m00397}} is a loss function that encour-",
+  "occurrences": 1,
+  "width_pt": 4.7,
+  "height_pt": 37.2
+ },
+ {
+  "id": "m00399",
+  "image": "work/math_crops/m00399.png",
+  "kind": "display",
+  "page_pdf": 309,
+  "chapter_number": "7",
+  "chapter_title": "Moving Beyond Linearity",
+  "equation_number": "",
+  "extracted_characters": "�",
+  "deterministic_guess": "",
+  "why_model_needed": "display-equation",
+  "context_before": "of a function at t, and the second derivative corresponds to the amount by which the slope is changing. Hence, broadly speaking, the second derivative of a function is a measure of its roughness: it is large in absolute value if g(t) is very wiggly near t, and it is close to zero otherwise. (The second derivative of a straight line is zero; note that a line is perfectly smooth.)",
+  "occurrences": 1,
+  "width_pt": 4.7,
+  "height_pt": 37.2
+ },
+ {
+  "id": "m00400",
+  "image": "work/math_crops/m00400.png",
+  "kind": "display",
+  "page_pdf": 309,
+  "chapter_number": "7",
+  "chapter_title": "Moving Beyond Linearity",
+  "equation_number": "",
+  "extracted_characters": "�",
+  "deterministic_guess": "",
+  "why_model_needed": "display-equation",
+  "context_before": "The notation is an integral, which we can think of as a summation over",
   "occurrences": 1,
   "width_pt": 4.7,
   "height_pt": 37.2
@@ -4458,7 +4458,7 @@
   "extracted_characters": "�",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "of a function at t, and the second derivative corresponds to the amount by which the slope is changing. Hence, broadly speaking, the second derivative of a function is a measure of its roughness: it is large in absolute value if g(t) is very wiggly near t, and it is close to zero otherwise. (The second derivative of a straight line is zero; note that a line is perfectly smooth.)",
+  "context_before": "the range of t. In other words, g′′(t)2dt is simply a measure of the total change in the function g′(t), over its entire range. If g is very smooth, then",
   "occurrences": 1,
   "width_pt": 4.7,
   "height_pt": 37.2
@@ -4466,15 +4466,15 @@
  {
   "id": "m00402",
   "image": "work/math_crops/m00402.png",
-  "kind": "display",
+  "kind": "inline",
   "page_pdf": 309,
   "chapter_number": "7",
   "chapter_title": "Moving Beyond Linearity",
   "equation_number": "",
   "extracted_characters": "�",
   "deterministic_guess": "",
-  "why_model_needed": "display-equation",
-  "context_before": "The notation is an integral, which we can think of as a summation over",
+  "why_model_needed": "extension-font",
+  "context_before": "the range of t. In other words, g′′(t)2dt is simply a measure of the total change in the function g′(t), over its entire range. If g is very smooth, then",
   "occurrences": 1,
   "width_pt": 4.7,
   "height_pt": 37.2
@@ -4490,7 +4490,7 @@
   "extracted_characters": "�",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "the range of t. In other words, g′′(t)2dt is simply a measure of the total change in the function g′(t), over its entire range. If g is very smooth, then",
+  "context_before": "g′(t) will be close to constant and g′′(t)2dt will take on a small value. Conversely, if g is jumpy and variable then g′(t) will vary significantly and {{MATH:m00402}}",
   "occurrences": 1,
   "width_pt": 4.7,
   "height_pt": 37.2
@@ -4498,38 +4498,6 @@
  {
   "id": "m00404",
   "image": "work/math_crops/m00404.png",
-  "kind": "inline",
-  "page_pdf": 309,
-  "chapter_number": "7",
-  "chapter_title": "Moving Beyond Linearity",
-  "equation_number": "",
-  "extracted_characters": "�",
-  "deterministic_guess": "",
-  "why_model_needed": "extension-font",
-  "context_before": "the range of t. In other words, g′′(t)2dt is simply a measure of the total change in the function g′(t), over its entire range. If g is very smooth, then",
-  "occurrences": 1,
-  "width_pt": 4.7,
-  "height_pt": 37.2
- },
- {
-  "id": "m00405",
-  "image": "work/math_crops/m00405.png",
-  "kind": "display",
-  "page_pdf": 309,
-  "chapter_number": "7",
-  "chapter_title": "Moving Beyond Linearity",
-  "equation_number": "",
-  "extracted_characters": "�",
-  "deterministic_guess": "",
-  "why_model_needed": "display-equation",
-  "context_before": "g′(t) will be close to constant and g′′(t)2dt will take on a small value. Conversely, if g is jumpy and variable then g′(t) will vary significantly and {{MATH:m00404}}",
-  "occurrences": 1,
-  "width_pt": 4.7,
-  "height_pt": 37.2
- },
- {
-  "id": "m00406",
-  "image": "work/math_crops/m00406.png",
   "kind": "display",
   "page_pdf": 310,
   "chapter_number": "7",
@@ -4544,8 +4512,8 @@
   "height_pt": 11.6
  },
  {
-  "id": "m00408",
-  "image": "work/math_crops/m00408.png",
+  "id": "m00406",
+  "image": "work/math_crops/m00406.png",
   "kind": "display",
   "page_pdf": 310,
   "chapter_number": "7",
@@ -4560,8 +4528,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00409",
-  "image": "work/math_crops/m00409.png",
+  "id": "m00407",
+  "image": "work/math_crops/m00407.png",
   "kind": "display",
   "page_pdf": 310,
   "chapter_number": "7",
@@ -4576,8 +4544,8 @@
   "height_pt": 41.8
  },
  {
-  "id": "m00415",
-  "image": "work/math_crops/m00415.png",
+  "id": "m00413",
+  "image": "work/math_crops/m00413.png",
   "kind": "display",
   "page_pdf": 314,
   "chapter_number": "7",
@@ -4592,8 +4560,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00416",
-  "image": "work/math_crops/m00416.png",
+  "id": "m00414",
+  "image": "work/math_crops/m00414.png",
   "kind": "display",
   "page_pdf": 314,
   "chapter_number": "7",
@@ -4608,8 +4576,8 @@
   "height_pt": 53.3
  },
  {
-  "id": "m00417",
-  "image": "work/math_crops/m00417.png",
+  "id": "m00415",
+  "image": "work/math_crops/m00415.png",
   "kind": "display",
   "page_pdf": 314,
   "chapter_number": "7",
@@ -4624,8 +4592,8 @@
   "height_pt": 11.5
  },
  {
-  "id": "m00418",
-  "image": "work/math_crops/m00418.png",
+  "id": "m00416",
+  "image": "work/math_crops/m00416.png",
   "kind": "display",
   "page_pdf": 316,
   "chapter_number": "7",
@@ -4640,8 +4608,8 @@
   "height_pt": 38.1
  },
  {
-  "id": "m00419",
-  "image": "work/math_crops/m00419.png",
+  "id": "m00417",
+  "image": "work/math_crops/m00417.png",
   "kind": "display",
   "page_pdf": 316,
   "chapter_number": "7",
@@ -4656,8 +4624,8 @@
   "height_pt": 38.1
  },
  {
-  "id": "m00420",
-  "image": "work/math_crops/m00420.png",
+  "id": "m00418",
+  "image": "work/math_crops/m00418.png",
   "kind": "display",
   "page_pdf": 317,
   "chapter_number": "7",
@@ -4672,8 +4640,8 @@
   "height_pt": 38.1
  },
  {
-  "id": "m00421",
-  "image": "work/math_crops/m00421.png",
+  "id": "m00419",
+  "image": "work/math_crops/m00419.png",
   "kind": "display",
   "page_pdf": 317,
   "chapter_number": "7",
@@ -4688,8 +4656,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00423",
-  "image": "work/math_crops/m00423.png",
+  "id": "m00421",
+  "image": "work/math_crops/m00421.png",
   "kind": "display",
   "page_pdf": 333,
   "chapter_number": "7",
@@ -4704,8 +4672,8 @@
   "height_pt": 21.2
  },
  {
-  "id": "m00424",
-  "image": "work/math_crops/m00424.png",
+  "id": "m00422",
+  "image": "work/math_crops/m00422.png",
   "kind": "display",
   "page_pdf": 333,
   "chapter_number": "7",
@@ -4720,8 +4688,8 @@
   "height_pt": 14.5
  },
  {
-  "id": "m00425",
-  "image": "work/math_crops/m00425.png",
+  "id": "m00423",
+  "image": "work/math_crops/m00423.png",
   "kind": "display",
   "page_pdf": 333,
   "chapter_number": "7",
@@ -4736,8 +4704,8 @@
   "height_pt": 15.6
  },
  {
-  "id": "m00426",
-  "image": "work/math_crops/m00426.png",
+  "id": "m00424",
+  "image": "work/math_crops/m00424.png",
   "kind": "display",
   "page_pdf": 333,
   "chapter_number": "7",
@@ -4752,8 +4720,8 @@
   "height_pt": 14.5
  },
  {
-  "id": "m00427",
-  "image": "work/math_crops/m00427.png",
+  "id": "m00425",
+  "image": "work/math_crops/m00425.png",
   "kind": "display",
   "page_pdf": 333,
   "chapter_number": "7",
@@ -4768,8 +4736,8 @@
   "height_pt": 15.6
  },
  {
-  "id": "m00428",
-  "image": "work/math_crops/m00428.png",
+  "id": "m00426",
+  "image": "work/math_crops/m00426.png",
   "kind": "display",
   "page_pdf": 333,
   "chapter_number": "7",
@@ -4784,8 +4752,8 @@
   "height_pt": 15.6
  },
  {
-  "id": "m00429",
-  "image": "work/math_crops/m00429.png",
+  "id": "m00427",
+  "image": "work/math_crops/m00427.png",
   "kind": "display",
   "page_pdf": 333,
   "chapter_number": "7",
@@ -4800,8 +4768,8 @@
   "height_pt": 16.2
  },
  {
-  "id": "m00430",
-  "image": "work/math_crops/m00430.png",
+  "id": "m00428",
+  "image": "work/math_crops/m00428.png",
   "kind": "display",
   "page_pdf": 334,
   "chapter_number": "7",
@@ -4816,8 +4784,8 @@
   "height_pt": 16.2
  },
  {
-  "id": "m00432",
-  "image": "work/math_crops/m00432.png",
+  "id": "m00430",
+  "image": "work/math_crops/m00430.png",
   "kind": "display",
   "page_pdf": 334,
   "chapter_number": "7",
@@ -4826,14 +4794,14 @@
   "extracted_characters": "�n�\n��\n�2\n�\ngˆ = arg min(yi −g(xi))2 + λg(m)(x)dx,\ng\ni=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "Suppose that a curve {{MATH:m00431}} is computed to smoothly fit a set of n points using the following formula:",
+  "context_before": "Suppose that a curve {{MATH:m00429}} is computed to smoothly fit a set of n points using the following formula:",
   "occurrences": 1,
   "width_pt": 231.4,
   "height_pt": 44.8
  },
  {
-  "id": "m00433",
-  "image": "work/math_crops/m00433.png",
+  "id": "m00431",
+  "image": "work/math_crops/m00431.png",
   "kind": "display",
   "page_pdf": 334,
   "chapter_number": "7",
@@ -4848,8 +4816,8 @@
   "height_pt": 11.5
  },
  {
-  "id": "m00435",
-  "image": "work/math_crops/m00435.png",
+  "id": "m00433",
+  "image": "work/math_crops/m00433.png",
   "kind": "display",
   "page_pdf": 334,
   "chapter_number": "7",
@@ -4864,8 +4832,8 @@
   "height_pt": 20.8
  },
  {
-  "id": "m00436",
-  "image": "work/math_crops/m00436.png",
+  "id": "m00434",
+  "image": "work/math_crops/m00434.png",
   "kind": "display",
   "page_pdf": 334,
   "chapter_number": "7",
@@ -4880,8 +4848,8 @@
   "height_pt": 11.5
  },
  {
-  "id": "m00440",
-  "image": "work/math_crops/m00440.png",
+  "id": "m00438",
+  "image": "work/math_crops/m00438.png",
   "kind": "display",
   "page_pdf": 334,
   "chapter_number": "7",
@@ -4890,14 +4858,14 @@
   "extracted_characters": "�n�\n��\n�2\n�\ngˆ1 = arg min(yi −g(xi))2 + λg(3)(x)dx,\ng\ni=1\n�n�\n��\n�2\n�\ngˆ2 = arg min(yi −g(xi))2 + λg(4)(x)dx,\ng\ni=1\nwhere g(m) represents the mth derivative of g.",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "Consider two curves, {{MATH:m00438}} and {{MATH:m00439}}, defined by",
+  "context_before": "Consider two curves, {{MATH:m00436}} and {{MATH:m00437}}, defined by",
   "occurrences": 1,
   "width_pt": 265.1,
   "height_pt": 93.6
  },
  {
-  "id": "m00441",
-  "image": "work/math_crops/m00441.png",
+  "id": "m00439",
+  "image": "work/math_crops/m00439.png",
   "kind": "display",
   "page_pdf": 336,
   "chapter_number": "7",
@@ -4912,8 +4880,8 @@
   "height_pt": 14.1
  },
  {
-  "id": "m00442",
-  "image": "work/math_crops/m00442.png",
+  "id": "m00440",
+  "image": "work/math_crops/m00440.png",
   "kind": "display",
   "page_pdf": 336,
   "chapter_number": "7",
@@ -4928,8 +4896,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00443",
-  "image": "work/math_crops/m00443.png",
+  "id": "m00441",
+  "image": "work/math_crops/m00441.png",
   "kind": "display",
   "page_pdf": 336,
   "chapter_number": "7",
@@ -4944,8 +4912,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00444",
-  "image": "work/math_crops/m00444.png",
+  "id": "m00442",
+  "image": "work/math_crops/m00442.png",
   "kind": "display",
   "page_pdf": 340,
   "chapter_number": "8",
@@ -4960,8 +4928,8 @@
   "height_pt": 14.5
  },
  {
-  "id": "m00445",
-  "image": "work/math_crops/m00445.png",
+  "id": "m00443",
+  "image": "work/math_crops/m00443.png",
   "kind": "display",
   "page_pdf": 341,
   "chapter_number": "8",
@@ -4976,8 +4944,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00447",
-  "image": "work/math_crops/m00447.png",
+  "id": "m00445",
+  "image": "work/math_crops/m00445.png",
   "kind": "display",
   "page_pdf": 341,
   "chapter_number": "8",
@@ -4992,8 +4960,8 @@
   "height_pt": 22.3
  },
  {
-  "id": "m00448",
-  "image": "work/math_crops/m00448.png",
+  "id": "m00446",
+  "image": "work/math_crops/m00446.png",
   "kind": "display",
   "page_pdf": 341,
   "chapter_number": "8",
@@ -5008,8 +4976,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00451",
-  "image": "work/math_crops/m00451.png",
+  "id": "m00449",
+  "image": "work/math_crops/m00449.png",
   "kind": "display",
   "page_pdf": 343,
   "chapter_number": "8",
@@ -5024,8 +4992,8 @@
   "height_pt": 38.8
  },
  {
-  "id": "m00453",
-  "image": "work/math_crops/m00453.png",
+  "id": "m00451",
+  "image": "work/math_crops/m00451.png",
   "kind": "display",
   "page_pdf": 345,
   "chapter_number": "8",
@@ -5040,8 +5008,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00455",
-  "image": "work/math_crops/m00455.png",
+  "id": "m00453",
+  "image": "work/math_crops/m00453.png",
   "kind": "display",
   "page_pdf": 345,
   "chapter_number": "8",
@@ -5056,8 +5024,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00456",
-  "image": "work/math_crops/m00456.png",
+  "id": "m00454",
+  "image": "work/math_crops/m00454.png",
   "kind": "display",
   "page_pdf": 346,
   "chapter_number": "8",
@@ -5072,8 +5040,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00459",
-  "image": "work/math_crops/m00459.png",
+  "id": "m00457",
+  "image": "work/math_crops/m00457.png",
   "kind": "display",
   "page_pdf": 348,
   "chapter_number": "8",
@@ -5088,8 +5056,8 @@
   "height_pt": 38.2
  },
  {
-  "id": "m00460",
-  "image": "work/math_crops/m00460.png",
+  "id": "m00458",
+  "image": "work/math_crops/m00458.png",
   "kind": "display",
   "page_pdf": 348,
   "chapter_number": "8",
@@ -5104,8 +5072,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00463",
-  "image": "work/math_crops/m00463.png",
+  "id": "m00461",
+  "image": "work/math_crops/m00461.png",
   "kind": "display",
   "page_pdf": 350,
   "chapter_number": "8",
@@ -5114,14 +5082,14 @@
   "extracted_characters": "B\n�\nfˆ b(x).\nfˆavg(x) = 1\nB\nb=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "iance and increase the test set accuracy of a statistical learning method is to take many training sets from the population, build a separate prediction model using each training set, and average the resulting predictions. In other words, we could calculate {{MATH:m00462}} using B separate training sets, and average them in order to obtain a single low-variance statistical learning model, given by",
+  "context_before": "iance and increase the test set accuracy of a statistical learning method is to take many training sets from the population, build a separate prediction model using each training set, and average the resulting predictions. In other words, we could calculate {{MATH:m00460}} using B separate training sets, and average them in order to obtain a single low-variance statistical learning model, given by",
   "occurrences": 1,
   "width_pt": 98.3,
   "height_pt": 37.7
  },
  {
-  "id": "m00465",
-  "image": "work/math_crops/m00465.png",
+  "id": "m00463",
+  "image": "work/math_crops/m00463.png",
   "kind": "display",
   "page_pdf": 350,
   "chapter_number": "8",
@@ -5130,14 +5098,14 @@
   "extracted_characters": "B\n�\nfˆ ∗b(x).\nfˆbag(x) = 1\nB\nb=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": " this is not practical because we generally do not have access to multiple training sets. Instead, we can bootstrap, by taking repeated samples from the (single) training data set. In this approach we generate B different bootstrapped training data sets. We then train our method on the bth bootstrapped training set in order to get {{MATH:m00464}}, and finally average all the predictions, to obtain",
+  "context_before": " this is not practical because we generally do not have access to multiple training sets. Instead, we can bootstrap, by taking repeated samples from the (single) training data set. In this approach we generate B different bootstrapped training data sets. We then train our method on the bth bootstrapped training set in order to get {{MATH:m00462}}, and finally average all the predictions, to obtain",
   "occurrences": 1,
   "width_pt": 102.8,
   "height_pt": 37.7
  },
  {
-  "id": "m00466",
-  "image": "work/math_crops/m00466.png",
+  "id": "m00464",
+  "image": "work/math_crops/m00464.png",
   "kind": "inline",
   "page_pdf": 351,
   "chapter_number": "8",
@@ -5152,8 +5120,8 @@
   "height_pt": 21.1
  },
  {
-  "id": "m00467",
-  "image": "work/math_crops/m00467.png",
+  "id": "m00465",
+  "image": "work/math_crops/m00465.png",
   "kind": "inline",
   "page_pdf": 353,
   "chapter_number": "8",
@@ -5168,8 +5136,8 @@
   "height_pt": 23.5
  },
  {
-  "id": "m00471",
-  "image": "work/math_crops/m00471.png",
+  "id": "m00469",
+  "image": "work/math_crops/m00469.png",
   "kind": "display",
   "page_pdf": 356,
   "chapter_number": "8",
@@ -5184,8 +5152,8 @@
   "height_pt": 19.7
  },
  {
-  "id": "m00472",
-  "image": "work/math_crops/m00472.png",
+  "id": "m00470",
+  "image": "work/math_crops/m00470.png",
   "kind": "display",
   "page_pdf": 356,
   "chapter_number": "8",
@@ -5200,8 +5168,8 @@
   "height_pt": 21.2
  },
  {
-  "id": "m00473",
-  "image": "work/math_crops/m00473.png",
+  "id": "m00471",
+  "image": "work/math_crops/m00471.png",
   "kind": "display",
   "page_pdf": 356,
   "chapter_number": "8",
@@ -5216,24 +5184,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00475",
-  "image": "work/math_crops/m00475.png",
-  "kind": "display",
-  "page_pdf": 357,
-  "chapter_number": "8",
-  "chapter_title": "Tree-Based Methods",
-  "equation_number": "",
-  "extracted_characters": "k=1 fˆ b",
-  "deterministic_guess": "",
-  "why_model_needed": "display-equation",
-  "context_before": "Before we introduce the BART algorithm, we define some notation. We let K denote the number of regression trees, and B the number of iterations for which the BART algorithm will be run. The notation {{MATH:m00474}} represents the prediction at x for the kth regression tree used in the bth iteration. At the end of each iteration, the K trees from that iteration will be summed,",
-  "occurrences": 1,
-  "width_pt": 26.1,
-  "height_pt": 15.6
- },
- {
-  "id": "m00476",
-  "image": "work/math_crops/m00476.png",
+  "id": "m00473",
+  "image": "work/math_crops/m00473.png",
   "kind": "inline",
   "page_pdf": 357,
   "chapter_number": "8",
@@ -5242,30 +5194,14 @@
   "extracted_characters": "f b(x) = �Kk(x)",
   "deterministic_guess": "",
   "why_model_needed": "extension-font",
-  "context_before": "Before we introduce the BART algorithm, we define some notation. We let K denote the number of regression trees, and B the number of iterations for which the BART algorithm will be run. The notation {{MATH:m00474}} represents the prediction at x for the kth regression tree used in the bth iteration. At the end of each iteration, the K trees from that iteration will be summed,",
+  "context_before": "Before we introduce the BART algorithm, we define some notation. We let K denote the number of regression trees, and B the number of iterations for which the BART algorithm will be run. The notation {{MATH:m00472}} represents the prediction at x for the kth regression tree used in the bth iteration. At the end of each iteration, the K trees from that iteration will be summed,",
   "occurrences": 1,
   "width_pt": 87.2,
   "height_pt": 44.7
  },
  {
-  "id": "m00477",
-  "image": "work/math_crops/m00477.png",
-  "kind": "display",
-  "page_pdf": 357,
-  "chapter_number": "8",
-  "chapter_title": "Tree-Based Methods",
-  "equation_number": "",
-  "extracted_characters": "1",
-  "deterministic_guess": "1",
-  "why_model_needed": "display-equation",
-  "context_before": "In the first iteration of the BART algorithm, all trees are initialized to",
-  "occurrences": 1,
-  "width_pt": 12.1,
-  "height_pt": 14.3
- },
- {
-  "id": "m00478",
-  "image": "work/math_crops/m00478.png",
+  "id": "m00474",
+  "image": "work/math_crops/m00474.png",
   "kind": "inline",
   "page_pdf": 357,
   "chapter_number": "8",
@@ -5280,24 +5216,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00481",
-  "image": "work/math_crops/m00481.png",
-  "kind": "display",
-  "page_pdf": 358,
-  "chapter_number": "8",
-  "chapter_title": "Tree-Based Methods",
-  "equation_number": "",
-  "extracted_characters": "k",
-  "deterministic_guess": "k",
-  "why_model_needed": "display-equation",
-  "context_before": "than {{MATH:m00479}}.",
-  "occurrences": 1,
-  "width_pt": 3.9,
-  "height_pt": 6.0
- },
- {
-  "id": "m00482",
-  "image": "work/math_crops/m00482.png",
+  "id": "m00477",
+  "image": "work/math_crops/m00477.png",
   "kind": "inline",
   "page_pdf": 358,
   "chapter_number": "8",
@@ -5306,14 +5226,14 @@
   "extracted_characters": "f 1(x) = �Kk(x) =",
   "deterministic_guess": "",
   "why_model_needed": "extension-font",
-  "context_before": "than {{MATH:m00479}}.",
+  "context_before": "than {{MATH:m00475}}.",
   "occurrences": 1,
   "width_pt": 99.5,
   "height_pt": 44.7
  },
  {
-  "id": "m00483",
-  "image": "work/math_crops/m00483.png",
+  "id": "m00478",
+  "image": "work/math_crops/m00478.png",
   "kind": "inline",
   "page_pdf": 358,
   "chapter_number": "8",
@@ -5322,14 +5242,14 @@
   "extracted_characters": "�n",
   "deterministic_guess": "",
   "why_model_needed": "extension-font",
-  "context_before": "values divided by the total number of trees. Thus, {{MATH:m00482}}",
+  "context_before": "values divided by the total number of trees. Thus, {{MATH:m00477}}",
   "occurrences": 2,
-  "width_pt": 23.4,
+  "width_pt": 23.2,
   "height_pt": 37.2
  },
  {
-  "id": "m00484",
-  "image": "work/math_crops/m00484.png",
+  "id": "m00479",
+  "image": "work/math_crops/m00479.png",
   "kind": "inline",
   "page_pdf": 358,
   "chapter_number": "8",
@@ -5338,14 +5258,14 @@
   "extracted_characters": "1",
   "deterministic_guess": "1",
   "why_model_needed": "fraction-or-radical-rule",
-  "context_before": "values divided by the total number of trees. Thus, {{MATH:m00482}}",
+  "context_before": "values divided by the total number of trees. Thus, {{MATH:m00477}}",
   "occurrences": 2,
   "width_pt": 4.9,
-  "height_pt": 14.3
+  "height_pt": 7.0
  },
  {
-  "id": "m00485",
-  "image": "work/math_crops/m00485.png",
+  "id": "m00480",
+  "image": "work/math_crops/m00480.png",
   "kind": "display",
   "page_pdf": 358,
   "chapter_number": "8",
@@ -5354,14 +5274,14 @@
   "extracted_characters": "i=1 yi.",
   "deterministic_guess": "i=1 yi.",
   "why_model_needed": "display-equation",
-  "context_before": "{{MATH:m00483}} {{MATH:m00484}}",
+  "context_before": "{{MATH:m00478}} {{MATH:m00479}}",
   "occurrences": 1,
   "width_pt": 26.0,
   "height_pt": 16.7
  },
  {
-  "id": "m00486",
-  "image": "work/math_crops/m00486.png",
+  "id": "m00481",
+  "image": "work/math_crops/m00481.png",
   "kind": "display",
   "page_pdf": 358,
   "chapter_number": "8",
@@ -5376,8 +5296,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00488",
-  "image": "work/math_crops/m00488.png",
+  "id": "m00483",
+  "image": "work/math_crops/m00483.png",
   "kind": "display",
   "page_pdf": 358,
   "chapter_number": "8",
@@ -5392,40 +5312,24 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00489",
-  "image": "work/math_crops/m00489.png",
+  "id": "m00484",
+  "image": "work/math_crops/m00484.png",
   "kind": "display",
   "page_pdf": 359,
   "chapter_number": "8",
   "chapter_title": "Tree-Based Methods",
   "equation_number": "",
-  "extracted_characters": "1\n1. Let fˆ 11 (x) = fˆ 21 (x) = · · · = fˆ K1(x) =i=1 yi.\nnK",
+  "extracted_characters": "�n\n1\n1. Let fˆ 11 (x) = fˆ 21 (x) = · · · = fˆ K1(x) =i=1 yi.\nnK\n�n\nk=1 fˆ 1\n2. Compute fˆ 1(x) = �Kk(x) = 1i=1 yi.\nn",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
   "context_before": "Algorithm 8.3 Bayesian Additive Regression Trees",
   "occurrences": 1,
   "width_pt": 221.8,
-  "height_pt": 31.5
+  "height_pt": 66.8
  },
  {
-  "id": "m00490",
-  "image": "work/math_crops/m00490.png",
-  "kind": "inline",
-  "page_pdf": 359,
-  "chapter_number": "8",
-  "chapter_title": "Tree-Based Methods",
-  "equation_number": "",
-  "extracted_characters": "f 1(x) = �Kk(x) = 1i=1 yi",
-  "deterministic_guess": "",
-  "why_model_needed": "extension-font",
-  "context_before": "Algorithm 8.3 Bayesian Additive Regression Trees",
-  "occurrences": 1,
-  "width_pt": 144.8,
-  "height_pt": 59.5
- },
- {
-  "id": "m00491",
-  "image": "work/math_crops/m00491.png",
+  "id": "m00485",
+  "image": "work/math_crops/m00485.png",
   "kind": "display",
   "page_pdf": 359,
   "chapter_number": "8",
@@ -5440,8 +5344,24 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00493",
-  "image": "work/math_crops/m00493.png",
+  "id": "m00487",
+  "image": "work/math_crops/m00487.png",
+  "kind": "display",
+  "page_pdf": 359,
+  "chapter_number": "8",
+  "chapter_title": "Tree-Based Methods",
+  "equation_number": "",
+  "extracted_characters": "k",
+  "deterministic_guess": "k",
+  "why_model_needed": "display-equation",
+  "context_before": "ii. Fit a new tree, {{MATH:m00472}}, to ri, by randomly perturbing the kth tree from the previous iteration, {{MATH:m00486}}. Perturbations",
+  "occurrences": 1,
+  "width_pt": 4.2,
+  "height_pt": 7.0
+ },
+ {
+  "id": "m00488",
+  "image": "work/math_crops/m00488.png",
   "kind": "display",
   "page_pdf": 359,
   "chapter_number": "8",
@@ -5456,8 +5376,8 @@
   "height_pt": 44.7
  },
  {
-  "id": "m00494",
-  "image": "work/math_crops/m00494.png",
+  "id": "m00489",
+  "image": "work/math_crops/m00489.png",
   "kind": "display",
   "page_pdf": 359,
   "chapter_number": "8",
@@ -5472,24 +5392,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00495",
-  "image": "work/math_crops/m00495.png",
-  "kind": "display",
-  "page_pdf": 359,
-  "chapter_number": "8",
-  "chapter_title": "Tree-Based Methods",
-  "equation_number": "",
-  "extracted_characters": "1",
-  "deterministic_guess": "1",
-  "why_model_needed": "display-equation",
-  "context_before": "We typically throw away the first few of these prediction models, since models obtained in the earlier iterations — known as the burn-in period — tend not to provide very good results. We can let L denote the number of burn-in iterations; for instance, we might take L = 200. Then, to obtain a single prediction, we simply take the average after the burn-in",
-  "occurrences": 1,
-  "width_pt": 18.1,
-  "height_pt": 14.3
- },
- {
-  "id": "m00496",
-  "image": "work/math_crops/m00496.png",
+  "id": "m00490",
+  "image": "work/math_crops/m00490.png",
   "kind": "inline",
   "page_pdf": 359,
   "chapter_number": "8",
@@ -5504,8 +5408,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00498",
-  "image": "work/math_crops/m00498.png",
+  "id": "m00492",
+  "image": "work/math_crops/m00492.png",
   "kind": "display",
   "page_pdf": 363,
   "chapter_number": "8",
@@ -5520,8 +5424,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00499",
-  "image": "work/math_crops/m00499.png",
+  "id": "m00493",
+  "image": "work/math_crops/m00493.png",
   "kind": "inline",
   "page_pdf": 367,
   "chapter_number": "8",
@@ -5536,8 +5440,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00500",
-  "image": "work/math_crops/m00500.png",
+  "id": "m00494",
+  "image": "work/math_crops/m00494.png",
   "kind": "display",
   "page_pdf": 370,
   "chapter_number": "8",
@@ -5552,8 +5456,8 @@
   "height_pt": 38.2
  },
  {
-  "id": "m00503",
-  "image": "work/math_crops/m00503.png",
+  "id": "m00497",
+  "image": "work/math_crops/m00497.png",
   "kind": "display",
   "page_pdf": 371,
   "chapter_number": "8",
@@ -5568,8 +5472,8 @@
   "height_pt": 14.1
  },
  {
-  "id": "m00504",
-  "image": "work/math_crops/m00504.png",
+  "id": "m00498",
+  "image": "work/math_crops/m00498.png",
   "kind": "display",
   "page_pdf": 375,
   "chapter_number": "9",
@@ -5584,8 +5488,8 @@
   "height_pt": 11.5
  },
  {
-  "id": "m00505",
-  "image": "work/math_crops/m00505.png",
+  "id": "m00499",
+  "image": "work/math_crops/m00499.png",
   "kind": "display",
   "page_pdf": 375,
   "chapter_number": "9",
@@ -5600,8 +5504,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00506",
-  "image": "work/math_crops/m00506.png",
+  "id": "m00500",
+  "image": "work/math_crops/m00500.png",
   "kind": "display",
   "page_pdf": 375,
   "chapter_number": "9",
@@ -5616,8 +5520,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00507",
-  "image": "work/math_crops/m00507.png",
+  "id": "m00501",
+  "image": "work/math_crops/m00501.png",
   "kind": "display",
   "page_pdf": 375,
   "chapter_number": "9",
@@ -5632,8 +5536,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00508",
-  "image": "work/math_crops/m00508.png",
+  "id": "m00502",
+  "image": "work/math_crops/m00502.png",
   "kind": "display",
   "page_pdf": 375,
   "chapter_number": "9",
@@ -5648,8 +5552,8 @@
   "height_pt": 61.1
  },
  {
-  "id": "m00509",
-  "image": "work/math_crops/m00509.png",
+  "id": "m00503",
+  "image": "work/math_crops/m00503.png",
   "kind": "display",
   "page_pdf": 376,
   "chapter_number": "9",
@@ -5664,8 +5568,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00510",
-  "image": "work/math_crops/m00510.png",
+  "id": "m00504",
+  "image": "work/math_crops/m00504.png",
   "kind": "inline",
   "page_pdf": 376,
   "chapter_number": "9",
@@ -5676,12 +5580,12 @@
   "why_model_needed": "extension-font",
   "context_before": "and that these observations fall into two classes—that is, y1, . . . , yn ∈ {−1, 1} where −1 represents one class and 1 the other class. We also have a",
   "occurrences": 1,
-  "width_pt": 13.9,
+  "width_pt": 9.3,
   "height_pt": 37.2
  },
  {
-  "id": "m00511",
-  "image": "work/math_crops/m00511.png",
+  "id": "m00505",
+  "image": "work/math_crops/m00505.png",
   "kind": "display",
   "page_pdf": 376,
   "chapter_number": "9",
@@ -5696,8 +5600,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00512",
-  "image": "work/math_crops/m00512.png",
+  "id": "m00506",
+  "image": "work/math_crops/m00506.png",
   "kind": "display",
   "page_pdf": 376,
   "chapter_number": "9",
@@ -5712,8 +5616,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00513",
-  "image": "work/math_crops/m00513.png",
+  "id": "m00507",
+  "image": "work/math_crops/m00507.png",
   "kind": "display",
   "page_pdf": 376,
   "chapter_number": "9",
@@ -5728,8 +5632,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00515",
-  "image": "work/math_crops/m00515.png",
+  "id": "m00509",
+  "image": "work/math_crops/m00509.png",
   "kind": "display",
   "page_pdf": 379,
   "chapter_number": "9",
@@ -5738,14 +5642,14 @@
   "extracted_characters": "β0m,βa1x,.i.m.,βipz,eM M\np\n�\nsubject toβj2 = 1,\nj=1\nyi(β0 + β1xi1 + β2xi2 + · · · + βpxip) ≥M ∀i = 1, . . . , n. (9.11)",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "We now consider the task of constructing the maximal margin hyperplane based on a set of n training observations {{MATH:m00514}} and associated class labels y1, . . . , yn ∈ {−1, 1}. Briefly, the maximal margin hyperplane is the solution to the optimization problem",
+  "context_before": "We now consider the task of constructing the maximal margin hyperplane based on a set of n training observations {{MATH:m00508}} and associated class labels y1, . . . , yn ∈ {−1, 1}. Briefly, the maximal margin hyperplane is the solution to the optimization problem",
   "occurrences": 1,
   "width_pt": 274.6,
   "height_pt": 73.0
  },
  {
-  "id": "m00516",
-  "image": "work/math_crops/m00516.png",
+  "id": "m00510",
+  "image": "work/math_crops/m00510.png",
   "kind": "display",
   "page_pdf": 379,
   "chapter_number": "9",
@@ -5760,8 +5664,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00517",
-  "image": "work/math_crops/m00517.png",
+  "id": "m00511",
+  "image": "work/math_crops/m00511.png",
   "kind": "inline",
   "page_pdf": 379,
   "chapter_number": "9",
@@ -5776,8 +5680,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00518",
-  "image": "work/math_crops/m00518.png",
+  "id": "m00512",
+  "image": "work/math_crops/m00512.png",
   "kind": "display",
   "page_pdf": 379,
   "chapter_number": "9",
@@ -5786,14 +5690,14 @@
   "extracted_characters": "yi(β0 + β1xi1 + β2xi2 + · · · + βpxip).",
   "deterministic_guess": "yi(β0 + β1xi1 + β2xi2 + · · · + βpxip).",
   "why_model_needed": "display-equation",
-  "context_before": "Second, note that (9.10) is not really a constraint on the hyperplane, since if β0 + β1xi1 + β2xi2 + · · · + βpxip = 0 defines a hyperplane, then so does k(β0 + β1xi1 + β2xi2 + · · · + βpxip) = 0 for any {{MATH:m00517}}. However, (9.10) adds meaning to (9.11); one can show that with this constraint the perpendicular distance from the ith observation to the hyperplane is given by",
+  "context_before": "Second, note that (9.10) is not really a constraint on the hyperplane, since if β0 + β1xi1 + β2xi2 + · · · + βpxip = 0 defines a hyperplane, then so does k(β0 + β1xi1 + β2xi2 + · · · + βpxip) = 0 for any {{MATH:m00511}}. However, (9.10) adds meaning to (9.11); one can show that with this constraint the perpendicular distance from the ith observation to the hyperplane is given by",
   "occurrences": 1,
   "width_pt": 158.7,
   "height_pt": 17.3
  },
  {
-  "id": "m00519",
-  "image": "work/math_crops/m00519.png",
+  "id": "m00513",
+  "image": "work/math_crops/m00513.png",
   "kind": "display",
   "page_pdf": 382,
   "chapter_number": "9",
@@ -5808,8 +5712,8 @@
   "height_pt": 106.7
  },
  {
-  "id": "m00520",
-  "image": "work/math_crops/m00520.png",
+  "id": "m00514",
+  "image": "work/math_crops/m00514.png",
   "kind": "inline",
   "page_pdf": 383,
   "chapter_number": "9",
@@ -5824,8 +5728,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00521",
-  "image": "work/math_crops/m00521.png",
+  "id": "m00515",
+  "image": "work/math_crops/m00515.png",
   "kind": "display",
   "page_pdf": 385,
   "chapter_number": "9",
@@ -5840,8 +5744,8 @@
   "height_pt": 10.7
  },
  {
-  "id": "m00522",
-  "image": "work/math_crops/m00522.png",
+  "id": "m00516",
+  "image": "work/math_crops/m00516.png",
   "kind": "display",
   "page_pdf": 385,
   "chapter_number": "9",
@@ -5856,8 +5760,8 @@
   "height_pt": 13.6
  },
  {
-  "id": "m00523",
-  "image": "work/math_crops/m00523.png",
+  "id": "m00517",
+  "image": "work/math_crops/m00517.png",
   "kind": "display",
   "page_pdf": 386,
   "chapter_number": "9",
@@ -5872,8 +5776,8 @@
   "height_pt": 98.7
  },
  {
-  "id": "m00524",
-  "image": "work/math_crops/m00524.png",
+  "id": "m00518",
+  "image": "work/math_crops/m00518.png",
   "kind": "inline",
   "page_pdf": 386,
   "chapter_number": "9",
@@ -5888,8 +5792,8 @@
   "height_pt": 18.6
  },
  {
-  "id": "m00525",
-  "image": "work/math_crops/m00525.png",
+  "id": "m00519",
+  "image": "work/math_crops/m00519.png",
   "kind": "inline",
   "page_pdf": 386,
   "chapter_number": "9",
@@ -5900,12 +5804,12 @@
   "why_model_needed": "extension-font",
   "context_before": "sing kernels. We will now discuss this extension, the details of which are somewhat complex and beyond the scope of this book. However, the main idea is described in Section 9.3.1: we may want to enlarge our feature space in order to accommodate a non-linear boundary between the classes. The kernel approach that we describe here is simply an efficient computational approach for enacting this idea.",
   "occurrences": 1,
-  "width_pt": 100.5,
-  "height_pt": 45.2
+  "width_pt": 77.5,
+  "height_pt": 44.7
  },
  {
-  "id": "m00526",
-  "image": "work/math_crops/m00526.png",
+  "id": "m00520",
+  "image": "work/math_crops/m00520.png",
   "kind": "display",
   "page_pdf": 386,
   "chapter_number": "9",
@@ -5914,14 +5818,14 @@
   "extracted_characters": "p\n�\n⟨xi, xi′⟩=xijxi′j.\nj=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": " classifier is computed because the details become somewhat technical. However, it turns out that the solution to the support vector classifier problem (9.12)–(9.15) involves only the inner products of the observations (as opposed to the observations themselves). The inner product of two r-vectors a and b is defined as {{MATH:m00525}}. Thus the inner product of two observations xi, xi′ is given by",
+  "context_before": " classifier is computed because the details become somewhat technical. However, it turns out that the solution to the support vector classifier problem (9.12)–(9.15) involves only the inner products of the observations (as opposed to the observations themselves). The inner product of two r-vectors a and b is defined as {{MATH:m00519}}. Thus the inner product of two observations xi, xi′ is given by",
   "occurrences": 1,
   "width_pt": 93.1,
   "height_pt": 38.2
  },
  {
-  "id": "m00527",
-  "image": "work/math_crops/m00527.png",
+  "id": "m00521",
+  "image": "work/math_crops/m00521.png",
   "kind": "display",
   "page_pdf": 386,
   "chapter_number": "9",
@@ -5936,8 +5840,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00528",
-  "image": "work/math_crops/m00528.png",
+  "id": "m00522",
+  "image": "work/math_crops/m00522.png",
   "kind": "display",
   "page_pdf": 387,
   "chapter_number": "9",
@@ -5952,8 +5856,8 @@
   "height_pt": 50.1
  },
  {
-  "id": "m00530",
-  "image": "work/math_crops/m00530.png",
+  "id": "m00524",
+  "image": "work/math_crops/m00524.png",
   "kind": "display",
   "page_pdf": 387,
   "chapter_number": "9",
@@ -5962,14 +5866,14 @@
   "extracted_characters": "�\nf(x) = β0 +αi⟨x, xi⟩,\ni∈S",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": " need to compute the inner product between the new point x and each of the training points xi. However, it turns out that αi is nonzero only for the support vectors in the solution—that is, if a training observation is not a support vector, then its αi equals zero. So if {{MATH:m00529}} is the collection of indices of these support points, we can rewrite any solution function of the form (9.18) as",
+  "context_before": " need to compute the inner product between the new point x and each of the training points xi. However, it turns out that αi is nonzero only for the support vectors in the solution—that is, if a training observation is not a support vector, then its αi equals zero. So if {{MATH:m00523}} is the collection of indices of these support points, we can rewrite any solution function of the form (9.18) as",
   "occurrences": 1,
   "width_pt": 110.3,
   "height_pt": 37.2
  },
  {
-  "id": "m00531",
-  "image": "work/math_crops/m00531.png",
+  "id": "m00525",
+  "image": "work/math_crops/m00525.png",
   "kind": "display",
   "page_pdf": 387,
   "chapter_number": "9",
@@ -5984,8 +5888,8 @@
   "height_pt": 11.7
  },
  {
-  "id": "m00532",
-  "image": "work/math_crops/m00532.png",
+  "id": "m00526",
+  "image": "work/math_crops/m00526.png",
   "kind": "display",
   "page_pdf": 387,
   "chapter_number": "9",
@@ -6000,8 +5904,8 @@
   "height_pt": 38.2
  },
  {
-  "id": "m00533",
-  "image": "work/math_crops/m00533.png",
+  "id": "m00527",
+  "image": "work/math_crops/m00527.png",
   "kind": "inline",
   "page_pdf": 387,
   "chapter_number": "9",
@@ -6012,12 +5916,12 @@
   "why_model_needed": "extension-font",
   "context_before": "where K is some function that we will refer to as a kernel. A kernel is a function that quantifies the similarity of two observations. For instance, we could simply take",
   "occurrences": 1,
-  "width_pt": 61.1,
-  "height_pt": 45.2
+  "width_pt": 53.7,
+  "height_pt": 37.2
  },
  {
-  "id": "m00534",
-  "image": "work/math_crops/m00534.png",
+  "id": "m00528",
+  "image": "work/math_crops/m00528.png",
   "kind": "display",
   "page_pdf": 387,
   "chapter_number": "9",
@@ -6026,14 +5930,14 @@
   "extracted_characters": "p\n�\nK(xi, xi′) = (1 +xijxi′j)d.\nj=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "back the support vector classifier. Equation 9.21 is known as a linear kernel because the support vector classifier is linear in the features; the linear kernel essentially quantifies the similarity of a pair of observations using Pearson (standard) correlation. But one could instead choose another form for (9.20). For instance, one could replace every instance of {{MATH:m00533}} with the quantity",
+  "context_before": "back the support vector classifier. Equation 9.21 is known as a linear kernel because the support vector classifier is linear in the features; the linear kernel essentially quantifies the similarity of a pair of observations using Pearson (standard) correlation. But one could instead choose another form for (9.20). For instance, one could replace every instance of {{MATH:m00527}} with the quantity",
   "occurrences": 1,
   "width_pt": 131.8,
   "height_pt": 38.2
  },
  {
-  "id": "m00535",
-  "image": "work/math_crops/m00535.png",
+  "id": "m00529",
+  "image": "work/math_crops/m00529.png",
   "kind": "display",
   "page_pdf": 388,
   "chapter_number": "9",
@@ -6048,8 +5952,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00536",
-  "image": "work/math_crops/m00536.png",
+  "id": "m00530",
+  "image": "work/math_crops/m00530.png",
   "kind": "display",
   "page_pdf": 388,
   "chapter_number": "9",
@@ -6064,8 +5968,8 @@
   "height_pt": 38.2
  },
  {
-  "id": "m00537",
-  "image": "work/math_crops/m00537.png",
+  "id": "m00531",
+  "image": "work/math_crops/m00531.png",
   "kind": "inline",
   "page_pdf": 388,
   "chapter_number": "9",
@@ -6080,8 +5984,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00538",
-  "image": "work/math_crops/m00538.png",
+  "id": "m00532",
+  "image": "work/math_crops/m00532.png",
   "kind": "inline",
   "page_pdf": 388,
   "chapter_number": "9",
@@ -6096,8 +6000,8 @@
   "height_pt": 44.7
  },
  {
-  "id": "m00539",
-  "image": "work/math_crops/m00539.png",
+  "id": "m00533",
+  "image": "work/math_crops/m00533.png",
   "kind": "display",
   "page_pdf": 389,
   "chapter_number": "9",
@@ -6112,8 +6016,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00543",
-  "image": "work/math_crops/m00543.png",
+  "id": "m00537",
+  "image": "work/math_crops/m00537.png",
   "kind": "display",
   "page_pdf": 391,
   "chapter_number": "9",
@@ -6128,8 +6032,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00544",
-  "image": "work/math_crops/m00544.png",
+  "id": "m00538",
+  "image": "work/math_crops/m00538.png",
   "kind": "display",
   "page_pdf": 391,
   "chapter_number": "9",
@@ -6144,8 +6048,8 @@
   "height_pt": 14.8
  },
  {
-  "id": "m00545",
-  "image": "work/math_crops/m00545.png",
+  "id": "m00539",
+  "image": "work/math_crops/m00539.png",
   "kind": "inline",
   "page_pdf": 391,
   "chapter_number": "9",
@@ -6160,8 +6064,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00546",
-  "image": "work/math_crops/m00546.png",
+  "id": "m00540",
+  "image": "work/math_crops/m00540.png",
   "kind": "display",
   "page_pdf": 391,
   "chapter_number": "9",
@@ -6170,14 +6074,14 @@
   "extracted_characters": "2",
   "deterministic_guess": "2",
   "why_model_needed": "display-equation",
-  "context_before": "we tally the number of times that the test observation is assigned to each of the K classes. The final classification is performed by assigning the test observation to the class to which it was most frequently assigned in these {{MATH:m00545}} pairwise classifications.",
+  "context_before": "we tally the number of times that the test observation is assigned to each of the K classes. The final classification is performed by assigning the test observation to the class to which it was most frequently assigned in these {{MATH:m00539}} pairwise classifications.",
   "occurrences": 1,
   "width_pt": 6.7,
   "height_pt": 14.8
  },
  {
-  "id": "m00547",
-  "image": "work/math_crops/m00547.png",
+  "id": "m00541",
+  "image": "work/math_crops/m00541.png",
   "kind": "display",
   "page_pdf": 391,
   "chapter_number": "9",
@@ -6192,8 +6096,8 @@
   "height_pt": 64.1
  },
  {
-  "id": "m00548",
-  "image": "work/math_crops/m00548.png",
+  "id": "m00542",
+  "image": "work/math_crops/m00542.png",
   "kind": "inline",
   "page_pdf": 392,
   "chapter_number": "9",
@@ -6208,8 +6112,8 @@
   "height_pt": 44.7
  },
  {
-  "id": "m00549",
-  "image": "work/math_crops/m00549.png",
+  "id": "m00543",
+  "image": "work/math_crops/m00543.png",
   "kind": "display",
   "page_pdf": 392,
   "chapter_number": "9",
@@ -6224,8 +6128,8 @@
   "height_pt": 24.8
  },
  {
-  "id": "m00550",
-  "image": "work/math_crops/m00550.png",
+  "id": "m00544",
+  "image": "work/math_crops/m00544.png",
   "kind": "display",
   "page_pdf": 392,
   "chapter_number": "9",
@@ -6240,8 +6144,8 @@
   "height_pt": 55.1
  },
  {
-  "id": "m00551",
-  "image": "work/math_crops/m00551.png",
+  "id": "m00545",
+  "image": "work/math_crops/m00545.png",
   "kind": "inline",
   "page_pdf": 392,
   "chapter_number": "9",
@@ -6252,12 +6156,12 @@
   "why_model_needed": "extension-font",
   "context_before": "In (9.26), L(X, y, β) is some loss function quantifying the extent to which the model, parametrized by β, fits the data (X, y), and P(β) is a penalty function on the parameter vector β whose effect is controlled by a nonnegative tuning parameter λ. For instance, ridge regression and the lasso both take this form with",
   "occurrences": 2,
-  "width_pt": 111.1,
-  "height_pt": 45.2
+  "width_pt": 73.3,
+  "height_pt": 44.7
  },
  {
-  "id": "m00552",
-  "image": "work/math_crops/m00552.png",
+  "id": "m00546",
+  "image": "work/math_crops/m00546.png",
   "kind": "inline",
   "page_pdf": 392,
   "chapter_number": "9",
@@ -6268,12 +6172,12 @@
   "why_model_needed": "extension-font",
   "context_before": "In (9.26), L(X, y, β) is some loss function quantifying the extent to which the model, parametrized by β, fits the data (X, y), and P(β) is a penalty function on the parameter vector β whose effect is controlled by a nonnegative tuning parameter λ. For instance, ridge regression and the lasso both take this form with",
   "occurrences": 2,
-  "width_pt": 108.9,
-  "height_pt": 59.5
+  "width_pt": 78.5,
+  "height_pt": 44.7
  },
  {
-  "id": "m00553",
-  "image": "work/math_crops/m00553.png",
+  "id": "m00547",
+  "image": "work/math_crops/m00547.png",
   "kind": "display",
   "page_pdf": 392,
   "chapter_number": "9",
@@ -6282,14 +6186,14 @@
   "extracted_characters": "n\n�\nL(X, y, β) =max [0, 1 −yi(β0 + β1xi1 + · · · + βpxip)] .\ni=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "and with {{MATH:m00551}} for ridge regression and {{MATH:m00552}} for the lasso. In the case of (9.25) the loss function instead takes the form",
+  "context_before": "and with {{MATH:m00545}} for ridge regression and {{MATH:m00546}} for the lasso. In the case of (9.25) the loss function instead takes the form",
   "occurrences": 1,
   "width_pt": 251.1,
   "height_pt": 37.7
  },
  {
-  "id": "m00554",
-  "image": "work/math_crops/m00554.png",
+  "id": "m00548",
+  "image": "work/math_crops/m00548.png",
   "kind": "inline",
   "page_pdf": 392,
   "chapter_number": "9",
@@ -6304,8 +6208,8 @@
   "height_pt": 29.7
  },
  {
-  "id": "m00556",
-  "image": "work/math_crops/m00556.png",
+  "id": "m00550",
+  "image": "work/math_crops/m00550.png",
   "kind": "display",
   "page_pdf": 402,
   "chapter_number": "9",
@@ -6320,8 +6224,8 @@
   "height_pt": 21.1
  },
  {
-  "id": "m00557",
-  "image": "work/math_crops/m00557.png",
+  "id": "m00551",
+  "image": "work/math_crops/m00551.png",
   "kind": "display",
   "page_pdf": 402,
   "chapter_number": "9",
@@ -6336,8 +6240,8 @@
   "height_pt": 21.1
  },
  {
-  "id": "m00558",
-  "image": "work/math_crops/m00558.png",
+  "id": "m00552",
+  "image": "work/math_crops/m00552.png",
   "kind": "display",
   "page_pdf": 402,
   "chapter_number": "9",
@@ -6352,8 +6256,8 @@
   "height_pt": 21.4
  },
  {
-  "id": "m00559",
-  "image": "work/math_crops/m00559.png",
+  "id": "m00553",
+  "image": "work/math_crops/m00553.png",
   "kind": "display",
   "page_pdf": 402,
   "chapter_number": "9",
@@ -6368,8 +6272,8 @@
   "height_pt": 21.2
  },
  {
-  "id": "m00560",
-  "image": "work/math_crops/m00560.png",
+  "id": "m00554",
+  "image": "work/math_crops/m00554.png",
   "kind": "display",
   "page_pdf": 402,
   "chapter_number": "9",
@@ -6384,8 +6288,8 @@
   "height_pt": 15.4
  },
  {
-  "id": "m00561",
-  "image": "work/math_crops/m00561.png",
+  "id": "m00555",
+  "image": "work/math_crops/m00555.png",
   "kind": "display",
   "page_pdf": 407,
   "chapter_number": "10",
@@ -6400,8 +6304,8 @@
   "height_pt": 64.0
  },
  {
-  "id": "m00562",
-  "image": "work/math_crops/m00562.png",
+  "id": "m00556",
+  "image": "work/math_crops/m00556.png",
   "kind": "display",
   "page_pdf": 407,
   "chapter_number": "10",
@@ -6416,8 +6320,8 @@
   "height_pt": 44.7
  },
  {
-  "id": "m00563",
-  "image": "work/math_crops/m00563.png",
+  "id": "m00557",
+  "image": "work/math_crops/m00557.png",
   "kind": "display",
   "page_pdf": 408,
   "chapter_number": "10",
@@ -6432,8 +6336,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00564",
-  "image": "work/math_crops/m00564.png",
+  "id": "m00558",
+  "image": "work/math_crops/m00558.png",
   "kind": "display",
   "page_pdf": 408,
   "chapter_number": "10",
@@ -6448,8 +6352,8 @@
   "height_pt": 26.2
  },
  {
-  "id": "m00565",
-  "image": "work/math_crops/m00565.png",
+  "id": "m00559",
+  "image": "work/math_crops/m00559.png",
   "kind": "display",
   "page_pdf": 408,
   "chapter_number": "10",
@@ -6464,8 +6368,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00566",
-  "image": "work/math_crops/m00566.png",
+  "id": "m00560",
+  "image": "work/math_crops/m00560.png",
   "kind": "display",
   "page_pdf": 409,
   "chapter_number": "10",
@@ -6480,8 +6384,8 @@
   "height_pt": 42.6
  },
  {
-  "id": "m00567",
-  "image": "work/math_crops/m00567.png",
+  "id": "m00561",
+  "image": "work/math_crops/m00561.png",
   "kind": "display",
   "page_pdf": 409,
   "chapter_number": "10",
@@ -6496,8 +6400,8 @@
   "height_pt": 31.9
  },
  {
-  "id": "m00568",
-  "image": "work/math_crops/m00568.png",
+  "id": "m00562",
+  "image": "work/math_crops/m00562.png",
   "kind": "display",
   "page_pdf": 409,
   "chapter_number": "10",
@@ -6512,8 +6416,8 @@
   "height_pt": 44.8
  },
  {
-  "id": "m00569",
-  "image": "work/math_crops/m00569.png",
+  "id": "m00563",
+  "image": "work/math_crops/m00563.png",
   "kind": "display",
   "page_pdf": 409,
   "chapter_number": "10",
@@ -6528,8 +6432,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00570",
-  "image": "work/math_crops/m00570.png",
+  "id": "m00564",
+  "image": "work/math_crops/m00564.png",
   "kind": "display",
   "page_pdf": 411,
   "chapter_number": "10",
@@ -6544,8 +6448,8 @@
   "height_pt": 53.9
  },
  {
-  "id": "m00571",
-  "image": "work/math_crops/m00571.png",
+  "id": "m00565",
+  "image": "work/math_crops/m00565.png",
   "kind": "display",
   "page_pdf": 411,
   "chapter_number": "10",
@@ -6560,8 +6464,8 @@
   "height_pt": 53.9
  },
  {
-  "id": "m00572",
-  "image": "work/math_crops/m00572.png",
+  "id": "m00566",
+  "image": "work/math_crops/m00566.png",
   "kind": "display",
   "page_pdf": 412,
   "chapter_number": "10",
@@ -6576,8 +6480,8 @@
   "height_pt": 68.6
  },
  {
-  "id": "m00573",
-  "image": "work/math_crops/m00573.png",
+  "id": "m00567",
+  "image": "work/math_crops/m00567.png",
   "kind": "display",
   "page_pdf": 412,
   "chapter_number": "10",
@@ -6592,8 +6496,8 @@
   "height_pt": 46.0
  },
  {
-  "id": "m00574",
-  "image": "work/math_crops/m00574.png",
+  "id": "m00568",
+  "image": "work/math_crops/m00568.png",
   "kind": "display",
   "page_pdf": 412,
   "chapter_number": "10",
@@ -6608,8 +6512,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00575",
-  "image": "work/math_crops/m00575.png",
+  "id": "m00569",
+  "image": "work/math_crops/m00569.png",
   "kind": "display",
   "page_pdf": 415,
   "chapter_number": "10",
@@ -6624,8 +6528,8 @@
   "height_pt": 67.1
  },
  {
-  "id": "m00576",
-  "image": "work/math_crops/m00576.png",
+  "id": "m00570",
+  "image": "work/math_crops/m00570.png",
   "kind": "display",
   "page_pdf": 415,
   "chapter_number": "10",
@@ -6640,8 +6544,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00577",
-  "image": "work/math_crops/m00577.png",
+  "id": "m00571",
+  "image": "work/math_crops/m00571.png",
   "kind": "display",
   "page_pdf": 415,
   "chapter_number": "10",
@@ -6656,8 +6560,8 @@
   "height_pt": 55.1
  },
  {
-  "id": "m00578",
-  "image": "work/math_crops/m00578.png",
+  "id": "m00572",
+  "image": "work/math_crops/m00572.png",
   "kind": "display",
   "page_pdf": 417,
   "chapter_number": "10",
@@ -6672,8 +6576,8 @@
   "height_pt": 67.1
  },
  {
-  "id": "m00579",
-  "image": "work/math_crops/m00579.png",
+  "id": "m00573",
+  "image": "work/math_crops/m00573.png",
   "kind": "display",
   "page_pdf": 422,
   "chapter_number": "10",
@@ -6688,8 +6592,8 @@
   "height_pt": 73.5
  },
  {
-  "id": "m00580",
-  "image": "work/math_crops/m00580.png",
+  "id": "m00574",
+  "image": "work/math_crops/m00574.png",
   "kind": "display",
   "page_pdf": 424,
   "chapter_number": "10",
@@ -6704,8 +6608,8 @@
   "height_pt": 38.8
  },
  {
-  "id": "m00581",
-  "image": "work/math_crops/m00581.png",
+  "id": "m00575",
+  "image": "work/math_crops/m00575.png",
   "kind": "display",
   "page_pdf": 424,
   "chapter_number": "10",
@@ -6720,8 +6624,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00582",
-  "image": "work/math_crops/m00582.png",
+  "id": "m00576",
+  "image": "work/math_crops/m00576.png",
   "kind": "display",
   "page_pdf": 425,
   "chapter_number": "10",
@@ -6736,8 +6640,8 @@
   "height_pt": 18.9
  },
  {
-  "id": "m00583",
-  "image": "work/math_crops/m00583.png",
+  "id": "m00577",
+  "image": "work/math_crops/m00577.png",
   "kind": "inline",
   "page_pdf": 425,
   "chapter_number": "10",
@@ -6748,12 +6652,28 @@
   "why_model_needed": "extension-font",
   "context_before": "For regression problems the loss function for an observation (X, Y ) is",
   "occurrences": 1,
-  "width_pt": 100.5,
-  "height_pt": 52.0
+  "width_pt": 99.8,
+  "height_pt": 37.2
  },
  {
-  "id": "m00584",
-  "image": "work/math_crops/m00584.png",
+  "id": "m00578",
+  "image": "work/math_crops/m00578.png",
+  "kind": "display",
+  "page_pdf": 425,
+  "chapter_number": "10",
+  "chapter_title": "Deep Learning",
+  "equation_number": "10.19",
+  "extracted_characters": "nnKpK\n�\n(yi−oiL)2 =yi−β0+βkgwk0+wkjxiLj+uksai,L−1,s.",
+  "deterministic_guess": "",
+  "why_model_needed": "display-equation",
+  "context_before": "h only references the final output {{MATH:m00577}}. Thus O1, O2, . . . , OL−1 are not used. When we fit the model, each element Xℓ of the input sequence X contributes to OL via the chain (10.16), and hence contributes indirectly to learning the shared parameters W, U and B via the loss (10.18). With n input sequence/response pairs (xi, yi), the parameters are found by minimizing the sum of squares",
+  "occurrences": 1,
+  "width_pt": 331.5,
+  "height_pt": 40.2
+ },
+ {
+  "id": "m00579",
+  "image": "work/math_crops/m00579.png",
   "kind": "inline",
   "page_pdf": 425,
   "chapter_number": "10",
@@ -6762,30 +6682,14 @@
   "extracted_characters": "� � � � � � � ���",
   "deterministic_guess": "",
   "why_model_needed": "extension-font",
-  "context_before": "h only references the final output {{MATH:m00583}}. Thus O1, O2, . . . , OL−1 are not used. When we fit the model, each element Xℓ of the input sequence X contributes to OL via the chain (10.16), and hence contributes indirectly to learning the shared parameters W, U and B via the loss (10.18). With n input sequence/response pairs (xi, yi), the parameters are found by minimizing the sum of squares",
+  "context_before": "h only references the final output {{MATH:m00577}}. Thus O1, O2, . . . , OL−1 are not used. When we fit the model, each element Xℓ of the input sequence X contributes to OL via the chain (10.16), and hence contributes indirectly to learning the shared parameters W, U and B via the loss (10.18). With n input sequence/response pairs (xi, yi), the parameters are found by minimizing the sum of squares",
   "occurrences": 1,
   "width_pt": 324.2,
-  "height_pt": 39.3
+  "height_pt": 40.2
  },
  {
-  "id": "m00585",
-  "image": "work/math_crops/m00585.png",
-  "kind": "display",
-  "page_pdf": 425,
-  "chapter_number": "10",
-  "chapter_title": "Deep Learning",
-  "equation_number": "10.19",
-  "extracted_characters": "(yi−oiL)2 =yi−β0+βkgwk0+wkjxiLj+uksai,L−1,s.",
-  "deterministic_guess": "(yi−oiL)2 = yi− β0+ βkg wk0+ wkjxiLj+ uksai,L−1,s .",
-  "why_model_needed": "display-equation",
-  "context_before": "{{MATH:m00584}}",
-  "occurrences": 1,
-  "width_pt": 330.7,
-  "height_pt": 31.9
- },
- {
-  "id": "m00586",
-  "image": "work/math_crops/m00586.png",
+  "id": "m00580",
+  "image": "work/math_crops/m00580.png",
   "kind": "display",
   "page_pdf": 429,
   "chapter_number": "10",
@@ -6800,8 +6704,8 @@
   "height_pt": 55.1
  },
  {
-  "id": "m00587",
-  "image": "work/math_crops/m00587.png",
+  "id": "m00581",
+  "image": "work/math_crops/m00581.png",
   "kind": "display",
   "page_pdf": 430,
   "chapter_number": "10",
@@ -6816,8 +6720,8 @@
   "height_pt": 85.0
  },
  {
-  "id": "m00588",
-  "image": "work/math_crops/m00588.png",
+  "id": "m00582",
+  "image": "work/math_crops/m00582.png",
   "kind": "display",
   "page_pdf": 431,
   "chapter_number": "10",
@@ -6832,8 +6736,8 @@
   "height_pt": 19.7
  },
  {
-  "id": "m00589",
-  "image": "work/math_crops/m00589.png",
+  "id": "m00583",
+  "image": "work/math_crops/m00583.png",
   "kind": "display",
   "page_pdf": 434,
   "chapter_number": "10",
@@ -6848,8 +6752,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00590",
-  "image": "work/math_crops/m00590.png",
+  "id": "m00584",
+  "image": "work/math_crops/m00584.png",
   "kind": "display",
   "page_pdf": 434,
   "chapter_number": "10",
@@ -6864,8 +6768,8 @@
   "height_pt": 38.8
  },
  {
-  "id": "m00591",
-  "image": "work/math_crops/m00591.png",
+  "id": "m00585",
+  "image": "work/math_crops/m00585.png",
   "kind": "display",
   "page_pdf": 434,
   "chapter_number": "10",
@@ -6880,8 +6784,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00592",
-  "image": "work/math_crops/m00592.png",
+  "id": "m00586",
+  "image": "work/math_crops/m00586.png",
   "kind": "display",
   "page_pdf": 435,
   "chapter_number": "10",
@@ -6896,8 +6800,8 @@
   "height_pt": 49.1
  },
  {
-  "id": "m00593",
-  "image": "work/math_crops/m00593.png",
+  "id": "m00587",
+  "image": "work/math_crops/m00587.png",
   "kind": "display",
   "page_pdf": 435,
   "chapter_number": "10",
@@ -6912,8 +6816,8 @@
   "height_pt": 21.4
  },
  {
-  "id": "m00594",
-  "image": "work/math_crops/m00594.png",
+  "id": "m00588",
+  "image": "work/math_crops/m00588.png",
   "kind": "inline",
   "page_pdf": 436,
   "chapter_number": "10",
@@ -6928,8 +6832,8 @@
   "height_pt": 44.7
  },
  {
-  "id": "m00595",
-  "image": "work/math_crops/m00595.png",
+  "id": "m00589",
+  "image": "work/math_crops/m00589.png",
   "kind": "display",
   "page_pdf": 436,
   "chapter_number": "10",
@@ -6944,8 +6848,8 @@
   "height_pt": 40.2
  },
  {
-  "id": "m00596",
-  "image": "work/math_crops/m00596.png",
+  "id": "m00590",
+  "image": "work/math_crops/m00590.png",
   "kind": "inline",
   "page_pdf": 436,
   "chapter_number": "10",
@@ -6956,12 +6860,12 @@
   "why_model_needed": "extension-font",
   "context_before": "is also a sum over the n observations, so we will just examine one of these terms,",
   "occurrences": 1,
-  "width_pt": 125.4,
-  "height_pt": 59.5
+  "width_pt": 110.0,
+  "height_pt": 44.7
  },
  {
-  "id": "m00597",
-  "image": "work/math_crops/m00597.png",
+  "id": "m00591",
+  "image": "work/math_crops/m00591.png",
   "kind": "display",
   "page_pdf": 436,
   "chapter_number": "10",
@@ -6970,14 +6874,14 @@
   "extracted_characters": "∂Ri(θ)∂Ri(θ)\n=\n∂βk∂fθ(xi) · ∂f∂θβ(xki)\n=−(yi −fθ(xi)) · g(zik).",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "To simplify the expressions to follow, we write {{MATH:m00596}}. First we take the derivative with respect to βk:",
+  "context_before": "To simplify the expressions to follow, we write {{MATH:m00590}}. First we take the derivative with respect to βk:",
   "occurrences": 1,
   "width_pt": 155.5,
   "height_pt": 46.1
  },
  {
-  "id": "m00598",
-  "image": "work/math_crops/m00598.png",
+  "id": "m00592",
+  "image": "work/math_crops/m00592.png",
   "kind": "display",
   "page_pdf": 436,
   "chapter_number": "10",
@@ -6992,8 +6896,8 @@
   "height_pt": 46.9
  },
  {
-  "id": "m00599",
-  "image": "work/math_crops/m00599.png",
+  "id": "m00593",
+  "image": "work/math_crops/m00593.png",
   "kind": "display",
   "page_pdf": 437,
   "chapter_number": "10",
@@ -7008,8 +6912,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00600",
-  "image": "work/math_crops/m00600.png",
+  "id": "m00594",
+  "image": "work/math_crops/m00594.png",
   "kind": "display",
   "page_pdf": 439,
   "chapter_number": "10",
@@ -7024,8 +6928,8 @@
   "height_pt": 10.0
  },
  {
-  "id": "m00604",
-  "image": "work/math_crops/m00604.png",
+  "id": "m00598",
+  "image": "work/math_crops/m00598.png",
   "kind": "inline",
   "page_pdf": 440,
   "chapter_number": "10",
@@ -7040,8 +6944,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00607",
-  "image": "work/math_crops/m00607.png",
+  "id": "m00601",
+  "image": "work/math_crops/m00601.png",
   "kind": "display",
   "page_pdf": 444,
   "chapter_number": "10",
@@ -7056,8 +6960,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00608",
-  "image": "work/math_crops/m00608.png",
+  "id": "m00602",
+  "image": "work/math_crops/m00602.png",
   "kind": "display",
   "page_pdf": 476,
   "chapter_number": "11",
@@ -7072,8 +6976,8 @@
   "height_pt": 14.1
  },
  {
-  "id": "m00609",
-  "image": "work/math_crops/m00609.png",
+  "id": "m00603",
+  "image": "work/math_crops/m00603.png",
   "kind": "display",
   "page_pdf": 476,
   "chapter_number": "11",
@@ -7088,8 +6992,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00610",
-  "image": "work/math_crops/m00610.png",
+  "id": "m00604",
+  "image": "work/math_crops/m00604.png",
   "kind": "display",
   "page_pdf": 478,
   "chapter_number": "11",
@@ -7104,8 +7008,8 @@
   "height_pt": 10.0
  },
  {
-  "id": "m00611",
-  "image": "work/math_crops/m00611.png",
+  "id": "m00605",
+  "image": "work/math_crops/m00605.png",
   "kind": "display",
   "page_pdf": 479,
   "chapter_number": "11",
@@ -7120,8 +7024,8 @@
   "height_pt": 32.2
  },
  {
-  "id": "m00612",
-  "image": "work/math_crops/m00612.png",
+  "id": "m00606",
+  "image": "work/math_crops/m00606.png",
   "kind": "display",
   "page_pdf": 479,
   "chapter_number": "11",
@@ -7136,8 +7040,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00613",
-  "image": "work/math_crops/m00613.png",
+  "id": "m00607",
+  "image": "work/math_crops/m00607.png",
   "kind": "display",
   "page_pdf": 479,
   "chapter_number": "11",
@@ -7152,8 +7056,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00614",
-  "image": "work/math_crops/m00614.png",
+  "id": "m00608",
+  "image": "work/math_crops/m00608.png",
   "kind": "display",
   "page_pdf": 479,
   "chapter_number": "11",
@@ -7168,8 +7072,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00615",
-  "image": "work/math_crops/m00615.png",
+  "id": "m00609",
+  "image": "work/math_crops/m00609.png",
   "kind": "display",
   "page_pdf": 479,
   "chapter_number": "11",
@@ -7184,8 +7088,8 @@
   "height_pt": 48.7
  },
  {
-  "id": "m00616",
-  "image": "work/math_crops/m00616.png",
+  "id": "m00610",
+  "image": "work/math_crops/m00610.png",
   "kind": "inline",
   "page_pdf": 479,
   "chapter_number": "11",
@@ -7200,8 +7104,8 @@
   "height_pt": 39.7
  },
  {
-  "id": "m00617",
-  "image": "work/math_crops/m00617.png",
+  "id": "m00611",
+  "image": "work/math_crops/m00611.png",
   "kind": "display",
   "page_pdf": 481,
   "chapter_number": "11",
@@ -7216,8 +7120,8 @@
   "height_pt": 43.7
  },
  {
-  "id": "m00618",
-  "image": "work/math_crops/m00618.png",
+  "id": "m00612",
+  "image": "work/math_crops/m00612.png",
   "kind": "inline",
   "page_pdf": 481,
   "chapter_number": "11",
@@ -7228,12 +7132,12 @@
   "why_model_needed": "extension-font",
   "context_before": "The main idea behind the log-rank test statistic is as follows. In order to test H0 : E(X) = μ for some random variable X, one approach is to construct a test statistic of the form",
   "occurrences": 3,
-  "width_pt": 71.5,
-  "height_pt": 59.5
+  "width_pt": 62.1,
+  "height_pt": 44.7
  },
  {
-  "id": "m00619",
-  "image": "work/math_crops/m00619.png",
+  "id": "m00613",
+  "image": "work/math_crops/m00613.png",
   "kind": "display",
   "page_pdf": 481,
   "chapter_number": "11",
@@ -7248,8 +7152,8 @@
   "height_pt": 24.3
  },
  {
-  "id": "m00620",
-  "image": "work/math_crops/m00620.png",
+  "id": "m00614",
+  "image": "work/math_crops/m00614.png",
   "kind": "inline",
   "page_pdf": 481,
   "chapter_number": "11",
@@ -7260,12 +7164,12 @@
   "why_model_needed": "extension-font",
   "context_before": "In greater detail, if there is no difference in survival between the two groups, and conditioning on the row and column totals in Table 11.1, the expected value of q1k is",
   "occurrences": 1,
-  "width_pt": 140.8,
-  "height_pt": 57.3
+  "width_pt": 69.9,
+  "height_pt": 44.7
  },
  {
-  "id": "m00621",
-  "image": "work/math_crops/m00621.png",
+  "id": "m00615",
+  "image": "work/math_crops/m00615.png",
   "kind": "display",
   "page_pdf": 481,
   "chapter_number": "11",
@@ -7280,24 +7184,24 @@
   "height_pt": 32.4
  },
  {
-  "id": "m00622",
-  "image": "work/math_crops/m00622.png",
+  "id": "m00616",
+  "image": "work/math_crops/m00616.png",
   "kind": "display",
   "page_pdf": 481,
   "chapter_number": "11",
   "chapter_title": "Survival Analysis and Censored Data",
   "equation_number": "11.7",
-  "extracted_characters": "�K�\nKK\nrk −1\nk=1k=1k=1",
+  "extracted_characters": "�K�\nKK\nk=1k=1k=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
   "context_before": "Though q11, . . . , q1K may be correlated, we nonetheless estimate",
   "occurrences": 1,
-  "width_pt": 300.9,
+  "width_pt": 157.9,
   "height_pt": 44.8
  },
  {
-  "id": "m00623",
-  "image": "work/math_crops/m00623.png",
+  "id": "m00617",
+  "image": "work/math_crops/m00617.png",
   "kind": "inline",
   "page_pdf": 481,
   "chapter_number": "11",
@@ -7309,11 +7213,11 @@
   "context_before": "Though q11, . . . , q1K may be correlated, we nonetheless estimate",
   "occurrences": 1,
   "width_pt": 300.9,
-  "height_pt": 44.8
+  "height_pt": 37.2
  },
  {
-  "id": "m00624",
-  "image": "work/math_crops/m00624.png",
+  "id": "m00618",
+  "image": "work/math_crops/m00618.png",
   "kind": "display",
   "page_pdf": 482,
   "chapter_number": "11",
@@ -7322,14 +7226,14 @@
   "extracted_characters": "��\n�K\n�K\nq1k −rqkk r1k\nk=1\nk=1 (q1k −µk)\nW =��K=��K.\nqk(r1k/rk)(1−r1k/rk)(rk−qk)\nk=1 Var (q1k)\nk=1rk−1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "Therefore, to compute the log-rank test statistic, we simply proceed as in (11.4), with {{MATH:m00618}}, making use of (11.5) and (11.7). That is, we calculate",
+  "context_before": "Therefore, to compute the log-rank test statistic, we simply proceed as in (11.4), with {{MATH:m00612}}, making use of (11.5) and (11.7). That is, we calculate",
   "occurrences": 1,
   "width_pt": 266.1,
   "height_pt": 63.2
  },
  {
-  "id": "m00626",
-  "image": "work/math_crops/m00626.png",
+  "id": "m00620",
+  "image": "work/math_crops/m00620.png",
   "kind": "display",
   "page_pdf": 482,
   "chapter_number": "11",
@@ -7344,8 +7248,8 @@
   "height_pt": 27.5
  },
  {
-  "id": "m00627",
-  "image": "work/math_crops/m00627.png",
+  "id": "m00621",
+  "image": "work/math_crops/m00621.png",
   "kind": "inline",
   "page_pdf": 483,
   "chapter_number": "11",
@@ -7360,8 +7264,8 @@
   "height_pt": 10.0
  },
  {
-  "id": "m00628",
-  "image": "work/math_crops/m00628.png",
+  "id": "m00622",
+  "image": "work/math_crops/m00622.png",
   "kind": "display",
   "page_pdf": 483,
   "chapter_number": "11",
@@ -7370,14 +7274,14 @@
   "extracted_characters": "h(t) ≈Pr(t < T ≤t + ∆t|T > t)\n∆t",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "where T is the (unobserved) survival time. It is the death rate in the instant after time t, given survival past that time.7 In (11.9), we take the limit as {{MATH:m00627}} approaches zero, so we can think of {{MATH:m00627}} as being an extremely tiny number. Thus, more informally, (11.9) implies that",
+  "context_before": "where T is the (unobserved) survival time. It is the death rate in the instant after time t, given survival past that time.7 In (11.9), we take the limit as {{MATH:m00621}} approaches zero, so we can think of {{MATH:m00621}} as being an extremely tiny number. Thus, more informally, (11.9) implies that",
   "occurrences": 1,
   "width_pt": 141.9,
   "height_pt": 24.0
  },
  {
-  "id": "m00629",
-  "image": "work/math_crops/m00629.png",
+  "id": "m00623",
+  "image": "work/math_crops/m00623.png",
   "kind": "display",
   "page_pdf": 483,
   "chapter_number": "11",
@@ -7392,8 +7296,8 @@
   "height_pt": 78.8
  },
  {
-  "id": "m00630",
-  "image": "work/math_crops/m00630.png",
+  "id": "m00624",
+  "image": "work/math_crops/m00624.png",
   "kind": "display",
   "page_pdf": 483,
   "chapter_number": "11",
@@ -7408,8 +7312,8 @@
   "height_pt": 27.5
  },
  {
-  "id": "m00631",
-  "image": "work/math_crops/m00631.png",
+  "id": "m00625",
+  "image": "work/math_crops/m00625.png",
   "kind": "inline",
   "page_pdf": 483,
   "chapter_number": "11",
@@ -7424,8 +7328,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00632",
-  "image": "work/math_crops/m00632.png",
+  "id": "m00626",
+  "image": "work/math_crops/m00626.png",
   "kind": "display",
   "page_pdf": 483,
   "chapter_number": "11",
@@ -7440,8 +7344,8 @@
   "height_pt": 53.4
  },
  {
-  "id": "m00633",
-  "image": "work/math_crops/m00633.png",
+  "id": "m00627",
+  "image": "work/math_crops/m00627.png",
   "kind": "inline",
   "page_pdf": 483,
   "chapter_number": "11",
@@ -7456,8 +7360,8 @@
   "height_pt": 8.0
  },
  {
-  "id": "m00634",
-  "image": "work/math_crops/m00634.png",
+  "id": "m00628",
+  "image": "work/math_crops/m00628.png",
   "kind": "display",
   "page_pdf": 484,
   "chapter_number": "11",
@@ -7472,8 +7376,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00635",
-  "image": "work/math_crops/m00635.png",
+  "id": "m00629",
+  "image": "work/math_crops/m00629.png",
   "kind": "display",
   "page_pdf": 484,
   "chapter_number": "11",
@@ -7488,8 +7392,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00636",
-  "image": "work/math_crops/m00636.png",
+  "id": "m00630",
+  "image": "work/math_crops/m00630.png",
   "kind": "inline",
   "page_pdf": 484,
   "chapter_number": "11",
@@ -7500,12 +7404,12 @@
   "why_model_needed": "extension-font",
   "context_before": "However, what we would really like to do is model the survival time as a function of the covariates. To do this, it is convenient to work directly with the hazard function, instead of the probability density function.10 One possible approach is to assume a functional form for the hazard func-",
   "occurrences": 1,
-  "width_pt": 142.2,
-  "height_pt": 48.2
+  "width_pt": 135.4,
+  "height_pt": 44.7
  },
  {
-  "id": "m00637",
-  "image": "work/math_crops/m00637.png",
+  "id": "m00631",
+  "image": "work/math_crops/m00631.png",
   "kind": "display",
   "page_pdf": 484,
   "chapter_number": "11",
@@ -7520,8 +7424,8 @@
   "height_pt": 55.1
  },
  {
-  "id": "m00638",
-  "image": "work/math_crops/m00638.png",
+  "id": "m00632",
+  "image": "work/math_crops/m00632.png",
   "kind": "display",
   "page_pdf": 485,
   "chapter_number": "11",
@@ -7536,8 +7440,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00639",
-  "image": "work/math_crops/m00639.png",
+  "id": "m00633",
+  "image": "work/math_crops/m00633.png",
   "kind": "display",
   "page_pdf": 486,
   "chapter_number": "11",
@@ -7552,8 +7456,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00640",
-  "image": "work/math_crops/m00640.png",
+  "id": "m00634",
+  "image": "work/math_crops/m00634.png",
   "kind": "display",
   "page_pdf": 486,
   "chapter_number": "11",
@@ -7568,8 +7472,8 @@
   "height_pt": 55.1
  },
  {
-  "id": "m00641",
-  "image": "work/math_crops/m00641.png",
+  "id": "m00635",
+  "image": "work/math_crops/m00635.png",
   "kind": "display",
   "page_pdf": 486,
   "chapter_number": "11",
@@ -7584,8 +7488,8 @@
   "height_pt": 61.5
  },
  {
-  "id": "m00642",
-  "image": "work/math_crops/m00642.png",
+  "id": "m00636",
+  "image": "work/math_crops/m00636.png",
   "kind": "display",
   "page_pdf": 486,
   "chapter_number": "11",
@@ -7600,8 +7504,8 @@
   "height_pt": 61.5
  },
  {
-  "id": "m00643",
-  "image": "work/math_crops/m00643.png",
+  "id": "m00637",
+  "image": "work/math_crops/m00637.png",
   "kind": "display",
   "page_pdf": 490,
   "chapter_number": "11",
@@ -7616,8 +7520,8 @@
   "height_pt": 61.5
  },
  {
-  "id": "m00644",
-  "image": "work/math_crops/m00644.png",
+  "id": "m00638",
+  "image": "work/math_crops/m00638.png",
   "kind": "display",
   "page_pdf": 491,
   "chapter_number": "11",
@@ -7632,8 +7536,8 @@
   "height_pt": 21.2
  },
  {
-  "id": "m00650",
-  "image": "work/math_crops/m00650.png",
+  "id": "m00644",
+  "image": "work/math_crops/m00644.png",
   "kind": "display",
   "page_pdf": 493,
   "chapter_number": "11",
@@ -7642,14 +7546,14 @@
   "extracted_characters": "�\ni,i′:yi>yi′ I(ηˆi′ > ηˆi)δi′\nC =�,\ni,i′:yi>yi′ δi′",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "Therefore, Harrell’s concordance index (or C-index) computes the proportion of observation pairs for which {{MATH:m00649}} and yi &gt; yi′:",
+  "context_before": "Therefore, Harrell’s concordance index (or C-index) computes the proportion of observation pairs for which {{MATH:m00643}} and yi &gt; yi′:",
   "occurrences": 1,
   "width_pt": 131.1,
   "height_pt": 52.7
  },
  {
-  "id": "m00652",
-  "image": "work/math_crops/m00652.png",
+  "id": "m00646",
+  "image": "work/math_crops/m00646.png",
   "kind": "display",
   "page_pdf": 507,
   "chapter_number": "11",
@@ -7664,8 +7568,8 @@
   "height_pt": 45.3
  },
  {
-  "id": "m00653",
-  "image": "work/math_crops/m00653.png",
+  "id": "m00647",
+  "image": "work/math_crops/m00647.png",
   "kind": "display",
   "page_pdf": 507,
   "chapter_number": "11",
@@ -7680,8 +7584,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00654",
-  "image": "work/math_crops/m00654.png",
+  "id": "m00648",
+  "image": "work/math_crops/m00648.png",
   "kind": "display",
   "page_pdf": 507,
   "chapter_number": "11",
@@ -7696,8 +7600,8 @@
   "height_pt": 14.1
  },
  {
-  "id": "m00655",
-  "image": "work/math_crops/m00655.png",
+  "id": "m00649",
+  "image": "work/math_crops/m00649.png",
   "kind": "display",
   "page_pdf": 511,
   "chapter_number": "12",
@@ -7712,8 +7616,8 @@
   "height_pt": 14.8
  },
  {
-  "id": "m00656",
-  "image": "work/math_crops/m00656.png",
+  "id": "m00650",
+  "image": "work/math_crops/m00650.png",
   "kind": "display",
   "page_pdf": 511,
   "chapter_number": "12",
@@ -7728,8 +7632,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00657",
-  "image": "work/math_crops/m00657.png",
+  "id": "m00651",
+  "image": "work/math_crops/m00651.png",
   "kind": "inline",
   "page_pdf": 511,
   "chapter_number": "12",
@@ -7744,8 +7648,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00658",
-  "image": "work/math_crops/m00658.png",
+  "id": "m00652",
+  "image": "work/math_crops/m00652.png",
   "kind": "display",
   "page_pdf": 511,
   "chapter_number": "12",
@@ -7760,8 +7664,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00659",
-  "image": "work/math_crops/m00659.png",
+  "id": "m00653",
+  "image": "work/math_crops/m00653.png",
   "kind": "inline",
   "page_pdf": 512,
   "chapter_number": "12",
@@ -7776,24 +7680,24 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00660",
-  "image": "work/math_crops/m00660.png",
+  "id": "m00654",
+  "image": "work/math_crops/m00654.png",
   "kind": "display",
   "page_pdf": 512,
   "chapter_number": "12",
   "chapter_title": "Unsupervised Learning",
   "equation_number": "12.3",
-  "extracted_characters": "2\n\n\nnpp\n\n���\n1\n\nmaximizeφj1xijsubject toφ2j1 = 1.\nn\nφ11,...,φp1\n\ni=1j=1j=1\n1\nn",
+  "extracted_characters": "2\n\n\nnpp\n\n���\n1\n\nmaximizeφj1xijsubject toφ2j1 = 1.\nφ11,...,φp1\nn\n\ni=1j=1j=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "that has largest sample variance, subject to the constraint that {{MATH:m00659}}. In other words, the first principal component loading vector solves the optimization problem",
+  "context_before": "that has largest sample variance, subject to the constraint that {{MATH:m00653}}. In other words, the first principal component loading vector solves the optimization problem",
   "occurrences": 1,
   "width_pt": 257.9,
-  "height_pt": 75.1
+  "height_pt": 72.9
  },
  {
-  "id": "m00661",
-  "image": "work/math_crops/m00661.png",
+  "id": "m00655",
+  "image": "work/math_crops/m00655.png",
   "kind": "display",
   "page_pdf": 512,
   "chapter_number": "12",
@@ -7808,8 +7712,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00662",
-  "image": "work/math_crops/m00662.png",
+  "id": "m00656",
+  "image": "work/math_crops/m00656.png",
   "kind": "display",
   "page_pdf": 516,
   "chapter_number": "12",
@@ -7824,8 +7728,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00663",
-  "image": "work/math_crops/m00663.png",
+  "id": "m00657",
+  "image": "work/math_crops/m00657.png",
   "kind": "inline",
   "page_pdf": 516,
   "chapter_number": "12",
@@ -7836,12 +7740,12 @@
   "why_model_needed": "extension-font",
   "context_before": "the ith observation xij. This representation can be written as",
   "occurrences": 1,
-  "width_pt": 132.3,
-  "height_pt": 45.2
+  "width_pt": 88.1,
+  "height_pt": 37.2
  },
  {
-  "id": "m00664",
-  "image": "work/math_crops/m00664.png",
+  "id": "m00658",
+  "image": "work/math_crops/m00658.png",
   "kind": "display",
   "page_pdf": 516,
   "chapter_number": "12",
@@ -7850,14 +7754,14 @@
   "extracted_characters": "\n��2\npnM\n\n���\nminimizexij −aimbjm\n.\nA∈Rn×M,B∈Rp×M\nj=1i=1m=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "We can state this more formally by writing down an optimization problem. Suppose the data matrix X is column-centered. Out of all approximations of the form {{MATH:m00663}}, we could ask for the one with the smallest residual sum of squares:",
+  "context_before": "We can state this more formally by writing down an optimization problem. Suppose the data matrix X is column-centered. Out of all approximations of the form {{MATH:m00657}}, we could ask for the one with the smallest residual sum of squares:",
   "occurrences": 1,
   "width_pt": 221.1,
   "height_pt": 64.1
  },
  {
-  "id": "m00669",
-  "image": "work/math_crops/m00669.png",
+  "id": "m00663",
+  "image": "work/math_crops/m00663.png",
   "kind": "display",
   "page_pdf": 516,
   "chapter_number": "12",
@@ -7866,14 +7770,14 @@
   "extracted_characters": "��2\npnM\n���\nxij −zimφjm.\nj=1i=1m=1",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "It can be shown that for any value of M, the columns of the matrices {{MATH:m00665}} and {{MATH:m00666}} that solve (12.6) are in fact the first M principal components score and loading vectors. In other words, if {{MATH:m00665}} and {{MATH:m00666}} solve (12.6), then {{MATH:m00667}} and {{MATH:m00668}}.4 This means that the smallest possible value of the objective in (12.6) is",
+  "context_before": "It can be shown that for any value of M, the columns of the matrices {{MATH:m00659}} and {{MATH:m00660}} that solve (12.6) are in fact the first M principal components score and loading vectors. In other words, if {{MATH:m00659}} and {{MATH:m00660}} solve (12.6), then {{MATH:m00661}} and {{MATH:m00662}}.4 This means that the smallest possible value of the objective in (12.6) is",
   "occurrences": 1,
   "width_pt": 132.7,
   "height_pt": 44.8
  },
  {
-  "id": "m00670",
-  "image": "work/math_crops/m00670.png",
+  "id": "m00664",
+  "image": "work/math_crops/m00664.png",
   "kind": "inline",
   "page_pdf": 516,
   "chapter_number": "12",
@@ -7882,14 +7786,14 @@
   "extracted_characters": "xij = �Mm=1 zimφjm",
   "deterministic_guess": "",
   "why_model_needed": "extension-font",
-  "context_before": "It can be shown that for any value of M, the columns of the matrices {{MATH:m00665}} and {{MATH:m00666}} that solve (12.6) are in fact the first M principal components score and loading vectors. In other words, if {{MATH:m00665}} and {{MATH:m00666}} solve (12.6), then {{MATH:m00667}} and {{MATH:m00668}}.4 This means that the smallest possible value of the objective in (12.6) is",
+  "context_before": "It can be shown that for any value of M, the columns of the matrices {{MATH:m00659}} and {{MATH:m00660}} that solve (12.6) are in fact the first M principal components score and loading vectors. In other words, if {{MATH:m00659}} and {{MATH:m00660}} solve (12.6), then {{MATH:m00661}} and {{MATH:m00662}}.4 This means that the smallest possible value of the objective in (12.6) is",
   "occurrences": 1,
   "width_pt": 87.5,
   "height_pt": 44.7
  },
  {
-  "id": "m00671",
-  "image": "work/math_crops/m00671.png",
+  "id": "m00665",
+  "image": "work/math_crops/m00665.png",
   "kind": "display",
   "page_pdf": 517,
   "chapter_number": "12",
@@ -7904,8 +7808,8 @@
   "height_pt": 38.2
  },
  {
-  "id": "m00672",
-  "image": "work/math_crops/m00672.png",
+  "id": "m00666",
+  "image": "work/math_crops/m00666.png",
   "kind": "display",
   "page_pdf": 517,
   "chapter_number": "12",
@@ -7920,8 +7824,8 @@
   "height_pt": 55.1
  },
  {
-  "id": "m00673",
-  "image": "work/math_crops/m00673.png",
+  "id": "m00667",
+  "image": "work/math_crops/m00667.png",
   "kind": "display",
   "page_pdf": 517,
   "chapter_number": "12",
@@ -7936,8 +7840,8 @@
   "height_pt": 58.0
  },
  {
-  "id": "m00674",
-  "image": "work/math_crops/m00674.png",
+  "id": "m00668",
+  "image": "work/math_crops/m00668.png",
   "kind": "display",
   "page_pdf": 517,
   "chapter_number": "12",
@@ -7952,8 +7856,8 @@
   "height_pt": 65.4
  },
  {
-  "id": "m00675",
-  "image": "work/math_crops/m00675.png",
+  "id": "m00669",
+  "image": "work/math_crops/m00669.png",
   "kind": "display",
   "page_pdf": 517,
   "chapter_number": "12",
@@ -7968,8 +7872,8 @@
   "height_pt": 58.0
  },
  {
-  "id": "m00676",
-  "image": "work/math_crops/m00676.png",
+  "id": "m00670",
+  "image": "work/math_crops/m00670.png",
   "kind": "display",
   "page_pdf": 522,
   "chapter_number": "12",
@@ -7984,8 +7888,8 @@
   "height_pt": 64.1
  },
  {
-  "id": "m00678",
-  "image": "work/math_crops/m00678.png",
+  "id": "m00672",
+  "image": "work/math_crops/m00672.png",
   "kind": "inline",
   "page_pdf": 522,
   "chapter_number": "12",
@@ -7994,14 +7898,14 @@
   "extracted_characters": "xij = �Mm=1 aimbjm",
   "deterministic_guess": "",
   "why_model_needed": "extension-font",
-  "context_before": "where {{MATH:m00677}} is the set of all observed pairs of indices (i, j), a subset of the possible n × p pairs.",
+  "context_before": "where {{MATH:m00671}} is the set of all observed pairs of indices (i, j), a subset of the possible n × p pairs.",
   "occurrences": 2,
   "width_pt": 86.5,
   "height_pt": 44.7
  },
  {
-  "id": "m00682",
-  "image": "work/math_crops/m00682.png",
+  "id": "m00676",
+  "image": "work/math_crops/m00676.png",
   "kind": "display",
   "page_pdf": 523,
   "chapter_number": "12",
@@ -8010,14 +7914,14 @@
   "extracted_characters": "�xij\nif (i, j) ∈O\nx˜ij =\nx¯jif (i, j) ∈/O,",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "Create a complete data matrix {{MATH:m00681}} of dimension n × p of which the (i, j) element equals",
+  "context_before": "Create a complete data matrix {{MATH:m00675}} of dimension n × p of which the (i, j) element equals",
   "occurrences": 1,
   "width_pt": 117.0,
   "height_pt": 37.2
  },
  {
-  "id": "m00684",
-  "image": "work/math_crops/m00684.png",
+  "id": "m00678",
+  "image": "work/math_crops/m00678.png",
   "kind": "display",
   "page_pdf": 523,
   "chapter_number": "12",
@@ -8032,8 +7936,8 @@
   "height_pt": 64.1
  },
  {
-  "id": "m00686",
-  "image": "work/math_crops/m00686.png",
+  "id": "m00680",
+  "image": "work/math_crops/m00680.png",
   "kind": "inline",
   "page_pdf": 523,
   "chapter_number": "12",
@@ -8042,14 +7946,14 @@
   "extracted_characters": "xij ←�Mm=1 aimbjm",
   "deterministic_guess": "",
   "why_model_needed": "extension-font",
-  "context_before": "by computing the principal components of {{MATH:m00681}}.",
+  "context_before": "by computing the principal components of {{MATH:m00675}}.",
   "occurrences": 1,
-  "width_pt": 92.5,
-  "height_pt": 52.0
+  "width_pt": 88.7,
+  "height_pt": 37.2
  },
  {
-  "id": "m00687",
-  "image": "work/math_crops/m00687.png",
+  "id": "m00681",
+  "image": "work/math_crops/m00681.png",
   "kind": "display",
   "page_pdf": 523,
   "chapter_number": "12",
@@ -8064,8 +7968,8 @@
   "height_pt": 44.8
  },
  {
-  "id": "m00691",
-  "image": "work/math_crops/m00691.png",
+  "id": "m00685",
+  "image": "work/math_crops/m00685.png",
   "kind": "inline",
   "page_pdf": 527,
   "chapter_number": "12",
@@ -8080,8 +7984,8 @@
   "height_pt": 18.6
  },
  {
-  "id": "m00692",
-  "image": "work/math_crops/m00692.png",
+  "id": "m00686",
+  "image": "work/math_crops/m00686.png",
   "kind": "display",
   "page_pdf": 528,
   "chapter_number": "12",
@@ -8096,8 +8000,8 @@
   "height_pt": 44.8
  },
  {
-  "id": "m00693",
-  "image": "work/math_crops/m00693.png",
+  "id": "m00687",
+  "image": "work/math_crops/m00687.png",
   "kind": "display",
   "page_pdf": 528,
   "chapter_number": "12",
@@ -8112,8 +8016,8 @@
   "height_pt": 38.2
  },
  {
-  "id": "m00694",
-  "image": "work/math_crops/m00694.png",
+  "id": "m00688",
+  "image": "work/math_crops/m00688.png",
   "kind": "display",
   "page_pdf": 529,
   "chapter_number": "12",
@@ -8128,8 +8032,8 @@
   "height_pt": 64.1
  },
  {
-  "id": "m00695",
-  "image": "work/math_crops/m00695.png",
+  "id": "m00689",
+  "image": "work/math_crops/m00689.png",
   "kind": "display",
   "page_pdf": 529,
   "chapter_number": "12",
@@ -8144,24 +8048,8 @@
   "height_pt": 38.2
  },
  {
-  "id": "m00696",
-  "image": "work/math_crops/m00696.png",
-  "kind": "display",
-  "page_pdf": 529,
-  "chapter_number": "12",
-  "chapter_title": "Unsupervised Learning",
-  "equation_number": "",
-  "extracted_characters": "1",
-  "deterministic_guess": "1",
-  "why_model_needed": "display-equation",
-  "context_before": "at each step. To understand why, the following identity is illuminating:",
-  "occurrences": 1,
-  "width_pt": 14.8,
-  "height_pt": 14.9
- },
- {
-  "id": "m00697",
-  "image": "work/math_crops/m00697.png",
+  "id": "m00690",
+  "image": "work/math_crops/m00690.png",
   "kind": "inline",
   "page_pdf": 529,
   "chapter_number": "12",
@@ -8173,11 +8061,11 @@
   "context_before": "at each step. To understand why, the following identity is illuminating:",
   "occurrences": 1,
   "width_pt": 97.1,
-  "height_pt": 52.0
+  "height_pt": 37.2
  },
  {
-  "id": "m00698",
-  "image": "work/math_crops/m00698.png",
+  "id": "m00691",
+  "image": "work/math_crops/m00691.png",
   "kind": "display",
   "page_pdf": 535,
   "chapter_number": "12",
@@ -8192,8 +8080,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00699",
-  "image": "work/math_crops/m00699.png",
+  "id": "m00692",
+  "image": "work/math_crops/m00692.png",
   "kind": "display",
   "page_pdf": 554,
   "chapter_number": "12",
@@ -8208,8 +8096,8 @@
   "height_pt": 33.4
  },
  {
-  "id": "m00700",
-  "image": "work/math_crops/m00700.png",
+  "id": "m00693",
+  "image": "work/math_crops/m00693.png",
   "kind": "display",
   "page_pdf": 558,
   "chapter_number": "12",
@@ -8224,24 +8112,24 @@
   "height_pt": 67.1
  },
  {
-  "id": "m00701",
-  "image": "work/math_crops/m00701.png",
+  "id": "m00694",
+  "image": "work/math_crops/m00694.png",
   "kind": "display",
   "page_pdf": 566,
   "chapter_number": "13",
   "chapter_title": "Multiple Testing",
   "equation_number": "13.1",
-  "extracted_characters": "µˆt −µˆc\nT =�\n11\nsnt +\nnc\n�nt�nc\n11\nntnc\n�\n(nt −1)st2 + (nc −1)s2c\ns =\nnt + nc −2",
+  "extracted_characters": "µˆt −µˆc\nT =�\n11\nsnt +\nnc",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
   "context_before": "To make things concrete, let x1t, . . . , xntt denote the blood pressure measurements for the nt mice in the treatment group, and let x1c, . . . , xncc denote the blood pressure measurements for the nc mice in the control group, and μt = E(Xt), μc = E(Xc). To test H0 : μt = μc, we make use of a two-sample t-statistic,5 defined as",
   "occurrences": 1,
-  "width_pt": 173.7,
-  "height_pt": 101.4
+  "width_pt": 70.2,
+  "height_pt": 53.7
  },
  {
-  "id": "m00702",
-  "image": "work/math_crops/m00702.png",
+  "id": "m00695",
+  "image": "work/math_crops/m00695.png",
   "kind": "inline",
   "page_pdf": 566,
   "chapter_number": "13",
@@ -8256,8 +8144,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00703",
-  "image": "work/math_crops/m00703.png",
+  "id": "m00696",
+  "image": "work/math_crops/m00696.png",
   "kind": "inline",
   "page_pdf": 566,
   "chapter_number": "13",
@@ -8268,12 +8156,28 @@
   "why_model_needed": "fraction-or-radical-rule",
   "context_before": "To make things concrete, let x1t, . . . , xntt denote the blood pressure measurements for the nt mice in the treatment group, and let x1c, . . . , xncc denote the blood pressure measurements for the nc mice in the control group, and μt = E(Xt), μc = E(Xc). To test H0 : μt = μc, we make use of a two-sample t-statistic,5 defined as",
   "occurrences": 1,
-  "width_pt": 91.1,
-  "height_pt": 35.7
+  "width_pt": 70.9,
+  "height_pt": 37.2
  },
  {
-  "id": "m00704",
-  "image": "work/math_crops/m00704.png",
+  "id": "m00697",
+  "image": "work/math_crops/m00697.png",
+  "kind": "display",
+  "page_pdf": 566,
+  "chapter_number": "13",
+  "chapter_title": "Multiple Testing",
+  "equation_number": "13.2",
+  "extracted_characters": "�\n(nt −1)st2 + (nc −1)s2c\ns =\nnt + nc −2",
+  "deterministic_guess": "",
+  "why_model_needed": "display-equation",
+  "context_before": "where {{MATH:m00695}}, {{MATH:m00696}}, and",
+  "occurrences": 1,
+  "width_pt": 130.1,
+  "height_pt": 55.9
+ },
+ {
+  "id": "m00698",
+  "image": "work/math_crops/m00698.png",
   "kind": "inline",
   "page_pdf": 566,
   "chapter_number": "13",
@@ -8282,14 +8186,14 @@
   "extracted_characters": "Ha : µt̸ = µc",
   "deterministic_guess": "",
   "why_model_needed": "unmapped-glyph",
-  "context_before": "where {{MATH:m00702}}, {{MATH:m00703}}, and",
+  "context_before": "where {{MATH:m00695}}, {{MATH:m00696}}, and",
   "occurrences": 1,
   "width_pt": 53.8,
   "height_pt": 18.5
  },
  {
-  "id": "m00705",
-  "image": "work/math_crops/m00705.png",
+  "id": "m00699",
+  "image": "work/math_crops/m00699.png",
   "kind": "display",
   "page_pdf": 571,
   "chapter_number": "13",
@@ -8304,24 +8208,24 @@
   "height_pt": 20.8
  },
  {
-  "id": "m00706",
-  "image": "work/math_crops/m00706.png",
+  "id": "m00700",
+  "image": "work/math_crops/m00700.png",
   "kind": "display",
   "page_pdf": 571,
   "chapter_number": "13",
   "chapter_title": "Multiple Testing",
   "equation_number": "13.4",
-  "extracted_characters": "FWER(α)=1 −Pr(V = 0)\n=1 −Pr(do not falsely reject any null hypotheses)",
-  "deterministic_guess": "FWER(α) = 1 − Pr(V = 0)\n= 1 − Pr(do not falsely reject any null hypotheses)",
+  "extracted_characters": "FWER(α)=1 −Pr(V = 0)\n=1 −Pr(do not falsely reject any null hypotheses)\n��m�\n=1 −Prj=1 {do not falsely reject H0j}.",
+  "deterministic_guess": "",
   "why_model_needed": "display-equation",
   "context_before": "A strategy of rejecting any null hypothesis for which the p-value is below α (i.e. controlling the Type I error for each null hypothesis at level α) leads to a FWER of",
   "occurrences": 1,
   "width_pt": 283.7,
-  "height_pt": 40.8
+  "height_pt": 66.1
  },
  {
-  "id": "m00707",
-  "image": "work/math_crops/m00707.png",
+  "id": "m00701",
+  "image": "work/math_crops/m00701.png",
   "kind": "display",
   "page_pdf": 571,
   "chapter_number": "13",
@@ -8336,8 +8240,8 @@
   "height_pt": 37.7
  },
  {
-  "id": "m00708",
-  "image": "work/math_crops/m00708.png",
+  "id": "m00702",
+  "image": "work/math_crops/m00702.png",
   "kind": "inline",
   "page_pdf": 573,
   "chapter_number": "13",
@@ -8352,8 +8256,8 @@
   "height_pt": 22.0
  },
  {
-  "id": "m00709",
-  "image": "work/math_crops/m00709.png",
+  "id": "m00703",
+  "image": "work/math_crops/m00703.png",
   "kind": "display",
   "page_pdf": 573,
   "chapter_number": "13",
@@ -8368,8 +8272,8 @@
   "height_pt": 53.6
  },
  {
-  "id": "m00710",
-  "image": "work/math_crops/m00710.png",
+  "id": "m00704",
+  "image": "work/math_crops/m00704.png",
   "kind": "display",
   "page_pdf": 573,
   "chapter_number": "13",
@@ -8384,8 +8288,8 @@
   "height_pt": 23.8
  },
  {
-  "id": "m00711",
-  "image": "work/math_crops/m00711.png",
+  "id": "m00705",
+  "image": "work/math_crops/m00705.png",
   "kind": "display",
   "page_pdf": 575,
   "chapter_number": "13",
@@ -8400,8 +8304,8 @@
   "height_pt": 14.5
  },
  {
-  "id": "m00712",
-  "image": "work/math_crops/m00712.png",
+  "id": "m00706",
+  "image": "work/math_crops/m00706.png",
   "kind": "display",
   "page_pdf": 575,
   "chapter_number": "13",
@@ -8416,8 +8320,8 @@
   "height_pt": 38.1
  },
  {
-  "id": "m00713",
-  "image": "work/math_crops/m00713.png",
+  "id": "m00707",
+  "image": "work/math_crops/m00707.png",
   "kind": "inline",
   "page_pdf": 577,
   "chapter_number": "13",
@@ -8432,8 +8336,8 @@
   "height_pt": 18.5
  },
  {
-  "id": "m00714",
-  "image": "work/math_crops/m00714.png",
+  "id": "m00708",
+  "image": "work/math_crops/m00708.png",
   "kind": "display",
   "page_pdf": 577,
   "chapter_number": "13",
@@ -8448,8 +8352,8 @@
   "height_pt": 23.5
  },
  {
-  "id": "m00715",
-  "image": "work/math_crops/m00715.png",
+  "id": "m00709",
+  "image": "work/math_crops/m00709.png",
   "kind": "inline",
   "page_pdf": 578,
   "chapter_number": "13",
@@ -8464,8 +8368,8 @@
   "height_pt": 15.1
  },
  {
-  "id": "m00716",
-  "image": "work/math_crops/m00716.png",
+  "id": "m00710",
+  "image": "work/math_crops/m00710.png",
   "kind": "inline",
   "page_pdf": 578,
   "chapter_number": "13",
@@ -8480,8 +8384,8 @@
   "height_pt": 15.1
  },
  {
-  "id": "m00717",
-  "image": "work/math_crops/m00717.png",
+  "id": "m00711",
+  "image": "work/math_crops/m00711.png",
   "kind": "display",
   "page_pdf": 580,
   "chapter_number": "13",
@@ -8496,8 +8400,8 @@
   "height_pt": 14.1
  },
  {
-  "id": "m00718",
-  "image": "work/math_crops/m00718.png",
+  "id": "m00712",
+  "image": "work/math_crops/m00712.png",
   "kind": "display",
   "page_pdf": 581,
   "chapter_number": "13",
@@ -8512,8 +8416,8 @@
   "height_pt": 14.5
  },
  {
-  "id": "m00719",
-  "image": "work/math_crops/m00719.png",
+  "id": "m00713",
+  "image": "work/math_crops/m00713.png",
   "kind": "display",
   "page_pdf": 581,
   "chapter_number": "13",
@@ -8528,8 +8432,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00720",
-  "image": "work/math_crops/m00720.png",
+  "id": "m00714",
+  "image": "work/math_crops/m00714.png",
   "kind": "inline",
   "page_pdf": 584,
   "chapter_number": "13",
@@ -8544,8 +8448,8 @@
   "height_pt": 17.3
  },
  {
-  "id": "m00721",
-  "image": "work/math_crops/m00721.png",
+  "id": "m00715",
+  "image": "work/math_crops/m00715.png",
   "kind": "display",
   "page_pdf": 584,
   "chapter_number": "13",
@@ -8554,14 +8458,14 @@
   "extracted_characters": "µˆX −µˆY\nT =�\n11\nsnX +\nnY\n�",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "We return to the example of Section 13.1.1, in which we wish to test whether the mean of a random variable X equals the mean of a random variable Y , i.e. H0 : E(X) = E(Y ), against the alternative {{MATH:m00720}}. Given nX independent observations from X and nY independent observations from Y , the two-sample t-statistic takes the form",
+  "context_before": "We return to the example of Section 13.1.1, in which we wish to test whether the mean of a random variable X equals the mean of a random variable Y , i.e. H0 : E(X) = E(Y ), against the alternative {{MATH:m00714}}. Given nX independent observations from X and nY independent observations from Y , the two-sample t-statistic takes the form",
   "occurrences": 1,
   "width_pt": 197.0,
   "height_pt": 73.6
  },
  {
-  "id": "m00722",
-  "image": "work/math_crops/m00722.png",
+  "id": "m00716",
+  "image": "work/math_crops/m00716.png",
   "kind": "inline",
   "page_pdf": 584,
   "chapter_number": "13",
@@ -8570,14 +8474,14 @@
   "extracted_characters": "µX =i=1 xi",
   "deterministic_guess": "\\hat{\\mu}_{X} =_{i=1} x_{i}",
   "why_model_needed": "fraction-or-radical-rule",
-  "context_before": "We return to the example of Section 13.1.1, in which we wish to test whether the mean of a random variable X equals the mean of a random variable Y , i.e. H0 : E(X) = E(Y ), against the alternative {{MATH:m00720}}. Given nX independent observations from X and nY independent observations from Y , the two-sample t-statistic takes the form",
+  "context_before": "We return to the example of Section 13.1.1, in which we wish to test whether the mean of a random variable X equals the mean of a random variable Y , i.e. H0 : E(X) = E(Y ), against the alternative {{MATH:m00714}}. Given nX independent observations from X and nY independent observations from Y , the two-sample t-statistic takes the form",
   "occurrences": 1,
   "width_pt": 80.4,
   "height_pt": 37.2
  },
  {
-  "id": "m00723",
-  "image": "work/math_crops/m00723.png",
+  "id": "m00717",
+  "image": "work/math_crops/m00717.png",
   "kind": "inline",
   "page_pdf": 584,
   "chapter_number": "13",
@@ -8586,14 +8490,14 @@
   "extracted_characters": "µY =i=1 yi",
   "deterministic_guess": "\\hat{\\mu}_{Y} =_{i=1} y_{i}",
   "why_model_needed": "fraction-or-radical-rule",
-  "context_before": "We return to the example of Section 13.1.1, in which we wish to test whether the mean of a random variable X equals the mean of a random variable Y , i.e. H0 : E(X) = E(Y ), against the alternative {{MATH:m00720}}. Given nX independent observations from X and nY independent observations from Y , the two-sample t-statistic takes the form",
+  "context_before": "We return to the example of Section 13.1.1, in which we wish to test whether the mean of a random variable X equals the mean of a random variable Y , i.e. H0 : E(X) = E(Y ), against the alternative {{MATH:m00714}}. Given nX independent observations from X and nY independent observations from Y , the two-sample t-statistic takes the form",
   "occurrences": 1,
   "width_pt": 78.5,
   "height_pt": 37.2
  },
  {
-  "id": "m00724",
-  "image": "work/math_crops/m00724.png",
+  "id": "m00718",
+  "image": "work/math_crops/m00718.png",
   "kind": "display",
   "page_pdf": 584,
   "chapter_number": "13",
@@ -8608,8 +8512,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00725",
-  "image": "work/math_crops/m00725.png",
+  "id": "m00719",
+  "image": "work/math_crops/m00719.png",
   "kind": "display",
   "page_pdf": 585,
   "chapter_number": "13",
@@ -8624,24 +8528,24 @@
   "height_pt": 16.6
  },
  {
-  "id": "m00726",
-  "image": "work/math_crops/m00726.png",
+  "id": "m00720",
+  "image": "work/math_crops/m00720.png",
   "kind": "display",
   "page_pdf": 585,
   "chapter_number": "13",
   "chapter_title": "Multiple Testing",
   "equation_number": "",
-  "extracted_characters": "�B\nb=1 1(|T ∗b|≥|T |)\n3. The p-value is given by.\nB",
+  "extracted_characters": "nX\ny1∗, . . . , yn∗Y , and call the result T ∗b.\n�B\nb=1 1(|T ∗b|≥|T |)\n3. The p-value is given by.\nB",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "y1∗, . . . , ynY∗ , and call the result T ∗b.",
+  "context_before": "Compute (13.11) on the permuted data x1∗, . . . , x∗and",
   "occurrences": 1,
-  "width_pt": 185.9,
-  "height_pt": 26.0
+  "width_pt": 285.4,
+  "height_pt": 48.9
  },
  {
-  "id": "m00727",
-  "image": "work/math_crops/m00727.png",
+  "id": "m00721",
+  "image": "work/math_crops/m00721.png",
   "kind": "display",
   "page_pdf": 586,
   "chapter_number": "13",
@@ -8656,8 +8560,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00728",
-  "image": "work/math_crops/m00728.png",
+  "id": "m00722",
+  "image": "work/math_crops/m00722.png",
   "kind": "inline",
   "page_pdf": 586,
   "chapter_number": "13",
@@ -8672,8 +8576,8 @@
   "height_pt": 44.7
  },
  {
-  "id": "m00729",
-  "image": "work/math_crops/m00729.png",
+  "id": "m00723",
+  "image": "work/math_crops/m00723.png",
   "kind": "display",
   "page_pdf": 587,
   "chapter_number": "13",
@@ -8688,56 +8592,56 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00730",
-  "image": "work/math_crops/m00730.png",
+  "id": "m00724",
+  "image": "work/math_crops/m00724.png",
   "kind": "display",
   "page_pdf": 588,
   "chapter_number": "13",
   "chapter_title": "Multiple Testing",
   "equation_number": "",
-  "extracted_characters": "and y1(j ), . . . , yn(jY) .",
-  "deterministic_guess": "and y1(j ), . . . , ynY(j) .",
+  "extracted_characters": "nX\nand y1(j ), . . . , yn(jY) .",
+  "deterministic_guess": "nX\nand y1(j ), . . . , ynY(j) .",
   "why_model_needed": "display-equation",
   "context_before": "Compute T (j), the two-sample t-statistic (13.11) for the null hypothesis H0j on the basis of the original data, x1(j ), . . . , x(j)",
   "occurrences": 1,
-  "width_pt": 76.2,
-  "height_pt": 16.4
+  "width_pt": 274.6,
+  "height_pt": 26.9
  },
  {
-  "id": "m00731",
-  "image": "work/math_crops/m00731.png",
+  "id": "m00725",
+  "image": "work/math_crops/m00725.png",
   "kind": "display",
   "page_pdf": 588,
   "chapter_number": "13",
   "chapter_title": "Multiple Testing",
   "equation_number": "",
-  "extracted_characters": "servations y∗(j), . . . , yn∗(Yj ).\n1",
-  "deterministic_guess": "servations y∗(j), . . . , ynY∗(j ).\n1",
+  "extracted_characters": "1\nservations y∗(j), . . . , yn∗(Yj ).\n1",
+  "deterministic_guess": "1\nservations y∗(j), . . . , ynY∗(j ).\n1",
   "why_model_needed": "display-equation",
   "context_before": "For b = 1, . . . , B, where B is a large number (e.g. B = 10,000): i. Permute the nX +nY observations at random. Call the first nX observations x∗(j), . . . , xnX∗(j ), and call the remaining ob-",
   "occurrences": 1,
   "width_pt": 110.8,
-  "height_pt": 21.7
+  "height_pt": 22.9
  },
  {
-  "id": "m00732",
-  "image": "work/math_crops/m00732.png",
+  "id": "m00726",
+  "image": "work/math_crops/m00726.png",
   "kind": "display",
   "page_pdf": 588,
   "chapter_number": "13",
   "chapter_title": "Multiple Testing",
   "equation_number": "",
-  "extracted_characters": "1",
-  "deterministic_guess": "1",
+  "extracted_characters": "1\ny∗(j), . . . , yn∗(Yj ), and call the result T (j),∗b.\n1",
+  "deterministic_guess": "1\ny∗(j), . . . , ynY∗(j ), and call the result T (j),∗b.\n1",
   "why_model_needed": "display-equation",
-  "context_before": "y∗(j), . . . , ynY∗(j ), and call the result T (j),∗b.",
+  "context_before": "ii. Compute (13.11) on the permuted data x∗(j), . . . , xnX∗(j )and",
   "occurrences": 1,
-  "width_pt": 4.0,
-  "height_pt": 7.0
+  "width_pt": 185.1,
+  "height_pt": 21.7
  },
  {
-  "id": "m00733",
-  "image": "work/math_crops/m00733.png",
+  "id": "m00727",
+  "image": "work/math_crops/m00727.png",
   "kind": "inline",
   "page_pdf": 588,
   "chapter_number": "13",
@@ -8746,14 +8650,14 @@
   "extracted_characters": "R = �mj=1 1(|T (j)|≥c)",
   "deterministic_guess": "",
   "why_model_needed": "extension-font",
-  "context_before": "y∗(j), . . . , ynY∗(j ), and call the result T (j),∗b.",
+  "context_before": "ii. Compute (13.11) on the permuted data x∗(j), . . . , xnX∗(j )and",
   "occurrences": 1,
-  "width_pt": 115.0,
-  "height_pt": 52.5
+  "width_pt": 89.5,
+  "height_pt": 44.7
  },
  {
-  "id": "m00734",
-  "image": "work/math_crops/m00734.png",
+  "id": "m00728",
+  "image": "work/math_crops/m00728.png",
   "kind": "display",
   "page_pdf": 588,
   "chapter_number": "13",
@@ -8762,14 +8666,14 @@
   "extracted_characters": "�B�m\nb=1\nj=1 1(|T (j),∗b|≥c)\n4. Compute V� =.\nB",
   "deterministic_guess": "",
   "why_model_needed": "display-equation",
-  "context_before": "Compute {{MATH:m00733}}.",
+  "context_before": "Compute {{MATH:m00727}}.",
   "occurrences": 1,
   "width_pt": 174.9,
   "height_pt": 50.7
  },
  {
-  "id": "m00735",
-  "image": "work/math_crops/m00735.png",
+  "id": "m00729",
+  "image": "work/math_crops/m00729.png",
   "kind": "inline",
   "page_pdf": 588,
   "chapter_number": "13",
@@ -8778,14 +8682,14 @@
   "extracted_characters": "V� /R",
   "deterministic_guess": "",
   "why_model_needed": "extension-font",
-  "context_before": "Compute {{MATH:m00733}}.",
+  "context_before": "Compute {{MATH:m00727}}.",
   "occurrences": 1,
   "width_pt": 20.6,
   "height_pt": 37.2
  },
  {
-  "id": "m00736",
-  "image": "work/math_crops/m00736.png",
+  "id": "m00730",
+  "image": "work/math_crops/m00730.png",
   "kind": "inline",
   "page_pdf": 593,
   "chapter_number": "13",
@@ -8800,8 +8704,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00737",
-  "image": "work/math_crops/m00737.png",
+  "id": "m00731",
+  "image": "work/math_crops/m00731.png",
   "kind": "display",
   "page_pdf": 593,
   "chapter_number": "13",
@@ -8810,14 +8714,14 @@
   "extracted_characters": "2",
   "deterministic_guess": "2",
   "why_model_needed": "display-equation",
-  "context_before": "However, we decided to perform this test only after examining the data and noting that Managers One and Two had the highest and lowest mean performances. In a sense, this means that we have implicitly performed {{MATH:m00736}} = 5(5 − 1)/2 = 10 hypothesis tests, rather than just one, as discussed",
+  "context_before": "However, we decided to perform this test only after examining the data and noting that Managers One and Two had the highest and lowest mean performances. In a sense, this means that we have implicitly performed {{MATH:m00730}} = 5(5 − 1)/2 = 10 hypothesis tests, rather than just one, as discussed",
   "occurrences": 1,
   "width_pt": 4.0,
   "height_pt": 14.8
  },
  {
-  "id": "m00738",
-  "image": "work/math_crops/m00738.png",
+  "id": "m00732",
+  "image": "work/math_crops/m00732.png",
   "kind": "inline",
   "page_pdf": 598,
   "chapter_number": "13",
@@ -8832,8 +8736,8 @@
   "height_pt": 37.2
  },
  {
-  "id": "m00739",
-  "image": "work/math_crops/m00739.png",
+  "id": "m00733",
+  "image": "work/math_crops/m00733.png",
   "kind": "display",
   "page_pdf": 599,
   "chapter_number": "13",
@@ -8848,8 +8752,8 @@
   "height_pt": 14.1
  },
  {
-  "id": "m00740",
-  "image": "work/math_crops/m00740.png",
+  "id": "m00734",
+  "image": "work/math_crops/m00734.png",
   "kind": "display",
   "page_pdf": 601,
   "chapter_number": "13",
@@ -8864,8 +8768,8 @@
   "height_pt": 14.1
  },
  {
-  "id": "m00741",
-  "image": "work/math_crops/m00741.png",
+  "id": "m00735",
+  "image": "work/math_crops/m00735.png",
   "kind": "display",
   "page_pdf": 601,
   "chapter_number": "13",

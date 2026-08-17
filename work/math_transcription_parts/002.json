@@ -1,62 +1,56 @@
 [
   {
-    "id": "m00674",
-    "latex": "\\underbrace{\\sum_{j=1}^{p}\\frac{1}{n}\\sum_{i=1}^{n} x_{ij}^{2}}_{\\text{Var. of data}} = \\underbrace{\\sum_{m=1}^{M}\\frac{1}{n}\\sum_{i=1}^{n} z_{im}^{2}}_{\\text{Var. of first } M \\text{ PCs}} + \\underbrace{\\frac{1}{n}\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(x_{ij} - \\sum_{m=1}^{M} z_{im}\\phi_{jm}\\right)^{2}}_{\\text{MSE of } M\\text{-dimensional approximation}}",
-    "confidence": 0.95,
-    "notes": ""
-  },
-  {
     "id": "m00696",
-    "latex": "\\frac{1}{|C_k|}",
+    "latex": "\\hat{\\mu}_{c} = \\frac{1}{n_{c}} \\sum_{i=1}^{n_{c}} x_{i}^{c}",
     "confidence": 0.97,
     "notes": ""
   },
   {
-    "id": "m00698",
-    "latex": "\\binom{n}{2}",
+    "id": "m00697",
+    "latex": "s = \\sqrt{\\frac{(n_{t}-1)s_{t}^{2} + (n_{c}-1)s_{c}^{2}}{n_{t}+n_{c}-2}}",
     "confidence": 0.97,
+    "notes": "faint bleed of previous line's summation visible at top of crop, not transcribed"
+  },
+  {
+    "id": "m00700",
+    "latex": "\\begin{aligned} \\mathrm{FWER}(\\alpha) &= 1 - \\mathrm{Pr}(V = 0) \\\\ &= 1 - \\mathrm{Pr}(\\text{do not falsely reject any null hypotheses}) \\\\ &= 1 - \\mathrm{Pr}\\!\\left(\\bigcap_{j=1}^{m} \\{\\text{do not falsely reject } H_{0j}\\}\\right). \\end{aligned}",
+    "confidence": 0.93,
     "notes": ""
   },
   {
-    "id": "m00699",
-    "latex": "\\binom{6{,}830}{2}",
-    "confidence": 0.95,
-    "notes": "kept comma as 6{,}830 to avoid extra math-mode spacing after the comma"
-  },
-  {
-    "id": "m00701",
-    "latex": "\\begin{aligned} T &= \\frac{\\hat{\\mu}_t - \\hat{\\mu}_c}{s\\sqrt{\\dfrac{1}{n_t}+\\dfrac{1}{n_c}}} \\\\ \\hat{\\mu}_t &= \\frac{1}{n_t}\\sum_{i=1}^{n_t} x_{i}^{t}, \\quad \\hat{\\mu}_c = \\frac{1}{n_c}\\sum_{i=1}^{n_c} x_{i}^{c} \\\\ s &= \\sqrt{\\frac{(n_t -1)s_t^{2} + (n_c -1)s_c^{2}}{n_t + n_c -2}} \\end{aligned}",
+    "id": "m00720",
+    "latex": "\\begin{gathered} y_{1}^{*}, \\ldots, y_{n_{Y}}^{*}, \\text{ and call the result } T^{*b}. \\\\ \\text{3. The } p\\text{-value is given by } \\dfrac{\\sum_{b=1}^{B} 1_{(|T^{*b}| \\ge |T|)}}{B}. \\end{gathered}",
     "confidence": 0.75,
-    "notes": "the crop cuts off the leading 'hat{mu}_t =' on the second line (left edge of the image); reconstructed it by symmetry with the printed hat{mu}_c = term and the context defining sample means for treatment/control groups"
+    "notes": "crop spans end of one enumerated step and start of the next; faint bleed of x_1,...,x_{n_X} at top-right ignored as it belongs to the preceding line"
   },
   {
     "id": "m00724",
-    "latex": "p\\text{-value} = \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B},",
-    "confidence": 0.95,
-    "notes": ""
+    "latex": "\\text{and } y_{1}^{(j)}, \\ldots, y_{n_{Y}}^{(j)}.",
+    "confidence": 0.92,
+    "notes": "faint bleed of H_{0j} and x_1,...,x_{n_X} from neighboring lines ignored"
+  },
+  {
+    "id": "m00725",
+    "latex": "\\text{servations } y_{1}^{*(j)}, \\ldots, y_{n_{Y}}^{*(j)}.",
+    "confidence": 0.9,
+    "notes": "faint stray '1' bleed above and below from adjacent superscripts ignored; 'servations' is the tail of 'observations' continued from previous line"
   },
   {
     "id": "m00726",
-    "latex": "\\text{3. The } p\\text{-value is given by } \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B}\\text{.}",
-    "confidence": 0.9,
-    "notes": "printed as a numbered algorithm step, so the '3.' and surrounding sentence words are kept as \\text{...}"
+    "latex": "y_{1}^{*(j)}, \\ldots, y_{n_{Y}}^{*(j)}, \\text{ and call the result } T^{(j),*b}.",
+    "confidence": 0.92,
+    "notes": "faint bleed of x_1 and a dot above ignored"
   },
   {
     "id": "m00727",
-    "latex": "\\mathrm{FDR} = E\\left(\\frac{V}{R}\\right) \\approx \\frac{\\mathrm{E}(V)}{R}.",
-    "confidence": 0.95,
-    "notes": ""
-  },
-  {
-    "id": "m00734",
-    "latex": "\\text{4. Compute } \\widehat{V} = \\frac{\\sum_{b=1}^{B}\\sum_{j=1}^{m} 1_{\\left(|T^{(j),*b}| \\ge c\\right)}}{B}\\text{.}",
+    "latex": "R = \\sum_{j=1}^{m} 1_{\\left(|T^{(j)}| \\ge c\\right)}",
     "confidence": 0.9,
-    "notes": "printed as a numbered algorithm step, so the '4. Compute' text is kept as \\text{...}"
+    "notes": "faint bleed marks below main line ignored"
   },
   {
-    "id": "m00737",
-    "latex": "\\binom{5}{2}",
-    "confidence": 0.75,
-    "notes": "extracted_characters only captured the trailing '2', but the crop clearly shows a stacked 5 over 2 with parenthesis edges visible, matching the surrounding sentence's 5(5-1)/2 = 10 computation"
+    "id": "m00730",
+    "latex": "(5)",
+    "confidence": 0.55,
+    "notes": "likely a footnote marker rendered in parentheses; low confidence on exact intended typesetting"
   }
 ]

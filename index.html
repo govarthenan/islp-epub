@@ -125,8 +125,8 @@ th { font: 600 12px var(--mono); letter-spacing: .06em; text-transform: uppercas
   <div class="eyebrow">PDF &rarr; EPUB &middot; build log</div>
   <h1>ISLP PDF to EPUB</h1>
   <p class="lede">Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB for a Kobo Libra 2</p>
-  <span class="pill">Built and packaged; verification pass in progress.</span>
-  <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">4</div><div class="tile-label">documents in the spine</div><div class="tile-note">13 chapters plus matter</div></div><div class="tile"><div class="tile-value">593</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">48</div><div class="tile-label">figures and tables</div><div class="tile-note">re-rendered at 300 ppi</div></div><div class="tile"><div class="tile-value">85</div><div class="tile-label">display equations</div><div class="tile-note">each one verified</div></div><div class="tile"><div class="tile-value">193</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">2.1 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div></div>
+  <span class="pill">Verified and packaged.</span>
+  <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">15</div><div class="tile-label">documents in the spine</div><div class="tile-note">13 chapters plus matter</div></div><div class="tile"><div class="tile-value">3,266</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">187</div><div class="tile-label">figures and tables</div><div class="tile-note">re-rendered at 300 ppi</div></div><div class="tile"><div class="tile-value">430</div><div class="tile-label">display equations</div><div class="tile-note">each one verified</div></div><div class="tile"><div class="tile-value">1137</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">7.6 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div><div class="tile"><div class="tile-value">99.6%</div><div class="tile-label">mathematics agreed</div><div class="tile-note">candidate matched the printed page</div></div></div>
 </header>
 
 <h2>How the book is taken apart</h2>
@@ -200,12 +200,14 @@ that all of it would have to be read back out of images. That turned out to be t
 part of it. Sub- and superscripts are recorded in the PDF as a font-size drop plus a baseline
 shift, so most inline mathematics can be rebuilt exactly, for free, and stays as reflowing
 text. A vision model is spent only where the structure is genuinely absent.</p>
-<div class="bar"><div class="seg seg-latex" style="width:30.52%" title="LaTeX from the character stream: 47"></div><div class="seg seg-vlm" style="width:14.29%" title="Read by a vision model: 22"></div><div class="seg seg-display" style="width:55.19%" title="Display equations: 85"></div></div><ul class="legend"><li><span class="swatch swatch-latex"></span>
-          <div><b>47</b> &middot; LaTeX from the character stream
+<div class="bar"><div class="seg seg-text" style="width:88.96%" title="Plain HTML: 5970"></div><div class="seg seg-latex" style="width:2.77%" title="LaTeX from the character stream: 186"></div><div class="seg seg-vlm" style="width:1.86%" title="Read by a vision model: 125"></div><div class="seg seg-display" style="width:6.41%" title="Display equations: 430"></div></div><ul class="legend"><li><span class="swatch swatch-text"></span>
+          <div><b>5,970</b> &middot; Plain HTML
+          <div class="legend-note">Sub- and superscripts recovered from glyph geometry. Reflows and scales; costs nothing.</div></div></li><li><span class="swatch swatch-latex"></span>
+          <div><b>186</b> &middot; LaTeX from the character stream
           <div class="legend-note">Accents and script letters, generated deterministically, then typeset by MathJax.</div></div></li><li><span class="swatch swatch-vlm"></span>
-          <div><b>22</b> &middot; Read by a vision model
+          <div><b>125</b> &middot; Read by a vision model
           <div class="legend-note">Fractions, radicals and large operators: structure the PDF simply does not record.</div></div></li><li><span class="swatch swatch-display"></span>
-          <div><b>85</b> &middot; Display equations
+          <div><b>430</b> &middot; Display equations
           <div class="legend-note">Every centred equation, read from an image and verified against a re-typeset copy.</div></div></li></ul>
 
 <h2>Where the crops went wrong</h2>
@@ -237,7 +239,7 @@ unrelated lines.</p>
 </div>
 
 <h2>Every attempt, in order</h2>
-<p class="sub">8 worked, 3 partly worked, 5 failed outright. The failures
+<p class="sub">10 worked, 3 partly worked, 5 failed outright. The failures
 are the interesting ones: each was caused by a rule that sounded reasonable and did not survive
 contact with the page.</p>
 <ul class="attempts">
@@ -400,6 +402,26 @@ contact with the page.</p>
       <p class="what"><span class="field">Tried</span> Walk all 613 pages, work out which text lines no block consumed, and read them.</p>
       <p class="result"><span class="field">Result</span> 25,605 lines considered, 393 unconsumed. All but ten are equation numbers folded into their equation, or numerator and limit fragments already inside a mathematics crop. The ten were cell output that spilled past its shaded rectangle.</p>
       
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">17</span>
+        <h3>Check every expression against the printed page</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Typeset all 555 transcriptions with MathJax, rasterise them, stack each under the crop from the PDF, and give 23 agents one instruction: find where the transcription is wrong.</p>
+      <p class="result"><span class="field">Result</span> 500 same, 53 cosmetic, 2 genuinely wrong. 99.6% of the mathematics agrees with the page. The two errors were a dropped first row of a two-row equation, and square brackets typeset as round ones.</p>
+      
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">18</span>
+        <h3>An independent second opinion found what the family missed</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Hand 45 of the same comparison images to OpenAI&#x27;s codex CLI, a different model family with no sight of the earlier answers.</p>
+      <p class="result"><span class="field">Result</span> 44 of 45 agreed. The one disagreement was right and mattered: a crop had captured a fraction&#x27;s denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction.</p>
+      <p class="why"><span class="why-label">Why</span> Every other check here was Claude checking Claude. The only check from outside the family found the fault in a sample of 45.</p>
     </li></ul>
 
 
