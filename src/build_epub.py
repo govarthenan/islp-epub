@@ -91,11 +91,13 @@ def load_table_html() -> dict[str, str]:
 
 
 def load_verified_latex() -> dict[str, str]:
-    path = WORK / "math_latex.json"
-    if not path.exists():
-        return {}
-    data = json.loads(path.read_text())
-    return {ident: entry["latex"] for ident, entry in data.items() if entry.get("latex")}
+    """Prefer the verified file when it exists, otherwise the raw transcription."""
+    for name in ("math_final.json", "math_transcription.json"):
+        path = WORK / name
+        if path.exists():
+            data = json.loads(path.read_text())
+            return {ident: entry["latex"] for ident, entry in data.items() if entry.get("latex")}
+    return {}
 
 
 def render_svgs(jobs: list[dict]) -> dict[str, dict]:

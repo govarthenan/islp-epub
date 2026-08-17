@@ -79,6 +79,7 @@ def detect_regions(page: Page, pdf_page: pymupdf.Page) -> list[Region]:
             if other_top < caption_top - 4:
                 floor = max(floor, other_top)
 
+        caption_floor = floor
         # a body-text line above the caption ends the region
         for other in page.lines:
             if other is line or other.zone != Zone.MAIN:
@@ -87,6 +88,16 @@ def detect_regions(page: Page, pdf_page: pymupdf.Page) -> list[Region]:
                 if other.x0 <= 102.5 and other.x1 - other.x0 > 200 and other.size >= 9.5:
                     floor = max(floor, other.y1)
 
+        if kind == "table":
+            # A table's row labels sit near the left margin and its descriptions run the
+            # width of the column, so a row can look exactly like a line of body text. The
+            # rules the table is drawn with do not lie: the topmost one is its top.
+            rule_tops = [rect[1] for rect in page.drawing_rects
+                         if rect[3] - rect[1] <= 2.0 and rect[2] - rect[0] > 150
+                         and caption_floor < rect[1] < caption_top - 4]
+            if rule_tops and min(rule_tops) - 3 < floor:
+                floor = max(caption_floor, min(rule_tops) - 3)
+
         band = (floor + 1.0, caption_top - 1.0)
         if band[1] - band[0] < 8:
             continue
@@ -94,7 +105,7 @@ def detect_regions(page: Page, pdf_page: pymupdf.Page) -> list[Region]:
         pieces: list[tuple[float, float, float, float]] = []
         # Overlap, not containment: a header row whose glyph boxes start a little above the
         # band still belongs to the table, and testing containment clipped it away.
-        for rect in page.drawing_rects + page.image_rects:
+        for rect in page.drawing_rects + page.image_rects + page.rotated_rects:
             if rect[3] > band[0] and rect[1] < band[1] and rect[0] >= CONTENT_X0:
                 if rect[2] - rect[0] > 0.2 and rect[3] - rect[1] > 0.2:
                     pieces.append(rect)

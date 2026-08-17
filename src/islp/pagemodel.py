@@ -145,6 +145,7 @@ class Page:
     drawing_rects: list[tuple[float, float, float, float]] = field(default_factory=list)
     image_rects: list[tuple[float, float, float, float]] = field(default_factory=list)
     links: list[dict] = field(default_factory=list)
+    rotated_rects: list[tuple[float, float, float, float]] = field(default_factory=list)
 
 
 def _span_text(span: dict) -> str:
@@ -309,13 +310,17 @@ def load_page(doc: pymupdf.Document, index: int, two_column: bool = False) -> Pa
 
     groups: list[tuple[float, float, list[Char]]] = []  # (baseline, size, chars)
     image_rects: list[tuple[float, float, float, float]] = []
+    rotated_rects: list[tuple[float, float, float, float]] = []
 
     for block in raw["blocks"]:
         if block["type"] != 0:
             image_rects.append(tuple(block["bbox"]))
             continue
         for line in block["lines"]:
-            if abs(line["dir"][0] - 1.0) > 0.01:  # rotated text (rare); skip
+            if abs(line["dir"][0] - 1.0) > 0.01:
+                # Turned text: a few table headers are set sideways. It is not part of the
+                # reading flow, but its box must be inside the region that gets rendered.
+                rotated_rects.append(tuple(line["bbox"]))
                 continue
             baseline, size = _line_baseline(line)
             chars: list[Char] = []
@@ -410,4 +415,5 @@ def load_page(doc: pymupdf.Document, index: int, two_column: bool = False) -> Pa
         drawing_rects=drawing_rects,
         image_rects=image_rects,
         links=links,
+        rotated_rects=rotated_rects,
     )

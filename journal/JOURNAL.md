@@ -265,3 +265,32 @@ table.
 8 pt above it. Same change fixes figures whose topmost axis label sits high.
 
 **Status.** SUCCESS.
+
+---
+
+## 2026-08-17 — Entry 011: Tables as markup, and two bad crops
+
+**Attempt.** Convert the 36 tables to real HTML instead of leaving them as pictures, so they
+follow the reader's font size. Four agents, nine tables each, each checking its own markup
+with `src/check_table_html.py` (well-formed XML, and every row the same width once colspan is
+counted).
+
+**Result.** 36 of 36 converted, all parsing, all rectangular. The markup is faithful down to
+the minus signs: the agents used U+2212 where the page prints a minus, kept `&lt; 0.0001` with
+its space in chapter 3 and without one in chapter 4, exactly as printed.
+
+**Two agents reported that their crop was wrong**, and re-rendered the page themselves to
+recover the table. Both were real region-detection faults:
+
+1. **Table 12.3** — the region stopped 190 pt too low. Its row labels sit near the left
+   margin and its description column runs the width of the text block, so a table row looked
+   exactly like a line of body text and was taken as the top of the region.
+   **Fix:** for tables, trust the rules the table is drawn with. The topmost wide horizontal
+   rule between the previous caption and this one is the table's top.
+2. **Table 12.2** — its column headers are set sideways. Rotated text was skipped outright
+   when the page was read, so it contributed nothing to the region and was cropped away.
+   **Fix:** rotated lines are dropped from the reading flow but their boxes are kept, so the
+   region still covers them.
+
+**Status.** SUCCESS. Worth noting again: the faults were reported by the agents doing the
+work, not found by inspection.
