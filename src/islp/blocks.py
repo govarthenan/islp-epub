@@ -1,0 +1,322 @@
+"""Group visual lines into semantic blocks: headings, paragraphs, display equations,
+code cells, captions and list items.
+
+The classifier leans on measurements rather than guesses:
+
+  * prose lines carry at least one two-letter word in a Latin Modern text font;
+  * display equations are indented past the paragraph margin (x >= 94.5) and carry no
+    prose word, or contain a CMEX glyph (a large operator or delimiter);
+  * a new paragraph is announced by the 9.9 pt first-line indent (x 91.0 -> 100.9);
+  * figure and table captions open with "FIGURE n.n." or "TABLE n.n.";
+  * code lives in shaded cells, cream for input and white for output.
+"""
+
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass, field
+from enum import Enum
+
+from .fonts import Role, is_extension_font
+from .pagemodel import Char, Page, VLine, Zone
+
+PROSE_LEFT = 91.0
+PARA_INDENT = 100.9
+DISPLAY_MIN_X = 94.5
+CHAPTER_TITLE_SIZE = 20.7
+SECTION_SIZE = 14.3
+SUBSECTION_SIZE = 12.0
+COLOUR_ACCENT = 0x0068B4
+
+CAPTION_RE = re.compile(r"^\s*(FIGURE|TABLE)\s+([A-Z]?\.?\d+\.\d+)\.")
+EQNUM_RE = re.compile(r"^\s*\((\d+\.\d+)\)\s*$")
+LIST_MARKER_RE = re.compile(r"^\s*(\(?[a-z]\)|\(?[ivx]+\)|\d+\.)\s")
+PROSE_WORD_RE = re.compile(r"[A-Za-zÀ-ɏ]{2,}")
+
+
+class Kind(str, Enum):
+    CHAPTER_NUMBER = "chapter_number"
+    CHAPTER_TITLE = "chapter_title"
+    SECTION = "section"
+    SUBSECTION = "subsection"
+    LAB_HEADING = "lab_heading"
+    CAPTION = "caption"
+    PROSE = "prose"
+    DISPLAY = "display"
+    EQNUM = "eqnum"
+    CODE = "code"
+    MARGIN = "margin"
+    FOOTNOTE = "footnote"
+    OTHER = "other"
+
+
+@dataclass
+class TaggedLine:
+    line: VLine
+    kind: Kind
+    is_new_paragraph: bool = False
+    list_marker: str = ""
+
+
+@dataclass
+class Block:
+    kind: str
+    page: int
+    lines: list[VLine] = field(default_factory=list)
+    text: str = ""
+    html: str = ""
+    number: str = ""
+    level: int = 0
+    eq_number: str = ""
+    bbox: tuple[float, float, float, float] = (0, 0, 0, 0)
+    code_kind: str = ""
+    list_marker: str = ""
+    meta: dict = field(default_factory=dict)
+
+
+def _prose_text(line: VLine) -> str:
+    return "".join(c.c for c in line.chars if c.role in (Role.PROSE, Role.PROSE_ITALIC, Role.PROSE_BOLD))
+
+
+def has_prose_word(line: VLine) -> bool:
+    return bool(PROSE_WORD_RE.search(_prose_text(line)))
+
+
+def math_fraction(line: VLine) -> float:
+    solid = [c for c in line.chars if not c.is_space]
+    if not solid:
+        return 0.0
+    return sum(1 for c in solid if c.role in (Role.MATH_VAR, Role.MATH_UP)) / len(solid)
+
+
+def _all_dots(line: VLine) -> bool:
+    solid = [c for c in line.chars if not c.is_space]
+    return bool(solid) and all(c.c in ".·…⋮⋱⋯" for c in solid)
+
+
+def _has_extension(line: VLine) -> bool:
+    return any(is_extension_font(c.font) or c.c == "�" for c in line.chars)
+
+
+def classify_line(line: VLine) -> Kind:
+    if line.zone == Zone.MARGIN:
+        return Kind.MARGIN
+    if line.zone == Zone.CODE:
+        return Kind.CODE
+    if line.zone in (Zone.HEADER, Zone.FOOTER, Zone.GRAPHIC):
+        return Kind.OTHER
+
+    text = line.text.strip()
+    if not text:
+        return Kind.OTHER
+
+    if EQNUM_RE.match(text) and line.x0 > 380:
+        return Kind.EQNUM
+    if CAPTION_RE.match(text):
+        return Kind.CAPTION
+
+    size = line.size
+    if size >= CHAPTER_TITLE_SIZE - 1.0:
+        return Kind.CHAPTER_NUMBER if len(text) <= 3 else Kind.CHAPTER_TITLE
+    if abs(size - SECTION_SIZE) < 0.6:
+        return Kind.SECTION
+    if abs(size - SUBSECTION_SIZE) < 0.6:
+        return Kind.SUBSECTION
+
+    solid = [c for c in line.chars if not c.is_space]
+    if solid and all(c.colour == COLOUR_ACCENT for c in solid) and line.x0 < 95 and len(text) < 70:
+        return Kind.LAB_HEADING
+
+    if _has_extension(line):
+        return Kind.DISPLAY
+    if line.x0 >= DISPLAY_MIN_X and not has_prose_word(line) and not LIST_MARKER_RE.match(text):
+        if math_fraction(line) > 0.6 or _all_dots(line):
+            return Kind.DISPLAY
+    if size < 9.5 and line.y0 > 520 and not has_prose_word(line):
+        return Kind.OTHER
+    return Kind.PROSE
+
+
+def tag_lines(page: Page) -> list[TaggedLine]:
+    tagged: list[TaggedLine] = []
+    previous_prose: VLine | None = None
+    for line in page.lines:
+        kind = classify_line(line)
+        entry = TaggedLine(line=line, kind=kind)
+        if kind == Kind.PROSE:
+            marker = LIST_MARKER_RE.match(line.text)
+            indent_start = abs(line.x0 - PARA_INDENT) < 1.6
+            if marker and line.x0 > PROSE_LEFT + 2:
+                entry.list_marker = marker.group(1)
+                entry.is_new_paragraph = True
+            elif indent_start:
+                entry.is_new_paragraph = True
+            previous_prose = line
+        tagged.append(entry)
+    return tagged
+
+
+def _bbox_union(boxes: list[tuple[float, float, float, float]]) -> tuple[float, float, float, float]:
+    return (
+        min(b[0] for b in boxes),
+        min(b[1] for b in boxes),
+        max(b[2] for b in boxes),
+        max(b[3] for b in boxes),
+    )
+
+
+DISPLAY_GAP = 24.0
+
+
+def _detach_equation_number(lines: list[VLine]) -> str:
+    """An equation number typeset on the same baseline as the equation is merged into it by
+    the extractor. Split it back off so it does not land inside the cropped image."""
+    for line in lines:
+        tail = [c for c in line.chars if c.x0 >= 378.0]
+        if not tail:
+            continue
+        text = "".join(c.c for c in tail).strip()
+        match = EQNUM_RE.match(text)
+        if match and len(tail) < len(line.chars):
+            line.chars = [c for c in line.chars if c.x0 < 378.0]
+            return match.group(1)
+    return ""
+
+
+def assemble(page: Page) -> list[Block]:
+    """Turn one page into blocks, in reading order."""
+    tagged = tag_lines(page)
+    blocks: list[Block] = []
+    index = 0
+
+    def push(block: Block) -> None:
+        if block.lines:
+            block.bbox = _bbox_union([ln.bbox for ln in block.lines])
+        blocks.append(block)
+
+    while index < len(tagged):
+        entry = tagged[index]
+        kind = entry.kind
+
+        if kind in (Kind.OTHER,):
+            index += 1
+            continue
+
+        if kind == Kind.MARGIN:
+            run = [entry.line]
+            index += 1
+            while index < len(tagged) and tagged[index].kind == Kind.MARGIN and \
+                    tagged[index].line.baseline - run[-1].baseline < 13.0:
+                run.append(tagged[index].line)
+                index += 1
+            push(Block(kind="margin", page=page.index, lines=run))
+            continue
+
+        if kind == Kind.EQNUM:
+            # attach to the display block that is vertically nearest
+            number = EQNUM_RE.match(entry.line.text.strip()).group(1)
+            target = None
+            for block in reversed(blocks):
+                if block.kind == "display" and abs(block.bbox[3] - entry.line.y1) < 30:
+                    target = block
+                    break
+            if target is not None:
+                target.eq_number = number
+            else:
+                push(Block(kind="eqnum_orphan", page=page.index, lines=[entry.line], eq_number=number))
+            index += 1
+            continue
+
+        if kind == Kind.CODE:
+            run = [entry.line]
+            code_kind = entry.line.cell_fill or "output"
+            index += 1
+            side_notes: list[VLine] = []
+            while index < len(tagged):
+                following = tagged[index]
+                if following.kind == Kind.MARGIN:
+                    side_notes.append(following.line)
+                    index += 1
+                    continue
+                if following.kind != Kind.CODE:
+                    break
+                if (following.line.cell_fill or "output") != code_kind:
+                    break
+                if following.line.baseline - run[-1].baseline > 18:
+                    break
+                run.append(following.line)
+                index += 1
+            push(Block(kind="code", page=page.index, lines=run, code_kind=code_kind))
+            for note in side_notes:
+                push(Block(kind="margin", page=page.index, lines=[note]))
+            continue
+
+        if kind == Kind.DISPLAY:
+            run = [entry.line]
+            index += 1
+            while index < len(tagged) and tagged[index].kind in (Kind.DISPLAY, Kind.EQNUM):
+                candidate = tagged[index].line
+                if candidate.baseline - run[-1].baseline > DISPLAY_GAP:
+                    break
+                if tagged[index].kind == Kind.EQNUM:
+                    break
+                run.append(candidate)
+                index += 1
+            block = Block(kind="display", page=page.index, lines=run)
+            block.eq_number = _detach_equation_number(run)
+            push(block)
+            continue
+
+        if kind == Kind.CAPTION:
+            run = [entry.line]
+            index += 1
+            while index < len(tagged) and tagged[index].kind == Kind.PROSE and \
+                    abs(tagged[index].line.size - run[-1].size) < 0.6 and \
+                    tagged[index].line.baseline - run[-1].baseline < 16 and \
+                    not tagged[index].is_new_paragraph:
+                run.append(tagged[index].line)
+                index += 1
+            match = CAPTION_RE.match(run[0].text.strip())
+            push(Block(kind="caption", page=page.index, lines=run,
+                       meta={"caption_type": match.group(1).lower()}, number=match.group(2)))
+            continue
+
+        if kind in (Kind.CHAPTER_NUMBER, Kind.CHAPTER_TITLE, Kind.SECTION, Kind.SUBSECTION,
+                    Kind.LAB_HEADING):
+            run = [entry.line]
+            index += 1
+            while index < len(tagged) and tagged[index].kind == kind and \
+                    tagged[index].line.baseline - run[-1].baseline < 26:
+                run.append(tagged[index].line)
+                index += 1
+            level = {
+                Kind.CHAPTER_TITLE: 1,
+                Kind.SECTION: 2,
+                Kind.SUBSECTION: 3,
+                Kind.LAB_HEADING: 4,
+                Kind.CHAPTER_NUMBER: 0,
+            }[kind]
+            push(Block(kind="heading", page=page.index, lines=run, level=level,
+                       meta={"heading_kind": kind.value}))
+            continue
+
+        # prose: gather until the next new paragraph or a different kind
+        run = [entry.line]
+        marker = entry.list_marker
+        index += 1
+        while index < len(tagged):
+            following = tagged[index]
+            if following.kind == Kind.MARGIN:
+                push_margin = Block(kind="margin", page=page.index, lines=[following.line])
+                blocks.append(push_margin)
+                index += 1
+                continue
+            if following.kind != Kind.PROSE or following.is_new_paragraph:
+                break
+            if following.line.baseline - run[-1].baseline > 26:
+                break
+            run.append(following.line)
+            index += 1
+        push(Block(kind="para", page=page.index, lines=run, list_marker=marker))
+
+    return blocks

@@ -1,0 +1,441 @@
+"""Assemble the whole book: pages -> blocks -> chapters, with paragraphs stitched across
+page breaks, hyphenation undone, and every piece of mathematics registered for rendering.
+
+Hyphenation is resolved from the book's own vocabulary. A line ending in "-" is joined
+without the hyphen when the joined form occurs elsewhere in the book more often than the
+hyphenated form does, which keeps "non-linear" intact while repairing "individ-ual".
+"""
+
+from __future__ import annotations
+
+import re
+from collections import Counter
+from dataclasses import dataclass, field
+from pathlib import Path
+
+import pymupdf
+
+from .blocks import Block, Kind, assemble, classify_line
+from .fonts import Role
+from .inline import Tier, build_inline
+from .pagemodel import Page, VLine, Zone, load_page
+
+WORD_RE = re.compile(r"[A-Za-z][A-Za-z'’]*")
+TRAILING_HYPHEN_RE = re.compile(r"[-‐]((?:</[a-z]+>)*)$")
+MATH_PLACEHOLDER_RE = re.compile("\x00MATH(\\d+)\x00")
+
+
+@dataclass
+class MathItem:
+    ident: str
+    tier: str
+    latex: str
+    page: int
+    bbox: tuple[float, float, float, float]
+    raw_text: str
+    reason: str
+    display: bool
+    key: str
+    meta_guess: str = ""
+    eq_number: str = ""
+    context: str = ""
+    chapter: str = ""
+    occurrences: int = 1
+
+
+@dataclass
+class MathRegistry:
+    items: dict[str, MathItem] = field(default_factory=dict)
+    by_key: dict[str, str] = field(default_factory=dict)
+    counter: int = 0
+
+    def add(self, *, tier: str, latex: str, page: int, bbox, raw_text: str, reason: str,
+            display: bool, key: str, eq_number: str = "", context: str = "",
+            chapter: str = "") -> str:
+        if not display and key in self.by_key:
+            ident = self.by_key[key]
+            self.items[ident].occurrences += 1
+            return ident
+        self.counter += 1
+        ident = f"m{self.counter:05d}"
+        self.items[ident] = MathItem(
+            ident=ident, tier=tier, latex=latex, page=page, bbox=tuple(bbox), raw_text=raw_text,
+            reason=reason, display=display, key=key, eq_number=eq_number, context=context,
+            chapter=chapter,
+        )
+        if not display:
+            self.by_key[key] = ident
+        return ident
+
+
+@dataclass
+class DocBlock:
+    kind: str
+    html: str = ""
+    page: int = 0
+    level: int = 0
+    number: str = ""
+    eq_number: str = ""
+    math_id: str = ""
+    code_kind: str = ""
+    list_marker: str = ""
+    anchor: str = ""
+    caption_type: str = ""
+    bbox: tuple[float, float, float, float] = (0, 0, 0, 0)
+    meta: dict = field(default_factory=dict)
+
+
+@dataclass
+class Chapter:
+    ident: str
+    title: str
+    number: str
+    start_page: int
+    blocks: list[DocBlock] = field(default_factory=list)
+
+
+@dataclass
+class Document:
+    chapters: list[Chapter] = field(default_factory=list)
+    math: MathRegistry = field(default_factory=MathRegistry)
+    toc: list = field(default_factory=list)
+
+
+# ------------------------------------------------------------------------------------------
+# hyphenation
+# ------------------------------------------------------------------------------------------
+
+def build_vocabulary(pages: list[Page]) -> Counter[str]:
+    vocabulary: Counter[str] = Counter()
+    for page in pages:
+        for line in page.lines:
+            if line.zone != Zone.MAIN:
+                continue
+            text = "".join(c.c for c in line.chars
+                           if c.role in (Role.PROSE, Role.PROSE_ITALIC, Role.PROSE_BOLD))
+            words = WORD_RE.findall(text)
+            if text.rstrip().endswith("-") and words:
+                words = words[:-1]  # the last word is broken across the line
+            for word in words:
+                vocabulary[word.lower()] += 1
+    return vocabulary
+
+
+def _strip_tags(html: str) -> str:
+    return re.sub(r"<[^>]+>", "", html)
+
+
+def join_lines(html_parts: list[str], vocabulary: Counter[str]) -> str:
+    """Join line fragments into a paragraph, undoing LaTeX hyphenation where the book's own
+    usage says the word is not really hyphenated."""
+    out = ""
+    for part in html_parts:
+        part = part.strip()
+        if not part:
+            continue
+        if not out:
+            out = part
+            continue
+        plain = _strip_tags(out)
+        if TRAILING_HYPHEN_RE.search(out) and plain.rstrip().endswith(("-", "‐")):
+            head_match = re.search(r"([A-Za-z]+)[-‐]$", plain.rstrip())
+            tail_match = re.match(r"([A-Za-z]+)", _strip_tags(part))
+            if head_match and tail_match:
+                head, tail = head_match.group(1).lower(), tail_match.group(1).lower()
+                joined = vocabulary.get(head + tail, 0)
+                hyphenated = vocabulary.get(head + "-" + tail, 0)
+                if joined >= hyphenated:
+                    out = TRAILING_HYPHEN_RE.sub(r"\1", out) + part
+                    continue
+            else:
+                out = TRAILING_HYPHEN_RE.sub(r"\1", out) + part
+                continue
+        out = out + " " + part
+    return re.sub(r"\s{2,}", " ", out).strip()
+
+
+# ------------------------------------------------------------------------------------------
+# code reconstruction
+# ------------------------------------------------------------------------------------------
+
+PROMPT_X = 89.0
+
+
+def code_block_text(lines: list[VLine]) -> str:
+    """Rebuild a code cell as plain text.
+
+    The Jupyter prompt ("In [64]:") is printed in the left margin in its own, narrower font,
+    so it is handled as a literal prefix. Inside the cell, space characters are kept as they
+    come from the PDF and positional gaps add further padding, which is what preserves the
+    alignment of printed array output."""
+    content_chars = [c for line in lines for c in line.chars if c.ox >= PROMPT_X]
+    if not content_chars:
+        content_chars = [c for line in lines for c in line.chars]
+    if not content_chars:
+        return ""
+
+    deltas: list[float] = []
+    for line in lines:
+        ordered = sorted((c for c in line.chars if c.ox >= PROMPT_X), key=lambda c: c.ox)
+        for left, right in zip(ordered, ordered[1:]):
+            gap = right.ox - left.ox
+            if 2.0 < gap < 9.0:
+                deltas.append(gap)
+    deltas.sort()
+    advance = deltas[len(deltas) // 2] if deltas else 4.74
+    origin = min(c.ox for c in content_chars)
+
+    prompts = ["".join(c.c for c in sorted((ch for ch in line.chars if ch.ox < PROMPT_X),
+                                           key=lambda ch: ch.ox)).strip() for line in lines]
+    prompt_width = max((len(p) for p in prompts if p), default=0)
+    prompt_width = prompt_width + 1 if prompt_width else 0
+
+    rendered: list[str] = []
+    for line, prompt in zip(lines, prompts):
+        ordered = sorted((c for c in line.chars if c.ox >= PROMPT_X), key=lambda c: c.ox)
+        buffer = (prompt + " ").ljust(prompt_width) if prompt else " " * prompt_width
+        previous = None
+        for char in ordered:
+            if previous is None:
+                buffer += " " * max(0, round((char.ox - origin) / advance))
+            else:
+                buffer += " " * max(0, round((char.ox - previous.ox) / advance) - 1)
+            buffer += char.c
+            previous = char
+        if buffer.strip():
+            rendered.append(buffer.rstrip())
+    return "\n".join(rendered)
+
+
+# ------------------------------------------------------------------------------------------
+# document assembly
+# ------------------------------------------------------------------------------------------
+
+def _line_html(line: VLine, rules, registry: MathRegistry, chapter: str,
+               context: str) -> tuple[str, list[str]]:
+    result = build_inline(line.chars, rules)
+    ids: list[str] = []
+    for run in result.math_runs:
+        ident = registry.add(
+            tier=run.tier.value,
+            latex=run.latex,
+            page=line.page,
+            bbox=run.bbox,
+            raw_text=run.raw_text,
+            reason=run.reason,
+            display=False,
+            key=run.key,
+            context=context,
+            chapter=chapter,
+        )
+        ids.append(ident)
+    html = MATH_PLACEHOLDER_RE.sub(lambda m: "{{MATH:" + ids[int(m.group(1))] + "}}", result.html)
+    return html, ids
+
+
+def _slug(text: str) -> str:
+    text = re.sub(r"[^A-Za-z0-9]+", "-", text.strip().lower()).strip("-")
+    return text or "section"
+
+
+FRONT_SKIP = {0, 1, 4, 5, 6, 7, 8, 9, 10}  # cover, dedication, and the printed table of contents
+INDEX_START = 602  # zero-based: the Index runs to the end of the book
+
+
+@dataclass
+class Section:
+    """A heading that the navigation document should point at."""
+
+    level: int
+    title: str
+    anchor: str
+    chapter_ident: str
+
+
+def _chapter_spans(toc: list) -> list[tuple[int, int, str, str]]:
+    """(start_page0, end_page0_exclusive, number, title) for every level-1 entry."""
+    level_one = [(page - 1, title) for level, title, page in toc if level == 1]
+    spans = []
+    for position, (start, title) in enumerate(level_one):
+        end = level_one[position + 1][0] if position + 1 < len(level_one) else 10 ** 9
+        match = re.match(r"^(\d+)\s+(.*)$", title)
+        number, name = (match.group(1), match.group(2)) if match else ("", title)
+        spans.append((start, end, number, name))
+    return spans
+
+
+INLINE_TAGS = "em|strong|code|i|b|sub|sup"
+
+
+def _sanitize(html: str) -> str:
+    """Normalise whitespace and pull stray spaces out of inline tags."""
+    html = html.replace("­", "")
+    html = re.sub(r"\s+", " ", html)
+    for _ in range(3):
+        html = re.sub(r"(\s+)(</(?:%s)>)" % INLINE_TAGS, r"\2\1", html)
+        html = re.sub(r"(<(?:%s)>)(\s+)" % INLINE_TAGS, r"\2\1", html)
+    html = re.sub(r"<(%s)>\s*</\1>" % INLINE_TAGS, " ", html)
+    for tag in ("em", "strong", "code", "i"):
+        html = re.sub(r"</%s>(\s*)<%s>" % (tag, tag), r"\1", html)
+    return re.sub(r"\s{2,}", " ", html).strip()
+
+
+def _strip_emphasis(html: str) -> str:
+    return re.sub(r"</?(?:em|strong)>", "", html)
+
+
+def assemble_document(pdf_path: Path, progress: bool = False,
+                      first: int = 0, last: int | None = None) -> Document:
+    from .figures import consume_lines, detect_regions
+
+    pdf = pymupdf.open(pdf_path)
+    toc = pdf.get_toc()
+    spans = _chapter_spans(toc)
+
+    pages: list[Page] = []
+    regions_by_page: dict[int, list] = {}
+    stop = pdf.page_count if last is None else min(last, pdf.page_count)
+    for index in range(first, stop):
+        if index in FRONT_SKIP:
+            continue
+        page = load_page(pdf, index)
+        regions = detect_regions(page, pdf[index])
+        consume_lines(page, regions)
+        regions_by_page[index] = regions
+        pages.append(page)
+        if progress and index % 50 == 0:
+            print(f"  page {index + 1}/{pdf.page_count}", flush=True)
+
+    vocabulary = build_vocabulary(pages)
+    document = Document(toc=toc)
+    registry = document.math
+
+    chapters: dict[int, Chapter] = {}
+    for position, (start, _end, number, title) in enumerate(spans):
+        ident = f"ch{position:02d}"
+        chapters[start] = Chapter(ident=ident, title=title, number=number, start_page=start)
+
+    def chapter_for(page_index: int) -> Chapter:
+        chosen = None
+        for start, _end, _number, _title in spans:
+            if page_index >= start:
+                chosen = chapters[start]
+        return chosen or next(iter(chapters.values()))
+
+    front = Chapter(ident="front", title="Dedication", number="", start_page=1)
+    document.chapters.append(front)
+
+    used: list[Chapter] = []
+    seen_idents: set[str] = set()
+    pending_margins: list[str] = []
+    last_para: DocBlock | None = None
+    previous_context = ""
+
+    for page in pages:
+        chapter = chapter_for(page.index)
+        if page.index >= INDEX_START:
+            chapter = chapters[spans[-1][0]]
+        if chapter.ident not in seen_idents:
+            seen_idents.add(chapter.ident)
+            used.append(chapter)
+            last_para = None
+
+        regions = regions_by_page.get(page.index, [])
+        blocks = assemble(page)
+        rules = page.drawing_rects
+        region_by_number = {(r.kind, r.number): r for r in regions}
+
+        for block in blocks:
+            if block.kind == "margin":
+                parts = [_line_html(line, rules, registry, chapter.ident, previous_context)[0]
+                         for line in block.lines]
+                pending_margins.append(_sanitize(join_lines(parts, vocabulary)))
+                continue
+
+            if block.kind == "heading":
+                parts = [_line_html(line, rules, registry, chapter.ident, "")[0] for line in block.lines]
+                text = _sanitize(" ".join(parts))
+                if block.meta.get("heading_kind") == "chapter_number":
+                    continue
+                heading = DocBlock(kind="heading", html=_strip_emphasis(text), page=page.index,
+                                   level=block.level, anchor="")
+                chapter.blocks.append(heading)
+                last_para = None
+                continue
+
+            if block.kind == "code":
+                chapter.blocks.append(DocBlock(kind="code", html=code_block_text(block.lines),
+                                               page=page.index, code_kind=block.code_kind))
+                last_para = None
+                continue
+
+            if block.kind == "display":
+                raw = "\n".join(line.text for line in block.lines)
+                guesses = []
+                complete = True
+                for line in block.lines:
+                    result = build_inline(line.chars, rules)
+                    if any(run.tier != Tier.TEXT for run in result.math_runs):
+                        complete = False
+                    guesses.append(_strip_tags(result.html))
+                ident = registry.add(
+                    tier="display", latex="", page=page.index, bbox=block.bbox,
+                    raw_text=raw, reason="display-equation", display=True,
+                    key=f"disp-{page.index}-{round(block.bbox[1])}",
+                    eq_number=block.eq_number, context=previous_context[-600:],
+                    chapter=chapter.ident,
+                )
+                registry.items[ident].meta_guess = "\n".join(guesses) if complete else ""
+                chapter.blocks.append(DocBlock(kind="display", math_id=ident, page=page.index,
+                                               eq_number=block.eq_number, bbox=block.bbox))
+                last_para = None
+                continue
+
+            if block.kind == "caption":
+                parts = [_line_html(line, rules, registry, chapter.ident, "")[0] for line in block.lines]
+                text = _sanitize(" ".join(parts))
+                caption_type = block.meta.get("caption_type", "figure")
+                region = region_by_number.get((caption_type, block.number))
+                media = DocBlock(kind=caption_type, page=page.index, number=block.number,
+                                 html=text, caption_type=caption_type,
+                                 bbox=region.bbox if region else (0, 0, 0, 0))
+                chapter.blocks.append(media)
+                last_para = None
+                continue
+
+            if block.kind == "para":
+                parts = []
+                for line in block.lines:
+                    fragment, _ = _line_html(line, rules, registry, chapter.ident, previous_context)
+                    parts.append(fragment)
+                html = _sanitize(join_lines(parts, vocabulary))
+                if block.list_marker:
+                    html = re.sub(r"^\s*" + re.escape(block.list_marker) + r"\s*", "", html, count=1)
+                if not html:
+                    continue
+                first = block.lines[0]
+                indented = abs(first.x0 - PARA_INDENT_X) < 1.6
+                marker = block.list_marker
+                if (not indented and not marker and last_para is not None
+                        and last_para.kind == "para" and not last_para.list_marker
+                        and chapter.blocks and chapter.blocks[-1] is last_para):
+                    last_para.html = join_lines([last_para.html, html], vocabulary)
+                else:
+                    body_lines = block.lines[1:] if len(block.lines) > 1 else block.lines
+                    left = min(line.x0 for line in body_lines)
+                    doc_block = DocBlock(kind="para", html=html, page=page.index,
+                                         list_marker=marker, meta={"left": round(left, 1)})
+                    chapter.blocks.append(doc_block)
+                    last_para = doc_block
+                previous_context = _strip_tags(html)
+                if pending_margins and last_para is not None:
+                    notes = last_para.meta.setdefault("margin_notes", [])
+                    notes.extend(pending_margins)
+                    pending_margins = []
+                continue
+
+    document.chapters = [front] + used
+    return document
+
+
+PARA_INDENT_X = 100.9
