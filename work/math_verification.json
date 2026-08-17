@@ -1,0 +1,31 @@
+{
+ "expressions": 555,
+ "checked": 555,
+ "verdicts": {
+  "same": 500,
+  "cosmetic": 53,
+  "wrong": 2
+ },
+ "accuracy": 99.6,
+ "corrections_applied": 2,
+ "corrections_refused": 0,
+ "correction_examples": [
+  {
+   "id": "m00567",
+   "latex": "\\begin{aligned} h_1(X) &= (0 + X_1 + X_2)^2, \\\\ h_2(X) &= (0 + X_1 - X_2)^2. \\end{aligned}",
+   "issue": "Candidate LaTeX only transcribes the h_2(X) row; the top image (and the characters layer) shows a two-row equation with h_1(X) = (0 + X_1 + X_2)^2, given first, which is entirely missing from the candidate."
+  },
+  {
+   "id": "m00700",
+   "latex": "\\begin{bmatrix} & 0.3 & 0.4 & 0.7\\\\ 0.3 & & 0.5 & 0.8\\\\ 0.4 & 0.5 & & 0.45\\\\ 0.7 & 0.8 & 0.45 & \\end{bmatrix}.",
+   "issue": "Printed page encloses the matrix in square brackets; candidate LaTeX uses \\begin{pmatrix} which renders round parentheses instead."
+  }
+ ],
+ "refused_examples": [],
+ "symbol_check": {
+  "scored": 498,
+  "no_symbol_lost_share": 71.1,
+  "mean_agreement": 0.95
+ },
+ "independent_audit": {}
+}

@@ -1,0 +1,152 @@
+[
+ {
+  "id": "m00340",
+  "verdict": "cosmetic",
+  "issue": "TOP crop is incomplete/garbled: only the outer braces, the two summation limits (n; p,p), and the exponent 2 render; the interior of the first parenthesis (y_i - beta_0 - ...) and the 'minimize_beta' and lambda terms are blank/missing in the TOP image, matching the sparse PDF text-layer extraction for this entry. Cannot fully verify against the printed page from this crop, but everything visible is consistent with the candidate LaTeX.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00341",
+  "verdict": "cosmetic",
+  "issue": "Same operator and content; only the layout of the subscript differs (beta stacked below 'minimize' in TOP vs set as a side subscript in BOTTOM), a display-vs-inline rendering difference, not a change in the mathematics.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00342",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders in a bold font weight while TOP is regular weight; symbols, limits and structure are identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00343",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders in a bold font weight while TOP is regular weight; otherwise identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00344",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders in a bold font weight while TOP is regular weight; otherwise identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00345",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders in a bold font weight while TOP is regular weight; otherwise identical binomial coefficient.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00346",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00347",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00348",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00349",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00350",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00351",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00352",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders in a bold font weight while TOP is regular weight; otherwise identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00353",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders in a bold font weight while TOP is regular weight; otherwise identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00354",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00355",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders in a bold font weight while TOP is regular weight; otherwise identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00356",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00357",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00358",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders in a bold font weight while TOP is regular weight; otherwise identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00359",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders in a bold font weight (including the pop/ad monospace terms) while TOP is regular weight; symbols and structure identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00360",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders 'pop' in a bold font weight while TOP is regular weight; same overline accent over the same text.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00361",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders 'ad' in a bold font weight while TOP is regular weight; same overline accent over the same text.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00362",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders in a bold font weight (including 'Var' and the pop/ad terms) while TOP is regular weight; symbols and structure identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00363",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders in a bold font weight while TOP is regular weight; symbols, subscripts and structure identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00364",
+  "verdict": "cosmetic",
+  "issue": "BOTTOM renders in a bold font weight while TOP is regular weight; same overline accents over pop and ad.",
+  "corrected_latex": ""
+ }
+]

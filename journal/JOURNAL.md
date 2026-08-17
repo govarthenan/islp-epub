@@ -318,3 +318,36 @@ answer, and it is much harder to answer wrongly by accident.
    which is the only figure here not produced by the same model family that did the work.
 
 **Status.** See entry 013 for the result.
+
+---
+
+## 2026-08-17 — Entry 013: The verification result
+
+**Result.** 555 expressions checked, one verdict each:
+
+| verdict  | count | meaning                                                            |
+|----------|-------|--------------------------------------------------------------------|
+| same     | 500   | the two halves state the same mathematics                          |
+| cosmetic |  53   | spacing, delimiter size or font differ; the mathematics does not   |
+| wrong    |   2   | the mathematics differs                                            |
+
+**99.6% of the mathematics agrees with the printed page.**
+
+The two that were wrong, and both are worth recording because neither is a misread symbol:
+
+1. `m00567` — the transcription gave only the second row of a two-row equation. The first row,
+   `h_1(X) = (0 + X_1 + X_2)^2`, was in the crop and in the character stream and was simply
+   not written down.
+2. `m00700` — the page prints the matrix in **square** brackets; the transcription used
+   `pmatrix`, which sets round ones.
+
+Both corrections were checked to typeset before being accepted; a correction MathJax refuses
+would be worse than the original.
+
+**What the 53 cosmetic verdicts were.** Almost all are `\mid` rendering with more space than
+the tight `|` the book sets, or MathJax choosing a larger delimiter. One class is worth
+noting: several verifiers reported "the TOP crop is itself cut off", which is the extraction's
+fault rather than the transcription's, and is honestly recorded as cosmetic rather than being
+turned into an invented correction.
+
+**Status.** SUCCESS.

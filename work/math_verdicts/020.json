@@ -1,0 +1,152 @@
+[
+ {
+  "id": "m00682",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00684",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00686",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00687",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00691",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00692",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00693",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00694",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00695",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00696",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00697",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00698",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00699",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00700",
+  "verdict": "wrong",
+  "issue": "Printed page encloses the matrix in square brackets; candidate LaTeX uses \\begin{pmatrix} which renders round parentheses instead.",
+  "corrected_latex": "\\begin{bmatrix} & 0.3 & 0.4 & 0.7\\\\ 0.3 & & 0.5 & 0.8\\\\ 0.4 & 0.5 & & 0.45\\\\ 0.7 & 0.8 & 0.45 & \\end{bmatrix}."
+ },
+ {
+  "id": "m00701",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00702",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00703",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00704",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00705",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00706",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00707",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00708",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00709",
+  "verdict": "cosmetic",
+  "issue": "Same \\bigcup_{j=1}^{m} construction; top renders the limits as small inline sub/superscripts on the union symbol while bottom stacks them above/below, a textstyle-vs-displaystyle rendering difference only.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00710",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00711",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ }
+]

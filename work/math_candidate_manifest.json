@@ -2891,10 +2891,10 @@
   "m00567": {
    "file": "m00567.svg",
    "widthEm": 12.3785,
-   "heightEm": 1.2825,
-   "valignEm": -0.283,
+   "heightEm": 2.905,
+   "valignEm": -1.1695,
    "display": true,
-   "tex": "h_2(X) = (0 + X_1 - X_2)^2."
+   "tex": "\\begin{aligned} h_1(X) &= (0 + X_1 + X_2)^2, \\\\ h_2(X) &= (0 + X_1 - X_2)^2. \\end{aligned}"
   },
   "m00568": {
    "file": "m00568.svg",
@@ -3674,11 +3674,11 @@
   },
   "m00700": {
    "file": "m00700.svg",
-   "widthEm": 12.602,
+   "widthEm": 12.131,
    "heightEm": 5.8825,
    "valignEm": -2.6585,
    "display": true,
-   "tex": "\\begin{pmatrix} & 0.3 & 0.4 & 0.7\\\\ 0.3 & & 0.5 & 0.8\\\\ 0.4 & 0.5 & & 0.45\\\\ 0.7 & 0.8 & 0.45 & \\end{pmatrix}."
+   "tex": "\\begin{bmatrix} & 0.3 & 0.4 & 0.7\\\\ 0.3 & & 0.5 & 0.8\\\\ 0.4 & 0.5 & & 0.45\\\\ 0.7 & 0.8 & 0.45 & \\end{bmatrix}."
   },
   "m00702": {
    "file": "m00702.svg",
