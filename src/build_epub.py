@@ -17,6 +17,7 @@ import json
 import re
 import subprocess
 import sys
+from html import unescape
 from pathlib import Path
 
 import pymupdf
@@ -464,7 +465,7 @@ def main() -> None:
         href = f"text/{name}"
         children: list[NavPoint] = []
         body = render_chapter(chapter, renderer, children, href)
-        label = f"{chapter.number}. {chapter.title}" if chapter.number else chapter.title
+        label = unescape(f"{chapter.number}. {chapter.title}" if chapter.number else chapter.title)
         builder.add_document(name, label, body, chapter.ident)
         if not builder.bodymatter_href:
             builder.bodymatter_href = href
