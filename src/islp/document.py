@@ -16,8 +16,8 @@ from pathlib import Path
 import pymupdf
 
 from .blocks import assemble
-from .fonts import Role
 from .figures import inline_math_bbox
+from .fonts import Role
 from .inline import Tier, build_inline
 from .pagemodel import Page, VLine, Zone, load_page
 from .symbols import fix_unicode
