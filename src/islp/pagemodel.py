@@ -28,7 +28,8 @@ MARGIN_X0 = 415.5
 HEADER_Y = 50.0
 FOOTER_Y = 648.0
 PROMPT_X1 = 90.0
-COLUMN_GAP = 28.0
+COLUMN_GAP = 200.0        # body pages: effectively no limit
+INDEX_COLUMN_GAP = 28.0   # the index is set in two columns that share baselines
 
 COLOUR_PROSE = 0x000000
 COLOUR_CODE = 0x984100
@@ -280,7 +281,7 @@ def _tag_links(chars: list[Char], links: list[dict]) -> None:
                 break
 
 
-def load_page(doc: pymupdf.Document, index: int) -> Page:
+def load_page(doc: pymupdf.Document, index: int, two_column: bool = False) -> Page:
     page = doc[index]
     raw = page.get_text("rawdict", flags=TEXT_FLAGS)
     links = _collect_links(page)
@@ -324,14 +325,16 @@ def load_page(doc: pymupdf.Document, index: int) -> Page:
     # Merge groups that share a baseline (code cells and prompts arrive as separate blocks).
     groups.sort(key=lambda g: (round(g[0], 1), min(c.x0 for c in g[2])))
     # Pieces on one baseline belong to one visual line only if they are also close
-    # horizontally. Without that guard the two columns of the index, which share baselines,
-    # are read as single lines and the entries interleave.
+    # horizontally. The index needs that guard, because its two columns share baselines and
+    # would otherwise be read as single interleaved lines. Body pages must not have it: the
+    # columns of a printed regression summary are far apart and do belong to one line.
+    gap_limit = INDEX_COLUMN_GAP if two_column else COLUMN_GAP
     merged: list[tuple[float, float, list[Char]]] = []
     for baseline, size, chars in groups:
         joins = (merged
                  and abs(merged[-1][0] - baseline) <= 1.5
                  and abs(merged[-1][1] - size) < 0.6
-                 and min(c.x0 for c in chars) - max(c.x1 for c in merged[-1][2]) < COLUMN_GAP)
+                 and min(c.x0 for c in chars) - max(c.x1 for c in merged[-1][2]) < gap_limit)
         if joins:
             merged[-1][2].extend(chars)
         else:

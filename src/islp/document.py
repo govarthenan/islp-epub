@@ -164,7 +164,14 @@ def join_lines(html_parts: list[str], vocabulary: Counter[str]) -> str:
 # code reconstruction
 # ------------------------------------------------------------------------------------------
 
-PROMPT_X = 89.0
+PROMPT_FONT = "LMMONOLT"
+
+
+def _is_prompt(char) -> bool:
+    """The Jupyter prompt is set in its own font, LMMonoLt10-Bold. Splitting on the font is
+    exact; splitting on an x threshold is not, because a content character can start a
+    hundredth of a point to the left of it."""
+    return char.font.split("+")[-1].upper().startswith(PROMPT_FONT)
 
 
 def code_block_text(lines: list[VLine]) -> str:
@@ -174,7 +181,7 @@ def code_block_text(lines: list[VLine]) -> str:
     so it is handled as a literal prefix. Inside the cell, space characters are kept as they
     come from the PDF and positional gaps add further padding, which is what preserves the
     alignment of printed array output."""
-    content_chars = [c for line in lines for c in line.chars if c.ox >= PROMPT_X]
+    content_chars = [c for line in lines for c in line.chars if not _is_prompt(c)]
     if not content_chars:
         content_chars = [c for line in lines for c in line.chars]
     if not content_chars:
@@ -182,7 +189,7 @@ def code_block_text(lines: list[VLine]) -> str:
 
     deltas: list[float] = []
     for line in lines:
-        ordered = sorted((c for c in line.chars if c.ox >= PROMPT_X), key=lambda c: c.ox)
+        ordered = sorted((c for c in line.chars if not _is_prompt(c)), key=lambda c: c.ox)
         for left, right in zip(ordered, ordered[1:]):
             gap = right.ox - left.ox
             if 2.0 < gap < 9.0:
@@ -191,14 +198,16 @@ def code_block_text(lines: list[VLine]) -> str:
     advance = deltas[len(deltas) // 2] if deltas else 4.74
     origin = min(c.ox for c in content_chars)
 
-    prompts = ["".join(c.c for c in sorted((ch for ch in line.chars if ch.ox < PROMPT_X),
+    prompts = ["".join(c.c for c in sorted((ch for ch in line.chars if _is_prompt(ch)),
                                            key=lambda ch: ch.ox)).strip() for line in lines]
     prompt_width = max((len(p) for p in prompts if p), default=0)
     prompt_width = prompt_width + 1 if prompt_width else 0
 
     rendered: list[str] = []
     for line, prompt in zip(lines, prompts):
-        ordered = sorted((c for c in line.chars if c.ox >= PROMPT_X), key=lambda c: c.ox)
+        ordered = sorted((c for c in line.chars if not _is_prompt(c)), key=lambda c: c.ox)
+        while ordered and ordered[0].is_space:
+            ordered.pop(0)  # the gap after the prompt is already in prompt_width
         buffer = (prompt + " ").ljust(prompt_width) if prompt else " " * prompt_width
         previous = None
         for char in ordered:
@@ -363,7 +372,7 @@ def assemble_document(pdf_path: Path, progress: bool = False,
     for index in range(first, stop):
         if index in FRONT_SKIP:
             continue
-        page = load_page(pdf, index)
+        page = load_page(pdf, index, two_column=index >= INDEX_START)
         regions = detect_regions(page, pdf[index])
         consume_lines(page, regions)
         regions_by_page[index] = regions
@@ -436,9 +445,12 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                 continue
 
             if block.kind == "code":
-                chapter.blocks.append(DocBlock(kind="code", html=code_block_text(block.lines),
-                                               page=page.index, code_kind=block.code_kind,
-                                               bbox=block.bbox, meta={"y0": block.bbox[1]}))
+                code_text = code_block_text(block.lines)
+                if re.sub(r"(?m)^\s*(In|Out)\s*\[\d+\]:\s*$", "", code_text).strip():
+                    chapter.blocks.append(
+                        DocBlock(kind="code", html=code_text, page=page.index,
+                                 code_kind=block.code_kind, bbox=block.bbox,
+                                 meta={"y0": block.bbox[1]}))
                 last_para = None
                 continue
 
