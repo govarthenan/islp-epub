@@ -139,6 +139,10 @@ def join_lines(html_parts: list[str], vocabulary: Counter[str]) -> str:
             out = part
             continue
         plain = _strip_tags(out)
+        # A page-number range broken over two lines ("347-" / "350") must close up.
+        if plain.rstrip().endswith(("–", "—")) and _strip_tags(part)[:1].isdigit():
+            out = out + part
+            continue
         if TRAILING_HYPHEN_RE.search(out) and plain.rstrip().endswith(("-", "‐")):
             head_match = re.search(r"([A-Za-z]+)[-‐]$", plain.rstrip())
             tail_match = re.match(r"([A-Za-z]+)", _strip_tags(part))
@@ -294,6 +298,57 @@ def _strip_emphasis(html: str) -> str:
     return re.sub(r"</?(?:em|strong)>", "", html)
 
 
+COLUMN_SPLIT_X = 250.0
+SUB_ENTRY_INDENT = 14.0
+CONTINUATION_INDENT = 32.0
+
+
+def index_blocks(page: Page, rules, registry: MathRegistry, chapter_ident: str,
+                 vocabulary) -> list[DocBlock]:
+    """The index is set in two columns, so reading it in baseline order interleaves them.
+    Read the left column top to bottom, then the right, and rebuild each entry from its own
+    hanging indent."""
+    lines = [line for line in page.lines if line.zone == Zone.MAIN and line.text.strip()]
+    if not lines:
+        return []
+    columns: dict[int, list[VLine]] = {0: [], 1: []}
+    for line in lines:
+        columns[0 if line.x0 < COLUMN_SPLIT_X else 1].append(line)
+
+    blocks: list[DocBlock] = []
+    for column in (0, 1):
+        entries = sorted(columns[column], key=lambda ln: ln.baseline)
+        if not entries:
+            continue
+        origin = min(line.x0 for line in entries)
+        current: list[VLine] = []
+        level = 0
+
+        def flush(run: list[VLine], depth: int) -> None:
+            if not run:
+                return
+            parts = [_line_html(line, rules, registry, chapter_ident, "", page)[0]
+                     for line in run]
+            html = _sanitize(join_lines(parts, vocabulary))
+            if html:
+                blocks.append(DocBlock(kind="index-entry", html=html, page=page.index,
+                                       level=depth, bbox=run[0].bbox,
+                                       meta={"y0": run[0].y0}))
+
+        for line in entries:
+            offset = line.x0 - origin
+            if offset < SUB_ENTRY_INDENT:
+                flush(current, level)
+                current, level = [line], 0
+            elif offset < CONTINUATION_INDENT:
+                flush(current, level)
+                current, level = [line], 1
+            else:
+                current.append(line)
+        flush(current, level)
+    return blocks
+
+
 def assemble_document(pdf_path: Path, progress: bool = False,
                       first: int = 0, last: int | None = None) -> Document:
     from .figures import consume_lines, detect_regions
@@ -350,9 +405,15 @@ def assemble_document(pdf_path: Path, progress: bool = False,
             used.append(chapter)
             last_para = None
 
+        rules = page.drawing_rects
+        if page.index >= INDEX_START:
+            chapter.blocks.extend(
+                index_blocks(page, rules, registry, chapter.ident, vocabulary))
+            last_para = None
+            continue
+
         regions = regions_by_page.get(page.index, [])
         blocks = assemble(page)
-        rules = page.drawing_rects
         region_by_number = {(r.kind, r.number): r for r in regions}
 
         for block in blocks:
@@ -407,6 +468,16 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                                                eq_number=block.eq_number, bbox=display_bbox,
                                                meta={"y0": block.bbox[1]}))
                 last_para = None
+                continue
+
+            if block.kind == "footnote":
+                parts = [_line_html(line, rules, registry, chapter.ident, "", page)[0]
+                         for line in block.lines]
+                html = _sanitize(join_lines(parts, vocabulary))
+                if html:
+                    chapter.blocks.append(DocBlock(kind="footnote", html=html, page=page.index,
+                                                   bbox=block.bbox,
+                                                   meta={"y0": block.bbox[1]}))
                 continue
 
             if block.kind == "caption":

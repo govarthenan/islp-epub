@@ -275,8 +275,16 @@ def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint],
                          f'<p class="caption">{caption}</p></div>')
             continue
 
+        if block.kind == "footnote":
+            ident = f' id="{anchor_id}"' if anchor_id else ""
+            parts.append(f'<aside class="footnote" epub:type="footnote"{ident}>'
+                         f"{renderer.expand(block.html)}</aside>")
+            continue
+
         if block.kind == "index-entry":
-            parts.append(f'<p class="index-entry">{renderer.expand(block.html)}</p>')
+            css = "index-entry" if block.level == 0 else "index-sub"
+            ident = f' id="{anchor_id}"' if anchor_id else ""
+            parts.append(f'<p class="{css}"{ident}>{renderer.expand(block.html)}</p>')
             continue
 
     return "\n".join(parts)

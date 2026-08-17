@@ -155,8 +155,20 @@ p.marginnote {
   hyphens: none;
 }
 
+aside.footnote {
+  display: block;
+  font-size: 0.84em;
+  line-height: 1.4;
+  margin: 1em 0 0.8em;
+  padding-top: 0.5em;
+  border-top: 1px solid #bbb;
+  text-indent: 0;
+  text-align: left;
+}
+
 /* Index */
-p.index-entry { text-indent: -1em; margin-left: 1em; text-align: left; font-size: 0.92em; }
+p.index-entry { text-indent: -1em; margin-left: 1em;   text-align: left; font-size: 0.92em; }
+p.index-sub   { text-indent: -1em; margin-left: 2.2em; text-align: left; font-size: 0.92em; }
 
 div.cover { text-align: center; margin: 0; padding: 0; }
 div.cover img { max-width: 100%; max-height: 100%; }

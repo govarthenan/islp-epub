@@ -28,6 +28,7 @@ MARGIN_X0 = 415.5
 HEADER_Y = 50.0
 FOOTER_Y = 648.0
 PROMPT_X1 = 90.0
+COLUMN_GAP = 28.0
 
 COLOUR_PROSE = 0x000000
 COLOUR_CODE = 0x984100
@@ -42,6 +43,7 @@ TEXT_FLAGS = (pymupdf.TEXT_PRESERVE_WHITESPACE | pymupdf.TEXT_MEDIABOX_CLIP
 
 class Zone(str, Enum):
     HEADER = "header"
+    FOOTNOTE = "footnote"
     FOOTER = "footer"
     MARGIN = "margin"
     PROMPT = "prompt"
@@ -203,7 +205,23 @@ def _merge_cells(cells: list[CodeCell]) -> list[CodeCell]:
     return merged
 
 
-def _zone_for(line: VLine, page_height: float) -> Zone:
+def footnote_rule_y(page: pymupdf.Page) -> float | None:
+    """LaTeX draws a short rule above the footnotes. Everything under it on the page is a
+    note, not body text."""
+    best = None
+    for drawing in page.get_drawings():
+        rect = drawing["rect"]
+        if drawing["type"] != "s" or rect.height > 1.2:
+            continue
+        if not (40 <= rect.width <= 130) or not (88 <= rect.x0 <= 94):
+            continue
+        if rect.y0 < 380:
+            continue
+        best = rect.y0 if best is None else max(best, rect.y0)
+    return best
+
+
+def _zone_for(line: VLine, page_height: float, footnote_y: float | None = None) -> Zone:
     x0, y0, x1, y1 = line.bbox
     if y1 < HEADER_Y:
         return Zone.HEADER
@@ -211,15 +229,22 @@ def _zone_for(line: VLine, page_height: float) -> Zone:
         return Zone.FOOTER
     if line.dominant_role() == Role.GRAPHIC:
         return Zone.GRAPHIC
-    if x0 >= MARGIN_X0:
+    # Margin notes are set at 8 pt. The index runs wider than the text column at full size,
+    # so width alone is not enough to tell them apart.
+    if x0 >= MARGIN_X0 and line.size <= 8.6:
         return Zone.MARGIN
+    if footnote_y is not None and y0 > footnote_y and line.size < 9.0:
+        return Zone.FOOTNOTE
     return Zone.MAIN
 
 
 def _split_margin(line: VLine) -> tuple[VLine, VLine | None]:
     """The extractor glues right-margin notes onto main text lines. Split them apart."""
-    main_chars = [c for c in line.chars if c.x0 < MARGIN_X0 and c.colour != COLOUR_MARGIN]
-    margin_chars = [c for c in line.chars if c.x0 >= MARGIN_X0 or c.colour == COLOUR_MARGIN]
+    def is_margin(char: Char) -> bool:
+        return (char.x0 >= MARGIN_X0 and char.size <= 8.6) or char.colour == COLOUR_MARGIN
+
+    main_chars = [c for c in line.chars if not is_margin(c)]
+    margin_chars = [c for c in line.chars if is_margin(c)]
     if not margin_chars or not main_chars:
         return line, None
     main = VLine(main_chars, line.zone, line.baseline, line.size, line.page)
@@ -298,23 +323,31 @@ def load_page(doc: pymupdf.Document, index: int) -> Page:
 
     # Merge groups that share a baseline (code cells and prompts arrive as separate blocks).
     groups.sort(key=lambda g: (round(g[0], 1), min(c.x0 for c in g[2])))
+    # Pieces on one baseline belong to one visual line only if they are also close
+    # horizontally. Without that guard the two columns of the index, which share baselines,
+    # are read as single lines and the entries interleave.
     merged: list[tuple[float, float, list[Char]]] = []
     for baseline, size, chars in groups:
-        if merged and abs(merged[-1][0] - baseline) <= 1.5 and abs(merged[-1][1] - size) < 0.6:
+        joins = (merged
+                 and abs(merged[-1][0] - baseline) <= 1.5
+                 and abs(merged[-1][1] - size) < 0.6
+                 and min(c.x0 for c in chars) - max(c.x1 for c in merged[-1][2]) < COLUMN_GAP)
+        if joins:
             merged[-1][2].extend(chars)
         else:
             merged.append((baseline, size, list(chars)))
 
     code_cells = _collect_code_cells(page)
+    footnote_y = footnote_rule_y(page)
 
     lines: list[VLine] = []
     for baseline, size, chars in merged:
         chars.sort(key=lambda c: c.ox)
         line = VLine(chars=chars, baseline=baseline, size=size, page=index)
-        line.zone = _zone_for(line, page.rect.height)
+        line.zone = _zone_for(line, page.rect.height, footnote_y)
         if line.zone == Zone.MAIN:
             line, margin = _split_margin(line)
-            line.zone = _zone_for(line, page.rect.height)
+            line.zone = _zone_for(line, page.rect.height, footnote_y)
             if margin is not None:
                 lines.append(margin)
         # Jupyter prompt plus code content live on one baseline; tag the whole line as code.

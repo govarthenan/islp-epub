@@ -104,6 +104,8 @@ def classify_line(line: VLine) -> Kind:
         return Kind.MARGIN
     if line.zone == Zone.CODE:
         return Kind.CODE
+    if line.zone == Zone.FOOTNOTE:
+        return Kind.FOOTNOTE
     if line.zone in (Zone.HEADER, Zone.FOOTER, Zone.GRAPHIC):
         return Kind.OTHER
 
@@ -308,6 +310,22 @@ def assemble(page: Page) -> list[Block]:
             block = Block(kind="display", page=page.index, lines=run)
             block.eq_number = _detach_equation_number(run)
             push(block)
+            continue
+
+        if kind == Kind.FOOTNOTE:
+            run = [entry.line]
+            index += 1
+            while index < len(tagged) and tagged[index].kind == Kind.FOOTNOTE:
+                candidate = tagged[index].line
+                # a new note starts with its own raised number
+                solid = [c for c in candidate.chars if not c.is_space]
+                starts_note = bool(solid) and solid[0].size < candidate.size * 0.92 \
+                    and solid[0].c.isdigit()
+                if starts_note:
+                    break
+                run.append(candidate)
+                index += 1
+            push(Block(kind="footnote", page=page.index, lines=run))
             continue
 
         if kind == Kind.CAPTION:
