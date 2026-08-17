@@ -222,119 +222,139 @@ def build() -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>ISLP to EPUB</title>
 <style>
+/* The palette is the book's own colour table, measured out of the PDF during the conversion:
+   #000000 prose, #0068b4 cross-references, #984100 lab code, #595959 margin notes. The ground
+   is a cool paper grey rather than cream, because that is what e-ink actually looks like. */
 :root {{
-  --bg: #fbfaf8; --surface: #ffffff; --ink: #1b1a18; --muted: #6b6862;
-  --line: #e3e0d9; --accent: #7a4f2a; --accent-soft: #f2e8de;
-  --ok: #2f6b45; --ok-soft: #e2f0e7;
-  --bad: #9a3226; --bad-soft: #f8e5e2;
-  --mid: #8a6a1f; --mid-soft: #f7eed6;
-  --svg-card: #ffffff; --svg-line: #d9d5cc;
-  --seg-text: #7a4f2a; --seg-latex: #b08147; --seg-vlm: #2f6b45; --seg-display: #3f6d8f;
-  --shadow: 0 1px 2px rgba(0,0,0,.05), 0 8px 24px -12px rgba(0,0,0,.18);
-  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --paper: #fbfbfa; --surface: #ffffff; --ink: #16181b; --muted: #5a5a5a;
+  --rule: #dedee0; --rule-strong: #b9babd;
+  --link: #0068b4; --link-soft: #e7f0f8;
+  --code: #984100; --code-soft: #f6ece4;
+  --ok: #1f6f4a; --ok-soft: #e4f0ea;
+  --bad: #a3312a; --bad-soft: #f7e7e5;
+  --mid: #856214; --mid-soft: #f4eddc;
+  --seg-text: #16181b; --seg-latex: #984100; --seg-vlm: #0068b4; --seg-display: #6f8fa6;
+  --svg-card: #ffffff;
+  --serif: ui-serif, Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --shadow: none;
 }}
 @media (prefers-color-scheme: dark) {{
   :root:not([data-theme="light"]) {{
-    --bg: #171614; --surface: #201f1c; --ink: #ece9e3; --muted: #a29d94;
-    --line: #333029; --accent: #d9a76c; --accent-soft: #2c261f;
-    --ok: #6fbf8e; --ok-soft: #1e2c23;
-    --bad: #e28c7f; --bad-soft: #2e211f;
-    --mid: #d9bb6d; --mid-soft: #2c2718;
-    --svg-card: #201f1c; --svg-line: #3d3931;
-    --seg-text: #d9a76c; --seg-latex: #b08147; --seg-vlm: #6fbf8e; --seg-display: #7fa9c6;
-    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+    --paper: #131518; --surface: #191c20; --ink: #e8e8e6; --muted: #9a9c9f;
+    --rule: #2b2f34; --rule-strong: #454a51;
+    --link: #6fb4e8; --link-soft: #17242e;
+    --code: #d59258; --code-soft: #241a13;
+    --ok: #6cc094; --ok-soft: #15241c;
+    --bad: #e08b83; --bad-soft: #2a1a19;
+    --mid: #d3b263; --mid-soft: #262014;
+    --seg-text: #e8e8e6; --seg-latex: #d59258; --seg-vlm: #6fb4e8; --seg-display: #8fb0c6;
+    --svg-card: #191c20;
   }}
 }}
 :root[data-theme="dark"] {{
-  --bg: #171614; --surface: #201f1c; --ink: #ece9e3; --muted: #a29d94;
-  --line: #333029; --accent: #d9a76c; --accent-soft: #2c261f;
-  --ok: #6fbf8e; --ok-soft: #1e2c23;
-  --bad: #e28c7f; --bad-soft: #2e211f;
-  --mid: #d9bb6d; --mid-soft: #2c2718;
-  --svg-card: #201f1c; --svg-line: #3d3931;
-  --seg-text: #d9a76c; --seg-latex: #b08147; --seg-vlm: #6fbf8e; --seg-display: #7fa9c6;
+  --paper: #131518; --surface: #191c20; --ink: #e8e8e6; --muted: #9a9c9f;
+  --rule: #2b2f34; --rule-strong: #454a51;
+  --link: #6fb4e8; --link-soft: #17242e;
+  --code: #d59258; --code-soft: #241a13;
+  --ok: #6cc094; --ok-soft: #15241c;
+  --bad: #e08b83; --bad-soft: #2a1a19;
+  --mid: #d3b263; --mid-soft: #262014;
+  --seg-text: #e8e8e6; --seg-latex: #d59258; --seg-vlm: #6fb4e8; --seg-display: #8fb0c6;
+  --svg-card: #191c20;
 }}
 
 * {{ box-sizing: border-box; }}
 body {{
-  margin: 0; background: var(--bg); color: var(--ink);
-  font: 16px/1.6 ui-serif, Georgia, "Times New Roman", serif;
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 16px/1.62 var(--serif);
   -webkit-font-smoothing: antialiased;
 }}
-.wrap {{ max-width: 1240px; margin: 0 auto; padding: 0 24px 96px; }}
-header {{ padding: 72px 0 40px; border-bottom: 1px solid var(--line); }}
+.wrap {{ max-width: 1180px; margin: 0 auto; padding: 0 28px 110px; }}
+
+/* A hairline with a tick at its left end: the page's structural motif, borrowed from the
+   baselines and bounding boxes the whole project is about. */
+.rule {{ border: 0; border-top: 1px solid var(--rule); margin: 0; position: relative; }}
+.rule::before {{
+  content: ""; position: absolute; left: 0; top: -4px; width: 1px; height: 9px;
+  background: var(--rule-strong);
+}}
+
+header {{ padding: 84px 0 40px; }}
 .eyebrow {{
-  font: 600 12px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 18px;
+  font: 600 11.5px/1 var(--mono); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--link); margin-bottom: 22px;
 }}
-h1 {{ font-size: clamp(30px, 4.6vw, 50px); line-height: 1.1; margin: 0 0 14px; letter-spacing: -.01em; }}
-.lede {{ font-size: 19px; color: var(--muted); max-width: 62ch; margin: 0 0 22px; }}
+h1 {{ font-size: clamp(33px, 5vw, 54px); line-height: 1.06; margin: 0 0 16px; letter-spacing: -.015em; text-wrap: balance; }}
+.lede {{ font-size: 19.5px; color: var(--muted); max-width: 60ch; margin: 0 0 24px; }}
 .pill {{
-  display: inline-block; font: 600 12px/1 var(--mono); letter-spacing: .08em;
-  text-transform: uppercase; padding: 7px 12px; border-radius: 999px;
-  background: var(--accent-soft); color: var(--accent);
+  display: inline-block; font: 600 11px/1 var(--mono); letter-spacing: .12em;
+  text-transform: uppercase; padding: 7px 12px; border: 1px solid var(--rule-strong);
+  color: var(--muted);
 }}
-h2 {{ font-size: 26px; margin: 64px 0 6px; letter-spacing: -.01em; }}
-h2 + .sub {{ color: var(--muted); margin: 0 0 26px; max-width: 70ch; }}
+h2 {{ font-size: 27px; margin: 76px 0 6px; letter-spacing: -.012em; text-wrap: balance; }}
+h2 + .sub {{ color: var(--muted); margin: 0 0 28px; max-width: 68ch; font-size: 16.5px; }}
 h3 {{ font-size: 17px; margin: 0; }}
 
-.tiles {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-top: 34px; }}
-.tile {{ background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; box-shadow: var(--shadow); }}
-.tile-value {{ font: 700 27px/1.1 var(--mono); letter-spacing: -.02em; }}
-.tile-label {{ margin-top: 6px; font-size: 14px; }}
-.tile-note {{ margin-top: 3px; font-size: 12.5px; color: var(--muted); }}
+.tiles {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); gap: 0; margin-top: 40px; border-top: 1px solid var(--rule); }}
+.tile {{ padding: 18px 20px 20px 0; border-bottom: 1px solid var(--rule); }}
+.tile-value {{ font: 600 27px/1.05 var(--mono); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }}
+.tile-label {{ margin-top: 7px; font-size: 14.5px; }}
+.tile-note {{ margin-top: 2px; font-size: 12.5px; color: var(--muted); }}
 
-.pipeline {{ background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px 6px; box-shadow: var(--shadow); overflow-x: auto; }}
-.pipeline svg {{ display: block; min-width: 1080px; width: 100%; height: auto; }}
-.svg-step {{ font: 700 12px var(--mono); fill: var(--accent); }}
-.svg-body {{ font: 13px/1.35 ui-serif, Georgia, serif; color: var(--ink); }}
+.pipeline {{ border: 1px solid var(--rule); padding: 8px 4px; overflow-x: auto; }}
+.pipeline svg {{ display: block; min-width: 1060px; width: 100%; height: auto; }}
+.svg-step {{ font: 600 11px var(--mono); fill: var(--link); }}
+.svg-body {{ font: 13px/1.36 var(--serif); color: var(--ink); }}
 .svg-body b {{ font-size: 13.5px; }}
 
-.bar {{ display: flex; height: 30px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }}
+.bar {{ display: flex; height: 26px; overflow: hidden; border: 1px solid var(--rule); }}
 .seg-text {{ background: var(--seg-text); }} .seg-latex {{ background: var(--seg-latex); }}
 .seg-vlm {{ background: var(--seg-vlm); }} .seg-display {{ background: var(--seg-display); }}
-.legend {{ list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }}
+.legend {{ list-style: none; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }}
 .legend li {{ display: flex; gap: 10px; align-items: flex-start; }}
-.swatch {{ width: 13px; height: 13px; border-radius: 3px; margin-top: 5px; flex: none; }}
+.swatch {{ width: 11px; height: 11px; margin-top: 6px; flex: none; }}
 .swatch-text {{ background: var(--seg-text); }} .swatch-latex {{ background: var(--seg-latex); }}
 .swatch-vlm {{ background: var(--seg-vlm); }} .swatch-display {{ background: var(--seg-display); }}
-.legend-note {{ color: var(--muted); font-size: 13.5px; margin-top: 2px; }}
+.legend b {{ font-family: var(--mono); font-variant-numeric: tabular-nums; }}
+.legend-note {{ color: var(--muted); font-size: 13.5px; margin-top: 3px; }}
 
-.attempts {{ list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }}
-.attempt {{ background: var(--surface); border: 1px solid var(--line); border-left-width: 4px; border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow); }}
+.attempts {{ list-style: none; padding: 0; margin: 0; }}
+.attempt {{ padding: 20px 0 22px 22px; border-top: 1px solid var(--rule); border-left: 2px solid var(--rule); }}
 .attempt-success {{ border-left-color: var(--ok); }}
 .attempt-failed {{ border-left-color: var(--bad); }}
 .attempt-partial {{ border-left-color: var(--mid); }}
-.attempt-head {{ display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }}
-.num {{ font: 700 13px var(--mono); color: var(--muted); }}
-.badge {{ margin-left: auto; font: 600 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; }}
+.attempt-head {{ display: flex; align-items: baseline; gap: 13px; margin-bottom: 9px; flex-wrap: wrap; }}
+.num {{ font: 600 12.5px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }}
+.badge {{ margin-left: auto; font: 600 10.5px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: 5px 9px; }}
 .badge-success {{ background: var(--ok-soft); color: var(--ok); }}
 .badge-failed {{ background: var(--bad-soft); color: var(--bad); }}
 .badge-partial {{ background: var(--mid-soft); color: var(--mid); }}
-.attempt p {{ margin: 6px 0; font-size: 15px; }}
-.field, .why-label {{ font: 600 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 8px; }}
+.attempt p {{ margin: 5px 0; font-size: 15.5px; max-width: 84ch; }}
+.field, .why-label {{ font: 600 10.5px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-right: 9px; }}
 .why {{ color: var(--muted); }}
 
-.gallery {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }}
-.shot {{ margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; box-shadow: var(--shadow); }}
-.shot img {{ width: 100%; height: auto; display: block; background: #fff; border-radius: 6px; }}
-.shot figcaption {{ margin-top: 10px; font-size: 14px; color: var(--muted); }}
-.shot.bad {{ border-color: color-mix(in srgb, var(--bad) 45%, var(--line)); }}
-.shot.good {{ border-color: color-mix(in srgb, var(--ok) 45%, var(--line)); }}
+.gallery {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); gap: 20px; }}
+.shot {{ margin: 0; border: 1px solid var(--rule); padding: 0; }}
+.shot img {{ width: 100%; height: auto; display: block; background: #fff; padding: 12px; }}
+.shot figcaption {{ margin: 0; padding: 12px 14px 14px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule); }}
+.shot.bad {{ border-color: color-mix(in srgb, var(--bad) 40%, var(--rule)); }}
+.shot.good {{ border-color: color-mix(in srgb, var(--ok) 40%, var(--rule)); }}
 .shot b {{ color: var(--ink); }}
 
-.checks {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }}
-.check {{ background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow); }}
-.check-value {{ font: 700 30px/1.1 var(--mono); letter-spacing: -.02em; color: var(--ok); }}
-.check-label {{ font-size: 15px; margin-top: 4px; }}
-.check p {{ margin: 10px 0 0; font-size: 14px; color: var(--muted); }}
+.checks {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); gap: 0; border-top: 1px solid var(--rule); }}
+.check {{ padding: 20px 24px 24px 0; border-bottom: 1px solid var(--rule); }}
+.check-value {{ font: 600 32px/1.05 var(--mono); letter-spacing: -.03em; color: var(--ok); font-variant-numeric: tabular-nums; }}
+.check-label {{ font-size: 15px; margin-top: 5px; }}
+.check p {{ margin: 11px 0 0; font-size: 14px; color: var(--muted); max-width: 46ch; }}
 
-code {{ font-family: var(--mono); font-size: .92em; background: var(--accent-soft); padding: 1px 5px; border-radius: 4px; }}
-pre {{ background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font: 13px/1.6 var(--mono); }}
-footer {{ margin-top: 72px; padding-top: 26px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }}
-table {{ width: 100%; border-collapse: collapse; font-size: 15px; }}
-th, td {{ text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); }}
-th {{ font: 600 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }}
+code {{ font-family: var(--mono); font-size: .9em; color: var(--code); }}
+pre {{ border: 1px solid var(--rule); padding: 15px 17px; overflow-x: auto; font: 13px/1.65 var(--mono); }}
+footer {{ margin-top: 84px; padding-top: 26px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14px; }}
+table {{ width: 100%; border-collapse: collapse; font-size: 15.5px; }}
+th, td {{ text-align: left; padding: 11px 14px 11px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }}
+th {{ font: 600 10.5px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }}
+a {{ color: var(--link); }}
 </style>
 </head>
 <body>

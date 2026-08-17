@@ -276,8 +276,14 @@ def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint], hr
                 level = min(max(block.level, 2), 5)
                 parts.append(f'<h{level} id="{anchor}">{text}</h{level}>')
                 if block.level in (2, 3):
+                    # Entities must become characters again before the navigation document
+                    # escapes them, or "p > 1" reaches the reader's contents as "p &amp;gt; 1".
                     nav_children.append(
-                        NavPoint(title=re.sub(r"<[^>]+>", "", text), level=block.level, href=f"{href_base}#{anchor}")
+                        NavPoint(
+                            title=unescape(re.sub(r"<[^>]+>", "", text)),
+                            level=block.level,
+                            href=f"{href_base}#{anchor}",
+                        )
                     )
             continue
 
