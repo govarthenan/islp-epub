@@ -126,7 +126,7 @@ th { font: 600 12px var(--mono); letter-spacing: .06em; text-transform: uppercas
   <h1>ISLP PDF to EPUB</h1>
   <p class="lede">Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB for a Kobo Libra 2</p>
   <span class="pill">Built and packaged; verification pass in progress.</span>
-  <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">0</div><div class="tile-label">documents in the spine</div><div class="tile-note">13 chapters plus matter</div></div><div class="tile"><div class="tile-value">0</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">0</div><div class="tile-label">figures and tables</div><div class="tile-note">re-rendered at 300 ppi</div></div><div class="tile"><div class="tile-value">0</div><div class="tile-label">display equations</div><div class="tile-note">each one verified</div></div><div class="tile"><div class="tile-value">0</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">0.0 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div></div>
+  <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">4</div><div class="tile-label">documents in the spine</div><div class="tile-note">13 chapters plus matter</div></div><div class="tile"><div class="tile-value">593</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">48</div><div class="tile-label">figures and tables</div><div class="tile-note">re-rendered at 300 ppi</div></div><div class="tile"><div class="tile-value">85</div><div class="tile-label">display equations</div><div class="tile-note">each one verified</div></div><div class="tile"><div class="tile-value">193</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">2.1 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div></div>
 </header>
 
 <h2>How the book is taken apart</h2>
@@ -200,7 +200,13 @@ that all of it would have to be read back out of images. That turned out to be t
 part of it. Sub- and superscripts are recorded in the PDF as a font-size drop plus a baseline
 shift, so most inline mathematics can be rebuilt exactly, for free, and stays as reflowing
 text. A vision model is spent only where the structure is genuinely absent.</p>
-<div class="bar"></div><ul class="legend"></ul>
+<div class="bar"><div class="seg seg-latex" style="width:30.52%" title="LaTeX from the character stream: 47"></div><div class="seg seg-vlm" style="width:14.29%" title="Read by a vision model: 22"></div><div class="seg seg-display" style="width:55.19%" title="Display equations: 85"></div></div><ul class="legend"><li><span class="swatch swatch-latex"></span>
+          <div><b>47</b> &middot; LaTeX from the character stream
+          <div class="legend-note">Accents and script letters, generated deterministically, then typeset by MathJax.</div></div></li><li><span class="swatch swatch-vlm"></span>
+          <div><b>22</b> &middot; Read by a vision model
+          <div class="legend-note">Fractions, radicals and large operators: structure the PDF simply does not record.</div></div></li><li><span class="swatch swatch-display"></span>
+          <div><b>85</b> &middot; Display equations
+          <div class="legend-note">Every centred equation, read from an image and verified against a re-typeset copy.</div></div></li></ul>
 
 <h2>Where the crops went wrong</h2>
 <p class="sub">Cutting an expression out of the page was the hardest single problem in this
@@ -231,7 +237,7 @@ unrelated lines.</p>
 </div>
 
 <h2>Every attempt, in order</h2>
-<p class="sub">4 worked, 2 partly worked, 4 failed outright. The failures
+<p class="sub">8 worked, 3 partly worked, 5 failed outright. The failures
 are the interesting ones: each was caused by a rule that sounded reasonable and did not survive
 contact with the page.</p>
 <ul class="attempts">
@@ -334,6 +340,66 @@ contact with the page.</p>
       <p class="what"><span class="field">Tried</span> Cover each foreign character with its bounding box.</p>
       <p class="result"><span class="field">Result</span> Half of every summation limit disappeared.</p>
       <p class="why"><span class="why-label">Why</span> The extractor reports each character&#x27;s full em box, about 14.5 pt tall for 10 pt text, which reaches well into the neighbouring lines. Painting only the band from baseline - 0.78 x size to baseline + 0.24 x size fixed it.</p>
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">11</span>
+        <h3>Read the mathematics with a fleet of agents</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> 23 agents in parallel, 25 cropped expressions each, each given the characters the PDF gave up, the deterministic guess where one existed, and the sentence before the expression. Each agent then ran the LaTeX through MathJax and fixed anything it refused.</p>
+      <p class="result"><span class="field">Result</span> 570 expressions transcribed, zero typesetting failures.</p>
+      
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">12</span>
+        <h3>The agents&#x27; doubts were worth more than their answers</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Read the 40-odd cases the agents flagged as uncertain instead of only their LaTeX.</p>
+      <p class="result"><span class="field">Result</span> Three extraction faults surfaced that no amount of reading the LaTeX would have shown: &#x27;crop is only a large left brace&#x27;, repeated a dozen times; &#x27;this crop is pixel-identical to another one&#x27;; and matrices cut in half.</p>
+      
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">13</span>
+        <h3>Equation numbers were splitting equations in two</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Group a display equation from the lines that make it up.</p>
+      <p class="result"><span class="field">Result</span> Fractions came out as two separate equations, both of which then grew back into the same rectangle and rendered twice.</p>
+      <p class="why"><span class="why-label">Why</span> An equation number sits on a baseline between the numerator and the denominator of the fraction it labels, so it fell in the middle of the run and broke it. The number is now split off its line before anything is classified.</p>
+    </li>
+    <li class="attempt attempt-partial">
+      <div class="attempt-head">
+        <span class="num">14</span>
+        <h3>Piecewise definitions kept coming apart</h3>
+        <span class="badge badge-partial">partly worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Absorb the &#x27;if ...&#x27; arms of a cases block into the equation they belong to.</p>
+      <p class="result"><span class="field">Result</span> Fixed in three rounds. Requiring the arm to start further in than the equation failed where the arm carries the brace glyph itself; requiring a display line to follow failed for the last arm; matching a stray brace back to the paragraph above threw away the opening delimiter.</p>
+      <p class="why"><span class="why-label">Why</span> The final rules: an arm is absorbed when it carries mathematics, is short and is set in from both paragraph margins; overlapping display blocks are merged; and a fragment belongs to a paragraph line only if it sits over that line&#x27;s own symbols.</p>
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">15</span>
+        <h3>Tables as markup rather than pictures</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Read the 36 tables back as XHTML so they reflow with the reader&#x27;s font, each agent checking its own markup parses and every row is the same width.</p>
+      <p class="result"><span class="field">Result</span> 36 of 36 converted, faithful to the printed minus signs and to &#x27;&lt; 0.0001&#x27; with a space in one chapter and without one in another. Two agents reported their crop was wrong and re-rendered the page themselves; both were real region-detection faults, now fixed.</p>
+      
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">16</span>
+        <h3>Audit what the conversion drops</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Walk all 613 pages, work out which text lines no block consumed, and read them.</p>
+      <p class="result"><span class="field">Result</span> 25,605 lines considered, 393 unconsumed. All but ten are equation numbers folded into their equation, or numerator and limit fragments already inside a mathematics crop. The ten were cell output that spilled past its shaded rectangle.</p>
+      
     </li></ul>
 
 

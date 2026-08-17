@@ -50,6 +50,7 @@ class MathRegistry:
     items: dict[str, MathItem] = field(default_factory=dict)
     by_key: dict[str, str] = field(default_factory=dict)
     counter: int = 0
+    text_runs: int = 0  # solved as plain HTML: no image, no model call
 
     def add(self, *, tier: str, latex: str, page: int, bbox, raw_text: str, reason: str,
             display: bool, key: str, eq_number: str = "", context: str = "",
@@ -232,6 +233,7 @@ def _line_html(line: VLine, rules, registry: MathRegistry, chapter: str,
     from .figures import expand_math_bbox
 
     result = build_inline(line.chars, rules)
+    registry.text_runs += result.text_runs
     ids: list[str] = []
     for run in result.math_runs:
         bbox = run.bbox

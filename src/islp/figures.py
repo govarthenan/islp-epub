@@ -140,7 +140,9 @@ def consume_lines(page: Page, regions: list[Region]) -> None:
     """Mark every text line that falls inside a figure or table region as graphic, so it does
     not reappear as a paragraph."""
     for line in page.lines:
-        if line.zone != Zone.MAIN:
+        # Table row labels are set in a typewriter font, so they are tagged as code; they must
+        # still be claimed by the region they sit in.
+        if line.zone not in (Zone.MAIN, Zone.CODE):
             continue
         if CAPTION_RE.match(line.text.strip()):
             continue

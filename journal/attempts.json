@@ -121,6 +121,54 @@
       "what": "Cover each foreign character with its bounding box.",
       "result": "Half of every summation limit disappeared.",
       "why": "The extractor reports each character's full em box, about 14.5 pt tall for 10 pt text, which reaches well into the neighbouring lines. Painting only the band from baseline - 0.78 x size to baseline + 0.24 x size fixed it."
+    },
+    {
+      "n": 11,
+      "title": "Read the mathematics with a fleet of agents",
+      "status": "success",
+      "what": "23 agents in parallel, 25 cropped expressions each, each given the characters the PDF gave up, the deterministic guess where one existed, and the sentence before the expression. Each agent then ran the LaTeX through MathJax and fixed anything it refused.",
+      "result": "570 expressions transcribed, zero typesetting failures.",
+      "why": ""
+    },
+    {
+      "n": 12,
+      "title": "The agents' doubts were worth more than their answers",
+      "status": "success",
+      "what": "Read the 40-odd cases the agents flagged as uncertain instead of only their LaTeX.",
+      "result": "Three extraction faults surfaced that no amount of reading the LaTeX would have shown: 'crop is only a large left brace', repeated a dozen times; 'this crop is pixel-identical to another one'; and matrices cut in half.",
+      "why": ""
+    },
+    {
+      "n": 13,
+      "title": "Equation numbers were splitting equations in two",
+      "status": "failed",
+      "what": "Group a display equation from the lines that make it up.",
+      "result": "Fractions came out as two separate equations, both of which then grew back into the same rectangle and rendered twice.",
+      "why": "An equation number sits on a baseline between the numerator and the denominator of the fraction it labels, so it fell in the middle of the run and broke it. The number is now split off its line before anything is classified."
+    },
+    {
+      "n": 14,
+      "title": "Piecewise definitions kept coming apart",
+      "status": "partial",
+      "what": "Absorb the 'if ...' arms of a cases block into the equation they belong to.",
+      "result": "Fixed in three rounds. Requiring the arm to start further in than the equation failed where the arm carries the brace glyph itself; requiring a display line to follow failed for the last arm; matching a stray brace back to the paragraph above threw away the opening delimiter.",
+      "why": "The final rules: an arm is absorbed when it carries mathematics, is short and is set in from both paragraph margins; overlapping display blocks are merged; and a fragment belongs to a paragraph line only if it sits over that line's own symbols."
+    },
+    {
+      "n": 15,
+      "title": "Tables as markup rather than pictures",
+      "status": "success",
+      "what": "Read the 36 tables back as XHTML so they reflow with the reader's font, each agent checking its own markup parses and every row is the same width.",
+      "result": "36 of 36 converted, faithful to the printed minus signs and to '< 0.0001' with a space in one chapter and without one in another. Two agents reported their crop was wrong and re-rendered the page themselves; both were real region-detection faults, now fixed.",
+      "why": ""
+    },
+    {
+      "n": 16,
+      "title": "Audit what the conversion drops",
+      "status": "success",
+      "what": "Walk all 613 pages, work out which text lines no block consumed, and read them.",
+      "result": "25,605 lines considered, 393 unconsumed. All but ten are equation numbers folded into their equation, or numerator and limit fragments already inside a mathematics crop. The ten were cell output that spilled past its shaded rectangle.",
+      "why": ""
     }
   ]
 }

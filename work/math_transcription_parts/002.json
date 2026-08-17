@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m00674",
+    "latex": "\\underbrace{\\sum_{j=1}^{p}\\frac{1}{n}\\sum_{i=1}^{n} x_{ij}^{2}}_{\\text{Var. of data}} = \\underbrace{\\sum_{m=1}^{M}\\frac{1}{n}\\sum_{i=1}^{n} z_{im}^{2}}_{\\text{Var. of first } M \\text{ PCs}} + \\underbrace{\\frac{1}{n}\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(x_{ij} - \\sum_{m=1}^{M} z_{im}\\phi_{jm}\\right)^{2}}_{\\text{MSE of } M\\text{-dimensional approximation}}",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00696",
+    "latex": "\\frac{1}{|C_k|}",
+    "confidence": 0.97,
+    "notes": ""
+  },
+  {
+    "id": "m00698",
+    "latex": "\\binom{n}{2}",
+    "confidence": 0.97,
+    "notes": ""
+  },
+  {
+    "id": "m00699",
+    "latex": "\\binom{6{,}830}{2}",
+    "confidence": 0.95,
+    "notes": "kept comma as 6{,}830 to avoid extra math-mode spacing after the comma"
+  },
+  {
+    "id": "m00701",
+    "latex": "\\begin{aligned} T &= \\frac{\\hat{\\mu}_t - \\hat{\\mu}_c}{s\\sqrt{\\dfrac{1}{n_t}+\\dfrac{1}{n_c}}} \\\\ \\hat{\\mu}_t &= \\frac{1}{n_t}\\sum_{i=1}^{n_t} x_{i}^{t}, \\quad \\hat{\\mu}_c = \\frac{1}{n_c}\\sum_{i=1}^{n_c} x_{i}^{c} \\\\ s &= \\sqrt{\\frac{(n_t -1)s_t^{2} + (n_c -1)s_c^{2}}{n_t + n_c -2}} \\end{aligned}",
+    "confidence": 0.75,
+    "notes": "the crop cuts off the leading 'hat{mu}_t =' on the second line (left edge of the image); reconstructed it by symmetry with the printed hat{mu}_c = term and the context defining sample means for treatment/control groups"
+  },
+  {
+    "id": "m00724",
+    "latex": "p\\text{-value} = \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B},",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00726",
+    "latex": "\\text{3. The } p\\text{-value is given by } \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B}\\text{.}",
+    "confidence": 0.9,
+    "notes": "printed as a numbered algorithm step, so the '3.' and surrounding sentence words are kept as \\text{...}"
+  },
+  {
+    "id": "m00727",
+    "latex": "\\mathrm{FDR} = E\\left(\\frac{V}{R}\\right) \\approx \\frac{\\mathrm{E}(V)}{R}.",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00734",
+    "latex": "\\text{4. Compute } \\widehat{V} = \\frac{\\sum_{b=1}^{B}\\sum_{j=1}^{m} 1_{\\left(|T^{(j),*b}| \\ge c\\right)}}{B}\\text{.}",
+    "confidence": 0.9,
+    "notes": "printed as a numbered algorithm step, so the '4. Compute' text is kept as \\text{...}"
+  },
+  {
+    "id": "m00737",
+    "latex": "\\binom{5}{2}",
+    "confidence": 0.75,
+    "notes": "extracted_characters only captured the trailing '2', but the crop clearly shows a stacked 5 over 2 with parenthesis edges visible, matching the surrounding sentence's 5(5-1)/2 = 10 computation"
+  }
+]

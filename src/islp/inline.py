@@ -63,6 +63,7 @@ class MathRun:
 class InlineResult:
     html: str
     math_runs: list[MathRun] = field(default_factory=list)
+    text_runs: int = 0  # runs rendered as plain HTML, needing no image and no model
 
 
 def _script_of(char: Char, base_size: float, baseline: float) -> int:
@@ -449,6 +450,7 @@ def build_inline(
 
     html_parts: list[str] = []
     runs: list[MathRun] = []
+    text_run_count = 0
     for math, group in segments:
         if not math:
             html_parts.append(_prose_html(group, base_size, baseline))
@@ -511,10 +513,11 @@ def build_inline(
             if len(links) == 1 and (target := links.pop()):
                 run.html = f'<a href="{link_href(target)}">{run.html}</a>'
             html_parts.append(lead + run.html + trail)
+            text_run_count += 1
         else:
             html_parts.append(lead + f"\x00MATH{len(runs)}\x00" + trail)
             runs.append(run)
-    return InlineResult("".join(html_parts), runs)
+    return InlineResult("".join(html_parts), runs, text_run_count)
 
 
 def _lstrip(chars: list[Char]) -> list[Char]:

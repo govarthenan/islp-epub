@@ -450,8 +450,8 @@ def main() -> None:
     builder.write(target)
     size = target.stat().st_size
 
-    tiers: dict[str, int] = {}
-    occurrences: dict[str, int] = {}
+    tiers: dict[str, int] = {"text": document.math.text_runs}
+    occurrences: dict[str, int] = {"text": document.math.text_runs}
     for item in document.math.items.values():
         tiers[item.tier] = tiers.get(item.tier, 0) + 1
         occurrences[item.tier] = occurrences.get(item.tier, 0) + item.occurrences

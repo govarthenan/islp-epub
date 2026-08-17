@@ -1,26 +1,27 @@
 {
- "epub_bytes": 2252856,
- "epub_name": "ISLP-draft.epub",
- "chapters": 4,
- "blocks": 998,
- "paragraphs": 593,
- "code_cells": 193,
- "figures": 36,
- "tables": 12,
- "equations_display": 85,
- "images_embedded": 48,
+ "epub_bytes": 8452968,
+ "epub_name": "ISLP-v2.epub",
+ "chapters": 15,
+ "blocks": 6427,
+ "paragraphs": 3266,
+ "code_cells": 1199,
+ "figures": 191,
+ "tables": 36,
+ "equations_display": 430,
+ "images_embedded": 188,
+ "tables_as_markup": 36,
  "math_items_by_tier": {
-  "display": 85,
-  "vlm": 22,
-  "latex": 47
+  "display": 430,
+  "latex": 186,
+  "vlm": 125
  },
  "math_occurrences_by_tier": {
-  "display": 85,
-  "vlm": 24,
-  "latex": 119
+  "display": 430,
+  "latex": 378,
+  "vlm": 143
  },
- "math_svg": 47,
- "math_bitmap": 107,
- "links_resolved": 305,
- "links_unresolved": 51
+ "math_svg": 681,
+ "math_bitmap": 60,
+ "links_resolved": 3682,
+ "links_unresolved": 0
 }
