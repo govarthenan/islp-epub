@@ -18,7 +18,8 @@ from PIL import Image
 sys.path.insert(0, str(Path(__file__).parent))
 
 from build_epub import render_crop  # noqa: E402
-from islp.figures import expand_math_bbox  # noqa: E402
+from islp.blocks import assemble  # noqa: E402
+from islp.figures import expand_math_bbox, inline_math_bbox  # noqa: E402
 from islp.inline import Tier, build_inline  # noqa: E402
 from islp.pagemodel import load_page  # noqa: E402
 
@@ -76,8 +77,9 @@ def main() -> None:
     save(render_crop(pdf[SLICE_PAGE], grown, 300, pad=1), "crop-3-grown.png")
 
     page = load_page(pdf, MASK_PAGE)
+    assemble(page)  # fills page.auxiliary, the fragment-to-host assignment
     line, run = pick_in_sentence(page)
-    grown, foreign = expand_math_bbox(page, run.bbox, [line.baseline], run.chars)
+    grown, foreign = inline_math_bbox(page, line, run.chars, page.drawing_rects)
     save(render_crop(pdf[MASK_PAGE], grown, 300, pad=1), "crop-4-unmasked.png")
     save(render_crop(pdf[MASK_PAGE], grown, 300, pad=1, foreign_ink=foreign), "crop-5-masked.png")
 
