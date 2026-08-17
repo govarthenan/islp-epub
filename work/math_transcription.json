@@ -2450,5 +2450,300 @@
   "latex": "0.001?",
   "confidence": 0.97,
   "notes": ""
+ },
+ "m00015": {
+  "latex": "(\\mathbf{A}\\mathbf{B})_{ij} = \\sum_{k=1}^{d} a_{ik}b_{kj}",
+  "confidence": 0.9,
+  "notes": "Crop included a stray floating 's' character and an empty parenthesis pair below the formula, likely bleed from adjacent unrelated content; omitted as not part of this expression."
+ },
+ "m00081": {
+  "latex": "\\mathrm{RSE} = \\sqrt{\\mathrm{RSS}/(n - 2)}.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00119": {
+  "latex": "\\begin{cases}\n\\beta_0+\\beta_1+\\epsilon_i & \\text{if } i\\text{th person is from the South} \\\\\n\\beta_0+\\beta_2+\\epsilon_i & \\text{if } i\\text{th person is from the North} \\\\\n\\beta_0+\\epsilon_i & \\text{if } i\\text{th person is from the East.}\n\\end{cases}",
+  "confidence": 0.75,
+  "notes": "Middle-row text was cut off in the crop (only a stray mark visible); reconstructed as 'if ith person is from the North' based on the standard South/North/East dummy-variable example in this section of the book."
+ },
+ "m00125": {
+  "latex": "= \\beta_0 + (\\beta_1 + \\beta_3 \\times \\texttt{radio}) \\times \\texttt{TV} + \\beta_2 \\times \\texttt{radio} + \\epsilon.",
+  "confidence": 0.85,
+  "notes": "Crop also contained small numerals 0 1 2 3 floating above the line, apparently bleed from unrelated page content; omitted as they are not part of the printed equation."
+ },
+ "m00134": {
+  "latex": "\\sqrt{2}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00178": {
+  "latex": "\\begin{aligned}\n\\widehat{\\mathrm{Pr}}(\\texttt{default=Yes}\\,|\\,\\texttt{student=Yes}) &= \\frac{e^{-3.5041+0.4049\\times 1}}{1+e^{-3.5041+0.4049\\times 1}} = 0.0431, \\\\\n\\widehat{\\mathrm{Pr}}(\\texttt{default=Yes}\\,|\\,\\texttt{student=No}) &= \\frac{e^{-3.5041+0.4049\\times 0}}{1+e^{-3.5041+0.4049\\times 0}} = 0.0292.\n\\end{aligned}",
+  "confidence": 0.65,
+  "notes": "First line's typewriter arguments (default=Yes|student=Yes) rendered blank in both the image and the PDF text layer (apparent PDF font defect); reconstructed by symmetry with the fully visible second line and the surrounding text."
+ },
+ "m00179": {
+  "latex": ") = \\frac{e^{-3.5041+0.4049\\times 1}}{1+e^{-3.5041+0.4049\\times 1}} = 0.0431,",
+  "confidence": 0.7,
+  "notes": "Crop is a tight duplicate slice showing only the fraction bar/denominator/result; numerator reconstructed to match the identical exponent pattern from the corresponding full equation elsewhere on the same page."
+ },
+ "m00187": {
+  "latex": "\\log\\left(\\frac{\\mathrm{Pr}(Y=k|X=x)}{\\mathrm{Pr}(Y=k'|X=x)}\\right) = (\\beta_{k0}-\\beta_{k'0}) + (\\beta_{k1}-\\beta_{k'1})x_1 + \\cdots + (\\beta_{kp}-\\beta_{k'p})x_p.",
+  "confidence": 0.65,
+  "notes": "Crop shows only the fraction plus a trailing close-parenthesis (opening paren, log, '=', and right-hand side cut off); reconstructed as equation 4.14 using the fully-visible duplicate immediately following in the text (m00188)."
+ },
+ "m00188": {
+  "latex": "\\log\\left(\\frac{\\mathrm{Pr}(Y=k|X=x)}{\\mathrm{Pr}(Y=k'|X=x)}\\right) = (\\beta_{k0}-\\beta_{k'0}) + (\\beta_{k1}-\\beta_{k'1})x_1 + \\cdots + (\\beta_{kp}-\\beta_{k'p})x_p.",
+  "confidence": 0.92,
+  "notes": ""
+ },
+ "m00223": {
+  "latex": "\\begin{aligned}\n\\log\\left(\\frac{\\mathrm{Pr}(Y=k|X=x)}{\\mathrm{Pr}(Y=K|X=x)}\\right) &= \\log\\left(\\frac{\\pi_k f_k(x)}{\\pi_K f_K(x)}\\right) \\\\\n&= \\log\\left(\\frac{\\pi_k \\exp\\left(-\\frac{1}{2}(x-\\mu_k)^T\\mathbf{\\Sigma}^{-1}(x-\\mu_k)\\right)}{\\pi_K \\exp\\left(-\\frac{1}{2}(x-\\mu_K)^T\\mathbf{\\Sigma}^{-1}(x-\\mu_K)\\right)}\\right) \\\\\n&= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(x-\\mu_k)^T\\mathbf{\\Sigma}^{-1}(x-\\mu_k) \\\\\n&\\quad + \\frac{1}{2}(x-\\mu_K)^T\\mathbf{\\Sigma}^{-1}(x-\\mu_K) \\\\\n&= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(\\mu_k+\\mu_K)^T\\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K) \\\\\n&\\quad + x^T\\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K) \\\\\n&= a_k + \\sum_{j=1}^{p} b_{kj}x_j,\n\\end{aligned}",
+  "confidence": 0.85,
+  "notes": "A stray isolated dot appeared far to the right of the final line in the crop (likely page-margin bleed); omitted as not part of the equation."
+ },
+ "m00224": {
+  "latex": "\\log\\left(\\frac{\\mathrm{Pr}(Y=k|X=x)}{\\mathrm{Pr}(Y=K|X=x)}\\right) = \\log",
+  "confidence": 0.6,
+  "notes": "Denominator Pr(Y=K|X=x) is essentially blank in the crop (same apparent font defect seen elsewhere on this page); reconstructed from the parallel first line of the adjacent full derivation (m00223)."
+ },
+ "m00225": {
+  "latex": "a_k = \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(\\mu_k+\\mu_K)^T\\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K)",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00237": {
+  "latex": "\\mathrm{Pr}(Y=2) = \\frac{e^{-5}5^2}{2!} = 0.084",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00247": {
+  "latex": "\\frac{1}{n}\\sum_{i=1}^{n}(x_i-\\bar{x})^2 \\qquad \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i-\\bar{x})^2",
+  "confidence": 0.45,
+  "notes": "Crop shows two side-by-side, partially overlapping fragments; this id and its siblings m00248/m00250 appear to be three different vertical slices of the same single line of typeset material. Reconstructed the full pair of expressions by combining information visible across all three crops."
+ },
+ "m00248": {
+  "latex": "\\frac{1}{n}\\sum_{i=1}^{n}(x_i-\\bar{x})^2 \\qquad \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i-\\bar{x})^2",
+  "confidence": 0.4,
+  "notes": "Crop is a very thin sliver (height ~6pt) showing only two stray '1' numerators; reconstructed the full pair of expressions using the sibling crops m00247/m00250 of the same line."
+ },
+ "m00250": {
+  "latex": "\\frac{1}{n}\\sum_{i=1}^{n}(x_i-\\bar{x})^2 \\qquad \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i-\\bar{x})^2",
+  "confidence": 0.45,
+  "notes": "Crop shows the bottom portion (denominators n, n-1, and the summation index/summand) of the same line as m00247/m00248; reconstructed the full pair of expressions by combining all three crops."
+ },
+ "m00255": {
+  "latex": "\\frac{1}{\\sqrt{2}}",
+  "confidence": 0.3,
+  "notes": "Extremely narrow crop (~24pt wide); the radical clearly continues beyond the crop boundary (only a lone '2' is visible under it), almost certainly the start of the normal density 1/sqrt(2*pi*sigma^2) referenced in the preceding sentence, but the remainder is not present in this image."
+ },
+ "m00324": {
+  "latex": "\\|\\beta\\|_2 = \\sqrt{\\sum_{j=1}^{p}\\beta_j^2}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00337": {
+  "latex": "\\operatorname*{minimize}_{\\beta}\\left\\{\\sum_{i=1}^{n}\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_j x_{ij}\\right)^2\\right\\} \\quad \\text{subject to} \\quad \\sum_{j=1}^{p} I(\\beta_j \\neq 0) \\leq s.",
+  "confidence": 0.75,
+  "notes": "Crop cuts off right after the trailing summation sign (missing 'subject to ... <= s'); reconstructed the constraint using the sibling crops m00338 (minimize term) and m00339 (I(beta_j != 0) <= s term) of the same equation (6.10)."
+ },
+ "m00338": {
+  "latex": "\\operatorname*{minimize}_{\\beta}\\left\\{\\sum_{i=1}^{n}\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_j x_{ij}\\right)^2\\right\\}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00339": {
+  "latex": "I(\\beta_j \\neq 0) \\leq s.",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00340": {
+  "latex": "I(\\beta_j \\neq 0)",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00371": {
+  "latex": "p(\\beta) = \\frac{1}{2b}\\exp(-|\\beta|/b)",
+  "confidence": 0.5,
+  "notes": "Crop shows only the numeral '1' over the start of a fraction bar (~7pt tall sliver); reconstructed to match the fully visible duplicate equation immediately following in the text (m00372)."
+ },
+ "m00372": {
+  "latex": "p(\\beta) = \\frac{1}{2b}\\exp(-|\\beta|/b).",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00478": {
+  "latex": "\\frac{1}{n}\\sum_{i=1}^{n}",
+  "confidence": 0.3,
+  "notes": "Crop mixes surrounding body-text lines ('values', 'In s...', 'time.') with a small math fragment; only 1/n * sum_{i=1}^{n} is legible, the summand is cut off, so the full expression could not be determined from this image alone."
+ },
+ "m00479": {
+  "latex": "1",
+  "confidence": 0.95,
+  "notes": "Isolated numerator digit; occurs twice per manifest, likely part of a fraction such as 1/B elsewhere in text."
+ },
+ "m00484": {
+  "latex": "\\begin{aligned}\n&\\text{1. Let } \\hat{f}_1^1(x) = \\hat{f}_2^1(x) = \\cdots = \\hat{f}_K^1(x) = \\frac{1}{nK}\\sum_{i=1}^{n} y_i. \\\\\n&\\text{2. Compute } \\hat{f}^1(x) = \\sum_{k=1}^{K} \\hat{f}_k^1(x) = \\frac{1}{n}\\sum_{i=1}^{n} y_i.\n\\end{aligned}",
+  "confidence": 0.85,
+  "notes": "Numbered BART algorithm steps rendered as aligned lines; superscript 1 (draw index) and subscript k (tree index) read directly from image."
+ },
+ "m00487": {
+  "latex": "k",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00504": {
+  "latex": ")^{T}",
+  "confidence": 0.7,
+  "notes": "Crop is a narrow fragment showing only a tall closing parenthesis with transpose exponent T; likely the tail of a vector such as (x_{i1},...,x_{ip})^T."
+ },
+ "m00519": {
+  "latex": "\\langle a, b \\rangle = \\sum_{i=1}^{r} a_i b_i",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00527": {
+  "latex": "\\sum_{j=1}^{p} x_{ij}x_{i'j}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00539": {
+  "latex": "\\binom{K}{2}",
+  "confidence": 0.55,
+  "notes": "Crop clearly shows only a tall stacked parenthesis with K on top and blank below; the well-known ISLP one-vs-one SVM sentence in the context strongly implies binom(K,2), but the bottom '2' is not visible in the image itself."
+ },
+ "m00545": {
+  "latex": "P(\\beta) = \\sum_{j=1}^{p} \\beta_j^2",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00546": {
+  "latex": "P(\\beta) = \\sum_{j=1}^{p} |\\beta_j|",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00577": {
+  "latex": "O_L = \\beta_0+\\sum_{k=1}^{K} \\beta_k A_{Lk}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00578": {
+  "latex": "\\sum_{i=1}^{n}(y_i-o_{iL})^2 = \\sum_{i=1}^{n}\\left(y_i-\\left(\\beta_0+\\sum_{k=1}^{K}\\beta_k g\\left(w_{k0}+\\sum_{j=1}^{p}w_{kj}x_{iLj}+\\sum_{s=1}^{K}u_{ks}a_{i,L-1,s}\\right)\\right)\\right)^2.",
+  "confidence": 0.85,
+  "notes": "Deeply nested parentheses matched by careful count against the image (3 opens/3 closes before the final exponent)."
+ },
+ "m00579": {
+  "latex": "\\sum_{i=1}^{n}(y_i-o_{iL})^2 = \\sum_{i=1}^{n}\\left(y_i-\\left(\\beta_0+\\sum_{k=1}^{K}\\beta_k g\\left(w_{k0}+\\sum_{j=1}^{p}w_{kj}x_{iLj}+\\sum_{s=1}^{K}u_{ks}a_{i,L-1,s}\\right)\\right)\\right)^2",
+  "confidence": 0.75,
+  "notes": "This crop's bounding box and operator layout (sums, parens, exponent 2) exactly overlays equation 10.19 (id m00578) but omits the alphanumeric glyphs; treated as a duplicate crop of the same printed equation minus the trailing period."
+ },
+ "m00580": {
+  "latex": "X_1 = \\begin{pmatrix} v_{t-L} \\\\ r_{t-L} \\\\ z_{t-L} \\end{pmatrix}, X_2 = \\begin{pmatrix} v_{t-L+1} \\\\ r_{t-L+1} \\\\ z_{t-L+1} \\end{pmatrix}, \\cdots, X_L = \\begin{pmatrix} v_{t-1} \\\\ r_{t-1} \\\\ z_{t-1} \\end{pmatrix}, \\quad \\text{and} \\quad Y = v_t.",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00590": {
+  "latex": "z_{ik} = w_{k0} + \\sum_{j=1}^{p} w_{kj}x_{ij}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00612": {
+  "latex": "X = \\sum_{k=1}^{K} q_{1k}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00614": {
+  "latex": "\\mu = \\sum_{k=1}^{K} \\frac{r_{1k}}{r_k} q_k",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00616": {
+  "latex": "\\mathrm{Var}\\left(\\sum_{k=1}^{K} q_{1k}\\right) \\approx \\sum_{k=1}^{K} \\mathrm{Var}\\left(q_{1k}\\right) = \\sum_{k=1}^{K} \\frac{q_k(r_{1k}/r_k)(1-r_{1k}/r_k)(r_k-q_k)}{r_k-1}.",
+  "confidence": 0.8,
+  "notes": "This crop (tagged as display eq 11.7) itself is truncated right after the third summation sign; the trailing fraction is reconstructed from the companion crop m00617 of the same printed equation."
+ },
+ "m00617": {
+  "latex": "\\mathrm{Var}\\left(\\sum_{k=1}^{K} q_{1k}\\right) \\approx \\sum_{k=1}^{K} \\mathrm{Var}\\left(q_{1k}\\right) = \\sum_{k=1}^{K} \\frac{q_k(r_{1k}/r_k)(1-r_{1k}/r_k)(r_k-q_k)}{r_k-1}.",
+  "confidence": 0.75,
+  "notes": "Crop shows the full equation but with bare summation signs lacking their k=1..K limits; limits reconstructed from the companion crop m00616 which shows the same printed equation (11.7) with limits but truncated before the fraction."
+ },
+ "m00630": {
+  "latex": "h(t|x_i) = \\exp\\left(\\beta_0 + \\sum_{j=1}^{p} \\beta_j x_{ij}\\right)",
+  "confidence": 0.8,
+  "notes": "Crop is truncated immediately after x_{ij}; closing parenthesis for exp(...) added to balance the opening one visible in the image."
+ },
+ "m00635": {
+  "latex": "\\frac{h_0(y_i) \\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)}{\\sum_{i':y_{i'}\\geq y_i} h_0(y_i) \\exp\\left(\\sum_{j=1}^{p} x_{i'j}\\beta_j\\right)} = \\frac{\\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)}{\\sum_{i':y_{i'}\\geq y_i} \\exp\\left(\\sum_{j=1}^{p} x_{i'j}\\beta_j\\right)}.",
+  "confidence": 0.85,
+  "notes": ""
+ },
+ "m00654": {
+  "latex": "\\operatorname*{maximize}_{\\phi_{11},\\ldots,\\phi_{p1}} \\left\\{ \\frac{1}{n}\\sum_{i=1}^{n}\\left(\\sum_{j=1}^{p}\\phi_{j1}x_{ij}\\right)^{2} \\right\\} \\quad \\text{subject to} \\quad \\sum_{j=1}^{p}\\phi_{j1}^{2} = 1.",
+  "confidence": 0.85,
+  "notes": "Faint marks below the main line in the crop are bleed-through from the following equation (12.4) and are not part of this expression."
+ },
+ "m00657": {
+  "latex": "x_{ij} \\approx \\sum_{m=1}^{M} a_{im}b_{jm}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00680": {
+  "latex": "\\tilde{x}_{ij} \\leftarrow \\sum_{m=1}^{M} \\hat{a}_{im}\\hat{b}_{jm}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00690": {
+  "latex": "\\bar{x}_{kj} = \\frac{1}{|C_k|}\\sum_{i\\in C_k} x_{ij}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ "m00694": {
+  "latex": "T = \\frac{\\hat{\\mu}_t - \\hat{\\mu}_c}{s\\sqrt{\\frac{1}{n_t}+\\frac{1}{n_c}}}",
+  "confidence": 0.85,
+  "notes": "Faint marks below the main fraction in the crop are bleed-through from a nearby footnote formula and are not part of this expression."
+ },
+ "m00696": {
+  "latex": "\\hat{\\mu}_{c} = \\frac{1}{n_{c}} \\sum_{i=1}^{n_{c}} x_{i}^{c}",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ "m00697": {
+  "latex": "s = \\sqrt{\\frac{(n_{t}-1)s_{t}^{2} + (n_{c}-1)s_{c}^{2}}{n_{t}+n_{c}-2}}",
+  "confidence": 0.97,
+  "notes": "faint bleed of previous line's summation visible at top of crop, not transcribed"
+ },
+ "m00700": {
+  "latex": "\\begin{aligned} \\mathrm{FWER}(\\alpha) &= 1 - \\mathrm{Pr}(V = 0) \\\\ &= 1 - \\mathrm{Pr}(\\text{do not falsely reject any null hypotheses}) \\\\ &= 1 - \\mathrm{Pr}\\!\\left(\\bigcap_{j=1}^{m} \\{\\text{do not falsely reject } H_{0j}\\}\\right). \\end{aligned}",
+  "confidence": 0.93,
+  "notes": ""
+ },
+ "m00720": {
+  "latex": "\\begin{gathered} y_{1}^{*}, \\ldots, y_{n_{Y}}^{*}, \\text{ and call the result } T^{*b}. \\\\ \\text{3. The } p\\text{-value is given by } \\dfrac{\\sum_{b=1}^{B} 1_{(|T^{*b}| \\ge |T|)}}{B}. \\end{gathered}",
+  "confidence": 0.75,
+  "notes": "crop spans end of one enumerated step and start of the next; faint bleed of x_1,...,x_{n_X} at top-right ignored as it belongs to the preceding line"
+ },
+ "m00724": {
+  "latex": "\\text{and } y_{1}^{(j)}, \\ldots, y_{n_{Y}}^{(j)}.",
+  "confidence": 0.92,
+  "notes": "faint bleed of H_{0j} and x_1,...,x_{n_X} from neighboring lines ignored"
+ },
+ "m00725": {
+  "latex": "\\text{servations } y_{1}^{*(j)}, \\ldots, y_{n_{Y}}^{*(j)}.",
+  "confidence": 0.9,
+  "notes": "faint stray '1' bleed above and below from adjacent superscripts ignored; 'servations' is the tail of 'observations' continued from previous line"
+ },
+ "m00726": {
+  "latex": "y_{1}^{*(j)}, \\ldots, y_{n_{Y}}^{*(j)}, \\text{ and call the result } T^{(j),*b}.",
+  "confidence": 0.92,
+  "notes": "faint bleed of x_1 and a dot above ignored"
+ },
+ "m00727": {
+  "latex": "R = \\sum_{j=1}^{m} 1_{\\left(|T^{(j)}| \\ge c\\right)}",
+  "confidence": 0.9,
+  "notes": "faint bleed marks below main line ignored"
+ },
+ "m00730": {
+  "latex": "(5)",
+  "confidence": 0.55,
+  "notes": "likely a footnote marker rendered in parentheses; low confidence on exact intended typesetting"
  }
 }

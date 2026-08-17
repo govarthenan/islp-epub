@@ -1,0 +1,152 @@
+[
+ {
+  "id": "m00479",
+  "latex": "1",
+  "confidence": 0.95,
+  "notes": "Isolated numerator digit; occurs twice per manifest, likely part of a fraction such as 1/B elsewhere in text."
+ },
+ {
+  "id": "m00484",
+  "latex": "\\begin{aligned}\n&\\text{1. Let } \\hat{f}_1^1(x) = \\hat{f}_2^1(x) = \\cdots = \\hat{f}_K^1(x) = \\frac{1}{nK}\\sum_{i=1}^{n} y_i. \\\\\n&\\text{2. Compute } \\hat{f}^1(x) = \\sum_{k=1}^{K} \\hat{f}_k^1(x) = \\frac{1}{n}\\sum_{i=1}^{n} y_i.\n\\end{aligned}",
+  "confidence": 0.85,
+  "notes": "Numbered BART algorithm steps rendered as aligned lines; superscript 1 (draw index) and subscript k (tree index) read directly from image."
+ },
+ {
+  "id": "m00487",
+  "latex": "k",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ {
+  "id": "m00504",
+  "latex": ")^{T}",
+  "confidence": 0.7,
+  "notes": "Crop is a narrow fragment showing only a tall closing parenthesis with transpose exponent T; likely the tail of a vector such as (x_{i1},...,x_{ip})^T."
+ },
+ {
+  "id": "m00519",
+  "latex": "\\langle a, b \\rangle = \\sum_{i=1}^{r} a_i b_i",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00527",
+  "latex": "\\sum_{j=1}^{p} x_{ij}x_{i'j}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00539",
+  "latex": "\\binom{K}{2}",
+  "confidence": 0.55,
+  "notes": "Crop clearly shows only a tall stacked parenthesis with K on top and blank below; the well-known ISLP one-vs-one SVM sentence in the context strongly implies binom(K,2), but the bottom '2' is not visible in the image itself."
+ },
+ {
+  "id": "m00545",
+  "latex": "P(\\beta) = \\sum_{j=1}^{p} \\beta_j^2",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00546",
+  "latex": "P(\\beta) = \\sum_{j=1}^{p} |\\beta_j|",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00577",
+  "latex": "O_L = \\beta_0+\\sum_{k=1}^{K} \\beta_k A_{Lk}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00578",
+  "latex": "\\sum_{i=1}^{n}(y_i-o_{iL})^2 = \\sum_{i=1}^{n}\\left(y_i-\\left(\\beta_0+\\sum_{k=1}^{K}\\beta_k g\\left(w_{k0}+\\sum_{j=1}^{p}w_{kj}x_{iLj}+\\sum_{s=1}^{K}u_{ks}a_{i,L-1,s}\\right)\\right)\\right)^2.",
+  "confidence": 0.85,
+  "notes": "Deeply nested parentheses matched by careful count against the image (3 opens/3 closes before the final exponent)."
+ },
+ {
+  "id": "m00579",
+  "latex": "\\sum_{i=1}^{n}(y_i-o_{iL})^2 = \\sum_{i=1}^{n}\\left(y_i-\\left(\\beta_0+\\sum_{k=1}^{K}\\beta_k g\\left(w_{k0}+\\sum_{j=1}^{p}w_{kj}x_{iLj}+\\sum_{s=1}^{K}u_{ks}a_{i,L-1,s}\\right)\\right)\\right)^2",
+  "confidence": 0.75,
+  "notes": "This crop's bounding box and operator layout (sums, parens, exponent 2) exactly overlays equation 10.19 (id m00578) but omits the alphanumeric glyphs; treated as a duplicate crop of the same printed equation minus the trailing period."
+ },
+ {
+  "id": "m00580",
+  "latex": "X_1 = \\begin{pmatrix} v_{t-L} \\\\ r_{t-L} \\\\ z_{t-L} \\end{pmatrix}, X_2 = \\begin{pmatrix} v_{t-L+1} \\\\ r_{t-L+1} \\\\ z_{t-L+1} \\end{pmatrix}, \\cdots, X_L = \\begin{pmatrix} v_{t-1} \\\\ r_{t-1} \\\\ z_{t-1} \\end{pmatrix}, \\quad \\text{and} \\quad Y = v_t.",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ {
+  "id": "m00590",
+  "latex": "z_{ik} = w_{k0} + \\sum_{j=1}^{p} w_{kj}x_{ij}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00612",
+  "latex": "X = \\sum_{k=1}^{K} q_{1k}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00614",
+  "latex": "\\mu = \\sum_{k=1}^{K} \\frac{r_{1k}}{r_k} q_k",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00616",
+  "latex": "\\mathrm{Var}\\left(\\sum_{k=1}^{K} q_{1k}\\right) \\approx \\sum_{k=1}^{K} \\mathrm{Var}\\left(q_{1k}\\right) = \\sum_{k=1}^{K} \\frac{q_k(r_{1k}/r_k)(1-r_{1k}/r_k)(r_k-q_k)}{r_k-1}.",
+  "confidence": 0.8,
+  "notes": "This crop (tagged as display eq 11.7) itself is truncated right after the third summation sign; the trailing fraction is reconstructed from the companion crop m00617 of the same printed equation."
+ },
+ {
+  "id": "m00617",
+  "latex": "\\mathrm{Var}\\left(\\sum_{k=1}^{K} q_{1k}\\right) \\approx \\sum_{k=1}^{K} \\mathrm{Var}\\left(q_{1k}\\right) = \\sum_{k=1}^{K} \\frac{q_k(r_{1k}/r_k)(1-r_{1k}/r_k)(r_k-q_k)}{r_k-1}.",
+  "confidence": 0.75,
+  "notes": "Crop shows the full equation but with bare summation signs lacking their k=1..K limits; limits reconstructed from the companion crop m00616 which shows the same printed equation (11.7) with limits but truncated before the fraction."
+ },
+ {
+  "id": "m00630",
+  "latex": "h(t|x_i) = \\exp\\left(\\beta_0 + \\sum_{j=1}^{p} \\beta_j x_{ij}\\right)",
+  "confidence": 0.8,
+  "notes": "Crop is truncated immediately after x_{ij}; closing parenthesis for exp(...) added to balance the opening one visible in the image."
+ },
+ {
+  "id": "m00635",
+  "latex": "\\frac{h_0(y_i) \\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)}{\\sum_{i':y_{i'}\\geq y_i} h_0(y_i) \\exp\\left(\\sum_{j=1}^{p} x_{i'j}\\beta_j\\right)} = \\frac{\\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)}{\\sum_{i':y_{i'}\\geq y_i} \\exp\\left(\\sum_{j=1}^{p} x_{i'j}\\beta_j\\right)}.",
+  "confidence": 0.85,
+  "notes": ""
+ },
+ {
+  "id": "m00654",
+  "latex": "\\operatorname*{maximize}_{\\phi_{11},\\ldots,\\phi_{p1}} \\left\\{ \\frac{1}{n}\\sum_{i=1}^{n}\\left(\\sum_{j=1}^{p}\\phi_{j1}x_{ij}\\right)^{2} \\right\\} \\quad \\text{subject to} \\quad \\sum_{j=1}^{p}\\phi_{j1}^{2} = 1.",
+  "confidence": 0.85,
+  "notes": "Faint marks below the main line in the crop are bleed-through from the following equation (12.4) and are not part of this expression."
+ },
+ {
+  "id": "m00657",
+  "latex": "x_{ij} \\approx \\sum_{m=1}^{M} a_{im}b_{jm}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00680",
+  "latex": "\\tilde{x}_{ij} \\leftarrow \\sum_{m=1}^{M} \\hat{a}_{im}\\hat{b}_{jm}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00690",
+  "latex": "\\bar{x}_{kj} = \\frac{1}{|C_k|}\\sum_{i\\in C_k} x_{ij}",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00694",
+  "latex": "T = \\frac{\\hat{\\mu}_t - \\hat{\\mu}_c}{s\\sqrt{\\frac{1}{n_t}+\\frac{1}{n_c}}}",
+  "confidence": 0.85,
+  "notes": "Faint marks below the main fraction in the crop are bleed-through from a nearby footnote formula and are not part of this expression."
+ }
+]

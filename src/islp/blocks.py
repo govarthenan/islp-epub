@@ -177,17 +177,31 @@ def _drop_auxiliary_math_lines(tagged: list[TaggedLine], rules,
     # A fragment belongs to a paragraph line only if that line actually carries mathematics.
     # Without that test the opening brace of a piecewise definition, which happens to sit
     # close to the paragraph above it, was being thrown away.
-    # A host is a line of body text, recognised by starting at one of the two paragraph
-    # margins. Requiring it to be wide as well missed the last line of a paragraph, which is
-    # short by definition, and left the denominators of its inline fractions stranded as
-    # equations of their own.
-    hosts = [entry.line for entry in tagged
-             if entry.kind == Kind.PROSE
-             and (abs(entry.line.x0 - PROSE_LEFT) < 1.6 or abs(entry.line.x0 - PARA_INDENT) < 1.6)
-             and any(char.role in (Role.MATH_VAR, Role.MATH_UP) for char in entry.line.chars)]
+    # A host is a line of running text: body prose or a footnote. It qualifies either by
+    # starting at a paragraph margin (which catches the short last line of a paragraph) or by
+    # running most of the width of the column (which catches an indented exercise item).
+    # An arm of a piecewise definition passes neither test, so it never claims the brace.
+    def is_host(entry: TaggedLine) -> bool:
+        if entry.kind not in (Kind.PROSE, Kind.FOOTNOTE):
+            return False
+        line = entry.line
+        at_margin = (abs(line.x0 - PROSE_LEFT) < 1.6 or abs(line.x0 - PARA_INDENT) < 1.6)
+        if not at_margin and line.x1 - line.x0 <= FULL_WIDTH:
+            return False
+        return any(char.role in (Role.MATH_VAR, Role.MATH_UP) for char in line.chars)
+
+    def is_fragment(entry: TaggedLine) -> bool:
+        if entry.kind == Kind.DISPLAY:
+            return True
+        if entry.kind != Kind.FOOTNOTE:
+            return False
+        return not has_prose_word(entry.line) and math_fraction(entry.line) > 0.6
+
+    hosts = [entry.line for entry in tagged if is_host(entry)]
+
     ordered = sorted(tagged, key=lambda item: item.line.baseline)
     for position, entry in enumerate(ordered):
-        if entry.kind != Kind.DISPLAY:
+        if not is_fragment(entry):
             continue
         for host in hosts:
             if abs(host.baseline - entry.line.baseline) >= AUXILIARY_BASELINE_GAP:
