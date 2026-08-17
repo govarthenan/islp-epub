@@ -146,20 +146,40 @@ AUXILIARY_BASELINE_GAP = 10.0
 FULL_WIDTH = 200.0
 
 
+def _covers_math(host: VLine, fragment: VLine) -> bool:
+    for char in host.chars:
+        if char.role not in (Role.MATH_VAR, Role.MATH_UP):
+            continue
+        if char.x0 <= fragment.x1 + 1 and char.x1 >= fragment.x0 - 1:
+            return True
+    return False
+
+
 def _drop_auxiliary_math_lines(tagged: list[TaggedLine]) -> None:
     """A fraction or a large operator set inside a paragraph puts its numerator, denominator
     and limits on baselines of their own. Those fragments look exactly like little display
     equations, so they are matched back to the paragraph line they belong to and dropped: the
     cropped image of that line's mathematics already contains them."""
+    # A fragment belongs to a paragraph line only if that line actually carries mathematics.
+    # Without that test the opening brace of a piecewise definition, which happens to sit
+    # close to the paragraph above it, was being thrown away.
     hosts = [entry.line for entry in tagged
-             if entry.kind == Kind.PROSE and entry.line.x1 - entry.line.x0 > FULL_WIDTH]
-    for entry in tagged:
+             if entry.kind == Kind.PROSE
+             and entry.line.x1 - entry.line.x0 > FULL_WIDTH
+             and any(char.role in (Role.MATH_VAR, Role.MATH_UP) for char in entry.line.chars)]
+    ordered = sorted(tagged, key=lambda item: item.line.baseline)
+    for position, entry in enumerate(ordered):
         if entry.kind != Kind.DISPLAY:
             continue
         for host in hosts:
             if abs(host.baseline - entry.line.baseline) >= AUXILIARY_BASELINE_GAP:
                 continue
-            if host.x0 - 2 <= entry.line.x0 and entry.line.x1 <= host.x1 + 2:
+            if not (host.x0 - 2 <= entry.line.x0 and entry.line.x1 <= host.x1 + 2):
+                continue
+            # It belongs to that line only if it sits over the line's own mathematics. The
+            # opening brace of a display construct happens to sit close to the paragraph
+            # above it, but not above any of that paragraph's symbols.
+            if _covers_math(host, entry.line):
                 entry.kind = Kind.OTHER
                 break
 
@@ -205,13 +225,15 @@ EQUATION_ARM_GAP = 16.0
 
 
 def _inside_equation(line: VLine, run: list[VLine]) -> bool:
-    """A line of words that belongs to an equation rather than to a paragraph.
+    """True when a line of words belongs to the equation rather than to the paragraph.
 
-    The arms of a piecewise definition ("if ith person owns a house") sit to the right of the
-    brace, so they start further in than any part of the equation itself. A paragraph line
-    that happens to be indented starts at or left of it, and is refused."""
-    left_edge = min(other.x0 for other in run)
-    return (line.x0 >= max(DISPLAY_MIN_X, left_edge + 8.0)
+    The arms of a piecewise definition ("1 if stroke;") mix a couple of mathematical symbols
+    with ordinary words, so they read as prose to the classifier. Two things separate them
+    from a paragraph line that merely happens to be indented: they carry mathematics, and
+    they are short and set in from both paragraph margins."""
+    if not any(char.role in (Role.MATH_VAR, Role.MATH_UP) for char in line.chars):
+        return False
+    return (line.x0 >= DISPLAY_MIN_X
             and abs(line.x0 - PARA_INDENT) > 1.6
             and line.x1 <= EQUATION_BODY_MAX_X
             and line.x1 - line.x0 <= EQUATION_ARM_MAX_WIDTH)
@@ -261,6 +283,9 @@ def assemble(page: Page) -> list[Block]:
         if block.lines:
             block.bbox = _bbox_union([ln.bbox for ln in block.lines])
         blocks.append(block)
+
+    def finish() -> list[Block]:
+        return _merge_overlapping_displays(blocks)
 
     while index < len(tagged):
         entry = tagged[index]
@@ -422,4 +447,44 @@ def assemble(page: Page) -> list[Block]:
             index += 1
         push(Block(kind="para", page=page.index, lines=run, list_marker=marker))
 
-    return blocks
+    return finish()
+
+
+VERTICAL_TOUCH = 2.0
+HORIZONTAL_SHARE = 0.3
+
+
+def _merge_overlapping_displays(blocks: list[Block]) -> list[Block]:
+    """Two display blocks never overlap on the page unless they are halves of one equation.
+
+    A `cases` block whose first arm is separated from the rest by an intervening baseline can
+    still come out as two blocks; where their boxes overlap, they are the same equation and
+    are put back together."""
+    merged: list[Block] = []
+    for block in blocks:
+        if block.kind != "display":
+            merged.append(block)
+            continue
+        target = None
+        for candidate in merged:
+            if candidate.kind != "display":
+                continue
+            if _boxes_overlap(candidate.bbox, block.bbox):
+                target = candidate
+                break
+        if target is None:
+            merged.append(block)
+            continue
+        target.lines = sorted(target.lines + block.lines, key=lambda ln: (ln.baseline, ln.x0))
+        target.bbox = _bbox_union([ln.bbox for ln in target.lines])
+        target.eq_number = target.eq_number or block.eq_number
+    return merged
+
+
+def _boxes_overlap(first, second) -> bool:
+    vertical = min(first[3], second[3]) - max(first[1], second[1])
+    if vertical <= VERTICAL_TOUCH:
+        return False
+    horizontal = min(first[2], second[2]) - max(first[0], second[0])
+    narrower = min(first[2] - first[0], second[2] - second[0])
+    return narrower > 0 and horizontal / narrower > HORIZONTAL_SHARE

@@ -1,0 +1,56 @@
+[
+ {
+  "key": "t4-7-p165",
+  "html": "<table><thead><tr><th scope=\"col\">Name</th><th scope=\"col\">Definition</th><th scope=\"col\">Synonyms</th></tr></thead><tbody><tr><th scope=\"row\">False Pos. rate</th><td>FP/N</td><td>Type I error, 1−Specificity</td></tr><tr><th scope=\"row\">True Pos. rate</th><td>TP/P</td><td>1−Type II error, power, sensitivity, recall</td></tr><tr><th scope=\"row\">Pos. Pred. value</th><td>TP/P<sup>*</sup></td><td>Precision, 1−false discovery proportion</td></tr><tr><th scope=\"row\">Neg. Pred. value</th><td>TN/N<sup>*</sup></td><td></td></tr></tbody></table>",
+  "columns": 3,
+  "rows": 5
+ },
+ {
+  "key": "t4-8-p169",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\"></th><th scope=\"col\" colspan=\"2\"><i>True default status</i></th><th scope=\"col\"></th></tr><tr><th scope=\"col\"></th><th scope=\"col\"></th><th scope=\"col\">No</th><th scope=\"col\">Yes</th><th scope=\"col\">Total</th></tr></thead><tbody><tr><th scope=\"row\"><i>Predicted default status</i></th><th scope=\"row\">No</th><td class=\"num\">9621</td><td class=\"num\">244</td><td class=\"num\">9865</td></tr><tr><th scope=\"row\"><i>Predicted default status</i></th><th scope=\"row\">Yes</th><td class=\"num\">46</td><td class=\"num\">89</td><td class=\"num\">135</td></tr><tr><td></td><th scope=\"row\">Total</th><td class=\"num\">9667</td><td class=\"num\">333</td><td class=\"num\">10000</td></tr></tbody></table>",
+  "columns": 5,
+  "rows": 5
+ },
+ {
+  "key": "t4-9-p170",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\"></th><th scope=\"col\" colspan=\"2\"><i>True default status</i></th><th scope=\"col\"></th></tr><tr><th scope=\"col\"></th><th scope=\"col\"></th><th scope=\"col\">No</th><th scope=\"col\">Yes</th><th scope=\"col\">Total</th></tr></thead><tbody><tr><th scope=\"row\"><i>Predicted default status</i></th><th scope=\"row\">No</th><td class=\"num\">9339</td><td class=\"num\">130</td><td class=\"num\">9469</td></tr><tr><th scope=\"row\"><i>Predicted default status</i></th><th scope=\"row\">Yes</th><td class=\"num\">328</td><td class=\"num\">203</td><td class=\"num\">531</td></tr><tr><td></td><th scope=\"row\">Total</th><td class=\"num\">9667</td><td class=\"num\">333</td><td class=\"num\">10000</td></tr></tbody></table>",
+  "columns": 5,
+  "rows": 5
+ },
+ {
+  "key": "t4-10-p176",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\">Coefficient</th><th scope=\"col\">Std. error</th><th scope=\"col\"><i>t</i>-statistic</th><th scope=\"col\"><i>p</i>-value</th></tr></thead><tbody><tr><th scope=\"row\"><code>Intercept</code></th><td class=\"num\">73.60</td><td class=\"num\">5.13</td><td class=\"num\">14.34</td><td class=\"num\">0.00</td></tr><tr><th scope=\"row\"><code>workingday</code></th><td class=\"num\">1.27</td><td class=\"num\">1.78</td><td class=\"num\">0.71</td><td class=\"num\">0.48</td></tr><tr><th scope=\"row\"><code>temp</code></th><td class=\"num\">157.21</td><td class=\"num\">10.26</td><td class=\"num\">15.32</td><td class=\"num\">0.00</td></tr><tr><th scope=\"row\"><code>weathersit[cloudy/misty]</code></th><td class=\"num\">−12.89</td><td class=\"num\">1.96</td><td class=\"num\">−6.56</td><td class=\"num\">0.00</td></tr><tr><th scope=\"row\"><code>weathersit[light rain/snow]</code></th><td class=\"num\">−66.49</td><td class=\"num\">2.97</td><td class=\"num\">−22.43</td><td class=\"num\">0.00</td></tr><tr><th scope=\"row\"><code>weathersit[heavy rain/snow]</code></th><td class=\"num\">−109.75</td><td class=\"num\">76.67</td><td class=\"num\">−1.43</td><td class=\"num\">0.15</td></tr></tbody></table>",
+  "columns": 5,
+  "rows": 7
+ },
+ {
+  "key": "t4-11-p180",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\">Coefficient</th><th scope=\"col\">Std. error</th><th scope=\"col\"><i>z</i>-statistic</th><th scope=\"col\"><i>p</i>-value</th></tr></thead><tbody><tr><th scope=\"row\"><code>Intercept</code></th><td class=\"num\">4.12</td><td class=\"num\">0.01</td><td class=\"num\">683.96</td><td class=\"num\">0.00</td></tr><tr><th scope=\"row\"><code>workingday</code></th><td class=\"num\">0.01</td><td class=\"num\">0.00</td><td class=\"num\">7.5</td><td class=\"num\">0.00</td></tr><tr><th scope=\"row\"><code>temp</code></th><td class=\"num\">0.79</td><td class=\"num\">0.01</td><td class=\"num\">68.43</td><td class=\"num\">0.00</td></tr><tr><th scope=\"row\"><code>weathersit[cloudy/misty]</code></th><td class=\"num\">−0.08</td><td class=\"num\">0.00</td><td class=\"num\">−34.53</td><td class=\"num\">0.00</td></tr><tr><th scope=\"row\"><code>weathersit[light rain/snow]</code></th><td class=\"num\">−0.58</td><td class=\"num\">0.00</td><td class=\"num\">−141.91</td><td class=\"num\">0.00</td></tr><tr><th scope=\"row\"><code>weathersit[heavy rain/snow]</code></th><td class=\"num\">−0.93</td><td class=\"num\">0.17</td><td class=\"num\">−5.55</td><td class=\"num\">0.00</td></tr></tbody></table>",
+  "columns": 5,
+  "rows": 7
+ },
+ {
+  "key": "t6-1-p242",
+  "html": "<table><thead><tr><th scope=\"col\"># Variables</th><th scope=\"col\">Best subset</th><th scope=\"col\">Forward stepwise</th></tr></thead><tbody><tr><th scope=\"row\">One</th><td><code>rating</code></td><td><code>rating</code></td></tr><tr><th scope=\"row\">Two</th><td><code>rating</code>, <code>income</code></td><td><code>rating</code>, <code>income</code></td></tr><tr><th scope=\"row\">Three</th><td><code>rating</code>, <code>income</code>, <code>student</code></td><td><code>rating</code>, <code>income</code>, <code>student</code></td></tr><tr><th scope=\"row\">Four</th><td><code>cards</code>, <code>income</code>, <code>student</code>, <code>limit</code></td><td><code>rating</code>, <code>income</code>, <code>student</code>, <code>limit</code></td></tr></tbody></table>",
+  "columns": 3,
+  "rows": 5
+ },
+ {
+  "key": "t10-1-p413",
+  "html": "<table><thead><tr><th scope=\"col\">Method</th><th scope=\"col\">Test Error</th></tr></thead><tbody><tr><th scope=\"row\">Neural Network + Ridge Regularization</th><td class=\"num\">2.3%</td></tr><tr><th scope=\"row\">Neural Network + Dropout Regularization</th><td class=\"num\">1.8%</td></tr><tr><th scope=\"row\">Multinomial Logistic Regression</th><td class=\"num\">7.2%</td></tr><tr><th scope=\"row\">Linear Discriminant Analysis</th><td class=\"num\">12.7%</td></tr></tbody></table>",
+  "columns": 2,
+  "rows": 5
+ },
+ {
+  "key": "t10-2-p433",
+  "html": "<table><thead><tr><th scope=\"col\">Model</th><th scope=\"col\"># Parameters</th><th scope=\"col\">Mean Abs. Error</th><th scope=\"col\">Test Set <i>R</i><sup>2</sup></th></tr></thead><tbody><tr><th scope=\"row\">Linear Regression</th><td class=\"num\">20</td><td class=\"num\">254.7</td><td class=\"num\">0.56</td></tr><tr><th scope=\"row\">Lasso</th><td class=\"num\">12</td><td class=\"num\">252.3</td><td class=\"num\">0.51</td></tr><tr><th scope=\"row\">Neural Network</th><td class=\"num\">1345</td><td class=\"num\">257.4</td><td class=\"num\">0.54</td></tr></tbody></table>",
+  "columns": 4,
+  "rows": 4
+ },
+ {
+  "key": "t10-3-p433",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\">Coefficient</th><th scope=\"col\">Std. error</th><th scope=\"col\"><i>t</i>-statistic</th><th scope=\"col\"><i>p</i>-value</th></tr></thead><tbody><tr><th scope=\"row\"><code>Intercept</code></th><td class=\"num\">−226.67</td><td class=\"num\">86.26</td><td class=\"num\">−2.63</td><td class=\"num\">0.0103</td></tr><tr><th scope=\"row\"><code>Hits</code></th><td class=\"num\">3.06</td><td class=\"num\">1.02</td><td class=\"num\">3.00</td><td class=\"num\">0.0036</td></tr><tr><th scope=\"row\"><code>Walks</code></th><td class=\"num\">0.181</td><td class=\"num\">2.04</td><td class=\"num\">0.09</td><td class=\"num\">0.9294</td></tr><tr><th scope=\"row\"><code>CRuns</code></th><td class=\"num\">0.859</td><td class=\"num\">0.12</td><td class=\"num\">7.09</td><td class=\"num\">&lt; 0.0001</td></tr><tr><th scope=\"row\"><code>PutOuts</code></th><td class=\"num\">0.465</td><td class=\"num\">0.13</td><td class=\"num\">3.60</td><td class=\"num\">0.0005</td></tr></tbody></table>",
+  "columns": 5,
+  "rows": 6
+ }
+]

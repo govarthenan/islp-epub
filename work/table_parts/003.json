@@ -1,0 +1,56 @@
+[
+ {
+  "key": "t11-1-p481",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\">Group 1</th><th scope=\"col\">Group 2</th><th scope=\"col\">Total</th></tr></thead><tbody><tr><th scope=\"row\">Died</th><td><i>q</i><sub>1<i>k</i></sub></td><td><i>q</i><sub>2<i>k</i></sub></td><td><i>q</i><sub><i>k</i></sub></td></tr><tr><th scope=\"row\">Survived</th><td><i>r</i><sub>1<i>k</i></sub> − <i>q</i><sub>1<i>k</i></sub></td><td><i>r</i><sub>2<i>k</i></sub> − <i>q</i><sub>2<i>k</i></sub></td><td><i>r</i><sub><i>k</i></sub> − <i>q</i><sub><i>k</i></sub></td></tr><tr><th scope=\"row\">Total</th><td><i>r</i><sub>1<i>k</i></sub></td><td><i>r</i><sub>2<i>k</i></sub></td><td><i>r</i><sub><i>k</i></sub></td></tr></tbody></table>",
+  "columns": 4,
+  "rows": 4
+ },
+ {
+  "key": "t11-4-p506",
+  "html": "<table><thead><tr><th scope=\"col\">Observation (<i>Y</i>)</th><th scope=\"col\">Censoring Indicator (δ)</th><th scope=\"col\">Covariate (<i>X</i>)</th></tr></thead><tbody><tr><td class=\"num\">26.5</td><td class=\"num\">1</td><td class=\"num\">0.1</td></tr><tr><td class=\"num\">37.2</td><td class=\"num\">1</td><td class=\"num\">11</td></tr><tr><td class=\"num\">57.3</td><td class=\"num\">1</td><td class=\"num\">−0.3</td></tr><tr><td class=\"num\">90.8</td><td class=\"num\">0</td><td class=\"num\">2.8</td></tr><tr><td class=\"num\">20.2</td><td class=\"num\">0</td><td class=\"num\">1.8</td></tr><tr><td class=\"num\">89.8</td><td class=\"num\">0</td><td class=\"num\">0.4</td></tr></tbody></table>",
+  "columns": 3,
+  "rows": 7
+ },
+ {
+  "key": "t12-1-p514",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\">PC1</th><th scope=\"col\">PC2</th></tr></thead><tbody><tr><th scope=\"row\"><code>Murder</code></th><td class=\"num\">0.5358995</td><td class=\"num\">−0.4181809</td></tr><tr><th scope=\"row\"><code>Assault</code></th><td class=\"num\">0.5831836</td><td class=\"num\">−0.1879856</td></tr><tr><th scope=\"row\"><code>UrbanPop</code></th><td class=\"num\">0.2781909</td><td class=\"num\">0.8728062</td></tr><tr><th scope=\"row\"><code>Rape</code></th><td class=\"num\">0.5434321</td><td class=\"num\">0.1673186</td></tr></tbody></table>",
+  "columns": 3,
+  "rows": 5
+ },
+ {
+  "key": "t12-2-p526",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\"><i>Jerry Maguire</i></th><th scope=\"col\"><i>Oceans</i></th><th scope=\"col\"><i>Road to Perdition</i></th><th scope=\"col\"><i>A Fortunate Man</i></th><th scope=\"col\"><i>Catch Me If You Can</i></th><th scope=\"col\"><i>Driving Miss Daisy</i></th><th scope=\"col\"><i>The Two Popes</i></th><th scope=\"col\"><i>The Laundromat</i></th><th scope=\"col\"><i>Code 8</i></th><th scope=\"col\"><i>The Social Network</i></th><th scope=\"col\">⋯</th></tr></thead><tbody><tr><th scope=\"row\">Customer 1</th><td>•</td><td>•</td><td>•</td><td>•</td><td class=\"num\">4</td><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>⋯</td></tr><tr><th scope=\"row\">Customer 2</th><td>•</td><td>•</td><td class=\"num\">3</td><td>•</td><td>•</td><td>•</td><td class=\"num\">3</td><td>•</td><td>•</td><td class=\"num\">3</td><td>⋯</td></tr><tr><th scope=\"row\">Customer 3</th><td>•</td><td class=\"num\">2</td><td>•</td><td class=\"num\">4</td><td>•</td><td>•</td><td>•</td><td>•</td><td class=\"num\">2</td><td>•</td><td>⋯</td></tr><tr><th scope=\"row\">Customer 4</th><td class=\"num\">3</td><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>⋯</td></tr><tr><th scope=\"row\">Customer 5</th><td class=\"num\">5</td><td class=\"num\">1</td><td>•</td><td>•</td><td class=\"num\">4</td><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>⋯</td></tr><tr><th scope=\"row\">Customer 6</th><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td class=\"num\">2</td><td class=\"num\">4</td><td>•</td><td>•</td><td>•</td><td>⋯</td></tr><tr><th scope=\"row\">Customer 7</th><td>•</td><td>•</td><td class=\"num\">5</td><td>•</td><td>•</td><td>•</td><td>•</td><td class=\"num\">3</td><td>•</td><td>•</td><td>⋯</td></tr><tr><th scope=\"row\">Customer 8</th><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>•</td><td>⋯</td></tr><tr><th scope=\"row\">Customer 9</th><td class=\"num\">3</td><td>•</td><td>•</td><td>•</td><td class=\"num\">5</td><td>•</td><td>•</td><td class=\"num\">1</td><td>•</td><td>•</td><td>⋯</td></tr><tr><th scope=\"row\">⋮</th><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋱</td></tr></tbody></table>",
+  "columns": 12,
+  "rows": 11
+ },
+ {
+  "key": "t12-3-p536",
+  "html": "<table><thead><tr><th scope=\"col\">Linkage</th><th scope=\"col\">Description</th></tr></thead><tbody><tr><th scope=\"row\">Complete</th><td>Maximal intercluster dissimilarity. Compute all pairwise dissimilarities between the observations in cluster A and the observations in cluster B, and record the <i>largest</i> of these dissimilarities.</td></tr><tr><th scope=\"row\">Single</th><td>Minimal intercluster dissimilarity. Compute all pairwise dissimilarities between the observations in cluster A and the observations in cluster B, and record the <i>smallest</i> of these dissimilarities. Single linkage can result in extended, trailing clusters in which single observations are fused one-at-a-time.</td></tr><tr><th scope=\"row\">Average</th><td>Mean intercluster dissimilarity. Compute all pairwise dissimilarities between the observations in cluster A and the observations in cluster B, and record the <i>average</i> of these dissimilarities.</td></tr><tr><th scope=\"row\">Centroid</th><td>Dissimilarity between the centroid for cluster A (a mean vector of length <i>p</i>) and the centroid for cluster B. Centroid linkage can result in undesirable <i>inversions</i>.</td></tr></tbody></table>",
+  "columns": 2,
+  "rows": 5
+ },
+ {
+  "key": "t13-1-p568",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\"></th><th scope=\"col\" colspan=\"2\">Truth</th></tr><tr><th scope=\"col\"></th><th scope=\"col\"></th><th scope=\"col\">H<sub>0</sub></th><th scope=\"col\">H<sub><i>a</i></sub></th></tr></thead><tbody><tr><th scope=\"row\">Decision</th><th scope=\"row\">Reject H<sub>0</sub></th><td>Type I Error</td><td>Correct</td></tr><tr><th scope=\"row\"></th><th scope=\"row\">Do Not Reject H<sub>0</sub></th><td>Correct</td><td>Type II Error</td></tr></tbody></table>",
+  "columns": 4,
+  "rows": 4
+ },
+ {
+  "key": "t13-2-p571",
+  "html": "<table><thead><tr><th scope=\"col\"></th><th scope=\"col\">H<sub>0</sub> is True</th><th scope=\"col\">H<sub>0</sub> is False</th><th scope=\"col\">Total</th></tr></thead><tbody><tr><th scope=\"row\">Reject H<sub>0</sub></th><td><i>V</i></td><td><i>S</i></td><td><i>R</i></td></tr><tr><th scope=\"row\">Do Not Reject H<sub>0</sub></th><td><i>U</i></td><td><i>W</i></td><td><i>m</i> − <i>R</i></td></tr><tr><th scope=\"row\">Total</th><td><i>m</i><sub>0</sub></td><td><i>m</i> − <i>m</i><sub>0</sub></td><td><i>m</i></td></tr></tbody></table>",
+  "columns": 4,
+  "rows": 4
+ },
+ {
+  "key": "t13-3-p573",
+  "html": "<table><thead><tr><th scope=\"col\">Manager</th><th scope=\"col\">Mean, <i>x̅</i></th><th scope=\"col\">Standard Deviation, <i>s</i></th><th scope=\"col\"><i>t</i>-statistic</th><th scope=\"col\"><i>p</i>-value</th></tr></thead><tbody><tr><th scope=\"row\">One</th><td class=\"num\">3.0</td><td class=\"num\">7.4</td><td class=\"num\">2.86</td><td class=\"num\">0.006</td></tr><tr><th scope=\"row\">Two</th><td class=\"num\">−0.1</td><td class=\"num\">6.9</td><td class=\"num\">−0.10</td><td class=\"num\">0.918</td></tr><tr><th scope=\"row\">Three</th><td class=\"num\">2.8</td><td class=\"num\">7.5</td><td class=\"num\">2.62</td><td class=\"num\">0.012</td></tr><tr><th scope=\"row\">Four</th><td class=\"num\">0.5</td><td class=\"num\">6.7</td><td class=\"num\">0.53</td><td class=\"num\">0.601</td></tr><tr><th scope=\"row\">Five</th><td class=\"num\">0.3</td><td class=\"num\">6.8</td><td class=\"num\">0.31</td><td class=\"num\">0.756</td></tr></tbody></table>",
+  "columns": 5,
+  "rows": 6
+ },
+ {
+  "key": "t13-4-p600",
+  "html": "<table><thead><tr><th scope=\"col\">Null Hypothesis</th><th scope=\"col\"><i>p</i>-value</th></tr></thead><tbody><tr><th scope=\"row\">H<sub>01</sub></th><td class=\"num\">0.0011</td></tr><tr><th scope=\"row\">H<sub>02</sub></th><td class=\"num\">0.031</td></tr><tr><th scope=\"row\">H<sub>03</sub></th><td class=\"num\">0.017</td></tr><tr><th scope=\"row\">H<sub>04</sub></th><td class=\"num\">0.32</td></tr><tr><th scope=\"row\">H<sub>05</sub></th><td class=\"num\">0.11</td></tr><tr><th scope=\"row\">H<sub>06</sub></th><td class=\"num\">0.90</td></tr><tr><th scope=\"row\">H<sub>07</sub></th><td class=\"num\">0.07</td></tr><tr><th scope=\"row\">H<sub>08</sub></th><td class=\"num\">0.006</td></tr><tr><th scope=\"row\">H<sub>09</sub></th><td class=\"num\">0.004</td></tr><tr><th scope=\"row\">H<sub>10</sub></th><td class=\"num\">0.0009</td></tr></tbody></table>",
+  "columns": 2,
+  "rows": 11
+ }
+]
