@@ -208,3 +208,42 @@ small word ("and", "if", "otherwise"), so the display test became a proportion o
 mathematics rather than the absence of prose; and interleaved sub/superscripts
 (`_{j}^{R}_{,\lambda}`) are now merged into a single `_{...}^{...}` pair, which removed the
 only LaTeX rendering failure in the book.
+
+---
+
+## 2026-08-17 — Entry 009: The transcription workflow, and what it exposed
+
+**Attempt.** 23 agents in parallel, 25 cropped expressions each, reading the images and
+writing LaTeX. Each agent was given the characters the PDF text layer gave up (reliable for
+symbols, useless for structure), the deterministic LaTeX guess where one existed, and the
+sentence preceding the expression. Each agent then ran `src/check_latex.py` on its own output
+and fixed anything MathJax refused.
+
+**Result.** 570 expressions written, 0 typesetting failures, 23 of 23 batches returned.
+
+**The valuable part was the agents' own uncertainty reports.** They flagged 40-odd cases as
+suspicious, and reading those flags found three real faults in the *extraction*, not in the
+transcription:
+
+1. *"crop is only a large left brace"* — repeated a dozen times. A piecewise definition sets
+   its arms ("if ith person owns a house") as ordinary words, which the block classifier read
+   as prose, so the run broke and the brace became an equation of its own.
+2. *"crop image is pixel-identical to m00095 even though extracted_characters implies it
+   should be only the numerator"* — an equation number sits on a baseline **between** the
+   numerator and the denominator of the fraction it labels, so it split the equation in two
+   and both halves then grew back into the same rectangle.
+3. Matrices were cut apart the same way, by their own equation number.
+
+**Fixes.**
+- The equation number is split off its line before anything is classified.
+- A display run absorbs the words set inside it, but only where they start at least 8 pt
+  further in than any part of the equation, so an indented paragraph line is never mistaken
+  for the arm of a `cases`.
+- A display run absorbs its equation number instead of stopping at it.
+
+**Cost of the fix.** Re-extraction changed the crops, but 493 of 554 came out byte for byte
+identical, so `src/reuse_transcription.py` matched them on image content and only 61
+expressions had to be read again.
+
+**Status.** SUCCESS. Worth recording that the agents' flagged doubts were more useful than
+their answers: none of the three faults would have been visible from the LaTeX alone.

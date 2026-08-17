@@ -17,7 +17,11 @@ def main() -> None:
     jobs = json.loads((WORK / "math_jobs_vlm.json").read_text())
     wanted = {job["id"] for job in jobs}
 
+    # Start from anything carried over from an earlier extraction, then overlay the new parts.
     merged: dict[str, dict] = {}
+    existing = WORK / "math_transcription.json"
+    if existing.exists():
+        merged.update(json.loads(existing.read_text()))
     for part in sorted(PARTS.glob("*.json")):
         entries = json.loads(part.read_text())
         if isinstance(entries, dict):
