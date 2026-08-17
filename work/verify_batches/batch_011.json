@@ -1,124 +1,7 @@
 [
  {
-  "id": "m00398",
-  "compare": "work/math_compare/m00398.png",
-  "latex": "\\sum_{i=1}^{n} (y_i - g(x_i))^2 + \\lambda \\int g''(t)^2\\, dt",
-  "characters": "�\nn\n�\n(yi −g(xi))2 + λg′′(t)2dt\ni=1",
-  "kind": "display",
-  "page_pdf": 308,
-  "equation_number": "7.11"
- },
- {
-  "id": "m00399",
-  "compare": "work/math_compare/m00399.png",
-  "latex": "\\sum_{i=1}^{n} (y_i - g(x_i))^2",
-  "characters": "�ni=1(yi − g(xi))2",
-  "kind": "inline",
-  "page_pdf": 308,
-  "equation_number": ""
- },
- {
-  "id": "m00400",
-  "compare": "work/math_compare/m00400.png",
-  "latex": "\\int",
-  "characters": "�",
-  "kind": "display",
-  "page_pdf": 308,
-  "equation_number": ""
- },
- {
-  "id": "m00401",
-  "compare": "work/math_compare/m00401.png",
-  "latex": "\\int",
-  "characters": "�",
-  "kind": "display",
-  "page_pdf": 309,
-  "equation_number": ""
- },
- {
-  "id": "m00402",
-  "compare": "work/math_compare/m00402.png",
-  "latex": "\\int",
-  "characters": "�",
-  "kind": "display",
-  "page_pdf": 309,
-  "equation_number": ""
- },
- {
   "id": "m00403",
   "compare": "work/math_compare/m00403.png",
-  "latex": "\\int",
-  "characters": "�",
-  "kind": "display",
-  "page_pdf": 309,
-  "equation_number": ""
- },
- {
-  "id": "m00404",
-  "compare": "work/math_compare/m00404.png",
-  "latex": "\\int",
-  "characters": "�",
-  "kind": "inline",
-  "page_pdf": 309,
-  "equation_number": ""
- },
- {
-  "id": "m00405",
-  "compare": "work/math_compare/m00405.png",
-  "latex": "\\int",
-  "characters": "�",
-  "kind": "display",
-  "page_pdf": 309,
-  "equation_number": ""
- },
- {
-  "id": "m00406",
-  "compare": "work/math_compare/m00406.png",
-  "latex": "\\hat{\\mathbf{g}}_\\lambda = \\mathbf{S}_\\lambda \\mathbf{y},",
-  "characters": "gˆλ = Sλy,",
-  "kind": "display",
-  "page_pdf": 310,
-  "equation_number": "7.12"
- },
- {
-  "id": "m00408",
-  "compare": "work/math_compare/m00408.png",
-  "latex": "df_\\lambda = \\sum_{i=1}^{n} \\{\\mathbf{S}_\\lambda\\}_{ii},",
-  "characters": "n\n�\ndfλ ={Sλ}ii,\ni=1",
-  "kind": "display",
-  "page_pdf": 310,
-  "equation_number": "7.13"
- },
- {
-  "id": "m00409",
-  "compare": "work/math_compare/m00409.png",
-  "latex": "\\mathrm{RSS}_{cv}(\\lambda) = \\sum_{i=1}^{n} (y_i - \\hat{g}_\\lambda^{(-i)}(x_i))^2 = \\sum_{i=1}^{n} \\left[ \\frac{y_i - \\hat{g}_\\lambda(x_i)}{1 - \\{\\mathbf{S}_\\lambda\\}_{ii}} \\right]^2.",
-  "characters": "�2\nnn\n��\n�yi −gˆλ(xi)\nRSScv(λ) =(yi −gˆ(−i)(xi))2 =.\nλ\n1 −{Sλ}ii\ni=1i=1",
-  "kind": "display",
-  "page_pdf": 310,
-  "equation_number": ""
- },
- {
-  "id": "m00415",
-  "compare": "work/math_compare/m00415.png",
-  "latex": "y_i = \\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} + \\epsilon_i",
-  "characters": "yi = β0 + β1xi1 + β2xi2 + · · · + βpxip + ϵi",
-  "kind": "display",
-  "page_pdf": 314,
-  "equation_number": ""
- },
- {
-  "id": "m00416",
-  "compare": "work/math_compare/m00416.png",
-  "latex": "\\begin{aligned}\ny_i &= \\beta_0 + \\sum_{j=1}^{p} f_j(x_{ij}) + \\epsilon_i \\\\\n&= \\beta_0 + f_1(x_{i1}) + f_2(x_{i2}) + \\cdots + f_p(x_{ip}) + \\epsilon_i.\n\\end{aligned}",
-  "characters": "p\n�\nyi=β0 +fj(xij) + ϵi\nj=1\n=β0 + f1(xi1) + f2(xi2) + · · · + fp(xip) + ϵi.",
-  "kind": "display",
-  "page_pdf": 314,
-  "equation_number": "7.15"
- },
- {
-  "id": "m00417",
-  "compare": "work/math_compare/m00417.png",
   "latex": "\\texttt{wage} = \\beta_0 + f_1(\\texttt{year}) + f_2(\\texttt{age}) + f_3(\\texttt{education}) + \\epsilon",
   "characters": "wage = β0 + f1(year) + f2(age) + f3(education) + ϵ",
   "kind": "display",
@@ -126,8 +9,8 @@
   "equation_number": "7.16"
  },
  {
-  "id": "m00418",
-  "compare": "work/math_compare/m00418.png",
+  "id": "m00404",
+  "compare": "work/math_compare/m00404.png",
   "latex": "\\log\\left( \\frac{p(X)}{1 - p(X)} \\right) = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p.",
   "characters": "��\np(X)\nlog= β0 + β1X1 + β2X2 + · · · + βpXp.\n1 −p(X)",
   "kind": "display",
@@ -135,8 +18,8 @@
   "equation_number": "7.17"
  },
  {
-  "id": "m00419",
-  "compare": "work/math_compare/m00419.png",
+  "id": "m00405",
+  "compare": "work/math_compare/m00405.png",
   "latex": "\\log\\left( \\frac{p(X)}{1 - p(X)} \\right) = \\beta_0 + f_1(X_1) + f_2(X_2) + \\cdots + f_p(X_p).",
   "characters": "��\np(X)\nlog= β0 + f1(X1) + f2(X2) + · · · + fp(Xp).\n1 −p(X)",
   "kind": "display",
@@ -144,8 +27,8 @@
   "equation_number": "7.18"
  },
  {
-  "id": "m00420",
-  "compare": "work/math_compare/m00420.png",
+  "id": "m00406",
+  "compare": "work/math_compare/m00406.png",
   "latex": "\\log\\left( \\frac{p(X)}{1 - p(X)} \\right) = \\beta_0 + \\beta_1 \\times \\texttt{year} + f_2(\\texttt{age}) + f_3(\\texttt{education}),",
   "characters": "��\np(X)\nlog= β0 + β1 × year + f2(age) + f3(education),\n1 −p(X)",
   "kind": "display",
@@ -153,8 +36,8 @@
   "equation_number": "7.19"
  },
  {
-  "id": "m00421",
-  "compare": "work/math_compare/m00421.png",
+  "id": "m00407",
+  "compare": "work/math_compare/m00407.png",
   "latex": "p(X) = \\mathrm{Pr}(\\texttt{wage} > 250|\\texttt{year}, \\texttt{age}, \\texttt{education}).",
   "characters": "p(X) = Pr(wage > 250|year, age, education).",
   "kind": "display",
@@ -162,8 +45,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00423",
-  "compare": "work/math_compare/m00423.png",
+  "id": "m00409",
+  "compare": "work/math_compare/m00409.png",
   "latex": "f(x) = \\beta_{0} + \\beta_{1}x + \\beta_{2}x^{2} + \\beta_{3}x^{3} + \\beta_{4}(x - \\xi)_{+}^{3}",
   "characters": "f(x) = β0 + β1x + β2x2 + β3x3 + β4(x −ξ)3\n+",
   "kind": "display",
@@ -171,8 +54,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00424",
-  "compare": "work/math_compare/m00424.png",
+  "id": "m00410",
+  "compare": "work/math_compare/m00410.png",
   "latex": "\\beta_{3}, \\beta_{4}.",
   "characters": "β3, β4.",
   "kind": "display",
@@ -180,8 +63,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00425",
-  "compare": "work/math_compare/m00425.png",
+  "id": "m00411",
+  "compare": "work/math_compare/m00411.png",
   "latex": "f_{1}(x) = a_{1} + b_{1}x + c_{1}x^{2} + d_{1}x^{3}",
   "characters": "f1(x) = a1 + b1x + c1x2 + d1x3",
   "kind": "display",
@@ -189,8 +72,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00426",
-  "compare": "work/math_compare/m00426.png",
+  "id": "m00412",
+  "compare": "work/math_compare/m00412.png",
   "latex": "\\text{terms of } \\beta_{0}, \\beta_{1}, \\beta_{2}, \\beta_{3}, \\beta_{4}.",
   "characters": "terms of β0, β1, β2, β3, β4.",
   "kind": "display",
@@ -198,8 +81,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00427",
-  "compare": "work/math_compare/m00427.png",
+  "id": "m00413",
+  "compare": "work/math_compare/m00413.png",
   "latex": "f_{2}(x) = a_{2} + b_{2}x + c_{2}x^{2} + d_{2}x^{3}",
   "characters": "f2(x) = a2 + b2x + c2x2 + d2x3",
   "kind": "display",
@@ -207,8 +90,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00428",
-  "compare": "work/math_compare/m00428.png",
+  "id": "m00414",
+  "compare": "work/math_compare/m00414.png",
   "latex": "f_{1}(x) = a_{1} + b_{1}x + c_{1}x^{2} + d_{1}x^{3},",
   "characters": "f1(x) = a1 + b1x + c1x2 + d1x3,",
   "kind": "display",
@@ -216,12 +99,129 @@
   "equation_number": ""
  },
  {
-  "id": "m00429",
-  "compare": "work/math_compare/m00429.png",
+  "id": "m00415",
+  "compare": "work/math_compare/m00415.png",
   "latex": "f_{1}'(x) = b_{1} + 2c_{1}x + 3d_{1}x^{2}",
   "characters": "f 1′(x) = b1 + 2c1x + 3d1x2",
   "kind": "display",
   "page_pdf": 333,
   "equation_number": ""
+ },
+ {
+  "id": "m00416",
+  "compare": "work/math_compare/m00416.png",
+  "latex": "f_{1}''(x) = 2c_{1} + 6d_{1}x.",
+  "characters": "f 1′′ (x) = 2c1 + 6d1x.",
+  "kind": "display",
+  "page_pdf": 334,
+  "equation_number": ""
+ },
+ {
+  "id": "m00418",
+  "compare": "work/math_compare/m00418.png",
+  "latex": "\\hat{g} = \\operatorname*{argmin}_{g} \\left( \\sum_{i=1}^{n} (y_{i} - g(x_{i}))^{2} + \\lambda \\int \\left[g^{(m)}(x)\\right]^{2} dx \\right),",
+  "characters": "�n�\n��\n�2\n�\ngˆ = arg min(yi −g(xi))2 + λg(m)(x)dx,\ng\ni=1",
+  "kind": "display",
+  "page_pdf": 334,
+  "equation_number": ""
+ },
+ {
+  "id": "m00419",
+  "compare": "work/math_compare/m00419.png",
+  "latex": "Y = \\beta_{0} + \\beta_{1}b_{1}(X) + \\beta_{2}b_{2}(X) + \\epsilon,",
+  "characters": "Y = β0 + β1b1(X) + β2b2(X) + ϵ,",
+  "kind": "display",
+  "page_pdf": 334,
+  "equation_number": ""
+ },
+ {
+  "id": "m00421",
+  "compare": "work/math_compare/m00421.png",
+  "latex": "(X-1)I(1 \\leq X \\leq 2), \\ b_{2}(X) = (X-3)I(3 \\leq X \\leq 4) + I(4 < X \\leq 5).",
+  "characters": "(X −1)I(1 ≤X ≤2), b2(X) = (X −3)I(3 ≤X ≤4)+I(4 < X ≤5).",
+  "kind": "display",
+  "page_pdf": 334,
+  "equation_number": ""
+ },
+ {
+  "id": "m00422",
+  "compare": "work/math_compare/m00422.png",
+  "latex": "Y = \\beta_{0} + \\beta_{1}b_{1}(X) + \\beta_{2}b_{2}(X) + \\epsilon,",
+  "characters": "Y = β0 + β1b1(X) + β2b2(X) + ϵ,",
+  "kind": "display",
+  "page_pdf": 334,
+  "equation_number": ""
+ },
+ {
+  "id": "m00426",
+  "compare": "work/math_compare/m00426.png",
+  "latex": "\\begin{aligned}\n\\hat{g}_1 &= \\operatorname*{argmin}_{g}\\left(\\sum_{i=1}^{n}(y_i - g(x_i))^2 + \\lambda \\int \\left[g^{(3)}(x)\\right]^2 dx\\right), \\\\\n\\hat{g}_2 &= \\operatorname*{argmin}_{g}\\left(\\sum_{i=1}^{n}(y_i - g(x_i))^2 + \\lambda \\int \\left[g^{(4)}(x)\\right]^2 dx\\right), \\\\\n&\\text{where } g^{(m)} \\text{ represents the } m\\text{th derivative of } g.\n\\end{aligned}",
+  "characters": "�n�\n��\n�2\n�\ngˆ1 = arg min(yi −g(xi))2 + λg(3)(x)dx,\ng\ni=1\n�n�\n��\n�2\n�\ngˆ2 = arg min(yi −g(xi))2 + λg(4)(x)dx,\ng\ni=1\nwhere g(m) represents the mth derivative of g.",
+  "kind": "display",
+  "page_pdf": 334,
+  "equation_number": ""
+ },
+ {
+  "id": "m00427",
+  "compare": "work/math_compare/m00427.png",
+  "latex": "n = 100.",
+  "characters": "n = 100.",
+  "kind": "display",
+  "page_pdf": 336,
+  "equation_number": ""
+ },
+ {
+  "id": "m00428",
+  "compare": "work/math_compare/m00428.png",
+  "latex": "Y - \\texttt{beta1} \\cdot X_{1} = \\beta_{0} + \\beta_{2}X_{2} + \\epsilon.",
+  "characters": "Y −beta1 · X1 = β0 + β2X2 + ϵ.",
+  "kind": "display",
+  "page_pdf": 336,
+  "equation_number": ""
+ },
+ {
+  "id": "m00429",
+  "compare": "work/math_compare/m00429.png",
+  "latex": "Y - \\texttt{beta2} \\cdot X_{2} = \\beta_{0} + \\beta_{1}X_{1} + \\epsilon.",
+  "characters": "Y −beta2 · X2 = β0 + β1X1 + ϵ.",
+  "kind": "display",
+  "page_pdf": 336,
+  "equation_number": ""
+ },
+ {
+  "id": "m00430",
+  "compare": "work/math_compare/m00430.png",
+  "latex": "R_{1}, R_{2}, \\ldots, R_{J}.",
+  "characters": "R1, R2, . . . , RJ.",
+  "kind": "display",
+  "page_pdf": 340,
+  "equation_number": ""
+ },
+ {
+  "id": "m00431",
+  "compare": "work/math_compare/m00431.png",
+  "latex": "\\sum_{j=1}^{J} \\sum_{i \\in R_{j}} (y_{i} - \\hat{y}_{R_{j}})^{2},",
+  "characters": "J\n��\n(yi −yˆRj)2,\nj=1i∈Rj",
+  "kind": "display",
+  "page_pdf": 341,
+  "equation_number": "8.1"
+ },
+ {
+  "id": "m00433",
+  "compare": "work/math_compare/m00433.png",
+  "latex": "R_{1}(j, s) = \\{X|X_{j} < s\\} \\quad \\text{and} \\quad R_{2}(j, s) = \\{X|X_{j} \\geq s\\},",
+  "characters": "R1(j, s) = {X|Xj < s} and R2(j, s) = {X|Xj ≥s},",
+  "kind": "display",
+  "page_pdf": 341,
+  "equation_number": "8.2"
+ },
+ {
+  "id": "m00434",
+  "compare": "work/math_compare/m00434.png",
+  "latex": "\\sum_{i:\\, x_{i}\\in R_{1}(j,s)} (y_{i} - \\hat{y}_{R_{1}})^{2} + \\sum_{i:\\, x_{i}\\in R_{2}(j,s)} (y_{i} - \\hat{y}_{R_{2}})^{2},",
+  "characters": "��\n(yi −yˆR1)2 +(yi −yˆR2)2,\ni: xi∈R1(j,s)i: xi∈R2(j,s)",
+  "kind": "display",
+  "page_pdf": 341,
+  "equation_number": "8.3"
  }
 ]

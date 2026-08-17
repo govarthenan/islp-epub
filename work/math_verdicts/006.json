@@ -1,152 +1,27 @@
 [
- {
-  "id": "m00222",
-  "verdict": "cosmetic",
-  "issue": "TOP typesets the conditioning bar tightly (\"k|X\", no surrounding space); the candidate uses \\mid which renders with medium spacing on both sides. Same mathematics, spacing only.",
-  "corrected_latex": ""
- },
- {
-  "id": "m00223",
-  "verdict": "cosmetic",
-  "issue": "TOP crop is cut off partway through the final explanatory line, breaking off after 'b_kj ... j' before the words 'and b_kj is the jth component of ...'; everything visible in the TOP crop (all six derivation lines plus the a_k definition) matches the candidate exactly, so this is a capture artifact rather than a content mismatch.",
-  "corrected_latex": ""
- },
- {
-  "id": "m00224",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00225",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00226",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00227",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00228",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00229",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00230",
-  "verdict": "cosmetic",
-  "issue": "TOP typesets \"Y=k|X=x\" with no spaces around = or the bar; candidate's \\mid and spaced = render with extra spacing. Same mathematics, spacing only.",
-  "corrected_latex": ""
- },
- {
-  "id": "m00231",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00232",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00233",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00234",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00235",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00236",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00237",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00238",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00239",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00240",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00241",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00242",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00243",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00244",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00245",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00246",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- }
+  {"id": "m00222", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00223", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00224", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00225", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00226", "verdict": "cosmetic", "issue": "TOP sets '=' and '|' tight against surrounding symbols (Y=k|X=x); BOTTOM adds normal spacing around them via \\mid-style rendering. Same mathematics.", "corrected_latex": ""},
+  {"id": "m00227", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00228", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00229", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00230", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00231", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00232", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00233", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00234", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00235", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00236", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00237", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00238", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00239", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00240", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00244", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00248", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00249", "verdict": "cosmetic", "issue": "TOP sets '=' and '|' tight against surrounding symbols (Y=k|X=x); BOTTOM adds normal spacing around them. Same mathematics.", "corrected_latex": ""},
+  {"id": "m00251", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00252", "verdict": "same", "issue": "", "corrected_latex": ""},
+  {"id": "m00255", "verdict": "same", "issue": "", "corrected_latex": ""}
 ]

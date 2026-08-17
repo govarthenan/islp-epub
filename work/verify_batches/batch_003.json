@@ -2,24 +2,6 @@
  {
   "id": "m00116",
   "compare": "work/math_compare/m00116.png",
-  "latex": "\\begin{cases} \\beta_0 + \\beta_1 + \\epsilon_i & \\text{if } i\\text{th person owns a house} \\end{cases}",
-  "characters": "�\nβ0 + β1 + ϵiif ith person owns a house",
-  "kind": "display",
-  "page_pdf": 101,
-  "equation_number": ""
- },
- {
-  "id": "m00117",
-  "compare": "work/math_compare/m00117.png",
-  "latex": "x_{i1} = \\begin{cases} 1 & \\text{if } i\\text{th person is from the South} \\\\ 0 & \\text{if } i\\text{th person is not from the South,} \\end{cases}",
-  "characters": "�\n1if ith person is from the South\nxi1 =\n0if ith person is not from the South,",
-  "kind": "display",
-  "page_pdf": 102,
-  "equation_number": "3.28"
- },
- {
-  "id": "m00118",
-  "compare": "work/math_compare/m00118.png",
   "latex": "x_{i2} = \\begin{cases} 1 & \\text{if } i\\text{th person is from the West} \\\\ 0 & \\text{if } i\\text{th person is not from the West.} \\end{cases}",
   "characters": "�\n1if ith person is from the West\nxi2 =\n0if ith person is not from the West.",
   "kind": "display",
@@ -27,17 +9,17 @@
   "equation_number": "3.29"
  },
  {
-  "id": "m00119",
-  "compare": "work/math_compare/m00119.png",
-  "latex": "\\begin{cases} \\beta_0 + \\beta_1 + \\epsilon_i & \\text{if } i\\text{th person is from the South} \\end{cases}",
+  "id": "m00117",
+  "compare": "work/math_compare/m00117.png",
+  "latex": "\\begin{cases} \\beta_0+\\beta_1+\\epsilon_i & \\text{if } i\\text{th person is from the South} \\end{cases}",
   "characters": "\nβ0+β1+ϵiif ith person is from the South\n",
   "kind": "display",
   "page_pdf": 102,
   "equation_number": "3.30"
  },
  {
-  "id": "m00120",
-  "compare": "work/math_compare/m00120.png",
+  "id": "m00118",
+  "compare": "work/math_compare/m00118.png",
   "latex": "Y = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\epsilon.",
   "characters": "Y = β0 + β1X1 + β2X2 + ϵ.",
   "kind": "display",
@@ -45,8 +27,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00121",
-  "compare": "work/math_compare/m00121.png",
+  "id": "m00119",
+  "compare": "work/math_compare/m00119.png",
   "latex": "Y = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\beta_3 X_1 X_2 + \\epsilon.",
   "characters": "Y = β0 + β1X1 + β2X2 + β3X1X2 + ϵ.",
   "kind": "display",
@@ -54,8 +36,8 @@
   "equation_number": "3.31"
  },
  {
-  "id": "m00122",
-  "compare": "work/math_compare/m00122.png",
+  "id": "m00120",
+  "compare": "work/math_compare/m00120.png",
   "latex": "\\begin{aligned} Y &= \\beta_0 + (\\beta_1 + \\beta_3 X_2)X_1 + \\beta_2 X_2 + \\epsilon \\\\ &= \\beta_0 + \\tilde{\\beta}_1 X_1 + \\beta_2 X_2 + \\epsilon \\end{aligned}",
   "characters": "Y=β0 + (β1 + β3X2)X1 + β2X2 + ϵ\n=β0 + β˜1X1 + β2X2 + ϵ",
   "kind": "display",
@@ -63,8 +45,8 @@
   "equation_number": "3.32"
  },
  {
-  "id": "m00125",
-  "compare": "work/math_compare/m00125.png",
+  "id": "m00123",
+  "compare": "work/math_compare/m00123.png",
   "latex": "= \\beta_0 + (\\beta_1 + \\beta_3 \\times \\texttt{radio}) \\times \\texttt{TV} + \\beta_2 \\times \\texttt{radio} + \\epsilon.",
   "characters": "=\nβ0 + (β1 + β3 × radio) × TV + β2 × radio + ϵ.",
   "kind": "display",
@@ -72,8 +54,8 @@
   "equation_number": "3.33"
  },
  {
-  "id": "m00126",
-  "compare": "work/math_compare/m00126.png",
+  "id": "m00124",
+  "compare": "work/math_compare/m00124.png",
   "latex": "H_a : \\beta_3 \\neq 0.",
   "characters": "Ha : β3̸ = 0",
   "kind": "inline",
@@ -81,8 +63,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00129",
-  "compare": "work/math_compare/m00129.png",
+  "id": "m00127",
+  "compare": "work/math_compare/m00127.png",
   "latex": "\\begin{aligned} &\\approx \\beta_0 + \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_2 & \\text{if } i\\text{th person is a student} \\end{cases} \\\\ &= \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_0 + \\beta_2 & \\text{if } i\\text{th person is a student} \\end{cases} \\end{aligned}",
   "characters": "�\nβ2if ith person is a student\n�\nβ0 + β2if ith person is a student\n=β1 × incomei +",
   "kind": "display",
@@ -90,8 +72,8 @@
   "equation_number": "3.34"
  },
  {
-  "id": "m00130",
-  "compare": "work/math_compare/m00130.png",
+  "id": "m00128",
+  "compare": "work/math_compare/m00128.png",
   "latex": "\\begin{aligned} &\\approx \\beta_0 + \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_2 + \\beta_3 \\times \\texttt{income}_i & \\text{if student} \\end{cases} \\\\ &= \\begin{cases} (\\beta_0 + \\beta_2) + (\\beta_1 + \\beta_3) \\times \\texttt{income}_i & \\text{if student} \\\\ \\beta_0 + \\beta_1 \\times \\texttt{income}_i & \\text{if not student.} \\end{cases} \\end{aligned}",
   "characters": "�\nβ2 + β3 × incomeiif student\n�\n(β0 + β2) + (β1 + β3) × incomeiif student\n=\nβ0 + β1 × incomeiif not student.",
   "kind": "display",
@@ -99,8 +81,8 @@
   "equation_number": "3.35"
  },
  {
-  "id": "m00132",
-  "compare": "work/math_compare/m00132.png",
+  "id": "m00130",
+  "compare": "work/math_compare/m00130.png",
   "latex": "\\sqrt{X},",
   "characters": "X",
   "kind": "inline",
@@ -108,8 +90,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00133",
-  "compare": "work/math_compare/m00133.png",
+  "id": "m00131",
+  "compare": "work/math_compare/m00131.png",
   "latex": "n",
   "characters": "n",
   "kind": "inline",
@@ -117,8 +99,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00134",
-  "compare": "work/math_compare/m00134.png",
+  "id": "m00132",
+  "compare": "work/math_compare/m00132.png",
   "latex": "\\sqrt{2}",
   "characters": "2",
   "kind": "inline",
@@ -126,8 +108,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00135",
-  "compare": "work/math_compare/m00135.png",
+  "id": "m00133",
+  "compare": "work/math_compare/m00133.png",
   "latex": "h_i = \\frac{1}{n} + \\frac{(x_i - \\bar{x})^2}{\\sum_{i'=1}^{n}(x_{i'} - \\bar{x})^2}.",
   "characters": "(xi −x¯)2\nhi = 1�n\ni′=1(xi′ −x¯)2 .\nn +",
   "kind": "display",
@@ -135,8 +117,8 @@
   "equation_number": "3.37"
  },
  {
-  "id": "m00138",
-  "compare": "work/math_compare/m00138.png",
+  "id": "m00136",
+  "compare": "work/math_compare/m00136.png",
   "latex": "\\mathrm{VIF}(\\hat{\\beta}_j) = \\frac{1}{1 - R^2_{X_j|X_{-j}}},",
   "characters": "1\nVIF(βˆj) =,\n1 −R2\nXj|X−j",
   "kind": "display",
@@ -144,8 +126,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00139",
-  "compare": "work/math_compare/m00139.png",
+  "id": "m00137",
+  "compare": "work/math_compare/m00137.png",
   "latex": "(0.043, 0.049) \\text{ for } \\texttt{TV}, (0.172, 0.206) \\text{ for } \\texttt{radio}, \\text{ and } (-0.013, 0.011) \\text{ for}",
   "characters": "(0.043, 0.049) for TV, (0.172, 0.206) for radio, and (−0.013, 0.011) for",
   "kind": "display",
@@ -153,8 +135,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00140",
-  "compare": "work/math_compare/m00140.png",
+  "id": "m00138",
+  "compare": "work/math_compare/m00138.png",
   "latex": "\\hat{f}(x_0) = \\frac{1}{K}\\sum_{x_i \\in \\mathcal{N}_0} y_i.",
   "characters": "�\nfˆ(x0) = 1yi.\nK\nxi∈N0",
   "kind": "display",
@@ -162,8 +144,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00142",
-  "compare": "work/math_compare/m00142.png",
+  "id": "m00140",
+  "compare": "work/math_compare/m00140.png",
   "latex": "\\hat{\\beta}_0 = 50, \\hat{\\beta}_1 = 20, \\hat{\\beta}_2 = 0.07, \\hat{\\beta}_3 = 35, \\hat{\\beta}_4 = 0.01, \\hat{\\beta}_5 = -10.",
   "characters": "βˆ0 = 50, βˆ1 = 20, βˆ2 = 0.07, βˆ3 = 35, βˆ4 = 0.01, βˆ5 = −10.",
   "kind": "display",
@@ -171,8 +153,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00143",
-  "compare": "work/math_compare/m00143.png",
+  "id": "m00141",
+  "compare": "work/math_compare/m00141.png",
   "latex": "\\beta_0 + \\beta_1 X + \\beta_2 X^2 + \\beta_3 X^3 + \\epsilon.",
   "characters": "β0 + β1X + β2X2 + β3X3 + ϵ.",
   "kind": "display",
@@ -180,8 +162,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00144",
-  "compare": "work/math_compare/m00144.png",
+  "id": "m00142",
+  "compare": "work/math_compare/m00142.png",
   "latex": "\\hat{y}_i = x_i \\hat{\\beta},",
   "characters": "yˆi = xi βˆ,",
   "kind": "display",
@@ -189,8 +171,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00145",
-  "compare": "work/math_compare/m00145.png",
+  "id": "m00143",
+  "compare": "work/math_compare/m00143.png",
   "latex": "\\hat{\\beta} = \\left(\\sum_{i=1}^{n} x_i y_i\\right) \\Big/ \\left(\\sum_{i'=1}^{n} x_{i'}^2\\right).",
   "characters": "�n��n�\n��\nβˆ =\nxiyi/x2.\ni′\ni=1i′=1",
   "kind": "display",
@@ -198,8 +180,8 @@
   "equation_number": "3.38"
  },
  {
-  "id": "m00146",
-  "compare": "work/math_compare/m00146.png",
+  "id": "m00144",
+  "compare": "work/math_compare/m00144.png",
   "latex": "\\hat{y}_i = \\sum_{i'=1}^{n} a_{i'} y_{i'}.",
   "characters": "n\n�\nyˆi =ai′yi′.\ni′=1",
   "kind": "display",
@@ -207,8 +189,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00149",
-  "compare": "work/math_compare/m00149.png",
+  "id": "m00147",
+  "compare": "work/math_compare/m00147.png",
   "latex": "\\log(X), \\sqrt{X}, X^2. \\text{ Comment on your findings.}",
   "characters": "√\nlog(X),X, X2. Comment on your findings.",
   "kind": "display",
@@ -216,12 +198,30 @@
   "equation_number": ""
  },
  {
-  "id": "m00150",
-  "compare": "work/math_compare/m00150.png",
+  "id": "m00148",
+  "compare": "work/math_compare/m00148.png",
   "latex": "H_0 : \\beta_j = 0?",
   "characters": "H0 : βj = 0?",
   "kind": "display",
   "page_pdf": 139,
+  "equation_number": ""
+ },
+ {
+  "id": "m00151",
+  "compare": "work/math_compare/m00151.png",
+  "latex": "\\mathrm{SE}(\\hat{\\beta}) = \\sqrt{\\frac{\\sum_{i=1}^{n}(y_i - x_i\\hat{\\beta})^2}{(n-1)\\sum_{i'=1}^{n} x_{i'}^2}}.",
+  "characters": "��n\ni=1(yi −xi βˆ)2\nSE(βˆ) =\n(n −1) �ni′=1 x2i′ .",
+  "kind": "display",
+  "page_pdf": 140,
+  "equation_number": ""
+ },
+ {
+  "id": "m00152",
+  "compare": "work/math_compare/m00152.png",
+  "latex": "\\frac{\\left(\\sqrt{n-1}\\right)\\sum_{i=1}^{n} x_i y_i}{\\sqrt{\\left(\\sum_{i=1}^{n} x_i^2\\right)\\left(\\sum_{i'=1}^{n} y_{i'}^2\\right) - \\left(\\sum_{i'=1}^{n} x_{i'} y_{i'}\\right)^2}}.",
+  "characters": "(√n −1) �ni=1 xiyi\n�\ni′=1 xi′yi′)2 .\n(�ni=1 x2i )(�ni′=1 yi2′) −(�n",
+  "kind": "display",
+  "page_pdf": 140,
   "equation_number": ""
  }
 ]

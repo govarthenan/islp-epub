@@ -1,151 +1,7 @@
 [
  {
-  "id": "m00473",
-  "compare": "work/math_compare/m00473.png",
-  "latex": "\\hat{f}(x) = \\sum_{b=1}^{B} \\lambda \\hat{f}^{b}(x).",
-  "characters": "B\n�\nfˆ(x) =λ fˆ b(x).\nb=1",
-  "kind": "display",
-  "page_pdf": 356,
-  "equation_number": "8.12"
- },
- {
-  "id": "m00475",
-  "compare": "work/math_compare/m00475.png",
-  "latex": "\\sum_{k=1}^{K}\\hat{f}_{k}^{b}",
-  "characters": "k=1 fˆ b",
-  "kind": "display",
-  "page_pdf": 357,
-  "equation_number": ""
- },
- {
-  "id": "m00476",
-  "compare": "work/math_compare/m00476.png",
-  "latex": "\\hat{f}^{b}(x) = \\sum_{k=1}^{K}\\hat{f}_{k}^{b}(x)",
-  "characters": "f b(x) = �Kk(x)",
-  "kind": "inline",
-  "page_pdf": 357,
-  "equation_number": ""
- },
- {
   "id": "m00477",
   "compare": "work/math_compare/m00477.png",
-  "latex": "\\frac{1}{nK}",
-  "characters": "1",
-  "kind": "display",
-  "page_pdf": 357,
-  "equation_number": ""
- },
- {
-  "id": "m00478",
-  "compare": "work/math_compare/m00478.png",
-  "latex": "\\hat{f}^{1}_{k}(x) = \\frac{1}{nK}\\sum_{i=1}^{n} y_{i}",
-  "characters": "f k1(x) =i=1 yi",
-  "kind": "inline",
-  "page_pdf": 357,
-  "equation_number": ""
- },
- {
-  "id": "m00481",
-  "compare": "work/math_compare/m00481.png",
-  "latex": "k",
-  "characters": "k",
-  "kind": "display",
-  "page_pdf": 358,
-  "equation_number": ""
- },
- {
-  "id": "m00482",
-  "compare": "work/math_compare/m00482.png",
-  "latex": "\\hat{f}^{1}(x) = \\sum_{k=1}^{K} \\hat{f}^{1}_{k}(x) =",
-  "characters": "f 1(x) = �Kk(x) =",
-  "kind": "inline",
-  "page_pdf": 358,
-  "equation_number": ""
- },
- {
-  "id": "m00483",
-  "compare": "work/math_compare/m00483.png",
-  "latex": "\\sum_{i=1}^{n}",
-  "characters": "�n",
-  "kind": "inline",
-  "page_pdf": 358,
-  "equation_number": ""
- },
- {
-  "id": "m00484",
-  "compare": "work/math_compare/m00484.png",
-  "latex": "\\frac{1}{n}",
-  "characters": "1",
-  "kind": "inline",
-  "page_pdf": 358,
-  "equation_number": ""
- },
- {
-  "id": "m00485",
-  "compare": "work/math_compare/m00485.png",
-  "latex": "\\sum_{i=1}^{n} y_i.",
-  "characters": "i=1 yi.",
-  "kind": "display",
-  "page_pdf": 358,
-  "equation_number": ""
- },
- {
-  "id": "m00486",
-  "compare": "work/math_compare/m00486.png",
-  "latex": "r_{i} = y_{i} - \\sum_{k'<k} \\hat{f}^{b}_{k'}(x_{i}) - \\sum_{k'>k} \\hat{f}^{b-1}_{k'}(x_{i})",
-  "characters": "��\nfˆ bfˆ b−1\nri = yi −k′(xi) −(xi)\nk′\nk′<kk′>k",
-  "kind": "display",
-  "page_pdf": 358,
-  "equation_number": ""
- },
- {
-  "id": "m00488",
-  "compare": "work/math_compare/m00488.png",
-  "latex": "\\hat{f}^{b}(x) = \\sum_{k=1}^{K} \\hat{f}^{b}_{k}(x), \\quad\\text{for}\\quad b = 1, 2, \\ldots, B.",
-  "characters": "K\n�\nfˆ b\nfˆ b(x) =k(x), for b = 1, 2, . . . , B.\nk=1",
-  "kind": "display",
-  "page_pdf": 358,
-  "equation_number": ""
- },
- {
-  "id": "m00489",
-  "compare": "work/math_compare/m00489.png",
-  "latex": "\\text{1. Let } \\hat{f}_1^{1}(x) = \\hat{f}_2^{1}(x) = \\cdots = \\hat{f}_K^{1}(x) = \\frac{1}{nK}\\sum_{i=1}^{n} y_i.",
-  "characters": "1\n1. Let fˆ 11 (x) = fˆ 21 (x) = · · · = fˆ K1(x) =i=1 yi.\nnK",
-  "kind": "display",
-  "page_pdf": 359,
-  "equation_number": ""
- },
- {
-  "id": "m00490",
-  "compare": "work/math_compare/m00490.png",
-  "latex": "\\hat{f}^{1}(x) = \\sum_{k=1}^{K} \\hat{f}^{1}_{k}(x) = \\frac{1}{n}\\sum_{i=1}^{n} y_{i}.",
-  "characters": "f 1(x) = �Kk(x) = 1i=1 yi",
-  "kind": "inline",
-  "page_pdf": 359,
-  "equation_number": ""
- },
- {
-  "id": "m00491",
-  "compare": "work/math_compare/m00491.png",
-  "latex": "r_{i} = y_{i} - \\sum_{k'<k} \\hat{f}^{b}_{k'}(x_{i}) - \\sum_{k'>k} \\hat{f}^{b-1}_{k'}(x_{i}).",
-  "characters": "��\nfˆ bfˆ b−1\nri = yi −k′(xi) −(xi).\nk′\nk′<kk′>k",
-  "kind": "display",
-  "page_pdf": 359,
-  "equation_number": ""
- },
- {
-  "id": "m00493",
-  "compare": "work/math_compare/m00493.png",
-  "latex": "\\text{(b) Compute } \\hat{f}^{b}(x) = \\sum_{k=1}^{K}\\hat{f}_{k}^{b}(x).",
-  "characters": "k=1 fˆ b\n(b) Compute fˆ b(x) = �Kk(x).",
-  "kind": "display",
-  "page_pdf": 359,
-  "equation_number": ""
- },
- {
-  "id": "m00494",
-  "compare": "work/math_compare/m00494.png",
   "latex": "\\hat{f}(x) = \\frac{1}{B-L}\\sum_{b=L+1}^{B} \\hat{f}^{b}(x).",
   "characters": "B\n�\n1\nfˆ b(x).\nfˆ(x) =\nB −L\nb=L+1",
   "kind": "display",
@@ -153,17 +9,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00495",
-  "compare": "work/math_compare/m00495.png",
-  "latex": "\\frac{1}{B-L}",
-  "characters": "1",
-  "kind": "display",
-  "page_pdf": 359,
-  "equation_number": ""
- },
- {
-  "id": "m00496",
-  "compare": "work/math_compare/m00496.png",
+  "id": "m00478",
+  "compare": "work/math_compare/m00478.png",
   "latex": "\\hat{f}(x) = \\frac{1}{B-L}\\sum_{b=L+1}^{B} \\hat{f}^{b}(x)",
   "characters": "f(x) =b=L+1 f b(x)",
   "kind": "inline",
@@ -171,8 +18,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00498",
-  "compare": "work/math_compare/m00498.png",
+  "id": "m00480",
+  "compare": "work/math_compare/m00480.png",
   "latex": "-2\\sum_{m}\\sum_{k} n_{mk} \\log \\hat{p}_{mk},",
   "characters": "��\n−2nmk log pˆmk,\nmk",
   "kind": "display",
@@ -180,8 +27,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00499",
-  "compare": "work/math_compare/m00499.png",
+  "id": "m00481",
+  "compare": "work/math_compare/m00481.png",
   "latex": "\\sqrt{p}",
   "characters": "√p",
   "kind": "inline",
@@ -189,8 +36,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00500",
-  "compare": "work/math_compare/m00500.png",
+  "id": "m00482",
+  "compare": "work/math_compare/m00482.png",
   "latex": "f(X) = \\sum_{j=1}^{p} f_j(X_j).",
   "characters": "p\n�\nf(X) =fj(Xj).\nj=1",
   "kind": "display",
@@ -198,8 +45,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00503",
-  "compare": "work/math_compare/m00503.png",
+  "id": "m00485",
+  "compare": "work/math_compare/m00485.png",
   "latex": "0.1, 0.15, 0.2, 0.2, 0.55, 0.6, 0.6, 0.65, 0.7, \\text{ and } 0.75.",
   "characters": "0.1, 0.15, 0.2, 0.2, 0.55, 0.6, 0.6, 0.65, 0.7, and 0.75.",
   "kind": "display",
@@ -207,8 +54,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00504",
-  "compare": "work/math_compare/m00504.png",
+  "id": "m00486",
+  "compare": "work/math_compare/m00486.png",
   "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 = 0",
   "characters": "β0 + β1X1 + β2X2 = 0",
   "kind": "display",
@@ -216,12 +63,165 @@
   "equation_number": "9.1"
  },
  {
-  "id": "m00505",
-  "compare": "work/math_compare/m00505.png",
+  "id": "m00487",
+  "compare": "work/math_compare/m00487.png",
   "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p = 0",
   "characters": "β0 + β1X1 + β2X2 + · · · + βpXp = 0",
   "kind": "display",
   "page_pdf": 375,
   "equation_number": "9.2"
+ },
+ {
+  "id": "m00488",
+  "compare": "work/math_compare/m00488.png",
+  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p > 0.",
+  "characters": "β0 + β1X1 + β2X2 + · · · + βpXp > 0.",
+  "kind": "display",
+  "page_pdf": 375,
+  "equation_number": "9.3"
+ },
+ {
+  "id": "m00489",
+  "compare": "work/math_compare/m00489.png",
+  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p < 0,",
+  "characters": "β0 + β1X1 + β2X2 + · · · + βpXp < 0,",
+  "kind": "display",
+  "page_pdf": 375,
+  "equation_number": "9.4"
+ },
+ {
+  "id": "m00490",
+  "compare": "work/math_compare/m00490.png",
+  "latex": "x_1 = \\begin{pmatrix} x_{11} \\\\ \\vdots \\\\ x_{1p} \\end{pmatrix}, \\ldots, x_n = \\begin{pmatrix} x_{n1} \\\\ \\vdots \\\\ x_{np} \\end{pmatrix},",
+  "characters": "\nx11xn1\n......\nx1 =, . . . , xn =,\nx1pxnp",
+  "kind": "display",
+  "page_pdf": 375,
+  "equation_number": "9.5"
+ },
+ {
+  "id": "m00491",
+  "compare": "work/math_compare/m00491.png",
+  "latex": "(x_1^{*}",
+  "characters": "�x∗",
+  "kind": "display",
+  "page_pdf": 376,
+  "equation_number": ""
+ },
+ {
+  "id": "m00492",
+  "compare": "work/math_compare/m00492.png",
+  "latex": ")^{T}",
+  "characters": "�T",
+  "kind": "inline",
+  "page_pdf": 376,
+  "equation_number": ""
+ },
+ {
+  "id": "m00493",
+  "compare": "work/math_compare/m00493.png",
+  "latex": "\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} > 0 \\text{ if } y_i = 1,",
+  "characters": "β0 + β1xi1 + β2xi2 + · · · + βpxip > 0 if yi = 1,",
+  "kind": "display",
+  "page_pdf": 376,
+  "equation_number": "9.6"
+ },
+ {
+  "id": "m00494",
+  "compare": "work/math_compare/m00494.png",
+  "latex": "\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} < 0 \\text{ if } y_i = -1.",
+  "characters": "β0 + β1xi1 + β2xi2 + · · · + βpxip < 0 if yi = −1.",
+  "kind": "display",
+  "page_pdf": 376,
+  "equation_number": "9.7"
+ },
+ {
+  "id": "m00495",
+  "compare": "work/math_compare/m00495.png",
+  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}) > 0",
+  "characters": "yi(β0 + β1xi1 + β2xi2 + · · · + βpxip) > 0",
+  "kind": "display",
+  "page_pdf": 376,
+  "equation_number": "9.8"
+ },
+ {
+  "id": "m00497",
+  "compare": "work/math_compare/m00497.png",
+  "latex": "\\begin{aligned}\n&\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,M}\\ M\\\\\n&\\text{subject to}\\quad \\sum_{j=1}^{p}\\beta_j^2 = 1,\\\\\n&y_i(\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\cdots+\\beta_px_{ip})\\ge M\\quad\\forall\\, i=1,\\ldots,n.\n\\end{aligned}",
+  "characters": "β0m,βa1x,.i.m.,βipz,eM M\np\n�\nsubject toβj2 = 1,\nj=1\nyi(β0 + β1xi1 + β2xi2 + · · · + βpxip) ≥M ∀i = 1, . . . , n. (9.11)",
+  "kind": "display",
+  "page_pdf": 379,
+  "equation_number": "9.10"
+ },
+ {
+  "id": "m00498",
+  "compare": "work/math_compare/m00498.png",
+  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}) \\geq M \\quad \\forall\\, i = 1, \\ldots, n",
+  "characters": "yi(β0 + β1xi1 + β2xi2 + · · · + βpxip) ≥M ∀i = 1, . . . , n",
+  "kind": "display",
+  "page_pdf": 379,
+  "equation_number": ""
+ },
+ {
+  "id": "m00499",
+  "compare": "work/math_compare/m00499.png",
+  "latex": "k \\neq 0.",
+  "characters": "k̸ = 0",
+  "kind": "inline",
+  "page_pdf": 379,
+  "equation_number": ""
+ },
+ {
+  "id": "m00500",
+  "compare": "work/math_compare/m00500.png",
+  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}).",
+  "characters": "yi(β0 + β1xi1 + β2xi2 + · · · + βpxip).",
+  "kind": "display",
+  "page_pdf": 379,
+  "equation_number": ""
+ },
+ {
+  "id": "m00501",
+  "compare": "work/math_compare/m00501.png",
+  "latex": "\\begin{aligned}\n&\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,\\epsilon_1,\\ldots,\\epsilon_n,\\,M}\\ M\\\\\n&\\text{subject to}\\quad \\sum_{j=1}^{p}\\beta_j^2 = 1,\\\\\n&y_i(\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\cdots+\\beta_px_{ip})\\ge M(1-\\epsilon_i),\\\\\n&\\epsilon_i\\ge 0,\\quad \\sum_{i=1}^{n}\\epsilon_i\\le C,\n\\end{aligned}",
+  "characters": "β0,β1,m...a,βxpi,mϵ1,i.z..e,ϵn, M M\np\n�\nsubject toβj2 = 1,\nj=1\nyi(β0 + β1xi1 + β2xi2 + · · · + βpxip) ≥M(1 −ϵi),\nn\n�\nϵi ≥0,ϵi ≤C,\ni=1",
+  "kind": "display",
+  "page_pdf": 382,
+  "equation_number": "9.15"
+ },
+ {
+  "id": "m00502",
+  "compare": "work/math_compare/m00502.png",
+  "latex": "\\sum_{i=1}^{n} \\epsilon_i \\leq C",
+  "characters": "�ni=1 ϵi ≤ C",
+  "kind": "inline",
+  "page_pdf": 383,
+  "equation_number": ""
+ },
+ {
+  "id": "m00503",
+  "compare": "work/math_compare/m00503.png",
+  "latex": "X_1, X_2, \\ldots, X_p,",
+  "characters": "X1, X2, . . . , Xp,",
+  "kind": "display",
+  "page_pdf": 385,
+  "equation_number": ""
+ },
+ {
+  "id": "m00504",
+  "compare": "work/math_compare/m00504.png",
+  "latex": "X_1, X_1^{2}, X_2, X_2^{2}, \\ldots, X_p, X_p^{2}.",
+  "characters": "X1, X12, X2, X22, . . . , Xp, Xp2.",
+  "kind": "display",
+  "page_pdf": 385,
+  "equation_number": ""
+ },
+ {
+  "id": "m00505",
+  "compare": "work/math_compare/m00505.png",
+  "latex": "\\begin{aligned} &\\operatorname*{maximize}_{\\beta_0,\\beta_{11},\\beta_{12},\\ldots,\\beta_{p1},\\beta_{p2},\\epsilon_1,\\ldots,\\epsilon_n,\\,M}\\ M\\\\ &\\text{subject to } y_i\\left(\\beta_0 + \\sum_{j=1}^{p}\\beta_{j1}x_{ij} + \\sum_{j=1}^{p}\\beta_{j2}x_{ij}^{2}\\right) \\geq M(1-\\epsilon_i),\\\\ &\\sum_{i=1}^{n}\\epsilon_i \\leq C, \\quad \\epsilon_i \\geq 0, \\quad \\sum_{j=1}^{p}\\sum_{k=1}^{2}\\beta_{jk}^{2} = 1. \\end{aligned}",
+  "characters": "β0,β11,β12,m...a,βxpi1m,βipz2e,ϵ1,...,ϵn, M M\n\npp\n��\nsubject to yiβ0 +βj1xij +βj2x2≥M(1 −ϵi),\nij\nj=1j=1\nnp2\n���\nϵi ≤C, ϵi ≥0,βj2k = 1.\ni=1j=1k=1",
+  "kind": "display",
+  "page_pdf": 386,
+  "equation_number": "9.16"
  }
 ]

@@ -1,169 +1,7 @@
 [
  {
-  "id": "m00562",
-  "compare": "work/math_compare/m00562.png",
-  "latex": "A_k = h_k(X) = g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} X_j\\right),",
-  "characters": "Ak = hk(X) = g(wk0 + �pj=1 wkjXj),",
-  "kind": "display",
-  "page_pdf": 407,
-  "equation_number": "10.2"
- },
- {
-  "id": "m00563",
-  "compare": "work/math_compare/m00563.png",
-  "latex": "f(X) = \\beta_0 + \\sum_{k=1}^{K} \\beta_k A_k,",
-  "characters": "K\n�\nf(X) = β0 +βkAk,\nk=1",
-  "kind": "display",
-  "page_pdf": 408,
-  "equation_number": "10.3"
- },
- {
-  "id": "m00564",
-  "compare": "work/math_compare/m00564.png",
-  "latex": "g(z) = \\frac{e^{z}}{1+e^{z}} = \\frac{1}{1+e^{-z}},",
-  "characters": "ez1\ng(z) =\n1 + ez =1 + e−z ,",
-  "kind": "display",
-  "page_pdf": 408,
-  "equation_number": "10.4"
- },
- {
-  "id": "m00565",
-  "compare": "work/math_compare/m00565.png",
-  "latex": "g(z) = (z)_+ = \\begin{cases} 0 & \\text{if } z < 0 \\\\ z & \\text{otherwise.} \\end{cases}",
-  "characters": "�0\nif z < 0\ng(z) = (z)+ =\nzotherwise.",
-  "kind": "display",
-  "page_pdf": 408,
-  "equation_number": "10.5"
- },
- {
-  "id": "m00566",
-  "compare": "work/math_compare/m00566.png",
-  "latex": "\\begin{aligned} \\beta_0 &= 0, & \\beta_1 &= \\frac{1}{4}, & \\beta_2 &= -\\frac{1}{4}, \\\\ w_{10} &= 0, & w_{11} &= 1, & w_{12} &= 1, \\\\ w_{20} &= 0, & w_{21} &= 1, & w_{22} &= -1. \\end{aligned}",
-  "characters": "β0 = 0,β1 = 14,β2 = −14,\nw10 = 0,w11 = 1,w12 =1,\nw20 = 0,w21 = 1,w22 = −1.",
-  "kind": "display",
-  "page_pdf": 409,
-  "equation_number": "10.6"
- },
- {
-  "id": "m00567",
-  "compare": "work/math_compare/m00567.png",
-  "latex": "h_2(X) = (0 + X_1 - X_2)^2.",
-  "characters": "h1(X)=(0 + X1 + X2)2,\nh2(X)=(0 + X1 −X2)2.",
-  "kind": "display",
-  "page_pdf": 409,
-  "equation_number": "10.7"
- },
- {
-  "id": "m00568",
-  "compare": "work/math_compare/m00568.png",
-  "latex": "\\begin{aligned} f(X) &= 0 + \\frac{1}{4}\\cdot(0 + X_1 + X_2)^2 - \\frac{1}{4}\\cdot(0 + X_1 - X_2)^2 \\\\ &= \\frac{1}{4}\\left[(X_1 + X_2)^2 - (X_1 - X_2)^2\\right] \\\\ &= X_1 X_2. \\end{aligned}",
-  "characters": "f(X)=0 + 14 · (0 + X1 + X2)2 −14 · (0 + X1 −X2)2\n�\n1\n=\n(X1 + X2)2 −(X1 −X2)2�\n4\n=X1X2.",
-  "kind": "display",
-  "page_pdf": 409,
-  "equation_number": "10.8"
- },
- {
-  "id": "m00569",
-  "compare": "work/math_compare/m00569.png",
-  "latex": "\\sum_{i=1}^{n} \\left(y_i - f(x_i)\\right)^2.",
-  "characters": "n\n�\n(yi −f(xi))2 .\ni=1",
-  "kind": "display",
-  "page_pdf": 409,
-  "equation_number": "10.9"
- },
- {
-  "id": "m00570",
-  "compare": "work/math_compare/m00570.png",
-  "latex": "\\begin{aligned} A_k^{(1)} &= h_k^{(1)}(X) \\\\ &= g\\!\\left(w_{k0}^{(1)} + \\sum_{j=1}^{p} w_{kj}^{(1)} X_j\\right) \\end{aligned}",
-  "characters": "A(1)=h(k1 )(X)\nk\n=g(wk(10) + �pj=1 wk(1j) Xj)",
-  "kind": "display",
-  "page_pdf": 411,
-  "equation_number": "10.10"
- },
- {
-  "id": "m00571",
-  "compare": "work/math_compare/m00571.png",
-  "latex": "\\begin{aligned} A_\\ell^{(2)} &= h_\\ell^{(2)}(X) \\\\ &= g\\!\\left(w_{\\ell 0}^{(2)} + \\sum_{k=1}^{K_1} w_{\\ell k}^{(2)} A_k^{(1)}\\right) \\end{aligned}",
-  "characters": "A(2)=h(ℓ2)(X)\nℓ\n=g(wℓ(02 )+ �Kk=11 wℓ(k2) A(k1 ))",
-  "kind": "display",
-  "page_pdf": 411,
-  "equation_number": "10.11"
- },
- {
-  "id": "m00572",
-  "compare": "work/math_compare/m00572.png",
-  "latex": "\\begin{aligned} Z_m &= \\beta_{m0} + \\sum_{\\ell=1}^{K_2} \\beta_{m\\ell} h_\\ell^{(2)}(X) \\\\ &= \\beta_{m0} + \\sum_{\\ell=1}^{K_2} \\beta_{m\\ell} A_\\ell^{(2)}, \\end{aligned}",
-  "characters": "Zm=βm0 + �ℓK=21 βmℓh(ℓ2)(X)\n=βm0 + �ℓK=21 βmℓA(ℓ2),",
-  "kind": "display",
-  "page_pdf": 412,
-  "equation_number": "10.12"
- },
- {
-  "id": "m00573",
-  "compare": "work/math_compare/m00573.png",
-  "latex": "f_m(X) = \\mathrm{Pr}(Y = m \\mid X) = \\dfrac{e^{Z_m}}{\\sum_{\\ell=0}^{9} e^{Z_\\ell}},",
-  "characters": "eZm\nfm(X) = Pr(Y = m|X) =�9\nℓ=0 eZℓ,",
-  "kind": "display",
-  "page_pdf": 412,
-  "equation_number": "10.13"
- },
- {
-  "id": "m00574",
-  "compare": "work/math_compare/m00574.png",
-  "latex": "-\\sum_{i=1}^{n}\\sum_{m=0}^{9} y_{im} \\log(f_m(x_i)),",
-  "characters": "n9\n��\n−yim log(fm(xi)),\ni=1m=0",
-  "kind": "display",
-  "page_pdf": 412,
-  "equation_number": "10.14"
- },
- {
-  "id": "m00575",
-  "compare": "work/math_compare/m00575.png",
-  "latex": "\\text{Original Image} = \\begin{bmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\\\ j & k & l \\end{bmatrix}.",
-  "characters": "\nabc\n.\ndef\nOriginal Image =\nghi\njkl",
-  "kind": "display",
-  "page_pdf": 415,
-  "equation_number": ""
- },
- {
-  "id": "m00576",
-  "compare": "work/math_compare/m00576.png",
-  "latex": "\\text{Convolution Filter} = \\begin{bmatrix} \\alpha & \\beta \\\\ \\gamma & \\delta \\end{bmatrix}.",
-  "characters": "�α�\nβ\nConvolution Filter =.\nγδ",
-  "kind": "display",
-  "page_pdf": 415,
-  "equation_number": ""
- },
- {
-  "id": "m00577",
-  "compare": "work/math_compare/m00577.png",
-  "latex": "\\text{Convolved Image} = \\begin{bmatrix} a\\alpha + b\\beta + d\\gamma + e\\delta & b\\alpha + c\\beta + e\\gamma + f\\delta \\\\ d\\alpha + e\\beta + g\\gamma + h\\delta & e\\alpha + f\\beta + h\\gamma + i\\delta \\\\ g\\alpha + h\\beta + j\\gamma + k\\delta & h\\alpha + i\\beta + k\\gamma + l\\delta \\end{bmatrix}.",
-  "characters": "\naα + bβ + dγ + eδbα + cβ + eγ + fδ\n.\nConvolved Image =dα + eβ + gγ + hδeα + fβ + hγ + iδ\ngα + hβ + jγ + kδhα + iβ + kγ + lδ",
-  "kind": "display",
-  "page_pdf": 415,
-  "equation_number": ""
- },
- {
-  "id": "m00578",
-  "compare": "work/math_compare/m00578.png",
-  "latex": "\\text{Max pool}\\quad \\begin{bmatrix} 1 & 2 & 5 & 3 \\\\ 3 & 0 & 1 & 2 \\\\ 2 & 1 & 3 & 4 \\\\ 1 & 1 & 2 & 0 \\end{bmatrix} \\rightarrow \\begin{bmatrix} 3 & 5 \\\\ 2 & 4 \\end{bmatrix}.",
-  "characters": "\n1253\n�3�\n→\n30125\nMax pool.\n213424\n1120",
-  "kind": "display",
-  "page_pdf": 417,
-  "equation_number": ""
- },
- {
-  "id": "m00579",
-  "compare": "work/math_compare/m00579.png",
-  "latex": "\\begin{aligned} \\log\\left(\\frac{\\Pr(Y=1|X)}{\\Pr(Y=0|X)}\\right) &= Z_1 - Z_0 \\\\ &= (\\beta_{10}-\\beta_{00}) + \\sum_{\\ell=1}^{K_2} (\\beta_{1\\ell}-\\beta_{0\\ell}) A_\\ell^{(2)}. \\end{aligned}",
-  "characters": "�\n�Pr(Y = 1|X)\nlog=Z1 −Z0\nPr(Y = 0|X)\nK2\n�\n=(β10 −β00) +(β1ℓ−β0ℓ)A(ℓ2).\nℓ=1",
-  "kind": "display",
-  "page_pdf": 422,
-  "equation_number": "10.15"
- },
- {
-  "id": "m00580",
-  "compare": "work/math_compare/m00580.png",
+  "id": "m00561",
+  "compare": "work/math_compare/m00561.png",
   "latex": "A_{\\ell k} = g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} X_{\\ell j} + \\sum_{s=1}^{K} u_{ks} A_{\\ell-1,s}\\right),",
   "characters": "pK\n��\n��\nAℓk = gwk0 +wkjXℓj +uksAℓ−1,s,\nj=1s=1",
   "kind": "display",
@@ -171,8 +9,8 @@
   "equation_number": "10.16"
  },
  {
-  "id": "m00581",
-  "compare": "work/math_compare/m00581.png",
+  "id": "m00562",
+  "compare": "work/math_compare/m00562.png",
   "latex": "O_{\\ell} = \\beta_{0} + \\sum_{k=1}^{K} \\beta_{k} A_{\\ell k}",
   "characters": "K\n�\nOℓ= β0 +βkAℓk\nk=1",
   "kind": "display",
@@ -180,8 +18,8 @@
   "equation_number": "10.17"
  },
  {
-  "id": "m00582",
-  "compare": "work/math_compare/m00582.png",
+  "id": "m00563",
+  "compare": "work/math_compare/m00563.png",
   "latex": "(Y - O_L)^2,",
   "characters": "(Y −OL)2,",
   "kind": "display",
@@ -189,39 +27,201 @@
   "equation_number": "10.18"
  },
  {
-  "id": "m00583",
-  "compare": "work/math_compare/m00583.png",
-  "latex": "O_{L} = \\beta_{0} + \\sum_{k=1}^{K} \\beta_{k} A_{Lk}",
+  "id": "m00564",
+  "compare": "work/math_compare/m00564.png",
+  "latex": "O_L = \\beta_0+\\sum_{k=1}^{K} \\beta_k A_{Lk}",
   "characters": "OL = β0+�Kk=1 βkALk",
   "kind": "inline",
   "page_pdf": 425,
   "equation_number": ""
  },
  {
-  "id": "m00584",
-  "compare": "work/math_compare/m00584.png",
-  "latex": "\\sum_{i=1}^{n} (y_i - o_{iL})^2 = \\sum_{i=1}^{n}\\left(y_i - \\left(\\beta_0 + \\sum_{k=1}^{K} \\beta_k g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} x_{iLj} + \\sum_{s=1}^{K} u_{ks} a_{i,L-1,s}\\right)\\right)\\right)^2",
+  "id": "m00565",
+  "compare": "work/math_compare/m00565.png",
+  "latex": "\\sum_{i=1}^{n}(y_i-o_{iL})^2 = \\sum_{i=1}^{n}\\left(y_i-\\left(\\beta_0+\\sum_{k=1}^{K}\\beta_k g\\left(w_{k0}+\\sum_{j=1}^{p}w_{kj}x_{iLj}+\\sum_{s=1}^{K}u_{ks}a_{i,L-1,s}\\right)\\right)\\right)^2",
   "characters": "� � � � � � � ���",
   "kind": "inline",
   "page_pdf": 425,
   "equation_number": ""
  },
  {
-  "id": "m00585",
-  "compare": "work/math_compare/m00585.png",
-  "latex": "\\sum_{i=1}^{n}(y_i-o_{iL})^{2} = \\sum_{i=1}^{n}\\left(y_i-\\left(\\beta_0+\\sum_{k=1}^{K}\\beta_k g\\left(w_{k0}+\\sum_{j=1}^{p}w_{kj}x_{iLj}+\\sum_{s=1}^{K}u_{ks}a_{i,L-1,s}\\right)\\right)\\right)^{2}.",
-  "characters": "(yi−oiL)2 =yi−β0+βkgwk0+wkjxiLj+uksai,L−1,s.",
-  "kind": "display",
-  "page_pdf": 425,
-  "equation_number": "10.19"
- },
- {
-  "id": "m00586",
-  "compare": "work/math_compare/m00586.png",
-  "latex": "X_{1} = \\begin{pmatrix} v_{t-L} \\\\ r_{t-L} \\\\ z_{t-L} \\end{pmatrix}, \\ X_{2} = \\begin{pmatrix} v_{t-L+1} \\\\ r_{t-L+1} \\\\ z_{t-L+1} \\end{pmatrix}, \\cdots, X_{L} = \\begin{pmatrix} v_{t-1} \\\\ r_{t-1} \\\\ z_{t-1} \\end{pmatrix}, \\quad\\text{and}\\quad Y = v_{t}.",
+  "id": "m00566",
+  "compare": "work/math_compare/m00566.png",
+  "latex": "X_1 = \\begin{pmatrix} v_{t-L} \\\\ r_{t-L} \\\\ z_{t-L} \\end{pmatrix}, X_2 = \\begin{pmatrix} v_{t-L+1} \\\\ r_{t-L+1} \\\\ z_{t-L+1} \\end{pmatrix}, \\cdots, X_L = \\begin{pmatrix} v_{t-1} \\\\ r_{t-1} \\\\ z_{t-1} \\end{pmatrix}, \\quad \\text{and} \\quad Y = v_t.",
   "characters": "\nvt−Lvt−L+1vt−1\n, X2 =\nX1 =rt−Lrt−L+1, · · · , XL =rt−1, and Y = vt.\nzt−Lzt−L+1zt−1",
   "kind": "display",
   "page_pdf": 429,
   "equation_number": "10.20"
+ },
+ {
+  "id": "m00567",
+  "compare": "work/math_compare/m00567.png",
+  "latex": "\\mathbf{y} = \\begin{pmatrix} v_{L+1} \\\\ v_{L+2} \\\\ v_{L+3} \\\\ \\vdots \\\\ v_T \\end{pmatrix} \\qquad \\mathbf{M} = \\begin{pmatrix} 1 & v_L & v_{L-1} & \\cdots & v_1 \\\\ 1 & v_{L+1} & v_L & \\cdots & v_2 \\\\ 1 & v_{L+2} & v_{L+1} & \\cdots & v_3 \\\\ \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\ 1 & v_{T-1} & v_{T-2} & \\cdots & v_{T-L} \\end{pmatrix}.",
+  "characters": "\nvL+11vLvL−1· · ·v1\n\nvL+21vL+1vL· · ·v2\nvL+31vL+2vL+1· · ·v3\ny =M =.\n..................\nvT1vT −1vT −2· · ·vT −L",
+  "kind": "display",
+  "page_pdf": 430,
+  "equation_number": "10.21"
+ },
+ {
+  "id": "m00568",
+  "compare": "work/math_compare/m00568.png",
+  "latex": "\\hat{v}_{t} = \\hat{\\beta}_{0} + \\hat{\\beta}_{1} v_{t-1} + \\hat{\\beta}_{2} v_{t-2} + \\cdots + \\hat{\\beta}_{L} v_{t-L},",
+  "characters": "vˆt = βˆ0 + βˆ1vt−1 + βˆ2vt−2 + · · · + βˆLvt−L,",
+  "kind": "display",
+  "page_pdf": 431,
+  "equation_number": "10.22"
+ },
+ {
+  "id": "m00569",
+  "compare": "work/math_compare/m00569.png",
+  "latex": "\\operatorname*{minimize}_{\\{w_k\\}_1^K,\\ \\beta} \\ \\frac{1}{2}\\sum_{i=1}^{n}(y_i - f(x_i))^2,",
+  "characters": "n\n�\n1\nminimize(yi −f(xi))2,\n2\n{wk}K1 , β\ni=1",
+  "kind": "display",
+  "page_pdf": 434,
+  "equation_number": "10.23"
+ },
+ {
+  "id": "m00570",
+  "compare": "work/math_compare/m00570.png",
+  "latex": "f(x_i) = \\beta_0 + \\sum_{k=1}^{K} \\beta_k g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} x_{ij}\\right).",
+  "characters": "Kp\n��\n��\nf(xi) = β0 +βkgwk0 +wkjxij.\nk=1j=1",
+  "kind": "display",
+  "page_pdf": 434,
+  "equation_number": "10.24"
+ },
+ {
+  "id": "m00571",
+  "compare": "work/math_compare/m00571.png",
+  "latex": "R(\\theta) = \\frac{1}{2}\\sum_{i=1}^{n}(y_i - f_\\theta(x_i))^2,",
+  "characters": "n\n�\nR(θ) = 1(yi −fθ(xi))2,\n2\ni=1",
+  "kind": "display",
+  "page_pdf": 434,
+  "equation_number": "10.25"
+ },
+ {
+  "id": "m00572",
+  "compare": "work/math_compare/m00572.png",
+  "latex": "\\nabla R(\\theta^m) = \\frac{\\partial R(\\theta)}{\\partial \\theta}\\Big|_{\\theta=\\theta^m}.",
+  "characters": "���\n∇R(θm) = ∂R(θ)θ=θm.\n∂θ",
+  "kind": "display",
+  "page_pdf": 435,
+  "equation_number": "10.26"
+ },
+ {
+  "id": "m00573",
+  "compare": "work/math_compare/m00573.png",
+  "latex": "\\theta^{m+1} \\leftarrow \\theta^m - \\rho \\nabla R(\\theta^m).",
+  "characters": "θm+1 ←θm −ρ∇R(θm).",
+  "kind": "display",
+  "page_pdf": 435,
+  "equation_number": "10.27"
+ },
+ {
+  "id": "m00574",
+  "compare": "work/math_compare/m00574.png",
+  "latex": "R(\\theta) = \\sum_{i=1}^n R_i(\\theta) = \\frac{1}{2}\\sum_{i=1}^n (y_i - f_\\theta(x_i))^2",
+  "characters": "R(θ) = �ni=1 Ri(θ) = 1i=1(yi − fθ(xi))2",
+  "kind": "inline",
+  "page_pdf": 436,
+  "equation_number": ""
+ },
+ {
+  "id": "m00575",
+  "compare": "work/math_compare/m00575.png",
+  "latex": "R_i(\\theta) = \\frac{1}{2}\\left(y_i - \\beta_0 - \\sum_{k=1}^{K} \\beta_k g\\left(w_{k0} + \\sum_{j=1}^{p} w_{kj} x_{ij}\\right)\\right)^2.",
+  "characters": "Kp\n�\n�����2\nRi(θ) = 1yi −β0 −βkgwk0 +wkjxij.\n2\nk=1j=1",
+  "kind": "display",
+  "page_pdf": 436,
+  "equation_number": "10.28"
+ },
+ {
+  "id": "m00576",
+  "compare": "work/math_compare/m00576.png",
+  "latex": "z_{ik} = w_{k0} + \\sum_{j=1}^{p} w_{kj}x_{ij}",
+  "characters": "zik = wk0 + �pj=1 wkjxij",
+  "kind": "inline",
+  "page_pdf": 436,
+  "equation_number": ""
+ },
+ {
+  "id": "m00577",
+  "compare": "work/math_compare/m00577.png",
+  "latex": "\\begin{aligned} \\frac{\\partial R_i(\\theta)}{\\partial \\beta_k} &= \\frac{\\partial R_i(\\theta)}{\\partial f_\\theta(x_i)} \\cdot \\frac{\\partial f_\\theta(x_i)}{\\partial \\beta_k} \\\\ &= -(y_i - f_\\theta(x_i)) \\cdot g(z_{ik}). \\end{aligned}",
+  "characters": "∂Ri(θ)∂Ri(θ)\n=\n∂βk∂fθ(xi) · ∂f∂θβ(xki)\n=−(yi −fθ(xi)) · g(zik).",
+  "kind": "display",
+  "page_pdf": 436,
+  "equation_number": "10.29"
+ },
+ {
+  "id": "m00578",
+  "compare": "work/math_compare/m00578.png",
+  "latex": "\\begin{aligned} \\frac{\\partial R_i(\\theta)}{\\partial w_{kj}} &= \\frac{\\partial R_i(\\theta)}{\\partial f_\\theta(x_i)} \\cdot \\frac{\\partial f_\\theta(x_i)}{\\partial g(z_{ik})} \\cdot \\frac{\\partial g(z_{ik})}{\\partial z_{ik}} \\cdot \\frac{\\partial z_{ik}}{\\partial w_{kj}} \\\\ &= -(y_i - f_\\theta(x_i)) \\cdot \\beta_k \\cdot g'(z_{ik}) \\cdot x_{ij}. \\end{aligned}",
+  "characters": "∂Ri(θ)∂Ri(θ)· ∂zik\n=\n∂wkj∂fθ(xi) · ∂∂fgθ((zxiki)) · ∂g∂(zziikk)∂wkj\n=−(yi −fθ(xi)) · βk · g′(zik) · xij.",
+  "kind": "display",
+  "page_pdf": 436,
+  "equation_number": "10.30"
+ },
+ {
+  "id": "m00579",
+  "compare": "work/math_compare/m00579.png",
+  "latex": "R(\\theta; \\lambda) = -\\sum_{i=1}^{n}\\sum_{m=0}^{9} y_{im} \\log(f_m(x_i)) + \\lambda \\sum_j \\theta_j^2.",
+  "characters": "n9\n���\nR(θ; λ) = −yim log(fm(xi)) + λθj2.\ni=1m=0j",
+  "kind": "display",
+  "page_pdf": 437,
+  "equation_number": "10.31"
+ },
+ {
+  "id": "m00580",
+  "compare": "work/math_compare/m00580.png",
+  "latex": "Y = \\sin(X) + \\epsilon,",
+  "characters": "Y = sin(X) + ϵ,",
+  "kind": "display",
+  "page_pdf": 439,
+  "equation_number": ""
+ },
+ {
+  "id": "m00584",
+  "compare": "work/math_compare/m00584.png",
+  "latex": "\\sum_{j=1}^{d} \\hat{\\beta}_j^2",
+  "characters": "�dj",
+  "kind": "inline",
+  "page_pdf": 440,
+  "equation_number": ""
+ },
+ {
+  "id": "m00587",
+  "compare": "work/math_compare/m00587.png",
+  "latex": "\\mathrm{MAE}(y, \\hat{y}) = \\frac{1}{n}\\sum_{i=1}^{n} |y_i - \\hat{y}_i|.",
+  "characters": "n\n�\nMAE(y, yˆ) = 1|yi −yˆi|.\nn\ni=1",
+  "kind": "display",
+  "page_pdf": 444,
+  "equation_number": ""
+ },
+ {
+  "id": "m00588",
+  "compare": "work/math_compare/m00588.png",
+  "latex": "Y = \\min(T, C).",
+  "characters": "Y = min(T, C).",
+  "kind": "display",
+  "page_pdf": 476,
+  "equation_number": "11.1"
+ },
+ {
+  "id": "m00589",
+  "compare": "work/math_compare/m00589.png",
+  "latex": "\\delta = \\begin{cases} 1 & \\text{if } T \\le C \\\\ 0 & \\text{if } T > C. \\end{cases}",
+  "characters": "�\n1if T ≤C\nδ =\n0if T > C.",
+  "kind": "display",
+  "page_pdf": 476,
+  "equation_number": ""
+ },
+ {
+  "id": "m00590",
+  "compare": "work/math_compare/m00590.png",
+  "latex": "S(t) = \\Pr(T > t).",
+  "characters": "S(t) = Pr(T > t).",
+  "kind": "display",
+  "page_pdf": 478,
+  "equation_number": "11.2"
  }
 ]

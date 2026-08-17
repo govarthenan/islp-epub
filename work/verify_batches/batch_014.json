@@ -2,159 +2,6 @@
  {
   "id": "m00506",
   "compare": "work/math_compare/m00506.png",
-  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p > 0.",
-  "characters": "β0 + β1X1 + β2X2 + · · · + βpXp > 0.",
-  "kind": "display",
-  "page_pdf": 375,
-  "equation_number": "9.3"
- },
- {
-  "id": "m00507",
-  "compare": "work/math_compare/m00507.png",
-  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p < 0,",
-  "characters": "β0 + β1X1 + β2X2 + · · · + βpXp < 0,",
-  "kind": "display",
-  "page_pdf": 375,
-  "equation_number": "9.4"
- },
- {
-  "id": "m00508",
-  "compare": "work/math_compare/m00508.png",
-  "latex": "x_1 = \\begin{pmatrix} x_{11} \\\\ \\vdots \\\\ x_{1p} \\end{pmatrix}, \\ldots, x_n = \\begin{pmatrix} x_{n1} \\\\ \\vdots \\\\ x_{np} \\end{pmatrix},",
-  "characters": "\nx11xn1\n......\nx1 =, . . . , xn =,\nx1pxnp",
-  "kind": "display",
-  "page_pdf": 375,
-  "equation_number": "9.5"
- },
- {
-  "id": "m00509",
-  "compare": "work/math_compare/m00509.png",
-  "latex": "(x_1^{*}",
-  "characters": "�x∗",
-  "kind": "display",
-  "page_pdf": 376,
-  "equation_number": ""
- },
- {
-  "id": "m00510",
-  "compare": "work/math_compare/m00510.png",
-  "latex": "x_p^{*})^{T}",
-  "characters": "�T",
-  "kind": "inline",
-  "page_pdf": 376,
-  "equation_number": ""
- },
- {
-  "id": "m00511",
-  "compare": "work/math_compare/m00511.png",
-  "latex": "\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} > 0 \\text{ if } y_i = 1,",
-  "characters": "β0 + β1xi1 + β2xi2 + · · · + βpxip > 0 if yi = 1,",
-  "kind": "display",
-  "page_pdf": 376,
-  "equation_number": "9.6"
- },
- {
-  "id": "m00512",
-  "compare": "work/math_compare/m00512.png",
-  "latex": "\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} < 0 \\text{ if } y_i = -1.",
-  "characters": "β0 + β1xi1 + β2xi2 + · · · + βpxip < 0 if yi = −1.",
-  "kind": "display",
-  "page_pdf": 376,
-  "equation_number": "9.7"
- },
- {
-  "id": "m00513",
-  "compare": "work/math_compare/m00513.png",
-  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}) > 0",
-  "characters": "yi(β0 + β1xi1 + β2xi2 + · · · + βpxip) > 0",
-  "kind": "display",
-  "page_pdf": 376,
-  "equation_number": "9.8"
- },
- {
-  "id": "m00515",
-  "compare": "work/math_compare/m00515.png",
-  "latex": "\\begin{aligned}\n&\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,M}\\ M\\\\\n&\\text{subject to}\\quad \\sum_{j=1}^{p}\\beta_j^2 = 1,\\\\\n&y_i(\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\cdots+\\beta_px_{ip})\\ge M\\quad\\forall\\, i=1,\\ldots,n.\n\\end{aligned}",
-  "characters": "β0m,βa1x,.i.m.,βipz,eM M\np\n�\nsubject toβj2 = 1,\nj=1\nyi(β0 + β1xi1 + β2xi2 + · · · + βpxip) ≥M ∀i = 1, . . . , n. (9.11)",
-  "kind": "display",
-  "page_pdf": 379,
-  "equation_number": "9.10"
- },
- {
-  "id": "m00516",
-  "compare": "work/math_compare/m00516.png",
-  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}) \\geq M \\quad \\forall\\, i = 1, \\ldots, n",
-  "characters": "yi(β0 + β1xi1 + β2xi2 + · · · + βpxip) ≥M ∀i = 1, . . . , n",
-  "kind": "display",
-  "page_pdf": 379,
-  "equation_number": ""
- },
- {
-  "id": "m00517",
-  "compare": "work/math_compare/m00517.png",
-  "latex": "k \\neq 0.",
-  "characters": "k̸ = 0",
-  "kind": "inline",
-  "page_pdf": 379,
-  "equation_number": ""
- },
- {
-  "id": "m00518",
-  "compare": "work/math_compare/m00518.png",
-  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}).",
-  "characters": "yi(β0 + β1xi1 + β2xi2 + · · · + βpxip).",
-  "kind": "display",
-  "page_pdf": 379,
-  "equation_number": ""
- },
- {
-  "id": "m00519",
-  "compare": "work/math_compare/m00519.png",
-  "latex": "\\begin{aligned}\n&\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,\\epsilon_1,\\ldots,\\epsilon_n,\\,M}\\ M\\\\\n&\\text{subject to}\\quad \\sum_{j=1}^{p}\\beta_j^2 = 1,\\\\\n&y_i(\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\cdots+\\beta_px_{ip})\\ge M(1-\\epsilon_i),\\\\\n&\\epsilon_i\\ge 0,\\quad \\sum_{i=1}^{n}\\epsilon_i\\le C,\n\\end{aligned}",
-  "characters": "β0,β1,m...a,βxpi,mϵ1,i.z..e,ϵn, M M\np\n�\nsubject toβj2 = 1,\nj=1\nyi(β0 + β1xi1 + β2xi2 + · · · + βpxip) ≥M(1 −ϵi),\nn\n�\nϵi ≥0,ϵi ≤C,\ni=1",
-  "kind": "display",
-  "page_pdf": 382,
-  "equation_number": "9.15"
- },
- {
-  "id": "m00520",
-  "compare": "work/math_compare/m00520.png",
-  "latex": "\\sum_{i=1}^{n} \\epsilon_i \\leq C",
-  "characters": "�ni=1 ϵi ≤ C",
-  "kind": "inline",
-  "page_pdf": 383,
-  "equation_number": ""
- },
- {
-  "id": "m00521",
-  "compare": "work/math_compare/m00521.png",
-  "latex": "X_1, X_2, \\ldots, X_p,",
-  "characters": "X1, X2, . . . , Xp,",
-  "kind": "display",
-  "page_pdf": 385,
-  "equation_number": ""
- },
- {
-  "id": "m00522",
-  "compare": "work/math_compare/m00522.png",
-  "latex": "X_1, X_1^{2}, X_2, X_2^{2}, \\ldots, X_p, X_p^{2}.",
-  "characters": "X1, X12, X2, X22, . . . , Xp, Xp2.",
-  "kind": "display",
-  "page_pdf": 385,
-  "equation_number": ""
- },
- {
-  "id": "m00523",
-  "compare": "work/math_compare/m00523.png",
-  "latex": "\\begin{aligned} &\\operatorname*{maximize}_{\\beta_0,\\beta_{11},\\beta_{12},\\ldots,\\beta_{p1},\\beta_{p2},\\epsilon_1,\\ldots,\\epsilon_n,\\,M}\\ M\\\\ &\\text{subject to } y_i\\left(\\beta_0 + \\sum_{j=1}^{p}\\beta_{j1}x_{ij} + \\sum_{j=1}^{p}\\beta_{j2}x_{ij}^{2}\\right) \\geq M(1-\\epsilon_i),\\\\ &\\sum_{i=1}^{n}\\epsilon_i \\leq C, \\quad \\epsilon_i \\geq 0, \\quad \\sum_{j=1}^{p}\\sum_{k=1}^{2}\\beta_{jk}^{2} = 1. \\end{aligned}",
-  "characters": "β0,β11,β12,m...a,βxpi1m,βipz2e,ϵ1,...,ϵn, M M\n\npp\n��\nsubject to yiβ0 +βj1xij +βj2x2≥M(1 −ϵi),\nij\nj=1j=1\nnp2\n���\nϵi ≤C, ϵi ≥0,βj2k = 1.\ni=1j=1k=1",
-  "kind": "display",
-  "page_pdf": 386,
-  "equation_number": "9.16"
- },
- {
-  "id": "m00524",
-  "compare": "work/math_compare/m00524.png",
   "latex": "j \\neq j'",
   "characters": "j̸ = j′",
   "kind": "inline",
@@ -162,17 +9,17 @@
   "equation_number": ""
  },
  {
-  "id": "m00525",
-  "compare": "work/math_compare/m00525.png",
-  "latex": "\\langle a, b \\rangle = \\sum_{i=1}^{r} a_i b_i.",
+  "id": "m00507",
+  "compare": "work/math_compare/m00507.png",
+  "latex": "\\langle a, b \\rangle = \\sum_{i=1}^{r} a_i b_i",
   "characters": "⟨a, b⟩ = �ir=1 aibi",
   "kind": "inline",
   "page_pdf": 386,
   "equation_number": ""
  },
  {
-  "id": "m00526",
-  "compare": "work/math_compare/m00526.png",
+  "id": "m00508",
+  "compare": "work/math_compare/m00508.png",
   "latex": "\\langle x_i, x_{i'} \\rangle = \\sum_{j=1}^{p} x_{ij} x_{i'j}.",
   "characters": "p\n�\n⟨xi, xi′⟩=xijxi′j.\nj=1",
   "kind": "display",
@@ -180,8 +27,8 @@
   "equation_number": "9.17"
  },
  {
-  "id": "m00527",
-  "compare": "work/math_compare/m00527.png",
+  "id": "m00509",
+  "compare": "work/math_compare/m00509.png",
   "latex": "f(x) = \\beta_0 + \\sum_{i=1}^{n} \\alpha_i \\langle x, x_i \\rangle,",
   "characters": "n\n�\nf(x) = β0 +αi⟨x, xi⟩,\ni=1",
   "kind": "display",
@@ -189,8 +36,8 @@
   "equation_number": "9.18"
  },
  {
-  "id": "m00528",
-  "compare": "work/math_compare/m00528.png",
+  "id": "m00510",
+  "compare": "work/math_compare/m00510.png",
   "latex": "\\begin{aligned}\n&\\binom{n}{2}\\ \\left\\langle x_i, x_{i'}\\right\\rangle\\\\\n&\\binom{n}{2}\\ \\text{among a set of } n \\text{ items.)}\n\\end{aligned}",
   "characters": "�n�\n2\n�n�\n2\namong a set of n items.)",
   "kind": "display",
@@ -198,8 +45,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00530",
-  "compare": "work/math_compare/m00530.png",
+  "id": "m00512",
+  "compare": "work/math_compare/m00512.png",
   "latex": "f(x) = \\beta_0 + \\sum_{i \\in \\mathcal{S}} \\alpha_i \\langle x, x_i \\rangle,",
   "characters": "�\nf(x) = β0 +αi⟨x, xi⟩,\ni∈S",
   "kind": "display",
@@ -207,8 +54,8 @@
   "equation_number": "9.19"
  },
  {
-  "id": "m00531",
-  "compare": "work/math_compare/m00531.png",
+  "id": "m00513",
+  "compare": "work/math_compare/m00513.png",
   "latex": "K(x_i, x_{i'}),",
   "characters": "K(xi, xi′),",
   "kind": "display",
@@ -216,12 +63,165 @@
   "equation_number": "9.20"
  },
  {
-  "id": "m00532",
-  "compare": "work/math_compare/m00532.png",
+  "id": "m00514",
+  "compare": "work/math_compare/m00514.png",
   "latex": "K(x_i, x_{i'}) = \\sum_{j=1}^{p} x_{ij} x_{i'j},",
   "characters": "p\n�\nK(xi, xi′) =xijxi′j,\nj=1",
   "kind": "display",
   "page_pdf": 387,
   "equation_number": "9.21"
+ },
+ {
+  "id": "m00515",
+  "compare": "work/math_compare/m00515.png",
+  "latex": "\\sum_{j=1}^{p} x_{ij}x_{i'j}",
+  "characters": "�pj=1 xijxi′j",
+  "kind": "inline",
+  "page_pdf": 387,
+  "equation_number": ""
+ },
+ {
+  "id": "m00516",
+  "compare": "work/math_compare/m00516.png",
+  "latex": "K(x_i, x_{i'}) = \\left(1 + \\sum_{j=1}^{p} x_{ij} x_{i'j}\\right)^d.",
+  "characters": "p\n�\nK(xi, xi′) = (1 +xijxi′j)d.\nj=1",
+  "kind": "display",
+  "page_pdf": 387,
+  "equation_number": "9.22"
+ },
+ {
+  "id": "m00517",
+  "compare": "work/math_compare/m00517.png",
+  "latex": "f(x) = \\beta_0 + \\sum_{i \\in \\mathcal{S}} \\alpha_i K(x, x_i).",
+  "characters": "�\nf(x) = β0 +αiK(x, xi).\ni∈S",
+  "kind": "display",
+  "page_pdf": 388,
+  "equation_number": "9.23"
+ },
+ {
+  "id": "m00518",
+  "compare": "work/math_compare/m00518.png",
+  "latex": "K(x_i, x_{i'}) = \\exp\\left(-\\gamma \\sum_{j=1}^{p} (x_{ij} - x_{i'j})^2\\right).",
+  "characters": "p\n�\nK(xi, xi′) = exp(−γ(xij −xi′j)2).\nj=1",
+  "kind": "display",
+  "page_pdf": 388,
+  "equation_number": "9.24"
+ },
+ {
+  "id": "m00519",
+  "compare": "work/math_compare/m00519.png",
+  "latex": "\\sum_{j=1}^{p} (x_j^* - x_{ij})^2",
+  "characters": "�pj=1(x∗j −xij)2",
+  "kind": "inline",
+  "page_pdf": 388,
+  "equation_number": ""
+ },
+ {
+  "id": "m00520",
+  "compare": "work/math_compare/m00520.png",
+  "latex": "\\exp\\left(-\\gamma \\sum_{j=1}^{p} (x_j^* - x_{ij})^2\\right)",
+  "characters": "exp(−γ �pj=1(x∗j − xij)2)",
+  "kind": "inline",
+  "page_pdf": 388,
+  "equation_number": ""
+ },
+ {
+  "id": "m00521",
+  "compare": "work/math_compare/m00521.png",
+  "latex": "\\binom{n}{2}",
+  "characters": "�n�\n2",
+  "kind": "display",
+  "page_pdf": 389,
+  "equation_number": ""
+ },
+ {
+  "id": "m00525",
+  "compare": "work/math_compare/m00525.png",
+  "latex": "\\binom{K}{2}",
+  "characters": "�K�\n2",
+  "kind": "display",
+  "page_pdf": 391,
+  "equation_number": ""
+ },
+ {
+  "id": "m00526",
+  "compare": "work/math_compare/m00526.png",
+  "latex": "\\binom{K}{2}",
+  "characters": "2",
+  "kind": "display",
+  "page_pdf": 391,
+  "equation_number": ""
+ },
+ {
+  "id": "m00527",
+  "compare": "work/math_compare/m00527.png",
+  "latex": "\\binom{K}{2}",
+  "characters": "�K�",
+  "kind": "inline",
+  "page_pdf": 391,
+  "equation_number": ""
+ },
+ {
+  "id": "m00528",
+  "compare": "work/math_compare/m00528.png",
+  "latex": "\\operatorname*{minimize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p} \\left\\{ \\sum_{i=1}^{n} \\max\\left[0, 1 - y_i f(x_i)\\right] + \\lambda \\sum_{j=1}^{p} \\beta_j^2 \\right\\},",
+  "characters": "\nnp\n\n��\nminimizemax [0, 1 −yif(xi)] + λβ2\nj\nβ0,β1,...,βp\n,\ni=1j=1",
+  "kind": "display",
+  "page_pdf": 391,
+  "equation_number": "9.25"
+ },
+ {
+  "id": "m00529",
+  "compare": "work/math_compare/m00529.png",
+  "latex": "\\lambda \\sum_{j=1}^{p} \\beta_j^2",
+  "characters": "λ �pj=1 βj2",
+  "kind": "inline",
+  "page_pdf": 392,
+  "equation_number": ""
+ },
+ {
+  "id": "m00530",
+  "compare": "work/math_compare/m00530.png",
+  "latex": "\\operatorname*{minimize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p} \\left\\{ L(\\mathbf{X}, \\mathbf{y}, \\beta) + \\lambda P(\\beta) \\right\\}.",
+  "characters": "βm0,iβn1i,m...i,zβep {L(X, y, β) + λP(β)} .",
+  "kind": "display",
+  "page_pdf": 392,
+  "equation_number": "9.26"
+ },
+ {
+  "id": "m00531",
+  "compare": "work/math_compare/m00531.png",
+  "latex": "L(\\mathbf{X}, \\mathbf{y}, \\beta) = \\sum_{i=1}^{n} \\left( y_i - \\beta_0 - \\sum_{j=1}^{p} x_{ij}\\beta_j \\right)^2",
+  "characters": "\n2\nnp\n��\n\nL(X, y, β) =yi −β0 −xijβj\ni=1j=1",
+  "kind": "display",
+  "page_pdf": 392,
+  "equation_number": ""
+ },
+ {
+  "id": "m00532",
+  "compare": "work/math_compare/m00532.png",
+  "latex": "P(\\beta) = \\sum_{j=1}^{p} \\beta_j^2",
+  "characters": "P(β) = �pj=1 βj2",
+  "kind": "inline",
+  "page_pdf": 392,
+  "equation_number": ""
+ },
+ {
+  "id": "m00533",
+  "compare": "work/math_compare/m00533.png",
+  "latex": "P(\\beta) = \\sum_{j=1}^{p} |\\beta_j|",
+  "characters": "P(β) = �pj=1 |βj|",
+  "kind": "inline",
+  "page_pdf": 392,
+  "equation_number": ""
+ },
+ {
+  "id": "m00534",
+  "compare": "work/math_compare/m00534.png",
+  "latex": "L(\\mathbf{X}, \\mathbf{y}, \\beta) = \\sum_{i=1}^{n} \\max\\left[0, 1 - y_i(\\beta_0 + \\beta_1 x_{i1} + \\cdots + \\beta_p x_{ip})\\right].",
+  "characters": "n\n�\nL(X, y, β) =max [0, 1 −yi(β0 + β1xi1 + · · · + βpxip)] .\ni=1",
+  "kind": "display",
+  "page_pdf": 392,
+  "equation_number": ""
  }
 ]

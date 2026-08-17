@@ -1,196 +1,7 @@
 [
  {
-  "id": "m00682",
-  "compare": "work/math_compare/m00682.png",
-  "latex": "\\tilde{x}_{ij}=\\begin{cases}x_{ij}&\\text{if }(i,j)\\in\\mathcal{O}\\\\ \\bar{x}_{j}&\\text{if }(i,j)\\notin\\mathcal{O},\\end{cases}",
-  "characters": "�xij\nif (i, j) ∈O\nx˜ij =\nx¯jif (i, j) ∈/O,",
-  "kind": "display",
-  "page_pdf": 523,
-  "equation_number": ""
- },
- {
-  "id": "m00684",
-  "compare": "work/math_compare/m00684.png",
-  "latex": "\\operatorname*{minimize}_{\\mathbf{A}\\in\\mathbb{R}^{n\\times M},\\,\\mathbf{B}\\in\\mathbb{R}^{p\\times M}}\\left\\{\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(\\tilde{x}_{ij}-\\sum_{m=1}^{M}a_{im}b_{jm}\\right)^{2}\\right\\}",
-  "characters": "\n��2\npnM\n\n���\nminimizex˜ij −aimbjm\n\nA∈Rn×M,B∈Rp×M\nj=1i=1m=1",
-  "kind": "display",
-  "page_pdf": 523,
-  "equation_number": "12.13"
- },
- {
   "id": "m00686",
   "compare": "work/math_compare/m00686.png",
-  "latex": "\\tilde{x}_{ij}\\leftarrow\\sum_{m=1}^{M}\\hat{a}_{im}\\hat{b}_{jm}.",
-  "characters": "xij ←�Mm=1 aimbjm",
-  "kind": "inline",
-  "page_pdf": 523,
-  "equation_number": ""
- },
- {
-  "id": "m00687",
-  "compare": "work/math_compare/m00687.png",
-  "latex": "\\sum_{(i,j)\\in\\mathcal{O}}\\left(x_{ij}-\\sum_{m=1}^{M}\\hat{a}_{im}\\hat{b}_{jm}\\right)^{2}.",
-  "characters": "��2\nM\n��\nxij −aˆimˆbjm.\n(i,j)∈Om=1",
-  "kind": "display",
-  "page_pdf": 523,
-  "equation_number": "12.14"
- },
- {
-  "id": "m00691",
-  "compare": "work/math_compare/m00691.png",
-  "latex": "k\\neq k'",
-  "characters": "k̸ = k′",
-  "kind": "inline",
-  "page_pdf": 527,
-  "equation_number": ""
- },
- {
-  "id": "m00692",
-  "compare": "work/math_compare/m00692.png",
-  "latex": "\\operatorname*{minimize}_{C_{1},\\ldots,C_{K}}\\left\\{\\sum_{k=1}^{K}W(C_{k})\\right\\}.",
-  "characters": "�K�\n�\nminimizeW(Ck).\nC1,...,CK\nk=1",
-  "kind": "display",
-  "page_pdf": 528,
-  "equation_number": "12.15"
- },
- {
-  "id": "m00693",
-  "compare": "work/math_compare/m00693.png",
-  "latex": "W(C_{k})=\\frac{1}{|C_{k}|}\\sum_{i,i'\\in C_{k}}\\sum_{j=1}^{p}(x_{ij}-x_{i'j})^{2},",
-  "characters": "p\n��\n1\nW(Ck) =(xij −xi′j)2,\n|Ck|\ni,i′∈Ckj=1",
-  "kind": "display",
-  "page_pdf": 528,
-  "equation_number": "12.16"
- },
- {
-  "id": "m00694",
-  "compare": "work/math_compare/m00694.png",
-  "latex": "\\operatorname*{minimize}_{C_{1},\\ldots,C_{K}}\\left\\{\\sum_{k=1}^{K}\\frac{1}{|C_{k}|}\\sum_{i,i'\\in C_{k}}\\sum_{j=1}^{p}(x_{ij}-x_{i'j})^{2}\\right\\}.",
-  "characters": "\nKp\n\n���\n1\nminimize(xij −xi′j)2\nC1,...,CK\n|Ck|.\nk=1i,i′∈Ckj=1",
-  "kind": "display",
-  "page_pdf": 529,
-  "equation_number": "12.17"
- },
- {
-  "id": "m00695",
-  "compare": "work/math_compare/m00695.png",
-  "latex": "\\frac{1}{|C_k|}\\sum_{i,i' \\in C_k}\\sum_{j=1}^{p}(x_{ij}-x_{i'j})^{2} = 2\\sum_{i \\in C_k}\\sum_{j=1}^{p}(x_{ij}-\\bar{x}_{kj})^{2},",
-  "characters": "pp\n����\n1\n(xij −xi′j)2 = 2(xij −x¯kj)2,\n|Ck|\ni,i′∈Ckj=1i∈Ckj=1",
-  "kind": "display",
-  "page_pdf": 529,
-  "equation_number": "12.18"
- },
- {
-  "id": "m00696",
-  "compare": "work/math_compare/m00696.png",
-  "latex": "\\frac{1}{|C_k|}",
-  "characters": "1",
-  "kind": "display",
-  "page_pdf": 529,
-  "equation_number": ""
- },
- {
-  "id": "m00697",
-  "compare": "work/math_compare/m00697.png",
-  "latex": "\\bar{x}_{kj}=\\frac{1}{|C_{k}|}\\sum_{i\\in C_{k}}x_{ij}",
-  "characters": "xkj =i∈Ck xij",
-  "kind": "inline",
-  "page_pdf": 529,
-  "equation_number": ""
- },
- {
-  "id": "m00698",
-  "compare": "work/math_compare/m00698.png",
-  "latex": "\\binom{n}{2}",
-  "characters": "�n�\n2",
-  "kind": "display",
-  "page_pdf": 535,
-  "equation_number": ""
- },
- {
-  "id": "m00699",
-  "compare": "work/math_compare/m00699.png",
-  "latex": "\\binom{6{,}830}{2}",
-  "characters": "�6,830�\n2",
-  "kind": "display",
-  "page_pdf": 554,
-  "equation_number": ""
- },
- {
-  "id": "m00700",
-  "compare": "work/math_compare/m00700.png",
-  "latex": "\\begin{pmatrix} & 0.3 & 0.4 & 0.7\\\\ 0.3 & & 0.5 & 0.8\\\\ 0.4 & 0.5 & & 0.45\\\\ 0.7 & 0.8 & 0.45 & \\end{pmatrix}.",
-  "characters": "\n0.30.40.7\n.\n0.30.50.8\n0.40.50.45\n0.70.80.45",
-  "kind": "display",
-  "page_pdf": 558,
-  "equation_number": ""
- },
- {
-  "id": "m00701",
-  "compare": "work/math_compare/m00701.png",
-  "latex": "\\begin{aligned} T &= \\frac{\\hat{\\mu}_t - \\hat{\\mu}_c}{s\\sqrt{\\dfrac{1}{n_t}+\\dfrac{1}{n_c}}} \\\\ \\hat{\\mu}_t &= \\frac{1}{n_t}\\sum_{i=1}^{n_t} x_{i}^{t}, \\quad \\hat{\\mu}_c = \\frac{1}{n_c}\\sum_{i=1}^{n_c} x_{i}^{c} \\\\ s &= \\sqrt{\\frac{(n_t -1)s_t^{2} + (n_c -1)s_c^{2}}{n_t + n_c -2}} \\end{aligned}",
-  "characters": "µˆt −µˆc\nT =�\n11\nsnt +\nnc\n�nt�nc\n11\nntnc\n�\n(nt −1)st2 + (nc −1)s2c\ns =\nnt + nc −2",
-  "kind": "display",
-  "page_pdf": 566,
-  "equation_number": "13.1"
- },
- {
-  "id": "m00702",
-  "compare": "work/math_compare/m00702.png",
-  "latex": "\\hat{\\mu}_{t} = \\frac{1}{n_{t}} \\sum_{i=1}^{n_{t}} x_{i}^{t}",
-  "characters": "µt =i=1 xti",
-  "kind": "inline",
-  "page_pdf": 566,
-  "equation_number": ""
- },
- {
-  "id": "m00703",
-  "compare": "work/math_compare/m00703.png",
-  "latex": "\\hat{\\mu}_{c} = \\frac{1}{n_{c}} \\sum_{i=1}^{n_{c}} x_{i}^{c}",
-  "characters": "µc =i=1 xci",
-  "kind": "inline",
-  "page_pdf": 566,
-  "equation_number": ""
- },
- {
-  "id": "m00704",
-  "compare": "work/math_compare/m00704.png",
-  "latex": "H_{a} : \\mu_{t} \\neq \\mu_{c}",
-  "characters": "Ha : µt̸ = µc",
-  "kind": "inline",
-  "page_pdf": 566,
-  "equation_number": ""
- },
- {
-  "id": "m00705",
-  "compare": "work/math_compare/m00705.png",
-  "latex": "\\mathrm{FWER} = \\mathrm{Pr}(V \\geq 1).",
-  "characters": "FWER = Pr(V ≥1).",
-  "kind": "display",
-  "page_pdf": 571,
-  "equation_number": "13.3"
- },
- {
-  "id": "m00706",
-  "compare": "work/math_compare/m00706.png",
-  "latex": "\\begin{aligned} \\mathrm{FWER}(\\alpha) &= 1 - \\mathrm{Pr}(V = 0) \\\\ &= 1 - \\mathrm{Pr}(\\text{do not falsely reject any null hypotheses}) \\end{aligned}",
-  "characters": "FWER(α)=1 −Pr(V = 0)\n=1 −Pr(do not falsely reject any null hypotheses)",
-  "kind": "display",
-  "page_pdf": 571,
-  "equation_number": "13.4"
- },
- {
-  "id": "m00707",
-  "compare": "work/math_compare/m00707.png",
-  "latex": "\\mathrm{FWER}(\\alpha) = 1 - \\prod_{j=1}^{m} (1-\\alpha) = 1 - (1-\\alpha)^{m}.",
-  "characters": "m\n�\nFWER(α) = 1 −(1 −α) = 1 −(1 −α)m.\nj=1",
-  "kind": "display",
-  "page_pdf": 571,
-  "equation_number": "13.5"
- },
- {
-  "id": "m00708",
-  "compare": "work/math_compare/m00708.png",
   "latex": "\\sqrt{n} \\cdot \\bar{X}/S",
   "characters": "√n · X/S",
   "kind": "inline",
@@ -198,8 +9,8 @@
   "equation_number": ""
  },
  {
-  "id": "m00709",
-  "compare": "work/math_compare/m00709.png",
+  "id": "m00687",
+  "compare": "work/math_compare/m00687.png",
   "latex": "\\begin{aligned}\n&= \\mathrm{Pr}\\left(\\bigcup_{j=1}^{m} A_j\\right) \\\\\n&\\leq \\sum_{j=1}^{m} \\mathrm{Pr}(A_j).\n\\end{aligned}",
   "characters": "= Pr(∪mj=1Aj)\nm\n�\n≤Pr(Aj).\nj=1",
   "kind": "display",
@@ -207,8 +18,8 @@
   "equation_number": "13.6"
  },
  {
-  "id": "m00710",
-  "compare": "work/math_compare/m00710.png",
+  "id": "m00688",
+  "compare": "work/math_compare/m00688.png",
   "latex": "\\mathrm{FWER}(\\alpha/m) \\leq m \\times \\frac{\\alpha}{m} = \\alpha,",
   "characters": "FWER(α/m) ≤m × mα = α,",
   "kind": "display",
@@ -216,12 +27,201 @@
   "equation_number": ""
  },
  {
-  "id": "m00711",
-  "compare": "work/math_compare/m00711.png",
+  "id": "m00689",
+  "compare": "work/math_compare/m00689.png",
   "latex": "H_{01}, \\ldots, H_{0m}.",
   "characters": "H01, . . . , H0m.",
   "kind": "display",
   "page_pdf": 575,
+  "equation_number": ""
+ },
+ {
+  "id": "m00690",
+  "compare": "work/math_compare/m00690.png",
+  "latex": "L = \\min\\left\\{ j : p_{(j)} > \\frac{\\alpha}{m+1-j} \\right\\}.",
+  "characters": "��\nα\nL = minj : p(j) >.\nm + 1 −j",
+  "kind": "display",
+  "page_pdf": 575,
+  "equation_number": "13.7"
+ },
+ {
+  "id": "m00691",
+  "compare": "work/math_compare/m00691.png",
+  "latex": "\\mu_{1} = \\mu_{2} = \\mu_{3} = \\mu_{4} = \\mu_{5} \\neq \\mu_{6}",
+  "characters": "µ1 = µ2 = µ3 = µ4 = µ5̸ = µ6",
+  "kind": "inline",
+  "page_pdf": 577,
+  "equation_number": ""
+ },
+ {
+  "id": "m00692",
+  "compare": "work/math_compare/m00692.png",
+  "latex": "H_{0} : \\frac{1}{2}(\\mu_{1}+\\mu_{3}) = \\frac{1}{3}(\\mu_{2}+\\mu_{4}+\\mu_{5}).",
+  "characters": "H0 : 12 (µ1 + µ3) = 1\n3 (µ2 + µ4 + µ5) .",
+  "kind": "display",
+  "page_pdf": 577,
+  "equation_number": "13.8"
+ },
+ {
+  "id": "m00693",
+  "compare": "work/math_compare/m00693.png",
+  "latex": "H_{0} : \\frac{1}{3}(\\mu_{1}+\\mu_{2}+\\mu_{3}) = \\frac{1}{2}(\\mu_{4}+\\mu_{5})",
+  "characters": "H0 : 31 (µ1 + µ2 + µ3) = 12 (µ4 + µ5)",
+  "kind": "inline",
+  "page_pdf": 578,
+  "equation_number": ""
+ },
+ {
+  "id": "m00694",
+  "compare": "work/math_compare/m00694.png",
+  "latex": "H_{0} : \\frac{1}{4}(\\mu_{1}+\\mu_{2}+\\mu_{3}+\\mu_{4}) = \\mu_{5}",
+  "characters": "H0 : 14 (µ1 + µ2 + µ3 + µ4) = µ5",
+  "kind": "inline",
+  "page_pdf": 578,
+  "equation_number": ""
+ },
+ {
+  "id": "m00695",
+  "compare": "work/math_compare/m00695.png",
+  "latex": "\\mathrm{FDR} = \\mathrm{E}(\\mathrm{FDP}) = \\mathrm{E}(V/R).",
+  "characters": "FDR = E(FDP) = E(V/R).",
+  "kind": "display",
+  "page_pdf": 580,
+  "equation_number": "13.9"
+ },
+ {
+  "id": "m00696",
+  "compare": "work/math_compare/m00696.png",
+  "latex": "H_{01}, \\ldots, H_{0m}.",
+  "characters": "H01, . . . , H0m.",
+  "kind": "display",
+  "page_pdf": 581,
+  "equation_number": ""
+ },
+ {
+  "id": "m00697",
+  "compare": "work/math_compare/m00697.png",
+  "latex": "L = \\max\\{j : p_{(j)} < qj/m\\}.",
+  "characters": "L = max{j : p(j) < qj/m}.",
+  "kind": "display",
+  "page_pdf": 581,
+  "equation_number": "13.10"
+ },
+ {
+  "id": "m00698",
+  "compare": "work/math_compare/m00698.png",
+  "latex": "H_{a} : \\mathrm{E}(X) \\neq \\mathrm{E}(Y)",
+  "characters": "Ha : E(X)̸ = E(Y )",
+  "kind": "inline",
+  "page_pdf": 584,
+  "equation_number": ""
+ },
+ {
+  "id": "m00699",
+  "compare": "work/math_compare/m00699.png",
+  "latex": "\\hat{\\mu}_{X} = \\frac{1}{n_{X}} \\sum_{i=1}^{n_{X}} x_{i}",
+  "characters": "µX =i=1 xi",
+  "kind": "inline",
+  "page_pdf": 584,
+  "equation_number": ""
+ },
+ {
+  "id": "m00700",
+  "compare": "work/math_compare/m00700.png",
+  "latex": "\\hat{\\mu}_{Y} = \\frac{1}{n_{Y}} \\sum_{i=1}^{n_{Y}} y_{i}",
+  "characters": "µY =i=1 yi",
+  "kind": "inline",
+  "page_pdf": 584,
+  "equation_number": ""
+ },
+ {
+  "id": "m00701",
+  "compare": "work/math_compare/m00701.png",
+  "latex": "p\\text{-value} = \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B},",
+  "characters": "�B\nb=1 1(|T ∗b|≥|T |)\np-value =,\nB",
+  "kind": "display",
+  "page_pdf": 584,
+  "equation_number": "13.12"
+ },
+ {
+  "id": "m00702",
+  "compare": "work/math_compare/m00702.png",
+  "latex": "y_1, \\ldots, y_{n_Y}.",
+  "characters": "y1, . . . , ynY .",
+  "kind": "display",
+  "page_pdf": 585,
+  "equation_number": ""
+ },
+ {
+  "id": "m00703",
+  "compare": "work/math_compare/m00703.png",
+  "latex": "\\text{3. The } p\\text{-value is given by } \\frac{\\sum_{b=1}^{B} 1_{(|T^{*b}|\\ge|T|)}}{B}.",
+  "characters": "�B\nb=1 1(|T ∗b|≥|T |)\n3. The p-value is given by.\nB",
+  "kind": "display",
+  "page_pdf": 585,
+  "equation_number": ""
+ },
+ {
+  "id": "m00704",
+  "compare": "work/math_compare/m00704.png",
+  "latex": "\\mathrm{FDR} = E\\left(\\frac{V}{R}\\right) \\approx \\frac{\\mathrm{E}(V)}{R}.",
+  "characters": "�V�\n≈E(V )\nFDR = E.\nRR",
+  "kind": "display",
+  "page_pdf": 586,
+  "equation_number": "13.13"
+ },
+ {
+  "id": "m00705",
+  "compare": "work/math_compare/m00705.png",
+  "latex": "R = \\sum_{j=1}^{m} 1_{\\left(|T_j| \\ge c\\right)}",
+  "characters": "R = �mj=1 1(|Tj|≥c)",
+  "kind": "inline",
+  "page_pdf": 586,
+  "equation_number": ""
+ },
+ {
+  "id": "m00706",
+  "compare": "work/math_compare/m00706.png",
+  "latex": "p_j = \\frac{\\sum_{j'=1}^{m} \\sum_{b=1}^{B} 1_{\\left(|T_{j'}^{*b}| \\geq |T_j|\\right)}}{Bm}",
+  "characters": "�m�B\nb=1 1(|T ∗b\nj′=1j′ |≥|Tj|)\npj =\nBm",
+  "kind": "display",
+  "page_pdf": 587,
+  "equation_number": "13.14"
+ },
+ {
+  "id": "m00707",
+  "compare": "work/math_compare/m00707.png",
+  "latex": "\\text{and } y_1^{(j)}, \\ldots, y_{n_Y}^{(j)}.",
+  "characters": "and y1(j ), . . . , yn(jY) .",
+  "kind": "display",
+  "page_pdf": 588,
+  "equation_number": ""
+ },
+ {
+  "id": "m00708",
+  "compare": "work/math_compare/m00708.png",
+  "latex": "\\text{servations } y_1^{*(j)}, \\ldots, y_{n_Y}^{*(j)}.",
+  "characters": "servations y∗(j), . . . , yn∗(Yj ).\n1",
+  "kind": "display",
+  "page_pdf": 588,
+  "equation_number": ""
+ },
+ {
+  "id": "m00709",
+  "compare": "work/math_compare/m00709.png",
+  "latex": "1",
+  "characters": "1",
+  "kind": "display",
+  "page_pdf": 588,
+  "equation_number": ""
+ },
+ {
+  "id": "m00710",
+  "compare": "work/math_compare/m00710.png",
+  "latex": "R = \\sum_{j=1}^{m} 1_{\\left(|T^{(j)}| \\ge c\\right)}",
+  "characters": "R = �mj=1 1(|T (j)|≥c)",
+  "kind": "inline",
+  "page_pdf": 588,
   "equation_number": ""
  }
 ]

@@ -22,7 +22,9 @@ from .inline import Tier, build_inline
 from .pagemodel import Page, VLine, Zone, load_page
 from .symbols import fix_unicode
 
-WORD_RE = re.compile(r"[A-Za-z][A-Za-z'’]*")
+# Hyphenated words count as one token, otherwise the vocabulary can never confirm that a
+# word really is hyphenated and every broken word gets closed up.
+WORD_RE = re.compile(r"[A-Za-z][A-Za-z'’]*(?:-[A-Za-z][A-Za-z'’]*)*")
 TRAILING_HYPHEN_RE = re.compile(r"[-‐]((?:</[a-z]+>)*)$")
 MATH_PLACEHOLDER_RE = re.compile("\x00MATH(\\d+)\x00")
 
@@ -173,7 +175,14 @@ def join_lines(html_parts: list[str], vocabulary: Counter[str]) -> str:
                 head, tail = head_match.group(1).lower(), tail_match.group(1).lower()
                 joined = vocabulary.get(head + tail, 0)
                 hyphenated = vocabulary.get(head + "-" + tail, 0)
-                if joined >= hyphenated:
+                if joined or hyphenated:
+                    close_up = joined >= hyphenated
+                else:
+                    # Neither form appears elsewhere in the book. Keep the hyphen when the
+                    # first part is itself a word the book uses ("Python-based"), and close it
+                    # up when it is not ("individ-ual").
+                    close_up = vocabulary.get(head, 0) < 2
+                if close_up:
                     out = TRAILING_HYPHEN_RE.sub(r"\1", out) + part
                     continue
             else:

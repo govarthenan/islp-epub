@@ -1,152 +1,27 @@
 [
- {
-  "id": "m00562",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00563",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00564",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00565",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00566",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00567",
-  "verdict": "wrong",
-  "issue": "Candidate LaTeX only transcribes the h_2(X) row; the top image (and the characters layer) shows a two-row equation with h_1(X) = (0 + X_1 + X_2)^2, given first, which is entirely missing from the candidate.",
-  "corrected_latex": "\\begin{aligned} h_1(X) &= (0 + X_1 + X_2)^2, \\\\ h_2(X) &= (0 + X_1 - X_2)^2. \\end{aligned}"
- },
- {
-  "id": "m00568",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00569",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00570",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00571",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00572",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00573",
-  "verdict": "cosmetic",
-  "issue": "Candidate uses \\mid (adds spacing) for the conditioning bar in Pr(Y=m|X) where the printed page sets a bare, unspaced |; same mathematics, only bar spacing differs.",
-  "corrected_latex": ""
- },
- {
-  "id": "m00574",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00575",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00576",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00577",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00578",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00579",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00580",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00581",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00582",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00583",
-  "verdict": "same",
-  "issue": "Top crop bleeds in the trailing \"O_L)^2,\" from the preceding display equation above the target line, but the target inline expression O_L = beta_0 + sum_{k=1}^K beta_k A_{Lk} itself matches the candidate exactly.",
-  "corrected_latex": ""
- },
- {
-  "id": "m00584",
-  "verdict": "cosmetic",
-  "issue": "Top image is clipped at the right edge, cutting off the closing superscript 2; the visible portion matches the candidate, and the same equation (m00585, display form) was verified as an exact match, so no math difference is inferred.",
-  "corrected_latex": ""
- },
- {
-  "id": "m00585",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- },
- {
-  "id": "m00586",
-  "verdict": "same",
-  "issue": "",
-  "corrected_latex": ""
- }
+ {"id": "m00561", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00562", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00563", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00564", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00565", "verdict": "cosmetic", "issue": "TOP half has broken/missing glyph rendering (italic letters such as y_i, o_iL, beta_0, w, u, x, a did not render, leaving only sums, parentheses and the exponent 2 visible), matching the pattern of replacement characters seen in the PDF text-layer 'characters' field. The visible structural skeleton (double sum with limits 1..n on both sides, nested K-sum, p-sum, K-sum, outer exponent 2) matches the candidate LaTeX exactly, so no mathematical difference can be confirmed.", "corrected_latex": ""},
+ {"id": "m00566", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00567", "verdict": "cosmetic", "issue": "Bottom uses larger/rounded parenthesis-style delimiters and bold vector/matrix symbols versus top's square brackets and slightly different weight; purely a rendering/font choice difference, same mathematics.", "corrected_latex": ""},
+ {"id": "m00568", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00569", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00570", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00571", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00572", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00573", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00574", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00575", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00576", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00577", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00578", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00579", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00580", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00584", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00587", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00588", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00589", "verdict": "same", "issue": "", "corrected_latex": ""},
+ {"id": "m00590", "verdict": "same", "issue": "", "corrected_latex": ""}
 ]

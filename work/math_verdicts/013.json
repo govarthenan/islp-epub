@@ -1,27 +1,152 @@
 [
- {"id": "m00473", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00475", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00476", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00477", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00478", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00481", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00482", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00483", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00484", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00485", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00486", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00488", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00489", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00490", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00491", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00493", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00494", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00495", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00496", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00498", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00499", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00500", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00503", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00504", "verdict": "same", "issue": "", "corrected_latex": ""},
- {"id": "m00505", "verdict": "same", "issue": "", "corrected_latex": ""}
+ {
+  "id": "m00477",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00478",
+  "verdict": "wrong",
+  "issue": "Top (printed page) ends the expression with a trailing period after \\hat{f}^{b}(x); the candidate LaTeX omits it.",
+  "corrected_latex": "\\hat{f}(x) = \\frac{1}{B-L}\\sum_{b=L+1}^{B} \\hat{f}^{b}(x)."
+ },
+ {
+  "id": "m00480",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00481",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00482",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00485",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00486",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00487",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00488",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00489",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00490",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00491",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00492",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00493",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00494",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00495",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00497",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00498",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00499",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00500",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00501",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00502",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00503",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00504",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00505",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ }
 ]
