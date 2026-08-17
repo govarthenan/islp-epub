@@ -247,3 +247,21 @@ expressions had to be read again.
 
 **Status.** SUCCESS. Worth recording that the agents' flagged doubts were more useful than
 their answers: none of the three faults would have been visible from the LaTeX alone.
+
+---
+
+## 2026-08-17 — Entry 010: Region clipping
+
+**Attempt.** Claim the region above a caption by taking everything whose bounding box lies
+*inside* the band between the previous paragraph line and the caption.
+
+**Result.** Table 1.1 lost its header row: "Name | Description" was cut off at the top.
+
+**Why.** The extractor reports each character's full em box, which for the header row starts
+slightly above the band. Containment therefore excluded a row that plainly belongs to the
+table.
+
+**Fix.** Test for overlap with the band rather than containment, and allow the box to reach
+8 pt above it. Same change fixes figures whose topmost axis label sits high.
+
+**Status.** SUCCESS.
