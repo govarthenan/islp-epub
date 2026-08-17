@@ -17,6 +17,7 @@ import pymupdf
 
 from .blocks import assemble
 from .fonts import Role
+from .figures import inline_math_bbox
 from .inline import Tier, build_inline
 from .pagemodel import Page, VLine, Zone, load_page
 from .symbols import fix_unicode
@@ -252,8 +253,51 @@ def code_block_text(lines: list[VLine]) -> str:
 # ------------------------------------------------------------------------------------------
 
 
+def _inline_math_boxes(page: Page, blocks, rules) -> list:
+    """Boxes of the inline expressions on this page that will be rendered as images."""
+    boxes = []
+    for block in blocks:
+        if block.kind != "para":
+            continue
+        for line in block.lines:
+            for run in build_inline(line.chars, rules).math_runs:
+                if run.tier != Tier.VLM:
+                    continue
+                box, _ = inline_math_bbox(page, line, run.chars, rules)
+                boxes.append(box)
+    return boxes
+
+
+def _resolve_duplicate_math(page: Page, blocks, rules):
+    """Drop a display block that an inline expression already covers.
+
+    An equation set with words in it ("minimize ... subject to ...") reads as a paragraph,
+    and the paragraph's inline images then hold the whole equation. Any display block that
+    was made from the same pixels would print it a second time."""
+    from .figures import inline_math_bbox  # noqa: F401  (imported for clarity)
+
+    display_blocks = [block for block in blocks if block.kind == "display"]
+    if not display_blocks:
+        return blocks
+    inline_boxes = _inline_math_boxes(page, blocks, rules)
+    if not inline_boxes:
+        return blocks
+    redundant = {
+        id(block)
+        for block in display_blocks
+        if any(_overlap_share(block.bbox, box) > DUPLICATE_COVER for box in inline_boxes)
+    }
+    return [block for block in blocks if id(block) not in redundant]
+
+
 def _line_html(
-    line: VLine, rules, registry: MathRegistry, chapter: str, context: str, page: Page | None = None
+    line: VLine,
+    rules,
+    registry: MathRegistry,
+    chapter: str,
+    context: str,
+    page: Page | None = None,
+    display_boxes: list | None = None,
 ) -> tuple[str, list[str]]:
     from .figures import inline_math_bbox
 
@@ -265,6 +309,12 @@ def _line_html(
         foreign: list = []
         if run.tier.value == "vlm" and page is not None:
             bbox, foreign = inline_math_bbox(page, line, run.chars, rules)
+            if display_boxes and any(_overlap_share(bbox, box) > 0.5 for box in display_boxes):
+                # This run is part of a display equation that is already being rendered whole
+                # a few lines further down. Rendering it here as well would print the equation
+                # twice.
+                ids.append("")
+                continue
         ident = registry.add(
             tier=run.tier.value,
             latex=run.latex,
@@ -279,7 +329,11 @@ def _line_html(
         )
         registry.items[ident].foreign_ink = foreign
         ids.append(ident)
-    html = MATH_PLACEHOLDER_RE.sub(lambda m: "{{MATH:" + ids[int(m.group(1))] + "}}", result.html)
+    def substitute(match: re.Match) -> str:
+        ident = ids[int(match.group(1))]
+        return "{{MATH:" + ident + "}}" if ident else ""
+
+    html = MATH_PLACEHOLDER_RE.sub(substitute, result.html)
     return html, ids
 
 
@@ -336,6 +390,7 @@ def _strip_emphasis(html: str) -> str:
 
 DISPLAY_MAX_GROWTH = 12.0
 DUPLICATE_OVERLAP = 0.6
+DUPLICATE_COVER = 0.4
 
 
 def _overlap_share(first, second) -> float:
@@ -473,18 +528,20 @@ def assemble_document(pdf_path: Path, progress: bool = False, first: int = 0, la
 
         regions = regions_by_page.get(page.index, [])
         blocks = assemble(page)
+        blocks = _resolve_duplicate_math(page, blocks, rules)
+        display_boxes = [block.bbox for block in blocks if block.kind == "display"]
         region_by_number = {(r.kind, r.number): r for r in regions}
 
         for block in blocks:
             if block.kind == "margin":
                 parts = [
-                    _line_html(line, rules, registry, chapter.ident, previous_context, page)[0] for line in block.lines
+                    _line_html(line, rules, registry, chapter.ident, previous_context, page, display_boxes)[0] for line in block.lines
                 ]
                 pending_margins.append(_sanitize(join_lines(parts, vocabulary)))
                 continue
 
             if block.kind == "heading":
-                parts = [_line_html(line, rules, registry, chapter.ident, "", page)[0] for line in block.lines]
+                parts = [_line_html(line, rules, registry, chapter.ident, "", page, display_boxes)[0] for line in block.lines]
                 text = _sanitize(" ".join(parts))
                 if block.meta.get("heading_kind") == "chapter_number":
                     continue
@@ -569,7 +626,7 @@ def assemble_document(pdf_path: Path, progress: bool = False, first: int = 0, la
                 continue
 
             if block.kind == "footnote":
-                parts = [_line_html(line, rules, registry, chapter.ident, "", page)[0] for line in block.lines]
+                parts = [_line_html(line, rules, registry, chapter.ident, "", page, display_boxes)[0] for line in block.lines]
                 html = _sanitize(join_lines(parts, vocabulary))
                 if html:
                     chapter.blocks.append(
@@ -580,7 +637,7 @@ def assemble_document(pdf_path: Path, progress: bool = False, first: int = 0, la
                 continue
 
             if block.kind == "caption":
-                parts = [_line_html(line, rules, registry, chapter.ident, "", page)[0] for line in block.lines]
+                parts = [_line_html(line, rules, registry, chapter.ident, "", page, display_boxes)[0] for line in block.lines]
                 text = _sanitize(" ".join(parts))
                 caption_type = block.meta.get("caption_type", "figure")
                 region = region_by_number.get((caption_type, block.number))
@@ -600,7 +657,7 @@ def assemble_document(pdf_path: Path, progress: bool = False, first: int = 0, la
             if block.kind == "para":
                 parts = []
                 for line in block.lines:
-                    fragment, _ = _line_html(line, rules, registry, chapter.ident, previous_context, page)
+                    fragment, _ = _line_html(line, rules, registry, chapter.ident, previous_context, page, display_boxes)
                     parts.append(fragment)
                 html = _sanitize(join_lines(parts, vocabulary))
                 if block.list_marker:

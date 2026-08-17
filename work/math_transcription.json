@@ -2635,5 +2635,80 @@
   "latex": "0.001?",
   "confidence": 0.97,
   "notes": ""
+ },
+ "m00118": {
+  "latex": "\\begin{cases} \\beta_0+\\beta_1+\\epsilon_i & \\text{if } i\\text{th person is from the South} \\end{cases}",
+  "confidence": 0.6,
+  "notes": "Crop shows only the first row of a two-row piecewise definition (eq 3.30, the South dummy-variable model); the tall brace continues past the visible text but the second case ('if not from the South') is cut off by the crop boundary and is not reproduced here."
+ },
+ "m00177": {
+  "latex": ") = \\frac{e^{-3.5041+0.4049\\times1}}{1+e^{-3.5041+0.4049\\times1}} = 0.0431,",
+  "confidence": 0.95,
+  "notes": "Leading ')' closes 'student=Yes' from the preceding sentence text."
+ },
+ "m00178": {
+  "latex": "\\widehat{\\mathrm{Pr}}(\\texttt{default=Yes}|\\texttt{student=No}) = \\frac{e^{-3.5041+0.4049\\times0}}{1+e^{-3.5041+0.4049\\times0}} = 0.0292.",
+  "confidence": 0.9,
+  "notes": "A faint bleed-through of the previous line's denominator is visible above the main row in the crop; that is leftover from the prior equation, not part of this one, and was omitted."
+ },
+ "m00331": {
+  "latex": "\\operatorname*{minimize}_{\\beta} \\left\\{ \\sum_{i=1}^{n} \\left( y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij} \\right)^2 \\right\\} \\quad \\text{subject to} \\quad \\sum_{j=1}^{p} I(\\beta_j \\neq 0) \\le s.",
+  "confidence": 0.75,
+  "notes": "This crop's raster only shows the large-operator skeleton (braces, sum limits n/p/p, exponent 2); the surrounding text (minimize_beta, y_i-beta_0-..., I(beta_j!=0)<=s) is missing from this particular image but is recovered from sibling crops m00332/m00333, which cover the same numbered equation (6.10) with identical context."
+ },
+ "m00332": {
+  "latex": "\\operatorname*{minimize}_{\\beta} \\left\\{ \\sum_{i=1}^{n} \\left( y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij} \\right)^2 \\right\\}",
+  "confidence": 0.7,
+  "notes": "Own crop shows 'minimize_beta', braces, parentheses, and both summation signs without their limits (i=1..n, j=1..p) or the outer exponent/closing brace; those are supplied from sibling crop m00331 of the same equation (6.10)."
+ },
+ "m00333": {
+  "latex": "\\sum_{j=1}^{p} I(\\beta_j \\neq 0) \\le s.",
+  "confidence": 0.75,
+  "notes": "Own crop shows a bare summation sign (no limits) followed by I(beta_j != 0) <= s.; the limits j=1..p are supplied from sibling crop m00331 of the same equation (6.10)."
+ },
+ "m00365": {
+  "latex": "p(\\beta) = \\frac{1}{2b}\\exp(-|\\beta|/b).",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00476": {
+  "latex": "\\hat{f}_{1}^{1}(x) = \\hat{f}_{2}^{1}(x) = \\cdots = \\hat{f}_{K}^{1}(x) = \\frac{1}{nK}\\sum_{i=1}^{n} y_i",
+  "confidence": 0.9,
+  "notes": "Faint stray marks below the main line are bleed from the next line of the algorithm box and were omitted."
+ },
+ "m00477": {
+  "latex": "\\hat{f}^{1}(x) = \\sum_{k=1}^{K} \\hat{f}_{k}^{1}(x) = \\frac{1}{n}\\sum_{i=1}^{n} y_i",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00571": {
+  "latex": "\\sum_{i=1}(y_i-o_{iL})^2 = \\sum_{i=1}\\left(y_i-\\left(\\beta_0+\\sum_{k=1}\\beta_k g\\left(w_{k0}+\\sum_{j=1}w_{kj}x_{iLj}+\\sum_{s=1}u_{ks}a_{i,L-1,s}\\right)\\right)\\right).",
+  "confidence": 0.75,
+  "notes": "None of the four summations show an upper limit anywhere in the crop (confirmed by close inspection of the space above each sigma) and the deterministic PDF-text guess likewise has none, so they are reproduced as bare lower-limit sums exactly as printed; also confirmed only 3 closing parentheses (no extra trailing exponent) at the end of the line."
+ },
+ "m00692": {
+  "latex": "\\begin{aligned} \\mathrm{FWER}(\\alpha) &= 1 - \\mathrm{Pr}(V=0) \\\\ &= 1 - \\mathrm{Pr}(\\text{do not falsely reject any null hypotheses}) \\end{aligned}",
+  "confidence": 0.9,
+  "notes": "A partial third line ('(...)^m ...') bleeds in at the very bottom of the crop from the equation that follows on the page; it is not part of (13.4) and was omitted."
+ },
+ "m00712": {
+  "latex": "\\text{3. The } p\\text{-value is given by } \\frac{\\sum_{b=1}^{B} 1_{(|T^{*b}|\\ge|T|)}}{B}.",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00716": {
+  "latex": "\\text{and } y_1^{(j)}, \\ldots, y_{n_Y}^{(j)}.",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ "m00717": {
+  "latex": "\\text{servations } y_1^{*(j)}, \\ldots, y_{n_Y}^{*(j)}.",
+  "confidence": 0.85,
+  "notes": "A stray superscript '1' floats above the line in the crop (bleed from adjacent text) and was omitted."
+ },
+ "m00718": {
+  "latex": "1",
+  "confidence": 0.6,
+  "notes": "Extremely small crop (4pt x 7pt) containing only a lone subscript-sized numeral '1', consistent with the '1' in y_1^{*(j)} on the surrounding line."
  }
 }
