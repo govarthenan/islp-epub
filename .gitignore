@@ -2,8 +2,21 @@
 node_modules/
 __pycache__/
 *.pyc
-work/pages/
-work/math_crops/
-work/figures/
-work/render_cache/
 .uv/
+.playwright-mcp/
+
+# Large intermediates: regenerate with the pipeline, do not carry in git.
+work/math_crops/
+work/math_crops_prev/
+work/math_compare/
+work/math_svg/
+work/math_candidate_svg/
+work/table_crops/
+work/preview/
+work/pages/
+work/figures/
+work/*.png
+work/*.log
+
+# Screenshots taken while checking pages in a browser.
+/*.png

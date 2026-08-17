@@ -142,11 +142,12 @@ def build() -> str:
 
     tiles = [
         tile("613", "pages read", "the whole book"),
-        tile(f"{stats.get('chapters', 0)}", "documents in the spine", "13 chapters plus matter"),
         tile(f"{stats.get('paragraphs', 0):,}", "paragraphs rebuilt", "hyphenation undone"),
-        tile(f"{stats.get('images_embedded', 0)}", "figures and tables", "re-rendered at 300 ppi"),
-        tile(f"{stats.get('equations_display', 0)}", "display equations", "each one verified"),
-        tile(f"{stats.get('code_cells', 0)}", "lab code cells", "input and output kept apart"),
+        tile(f"{stats.get('images_embedded', 0)}", "figures re-rendered", "300 ppi, 16 greys"),
+        tile(f"{stats.get('tables_as_markup', 0)}", "tables as markup", "they reflow, not pictures"),
+        tile(f"{stats.get('equations_display', 0)}", "display equations", "every one checked"),
+        tile(f"{stats.get('code_cells', 0):,}", "lab code cells", "input and output kept apart"),
+        tile(f"{stats.get('links_resolved', 0):,}", "cross-references", "all of them resolved"),
         tile(f"{epub_mb:.1f} MB", "finished EPUB", "reflowable, EPUB 3"),
     ]
     if accuracy is not None:
@@ -161,16 +162,58 @@ def build() -> str:
     failed = sum(1 for a in attempts if a["status"] == "failed")
     partial = len(attempts) - worked - failed
 
-    audit_block = ""
+    symbols = verification.get("symbol_check", {})
+    checks = []
+    if symbols.get("scored"):
+        checks.append(
+            (
+                f"{symbols['no_symbol_lost_share']}%",
+                "lose no symbol",
+                "Deterministic and free. The PDF's text layer loses structure but not symbols, so "
+                "the symbols a transcription claims can be compared against the symbols the page "
+                f"holds. {symbols['scored']} expressions had enough symbols to score; mean "
+                f"agreement {symbols['mean_agreement']}.",
+            )
+        )
+    if verification.get("checked"):
+        counts = verification.get("verdicts", {})
+        checks.append(
+            (
+                f"{verification['accuracy']}%",
+                "agree with the page",
+                f"Every one of the {verification['checked']} expressions was typeset, put under "
+                "the crop from the PDF, and handed to an agent told to find the difference. "
+                f"{counts.get('same', 0)} identical, {counts.get('cosmetic', 0)} differing only "
+                f"in spacing or delimiter size, {counts.get('wrong', 0)} genuinely wrong and "
+                "corrected.",
+            )
+        )
     if audit:
-        audit_block = f"""
-      <div class="callout">
-        <h3>An independent second opinion</h3>
-        <p>A sample of {audit.get("sampled", 0)} expressions was re-read by a different model
-        family entirely, through OpenAI's <code>codex</code> command line tool, with no sight of
-        the first answer. It agreed with the packaged LaTeX on
-        <b>{audit.get("agreement", 0):.1f}%</b> of them.</p>
-      </div>"""
+        checks.append(
+            (
+                f"{audit.get('agreement', 0):.0f}%",
+                "confirmed from outside",
+                f"A sample of {audit.get('sampled', 0)} of the same comparisons was re-read by a "
+                "different model family entirely, through OpenAI's codex command line tool, with "
+                "no sight of the earlier answers. This is the only figure here not produced by "
+                "the model that did the work.",
+            )
+        )
+
+    audit_block = ""
+    if checks:
+        cards = "".join(
+            f'''<div class="check"><div class="check-value">{value}</div>
+             <div class="check-label">{escape(label)}</div><p>{escape(note)}</p></div>'''
+            for value, label, note in checks
+        )
+        audit_block = (
+            "<h2>Three checks, three kinds of evidence</h2>"
+            '<p class="sub">One model marking its own work is not evidence. These are '
+            "deliberately different in kind: one costs nothing and cannot be talked round, one "
+            "looks at the pictures, and one comes from outside the family.</p>"
+            f'<div class="checks">{cards}</div>'
+        )
 
     return f"""<!doctype html>
 <html lang="en">
@@ -280,9 +323,11 @@ h3 {{ font-size: 17px; margin: 0; }}
 .shot.good {{ border-color: color-mix(in srgb, var(--ok) 45%, var(--line)); }}
 .shot b {{ color: var(--ink); }}
 
-.callout {{ background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-top: 22px; }}
-.callout h3 {{ margin-bottom: 8px; }}
-.callout p {{ margin: 0; font-size: 15px; }}
+.checks {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }}
+.check {{ background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow); }}
+.check-value {{ font: 700 30px/1.1 var(--mono); letter-spacing: -.02em; color: var(--ok); }}
+.check-label {{ font-size: 15px; margin-top: 4px; }}
+.check p {{ margin: 10px 0 0; font-size: 14px; color: var(--muted); }}
 
 code {{ font-family: var(--mono); font-size: .92em; background: var(--accent-soft); padding: 1px 5px; border-radius: 4px; }}
 pre {{ background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font: 13px/1.6 var(--mono); }}

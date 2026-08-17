@@ -106,9 +106,11 @@ h3 { font-size: 17px; margin: 0; }
 .shot.good { border-color: color-mix(in srgb, var(--ok) 45%, var(--line)); }
 .shot b { color: var(--ink); }
 
-.callout { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-top: 22px; }
-.callout h3 { margin-bottom: 8px; }
-.callout p { margin: 0; font-size: 15px; }
+.checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.check { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow); }
+.check-value { font: 700 30px/1.1 var(--mono); letter-spacing: -.02em; color: var(--ok); }
+.check-label { font-size: 15px; margin-top: 4px; }
+.check p { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
 
 code { font-family: var(--mono); font-size: .92em; background: var(--accent-soft); padding: 1px 5px; border-radius: 4px; }
 pre { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font: 13px/1.6 var(--mono); }
@@ -126,7 +128,7 @@ th { font: 600 12px var(--mono); letter-spacing: .06em; text-transform: uppercas
   <h1>ISLP PDF to EPUB</h1>
   <p class="lede">Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB for a Kobo Libra 2</p>
   <span class="pill">Verified and packaged.</span>
-  <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">15</div><div class="tile-label">documents in the spine</div><div class="tile-note">13 chapters plus matter</div></div><div class="tile"><div class="tile-value">3,266</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">187</div><div class="tile-label">figures and tables</div><div class="tile-note">re-rendered at 300 ppi</div></div><div class="tile"><div class="tile-value">430</div><div class="tile-label">display equations</div><div class="tile-note">each one verified</div></div><div class="tile"><div class="tile-value">1137</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">7.6 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div><div class="tile"><div class="tile-value">99.6%</div><div class="tile-label">mathematics agreed</div><div class="tile-note">candidate matched the printed page</div></div></div>
+  <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">3,297</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">191</div><div class="tile-label">figures re-rendered</div><div class="tile-note">300 ppi, 16 greys</div></div><div class="tile"><div class="tile-value">36</div><div class="tile-label">tables as markup</div><div class="tile-note">they reflow, not pictures</div></div><div class="tile"><div class="tile-value">409</div><div class="tile-label">display equations</div><div class="tile-note">every one checked</div></div><div class="tile"><div class="tile-value">1,137</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">3,686</div><div class="tile-label">cross-references</div><div class="tile-note">all of them resolved</div></div><div class="tile"><div class="tile-value">7.9 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div><div class="tile"><div class="tile-value">99.8%</div><div class="tile-label">mathematics agreed</div><div class="tile-note">candidate matched the printed page</div></div></div>
 </header>
 
 <h2>How the book is taken apart</h2>
@@ -200,14 +202,14 @@ that all of it would have to be read back out of images. That turned out to be t
 part of it. Sub- and superscripts are recorded in the PDF as a font-size drop plus a baseline
 shift, so most inline mathematics can be rebuilt exactly, for free, and stays as reflowing
 text. A vision model is spent only where the structure is genuinely absent.</p>
-<div class="bar"><div class="seg seg-text" style="width:88.96%" title="Plain HTML: 5970"></div><div class="seg seg-latex" style="width:2.77%" title="LaTeX from the character stream: 186"></div><div class="seg seg-vlm" style="width:1.86%" title="Read by a vision model: 125"></div><div class="seg seg-display" style="width:6.41%" title="Display equations: 430"></div></div><ul class="legend"><li><span class="swatch swatch-text"></span>
-          <div><b>5,970</b> &middot; Plain HTML
+<div class="bar"><div class="seg seg-text" style="width:89.30%" title="Plain HTML: 5974"></div><div class="seg seg-latex" style="width:2.77%" title="LaTeX from the character stream: 185"></div><div class="seg seg-vlm" style="width:1.82%" title="Read by a vision model: 122"></div><div class="seg seg-display" style="width:6.11%" title="Display equations: 409"></div></div><ul class="legend"><li><span class="swatch swatch-text"></span>
+          <div><b>5,974</b> &middot; Plain HTML
           <div class="legend-note">Sub- and superscripts recovered from glyph geometry. Reflows and scales; costs nothing.</div></div></li><li><span class="swatch swatch-latex"></span>
-          <div><b>186</b> &middot; LaTeX from the character stream
+          <div><b>185</b> &middot; LaTeX from the character stream
           <div class="legend-note">Accents and script letters, generated deterministically, then typeset by MathJax.</div></div></li><li><span class="swatch swatch-vlm"></span>
-          <div><b>125</b> &middot; Read by a vision model
+          <div><b>122</b> &middot; Read by a vision model
           <div class="legend-note">Fractions, radicals and large operators: structure the PDF simply does not record.</div></div></li><li><span class="swatch swatch-display"></span>
-          <div><b>430</b> &middot; Display equations
+          <div><b>409</b> &middot; Display equations
           <div class="legend-note">Every centred equation, read from an image and verified against a re-typeset copy.</div></div></li></ul>
 
 <h2>Where the crops went wrong</h2>
@@ -239,7 +241,7 @@ unrelated lines.</p>
 </div>
 
 <h2>Every attempt, in order</h2>
-<p class="sub">10 worked, 3 partly worked, 5 failed outright. The failures
+<p class="sub">11 worked, 3 partly worked, 6 failed outright. The failures
 are the interesting ones: each was caused by a rule that sounded reasonable and did not survive
 contact with the page.</p>
 <ul class="attempts">
@@ -422,8 +424,31 @@ contact with the page.</p>
       <p class="what"><span class="field">Tried</span> Hand 45 of the same comparison images to OpenAI&#x27;s codex CLI, a different model family with no sight of the earlier answers.</p>
       <p class="result"><span class="field">Result</span> 44 of 45 agreed. The one disagreement was right and mattered: a crop had captured a fraction&#x27;s denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction.</p>
       <p class="why"><span class="why-label">Why</span> Every other check here was Claude checking Claude. The only check from outside the family found the fault in a sample of 45.</p>
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">19</span>
+        <h3>Iterate until the extraction stops changing</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Each round of fixes changes the crops, so re-extract, carry over every transcription whose image is byte for byte identical, and read only the rest.</p>
+      <p class="result"><span class="field">Result</span> Five rounds: 570 expressions read, then 61, then 32, then 59, then 15, then 0. The last re-extraction produced 531 crops of which 531 were unchanged.</p>
+      
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">20</span>
+        <h3>Printing an equation twice</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Let display equations and inline expressions be found independently.</p>
+      <p class="result"><span class="field">Result</span> An equation with words in it (&#x27;minimize ... subject to ...&#x27;) reads as a paragraph, so its inline images already held the whole equation, while the symbol-only lines also produced a display block. The equation was typeset twice.</p>
+      <p class="why"><span class="why-label">Why</span> Fixed by measuring the inline expressions on a page first and dropping any display block that one of them already covers.</p>
     </li></ul>
-
+<h2>Three checks, three kinds of evidence</h2><p class="sub">One model marking its own work is not evidence. These are deliberately different in kind: one costs nothing and cannot be talked round, one looks at the pictures, and one comes from outside the family.</p><div class="checks"><div class="check"><div class="check-value">71.5%</div>
+             <div class="check-label">lose no symbol</div><p>Deterministic and free. The PDF&#x27;s text layer loses structure but not symbols, so the symbols a transcription claims can be compared against the symbols the page holds. 484 expressions had enough symbols to score; mean agreement 0.951.</p></div><div class="check"><div class="check-value">99.8%</div>
+             <div class="check-label">agree with the page</div><p>Every one of the 531 expressions was typeset, put under the crop from the PDF, and handed to an agent told to find the difference. 481 identical, 49 differing only in spacing or delimiter size, 1 genuinely wrong and corrected.</p></div><div class="check"><div class="check-value">100%</div>
+             <div class="check-label">confirmed from outside</div><p>A sample of 50 of the same comparisons was re-read by a different model family entirely, through OpenAI&#x27;s codex command line tool, with no sight of the earlier answers. This is the only figure here not produced by the model that did the work.</p></div></div>
 
 <h2>Choices made for the Kobo Libra 2</h2>
 <table>

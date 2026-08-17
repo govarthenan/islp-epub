@@ -23,7 +23,7 @@
   "mean_agreement": 0.951
  },
  "independent_audit": {
-  "sampled": 45,
-  "agreement": 97.8
+  "sampled": 50,
+  "agreement": 100.0
  }
 }
