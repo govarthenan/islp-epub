@@ -20,3 +20,4 @@ work/*.log
 
 # Screenshots taken while checking pages in a browser.
 /*.png
+work/test_svg/
