@@ -1,0 +1,152 @@
+[
+ {
+  "id": "m00247",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00250",
+  "verdict": "cosmetic",
+  "issue": "TOP crop is truncated (only a fragment of the inline expression is visible, cut off left and right); the visible portion matches the candidate LaTeX.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00251",
+  "verdict": "cosmetic",
+  "issue": "TOP crop is truncated (cut off before the second fraction/sum completes, plus a stray fragment below); the visible portion matches the candidate LaTeX.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00253",
+  "verdict": "cosmetic",
+  "issue": "TOP crop is truncated (identical partial crop to m00251, cut off before the second fraction/sum completes); the visible portion matches the candidate LaTeX.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00254",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00258",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00259",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00261",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00262",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00265",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00266",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00270",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00271",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00272",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00273",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00274",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00275",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00276",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00280",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00283",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00284",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00289",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00291",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00292",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00295",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ }
+]

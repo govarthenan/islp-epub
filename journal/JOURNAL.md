@@ -294,3 +294,27 @@ recover the table. Both were real region-detection faults:
 
 **Status.** SUCCESS. Worth noting again: the faults were reported by the agents doing the
 work, not found by inspection.
+
+---
+
+## 2026-08-17 — Entry 012: Checking the mathematics against the page
+
+**Attempt.** Rather than trust the transcriptions, typeset every one of them with MathJax,
+rasterise it, stack it under the crop from the PDF, and give 23 agents the resulting
+side-by-side pictures with one instruction: find where the transcription is wrong.
+
+**Why this shape.** Asking a model to re-transcribe and comparing strings is weak: two correct
+transcriptions of one expression differ in a dozen harmless ways, and the comparison drowns in
+them. Asking "do these two pictures say the same thing?" is a question with a short, checkable
+answer, and it is much harder to answer wrongly by accident.
+
+**Three independent checks, not one.**
+1. **Symbol census** (free, deterministic). The PDF's text layer loses structure but not
+   symbols, so the symbols a transcription claims can be compared against the symbols the page
+   contains. It cannot tell a correct fraction from an inverted one, but it catches a dropped
+   term for nothing. Result: mean agreement 0.95, and 71% of expressions lose no symbol at all.
+2. **Adversarial verification** (23 agents, all 555 expressions).
+3. **An independent second opinion** from OpenAI's `codex` command line tool on a sample,
+   which is the only figure here not produced by the same model family that did the work.
+
+**Status.** See entry 013 for the result.
