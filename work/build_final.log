@@ -3,22 +3,3 @@ Consider using the pymupdf_layout package for a greatly improved page layout ana
   page 51/613
   page 101/613
   page 151/613
-  page 201/613
-  page 251/613
-  page 301/613
-  page 351/613
-  page 401/613
-  page 451/613
-  page 501/613
-  page 551/613
-  page 601/613
-2/4 rendering figures and tables ...
-    187 figures and tables
-3/4 rendering mathematics ...
-rendered 716 / 716, 0 failures
-    716 equations as SVG, 0 as cropped images
-4/4 writing XHTML ...
-    36 tables as markup, 0 as images
-wrote /home/gova/tmp/islp/output/ISLP.epub (7.5 MB)
-cross-references: 3686 resolved, 0 unresolved
-stats: /home/gova/tmp/islp/work/build_stats.json

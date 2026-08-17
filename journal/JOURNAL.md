@@ -448,3 +448,51 @@ trailing full stop, which was corrected.
 - "Python-based" was closing up to "Pythonbased". The vocabulary tokenised on letters only, so
   "trade-off" was stored as two words and the hyphenated form could never be confirmed;
   every broken word was being closed up by default.
+
+---
+
+## 2026-08-17 — Entry 017: The last four figures
+
+**Attempt.** Check that every figure caption has a picture. 191 captions, 187 pictures.
+
+**Result.** The four missing ones (6.7, 10.5, 10.6, 10.9) are precisely the figures in this
+book that are **raster images** rather than vector art. The extraction flags were written out
+explicitly and left out `TEXT_PRESERVE_IMAGES`, so no image block was reported at all and the
+region finder had nothing to find.
+
+**Status.** SUCCESS. 191 of 191.
+
+---
+
+## 2026-08-17 — Entry 018: Final numbers
+
+| | |
+|---|---|
+| Pages read | 613 |
+| Documents in the spine | 15 chapters and matter, plus cover |
+| Paragraphs rebuilt | 3,297 |
+| Lab code cells | 1,137 |
+| Figures | 191 |
+| Tables, as reflowing markup | 36 |
+| Display equations | 409 |
+| Mathematics as plain HTML | 5,974 runs |
+| Mathematics as SVG | 716 expressions |
+| Mathematics as a bitmap | 0 |
+| Cross-references resolved | 3,686 of 3,686 |
+| EPUB | 7.5 MB, EPUB 3 with NCX, structurally valid |
+
+**Accuracy of the mathematics**
+
+| check | scope | result |
+|---|---|---|
+| symbol census (deterministic) | 484 scorable | mean agreement 0.951; 71.5% lose no symbol |
+| adversarial verification | all 531 | 99.8% agree with the page |
+| independent audit via OpenAI codex | sample of 50 | 50 of 50 agree |
+
+**What would be worth doing next**, in order of value:
+1. A handful of expressions that wrap across a line break leave a small fragment rendered as
+   its own image. Handling a wrapped expression as one unit would tidy those.
+2. The index's page numbers are links, and they resolve, but an index entry pointing at a
+   paragraph rather than at the term itself is coarser than the printed page reference.
+3. A `.kepub.epub` variant would give Kobo its own per-chapter page counts. The plain EPUB
+   reads correctly without it.
