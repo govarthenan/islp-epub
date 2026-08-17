@@ -1,0 +1,92 @@
+[
+ {
+  "key": "t1-1-p23",
+  "image": "work/table_crops/t1-1-p23.png",
+  "number": "1.1",
+  "page_pdf": 23,
+  "chapter": "Introduction",
+  "caption": "TABLE 1.1. A list of data sets needed to perform the labs and exercises in this textbook. All data sets are available in the ISLP package, with the exception of USArrests, which is part of the base R distribution, but accessible from Python.",
+  "width_pt": 339.1,
+  "height_pt": 240.1
+ },
+ {
+  "key": "t3-1-p86",
+  "image": "work/table_crops/t3-1-p86.png",
+  "number": "3.1",
+  "page_pdf": 86,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.1. For the Advertising data, coefficients of the least squares model for the regression of number of units sold on TV advertising budget. An increase of $1,000 in the TV advertising budget is associated with an increase in sales by around 50 units. (Recall that the sales variable is in thousands of units, and the TV variable is in thousands of dollars.)",
+  "width_pt": 278.3,
+  "height_pt": 47.5
+ },
+ {
+  "key": "t3-2-p87",
+  "image": "work/table_crops/t3-2-p87.png",
+  "number": "3.2",
+  "page_pdf": 87,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.2. For the Advertising data, more information about the least squares model for the regression of number of units sold on TV advertising budget.",
+  "width_pt": 160.1,
+  "height_pt": 59.4
+ },
+ {
+  "key": "t3-3-p89",
+  "image": "work/table_crops/t3-3-p89.png",
+  "number": "3.3",
+  "page_pdf": 89,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.3. More simple linear regression models for the Advertising data. Coefficients of the simple linear regression model for number of units sold on Top: radio advertising budget and Bottom: newspaper advertising budget. A $1,000 in- crease in spending on radio advertising is associated with an average increase in sales by around 203 units, while the same increase in spending on newspaper ad- ",
+  "width_pt": 278.3,
+  "height_pt": 145.1
+ },
+ {
+  "key": "t3-4-p92",
+  "image": "work/table_crops/t3-4-p92.png",
+  "number": "3.4",
+  "page_pdf": 92,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.4. For the Advertising data, least squares coefficient estimates of the",
+  "width_pt": 278.3,
+  "height_pt": 71.7
+ },
+ {
+  "key": "t3-5-p92",
+  "image": "work/table_crops/t3-5-p92.png",
+  "number": "3.5",
+  "page_pdf": 92,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.5. Correlation matrix for TV, radio, newspaper, and sales for the Advertising data.",
+  "width_pt": 330.8,
+  "height_pt": 118.5
+ },
+ {
+  "key": "t3-6-p94",
+  "image": "work/table_crops/t3-6-p94.png",
+  "number": "3.6",
+  "page_pdf": 94,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.6. More information about the least squares model for the regression of number of units sold on TV, newspaper, and radio advertising budgets in the Advertising data. Other information about this model was displayed in Table 3.4.",
+  "width_pt": 160.1,
+  "height_pt": 59.4
+ },
+ {
+  "key": "t3-7-p102",
+  "image": "work/table_crops/t3-7-p102.png",
+  "number": "3.7",
+  "page_pdf": 102,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.7. Least squares coefficient estimates associated with the regression of balance onto own in the Credit data set. The linear model is given in (3.27). That is, ownership is encoded as a dummy variable, as in (3.26).",
+  "width_pt": 278.3,
+  "height_pt": 47.5
+ },
+ {
+  "key": "t3-8-p103",
+  "image": "work/table_crops/t3-8-p103.png",
+  "number": "3.8",
+  "page_pdf": 103,
+  "chapter": "Linear Regression",
+  "caption": "TABLE 3.8. Least squares coefficient estimates associated with the regression of",
+  "width_pt": 297.1,
+  "height_pt": 59.8
+ }
+]

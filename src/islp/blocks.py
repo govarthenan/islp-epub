@@ -203,6 +203,7 @@ EQUATION_BODY_MAX_X = 402.0
 
 
 EQUATION_ARM_MAX_WIDTH = 260.0
+EQUATION_ARM_GAP = 16.0
 
 
 def _inside_equation(line: VLine, run: list[VLine]) -> bool:
@@ -216,18 +217,6 @@ def _inside_equation(line: VLine, run: list[VLine]) -> bool:
             and abs(line.x0 - PARA_INDENT) > 1.6
             and line.x1 <= EQUATION_BODY_MAX_X
             and line.x1 - line.x0 <= EQUATION_ARM_MAX_WIDTH)
-
-
-def _display_follows(tagged: list[TaggedLine], start: int, baseline: float) -> bool:
-    for entry in tagged[start:]:
-        if entry.line.baseline - baseline > DISPLAY_GAP:
-            return False
-        if entry.kind == Kind.DISPLAY:
-            return True
-        if entry.kind in (Kind.EQNUM, Kind.MARGIN, Kind.PROSE):
-            continue
-        return False
-    return False
 
 
 def _detach_equation_number(lines: list[VLine]) -> str:
@@ -351,8 +340,9 @@ def assemble(page: Page) -> list[Block]:
                     side_notes.append(following.line)
                     index += 1
                     continue
-                if following.kind == Kind.PROSE and _inside_equation(following.line, run) \
-                        and _display_follows(tagged, index + 1, following.line.baseline):
+                if (following.kind == Kind.PROSE
+                        and following.line.baseline - run[-1].baseline <= EQUATION_ARM_GAP
+                        and _inside_equation(following.line, run)):
                     # The "if ..." arms of a piecewise definition are ordinary words set
                     # inside the equation. They belong to it.
                     run.append(following.line)

@@ -307,6 +307,22 @@ def _strip_emphasis(html: str) -> str:
     return re.sub(r"</?(?:em|strong)>", "", html)
 
 
+DISPLAY_MAX_GROWTH = 12.0
+DUPLICATE_OVERLAP = 0.6
+
+
+def _overlap_share(first, second) -> float:
+    """Intersection over the smaller of two boxes."""
+    x0 = max(first[0], second[0])
+    y0 = max(first[1], second[1])
+    x1 = min(first[2], second[2])
+    y1 = min(first[3], second[3])
+    if x1 <= x0 or y1 <= y0:
+        return 0.0
+    intersection = (x1 - x0) * (y1 - y0)
+    areas = [(box[2] - box[0]) * (box[3] - box[1]) for box in (first, second)]
+    smallest = min(areas)
+    return intersection / smallest if smallest else 0.0
 COLUMN_SPLIT_X = 250.0
 SUB_ENTRY_INDENT = 14.0
 CONTINUATION_INDENT = 32.0
@@ -401,6 +417,7 @@ def assemble_document(pdf_path: Path, progress: bool = False,
 
     used: list[Chapter] = []
     seen_idents: set[str] = set()
+    page_display_boxes: list[tuple[float, float, float, float]] = []
     pending_margins: list[str] = []
     last_para: DocBlock | None = None
     previous_context = ""
@@ -415,6 +432,7 @@ def assemble_document(pdf_path: Path, progress: bool = False,
             last_para = None
 
         rules = page.drawing_rects
+        page_display_boxes = []
         if page.index >= INDEX_START:
             chapter.blocks.extend(
                 index_blocks(page, rules, registry, chapter.ident, vocabulary))
@@ -465,8 +483,18 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                     guesses.append(_strip_tags(result.html))
                 from .figures import expand_math_bbox
                 display_chars = [char for ln in block.lines for char in ln.chars]
+                # A display block already spans its own numerator, rule and denominator, so
+                # it needs almost no growing. A generous cap here lets one equation reach
+                # into the next.
                 display_bbox, display_foreign = expand_math_bbox(
-                    page, block.bbox, [ln.baseline for ln in block.lines], display_chars)
+                    page, block.bbox, [ln.baseline for ln in block.lines], display_chars,
+                    max_growth=DISPLAY_MAX_GROWTH)
+                if any(_overlap_share(display_bbox, seen) > DUPLICATE_OVERLAP
+                       for seen in page_display_boxes):
+                    # Two fragments of one equation that both grew back into the same
+                    # rectangle. Rendering it twice would be worse than dropping one.
+                    continue
+                page_display_boxes.append(display_bbox)
                 ident = registry.add(
                     tier="display", latex="", page=page.index, bbox=display_bbox,
                     raw_text=raw, reason="display-equation", display=True,

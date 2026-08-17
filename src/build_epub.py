@@ -83,6 +83,13 @@ def render_crop(pdf_page: pymupdf.Page, bbox, dpi: int, pad: float = 1.0,
 # mathematics
 # ---------------------------------------------------------------------------------------
 
+def load_table_html() -> dict[str, str]:
+    path = WORK / "tables_html.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text())
+
+
 def load_verified_latex() -> dict[str, str]:
     path = WORK / "math_latex.json"
     if not path.exists():
@@ -115,11 +122,13 @@ def render_svgs(jobs: list[dict]) -> dict[str, dict]:
 
 class Renderer:
     def __init__(self, document: Document, svg_manifest: dict, math_images: dict,
-                 figure_images: dict, targets: dict | None = None) -> None:
+                 figure_images: dict, targets: dict | None = None,
+                 table_html: dict | None = None) -> None:
         self.document = document
         self.svg_manifest = svg_manifest
         self.math_images = math_images
         self.figure_images = figure_images
+        self.table_html = table_html or {}
         self.targets = targets or {}
         self.unresolved = 0
         self.resolved = 0
@@ -190,6 +199,10 @@ class Renderer:
         number = f'<span class="eqno">({_escape(eq_number)})</span>' if eq_number else ""
         anchor = f' id="eq{eq_number.replace(".", "-")}"' if eq_number else ""
         return f'<div class="eq"{anchor}>{body}{number}</div>'
+
+
+def table_key(block) -> str:
+    return f"t{block.number.replace('.', '-')}-p{block.page + 1}"
 
 
 def paragraph_class(block) -> str:
@@ -267,8 +280,12 @@ def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint],
             caption = renderer.expand(block.html)
             caption = re.sub(r"^(<strong>)(FIGURE|TABLE)([^<]*)(</strong>)",
                              r'<span class="label">\2\3</span>', caption, count=1)
-            image = (f'<img src="../images/{name}" alt="{block.kind} {_escape(block.number)}"/>'
-                     if name else "")
+            markup = renderer.table_html.get(table_key(block)) if block.kind == "table" else None
+            if markup:
+                image = markup
+            else:
+                image = (f'<img src="../images/{name}" alt="{block.kind} '
+                         f'{_escape(block.number)}"/>' if name else "")
             named = f'{block.kind[0]}{block.number.replace(".", "-")}'
             ident = f' id="{anchor_id}"' if anchor_id else ""
             parts.append(f'<div class="figure"{ident}><span id="{named}"></span>{image}'
@@ -343,12 +360,15 @@ def main() -> None:
 
     # --- figures -----------------------------------------------------------------------
     figure_images: dict[tuple, str] = {}
+    available_tables = set(load_table_html())
     for chapter in document.chapters:
         for block in chapter.blocks:
             if block.kind not in ("figure", "table"):
                 continue
             if block.bbox == (0, 0, 0, 0):
                 continue
+            if block.kind == "table" and table_key(block) in available_tables:
+                continue  # markup replaces the picture
             name = f"{block.kind}-{block.number.replace('.', '-')}-p{block.page + 1}.png"
             data = render_crop(pdf[block.page], block.bbox, FIGURE_DPI, pad=2.0)
             builder.add_resource(f"images/{name}", "image/png", data,
@@ -400,7 +420,11 @@ def main() -> None:
 
     # --- chapters ----------------------------------------------------------------------
     print("4/4 writing XHTML ...", flush=True)
-    renderer = Renderer(document, svg_manifest, math_images, figure_images, targets)
+    table_html = load_table_html()
+    renderer = Renderer(document, svg_manifest, math_images, figure_images, targets, table_html)
+    print(f"    {len(table_html)} tables as markup, "
+          f"{sum(1 for c in document.chapters for b in c.blocks if b.kind == 'table') - len(table_html)}"
+          " as images", flush=True)
     for index, chapter in enumerate(document.chapters):
         if not chapter.blocks:
             continue
@@ -441,6 +465,7 @@ def main() -> None:
         "equations_display": sum(1 for c in document.chapters for b in c.blocks
                                  if b.kind == "display"),
         "images_embedded": len(figure_images),
+        "tables_as_markup": len(table_html),
         "math_items_by_tier": tiers,
         "math_occurrences_by_tier": occurrences,
         "math_svg": len(svg_manifest),

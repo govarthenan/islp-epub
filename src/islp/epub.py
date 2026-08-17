@@ -166,6 +166,38 @@ aside.footnote {
   text-align: left;
 }
 
+/* Tables. On a narrow screen a table has to give up its rules and lean on spacing. */
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-size: 0.82em;
+  line-height: 1.35;
+  -webkit-hyphens: none;
+  hyphens: none;
+}
+th, td {
+  padding: 0.28em 0.5em;
+  text-align: left;
+  vertical-align: top;
+}
+thead th {
+  border-bottom: 1px solid #999;
+  font-weight: bold;
+}
+tbody tr:first-child td, tbody tr:first-child th { padding-top: 0.4em; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr.grouphead th, tr.grouphead td {
+  font-style: italic;
+  padding-top: 0.6em;
+  border-bottom: 1px solid #ddd;
+}
+p.tablepart {
+  text-align: center;
+  text-indent: 0;
+  font-size: 0.86em;
+  margin: 0.8em 0 0.3em;
+}
+
 /* Index */
 p.index-entry { text-indent: -1em; margin-left: 1em;   text-align: left; font-size: 0.92em; }
 p.index-sub   { text-indent: -1em; margin-left: 2.2em; text-align: left; font-size: 0.92em; }

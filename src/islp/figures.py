@@ -175,7 +175,8 @@ def _has_prose_word(line) -> bool:
 
 def expand_math_bbox(page: Page, bbox: tuple[float, float, float, float],
                      baselines: list[float] | None = None,
-                     own_chars: list | None = None):
+                     own_chars: list | None = None,
+                     max_growth: float = MAX_VERTICAL_GROWTH):
     """Grow a box until it holds the whole expression.
 
     A fraction, a radical or a large operator puts glyphs on baselines of their own, and the
@@ -224,7 +225,7 @@ def expand_math_bbox(page: Page, bbox: tuple[float, float, float, float],
             if on_own_baseline and (new_x0 < x0 or new_x1 > x1):
                 continue  # no creeping sideways into the next expression
             new_y0, new_y1 = min(y0, char.y0), max(y1, char.y1)
-            if (new_y1 - new_y0) - origin_height > MAX_VERTICAL_GROWTH:
+            if (new_y1 - new_y0) - origin_height > max_growth:
                 continue
             kept.add(id(char))
             if (new_x0, new_y0, new_x1, new_y1) == (x0, y0, x1, y1):
@@ -239,7 +240,7 @@ def expand_math_bbox(page: Page, bbox: tuple[float, float, float, float],
             candidate = (min(x0, rect[0]), min(y0, rect[1]), max(x1, rect[2]), max(y1, rect[3]))
             if candidate == (x0, y0, x1, y1):
                 continue
-            if (candidate[3] - candidate[1]) - origin_height > MAX_VERTICAL_GROWTH:
+            if (candidate[3] - candidate[1]) - origin_height > max_growth:
                 continue
             x0, y0, x1, y1 = candidate
             changed = True

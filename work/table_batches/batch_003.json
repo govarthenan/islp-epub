@@ -1,0 +1,92 @@
+[
+ {
+  "key": "t11-1-p481",
+  "image": "work/table_crops/t11-1-p481.png",
+  "number": "11.1",
+  "page_pdf": 481,
+  "chapter": "Survival Analysis and Censored Data",
+  "caption": "TABLE 11.1. Among the set of patients at risk at time dk, the number of patients who died and survived in each of two groups is reported.",
+  "width_pt": 190.8,
+  "height_pt": 59.3
+ },
+ {
+  "key": "t11-4-p506",
+  "image": "work/table_crops/t11-4-p506.png",
+  "number": "11.4",
+  "page_pdf": 506,
+  "chapter": "Survival Analysis and Censored Data",
+  "caption": "TABLE 11.4. Data used in Exercise 4.",
+  "width_pt": 267.1,
+  "height_pt": 94.3
+ },
+ {
+  "key": "t12-1-p514",
+  "image": "work/table_crops/t12-1-p514.png",
+  "number": "12.1",
+  "page_pdf": 514,
+  "chapter": "Unsupervised Learning",
+  "caption": "TABLE 12.1. The principal component loading vectors, φ1 and φ2, for the USArrests data. These are also displayed in Figure 12.1.",
+  "width_pt": 162.6,
+  "height_pt": 70.4
+ },
+ {
+  "key": "t12-2-p526",
+  "image": "work/table_crops/t12-2-p526.png",
+  "number": "12.2",
+  "page_pdf": 526,
+  "chapter": "Unsupervised Learning",
+  "caption": "TABLE 12.2. Excerpt of the Netflix movie rating data. The movies are rated from 1 (worst) to 5 (best). The symbol • represents a missing value: a movie that was not rated by the corresponding customer.",
+  "width_pt": 306.5,
+  "height_pt": 127.3
+ },
+ {
+  "key": "t12-3-p536",
+  "image": "work/table_crops/t12-3-p536.png",
+  "number": "12.3",
+  "page_pdf": 536,
+  "chapter": "Unsupervised Learning",
+  "caption": "TABLE 12.3. A summary of the four most commonly-used types of linkage in hierarchical clustering.",
+  "width_pt": 199.1,
+  "height_pt": 22.1
+ },
+ {
+  "key": "t13-1-p568",
+  "image": "work/table_crops/t13-1-p568.png",
+  "number": "13.1",
+  "page_pdf": 568,
+  "chapter": "Multiple Testing",
+  "caption": "TABLE 13.1. A summary of the possible scenarios associated with testing the null hypothesis H0. Type I errors are also known as false positives, and Type II errors as false negatives.",
+  "width_pt": 281.8,
+  "height_pt": 58.9
+ },
+ {
+  "key": "t13-2-p571",
+  "image": "work/table_crops/t13-2-p571.png",
+  "number": "13.2",
+  "page_pdf": 571,
+  "chapter": "Multiple Testing",
+  "caption": "TABLE 13.2. A summary of the results of testing m null hypotheses. A given null hypothesis is either true or false, and a test of that null hypothesis can either reject or fail to reject it. In practice, the individual values of V , S, U, and W are unknown. However, we do have access to V + S = R and U + W = m −R, which are the numbers of null hypotheses rejected and not rejected, respectively.",
+  "width_pt": 246.7,
+  "height_pt": 59.9
+ },
+ {
+  "key": "t13-3-p573",
+  "image": "work/table_crops/t13-3-p573.png",
+  "number": "13.3",
+  "page_pdf": 573,
+  "chapter": "Multiple Testing",
+  "caption": "TABLE 13.3. The first two columns correspond to the sample mean and sample standard deviation of the percentage excess return, over n = 50 months, for the first five managers in the Fund dataset. The last two columns provide the t-statistic ({{MATH:m00701}}) and associated p-value for testing H0j : μj = 0, the null hypothesis that the (population) mean return for the jth hedge fund manager equals ",
+  "width_pt": 310.4,
+  "height_pt": 83.3
+ },
+ {
+  "key": "t13-4-p600",
+  "image": "work/table_crops/t13-4-p600.png",
+  "number": "13.4",
+  "page_pdf": 600,
+  "chapter": "Multiple Testing",
+  "caption": "TABLE 13.4. p-values for Exercise 4.",
+  "width_pt": 318.6,
+  "height_pt": 316.3
+ }
+]

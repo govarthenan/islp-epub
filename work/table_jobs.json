@@ -7,7 +7,7 @@
   "chapter": "Introduction",
   "caption": "TABLE 1.1. A list of data sets needed to perform the labs and exercises in this textbook. All data sets are available in the ISLP package, with the exception of USArrests, which is part of the base R distribution, but accessible from Python.",
   "width_pt": 339.1,
-  "height_pt": 235.6
+  "height_pt": 240.1
  },
  {
   "key": "t3-1-p86",
@@ -47,7 +47,7 @@
   "chapter": "Linear Regression",
   "caption": "TABLE 3.4. For the Advertising data, least squares coefficient estimates of the",
   "width_pt": 278.3,
-  "height_pt": 71.4
+  "height_pt": 71.7
  },
  {
   "key": "t3-5-p92",
@@ -57,7 +57,7 @@
   "chapter": "Linear Regression",
   "caption": "TABLE 3.5. Correlation matrix for TV, radio, newspaper, and sales for the Advertising data.",
   "width_pt": 330.8,
-  "height_pt": 112.5
+  "height_pt": 118.5
  },
  {
   "key": "t3-6-p94",
@@ -87,7 +87,7 @@
   "chapter": "Linear Regression",
   "caption": "TABLE 3.8. Least squares coefficient estimates associated with the regression of",
   "width_pt": 297.1,
-  "height_pt": 59.4
+  "height_pt": 59.8
  },
  {
   "key": "t3-9-p105",
@@ -97,7 +97,7 @@
   "chapter": "Linear Regression",
   "caption": "TABLE 3.9. For the Advertising data, least squares coefficient estimates asso- ciated with the regression of sales onto TV and radio, with an interaction term, as in (3.33).",
   "width_pt": 278.3,
-  "height_pt": 71.4
+  "height_pt": 71.7
  },
  {
   "key": "t3-10-p108",
@@ -107,7 +107,7 @@
   "chapter": "Linear Regression",
   "caption": "TABLE 3.10. For the Auto data set, least squares coefficient estimates associated with the regression of mpg onto horsepower and horsepower2.",
   "width_pt": 330.8,
-  "height_pt": 124.8
+  "height_pt": 127.8
  },
  {
   "key": "t3-11-p117",
@@ -137,7 +137,7 @@
   "chapter": "Classification",
   "caption": "TABLE 4.2. For the Default data, estimated coefficients of the logistic regression model that predicts the probability of default using student status. Student status is encoded as a dummy variable, with a value of 1 for a student and a value of 0 for a non-student, and represented by the variable student[Yes] in the table.",
   "width_pt": 330.8,
-  "height_pt": 95.1
+  "height_pt": 98.1
  },
  {
   "key": "t4-3-p152",
@@ -147,7 +147,7 @@
   "chapter": "Classification",
   "caption": "TABLE 4.3. For the Default data, estimated coefficients of the logistic regression model that predicts the probability of default using balance, income, and student status. Student status is encoded as a dummy variable student[Yes], with a value of 1 for a student and a value of 0 for a non-student. In fitting this model, income was measured in thousands of dollars.",
   "width_pt": 278.6,
-  "height_pt": 70.4
+  "height_pt": 71.7
  },
  {
   "key": "t4-4-p161",
@@ -187,7 +187,7 @@
   "chapter": "Classification",
   "caption": "TABLE 4.7. Important measures for classification and diagnostic testing, derived from quantities in Table 4.6.",
   "width_pt": 330.8,
-  "height_pt": 94.7
+  "height_pt": 97.7
  },
  {
   "key": "t4-8-p169",
@@ -197,7 +197,7 @@
   "chapter": "Classification",
   "caption": "TABLE 4.8. Comparison of the naive Bayes predictions to the true default status for the 10, 000 training observations in the Default data set, when we predict default for any observation for which P(Y = default|X = x) &gt; 0.5.",
   "width_pt": 330.8,
-  "height_pt": 143.6
+  "height_pt": 146.6
  },
  {
   "key": "t4-9-p170",
@@ -267,7 +267,7 @@
   "chapter": "Deep Learning",
   "caption": "TABLE 10.3. Least squares coefficient estimates associated with the regres- sion of Salary on four variables chosen by lasso on the Hitters data set. This model achieved the best performance on the test data, with a mean absolute error of 224.8. The results reported here were obtained from a regression on the test data, which was not used in fitting the lasso model.",
   "width_pt": 330.8,
-  "height_pt": 124.4
+  "height_pt": 127.4
  },
  {
   "key": "t11-1-p481",
@@ -310,6 +310,16 @@
   "height_pt": 127.3
  },
  {
+  "key": "t12-3-p536",
+  "image": "work/table_crops/t12-3-p536.png",
+  "number": "12.3",
+  "page_pdf": 536,
+  "chapter": "Unsupervised Learning",
+  "caption": "TABLE 12.3. A summary of the four most commonly-used types of linkage in hierarchical clustering.",
+  "width_pt": 199.1,
+  "height_pt": 22.1
+ },
+ {
   "key": "t13-1-p568",
   "image": "work/table_crops/t13-1-p568.png",
   "number": "13.1",
@@ -327,7 +337,7 @@
   "chapter": "Multiple Testing",
   "caption": "TABLE 13.2. A summary of the results of testing m null hypotheses. A given null hypothesis is either true or false, and a test of that null hypothesis can either reject or fail to reject it. In practice, the individual values of V , S, U, and W are unknown. However, we do have access to V + S = R and U + W = m −R, which are the numbers of null hypotheses rejected and not rejected, respectively.",
   "width_pt": 246.7,
-  "height_pt": 53.2
+  "height_pt": 59.9
  },
  {
   "key": "t13-3-p573",
