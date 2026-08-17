@@ -351,3 +351,39 @@ fault rather than the transcription's, and is honestly recorded as cosmetic rath
 turned into an invented correction.
 
 **Status.** SUCCESS.
+
+---
+
+## 2026-08-17 — Entry 014: What the independent audit caught
+
+**Attempt.** Hand 45 of the comparison images to OpenAI's `codex` command line tool, a
+different model family with no sight of the earlier answers, and ask the same question: do
+these two halves say the same thing?
+
+**Result.** 44 of 45 agreed (97.8%). The single disagreement was correct and mattered:
+
+> `m00240`: TOP is a fraction with denominator 2!, while BOTTOM is only 2!.
+
+The crop had captured a fraction's denominator and nothing else, and the transcription
+faithfully wrote down what it was shown. The verification pass had missed it, because the
+candidate really did match what was in the picture — the picture was the problem.
+
+**Three separate causes, all in the extraction:**
+1. A fragment is matched back to the paragraph line it belongs to, and a host line had to be
+   wider than 200 pt to qualify. **The last line of a paragraph is short by definition**, so
+   its inline fractions had their denominators stranded as equations of their own.
+2. A fragment counts as belonging to a host only if it sits over that host's mathematics. A
+   fraction leaves nothing on the host's own baseline except **its rule**, which is a drawing,
+   not a character, so the test failed. Rules now count.
+3. Growing a box along whatever mathematics it touched could not tell this expression's
+   numerator from the fraction on the line above, and inline fractions on consecutive lines
+   genuinely do overlap vertically. Boxes for inline expressions are now built from the
+   fragment-to-host assignment made during classification, filtered glyph by glyph so two
+   expressions sharing a line do not claim each other's pieces.
+
+**Why this is the entry worth reading.** Every check inside this pipeline was Claude checking
+Claude, and all of them passed this expression. The one check from outside the family found it
+in a sample of 45. That is the argument for keeping an independent auditor in the loop, not the
+argument for a bigger fleet of the same kind.
+
+**Status.** SUCCESS.
