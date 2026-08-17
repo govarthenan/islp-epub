@@ -1,31 +1,29 @@
 {
- "expressions": 555,
- "checked": 555,
+ "expressions": 531,
+ "checked": 531,
  "verdicts": {
-  "same": 500,
-  "cosmetic": 53,
-  "wrong": 2
+  "cosmetic": 49,
+  "same": 481,
+  "wrong": 1
  },
- "accuracy": 99.6,
- "corrections_applied": 2,
+ "accuracy": 99.8,
+ "corrections_applied": 1,
  "corrections_refused": 0,
  "correction_examples": [
   {
-   "id": "m00567",
-   "latex": "\\begin{aligned} h_1(X) &= (0 + X_1 + X_2)^2, \\\\ h_2(X) &= (0 + X_1 - X_2)^2. \\end{aligned}",
-   "issue": "Candidate LaTeX only transcribes the h_2(X) row; the top image (and the characters layer) shows a two-row equation with h_1(X) = (0 + X_1 + X_2)^2, given first, which is entirely missing from the candidate."
-  },
-  {
-   "id": "m00700",
-   "latex": "\\begin{bmatrix} & 0.3 & 0.4 & 0.7\\\\ 0.3 & & 0.5 & 0.8\\\\ 0.4 & 0.5 & & 0.45\\\\ 0.7 & 0.8 & 0.45 & \\end{bmatrix}.",
-   "issue": "Printed page encloses the matrix in square brackets; candidate LaTeX uses \\begin{pmatrix} which renders round parentheses instead."
+   "id": "m00478",
+   "latex": "\\hat{f}(x) = \\frac{1}{B-L}\\sum_{b=L+1}^{B} \\hat{f}^{b}(x).",
+   "issue": "Top (printed page) ends the expression with a trailing period after \\hat{f}^{b}(x); the candidate LaTeX omits it."
   }
  ],
  "refused_examples": [],
  "symbol_check": {
-  "scored": 498,
-  "no_symbol_lost_share": 71.1,
-  "mean_agreement": 0.95
+  "scored": 484,
+  "no_symbol_lost_share": 71.5,
+  "mean_agreement": 0.951
  },
- "independent_audit": {}
+ "independent_audit": {
+  "sampled": 45,
+  "agreement": 97.8
+ }
 }

@@ -1,0 +1,152 @@
+[
+ {
+  "id": "m00116",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00117",
+  "verdict": "cosmetic",
+  "issue": "TOP crop is truncated: equation 3.30 is a multi-case piecewise brace and the crop only shows the top and bottom hooks of the tall left brace (with blank space between) around the single 'South' case; the visible content matches the candidate LaTeX exactly, this is just an artifact of the crop height cutting the oversized brace glyph.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00118",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00119",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00120",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00123",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00124",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00127",
+  "verdict": "cosmetic",
+  "issue": "TOP crop has a rendering glitch where the typewriter word 'income' fails to rasterize (shows as blank space) before the subscript i on the first line; the word is confirmed present by the extracted characters and the candidate LaTeX includes it correctly, so this is a crop/rendering defect, not a content difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00128",
+  "verdict": "cosmetic",
+  "issue": "Same TOP rendering glitch as m00127: the typewriter word 'income' is blank on the first ('approx') line of the crop though present in extracted characters and correctly included in the candidate LaTeX; remaining lines match.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00130",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00131",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00132",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00133",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00136",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00137",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00138",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00140",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00141",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00142",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00143",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00144",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00147",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00148",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00151",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00152",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ }
+]

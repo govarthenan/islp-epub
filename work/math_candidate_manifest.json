@@ -2610,11 +2610,11 @@
   },
   "m00478": {
    "file": "m00478.svg",
-   "widthEm": 12.774,
+   "widthEm": 13.0885,
    "heightEm": 1.6695,
    "valignEm": -0.456,
    "display": false,
-   "tex": "\\hat{f}(x) = \\frac{1}{B-L}\\sum_{b=L+1}^{B} \\hat{f}^{b}(x)"
+   "tex": "\\hat{f}(x) = \\frac{1}{B-L}\\sum_{b=L+1}^{B} \\hat{f}^{b}(x)."
   },
   "m00480": {
    "file": "m00480.svg",

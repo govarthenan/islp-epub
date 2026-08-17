@@ -415,3 +415,36 @@ paragraph rendering wins, because it is the one that carries the words.
 **Known limits, recorded honestly.** A handful of expressions that wrap across a line break
 leave a small fragment at the right edge of the column, which renders as a little image of its
 own. There are a few of these in 613 pages and the content is not lost, only set apart.
+
+---
+
+## 2026-08-17 — Entry 016: Converged
+
+**The extraction stopped changing.** After the last round of fixes, re-extracting the
+mathematics produced 531 crops of which **531 were byte for byte identical** to the previous
+round: nothing left to read again.
+
+**Final verification, over all 531 expressions:**
+
+| verdict  | count | share |
+|----------|-------|-------|
+| same     |  481  | 90.6% |
+| cosmetic |   49  |  9.2% |
+| wrong    |    1  |  0.2% |
+
+**99.8% of the mathematics agrees with the printed page.** The single error was a missing
+trailing full stop, which was corrected.
+
+**Three checks, three different kinds of evidence:**
+- symbol census (deterministic, free): mean agreement 0.951; 71.5% of expressions lose no
+  symbol at all;
+- adversarial verification (23 agents, every expression): 99.8%;
+- independent audit through OpenAI's `codex`, on a sample, from outside the model family.
+
+**Also fixed in this round, from reading the rendered pages rather than the numbers:**
+- Exercises run to three levels — `1.`, `(a)`, `i.` — and the roman level was missing from the
+  marker pattern, so its items ran into the paragraph above. Depth now comes from the marker
+  itself, not from the left margin, which drifts twenty points between items in one list.
+- "Python-based" was closing up to "Pythonbased". The vocabulary tokenised on letters only, so
+  "trade-off" was stored as two words and the hyphenated form could never be confirmed;
+  every broken word was being closed up by default.

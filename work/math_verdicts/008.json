@@ -1,0 +1,152 @@
+[
+  {
+    "id": "m00308",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00310",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00311",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00314",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00315",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00318",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00319",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00321",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00322",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00324",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00325",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00326",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00327",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00328",
+    "verdict": "cosmetic",
+    "issue": "TOP crop is truncated mid-expression (both the image and the PDF text layer stop right after 'beta_j x_ij', before the closing parenthesis/exponent/brace and before the sum limits i=1..n, j=1..p that the candidate LaTeX includes); the visible portion matches the candidate, so this looks like an extraction boundary artifact rather than a transcription error.",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00329",
+    "verdict": "cosmetic",
+    "issue": "TOP crop shows a bare summation sign with no visible limits (and the PDF text layer for this snippet likewise contains no 'p'/'j=1' markers, unlike neighboring entries m00326/m00327 on the same page whose crops do show limits), so the j=1..p limits in the candidate cannot be confirmed from this crop; treating as a cropping artifact rather than inventing a correction.",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00330",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00331",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00332",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00333",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00334",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00335",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00336",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00337",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00338",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  },
+  {
+    "id": "m00339",
+    "verdict": "same",
+    "issue": "",
+    "corrected_latex": ""
+  }
+]

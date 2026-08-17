@@ -185,6 +185,22 @@
       "what": "Hand 45 of the same comparison images to OpenAI's codex CLI, a different model family with no sight of the earlier answers.",
       "result": "44 of 45 agreed. The one disagreement was right and mattered: a crop had captured a fraction's denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction.",
       "why": "Every other check here was Claude checking Claude. The only check from outside the family found the fault in a sample of 45."
+    },
+    {
+      "n": 19,
+      "title": "Iterate until the extraction stops changing",
+      "status": "success",
+      "what": "Each round of fixes changes the crops, so re-extract, carry over every transcription whose image is byte for byte identical, and read only the rest.",
+      "result": "Five rounds: 570 expressions read, then 61, then 32, then 59, then 15, then 0. The last re-extraction produced 531 crops of which 531 were unchanged.",
+      "why": ""
+    },
+    {
+      "n": 20,
+      "title": "Printing an equation twice",
+      "status": "failed",
+      "what": "Let display equations and inline expressions be found independently.",
+      "result": "An equation with words in it ('minimize ... subject to ...') reads as a paragraph, so its inline images already held the whole equation, while the symbol-only lines also produced a display block. The equation was typeset twice.",
+      "why": "Fixed by measuring the inline expressions on a page first and dropping any display block that one of them already covers."
     }
   ]
 }

@@ -1,0 +1,152 @@
+[
+ {
+  "id": "m00001",
+  "verdict": "cosmetic",
+  "issue": "Same matrix entries and layout; bottom render uses thicker/fatter parenthesis delimiters (typesetting-tool font choice), no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00002",
+  "verdict": "cosmetic",
+  "issue": "Same column vector; bottom uses heavier parenthesis delimiters, otherwise identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00003",
+  "verdict": "cosmetic",
+  "issue": "Same column vector; bottom uses heavier parenthesis delimiters, otherwise identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00004",
+  "verdict": "cosmetic",
+  "issue": "Same two equations (row vector of bold x_j's, then column vector of x_i^T's); bottom uses heavier delimiters and slightly different vertical gap between the two lines, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00005",
+  "verdict": "cosmetic",
+  "issue": "Same transposed matrix; bottom uses heavier parenthesis delimiters, otherwise identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00006",
+  "verdict": "cosmetic",
+  "issue": "Same row vector; bottom uses slightly different (thinner) delimiter rendering, otherwise identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00007",
+  "verdict": "cosmetic",
+  "issue": "Same column vector; bottom uses heavier parenthesis delimiters, otherwise identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00008",
+  "verdict": "cosmetic",
+  "issue": "Same column vector; bottom uses heavier parenthesis delimiters, otherwise identical.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00015",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00016",
+  "verdict": "same",
+  "issue": "",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00017",
+  "verdict": "cosmetic",
+  "issue": "Same equation; bottom rendered in bold font weight versus regular weight in the printed page, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00018",
+  "verdict": "cosmetic",
+  "issue": "Same equation with hats on Y and f; bottom rendered in bold font weight, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00023",
+  "verdict": "cosmetic",
+  "issue": "Same two-line aligned derivation with underbraces under [f(X)-f-hat(X)]^2 and Var(epsilon); neither top nor bottom has text labels under the underbraces. Bottom is rendered in bold font weight with a slightly different underbrace glyph shape, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00026",
+  "verdict": "cosmetic",
+  "issue": "Same equation; bottom rendered in bold/italic font weight, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00027",
+  "verdict": "cosmetic",
+  "issue": "Same equation; bottom rendered in bold/italic font weight, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00028",
+  "verdict": "cosmetic",
+  "issue": "Same equation including typewriter-font variable names; bottom rendered in bold, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00029",
+  "verdict": "cosmetic",
+  "issue": "Same equation; bottom rendered in bold font weight, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00034",
+  "verdict": "cosmetic",
+  "issue": "Same equation; bottom rendered in bold font weight, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00035",
+  "verdict": "cosmetic",
+  "issue": "Same equation (Var, Bias, Var(epsilon) terms all match); bottom rendered in bold font weight, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00037",
+  "verdict": "cosmetic",
+  "issue": "Same equation; bottom rendered in bold font weight, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00039",
+  "verdict": "cosmetic",
+  "issue": "Same expression (PDF text layer dropped the hat diacritic on the second y but both images clearly show y-hat); bottom rendered in bold, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00040",
+  "verdict": "cosmetic",
+  "issue": "Same expression; bottom rendered in bold font weight, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00042",
+  "verdict": "cosmetic",
+  "issue": "Same expression; bottom rendered in bold font weight, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00043",
+  "verdict": "cosmetic",
+  "issue": "Same expression; bottom rendered in bold font weight, no mathematical difference.",
+  "corrected_latex": ""
+ },
+ {
+  "id": "m00045",
+  "verdict": "cosmetic",
+  "issue": "Same expression; bottom uses explicit spacing around the conditioning bar (\\mid vs |) and bold font weight, no mathematical difference.",
+  "corrected_latex": ""
+ }
+]
