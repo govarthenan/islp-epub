@@ -1,0 +1,3168 @@
+- generic [active] [ref=f5e1]:
+  - heading "Chapter 2 Statistical Learning" [level=1] [ref=f5e2]:
+    - generic [ref=f5e3]: Chapter 2
+    - text: Statistical Learning
+  - heading "2.1 What Is Statistical Learning?" [level=2] [ref=f5e4]
+  - paragraph [ref=f5e5]:
+    - text: In order to motivate our study of statistical learning, we begin with a simple example. Suppose that we are statistical consultants hired by a client to investigate the association between advertising and sales of a particular product. The
+    - code [ref=f5e6]: Advertising
+    - text: data set consists of the
+    - code [ref=f5e7]: sales
+    - text: "of that product in 200 different markets, along with advertising budgets for the product in each of those markets for three different media:"
+    - code [ref=f5e8]: TV
+    - text: ","
+    - code [ref=f5e9]: radio
+    - text: ", and"
+    - code [ref=f5e10]: newspaper
+    - text: . The data are displayed in Figure
+    - link "2.1" [ref=f5e11] [cursor=pointer]:
+      - /url: ch03.xhtml#b6
+    - text: . It is not possible for our client to directly increase sales of the product. On the other hand, they can control the advertising expenditure in each of the three media. Therefore, if we determine that there is an association between advertising and sales, then we can instruct our client to adjust advertising budgets, thereby indirectly increasing sales. In other words, our goal is to develop an accurate model that can be used to predict sales on the basis of the three media budgets.
+  - paragraph [ref=f5e12]:
+    - text: In this setting, the advertising budgets are
+    - emphasis [ref=f5e13]: input variables
+    - text: while
+    - code [ref=f5e14]: sales
+    - text: is an
+    - emphasis [ref=f5e15]: output variable
+    - text: . The input variables are typically denoted using the symbol X, with a subscript to distinguish them. So X
+    - subscript [ref=f5e16]: "1"
+    - text: might be the
+    - code [ref=f5e17]: TV
+    - text: budget, X
+    - subscript [ref=f5e18]: "2"
+    - text: the
+    - code [ref=f5e19]: radio
+    - text: budget, and X
+    - subscript [ref=f5e20]: "3"
+    - text: the
+    - code [ref=f5e21]: newspaper
+    - text: budget. The inputs go by different names, such as
+    - emphasis [ref=f5e22]: predictors
+    - text: ","
+    - emphasis [ref=f5e23]: independent variables
+    - text: ","
+    - emphasis [ref=f5e24]: features
+    - text: ", or sometimes just"
+    - emphasis [ref=f5e25]: variables
+    - text: . The output variable—in this case,
+    - code [ref=f5e26]: sales
+    - text: —is often called the
+    - emphasis [ref=f5e27]: response
+    - text: or
+    - emphasis [ref=f5e28]: dependent variable
+    - text: ", and is typically denoted using the symbol Y . Throughout this book, we will use all of these terms interchangeably."
+  - paragraph [ref=f5e29]: input variable output variable predictor · independent variable feature variable response dependent variable
+  - paragraph [ref=f5e30]:
+    - text: More generally, suppose that we observe a quantitative response Y and p different predictors, X
+    - subscript [ref=f5e31]: "1"
+    - text: ", X"
+    - subscript [ref=f5e32]: "2"
+    - text: ", . . . , X"
+    - subscript [ref=f5e33]: p
+    - text: . We assume that there is some relationship between Y and X = (X
+    - subscript [ref=f5e34]: "1"
+    - text: ", X"
+    - subscript [ref=f5e35]: "2"
+    - text: ", . . . , X"
+    - subscript [ref=f5e36]: p
+    - text: ), which can be written in the very general form
+  - generic [ref=f5e37]:
+    - img "Y = f(X) + \\epsilon." [ref=f5e38]
+    - text: (2.1)
+  - generic [ref=f5e39]:
+    - img "figure 2.1" [ref=f5e40]
+    - paragraph [ref=f5e41]:
+      - text: FIGURE 2.1.
+      - emphasis [ref=f5e42]: The
+      - code [ref=f5e43]: Advertising
+      - emphasis [ref=f5e44]: data set. The plot displays
+      - code [ref=f5e45]: sales
+      - emphasis [ref=f5e46]: ", in thousands of units, as a function of"
+      - code [ref=f5e47]: TV
+      - emphasis [ref=f5e48]: ","
+      - code [ref=f5e49]: radio
+      - emphasis [ref=f5e50]: ", and"
+      - code [ref=f5e51]: newspaper
+      - emphasis [ref=f5e52]: budgets, in thousands of dollars, for
+      - text: "200"
+      - emphasis [ref=f5e53]: different markets. In each plot we show the simple least squares fit of
+      - code [ref=f5e54]: sales
+      - emphasis [ref=f5e55]: to that variable, as described in Chapter
+      - link [ref=f5e56] [cursor=pointer]:
+        - /url: ch04.xhtml#b0
+        - emphasis [ref=f5e57]: "3"
+      - emphasis [ref=f5e58]: . In other words, each blue line represents a simple model that can be used to predict
+      - code [ref=f5e59]: sales
+      - emphasis [ref=f5e60]: using
+      - code [ref=f5e61]: TV
+      - emphasis [ref=f5e62]: ","
+      - code [ref=f5e63]: radio
+      - emphasis [ref=f5e64]: ", and"
+      - code [ref=f5e65]: newspaper
+      - emphasis [ref=f5e66]: ", respectively."
+  - paragraph [ref=f5e67]:
+    - text: Here f is some fixed but unknown function of X
+    - subscript [ref=f5e68]: "1"
+    - text: ", . . . , X"
+    - subscript [ref=f5e69]: p
+    - text: ", and ϵ is a random"
+    - emphasis [ref=f5e70]: error term
+    - text: ", which is independent of X and has mean zero. In this formulation, f represents the"
+    - emphasis [ref=f5e71]: systematic
+    - text: information that X provides about Y .
+  - paragraph [ref=f5e72]: error term · systematic
+  - generic [ref=f5e73]:
+    - img "figure 2.2" [ref=f5e74]
+    - paragraph [ref=f5e75]:
+      - text: FIGURE 2.2.
+      - emphasis [ref=f5e76]: The
+      - code [ref=f5e77]: Income
+      - emphasis [ref=f5e78]: data set.
+      - text: "Left:"
+      - emphasis [ref=f5e79]: The red dots are the observed values of
+      - code [ref=f5e80]: income
+      - emphasis [ref=f5e81]: (in thousands of dollars) and
+      - code [ref=f5e82]: years of education
+      - emphasis [ref=f5e83]: for
+      - text: "30"
+      - emphasis [ref=f5e84]: individuals.
+      - text: "Right:"
+      - emphasis [ref=f5e85]: The blue curve represents the true underlying relationship between
+      - code [ref=f5e86]: income
+      - emphasis [ref=f5e87]: and
+      - code [ref=f5e88]: years of education
+      - emphasis [ref=f5e89]: ", which is generally unknown (but is known in this case because the data were simulated). The black lines represent the error associated with each observation. Note that some errors are positive (if an observation lies above the blue curve) and some are negative (if an observation lies below the curve). Overall, these errors have approximately mean zero."
+  - paragraph [ref=f5e90]:
+    - text: As another example, consider the left-hand panel of Figure
+    - link "2.2" [ref=f5e91] [cursor=pointer]:
+      - /url: ch03.xhtml#b8
+    - text: ", a plot of"
+    - code [ref=f5e92]: income
+    - text: versus
+    - code [ref=f5e93]: years of education
+    - text: for 30 individuals in the
+    - code [ref=f5e94]: Income
+    - text: data set. The plot suggests that one might be able to predict
+    - code [ref=f5e95]: income
+    - text: using
+    - code [ref=f5e96]: years of education
+    - text: . However, the function f that connects the input variable to the output variable is in general unknown. In this situation one must estimate f based on the observed points. Since
+    - code [ref=f5e97]: Income
+    - text: is a simulated data set, f is known and is shown by the blue curve in the right-hand panel of Figure
+    - link "2.2" [ref=f5e98] [cursor=pointer]:
+      - /url: ch03.xhtml#b8
+    - text: . The vertical lines represent the error terms ϵ. We note that some of the 30 observations lie above the blue curve and some lie below it; overall, the errors have approximately mean zero.
+  - paragraph [ref=f5e99]:
+    - text: In general, the function f may involve more than one input variable. In Figure
+    - link "2.3" [ref=f5e100] [cursor=pointer]:
+      - /url: ch03.xhtml#b21
+    - text: we plot
+    - code [ref=f5e101]: income
+    - text: as a function of
+    - code [ref=f5e102]: years of education
+    - text: and
+    - code [ref=f5e103]: seniority
+    - text: . Here f is a two-dimensional surface that must be estimated based on the observed data.
+  - paragraph [ref=f5e104]: In essence, statistical learning refers to a set of approaches for estimating f. In this chapter we outline some of the key theoretical concepts that arise in estimating f, as well as tools for evaluating the estimates obtained.
+  - heading "2.1.1 Why Estimate f?" [level=3] [ref=f5e105]
+  - paragraph [ref=f5e106]:
+    - text: "There are two main reasons that we may wish to estimate f:"
+    - emphasis [ref=f5e107]: prediction
+    - text: and
+    - emphasis [ref=f5e108]: inference
+    - text: . We discuss each in turn.
+  - heading "Prediction" [level=4] [ref=f5e109]
+  - paragraph [ref=f5e110]: In many situations, a set of inputs X are readily available, but the output Y cannot be easily obtained. In this setting, since the error term averages to zero, we can predict Y using
+  - generic [ref=f5e111]:
+    - 'img "\\hat{Y} = \\hat{f}(X)," [ref=f5e112]'
+    - text: (2.2)
+  - paragraph [ref=f5e113]:
+    - text: where
+    - 'img "\\hat{f}" [ref=f5e114]'
+    - text: represents our estimate for f, and
+    - 'img "\\hat{Y}" [ref=f5e115]'
+    - text: represents the resulting prediction for Y . In this setting,
+    - 'img "\\hat{f}" [ref=f5e116]'
+    - text: is often treated as a
+    - emphasis [ref=f5e117]: black box
+    - text: ", in the sense that one is not typically concerned with the exact form of"
+    - 'img "\\hat{f}" [ref=f5e118]'
+    - text: ", provided that it yields accurate predictions for Y ."
+  - paragraph [ref=f5e119]:
+    - text: As an example, suppose that X
+    - subscript [ref=f5e120]: "1"
+    - text: ", . . . , X"
+    - subscript [ref=f5e121]: p
+    - text: are characteristics of a patient’s blood sample that can be easily measured in a lab, and Y is a variable encoding the patient’s risk for a severe adverse reaction to a particular drug. It is natural to seek to predict Y using X, since we can then avoid giving the drug in question to patients who are at high risk of an adverse reaction—that is, patients for whom the estimate of Y is high.
+  - paragraph [ref=f5e122]:
+    - text: The accuracy of
+    - 'img "\\hat{Y}" [ref=f5e123]'
+    - text: as a prediction for Y depends on two quantities, which we will call the
+    - emphasis [ref=f5e124]: reducible error
+    - text: and the
+    - emphasis [ref=f5e125]: irreducible error
+    - text: . In general,
+    - 'img "\\hat{f}" [ref=f5e126]'
+    - text: will not be a perfect estimate for f, and this inaccuracy will introduce some error. This error is
+    - emphasis [ref=f5e127]: reducible
+    - text: because we can potentially improve the accuracy of
+    - 'img "\\hat{f}" [ref=f5e128]'
+    - text: by using the most appropriate statistical learning technique to estimate f. However, even if it were possible to form a perfect estimate for f, so that our estimated response took the form
+    - 'img "\\hat{Y} = f(X)" [ref=f5e129]'
+    - text: ", our prediction would still have some error in it! This is because Y is also a function of ϵ, which, by definition, cannot be predicted using X. Therefore, variability associated with ϵ also affects the accuracy of our predictions. This is known as the"
+    - emphasis [ref=f5e130]: irreducible
+    - text: error, because no matter how well we estimate f, we cannot reduce the error introduced by ϵ.
+  - paragraph [ref=f5e131]: reducible error irreducible error
+  - paragraph [ref=f5e132]: "Why is the irreducible error larger than zero? The quantity ϵ may contain unmeasured variables that are useful in predicting Y : since we don’t"
+  - generic [ref=f5e133]:
+    - img "figure 2.3" [ref=f5e134]
+    - paragraph [ref=f5e135]:
+      - text: FIGURE 2.3.
+      - emphasis [ref=f5e136]: The plot displays
+      - code [ref=f5e137]: income
+      - emphasis [ref=f5e138]: as a function of
+      - code [ref=f5e139]: years of education
+      - emphasis [ref=f5e140]: and
+      - code [ref=f5e141]: seniority
+      - emphasis [ref=f5e142]: in the
+      - code [ref=f5e143]: Income
+      - emphasis [ref=f5e144]: data set. The blue surface represents the true underlying relationship between
+      - code [ref=f5e145]: income
+      - emphasis [ref=f5e146]: and
+      - code [ref=f5e147]: years of education
+      - emphasis [ref=f5e148]: and
+      - code [ref=f5e149]: seniority
+      - emphasis [ref=f5e150]: ", which is known since the data are simulated. The red dots indicate the observed values of these quantities for"
+      - text: "30"
+      - emphasis [ref=f5e151]: individuals.
+  - paragraph [ref=f5e152]: measure them, f cannot use them for its prediction. The quantity ϵ may also contain unmeasurable variation. For example, the risk of an adverse reaction might vary for a given patient on a given day, depending on manufacturing variation in the drug itself or the patient’s general feeling of well-being on that day.
+  - paragraph [ref=f5e153]:
+    - text: Consider a given estimate
+    - 'img "\\hat{f}" [ref=f5e154]'
+    - text: and a set of predictors X, which yields the prediction
+    - 'img "\\hat{Y} = \\hat{f}(X)" [ref=f5e155]'
+    - text: . Assume for a moment that both
+    - 'img "\\hat{f}" [ref=f5e156]'
+    - text: and X are fixed, so that the only variability comes from ϵ. Then, it is easy to show that
+  - generic [ref=f5e157]:
+    - 'img "\\begin{aligned} \\mathrm{E}(Y-\\hat{Y})^2 &= \\mathrm{E}[f(X)+\\epsilon-\\hat{f}(X)]^2 \\\\ &= \\underbrace{[f(X)-\\hat{f}(X)]^2} + \\underbrace{\\mathrm{Var}(\\epsilon)}, \\end{aligned}" [ref=f5e158]'
+    - text: (2.3)
+  - paragraph [ref=f5e159]:
+    - text: Reducible Irreducible where
+    - 'img "\\mathrm{E}(Y - \\hat{Y} )^{2}" [ref=f5e160]'
+    - text: represents the average, or
+    - emphasis [ref=f5e161]: expected value
+    - text: ", of the squared difference between the predicted and actual value of Y , and Var(ϵ) represents the"
+    - emphasis [ref=f5e162]: variance
+    - text: associated with the error term ϵ.
+  - paragraph [ref=f5e163]: expected value variance
+  - paragraph [ref=f5e164]: The focus of this book is on techniques for estimating f with the aim of minimizing the reducible error. It is important to keep in mind that the irreducible error will always provide an upper bound on the accuracy of our prediction for Y . This bound is almost always unknown in practice.
+  - heading "Inference" [level=4] [ref=f5e165]
+  - paragraph [ref=f5e166]:
+    - text: We are often interested in understanding the association between Y and X
+    - subscript [ref=f5e167]: "1"
+    - text: ", . . . , X"
+    - subscript [ref=f5e168]: p
+    - text: . In this situation we wish to estimate f, but our goal is not necessarily to make predictions for Y . Now
+    - 'img "\\hat{f}" [ref=f5e169]'
+    - text: "cannot be treated as a black box, because we need to know its exact form. In this setting, one may be interested in answering the following questions: •"
+    - emphasis [ref=f5e170]: Which predictors are associated with the response?
+    - text: It is often the case that only a small fraction of the available predictors are substantially associated with Y . Identifying the few
+    - emphasis [ref=f5e171]: important
+    - text: predictors among a large set of possible variables can be extremely useful, depending on the application. •
+    - emphasis [ref=f5e172]: What is the relationship between the response and each predictor?
+    - text: Some predictors may have a positive relationship with Y , in the sense that larger values of the predictor are associated with larger values of Y . Other predictors may have the opposite relationship. Depending on the complexity of f, the relationship between the response and a given predictor may also depend on the values of the other predictors. •
+    - emphasis [ref=f5e173]: Can the relationship between
+    - text: "Y"
+    - emphasis [ref=f5e174]: and each predictor be adequately summarized using a linear equation, or is the relationship more complicated?
+    - text: Historically, most methods for estimating f have taken a linear form. In some situations, such an assumption is reasonable or even desirable. But often the true relationship is more complicated, in which case a linear model may not provide an accurate representation of the relationship between the input and output variables.
+  - paragraph [ref=f5e175]: In this book, we will see a number of examples that fall into the prediction setting, the inference setting, or a combination of the two.
+  - paragraph [ref=f5e176]: For instance, consider a company that is interested in conducting a direct-marketing campaign. The goal is to identify individuals who are likely to respond positively to a mailing, based on observations of demographic variables measured on each individual. In this case, the demographic variables serve as predictors, and response to the marketing campaign (either positive or negative) serves as the outcome. The company is not interested in obtaining a deep understanding of the relationships between each individual predictor and the response; instead, the company simply wants to accurately predict the response using the predictors. This is an example of modeling for prediction.
+  - paragraph [ref=f5e177]:
+    - text: In contrast, consider the
+    - code [ref=f5e178]: Advertising
+    - text: data illustrated in Figure
+    - link "2.1" [ref=f5e179] [cursor=pointer]:
+      - /url: ch03.xhtml#b6
+    - text: ". One may be interested in answering questions such as: –"
+    - emphasis [ref=f5e180]: Which media are associated with sales?
+    - text: –
+    - emphasis [ref=f5e181]: Which media generate the biggest boost in sales?
+    - text: or –
+    - emphasis [ref=f5e182]: How large of an increase in sales is associated with a given increase in TV advertising?
+    - text: This situation falls into the inference paradigm. Another example involves modeling the brand of a product that a customer might purchase based on variables such as price, store location, discount levels, competition price, and so forth. In this situation one might really be most interested in the association between each variable and the probability of purchase. For instance,
+    - emphasis [ref=f5e183]: to what extent is the product’s price associated with sales?
+    - text: This is an example of modeling for inference.
+  - paragraph [ref=f5e184]:
+    - text: Finally, some modeling could be conducted both for prediction and inference. For example, in a real estate setting, one may seek to relate values of homes to inputs such as crime rate, zoning, distance from a river, air quality, schools, income level of community, size of houses, and so forth. In this case one might be interested in the association between each individual input variable and housing price—for instance,
+    - emphasis [ref=f5e185]: how much extra will a house be worth if it has a view of the river?
+    - text: "This is an inference problem. Alternatively, one may simply be interested in predicting the value of a home given its characteristics:"
+    - emphasis [ref=f5e186]: is this house under- or over-valued?
+    - text: This is a prediction problem.
+  - paragraph [ref=f5e187]:
+    - text: Depending on whether our ultimate goal is prediction, inference, or a combination of the two, different methods for estimating f may be appropriate. For example,
+    - emphasis [ref=f5e188]: linear models
+    - text: allow for relatively simple and interpretable inference, but may not yield as accurate predictions as some other approaches. In contrast, some of the highly non-linear approaches that we discuss in the later chapters of this book can potentially provide quite accurate predictions for Y , but this comes at the expense of a less interpretable model for which inference is more challenging.
+  - paragraph [ref=f5e189]: linear model
+  - heading "2.1.2 How Do We Estimate f?" [level=3] [ref=f5e190]
+  - paragraph [ref=f5e191]:
+    - text: Throughout this book, we explore many linear and non-linear approaches for estimating f. However, these methods generally share certain characteristics. We provide an overview of these shared characteristics in this section. We will always assume that we have observed a set of n different data points. For example in Figure
+    - link "2.2" [ref=f5e192] [cursor=pointer]:
+      - /url: ch03.xhtml#b8
+    - text: we observed n = 30 data points. These observations are called the
+    - emphasis [ref=f5e193]: training data
+    - text: because we will use these observations to train, or teach, our method how to estimate f. Let x
+    - subscript [ref=f5e194]: ij
+    - text: represent the value of the jth predictor, or input, for observation i, where i = 1, 2, . . . , n and j = 1, 2, . . . , p. Correspondingly, let y
+    - subscript [ref=f5e195]: i
+    - text: "represent the response variable for the ith observation. Then our training data consist of {(x"
+    - subscript [ref=f5e196]: "1"
+    - text: ", y"
+    - subscript [ref=f5e197]: "1"
+    - text: ), (x
+    - subscript [ref=f5e198]: "2"
+    - text: ", y"
+    - subscript [ref=f5e199]: "2"
+    - text: ), . . . , (x
+    - subscript [ref=f5e200]: "n"
+    - text: ", y"
+    - subscript [ref=f5e201]: "n"
+    - text: ")} where x"
+    - subscript [ref=f5e202]: i
+    - text: = (x
+    - subscript [ref=f5e203]: i1
+    - text: ", x"
+    - subscript [ref=f5e204]: i2
+    - text: ", . . . , x"
+    - subscript [ref=f5e205]: ip
+    - text: )
+    - superscript [ref=f5e206]: T
+    - text: .
+  - paragraph [ref=f5e207]: training data
+  - paragraph [ref=f5e208]:
+    - text: Our goal is to apply a statistical learning method to the training data in order to estimate the unknown function f. In other words, we want to find a function
+    - 'img "\\hat{f}" [ref=f5e209]'
+    - text: such that
+    - 'img "Y \\approx \\hat{f}(X)" [ref=f5e210]'
+    - text: for any observation (X, Y ). Broadly speaking, most statistical learning methods for this task can be characterized as either
+    - emphasis [ref=f5e211]: parametric
+    - text: or
+    - emphasis [ref=f5e212]: non-parametric
+    - text: . We now briefly discuss these two types of approaches.
+  - paragraph [ref=f5e213]: parametric nonparametric
+  - heading "Parametric Methods" [level=4] [ref=f5e214]
+  - paragraph [ref=f5e215]: Parametric methods involve a two-step model-based approach.
+  - paragraph [ref=f5e216]: "1. First, we make an assumption about the functional form, or shape, of f. For example, one very simple assumption is that f is linear in X:"
+  - generic [ref=f5e217]:
+    - img "f(X) = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p." [ref=f5e218]
+    - text: (2.4)
+  - paragraph [ref=f5e219]:
+    - text: This is a
+    - emphasis [ref=f5e220]: linear model
+    - text: ", which will be discussed extensively in Chapter"
+    - link "3" [ref=f5e221] [cursor=pointer]:
+      - /url: ch04.xhtml#b0
+    - text: . Once we have assumed that f is linear, the problem of estimating f is greatly simplified. Instead of having to estimate an entirely arbitrary p-dimensional function f(X), one only needs to estimate the p + 1 coefficients β
+    - subscript [ref=f5e222]: "0"
+    - text: ", β"
+    - subscript [ref=f5e223]: "1"
+    - text: ", . . . , β"
+    - subscript [ref=f5e224]: p
+    - text: .
+  - generic [ref=f5e225]:
+    - img "figure 2.4" [ref=f5e226]
+    - paragraph [ref=f5e227]:
+      - text: FIGURE 2.4.
+      - emphasis [ref=f5e228]: A linear model fit by least squares to the
+      - code [ref=f5e229]: Income
+      - emphasis [ref=f5e230]: data from Figure
+      - link [ref=f5e231] [cursor=pointer]:
+        - /url: ch03.xhtml#b21
+        - emphasis [ref=f5e232]: "2.3"
+      - emphasis [ref=f5e233]: . The observations are shown in red, and the yellow plane indicates the least squares fit to the data.
+  - paragraph [ref=f5e234]:
+    - text: 2. After a model has been selected, we need a procedure that uses the training data to
+    - emphasis [ref=f5e235]: fit
+    - text: or
+    - emphasis [ref=f5e236]: train
+    - text: the model. In the case of the linear model (
+    - link "2.4" [ref=f5e237] [cursor=pointer]:
+      - /url: ch03.xhtml#b39
+    - text: ), we need to estimate the parameters β
+    - subscript [ref=f5e238]: "0"
+    - text: ", β"
+    - subscript [ref=f5e239]: "1"
+    - text: ", . . . , β"
+    - subscript [ref=f5e240]: p
+    - text: . That is, we want to find values of these parameters such that
+  - paragraph [ref=f5e241]: fit train
+  - img "Y \\approx \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p." [ref=f5e243]
+  - paragraph [ref=f5e244]:
+    - text: The most common approach to fitting the model (
+    - link "2.4" [ref=f5e245] [cursor=pointer]:
+      - /url: ch03.xhtml#b39
+    - text: ) is referred to as
+    - emphasis [ref=f5e246]: (ordinary) least squares
+    - text: ", which we discuss in Chapter"
+    - link "3" [ref=f5e247] [cursor=pointer]:
+      - /url: ch04.xhtml#b0
+    - text: . However, least squares is one of many possible ways to fit the linear model. In Chapter
+    - link "6" [ref=f5e248] [cursor=pointer]:
+      - /url: ch07.xhtml#b0
+    - text: ", we discuss other approaches for estimating the parameters in ("
+    - link "2.4" [ref=f5e249] [cursor=pointer]:
+      - /url: ch03.xhtml#b39
+    - text: ).
+  - paragraph [ref=f5e250]: least squares
+  - paragraph [ref=f5e251]:
+    - text: The model-based approach just described is referred to as
+    - emphasis [ref=f5e252]: parametric
+    - text: ; it reduces the problem of estimating f down to one of estimating a set of parameters. Assuming a parametric form for f simplifies the problem of estimating f because it is generally much easier to estimate a set of parameters, such as β
+    - subscript [ref=f5e253]: "0"
+    - text: ", β"
+    - subscript [ref=f5e254]: "1"
+    - text: ", . . . , β"
+    - subscript [ref=f5e255]: p
+    - text: in the linear model (
+    - link "2.4" [ref=f5e256] [cursor=pointer]:
+      - /url: ch03.xhtml#b39
+    - text: ), than it is to fit an entirely arbitrary function f. The potential disadvantage of a parametric approach is that the model we choose will usually not match the true unknown form of f. If the chosen model is too far from the true f, then our estimate will be poor. We can try to address this problem by choosing
+    - emphasis [ref=f5e257]: flexible
+    - text: models that can fit many different possible functional forms for f. But in general, fitting a more flexible model requires estimating a greater number of parameters. These more complex models can lead to a phenomenon known as
+    - emphasis [ref=f5e258]: overfitting
+    - text: the data, which essentially means they follow the errors, or
+    - emphasis [ref=f5e259]: noise
+    - text: ", too closely. These issues are discussed throughout this book."
+  - paragraph [ref=f5e260]: flexible · overfitting noise
+  - paragraph [ref=f5e261]:
+    - text: Figure
+    - link "2.4" [ref=f5e262] [cursor=pointer]:
+      - /url: ch03.xhtml#b42
+    - text: shows an example of the parametric approach applied to the
+    - code [ref=f5e263]: Income
+    - text: data from Figure
+    - link "2.3" [ref=f5e264] [cursor=pointer]:
+      - /url: ch03.xhtml#b21
+    - text: . We have fit a linear model of the form
+  - 'img "\\texttt{income} \\approx \\beta_0 + \\beta_1 \\times \\texttt{education} + \\beta_2 \\times \\texttt{seniority}." [ref=f5e266]'
+  - generic [ref=f5e267]:
+    - img "figure 2.5" [ref=f5e268]
+    - paragraph [ref=f5e269]:
+      - text: FIGURE 2.5.
+      - emphasis [ref=f5e270]: A smooth thin-plate spline fit to the
+      - code [ref=f5e271]: Income
+      - emphasis [ref=f5e272]: data from Figure
+      - link [ref=f5e273] [cursor=pointer]:
+        - /url: ch03.xhtml#b21
+        - emphasis [ref=f5e274]: "2.3"
+      - emphasis [ref=f5e275]: is shown in yellow; the observations are displayed in red. Splines are discussed in Chapter
+      - link [ref=f5e276] [cursor=pointer]:
+        - /url: ch08.xhtml#b0
+        - emphasis [ref=f5e277]: "7"
+      - emphasis [ref=f5e278]: .
+  - paragraph [ref=f5e279]:
+    - text: Since we have assumed a linear relationship between the response and the two predictors, the entire fitting problem reduces to estimating β
+    - subscript [ref=f5e280]: "0"
+    - text: ", β"
+    - subscript [ref=f5e281]: "1"
+    - text: ", and β"
+    - subscript [ref=f5e282]: "2"
+    - text: ", which we do using least squares linear regression. Comparing Figure"
+    - link "2.3" [ref=f5e283] [cursor=pointer]:
+      - /url: ch03.xhtml#b21
+    - text: to Figure
+    - link "2.4" [ref=f5e284] [cursor=pointer]:
+      - /url: ch03.xhtml#b42
+    - text: ", we can see that the linear fit given in Figure"
+    - link "2.4" [ref=f5e285] [cursor=pointer]:
+      - /url: ch03.xhtml#b42
+    - text: "is not quite right: the true f has some curvature that is not captured in the linear fit. However, the linear fit still appears to do a reasonable job of capturing the positive relationship between"
+    - code [ref=f5e286]: years of education
+    - text: and
+    - code [ref=f5e287]: income
+    - text: ", as well as the slightly less positive relationship between"
+    - code [ref=f5e288]: seniority
+    - text: and
+    - code [ref=f5e289]: income
+    - text: . It may be that with such a small number of observations, this is the best we can do.
+  - heading "Non-Parametric Methods" [level=4] [ref=f5e290]
+  - paragraph [ref=f5e291]: "Non-parametric methods do not make explicit assumptions about the functional form of f. Instead they seek an estimate of f that gets as close to the data points as possible without being too rough or wiggly. Such approaches can have a major advantage over parametric approaches: by avoiding the assumption of a particular functional form for f, they have the potential to accurately fit a wider range of possible shapes for f. Any parametric approach brings with it the possibility that the functional form used to estimate f is very different from the true f, in which case the resulting model will not fit the data well. In contrast, non-parametric approaches completely avoid this danger, since essentially no assumption about the form of f is made. But non-parametric approaches do suffer from a major disadvantage: since they do not reduce the problem of estimating f to a small number of parameters, a very large number of observations (far more than is typically needed for a parametric approach) is required in order to obtain an accurate estimate for f."
+  - paragraph [ref=f5e292]:
+    - text: An example of a non-parametric approach to fitting the
+    - code [ref=f5e293]: Income
+    - text: data is shown in Figure
+    - link "2.5" [ref=f5e294] [cursor=pointer]:
+      - /url: ch03.xhtml#b49
+    - text: . A
+    - emphasis [ref=f5e295]: thin-plate spline
+    - text: is used to estimate f. This approach does not impose any pre-specified model on f. It instead attempts
+  - paragraph [ref=f5e296]: thin-plate spline
+  - generic [ref=f5e297]:
+    - img "figure 2.6" [ref=f5e298]
+    - paragraph [ref=f5e299]:
+      - text: FIGURE 2.6.
+      - emphasis [ref=f5e300]: A rough thin-plate spline fit to the
+      - code [ref=f5e301]: Income
+      - emphasis [ref=f5e302]: data from Figure
+      - link [ref=f5e303] [cursor=pointer]:
+        - /url: ch03.xhtml#b21
+        - emphasis [ref=f5e304]: "2.3"
+      - emphasis [ref=f5e305]: . This fit makes zero errors on the training data.
+  - paragraph [ref=f5e306]:
+    - text: to produce an estimate for f that is as close as possible to the observed data, subject to the fit—that is, the yellow surface in Figure
+    - link "2.5" [ref=f5e307] [cursor=pointer]:
+      - /url: ch03.xhtml#b49
+    - text: —being
+    - emphasis [ref=f5e308]: smooth
+    - text: . In this case, the non-parametric fit has produced a remarkably accurate estimate of the true f shown in Figure
+    - link "2.3" [ref=f5e309] [cursor=pointer]:
+      - /url: ch03.xhtml#b21
+    - text: . In order to fit a thin-plate spline, the data analyst must select a level of smoothness. Figure
+    - link "2.6" [ref=f5e310] [cursor=pointer]:
+      - /url: ch03.xhtml#b54
+    - text: shows the same thin-plate spline fit using a lower level of smoothness, allowing for a rougher fit. The resulting estimate fits the observed data perfectly! However, the spline fit shown in Figure
+    - link "2.6" [ref=f5e311] [cursor=pointer]:
+      - /url: ch03.xhtml#b54
+    - text: is far more variable than the true function f, from Figure
+    - link "2.3" [ref=f5e312] [cursor=pointer]:
+      - /url: ch03.xhtml#b21
+    - text: . This is an example of overfitting the data, which we discussed previously. It is an undesirable situation because the fit obtained will not yield accurate estimates of the response on new observations that were not part of the original training data set. We discuss methods for choosing the
+    - emphasis [ref=f5e313]: correct
+    - text: amount of smoothness in Chapter
+    - link "5" [ref=f5e314] [cursor=pointer]:
+      - /url: ch06.xhtml#b0
+    - text: . Splines are discussed in Chapter
+    - link "7" [ref=f5e315] [cursor=pointer]:
+      - /url: ch08.xhtml#b0
+    - text: .
+  - paragraph [ref=f5e316]: As we have seen, there are advantages and disadvantages to parametric and non-parametric methods for statistical learning. We explore both types of methods throughout this book.
+  - heading "2.1.3 The Trade-Off Between Prediction Accuracy and Model Interpretability" [level=3] [ref=f5e317]
+  - paragraph [ref=f5e318]:
+    - text: Of the many methods that we examine in this book, some are less flexible, or more restrictive, in the sense that they can produce just a relatively small range of shapes to estimate f. For example, linear regression is a relatively inflexible approach, because it can only generate linear functions such as the lines shown in Figure
+    - link "2.1" [ref=f5e319] [cursor=pointer]:
+      - /url: ch03.xhtml#b6
+    - text: or the plane shown in Figure
+    - link "2.4" [ref=f5e320] [cursor=pointer]:
+      - /url: ch03.xhtml#b42
+    - text: . Other methods, such as the thin plate splines shown in Figures
+    - link "2.5" [ref=f5e321] [cursor=pointer]:
+      - /url: ch03.xhtml#b49
+    - text: and
+    - link "2.6" [ref=f5e322] [cursor=pointer]:
+      - /url: ch03.xhtml#b54
+    - text: ", are considerably more flexible because they can generate a much wider range of possible shapes to estimate f."
+  - generic [ref=f5e323]:
+    - img "figure 2.7" [ref=f5e324]
+    - paragraph [ref=f5e325]:
+      - text: FIGURE 2.7.
+      - emphasis [ref=f5e326]: A representation of the tradeoff between flexibility and inter- pretability, using different statistical learning methods. In general, as the flexibility of a method increases, its interpretability decreases.
+  - paragraph [ref=f5e327]:
+    - text: "One might reasonably ask the following question:"
+    - emphasis [ref=f5e328]: why would we ever choose to use a more restrictive method instead of a very flexible approach?
+    - text: There are several reasons that we might prefer a more restrictive model. If we are mainly interested in inference, then restrictive models are much more interpretable. For instance, when inference is the goal, the linear model may be a good choice since it will be quite easy to understand the relationship between Y and X
+    - subscript [ref=f5e329]: "1"
+    - text: ", X"
+    - subscript [ref=f5e330]: "2"
+    - text: ", . . . , X"
+    - subscript [ref=f5e331]: p
+    - text: . In contrast, very flexible approaches, such as the splines discussed in Chapter
+    - link "7" [ref=f5e332] [cursor=pointer]:
+      - /url: ch08.xhtml#b0
+    - text: and displayed in Figures
+    - link "2.5" [ref=f5e333] [cursor=pointer]:
+      - /url: ch03.xhtml#b49
+    - text: and
+    - link "2.6" [ref=f5e334] [cursor=pointer]:
+      - /url: ch03.xhtml#b54
+    - text: ", and the boosting methods discussed in Chapter"
+    - link "8" [ref=f5e335] [cursor=pointer]:
+      - /url: ch09.xhtml#b0
+    - text: ", can lead to such complicated estimates of f that it is difficult to understand how any individual predictor is associated with the response."
+  - paragraph [ref=f5e336]:
+    - text: Figure
+    - link "2.7" [ref=f5e337] [cursor=pointer]:
+      - /url: ch03.xhtml#b59
+    - text: provides an illustration of the trade-off between flexibility and interpretability for some of the methods that we cover in this book. Least squares linear regression, discussed in Chapter
+    - link "3" [ref=f5e338] [cursor=pointer]:
+      - /url: ch04.xhtml#b0
+    - text: ", is relatively inflexible but is quite interpretable. The"
+    - emphasis [ref=f5e339]: lasso
+    - text: ", discussed in Chapter"
+    - link "6" [ref=f5e340] [cursor=pointer]:
+      - /url: ch07.xhtml#b0
+    - text: ", relies upon the linear model ("
+    - link "2.4" [ref=f5e341] [cursor=pointer]:
+      - /url: ch03.xhtml#b39
+    - text: ) but uses an alternative fitting procedure for estimating the coefficients β
+    - subscript [ref=f5e342]: "0"
+    - text: ", β"
+    - subscript [ref=f5e343]: "1"
+    - text: ", . . . , β"
+    - subscript [ref=f5e344]: p
+    - text: . The new procedure is more restrictive in estimating the coefficients, and sets a number of them to exactly zero. Hence in this sense the lasso is a less flexible approach than linear regression. It is also more interpretable than linear regression, because in the final model the response variable will only be related to a small subset of the predictors—namely, those with nonzero coefficient estimates.
+    - emphasis [ref=f5e345]: Generalized additive models
+    - text: (GAMs), discussed in Chapter
+    - link "7" [ref=f5e346] [cursor=pointer]:
+      - /url: ch08.xhtml#b0
+    - text: ", instead extend the linear model ("
+    - link "2.4" [ref=f5e347] [cursor=pointer]:
+      - /url: ch03.xhtml#b39
+    - text: ) to allow for certain non-linear relationships. Consequently, GAMs are more flexible than linear regression. They are also somewhat less interpretable than linear regression, because the relationship between each predictor and the response is now modeled using a curve. Finally, fully non-linear methods such as
+    - emphasis [ref=f5e348]: bagging
+    - text: ","
+    - emphasis [ref=f5e349]: boosting
+    - text: ","
+    - emphasis [ref=f5e350]: support vector machines
+    - text: with non-linear kernels, and
+    - emphasis [ref=f5e351]: neural networks
+    - text: (deep learning), discussed in Chapters
+    - link "8" [ref=f5e352] [cursor=pointer]:
+      - /url: ch09.xhtml#b0
+    - text: ","
+    - link "9" [ref=f5e353] [cursor=pointer]:
+      - /url: ch10.xhtml#b0
+    - text: ", and"
+    - link "10" [ref=f5e354] [cursor=pointer]:
+      - /url: ch11.xhtml#b0
+    - text: ", are highly flexible approaches that are harder to interpret."
+  - paragraph [ref=f5e355]: lasso · generalized additive model · bagging · boosting support vector
+  - paragraph [ref=f5e356]:
+    - text: We have established that when inference is the goal, there are clear advantages to using simple and relatively inflexible statistical learning methods. In some settings, however, we are only interested in prediction, and the interpretability of the predictive model is simply not of interest. For instance, if we seek to develop an algorithm to predict the price of a stock, our sole requirement for the algorithm is that it predict accurately— interpretability is not a concern. In this setting, we might expect that it will be best to use the most flexible model available. Surprisingly, this is not always the case! We will often obtain more accurate predictions using a less flexible method. This phenomenon, which may seem counterintuitive at first glance, has to do with the potential for overfitting in highly flexible methods. We saw an example of overfitting in Figure
+    - link "2.6" [ref=f5e357] [cursor=pointer]:
+      - /url: ch03.xhtml#b54
+    - text: . We will discuss this very important concept further in Section
+    - link "2.2" [ref=f5e358] [cursor=pointer]:
+      - /url: ch03.xhtml#b74
+    - text: and throughout this book.
+  - heading "2.1.4 Supervised Versus Unsupervised Learning" [level=3] [ref=f5e359]
+  - paragraph [ref=f5e360]:
+    - text: "Most statistical learning problems fall into one of two categories:"
+    - emphasis [ref=f5e361]: supervised
+    - text: or
+    - emphasis [ref=f5e362]: unsupervised
+    - text: . The examples that we have discussed so far in this chapter all fall into the supervised learning domain. For each observation of the predictor measurement(s) x
+    - subscript [ref=f5e363]: i
+    - text: ", i = 1, . . . , n there is an associated response measurement y"
+    - subscript [ref=f5e364]: i
+    - text: . We wish to fit a model that relates the response to the predictors, with the aim of accurately predicting the response for future observations (prediction) or better understanding the relationship between the response and the predictors (inference). Many classical statistical learning methods such as linear regression and
+    - emphasis [ref=f5e365]: logistic regression
+    - text: (Chapter
+    - link "4" [ref=f5e366] [cursor=pointer]:
+      - /url: ch05.xhtml#b0
+    - text: ), as well as more modern approaches such as GAM, boosting, and support vector machines, operate in the supervised learning domain. The vast majority of this book is devoted to this setting.
+  - paragraph [ref=f5e367]: supervised unsupervised · logistic regression
+  - paragraph [ref=f5e368]:
+    - text: By contrast, unsupervised learning describes the somewhat more challenging situation in which for every observation i = 1, . . . , n, we observe a vector of measurements x
+    - subscript [ref=f5e369]: i
+    - text: but no associated response y
+    - subscript [ref=f5e370]: i
+    - text: . It is not possible to fit a linear regression model, since there is no response variable to predict. In this setting, we are in some sense working blind; the situation is referred to as
+    - emphasis [ref=f5e371]: unsupervised
+    - text: because we lack a response variable that can supervise our analysis. What sort of statistical analysis is possible? We can seek to understand the relationships between the variables or between the observations. One statistical learning tool that we may use in this setting is
+    - emphasis [ref=f5e372]: cluster analysis
+    - text: ", or clustering. The goal of cluster analysis is to ascertain, on the basis of x"
+    - subscript [ref=f5e373]: "1"
+    - text: ", . . . , x"
+    - subscript [ref=f5e374]: "n"
+    - text: ", whether the observations fall into relatively distinct groups. For example, in a market segmentation study we might observe multiple characteristics (variables) for potential customers, such as zip code, family income, and shopping habits. We might believe that the customers fall into different groups, such as big spenders versus low spenders. If the information about each customer’s spending patterns were available, then a supervised analysis would be possible. However, this information is not available—that is, we do not know whether each potential customer is a big spender or not. In this setting, we can try to cluster the customers on the basis of the variables measured, in order to identify"
+  - paragraph [ref=f5e375]: cluster analysis
+  - generic [ref=f5e376]:
+    - img "figure 2.8" [ref=f5e377]
+    - paragraph [ref=f5e378]:
+      - text: FIGURE 2.8.
+      - emphasis [ref=f5e379]: A clustering data set involving three groups. Each group is shown using a different colored symbol.
+      - text: "Left:"
+      - emphasis [ref=f5e380]: The three groups are well-separated. In this setting, a clustering approach should successfully identify the three groups.
+      - text: "Right:"
+      - emphasis [ref=f5e381]: There is some overlap among the groups. Now the clustering task is more challenging.
+  - paragraph [ref=f5e382]: distinct groups of potential customers. Identifying such groups can be of interest because it might be that the groups differ with respect to some property of interest, such as spending habits.
+  - paragraph [ref=f5e383]:
+    - text: Figure
+    - link "2.8" [ref=f5e384] [cursor=pointer]:
+      - /url: ch03.xhtml#b66
+    - text: provides a simple illustration of the clustering problem. We have plotted 150 observations with measurements on two variables, X
+    - subscript [ref=f5e385]: "1"
+    - text: and X
+    - subscript [ref=f5e386]: "2"
+    - text: . Each observation corresponds to one of three distinct groups. For illustrative purposes, we have plotted the members of each group using different colors and symbols. However, in practice the group memberships are unknown, and the goal is to determine the group to which each observation belongs. In the left-hand panel of Figure
+    - link "2.8" [ref=f5e387] [cursor=pointer]:
+      - /url: ch03.xhtml#b66
+    - text: ", this is a relatively easy task because the groups are well-separated. By contrast, the right-hand panel illustrates a more challenging setting in which there is some overlap between the groups. A clustering method could not be expected to assign all of the overlapping points to their correct group (blue, green, or orange)."
+  - paragraph [ref=f5e388]:
+    - text: In the examples shown in Figure
+    - link "2.8" [ref=f5e389] [cursor=pointer]:
+      - /url: ch03.xhtml#b66
+    - text: ", there are only two variables, and so one can simply visually inspect the scatterplots of the observations in order to identify clusters. However, in practice, we often encounter data sets that contain many more than two variables. In this case, we cannot easily plot the observations. For instance, if there are p variables in our data set, then p(p − 1)/2 distinct scatterplots can be made, and visual inspection is simply not a viable way to identify clusters. For this reason, automated clustering methods are important. We discuss clustering and other unsupervised learning approaches in Chapter"
+    - link "12" [ref=f5e390] [cursor=pointer]:
+      - /url: ch13.xhtml#b0
+    - text: .
+  - paragraph [ref=f5e391]:
+    - text: Many problems fall naturally into the supervised or unsupervised learning paradigms. However, sometimes the question of whether an analysis should be considered supervised or unsupervised is less clear-cut. For instance, suppose that we have a set of n observations. For m of the observations, where m < n, we have both predictor measurements and a response measurement. For the remaining n − m observations, we have predictor measurements but no response measurement. Such a scenario can arise if the predictors can be measured relatively cheaply but the corresponding responses are much more expensive to collect. We refer to this setting as a
+    - emphasis [ref=f5e392]: semi-supervised learning
+    - text: problem. In this setting, we wish to use a statistical learning method that can incorporate the m observations for which response measurements are available as well as the n − m observations for which they are not. Although this is an interesting topic, it is beyond the scope of this book.
+  - paragraph [ref=f5e393]: semisupervised learning
+  - heading "2.1.5 Regression Versus Classification Problems" [level=3] [ref=f5e394]
+  - paragraph [ref=f5e395]:
+    - text: Variables can be characterized as either
+    - emphasis [ref=f5e396]: quantitative
+    - text: or
+    - emphasis [ref=f5e397]: qualitative
+    - text: (also known as
+    - emphasis [ref=f5e398]: categorical
+    - text: ). Quantitative variables take on numerical values. Examples include a person’s age, height, or income, the value of a house, and the price of a stock. In contrast, qualitative variables take on values in one of K different
+    - emphasis [ref=f5e399]: classes
+    - text: ", or categories. Examples of qualitative variables include a person’s marital status (married or not), the brand of product purchased (brand A, B, or C), whether a person defaults on a debt (yes or no), or a cancer diagnosis (Acute Myelogenous Leukemia, Acute Lymphoblastic Leukemia, or No Leukemia). We tend to refer to problems with a quantitative response as"
+    - emphasis [ref=f5e400]: regression
+    - text: problems, while those involving a qualitative response are often referred to as
+    - emphasis [ref=f5e401]: classification
+    - text: problems. However, the distinction is not always that crisp. Least squares linear regression (Chapter
+    - link "3" [ref=f5e402] [cursor=pointer]:
+      - /url: ch04.xhtml#b0
+    - text: ) is used with a quantitative response, whereas logistic regression (Chapter
+    - link "4" [ref=f5e403] [cursor=pointer]:
+      - /url: ch05.xhtml#b0
+    - text: ) is typically used with a qualitative (two-class, or
+    - emphasis [ref=f5e404]: binary
+    - text: ) response. Thus, despite its name, logistic regression is a classification method. But since it estimates class probabilities, it can be thought of as a regression method as well. Some statistical methods, such as K-nearest neighbors (Chapters
+    - link "2" [ref=f5e405] [cursor=pointer]:
+      - /url: ch03.xhtml#b0
+    - text: and
+    - link "4" [ref=f5e406] [cursor=pointer]:
+      - /url: ch05.xhtml#b0
+    - text: ) and boosting (Chapter
+    - link "8" [ref=f5e407] [cursor=pointer]:
+      - /url: ch09.xhtml#b0
+    - text: ), can be used in the case of either quantitative or qualitative responses.
+  - paragraph [ref=f5e408]: quantitative · qualitative categorical · class · regression classification · binary
+  - paragraph [ref=f5e409]:
+    - text: We tend to select statistical learning methods on the basis of whether the response is quantitative or qualitative; i.e. we might use linear regression when quantitative and logistic regression when qualitative. However, whether the
+    - emphasis [ref=f5e410]: predictors
+    - text: are qualitative or quantitative is generally considered less important. Most of the statistical learning methods discussed in this book can be applied regardless of the predictor variable type, provided that any qualitative predictors are properly
+    - emphasis [ref=f5e411]: coded
+    - text: before the analysis is performed. This is discussed in Chapter
+    - link "3" [ref=f5e412] [cursor=pointer]:
+      - /url: ch04.xhtml#b0
+    - text: .
+  - heading "2.2 Assessing Model Accuracy" [level=2] [ref=f5e413]
+  - paragraph [ref=f5e414]:
+    - text: One of the key aims of this book is to introduce the reader to a wide range of statistical learning methods that extend far beyond the standard linear regression approach. Why is it necessary to introduce so many different statistical learning approaches, rather than just a single
+    - emphasis [ref=f5e415]: best
+    - text: method?
+    - emphasis [ref=f5e416]: "There is no free lunch in statistics:"
+    - text: no one method dominates all others over all possible data sets. On a particular data set, one specific method may work best, but some other method may work better on a similar but different data set. Hence it is an important task to decide for any given set of data which method produces the best results. Selecting the best approach can be one of the most challenging parts of performing statistical learning in practice.
+  - paragraph [ref=f5e417]: In this section, we discuss some of the most important concepts that arise in selecting a statistical learning procedure for a specific data set. As the book progresses, we will explain how the concepts presented here can be applied in practice.
+  - heading "2.2.1 Measuring the Quality of Fit" [level=3] [ref=f5e418]
+  - paragraph [ref=f5e419]:
+    - text: In order to evaluate the performance of a statistical learning method on a given data set, we need some way to measure how well its predictions actually match the observed data. That is, we need to quantify the extent to which the predicted response value for a given observation is close to the true response value for that observation. In the regression setting, the most commonly-used measure is the
+    - emphasis [ref=f5e420]: mean squared error
+    - text: (MSE), given by
+  - paragraph [ref=f5e421]: mean squared error
+  - generic [ref=f5e422]:
+    - 'img "\\mathrm{MSE} = \\frac{1}{n}\\sum_{i=1}^{n}(y_i - \\hat{f}(x_i))^2," [ref=f5e423]'
+    - text: (2.5)
+  - paragraph [ref=f5e424]:
+    - text: where
+    - 'img "\\hat{f}(x_{i})" [ref=f5e425]'
+    - text: is the prediction that
+    - 'img "\\hat{f}" [ref=f5e426]'
+    - text: gives for the ith observation. The MSE will be small if the predicted responses are very close to the true responses, and will be large if for some of the observations, the predicted and true responses differ substantially.
+  - paragraph [ref=f5e427]:
+    - text: The MSE in (
+    - link "2.5" [ref=f5e428] [cursor=pointer]:
+      - /url: ch03.xhtml#b79
+    - text: ) is computed using the training data that was used to fit the model, and so should more accurately be referred to as the
+    - emphasis [ref=f5e429]: training MSE
+    - text: . But in general, we do not really care how well the method works on the training data. Rather,
+    - emphasis [ref=f5e430]: we are interested in the accuracy of the predictions that we obtain when we apply our method to previously unseen test data
+    - text: . Why is this what we care about? Suppose that we are interested in developing an algorithm to predict a stock’s price based on previous stock returns. We can train the method using stock returns from the past 6 months. But we don’t really care how well our method predicts last week’s stock price. We instead care about how well it will predict tomorrow’s price or next month’s price. On a similar note, suppose that we have clinical measurements (e.g. weight, blood pressure, height, age, family history of disease) for a number of patients, as well as information about whether each patient has diabetes. We can use these patients to train a statistical learning method to predict risk of diabetes based on clinical measurements. In practice, we want this method to accurately predict diabetes risk for
+    - emphasis [ref=f5e431]: future patients
+    - text: based on their clinical measurements. We are not very interested in whether or not the method accurately predicts diabetes risk for patients used to train the model, since we already know which of those patients have diabetes.
+  - paragraph [ref=f5e432]: training MSE · test data
+  - paragraph [ref=f5e433]:
+    - text: "To state it more mathematically, suppose that we fit our statistical learning method on our training observations {(x"
+    - subscript [ref=f5e434]: "1"
+    - text: ", y"
+    - subscript [ref=f5e435]: "1"
+    - text: ), (x
+    - subscript [ref=f5e436]: "2"
+    - text: ", y"
+    - subscript [ref=f5e437]: "2"
+    - text: ), . . . , (x
+    - subscript [ref=f5e438]: "n"
+    - text: ", y"
+    - subscript [ref=f5e439]: "n"
+    - text: ")}, and we obtain the estimate"
+    - 'img "\\hat{f}" [ref=f5e440]'
+    - text: . We can then compute
+    - 'img "\\hat{f}(x_{1}), \\hat{f}(x_{2}), . . . , \\hat{f}(x_{n})" [ref=f5e441]'
+    - text: .
+  - generic [ref=f5e442]:
+    - img "figure 2.9" [ref=f5e443]
+    - paragraph [ref=f5e444]:
+      - text: "FIGURE 2.9. Left:"
+      - emphasis [ref=f5e445]: Data simulated from
+      - text: f
+      - emphasis [ref=f5e446]: ", shown in black. Three estimates of"
+      - text: f
+      - emphasis [ref=f5e447]: "are shown: the linear regression line (orange curve), and two smoothing spline fits (blue and green curves)."
+      - text: "Right:"
+      - emphasis [ref=f5e448]: Training MSE (grey curve), test MSE (red curve), and minimum possible test MSE over all methods (dashed line). Squares represent the training and test MSEs for the three fits shown in the left-hand panel.
+  - paragraph [ref=f5e449]:
+    - text: If these are approximately equal to y
+    - subscript [ref=f5e450]: "1"
+    - text: ", y"
+    - subscript [ref=f5e451]: "2"
+    - text: ", . . . , y"
+    - subscript [ref=f5e452]: "n"
+    - text: ", then the training MSE given by ("
+    - link "2.5" [ref=f5e453] [cursor=pointer]:
+      - /url: ch03.xhtml#b79
+    - text: ) is small. However, we are really not interested in whether
+    - 'img "\\hat{f}(x_{i}) \\approx y_{i}" [ref=f5e454]'
+    - text: ; instead, we want to know whether
+    - 'img "\\hat{f}(x_{0})" [ref=f5e455]'
+    - text: is approximately equal to y
+    - subscript [ref=f5e456]: "0"
+    - text: ", where (x"
+    - subscript [ref=f5e457]: "0"
+    - text: ", y"
+    - subscript [ref=f5e458]: "0"
+    - text: ) is a
+    - emphasis [ref=f5e459]: previously unseen test observation not used to train the statistical learning method
+    - text: . We want to choose the method that gives the lowest
+    - emphasis [ref=f5e460]: test MSE
+    - text: ", as opposed to the lowest training MSE. In other words, if we had a large number of test observations, we could compute"
+  - paragraph [ref=f5e461]: test MSE
+  - generic [ref=f5e462]:
+    - 'img "\\mathrm{Ave}(y_0 - \\hat{f}(x_0))^2," [ref=f5e463]'
+    - text: (2.6)
+  - paragraph [ref=f5e464]:
+    - text: the average squared prediction error for these test observations (x
+    - subscript [ref=f5e465]: "0"
+    - text: ", y"
+    - subscript [ref=f5e466]: "0"
+    - text: ). We’d like to select the model for which this quantity is as small as possible.
+  - paragraph [ref=f5e467]:
+    - text: How can we go about trying to select a method that minimizes the test MSE? In some settings, we may have a test data set available—that is, we may have access to a set of observations that were not used to train the statistical learning method. We can then simply evaluate (
+    - link "2.6" [ref=f5e468] [cursor=pointer]:
+      - /url: ch03.xhtml#b85
+    - text: ) on the test observations, and select the learning method for which the test MSE is smallest. But what if no test observations are available? In that case, one might imagine simply selecting a statistical learning method that minimizes the training MSE (
+    - link "2.5" [ref=f5e469] [cursor=pointer]:
+      - /url: ch03.xhtml#b79
+    - text: "). This seems like it might be a sensible approach, since the training MSE and the test MSE appear to be closely related. Unfortunately, there is a fundamental problem with this strategy: there is no guarantee that the method with the lowest training MSE will also have the lowest test MSE. Roughly speaking, the problem is that many statistical methods specifically estimate coefficients so as to minimize the training set MSE. For these methods, the training set MSE can be quite small, but the test MSE is often much larger."
+  - paragraph [ref=f5e470]:
+    - text: Figure
+    - link "2.9" [ref=f5e471] [cursor=pointer]:
+      - /url: ch03.xhtml#b83
+    - text: illustrates this phenomenon on a simple example. In the lefthand panel of Figure
+    - link "2.9" [ref=f5e472] [cursor=pointer]:
+      - /url: ch03.xhtml#b83
+    - text: ", we have generated observations from ("
+    - link "2.1" [ref=f5e473] [cursor=pointer]:
+      - /url: ch03.xhtml#b5
+    - text: ) with the true f given by the black curve. The orange, blue and green curves illustrate three possible estimates for f obtained using methods with increasing levels of flexibility. The orange line is the linear regression fit, which is relatively inflexible. The blue and green curves were produced using
+    - emphasis [ref=f5e474]: smoothing splines
+    - text: ", discussed in Chapter"
+    - link "7" [ref=f5e475] [cursor=pointer]:
+      - /url: ch08.xhtml#b0
+    - text: ", with different levels of smoothness. It is clear that as the level of flexibility increases, the curves fit the observed data more closely. The green curve is the most flexible and matches the data very well; however, we observe that it fits the true f (shown in black) poorly because it is too wiggly. By adjusting the level of flexibility of the smoothing spline fit, we can produce many different fits to this data."
+  - paragraph [ref=f5e476]: smoothing spline
+  - paragraph [ref=f5e477]:
+    - text: We now move on to the right-hand panel of Figure
+    - link "2.9" [ref=f5e478] [cursor=pointer]:
+      - /url: ch03.xhtml#b83
+    - text: . The grey curve displays the average training MSE as a function of flexibility, or more formally the
+    - emphasis [ref=f5e479]: degrees of freedom
+    - text: ", for a number of smoothing splines. The degrees of freedom is a quantity that summarizes the flexibility of a curve; it is discussed more fully in Chapter"
+    - link "7" [ref=f5e480] [cursor=pointer]:
+      - /url: ch08.xhtml#b0
+    - text: . The orange, blue and green squares indicate the MSEs associated with the corresponding curves in the lefthand panel. A more restricted and hence smoother curve has fewer degrees of freedom than a wiggly curve—note that in Figure
+    - link "2.9" [ref=f5e481] [cursor=pointer]:
+      - /url: ch03.xhtml#b83
+    - text: ", linear regression is at the most restrictive end, with two degrees of freedom. The training MSE declines monotonically as flexibility increases. In this example the true f is non-linear, and so the orange linear fit is not flexible enough to estimate f well. The green curve has the lowest training MSE of all three methods, since it corresponds to the most flexible of the three curves fit in the left-hand panel."
+  - paragraph [ref=f5e482]: degrees of freedom
+  - paragraph [ref=f5e483]:
+    - text: In this example, we know the true function f, and so we can also compute the test MSE over a very large test set, as a function of flexibility. (Of course, in general f is unknown, so this will not be possible.) The test MSE is displayed using the red curve in the right-hand panel of Figure
+    - link "2.9" [ref=f5e484] [cursor=pointer]:
+      - /url: ch03.xhtml#b83
+    - text: . As with the training MSE, the test MSE initially declines as the level of flexibility increases. However, at some point the test MSE levels off and then starts to increase again. Consequently, the orange and green curves both have high test MSE. The blue curve minimizes the test MSE, which should not be surprising given that visually it appears to estimate f the best in the left-hand panel of Figure
+    - link "2.9" [ref=f5e485] [cursor=pointer]:
+      - /url: ch03.xhtml#b83
+    - text: . The horizontal dashed line indicates Var(ϵ), the irreducible error in (
+    - link "2.3" [ref=f5e486] [cursor=pointer]:
+      - /url: ch03.xhtml#b24
+    - text: ), which corresponds to the lowest achievable test MSE among all possible methods. Hence, the smoothing spline represented by the blue curve is close to optimal.
+  - paragraph [ref=f5e487]:
+    - text: In the right-hand panel of Figure
+    - link "2.9" [ref=f5e488] [cursor=pointer]:
+      - /url: ch03.xhtml#b83
+    - text: ", as the flexibility of the statistical learning method increases, we observe a monotone decrease in the training MSE and a"
+    - emphasis [ref=f5e489]: U-shape
+    - text: in the test MSE. This is a fundamental property of statistical learning that holds regardless of the particular data set at hand and regardless of the statistical method being used. As model flexibility increases, the training MSE will decrease, but the test MSE may not. When a given method yields a small training MSE but a large test MSE, we are said to be
+    - emphasis [ref=f5e490]: overfitting
+    - text: the data. This happens because our statistical learning procedure is working too hard to find patterns in the training data, and may be picking up some patterns that are just caused by random chance rather than by true properties of the unknown function f. When we overfit the training data, the test MSE will be very large because the supposed
+  - generic [ref=f5e491]:
+    - img "figure 2.10" [ref=f5e492]
+    - paragraph [ref=f5e493]:
+      - text: FIGURE 2.10.
+      - emphasis [ref=f5e494]: Details are as in Figure
+      - link [ref=f5e495] [cursor=pointer]:
+        - /url: ch03.xhtml#b83
+        - emphasis [ref=f5e496]: "2.9"
+      - emphasis [ref=f5e497]: ", using a different true"
+      - text: f
+      - emphasis [ref=f5e498]: that is much closer to linear. In this setting, linear regression provides a very good fit to the data.
+  - paragraph [ref=f5e499]: patterns that the method found in the training data simply don’t exist in the test data. Note that regardless of whether or not overfitting has occurred, we almost always expect the training MSE to be smaller than the test MSE because most statistical learning methods either directly or indirectly seek to minimize the training MSE. Overfitting refers specifically to the case in which a less flexible model would have yielded a smaller test MSE.
+  - paragraph [ref=f5e500]:
+    - text: Figure
+    - link "2.10" [ref=f5e501] [cursor=pointer]:
+      - /url: ch03.xhtml#b92
+    - text: provides another example in which the true f is approximately linear. Again we observe that the training MSE decreases monotonically as the model flexibility increases, and that there is a U-shape in the test MSE. However, because the truth is close to linear, the test MSE only decreases slightly before increasing again, so that the orange least squares fit is substantially better than the highly flexible green curve. Finally, Figure
+    - link "2.11" [ref=f5e502] [cursor=pointer]:
+      - /url: ch03.xhtml#b98
+    - text: displays an example in which f is highly non-linear. The training and test MSE curves still exhibit the same general patterns, but now there is a rapid decrease in both curves before the test MSE starts to increase slowly.
+  - paragraph [ref=f5e503]:
+    - text: In practice, one can usually compute the training MSE with relative ease, but estimating the test MSE is considerably more difficult because usually no test data are available. As the previous three examples illustrate, the flexibility level corresponding to the model with the minimal test MSE can vary considerably among data sets. Throughout this book, we discuss a variety of approaches that can be used in practice to estimate this minimum point. One important method is
+    - emphasis [ref=f5e504]: cross-validation
+    - text: (Chapter
+    - link "5" [ref=f5e505] [cursor=pointer]:
+      - /url: ch06.xhtml#b0
+    - text: ), which is a method for estimating the test MSE using the training data.
+  - paragraph [ref=f5e506]: crossvalidation
+  - heading "2.2.2 The Bias-Variance Trade-Off" [level=3] [ref=f5e507]
+  - paragraph [ref=f5e508]:
+    - text: The U-shape observed in the test MSE curves (Figures
+    - link "2.9" [ref=f5e509] [cursor=pointer]:
+      - /url: ch03.xhtml#b83
+    - text: –
+    - link "2.11" [ref=f5e510] [cursor=pointer]:
+      - /url: ch03.xhtml#b98
+    - text: ) turns out to be the result of two competing properties of statistical learning methods.
+  - generic [ref=f5e511]:
+    - img "figure 2.11" [ref=f5e512]
+    - paragraph [ref=f5e513]:
+      - text: FIGURE 2.11.
+      - emphasis [ref=f5e514]: Details are as in Figure
+      - link [ref=f5e515] [cursor=pointer]:
+        - /url: ch03.xhtml#b83
+        - emphasis [ref=f5e516]: "2.9"
+      - emphasis [ref=f5e517]: ", using a different"
+      - text: f
+      - emphasis [ref=f5e518]: that is far from linear. In this setting, linear regression provides a very poor fit to the data.
+  - paragraph [ref=f5e519]:
+    - text: Though the mathematical proof is beyond the scope of this book, it is possible to show that the expected test MSE, for a given value x
+    - subscript [ref=f5e520]: "0"
+    - text: ", can always be decomposed into the sum of three fundamental quantities: the"
+    - emphasis [ref=f5e521]: variance
+    - text: of
+    - 'img "\\hat{f}(x_{0})" [ref=f5e522]'
+    - text: ", the squared"
+    - emphasis [ref=f5e523]: bias
+    - text: of
+    - 'img "\\hat{f}(x_{0})" [ref=f5e524]'
+    - text: and the variance of the error terms ϵ. That is,
+  - paragraph [ref=f5e525]: variance bias
+  - generic [ref=f5e526]:
+    - 'img "\\mathrm{E}\\left(y_0 - \\hat{f}(x_0)\\right)^2 = \\mathrm{Var}(\\hat{f}(x_0)) + [\\mathrm{Bias}(\\hat{f}(x_0))]^2 + \\mathrm{Var}(\\epsilon)." [ref=f5e527]'
+    - text: (2.7)
+  - paragraph [ref=f5e528]:
+    - text: Here the notation
+    - 'img "E y_{0} - \\hat{f}(x_{0})" [ref=f5e529]'
+    - text: defines the
+    - emphasis [ref=f5e530]: expected test MSE
+    - text: at x
+    - subscript [ref=f5e531]: "0"
+    - text: ", and refers to the average test MSE that we would obtain if we repeatedly estimated f using a large number of training sets, and tested each at x"
+    - subscript [ref=f5e532]: "0"
+    - text: . The overall expected test MSE can be computed by averaging
+    - 'img "E y_{0} - \\hat{f}(x_{0})" [ref=f5e533]'
+    - text: over all possible values of x
+    - subscript [ref=f5e534]: "0"
+    - text: in the test set.
+  - paragraph [ref=f5e535]: expected test MSE
+  - paragraph [ref=f5e536]:
+    - text: Equation
+    - link "2.7" [ref=f5e537] [cursor=pointer]:
+      - /url: ch03.xhtml#b100
+    - text: tells us that in order to minimize the expected test error, we need to select a statistical learning method that simultaneously achieves
+    - emphasis [ref=f5e538]: low variance
+    - text: and
+    - emphasis [ref=f5e539]: low bias
+    - text: . Note that variance is inherently a nonnegative quantity, and squared bias is also nonnegative. Hence, we see that the expected test MSE can never lie below Var(ϵ), the irreducible error from (
+    - link "2.3" [ref=f5e540] [cursor=pointer]:
+      - /url: ch03.xhtml#b24
+    - text: ).
+  - paragraph [ref=f5e541]:
+    - text: What do we mean by the
+    - emphasis [ref=f5e542]: variance
+    - text: and
+    - emphasis [ref=f5e543]: bias
+    - text: of a statistical learning method?
+    - emphasis [ref=f5e544]: Variance
+    - text: refers to the amount by which
+    - 'img "\\hat{f}" [ref=f5e545]'
+    - text: would change if we estimated it using a different training data set. Since the training data are used to fit the statistical learning method, different training data sets will result in a different
+    - 'img "\\hat{f}" [ref=f5e546]'
+    - text: . But ideally the estimate for f should not vary too much between training sets. However, if a method has high variance then small changes in the training data can result in large changes in
+    - 'img "\\hat{f}" [ref=f5e547]'
+    - text: . In general, more flexible statistical methods have higher variance. Consider the green and orange curves in Figure
+    - link "2.9" [ref=f5e548] [cursor=pointer]:
+      - /url: ch03.xhtml#b83
+    - text: . The flexible green curve is following the observations very closely. It has high variance because changing any one of these data points may cause the estimate
+    - 'img "\\hat{f}" [ref=f5e549]'
+    - text: to change considerably.
+  - generic [ref=f5e550]:
+    - img "figure 2.12" [ref=f5e551]
+    - paragraph [ref=f5e552]:
+      - text: FIGURE 2.12.
+      - emphasis [ref=f5e553]: Squared bias (blue curve), variance (orange curve), Var
+      - text: (ϵ)
+      - emphasis [ref=f5e554]: (dashed line), and test MSE (red curve) for the three data sets in Figures
+      - link [ref=f5e555] [cursor=pointer]:
+        - /url: ch03.xhtml#b83
+        - emphasis [ref=f5e556]: "2.9"
+      - emphasis [ref=f5e557]: –
+      - link [ref=f5e558] [cursor=pointer]:
+        - /url: ch03.xhtml#b98
+        - emphasis [ref=f5e559]: "2.11"
+      - emphasis [ref=f5e560]: . The vertical dotted line indicates the flexibility level corresponding to the smallest test MSE.
+  - paragraph [ref=f5e561]: In contrast, the orange least squares line is relatively inflexible and has low variance, because moving any single observation will likely cause only a small shift in the position of the line.
+  - paragraph [ref=f5e562]:
+    - text: On the other hand,
+    - emphasis [ref=f5e563]: bias
+    - text: refers to the error that is introduced by approximating a real-life problem, which may be extremely complicated, by a much simpler model. For example, linear regression assumes that there is a linear relationship between Y and X
+    - subscript [ref=f5e564]: "1"
+    - text: ", X"
+    - subscript [ref=f5e565]: "2"
+    - text: ", . . . , X"
+    - subscript [ref=f5e566]: p
+    - text: . It is unlikely that any real-life problem truly has such a simple linear relationship, and so performing linear regression will undoubtedly result in some bias in the estimate of f. In Figure
+    - link "2.11" [ref=f5e567] [cursor=pointer]:
+      - /url: ch03.xhtml#b98
+    - text: ", the true f is substantially non-linear, so no matter how many training observations we are given, it will not be possible to produce an accurate estimate using linear regression. In other words, linear regression results in high bias in this example. However, in Figure"
+    - link "2.10" [ref=f5e568] [cursor=pointer]:
+      - /url: ch03.xhtml#b92
+    - text: the true f is very close to linear, and so given enough data, it should be possible for linear regression to produce an accurate estimate. Generally, more flexible methods result in less bias.
+  - paragraph [ref=f5e569]:
+    - text: As a general rule, as we use more flexible methods, the variance will increase and the bias will decrease. The relative rate of change of these two quantities determines whether the test MSE increases or decreases. As we increase the flexibility of a class of methods, the bias tends to initially decrease faster than the variance increases. Consequently, the expected test MSE declines. However, at some point increasing flexibility has little impact on the bias but starts to significantly increase the variance. When this happens the test MSE increases. Note that we observed this pattern of decreasing test MSE followed by increasing test MSE in the right-hand panels of Figures
+    - link "2.9" [ref=f5e570] [cursor=pointer]:
+      - /url: ch03.xhtml#b83
+    - text: –
+    - link "2.11" [ref=f5e571] [cursor=pointer]:
+      - /url: ch03.xhtml#b98
+    - text: .
+  - paragraph [ref=f5e572]:
+    - text: The three plots in Figure
+    - link "2.12" [ref=f5e573] [cursor=pointer]:
+      - /url: ch03.xhtml#b104
+    - text: illustrate Equation
+    - link "2.7" [ref=f5e574] [cursor=pointer]:
+      - /url: ch03.xhtml#b100
+    - text: for the examples in Figures
+    - link "2.9" [ref=f5e575] [cursor=pointer]:
+      - /url: ch03.xhtml#b83
+    - text: –
+    - link "2.11" [ref=f5e576] [cursor=pointer]:
+      - /url: ch03.xhtml#b98
+    - text: . In each case the blue solid curve represents the squared bias, for different levels of flexibility, while the orange curve corresponds to the variance. The horizontal dashed line represents Var(ϵ), the irreducible error. Finally, the red curve, corresponding to the test set MSE, is the sum of these three quantities. In all three cases, the variance increases and the bias decreases as the method’s flexibility increases. However, the flexibility level corresponding to the optimal test MSE differs considerably among the three data sets, because the squared bias and variance change at different rates in each of the data sets. In the left-hand panel of Figure
+    - link "2.12" [ref=f5e577] [cursor=pointer]:
+      - /url: ch03.xhtml#b104
+    - text: ", the bias initially decreases rapidly, resulting in an initial sharp decrease in the expected test MSE. On the other hand, in the center panel of Figure"
+    - link "2.12" [ref=f5e578] [cursor=pointer]:
+      - /url: ch03.xhtml#b104
+    - text: the true f is close to linear, so there is only a small decrease in bias as flexibility increases, and the test MSE only declines slightly before increasing rapidly as the variance increases. Finally, in the right-hand panel of Figure
+    - link "2.12" [ref=f5e579] [cursor=pointer]:
+      - /url: ch03.xhtml#b104
+    - text: ", as flexibility increases, there is a dramatic decline in bias because the true f is very non-linear. There is also very little increase in variance as flexibility increases. Consequently, the test MSE declines substantially before experiencing a small increase as model flexibility increases."
+  - paragraph [ref=f5e580]:
+    - text: The relationship between bias, variance, and test set MSE given in Equation
+    - link "2.7" [ref=f5e581] [cursor=pointer]:
+      - /url: ch03.xhtml#b100
+    - text: and displayed in Figure
+    - link "2.12" [ref=f5e582] [cursor=pointer]:
+      - /url: ch03.xhtml#b104
+    - text: is referred to as the
+    - emphasis [ref=f5e583]: bias-variance trade-of
+    - text: .
+    - emphasis [ref=f5e584]: f
+    - text: Good test set performance of a statistical learning method requires low variance as well as low squared bias. This is referred to as a trade-off because it is easy to obtain a method with extremely low bias but high variance (for instance, by drawing a curve that passes through every single training observation) or a method with very low variance but high bias (by fitting a horizontal line to the data). The challenge lies in finding a method for which both the variance and the squared bias are low. This trade-off is one of the most important recurring themes in this book.
+  - paragraph [ref=f5e585]: bias-variance trade-off
+  - paragraph [ref=f5e586]:
+    - text: In a real-life situation in which f is unobserved, it is generally not possible to explicitly compute the test MSE, bias, or variance for a statistical learning method. Nevertheless, one should always keep the bias-variance trade-off in mind. In this book we explore methods that are extremely flexible and hence can essentially eliminate bias. However, this does not guarantee that they will outperform a much simpler method such as linear regression. To take an extreme example, suppose that the true f is linear. In this situation linear regression will have no bias, making it very hard for a more flexible method to compete. In contrast, if the true f is highly non-linear and we have an ample number of training observations, then we may do better using a highly flexible approach, as in Figure
+    - link "2.11" [ref=f5e587] [cursor=pointer]:
+      - /url: ch03.xhtml#b98
+    - text: . In Chapter
+    - link "5" [ref=f5e588] [cursor=pointer]:
+      - /url: ch06.xhtml#b0
+    - text: we discuss cross-validation, which is a way to estimate the test MSE using the training data.
+  - heading "2.2.3 The Classification Setting" [level=3] [ref=f5e589]
+  - paragraph [ref=f5e590]:
+    - text: Thus far, our discussion of model accuracy has been focused on the regression setting. But many of the concepts that we have encountered, such as the bias-variance trade-off, transfer over to the classification setting with only some modifications due to the fact that y
+    - subscript [ref=f5e591]: i
+    - text: "is no longer quantitative. Suppose that we seek to estimate f on the basis of training observations {(x"
+    - subscript [ref=f5e592]: "1"
+    - text: ", y"
+    - subscript [ref=f5e593]: "1"
+    - text: ), . . . , (x
+    - subscript [ref=f5e594]: "n"
+    - text: ", y"
+    - subscript [ref=f5e595]: "n"
+    - text: ")}, where now y"
+    - subscript [ref=f5e596]: "1"
+    - text: ", . . . , y"
+    - subscript [ref=f5e597]: "n"
+    - text: are qualitative. The most common approach for quantifying the accuracy of our estimate
+    - 'img "\\hat{f}" [ref=f5e598]'
+    - text: is the training
+    - emphasis [ref=f5e599]: error rate
+    - text: ", the proportion of mistakes that are made if we apply our estimate"
+    - 'img "\\hat{f}" [ref=f5e600]'
+    - text: "to the training observations:"
+  - paragraph [ref=f5e601]: error rate
+  - generic [ref=f5e602]:
+    - 'img "\\frac{1}{n}\\sum_{i=1}^{n} I(y_i \\neq \\hat{y}_i)." [ref=f5e603]'
+    - text: (2.8)
+  - paragraph [ref=f5e604]:
+    - text: Here
+    - 'img "\\hat{y}_{i}" [ref=f5e605]'
+    - text: is the predicted class label for the ith observation using
+    - 'img "\\hat{f}" [ref=f5e606]'
+    - text: . And
+    - 'img "I(y_i \\neq \\hat{y}_i)" [ref=f5e607]'
+    - text: is an
+    - emphasis [ref=f5e608]: indicator variable
+    - text: that equals 1 if
+    - 'img "y_i \\neq \\hat{y}_i" [ref=f5e609]'
+    - text: and zero if
+    - 'img "y_{i} = \\hat{y}_{i}" [ref=f5e610]'
+    - text: . If
+    - 'img "I(y_i \\neq \\hat{y}_i) = 0" [ref=f5e611]'
+    - text: then the ith observation was classified correctly by our classification method; otherwise it was misclassified. Hence Equation
+    - link "2.8" [ref=f5e612] [cursor=pointer]:
+      - /url: ch03.xhtml#b113
+    - text: computes the fraction of incorrect classifications.
+  - paragraph [ref=f5e613]: indicator variable
+  - paragraph [ref=f5e614]:
+    - text: Equation
+    - link "2.8" [ref=f5e615] [cursor=pointer]:
+      - /url: ch03.xhtml#b113
+    - text: is referred to as the
+    - emphasis [ref=f5e616]: training error
+    - text: rate because it is computed based on the data that was used to train our classifier. As in the regression setting, we are most interested in the error rates that result from applying our classifier to test observations that were not used in training. The
+    - emphasis [ref=f5e617]: test error
+    - text: rate associated with a set of test observations of the form (x
+    - subscript [ref=f5e618]: "0"
+    - text: ", y"
+    - subscript [ref=f5e619]: "0"
+    - text: ) is given by
+  - paragraph [ref=f5e620]: training error · test error
+  - generic [ref=f5e621]:
+    - 'img "\\mathrm{Ave}\\left(I(y_0 \\neq \\hat{y}_0)\\right)," [ref=f5e622]'
+    - text: (2.9)
+  - paragraph [ref=f5e623]:
+    - text: where
+    - 'img "\\hat{y}_{0}" [ref=f5e624]'
+    - text: is the predicted class label that results from applying the classifier to the test observation with predictor x
+    - subscript [ref=f5e625]: "0"
+    - text: . A
+    - emphasis [ref=f5e626]: good
+    - text: classifier is one for which the test error (
+    - link "2.9" [ref=f5e627] [cursor=pointer]:
+      - /url: ch03.xhtml#b116
+    - text: ) is smallest.
+  - heading "The Bayes Classifier" [level=4] [ref=f5e628]
+  - paragraph [ref=f5e629]:
+    - text: It is possible to show (though the proof is outside of the scope of this book) that the test error rate given in (
+    - link "2.9" [ref=f5e630] [cursor=pointer]:
+      - /url: ch03.xhtml#b116
+    - text: ) is minimized, on average, by a very simple classifier that
+    - emphasis [ref=f5e631]: assigns each observation to the most likely class, given its predictor values
+    - text: . In other words, we should simply assign a test observation with predictor vector x
+    - subscript [ref=f5e632]: "0"
+    - text: to the class j for which
+  - generic [ref=f5e633]:
+    - img "\\Pr(Y = j \\mid X = x_0)" [ref=f5e634]
+    - text: (2.10)
+  - paragraph [ref=f5e635]:
+    - text: is largest. Note that (
+    - link "2.10" [ref=f5e636] [cursor=pointer]:
+      - /url: ch03.xhtml#b120
+    - text: ) is a
+    - emphasis [ref=f5e637]: conditional probability
+    - text: ": it is the probability that Y = j, given the observed predictor vector x"
+    - subscript [ref=f5e638]: "0"
+    - text: . This very simple classifier is called the
+    - emphasis [ref=f5e639]: Bayes classifier
+    - text: . In a two-class problem where there are only two possible response values, say
+    - emphasis [ref=f5e640]: class 1
+    - text: or
+    - emphasis [ref=f5e641]: class 2
+    - text: ", the Bayes classifier corresponds to predicting class one if Pr(Y = 1|X = x"
+    - subscript [ref=f5e642]: "0"
+    - text: ) > 0.5, and class two otherwise.
+  - paragraph [ref=f5e643]: conditional probability Bayes classifier
+  - paragraph [ref=f5e644]:
+    - text: Figure
+    - link "2.13" [ref=f5e645] [cursor=pointer]:
+      - /url: ch03.xhtml#b123
+    - text: provides an example using a simulated data set in a twodimensional space consisting of predictors X
+    - subscript [ref=f5e646]: "1"
+    - text: and X
+    - subscript [ref=f5e647]: "2"
+    - text: . The orange and blue circles correspond to training observations that belong to two different classes. For each value of X
+    - subscript [ref=f5e648]: "1"
+    - text: and X
+    - subscript [ref=f5e649]: "2"
+    - text: ", there is a different probability of the response being orange or blue. Since this is simulated data, we know how the data were generated and we can calculate the conditional probabilities for each value of X"
+    - subscript [ref=f5e650]: "1"
+    - text: and X
+    - subscript [ref=f5e651]: "2"
+    - text: . The orange shaded region reflects the set of points for which Pr(Y = orange|X) is greater than 50 %, while the blue shaded region indicates the set of points for which the probability is below 50 %. The purple dashed line represents the points where the probability is exactly 50 %. This is called the
+    - emphasis [ref=f5e652]: Bayes decision boundary
+    - text: . The Bayes classifier’s prediction is determined by the Bayes decision boundary; an observation that falls on the orange side of the boundary will be assigned
+  - paragraph [ref=f5e653]: Bayes decision boundary
+  - generic [ref=f5e654]:
+    - img "figure 2.13" [ref=f5e655]
+    - paragraph [ref=f5e656]:
+      - text: FIGURE 2.13.
+      - emphasis [ref=f5e657]: A simulated data set consisting of
+      - text: "100"
+      - emphasis [ref=f5e658]: observations in each of two groups, indicated in blue and in orange. The purple dashed line represents the Bayes decision boundary. The orange background grid indicates the region in which a test observation will be assigned to the orange class, and the blue background grid indicates the region in which a test observation will be assigned to the blue class.
+  - paragraph [ref=f5e659]: to the orange class, and similarly an observation on the blue side of the boundary will be assigned to the blue class.
+  - paragraph [ref=f5e660]:
+    - text: The Bayes classifier produces the lowest possible test error rate, called the
+    - emphasis [ref=f5e661]: Bayes error rate
+    - text: . Since the Bayes classifier will always choose the class for which (
+    - link "2.10" [ref=f5e662] [cursor=pointer]:
+      - /url: ch03.xhtml#b120
+    - text: ) is largest, the error rate will be 1−max
+    - subscript [ref=f5e663]: j
+    - text: Pr(Y = j|X = x
+    - subscript [ref=f5e664]: "0"
+    - text: ) at X = x
+    - subscript [ref=f5e665]: "0"
+    - text: . In general, the overall Bayes error rate is given by
+  - paragraph [ref=f5e666]: Bayes error rate
+  - generic [ref=f5e667]:
+    - 'img "1 - E\\left(\\max_{j}\\Pr(Y = j \\mid X)\\right)," [ref=f5e668]'
+    - text: (2.11)
+  - paragraph [ref=f5e669]:
+    - text: where the expectation averages the probability over all possible values of X. For our simulated data, the Bayes error rate is 0.133. It is greater than zero, because the classes overlap in the true population, which implies that max
+    - subscript [ref=f5e670]: j
+    - text: Pr(Y = j|X = x
+    - subscript [ref=f5e671]: "0"
+    - text: ) < 1 for some values of x
+    - subscript [ref=f5e672]: "0"
+    - text: . The Bayes error rate is analogous to the irreducible error, discussed earlier.
+  - heading "K-Nearest Neighbors" [level=4] [ref=f5e673]
+  - paragraph [ref=f5e674]:
+    - text: In theory we would always like to predict qualitative responses using the Bayes classifier. But for real data, we do not know the conditional distribution of Y given X, and so computing the Bayes classifier is impossible. Therefore, the Bayes classifier serves as an unattainable gold standard against which to compare other methods. Many approaches attempt to estimate the conditional distribution of Y given X, and then classify a given observation to the class with highest
+    - emphasis [ref=f5e675]: estimated
+    - text: probability. One such method is the K
+    - emphasis [ref=f5e676]: "-nearest neighbors"
+    - text: (KNN) classifier. Given a positive integer K and a test observation x
+    - subscript [ref=f5e677]: "0"
+    - text: ", the KNN classifier first identifies the K points in the training data that are closest to x"
+    - subscript [ref=f5e678]: "0"
+    - text: ", represented by"
+    - 'img "\\mathcal{N}_{0}" [ref=f5e679]'
+    - text: . It then estimates the conditional probability for class j as the fraction of points in
+    - 'img "\\mathcal{N}_{0}" [ref=f5e680]'
+    - text: "whose response values equal j:"
+  - paragraph [ref=f5e681]: K-nearest
+  - generic [ref=f5e682]:
+    - 'img "\\Pr(Y = j \\mid X = x_0) = \\frac{1}{K}\\sum_{i \\in \\mathcal{N}_0} I(y_i = j)." [ref=f5e683]'
+    - text: (2.12)
+  - paragraph [ref=f5e684]:
+    - text: Finally, KNN classifies the test observation x
+    - subscript [ref=f5e685]: "0"
+    - text: to the class with the largest probability from (
+    - link "2.12" [ref=f5e686] [cursor=pointer]:
+      - /url: ch03.xhtml#b130
+    - text: ).
+  - paragraph [ref=f5e687]:
+    - text: Figure
+    - link "2.14" [ref=f5e688] [cursor=pointer]:
+      - /url: ch03.xhtml#b136
+    - text: provides an illustrative example of the KNN approach. In the left-hand panel, we have plotted a small training data set consisting of six blue and six orange observations. Our goal is to make a prediction for the point labeled by the black cross. Suppose that we choose K = 3. Then KNN will first identify the three observations that are closest to the cross. This neighborhood is shown as a circle. It consists of two blue points and one orange point, resulting in estimated probabilities of 2/3 for the blue class and 1/3 for the orange class. Hence KNN will predict that the black cross belongs to the blue class. In the right-hand panel of Figure
+    - link "2.14" [ref=f5e689] [cursor=pointer]:
+      - /url: ch03.xhtml#b136
+    - text: we have applied the KNN approach with K = 3 at all of the possible values for X
+    - subscript [ref=f5e690]: "1"
+    - text: and X
+    - subscript [ref=f5e691]: "2"
+    - text: ", and have drawn in the corresponding KNN decision boundary."
+  - paragraph [ref=f5e692]:
+    - text: Despite the fact that it is a very simple approach, KNN can often produce classifiers that are surprisingly close to the optimal Bayes classifier. Figure
+    - link "2.15" [ref=f5e693] [cursor=pointer]:
+      - /url: ch03.xhtml#b137
+    - text: displays the KNN decision boundary, using K = 10, when applied to the larger simulated data set from Figure
+    - link "2.13" [ref=f5e694] [cursor=pointer]:
+      - /url: ch03.xhtml#b123
+    - text: . Notice that even though the true distribution is not known by the KNN classifier, the KNN decision boundary is very close to that of the Bayes classifier. The test error rate using KNN is 0.1363, which is close to the Bayes error rate of 0.1304.
+  - paragraph [ref=f5e695]:
+    - text: The choice of K has a drastic effect on the KNN classifier obtained. Figure
+    - link "2.16" [ref=f5e696] [cursor=pointer]:
+      - /url: ch03.xhtml#b139
+    - text: displays two KNN fits to the simulated data from Figure
+    - link "2.13" [ref=f5e697] [cursor=pointer]:
+      - /url: ch03.xhtml#b123
+    - text: ", using K = 1 and K = 100. When K = 1, the decision boundary is overly flexible and finds patterns in the data that don’t correspond to the Bayes decision boundary. This corresponds to a classifier that has low bias but very high variance. As K grows, the method becomes less flexible and produces a decision boundary that is close to linear. This corresponds to a low-variance but high-bias classifier. On this simulated data set, neither K = 1 nor K = 100 give good predictions: they have test error rates of 0.1695 and 0.1925, respectively."
+  - paragraph [ref=f5e698]:
+    - text: Just as in the regression setting, there is not a strong relationship between the training error rate and the test error rate. With K = 1, the KNN training error rate is 0, but the test error rate may be quite high. In general, as we use more flexible classification methods, the training error rate will decline but the test error rate may not. In Figure
+    - link "2.17" [ref=f5e699] [cursor=pointer]:
+      - /url: ch03.xhtml#b140
+    - text: ", we have plotted the KNN test and training errors as a function of 1/K. As 1/K increases, the method becomes more flexible. As in the regression setting, the training error rate consistently declines as the flexibility increases. However, the test error exhibits a characteristic U-shape, declining at first (with a minimum at approximately K = 10) before increasing again when the method becomes excessively flexible and overfits."
+  - generic [ref=f5e700]:
+    - img "figure 2.14" [ref=f5e701]
+    - paragraph [ref=f5e702]:
+      - text: FIGURE 2.14.
+      - emphasis [ref=f5e703]: The KNN approach, using
+      - text: K = 3
+      - emphasis [ref=f5e704]: ", is illustrated in a simple situation with six blue observations and six orange observations."
+      - text: "Left:"
+      - emphasis [ref=f5e705]: a test observation at which a predicted class label is desired is shown as a black cross. The three closest points to the test observation are identified, and it is predicted that the test observation belongs to the most commonly-occurring class, in this case blue.
+      - text: "Right:"
+      - emphasis [ref=f5e706]: The KNN decision boundary for this example is shown in black. The blue grid indicates the region in which a test observation will be assigned to the blue class, and the orange grid indicates the region in which it will be assigned to the orange class.
+  - generic [ref=f5e707]:
+    - img "figure 2.15" [ref=f5e708]
+    - paragraph [ref=f5e709]:
+      - text: FIGURE 2.15.
+      - emphasis [ref=f5e710]: The black curve indicates the KNN decision boundary on the data from Figure
+      - link [ref=f5e711] [cursor=pointer]:
+        - /url: ch03.xhtml#b123
+        - emphasis [ref=f5e712]: "2.13"
+      - emphasis [ref=f5e713]: ", using"
+      - text: K = 10
+      - emphasis [ref=f5e714]: . The Bayes decision boundary is shown as a purple dashed line. The KNN and Bayes decision boundaries are very similar.
+  - paragraph [ref=f5e715]:
+    - text: In both the regression and classification settings, choosing the correct level of flexibility is critical to the success of any statistical learning method. The bias-variance tradeoff, and the resulting U-shape in the test error, can make this a difficult task. In Chapter
+    - link "5" [ref=f5e716] [cursor=pointer]:
+      - /url: ch06.xhtml#b0
+    - text: ", we return to this topic and discuss"
+  - generic [ref=f5e717]:
+    - img "figure 2.16" [ref=f5e718]
+    - paragraph [ref=f5e719]:
+      - text: FIGURE 2.16.
+      - emphasis [ref=f5e720]: A comparison of the KNN decision boundaries (solid black curves) obtained using
+      - text: K = 1
+      - emphasis [ref=f5e721]: and
+      - text: K = 100
+      - emphasis [ref=f5e722]: on the data from Figure
+      - link [ref=f5e723] [cursor=pointer]:
+        - /url: ch03.xhtml#b123
+        - emphasis [ref=f5e724]: "2.13"
+      - emphasis [ref=f5e725]: . With
+      - text: K = 1
+      - emphasis [ref=f5e726]: ", the decision boundary is overly flexible, while with"
+      - text: K = 100
+      - emphasis [ref=f5e727]: it is not sufficiently flexible. The Bayes decision boundary is shown as a purple dashed line.
+  - generic [ref=f5e728]:
+    - img "figure 2.17" [ref=f5e729]
+    - paragraph [ref=f5e730]:
+      - text: FIGURE 2.17.
+      - emphasis [ref=f5e731]: The KNN training error rate (blue, 200 observations) and test error rate (orange, 5,000 observations) on the data from Figure
+      - link [ref=f5e732] [cursor=pointer]:
+        - /url: ch03.xhtml#b123
+        - emphasis [ref=f5e733]: "2.13"
+      - emphasis [ref=f5e734]: ", as the level of flexibility (assessed using"
+      - text: 1/K
+      - emphasis [ref=f5e735]: on the log scale) increases, or equivalently as the number of neighbors
+      - text: K
+      - emphasis [ref=f5e736]: decreases. The black dashed line indicates the Bayes error rate. The jumpiness of the curves is due to the small size of the training data set.
+  - paragraph [ref=f5e737]: various methods for estimating test error rates and thereby choosing the optimal level of flexibility for a given statistical learning method.
+  - 'heading "2.3 Lab: Introduction to Python" [level=2] [ref=f5e738]'
+  - heading "2.3.1 Getting Started" [level=3] [ref=f5e739]
+  - paragraph [ref=f5e740]: "To run the labs in this book, you will need two things:"
+  - paragraph [ref=f5e741]:
+    - text: 1. An installation of
+    - code [ref=f5e742]: Python3
+    - text: ", which is the specific version of"
+    - code [ref=f5e743]: Python
+    - text: used in the labs.
+  - paragraph [ref=f5e744]:
+    - text: 2. Access to
+    - code [ref=f5e745]: Jupyter
+    - text: ", a very popular"
+    - code [ref=f5e746]: Python
+    - text: interface that runs code through a file called a
+    - emphasis [ref=f5e747]: notebook
+    - text: .
+  - paragraph [ref=f5e748]: notebook
+  - paragraph [ref=f5e749]:
+    - text: You can download and install
+    - code [ref=f5e750]: Python3
+    - text: by following the instructions available at
+    - link "anaconda.com" [ref=f5e751] [cursor=pointer]:
+      - /url: http://anaconda.com
+    - text: .
+  - paragraph [ref=f5e752]:
+    - text: There are a number of ways to get access to
+    - code [ref=f5e753]: Jupyter
+    - text: ". Here are just a few:"
+  - paragraph [ref=f5e754]:
+    - text: 1. Using Google’s
+    - code [ref=f5e755]: Colaboratory
+    - text: "service:"
+    - link "colab.research.google.com/" [ref=f5e756] [cursor=pointer]:
+      - /url: https://colab.research.google.com/
+    - text: .
+  - paragraph [ref=f5e757]:
+    - text: 2. Using
+    - code [ref=f5e758]: JupyterHub
+    - text: ", available at"
+    - link "jupyter.org/hub" [ref=f5e759] [cursor=pointer]:
+      - /url: https://jupyter.org/hub
+    - text: .
+  - paragraph [ref=f5e760]:
+    - text: 3. Using your own
+    - code [ref=f5e761]: jupyter
+    - text: installation. Installation instructions are available at
+    - link "jupyter.org/install" [ref=f5e762] [cursor=pointer]:
+      - /url: https://jupyter.org/install
+    - text: . Please see the
+    - code [ref=f5e763]: Python
+    - text: resources page on the book website
+    - link "statlearning.com" [ref=f5e764] [cursor=pointer]:
+      - /url: https://www.statlearning.com
+    - text: for up-to-date information about getting
+    - code [ref=f5e765]: Python
+    - text: and
+    - code [ref=f5e766]: Jupyter
+    - text: working on your computer.
+  - paragraph [ref=f5e767]:
+    - text: You will need to install the
+    - code [ref=f5e768]: ISLP
+    - text: package, which provides access to the datasets and custom-built functions that we provide. Inside a macOS or Linux terminal type
+    - code [ref=f5e769]: pip install ISLP
+    - text: ; this also installs most other packages needed in the labs. The
+    - code [ref=f5e770]: Python
+    - text: resources page has a link to the
+    - code [ref=f5e771]: ISLP
+    - text: documentation website.
+  - paragraph [ref=f5e772]:
+    - text: To run this lab, download the file
+    - code [ref=f5e773]: Ch2-statlearn-lab.ipynb
+    - text: from the
+    - code [ref=f5e774]: Python
+    - text: "resources page. Now run the following code at the command line:"
+  - generic [ref=f5e775]: jupyter lab Ch2-statlearn-lab.ipynb.
+  - paragraph [ref=f5e777]:
+    - text: If you’re using Windows, you can use the
+    - code [ref=f5e778]: start menu
+    - text: to access
+    - code [ref=f5e779]: anaconda
+    - text: ", and follow the links. For example, to install"
+    - code [ref=f5e780]: ISLP
+    - text: and run this lab, you can run the same code above in an
+    - code [ref=f5e781]: anaconda
+    - text: shell.
+  - heading "2.3.2 Basic Commands" [level=3] [ref=f5e782]
+  - paragraph [ref=f5e783]:
+    - text: In this lab, we will introduce some simple
+    - code [ref=f5e784]: Python
+    - text: commands. For more resources about
+    - code [ref=f5e785]: Python
+    - text: in general, readers may want to consult the tutorial at
+    - link "docs.python.org/3/tutorial/" [ref=f5e786] [cursor=pointer]:
+      - /url: https://docs.python.org/3/tutorial/
+    - text: .
+  - paragraph [ref=f5e787]:
+    - text: Like most programming languages,
+    - code [ref=f5e788]: Python
+    - text: uses
+    - emphasis [ref=f5e789]: functions
+    - text: to perform operations. To run a function called
+    - code [ref=f5e790]: fun
+    - text: ", we type"
+    - code [ref=f5e791]: fun(input1,input2)
+    - text: ", where the inputs (or"
+    - emphasis [ref=f5e792]: arguments
+    - text: )
+    - code [ref=f5e793]: input1
+    - text: and
+    - code [ref=f5e794]: input2
+    - text: tell
+    - code [ref=f5e795]: Python
+    - text: how to run the function. A function can have any number of inputs. For example, the
+    - code [ref=f5e796]: print()
+    - text: function outputs a text representation of all of its arguments to the console.
+  - paragraph [ref=f5e797]:
+    - text: function · argument
+    - code [ref=f5e798]: print()
+  - generic [ref=f5e799]: "In [1]: print('fit a model with', 11, 'variables')"
+  - generic [ref=f5e801]: fit a model with 11 variables
+  - paragraph [ref=f5e803]:
+    - text: The following command will provide information about the
+    - code [ref=f5e804]: print()
+    - text: function.
+  - generic [ref=f5e805]: "In [2]: print?"
+  - paragraph [ref=f5e807]:
+    - text: Adding two integers in
+    - code [ref=f5e808]: Python
+    - text: is pretty intuitive.
+  - generic [ref=f5e809]: "In [3]: 3 + 5"
+  - generic [ref=f5e811]: "Out[3]: 8"
+  - paragraph [ref=f5e813]:
+    - text: In
+    - code [ref=f5e814]: Python
+    - text: ", textual data is handled using"
+    - emphasis [ref=f5e815]: strings
+    - text: . For instance,
+    - code [ref=f5e816]: "\"hello\""
+    - text: and
+    - code [ref=f5e817]: "'hello'"
+    - text: are strings. We can concatenate them using the addition
+    - code [ref=f5e818]: +
+    - text: symbol.
+  - paragraph [ref=f5e819]: string
+  - generic [ref=f5e820]: "In [4]: \"hello\" + \" \" + \"world\""
+  - generic [ref=f5e822]: "Out[4]: 'hello world'"
+  - paragraph [ref=f5e824]:
+    - text: A string is actually a type of
+    - emphasis [ref=f5e825]: sequence
+    - text: ": this is a generic term for an ordered list. The three most important types of sequences are lists, tuples, and strings. We introduce lists now."
+  - paragraph [ref=f5e826]: sequence
+  - paragraph [ref=f5e827]:
+    - text: The following command instructs
+    - code [ref=f5e828]: Python
+    - text: to join together the numbers 3, 4, and 5, and to save them as a
+    - emphasis [ref=f5e829]: list
+    - text: named
+    - code [ref=f5e830]: x
+    - text: . When we type
+    - code [ref=f5e831]: x
+    - text: ", it gives us back the list."
+  - paragraph [ref=f5e832]: list
+  - generic [ref=f5e833]: "In [5]: x = [3, 4, 5] x"
+  - generic [ref=f5e835]: "Out[5]: [3, 4, 5]"
+  - paragraph [ref=f5e837]:
+    - text: Note that we used the brackets
+    - code [ref=f5e838]: "[]"
+    - text: to construct this list.
+  - paragraph [ref=f5e839]: We will often want to add two sets of numbers together. It is reasonable to try the following code, though it will not produce the desired results.
+  - generic [ref=f5e840]: "In [6]: y = [4, 9, 7] x + y"
+  - generic [ref=f5e842]: "Out[6]: [3, 4, 5, 4, 9, 7]"
+  - paragraph [ref=f5e844]:
+    - text: "The result may appear slightly counterintuitive: why did"
+    - code [ref=f5e845]: Python
+    - text: not add the entries of the lists element-by-element? In
+    - code [ref=f5e846]: Python
+    - text: ", lists hold"
+    - emphasis [ref=f5e847]: arbitrary
+    - text: objects, and are added using
+    - emphasis [ref=f5e848]: concatenation
+    - text: . In fact, concatenation is the behavior that we saw earlier when we entered
+    - code [ref=f5e849]: "\"hello\" + \" \" + \"world\""
+    - text: .
+  - paragraph [ref=f5e850]: concatenation
+  - paragraph [ref=f5e851]:
+    - text: This example reflects the fact that
+    - code [ref=f5e852]: Python
+    - text: is a general-purpose programming language. Much of
+    - code [ref=f5e853]: Python
+    - text: ’s data-specific functionality comes from other packages, notably
+    - code [ref=f5e854]: numpy
+    - text: and
+    - code [ref=f5e855]: pandas
+    - text: . In the next section, we will introduce the
+    - code [ref=f5e856]: numpy
+    - text: package. See
+    - link "docs.scipy.org/doc/numpy/user/quickstart.html" [ref=f5e857] [cursor=pointer]:
+      - /url: https://docs.scipy.org/doc/numpy/user/quickstart.html
+    - text: for more information about
+    - code [ref=f5e858]: numpy
+    - text: .
+  - heading "2.3.3 Introduction to Numerical Python" [level=3] [ref=f5e859]
+  - paragraph [ref=f5e860]:
+    - text: As mentioned earlier, this book makes use of functionality that is contained in the
+    - code [ref=f5e861]: numpy
+    - emphasis [ref=f5e862]: library
+    - text: ", or"
+    - emphasis [ref=f5e863]: package
+    - text: . A package is a collection of modules that are not necessarily included in the base
+    - code [ref=f5e864]: Python
+    - text: distribution. The name
+    - code [ref=f5e865]: numpy
+    - text: is an abbreviation for
+    - emphasis [ref=f5e866]: numerical Python
+    - text: .
+  - paragraph [ref=f5e867]:
+    - code [ref=f5e868]: numpy
+    - text: package
+  - paragraph [ref=f5e869]:
+    - text: To access
+    - code [ref=f5e870]: numpy
+    - text: ", we must first"
+    - code [ref=f5e871]: import
+    - text: it.
+  - paragraph [ref=f5e872]:
+    - code [ref=f5e873]: import
+  - generic [ref=f5e874]: "In [7]: import numpy as np"
+  - paragraph [ref=f5e876]:
+    - text: In the previous line, we named the
+    - code [ref=f5e877]: numpy
+    - emphasis [ref=f5e878]: module
+    - code [ref=f5e879]: np
+    - text: ; an abbreviation for easier referencing.
+  - paragraph [ref=f5e880]: module
+  - paragraph [ref=f5e881]:
+    - text: In
+    - code [ref=f5e882]: numpy
+    - text: ", an"
+    - emphasis [ref=f5e883]: array
+    - text: is a generic term for a multidimensional set of numbers. We use the
+    - code [ref=f5e884]: np.array()
+    - text: function to define
+    - code [ref=f5e885]: x
+    - text: and
+    - code [ref=f5e886]: "y"
+    - text: ", which are one-dimensional arrays, i.e. vectors."
+  - paragraph [ref=f5e887]:
+    - text: array
+    - code [ref=f5e888]: np.array()
+  - generic [ref=f5e889]: "In [8]: x = np.array([3, 4, 5]) y = np.array([4, 9, 7])"
+  - paragraph [ref=f5e891]:
+    - text: Note that if you forgot to run the
+    - code [ref=f5e892]: import numpy as np
+    - text: command earlier, then you will encounter an error in calling the
+    - code [ref=f5e893]: np.array()
+    - text: function in the previous line. The syntax
+    - code [ref=f5e894]: np.array()
+    - text: indicates that the function being called is part of the
+    - code [ref=f5e895]: numpy
+    - text: package, which we have abbreviated as
+    - code [ref=f5e896]: np
+    - text: .
+  - paragraph [ref=f5e897]:
+    - text: Since
+    - code [ref=f5e898]: x
+    - text: and
+    - code [ref=f5e899]: "y"
+    - text: have been defined using
+    - code [ref=f5e900]: np.array()
+    - text: ", we get a sensible result when we add them together. Compare this to our results in the previous section, when we tried to add two lists without using"
+    - code [ref=f5e901]: numpy
+    - text: .
+  - generic [ref=f5e902]: "In [9]: x + y"
+  - generic [ref=f5e904]: "Out[9]: array([ 7, 13, 12])"
+  - paragraph [ref=f5e906]:
+    - text: In
+    - code [ref=f5e907]: numpy
+    - text: ", matrices are typically represented as two-dimensional arrays, and vectors as one-dimensional arrays."
+    - superscript [ref=f5e908]:
+      - link "1" [ref=f5e909] [cursor=pointer]:
+        - /url: ch03.xhtml#b197
+    - text: We can create a two-dimensional array as follows.
+  - generic [ref=f5e910]: "In [10]: x = np.array([[1, 2], [3, 4]]) x"
+  - generic [ref=f5e912]: "Out[10]: array([[1, 2], [3, 4]])"
+  - paragraph [ref=f5e914]:
+    - text: The object
+    - code [ref=f5e915]: x
+    - text: has several
+    - emphasis [ref=f5e916]: attributes
+    - text: ", or associated objects. To access an attribute of"
+    - code [ref=f5e917]: x
+    - text: ", we type"
+    - code [ref=f5e918]: x.attribute
+    - text: ", where we replace"
+    - code [ref=f5e919]: attribute
+    - text: with the name of the attribute. For instance, we can access the
+    - code [ref=f5e920]: ndim
+    - text: attribute of
+    - code [ref=f5e921]: x
+    - text: as follows.
+  - paragraph [ref=f5e922]:
+    - text: attribute ·
+    - code [ref=f5e923]: ndim
+  - generic [ref=f5e924]: "In [11]: x.ndim"
+  - generic [ref=f5e926]: "Out[11]: 2"
+  - paragraph [ref=f5e928]:
+    - text: The output indicates that
+    - code [ref=f5e929]: x
+    - text: is a two-dimensional array. Similarly,
+    - code [ref=f5e930]: x.dtype
+    - text: is the
+    - emphasis [ref=f5e931]: data type
+    - text: attribute of the object
+    - code [ref=f5e932]: x
+    - text: . This indicates that
+    - code [ref=f5e933]: x
+    - text: "is comprised of 64-bit integers:"
+  - paragraph [ref=f5e934]: data type
+  - complementary [ref=f5e935]:
+    - superscript [ref=f5e936]: "1"
+    - text: While it is also possible to create matrices using
+    - code [ref=f5e937]: np.matrix()
+    - text: ", we will use"
+    - code [ref=f5e938]: np.array()
+    - text: throughout the labs in this book.
+  - generic [ref=f5e939]: "In [12]: x.dtype"
+  - generic [ref=f5e941]: "Out[12]: dtype('int64')"
+  - paragraph [ref=f5e943]:
+    - text: Why is
+    - code [ref=f5e944]: x
+    - text: comprised of integers? This is because we created
+    - code [ref=f5e945]: x
+    - text: by passing in exclusively integers to the
+    - code [ref=f5e946]: np.array()
+    - text: function. If we had passed in any decimals, then we would have obtained an array of
+    - emphasis [ref=f5e947]: floating point numbers
+    - text: (i.e. real-valued numbers).
+  - paragraph [ref=f5e948]: floating point
+  - generic [ref=f5e949]: "In [13]: np.array([[1, 2], [3.0, 4]]).dtype"
+  - generic [ref=f5e951]: "Out[13]: dtype('float64')"
+  - paragraph [ref=f5e953]:
+    - text: Typing
+    - code [ref=f5e954]: fun?
+    - text: will cause
+    - code [ref=f5e955]: Python
+    - text: to display documentation associated with the function
+    - code [ref=f5e956]: fun
+    - text: ", if it exists. We can try this for"
+    - code [ref=f5e957]: np.array()
+    - text: .
+  - generic [ref=f5e958]: "In [14]: np.array?"
+  - paragraph [ref=f5e960]:
+    - text: This documentation indicates that we could create a floating point array by passing a
+    - code [ref=f5e961]: dtype
+    - text: argument into
+    - code [ref=f5e962]: np.array()
+    - text: .
+  - paragraph [ref=f5e963]:
+    - code [ref=f5e964]: dtype
+  - generic [ref=f5e965]: "In [15]: np.array([[1, 2], [3, 4]], float).dtype"
+  - generic [ref=f5e967]: "Out[15]: dtype('float64')"
+  - paragraph [ref=f5e969]:
+    - text: The array
+    - code [ref=f5e970]: x
+    - text: is two-dimensional. We can find out the number of rows and columns by looking at its
+    - code [ref=f5e971]: shape
+    - text: attribute.
+  - paragraph [ref=f5e972]:
+    - code [ref=f5e973]: shape
+  - generic [ref=f5e974]: "In [16]: x.shape"
+  - generic [ref=f5e976]: "Out[16]: (2, 2)"
+  - paragraph [ref=f5e978]:
+    - text: A
+    - emphasis [ref=f5e979]: method
+    - text: is a function that is associated with an object. For instance, given an array
+    - code [ref=f5e980]: x
+    - text: ", the expression"
+    - code [ref=f5e981]: x.sum()
+    - text: sums all of its elements, using the
+    - code [ref=f5e982]: sum()
+    - text: method for arrays. The call
+    - code [ref=f5e983]: x.sum()
+    - text: automatically provides
+    - code [ref=f5e984]: x
+    - text: as the first argument to its
+    - code [ref=f5e985]: sum()
+    - text: method.
+  - paragraph [ref=f5e986]:
+    - text: method ·
+    - code [ref=f5e987]: .sum()
+  - generic [ref=f5e988]: "In [17]: x = np.array([1, 2, 3, 4]) x.sum()"
+  - generic [ref=f5e990]: "Out[17]: 10"
+  - paragraph [ref=f5e992]:
+    - text: We could also sum the elements of
+    - code [ref=f5e993]: x
+    - text: by passing in
+    - code [ref=f5e994]: x
+    - text: as an argument to the
+    - code [ref=f5e995]: np.sum()
+    - text: function.
+  - paragraph [ref=f5e996]:
+    - code [ref=f5e997]: np.sum()
+  - generic [ref=f5e998]: "In [18]: x = np.array([1, 2, 3, 4]) np.sum(x)"
+  - generic [ref=f5e1000]: "Out[18]: 10"
+  - paragraph [ref=f5e1002]:
+    - text: As another example, the
+    - code [ref=f5e1003]: reshape()
+    - text: method returns a new array with the same elements as
+    - code [ref=f5e1004]: x
+    - text: ", but a different shape. We do this by passing in a"
+    - code [ref=f5e1005]: tuple
+    - text: in our call to
+    - code [ref=f5e1006]: reshape()
+    - text: ", in this case"
+    - code [ref=f5e1007]: (2, 3)
+    - text: . This tuple specifies that we would like to create a two-dimensional array with 2 rows and 3 columns.
+    - superscript [ref=f5e1008]:
+      - link "2" [ref=f5e1009] [cursor=pointer]:
+        - /url: ch03.xhtml#b231
+  - paragraph [ref=f5e1010]:
+    - code [ref=f5e1011]: .reshape() tuple
+  - paragraph [ref=f5e1012]:
+    - text: In what follows, the
+    - code [ref=f5e1013]: \n
+    - text: character creates a
+    - emphasis [ref=f5e1014]: new line
+    - text: .
+  - generic [ref=f5e1015]: "In [19]: x = np.array([1, 2, 3, 4, 5, 6]) print('beginning x:\\n', x) x_reshape = x.reshape((2, 3)) print('reshaped x:\\n', x_reshape)"
+  - generic [ref=f5e1017]: "beginning x: [1 2 3 4 5 6] reshaped x: [[1 2 3] [4 5 6]]"
+  - paragraph [ref=f5e1019]:
+    - text: The previous output reveals that
+    - code [ref=f5e1020]: numpy
+    - text: arrays are specified as a sequence of
+    - emphasis [ref=f5e1021]: rows
+    - text: . This is called
+    - emphasis [ref=f5e1022]: row-major ordering
+    - text: ", as opposed to"
+    - emphasis [ref=f5e1023]: column-major ordering
+    - text: .
+  - paragraph [ref=f5e1024]:
+    - code [ref=f5e1025]: Python
+    - text: (and hence
+    - code [ref=f5e1026]: numpy
+    - text: ) uses 0-based indexing. This means that to access the top left element of
+    - code [ref=f5e1027]: x_reshape
+    - text: ", we type in"
+    - code [ref=f5e1028]: x_reshape[0,0]
+    - text: .
+  - generic [ref=f5e1029]: "In [20]: x_reshape[0, 0]"
+  - generic [ref=f5e1031]: "Out[20]: 1"
+  - paragraph [ref=f5e1033]:
+    - text: Similarly,
+    - code [ref=f5e1034]: x_reshape[1,2]
+    - text: yields the element in the second row and the third column of
+    - code [ref=f5e1035]: x_reshape
+    - text: .
+  - generic [ref=f5e1036]: "In [21]: x_reshape[1, 2]"
+  - generic [ref=f5e1038]: "Out[21]: 6"
+  - paragraph [ref=f5e1040]:
+    - text: Similarly,
+    - code [ref=f5e1041]: x[2]
+    - text: yields the third entry of
+    - code [ref=f5e1042]: x
+    - text: .
+  - paragraph [ref=f5e1043]:
+    - text: Now, let’s modify the top left element of
+    - code [ref=f5e1044]: x_reshape
+    - text: . To our surprise, we discover that the first element of
+    - code [ref=f5e1045]: x
+    - text: has been modified as well!
+  - generic [ref=f5e1046]: "In [22]: print('x before we modify x_reshape:\\n', x) print('x_reshape before we modify x_reshape:\\n', x_reshape) x_reshape[0, 0] = 5 print('x_reshape after we modify its top left element:\\n', x_reshape) print('x after we modify top left element of x_reshape:\\n', x)"
+  - generic [ref=f5e1048]: "Out[22]: x before we modify x_reshape: [1 2 3 4 5 6] x_reshape before we modify x_reshape: [[1 2 3] [4 5 6]] x_reshape after we modify its top left element: [[5 2 3]"
+  - complementary [ref=f5e1050]:
+    - superscript [ref=f5e1051]: "2"
+    - text: Like lists, tuples represent a sequence of objects. Why do we need more than one way to create a sequence? There are a few differences between tuples and lists, but perhaps the most important is that elements of a tuple cannot be modified, whereas elements of a list can be.
+  - generic [ref=f5e1052]: "[4 5 6]] x after we modify top left element of x_reshape: [5 2 3 4 5 6]"
+  - paragraph [ref=f5e1054]:
+    - text: Modifying
+    - code [ref=f5e1055]: x_reshape
+    - text: also modified
+    - code [ref=f5e1056]: x
+    - text: because the two objects occupy the same space in memory.
+  - paragraph [ref=f5e1057]:
+    - text: We just saw that we can modify an element of an array. Can we also modify a tuple? It turns out that we cannot — and trying to do so introduces an
+    - emphasis [ref=f5e1058]: exception
+    - text: ", or error."
+  - paragraph [ref=f5e1059]: exception
+  - generic [ref=f5e1060]: "In [23]: my_tuple = (3, 4, 5) my_tuple[0] = 2"
+  - generic [ref=f5e1062]: "TypeError: 'tuple' object does not support item assignment"
+  - paragraph [ref=f5e1064]:
+    - text: We now briefly mention some attributes of arrays that will come in handy. An array’s
+    - code [ref=f5e1065]: shape
+    - text: attribute contains its dimension; this is always a tuple. The
+    - code [ref=f5e1066]: ndim
+    - text: attribute yields the number of dimensions, and
+    - code [ref=f5e1067]: T
+    - text: provides its transpose.
+  - generic [ref=f5e1068]: "In [24]: x_reshape.shape, x_reshape.ndim, x_reshape.T"
+  - generic [ref=f5e1070]: "Out[24]: ((2, 3), 2, array([[5, 4], [2, 5], [3, 6]]))"
+  - paragraph [ref=f5e1072]:
+    - text: Notice that the three individual outputs
+    - code [ref=f5e1073]: (2,3)
+    - text: ","
+    - code [ref=f5e1074]: "2"
+    - text: ", and"
+    - code [ref=f5e1075]: array([[5, 4],[2, 5], [3,6]])
+    - text: are themselves output as a tuple.
+  - paragraph [ref=f5e1076]:
+    - text: We will often want to apply functions to arrays. For instance, we can compute the square root of the entries using the
+    - code [ref=f5e1077]: np.sqrt()
+    - text: "function:"
+  - paragraph [ref=f5e1078]:
+    - code [ref=f5e1079]: np.sqrt()
+  - generic [ref=f5e1080]: "In [25]: np.sqrt(x)"
+  - generic [ref=f5e1082]: "Out[25]: array([2.24, 1.41, 1.73, 2., 2.24, 2.45])"
+  - paragraph [ref=f5e1084]: "We can also square the elements:"
+  - generic [ref=f5e1085]: "In [26]: x**2"
+  - generic [ref=f5e1087]: "Out[26]: array([25, 4, 9, 16, 25, 36])"
+  - paragraph [ref=f5e1089]: We can compute the square roots using the same notation, raising to the power of 1/2 instead of 2.
+  - generic [ref=f5e1090]: "In [27]: x**0.5"
+  - generic [ref=f5e1092]: "Out[27]: array([2.24, 1.41, 1.73, 2., 2.24, 2.45])"
+  - paragraph [ref=f5e1094]:
+    - text: Throughout this book, we will often want to generate random data. The
+    - code [ref=f5e1095]: np.random.normal()
+    - text: function generates a vector of random normal variables. We can learn more about this function by looking at the help page, via a call to
+    - code [ref=f5e1096]: np.random.normal?
+    - text: . The first line of the help page reads
+    - code [ref=f5e1097]: normal(loc=0.0, scale=1.0, size=None)
+    - text: . This
+    - emphasis [ref=f5e1098]: signature
+    - text: line tells us that the function’s arguments are
+    - code [ref=f5e1099]: loc
+    - text: ","
+    - code [ref=f5e1100]: scale
+    - text: ", and"
+    - code [ref=f5e1101]: size
+    - text: . These are
+    - emphasis [ref=f5e1102]: keyword
+    - text: arguments, which means that when they are passed into the function, they can be referred to by name (in any order).
+    - superscript [ref=f5e1103]:
+      - link "3" [ref=f5e1104] [cursor=pointer]:
+        - /url: ch03.xhtml#b264
+    - text: By default, this function will generate random normal variable(s) with mean (
+    - code [ref=f5e1105]: loc
+    - text: ) 0 and standard deviation (
+    - code [ref=f5e1106]: scale
+    - text: ) 1; furthermore, a single random variable will be generated unless the argument to
+    - code [ref=f5e1107]: size
+    - text: is changed.
+  - paragraph [ref=f5e1108]:
+    - code [ref=f5e1109]: np.random. normal()
+    - text: · signature · keyword
+  - paragraph [ref=f5e1110]: We now generate 50 independent random variables from a N(0, 1) distribution.
+  - generic [ref=f5e1111]: "In [28]: x = np.random.normal(size=50) x"
+  - generic [ref=f5e1113]: "Out[28]: array([-1.19, 0.41, 0.9 , -0.44, -0.9 , -0.38, 0.13, 1.87, -0.35, 1.16, 0.79, -0.97, -1.21, 0.06, -1.62, -0.6 , -0.77, -2.12, 0.38, -1.22, -0.06, -1.97, -1.74, -0.56, 1.7 , -0.95, 0.56, 0.35, 0.87, 0.88, -1.66, -0.32, -0.3 , -1.36, 0.92, -0.31, 1.28, -1.94, 1.07, 0.07, 0.79, -0.46, 2.19, -0.27, -0.64, 0.85, 0.13, 0.46, -0.09, 0.7 ])"
+  - paragraph [ref=f5e1115]:
+    - text: We create an array
+    - code [ref=f5e1116]: "y"
+    - text: by adding an independent N(50, 1) random variable to each element of
+    - code [ref=f5e1117]: x
+    - text: .
+  - generic [ref=f5e1118]: "In [29]: y = x + np.random.normal(loc=50, scale=1, size=50)"
+  - paragraph [ref=f5e1120]:
+    - text: The
+    - code [ref=f5e1121]: np.corrcoef()
+    - text: function computes the correlation matrix between
+    - code [ref=f5e1122]: x
+    - text: and
+    - code [ref=f5e1123]: "y"
+    - text: . The off-diagonal elements give the correlation between
+    - code [ref=f5e1124]: x
+    - text: and
+    - code [ref=f5e1125]: "y"
+    - text: .
+  - paragraph [ref=f5e1126]:
+    - code [ref=f5e1127]: np.corrcoef()
+  - generic [ref=f5e1128]: "In [30]: np.corrcoef(x, y)"
+  - generic [ref=f5e1130]: "Out[30]: array([[1. , 0.69], [0.69, 1. ]])"
+  - paragraph [ref=f5e1132]:
+    - text: If you’re following along in your own
+    - code [ref=f5e1133]: Jupyter
+    - text: notebook, then you probably noticed that you got a different set of results when you ran the past few commands. In particular, each time we call
+    - code [ref=f5e1134]: np.random.normal()
+    - text: ", we will get a different answer, as shown in the following example."
+  - generic [ref=f5e1135]: "In [31]: print(np.random.normal(scale=5, size=2)) print(np.random.normal(scale=5, size=2))"
+  - generic [ref=f5e1137]: "Out[31]: [4.28 2.59] [4.62 -2.54]"
+  - paragraph [ref=f5e1139]:
+    - text: In order to ensure that our code provides exactly the same results each time it is run, we can set a
+    - emphasis [ref=f5e1140]: random seed
+    - text: using the
+    - code [ref=f5e1141]: np.random.default_rng()
+    - text: function. This function takes an arbitrary, user-specified integer argument. If we set a random seed before generating random data, then re-running our code will yield the same results. The object
+    - code [ref=f5e1142]: rng
+    - text: has essentially all the
+  - paragraph [ref=f5e1143]:
+    - text: random seed
+    - code [ref=f5e1144]: np.random. default_rng()
+  - complementary [ref=f5e1145]:
+    - superscript [ref=f5e1146]: "3"
+    - code [ref=f5e1147]: Python
+    - text: also uses
+    - emphasis [ref=f5e1148]: positional
+    - text: arguments. Positional arguments do not need to use a keyword. To see an example, type in
+    - code [ref=f5e1149]: np.sum?
+    - text: . We see that
+    - code [ref=f5e1150]: a
+    - text: is a positional argument, i.e. this function assumes that the first unnamed argument that it receives is the array to be summed. By contrast,
+    - code [ref=f5e1151]: axis
+    - text: and
+    - code [ref=f5e1152]: dtype
+    - text: "are keyword arguments: the position in which these arguments are entered into"
+    - code [ref=f5e1153]: np.sum()
+    - text: does not matter.
+  - paragraph [ref=f5e1154]:
+    - text: random number generating methods found in
+    - code [ref=f5e1155]: np.random
+    - text: . Hence, to generate normal data we use
+    - code [ref=f5e1156]: rng.normal()
+    - text: .
+  - generic [ref=f5e1157]: "In [32]: rng = np.random.default_rng(1303) print(rng.normal(scale=5, size=2)) rng2 = np.random.default_rng(1303) print(rng2.normal(scale=5, size=2))"
+  - generic [ref=f5e1159]: "Out[32]: [4.09 -1.07 ] [4.09 -1.07 ]"
+  - paragraph [ref=f5e1161]:
+    - text: Throughout the labs in this book, we use
+    - code [ref=f5e1162]: np.random.default_rng()
+    - text: whenever we perform calculations involving random quantities within
+    - code [ref=f5e1163]: numpy
+    - text: . In principle, this should enable the reader to exactly reproduce the stated results. However, as new versions of
+    - code [ref=f5e1164]: numpy
+    - text: become available, it is possible that some small discrepancies may occur between the output in the labs and the output from
+    - code [ref=f5e1165]: numpy
+    - text: .
+  - paragraph [ref=f5e1166]:
+    - text: The
+    - code [ref=f5e1167]: np.mean()
+    - text: ","
+    - code [ref=f5e1168]: np.var()
+    - text: ", and"
+    - code [ref=f5e1169]: np.std()
+    - text: functions can be used to compute the mean, variance, and standard deviation of arrays. These functions are also available as methods on the arrays.
+  - paragraph [ref=f5e1170]:
+    - code [ref=f5e1171]: np.mean()
+    - text: ·
+    - code [ref=f5e1172]: np.var() np.std()
+  - generic [ref=f5e1173]: "In [33]: rng = np.random.default_rng(3) y = rng.standard_normal(10) np.mean(y), y.mean()"
+  - generic [ref=f5e1175]: "Out[33]: (-0.11, -0.11)"
+  - generic [ref=f5e1177]: "In [34]: np.var(y), y.var(), np.mean((y - y.mean())**2)"
+  - generic [ref=f5e1179]: "Out[34]: (2.72, 2.72, 2.72)"
+  - paragraph [ref=f5e1181]:
+    - text: Notice that by default
+    - code [ref=f5e1182]: np.var()
+    - text: divides by the sample size n rather than n − 1; see the
+    - code [ref=f5e1183]: ddof
+    - text: argument in
+    - code [ref=f5e1184]: np.var?
+    - text: .
+  - generic [ref=f5e1185]: "In [35]: np.sqrt(np.var(y)), np.std(y)"
+  - generic [ref=f5e1187]: "Out[35]: (1.65, 1.65)"
+  - paragraph [ref=f5e1189]:
+    - text: The
+    - code [ref=f5e1190]: np.mean()
+    - text: ","
+    - code [ref=f5e1191]: np.var()
+    - text: ", and"
+    - code [ref=f5e1192]: np.std()
+    - text: functions can also be applied to the rows and columns of a matrix. To see this, we construct a 10 × 3 matrix of N(0, 1) random variables, and consider computing its row sums.
+  - generic [ref=f5e1193]: "In [36]: X = rng.standard_normal((10, 3)) X"
+  - generic [ref=f5e1195]: "Out[36]: array([[ 0.23, -0.35, -0.28], [-0.67, -1.06, -0.39], [ 0.48, -0.24, 0.96], [-0.2 , 0.02, 1.55], [ 0.55, -0.51, -0.18], [ 0.54, 1.94, -0.27], [-0.24, 1. , -0.89], [-0.29, 0.88, 0.58], [ 0.09, 0.67, -2.83], [ 1.02, -0.96, -1.67]])"
+  - paragraph [ref=f5e1197]:
+    - text: Since arrays are row-major ordered, the first axis, i.e.
+    - code [ref=f5e1198]: axis=0
+    - text: ", refers to its rows. We pass this argument into the"
+    - code [ref=f5e1199]: mean()
+    - text: method for the object
+    - code [ref=f5e1200]: X
+    - text: .
+  - paragraph [ref=f5e1201]:
+    - code [ref=f5e1202]: .mean()
+  - generic [ref=f5e1203]: "In [37]: X.mean(axis=0)"
+  - generic [ref=f5e1205]: "Out[37]: array([0.15, 0.14, -0.34])"
+  - paragraph [ref=f5e1207]: The following yields the same result.
+  - generic [ref=f5e1208]: "In [38]: X.mean(0)"
+  - generic [ref=f5e1210]: "Out[38]: array([0.15, 0.14, -0.34])"
+  - heading "2.3.4 Graphics" [level=3] [ref=f5e1212]
+  - paragraph [ref=f5e1213]:
+    - text: In
+    - code [ref=f5e1214]: Python
+    - text: ", common practice is to use the library"
+    - code [ref=f5e1215]: matplotlib
+    - text: for graphics. However, since
+    - code [ref=f5e1216]: Python
+    - text: was not written with data analysis in mind, the notion of plotting is not intrinsic to the language. We will use the
+    - code [ref=f5e1217]: subplots()
+    - text: function from
+    - code [ref=f5e1218]: matplotlib.pyplot
+    - text: to create a figure and the axes onto which we plot our data. For many more examples of how to make plots in
+    - code [ref=f5e1219]: Python
+    - text: ", readers are encouraged to visit"
+    - link "matplotlib.org/stable/gallery/" [ref=f5e1220] [cursor=pointer]:
+      - /url: https://matplotlib.org/stable/gallery/index.html
+    - text: .
+  - paragraph [ref=f5e1221]:
+    - code [ref=f5e1222]: matplotlib
+  - paragraph [ref=f5e1223]:
+    - text: In
+    - code [ref=f5e1224]: matplotlib
+    - text: ", a plot consists of a"
+    - emphasis [ref=f5e1225]: figure
+    - text: and one or more
+    - emphasis [ref=f5e1226]: axes
+    - text: ". You can think of the figure as the blank canvas upon which one or more plots will be displayed: it is the entire plotting window. The"
+    - emphasis [ref=f5e1227]: axes
+    - text: contain important information about each plot, such as its x- and y-axis labels, title, and more. (Note that in
+    - code [ref=f5e1228]: matplotlib
+    - text: ", the word"
+    - emphasis [ref=f5e1229]: axes
+    - text: is not the plural of
+    - emphasis [ref=f5e1230]: axis
+    - text: ": a plot’s"
+    - emphasis [ref=f5e1231]: axes
+    - text: contains much more information than just the x-axis and the y-axis.)
+  - paragraph [ref=f5e1232]: figure axes
+  - paragraph [ref=f5e1233]:
+    - text: We begin by importing the
+    - code [ref=f5e1234]: subplots()
+    - text: function from
+    - code [ref=f5e1235]: matplotlib
+    - text: ". We use this function throughout when creating figures. The function returns a tuple of length two: a figure object as well as the relevant axes object. We will typically pass"
+    - code [ref=f5e1236]: figsize
+    - text: as a keyword argument. Having created our axes, we attempt our first plot using its
+    - code [ref=f5e1237]: plot()
+    - text: method. To learn more about it, type
+    - code [ref=f5e1238]: ax.plot?
+    - text: .
+  - paragraph [ref=f5e1239]:
+    - code [ref=f5e1240]: subplots()
+    - text: ·
+    - code [ref=f5e1241]: .plot()
+  - generic [ref=f5e1242]: "In [39]: from matplotlib.pyplot import subplots fig, ax = subplots(figsize=(8, 8)) x = rng.standard_normal(100) y = rng.standard_normal(100) ax.plot(x, y);"
+  - paragraph [ref=f5e1244]:
+    - text: We pause here to note that we have
+    - emphasis [ref=f5e1245]: unpacked
+    - text: the tuple of length two returned by
+    - code [ref=f5e1246]: subplots()
+    - text: into the two distinct variables
+    - code [ref=f5e1247]: fig
+    - text: and
+    - code [ref=f5e1248]: ax
+    - text: ". Unpacking is typically preferred to the following equivalent but slightly more verbose code:"
+  - generic [ref=f5e1249]: "In [40]: output = subplots(figsize=(8, 8)) fig = output[0] ax = output[1]"
+  - paragraph [ref=f5e1251]:
+    - text: We see that our earlier cell produced a line plot, which is the default. To create a scatterplot, we provide an additional argument to
+    - code [ref=f5e1252]: ax.plot()
+    - text: ", indicating that circles should be displayed."
+  - generic [ref=f5e1253]: "In [41]: fig, ax = subplots(figsize=(8, 8)) ax.plot(x, y, 'o');"
+  - paragraph [ref=f5e1255]: Different values of this additional argument can be used to produce different colored lines as well as different linestyles.
+  - paragraph [ref=f5e1256]:
+    - text: As an alternative, we could use the
+    - code [ref=f5e1257]: ax.scatter()
+    - text: function to create a scatterplot.
+  - paragraph [ref=f5e1258]:
+    - code [ref=f5e1259]: .scatter()
+  - generic [ref=f5e1260]: "In [42]: fig, ax = subplots(figsize=(8, 8)) ax.scatter(x, y, marker='o');"
+  - paragraph [ref=f5e1262]:
+    - text: Notice that in the code blocks above, we have ended the last line with a semicolon. This prevents
+    - code [ref=f5e1263]: ax.plot(x, y)
+    - text: "from printing text to the notebook. However, it does not prevent a plot from being produced. If we omit the trailing semi-colon, then we obtain the following output:"
+  - generic [ref=f5e1264]: "In [43]: fig, ax = subplots(figsize=(8, 8)) ax.scatter(x, y, marker='o')"
+  - generic [ref=f5e1266]: "Out[43]: <matplotlib.collections.PathCollection at 0x7fb3d9c8f310 > Figure(432x288)"
+  - paragraph [ref=f5e1268]: In what follows, we will use trailing semicolons whenever the text that would be output is not germane to the discussion at hand.
+  - paragraph [ref=f5e1269]:
+    - text: To label our plot, we make use of the
+    - code [ref=f5e1270]: set_xlabel()
+    - text: ","
+    - code [ref=f5e1271]: set_ylabel()
+    - text: ", and"
+    - code [ref=f5e1272]: set_title()
+    - text: methods of
+    - code [ref=f5e1273]: ax
+    - text: .
+  - paragraph [ref=f5e1274]:
+    - code [ref=f5e1275]: .set_xlabel()
+    - text: ·
+    - code [ref=f5e1276]: .set_ylabel() .set_title()
+  - generic [ref=f5e1277]: "In [44]: fig, ax = subplots(figsize=(8, 8)) ax.scatter(x, y, marker='o') ax.set_xlabel(\"this is the x-axis\") ax.set_ylabel(\"this is the y-axis\") ax.set_title(\"Plot of X vs Y\");"
+  - paragraph [ref=f5e1279]:
+    - text: Having access to the figure object
+    - code [ref=f5e1280]: fig
+    - text: itself means that we can go in and change some aspects and then redisplay it. Here, we change the size from
+    - code [ref=f5e1281]: (8, 8)
+    - text: to
+    - code [ref=f5e1282]: (12, 3)
+    - text: .
+  - generic [ref=f5e1283]: fig.set_size_inches(12,3) fig
+  - paragraph [ref=f5e1285]:
+    - text: Occasionally we will want to create several plots within a figure. This can be achieved by passing additional arguments to
+    - code [ref=f5e1286]: subplots()
+    - text: . Below, we create a 2 × 3 grid of plots in a figure of size determined by the
+    - code [ref=f5e1287]: figsize
+    - text: argument. In such situations, there is often a relationship between the axes in the plots. For example, all plots may have a common x-axis. The
+    - code [ref=f5e1288]: subplots()
+    - text: function can automatically handle this situation when passed the keyword argument
+    - code [ref=f5e1289]: sharex=True
+    - text: . The
+    - code [ref=f5e1290]: axes
+    - text: object below is an array pointing to different plots in the figure.
+  - generic [ref=f5e1291]: "In [45]: fig, axes = subplots(nrows=2, ncols=3, figsize=(15, 5))"
+  - paragraph [ref=f5e1293]:
+    - text: We now produce a scatter plot with
+    - code [ref=f5e1294]: "'o'"
+    - text: in the second column of the first row and a scatter plot with
+    - code [ref=f5e1295]: "'+'"
+    - text: in the third column of the second row.
+  - generic [ref=f5e1296]: "In [46]: axes[0,1].plot(x, y, 'o') axes[1,2].scatter(x, y, marker='+') fig"
+  - paragraph [ref=f5e1298]:
+    - text: Type
+    - code [ref=f5e1299]: subplots?
+    - text: to learn more about
+    - code [ref=f5e1300]: subplots()
+    - text: .
+  - paragraph [ref=f5e1301]:
+    - text: To save the output of
+    - code [ref=f5e1302]: fig
+    - text: ", we call its"
+    - code [ref=f5e1303]: savefig()
+    - text: method. The argument
+    - code [ref=f5e1304]: dpi
+    - text: is the dots per inch, used to determine how large the figure will be in pixels.
+  - paragraph [ref=f5e1305]:
+    - code [ref=f5e1306]: .savefig()
+  - generic [ref=f5e1307]: "In [47]: fig.savefig(\"Figure.png\", dpi=400) fig.savefig(\"Figure.pdf\", dpi=200);"
+  - paragraph [ref=f5e1309]:
+    - text: We can continue to modify
+    - code [ref=f5e1310]: fig
+    - text: using step-by-step updates; for example, we can modify the range of the x-axis, re-save the figure, and even re-display it.
+  - generic [ref=f5e1311]: "In [48]: axes[0,1].set_xlim([-1,1]) fig.savefig(\"Figure_updated.jpg\") fig"
+  - paragraph [ref=f5e1313]:
+    - text: We now create some more sophisticated plots. The
+    - code [ref=f5e1314]: ax.contour()
+    - text: method produces a
+    - emphasis [ref=f5e1315]: contour plot
+    - text: "in order to represent three-dimensional data, similar to a topographical map. It takes three arguments: • A vector of"
+    - code [ref=f5e1316]: x
+    - text: values (the first dimension), • A vector of
+    - code [ref=f5e1317]: "y"
+    - text: values (the second dimension), and • A matrix whose elements correspond to the
+    - code [ref=f5e1318]: z
+    - text: value (the third dimension) for each pair of
+    - code [ref=f5e1319]: (x,y)
+    - text: coordinates. To create
+    - code [ref=f5e1320]: x
+    - text: and
+    - code [ref=f5e1321]: "y"
+    - text: ", we’ll use the command"
+    - code [ref=f5e1322]: np.linspace(a, b, n)
+    - text: ", which returns a vector of"
+    - code [ref=f5e1323]: "n"
+    - text: numbers starting at
+    - code [ref=f5e1324]: a
+    - text: and ending at
+    - code [ref=f5e1325]: b
+    - text: .
+  - paragraph [ref=f5e1326]:
+    - code [ref=f5e1327]: .contour()
+    - text: contour plot ·
+    - code [ref=f5e1328]: np.linspace()
+  - generic [ref=f5e1329]: "In [49]: fig, ax = subplots(figsize=(8, 8)) x = np.linspace(-np.pi, np.pi, 50) y = x f = np.multiply.outer(np.cos(y), 1 / (1 + x**2)) ax.contour(x, y, f);"
+  - paragraph [ref=f5e1331]: We can increase the resolution by adding more levels to the image.
+  - generic [ref=f5e1332]: "In [50]: fig, ax = subplots(figsize=(8, 8)) ax.contour(x, y, f, levels=45);"
+  - paragraph [ref=f5e1334]:
+    - text: To fine-tune the output of the
+    - code [ref=f5e1335]: ax.contour()
+    - text: function, take a look at the help file by typing
+    - code [ref=f5e1336]: "?plt.contour"
+    - text: .
+  - paragraph [ref=f5e1337]:
+    - text: The
+    - code [ref=f5e1338]: ax.imshow()
+    - text: method is similar to
+    - code [ref=f5e1339]: ax.contour()
+    - text: ", except that it produces a color-coded plot whose colors depend on the"
+    - code [ref=f5e1340]: z
+    - text: value. This is known as a
+    - emphasis [ref=f5e1341]: heatmap
+    - text: ", and is sometimes used to plot temperature in weather forecasts."
+  - paragraph [ref=f5e1342]:
+    - code [ref=f5e1343]: .imshow()
+    - text: · heatmap
+  - generic [ref=f5e1344]: "In [51]: fig, ax = subplots(figsize=(8, 8)) ax.imshow(f);"
+  - heading "2.3.5 Sequences and Slice Notation" [level=3] [ref=f5e1346]
+  - paragraph [ref=f5e1347]:
+    - text: As seen above, the function
+    - code [ref=f5e1348]: np.linspace()
+    - text: can be used to create a sequence of numbers.
+  - generic [ref=f5e1349]: "In [52]: seq1 = np.linspace(0, 10, 11) seq1"
+  - generic [ref=f5e1351]: "Out[52]: array([ 0., 1., 2., 3., 4., 5., 6., 7., 8., 9., 10.])"
+  - paragraph [ref=f5e1353]:
+    - text: The function
+    - code [ref=f5e1354]: np.arange()
+    - text: returns a sequence of numbers spaced out by
+    - code [ref=f5e1355]: step
+    - text: . If
+    - code [ref=f5e1356]: step
+    - text: is not specified, then a default value of 1 is used. Let’s create a sequence that starts at 0 and ends at 10.
+  - paragraph [ref=f5e1357]:
+    - code [ref=f5e1358]: np.arange()
+  - generic [ref=f5e1359]: "In [53]: seq2 = np.arange(0, 10) seq2"
+  - generic [ref=f5e1361]: "Out[53]: array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])"
+  - paragraph [ref=f5e1363]:
+    - text: Why isn’t 10 output above? This has to do with
+    - emphasis [ref=f5e1364]: slice
+    - text: notation in
+    - code [ref=f5e1365]: Python
+    - text: . Slice notation is used to index sequences such as lists, tuples and arrays. Suppose we want to retrieve the fourth through sixth (inclusive) entries of a string. We obtain a slice of the string using the indexing notation
+    - code [ref=f5e1366]: "[3:6]"
+    - text: .
+  - paragraph [ref=f5e1367]: slice
+  - generic [ref=f5e1368]: "In [54]: \"hello world\"[3:6]"
+  - generic [ref=f5e1370]: "Out[54]: 'lo '"
+  - paragraph [ref=f5e1372]:
+    - text: In the code block above, the notation
+    - code [ref=f5e1373]: 3:6
+    - text: is shorthand for
+    - code [ref=f5e1374]: slice(3,6)
+    - text: when used inside
+    - code [ref=f5e1375]: "[]"
+    - text: .
+  - generic [ref=f5e1376]: "In [55]: \"hello world\"[slice(3,6)]"
+  - generic [ref=f5e1378]: "Out[55]: 'lo '"
+  - paragraph [ref=f5e1380]:
+    - text: You might have expected
+    - code [ref=f5e1381]: slice(3,6)
+    - text: to output the fourth through seventh characters in the text string (recalling that
+    - code [ref=f5e1382]: Python
+    - text: begins its indexing at zero), but instead it output the fourth through sixth. This also explains why the earlier
+    - code [ref=f5e1383]: np.arange(0, 10)
+    - text: command output only the integers from 0 to 9. See the documentation
+    - code [ref=f5e1384]: slice?
+    - text: for useful options in creating slices.
+  - heading "2.3.6 Indexing Data" [level=3] [ref=f5e1385]
+  - paragraph [ref=f5e1386]:
+    - text: To begin, we create a two-dimensional
+    - code [ref=f5e1387]: numpy
+    - text: array.
+  - generic [ref=f5e1388]: "In [56]: A = np.array(np.arange(16)).reshape((4, 4)) A"
+  - generic [ref=f5e1390]: "Out[56]: array([[ 0, 1, 2, 3], [ 4, 5, 6, 7], [ 8, 9, 10, 11], [12, 13, 14, 15]])"
+  - paragraph [ref=f5e1392]:
+    - text: Typing
+    - code [ref=f5e1393]: A[1,2]
+    - text: retrieves the element corresponding to the second row and third column. (As usual,
+    - code [ref=f5e1394]: Python
+    - text: indexes from 0.)
+  - generic [ref=f5e1395]: "In [57]: A[1,2]"
+  - generic [ref=f5e1397]: "Out[57]: 6"
+  - paragraph [ref=f5e1399]:
+    - text: The first number after the open-bracket symbol
+    - code [ref=f5e1400]: "["
+    - text: refers to the row, and the second number refers to the column.
+  - heading "Indexing Rows, Columns, and Submatrices" [level=4] [ref=f5e1401]
+  - paragraph [ref=f5e1402]:
+    - text: To select multiple rows at a time, we can pass in a list specifying our selection. For instance,
+    - code [ref=f5e1403]: "[1,3]"
+    - text: "will retrieve the second and fourth rows:"
+  - generic [ref=f5e1404]: "In [58]: A[[1,3]]"
+  - generic [ref=f5e1406]: "Out[58]: array([[ 4, 5, 6, 7], [12, 13, 14, 15]])"
+  - paragraph [ref=f5e1408]:
+    - text: To select the first and third columns, we pass in
+    - code [ref=f5e1409]: "[0,2]"
+    - text: as the second argument in the square brackets. In this case we need to supply the first argument
+    - code [ref=f5e1410]: ":"
+    - text: which selects all rows.
+  - generic [ref=f5e1411]: "In [59]: A[:,[0,2]]"
+  - generic [ref=f5e1413]: "Out[59]: array([[ 0, 2], [ 4, 6], [ 8, 10], [12, 14]])"
+  - paragraph [ref=f5e1415]: "Now, suppose that we want to select the submatrix made up of the second and fourth rows as well as the first and third columns. This is where indexing gets slightly tricky. It is natural to try to use lists to retrieve the rows and columns:"
+  - generic [ref=f5e1416]: "In [60]: A[[1,3],[0,2]]"
+  - generic [ref=f5e1418]: "Out[60]: array([ 4, 14])"
+  - paragraph [ref=f5e1420]: Oops — what happened? We got a one-dimensional array of length two identical to
+  - generic [ref=f5e1421]: "In [61]: np.array([A[1,0],A[3,2]])"
+  - generic [ref=f5e1423]: "Out[61]: array([ 4, 14])"
+  - paragraph [ref=f5e1425]: "Similarly, the following code fails to extract the submatrix comprised of the second and fourth rows and the first, third, and fourth columns:"
+  - generic [ref=f5e1426]: "In [62]: A[[1,3],[0,2,3]]"
+  - generic [ref=f5e1428]: "IndexError: shape mismatch: indexing arrays could not be broadcast together with shapes (2,) (3,)"
+  - paragraph [ref=f5e1430]:
+    - text: We can see what has gone wrong here. When supplied with two indexing lists, the
+    - code [ref=f5e1431]: numpy
+    - text: interpretation is that these provide pairs of i, j indices for a series of entries. That is why the pair of lists must have the same length. However, that was not our intent, since we are looking for a submatrix.
+  - paragraph [ref=f5e1432]:
+    - text: One easy way to do this is as follows. We first create a submatrix by subsetting the rows of
+    - code [ref=f5e1433]: A
+    - text: ", and then on the fly we make a further submatrix by subsetting its columns."
+  - generic [ref=f5e1434]: "In [63]: A[[1,3]][:,[0,2]]"
+  - generic [ref=f5e1436]: "Out[63]: array([[ 4, 6], [12, 14]])"
+  - paragraph [ref=f5e1438]: There are more efficient ways of achieving the same result.
+  - paragraph [ref=f5e1439]:
+    - text: The
+    - emphasis [ref=f5e1440]: convenience function
+    - code [ref=f5e1441]: np.ix_()
+    - text: allows us to extract a submatrix using lists, by creating an intermediate
+    - emphasis [ref=f5e1442]: mesh
+    - text: object.
+  - paragraph [ref=f5e1443]:
+    - text: convenience function
+    - code [ref=f5e1444]: np.ix_()
+    - text: mesh
+  - generic [ref=f5e1445]: "In [64]: idx = np.ix_([1,3],[0,2,3]) A[idx]"
+  - generic [ref=f5e1447]: "Out[64]: array([[ 4, 6, 7], [12, 14, 15]])"
+  - paragraph [ref=f5e1449]:
+    - text: Alternatively, we can subset matrices efficiently using slices. The slice
+    - code [ref=f5e1450]: 1:4:2
+    - text: captures the second and fourth items of a sequence, while the slice
+    - code [ref=f5e1451]: 0:3:2
+    - text: captures the first and third items (the third element in a slice sequence is the step size).
+  - generic [ref=f5e1452]: "In [65]: A[1:4:2,0:3:2]"
+  - generic [ref=f5e1454]: "Out[65]: array([[ 4, 6], [12, 14]])"
+  - paragraph [ref=f5e1456]:
+    - text: Why are we able to retrieve a submatrix directly using slices but not using lists? Its because they are different
+    - code [ref=f5e1457]: Python
+    - text: types, and are treated differently by
+    - code [ref=f5e1458]: numpy
+    - text: . Slices can be used to extract objects from arbitrary sequences, such as strings, lists, and tuples, while the use of lists for indexing is more limited.
+  - heading "Boolean Indexing" [level=4] [ref=f5e1459]
+  - paragraph [ref=f5e1460]:
+    - text: In
+    - code [ref=f5e1461]: numpy
+    - text: ", a"
+    - emphasis [ref=f5e1462]: Boolean
+    - text: is a type that equals either
+    - code [ref=f5e1463]: "True"
+    - text: or
+    - code [ref=f5e1464]: "False"
+    - text: (also represented as 1 and 0, respectively). The next line creates a vector of 0’s, represented as Booleans, of length equal to the first dimension of
+    - code [ref=f5e1465]: A
+    - text: .
+  - paragraph [ref=f5e1466]: Boolean
+  - generic [ref=f5e1467]: "In [66]: keep_rows = np.zeros(A.shape[0], bool) keep_rows"
+  - generic [ref=f5e1469]: "Out[66]: array([False, False, False, False])"
+  - paragraph [ref=f5e1471]:
+    - text: We now set two of the elements to
+    - code [ref=f5e1472]: "True"
+    - text: .
+  - generic [ref=f5e1473]: "In [67]: keep_rows[[1,3]] = True keep_rows"
+  - generic [ref=f5e1475]: "Out[67]: array([False, True, False, True])"
+  - paragraph [ref=f5e1477]:
+    - text: Note that the elements of
+    - code [ref=f5e1478]: keep_rows
+    - text: ", when viewed as integers, are the same as the values of"
+    - code [ref=f5e1479]: np.array([0,1,0,1])
+    - text: . Below, we use
+    - code [ref=f5e1480]: ==
+    - text: to verify their equality. When applied to two arrays, the
+    - code [ref=f5e1481]: ==
+    - text: operation is applied elementwise.
+  - generic [ref=f5e1482]: "In [68]: np.all(keep_rows == np.array([0,1,0,1]))"
+  - generic [ref=f5e1484]: "Out[68]: True"
+  - paragraph [ref=f5e1486]:
+    - text: (Here, the function
+    - code [ref=f5e1487]: np.all()
+    - text: has checked whether all entries of an array are
+    - code [ref=f5e1488]: "True"
+    - text: . A similar function,
+    - code [ref=f5e1489]: np.any()
+    - text: ", can be used to check whether any entries of an array are"
+    - code [ref=f5e1490]: "True"
+    - text: .)
+  - paragraph [ref=f5e1491]:
+    - code [ref=f5e1492]: np.all() np.any()
+  - paragraph [ref=f5e1493]:
+    - text: However, even though
+    - code [ref=f5e1494]: np.array([0,1,0,1])
+    - text: and
+    - code [ref=f5e1495]: keep_rows
+    - text: are equal according to
+    - code [ref=f5e1496]: ==
+    - text: ", they index different sets of rows! The former retrieves the first, second, first, and second rows of"
+    - code [ref=f5e1497]: A
+    - text: .
+  - generic [ref=f5e1498]: "In [69]: A[np.array([0,1,0,1])]"
+  - generic [ref=f5e1500]: "Out[69]: array([[0, 1, 2, 3], [4, 5, 6, 7], [0, 1, 2, 3], [4, 5, 6, 7]])"
+  - paragraph [ref=f5e1502]:
+    - text: By contrast,
+    - code [ref=f5e1503]: keep_rows
+    - text: retrieves only the second and fourth rows of
+    - code [ref=f5e1504]: A
+    - text: — i.e. the rows for which the Boolean equals
+    - code [ref=f5e1505]: "TRUE"
+    - text: .
+  - generic [ref=f5e1506]: "In [70]: A[keep_rows]"
+  - generic [ref=f5e1508]: "Out[70]: array([[ 4, 5, 6, 7], [12, 13, 14, 15]])"
+  - paragraph [ref=f5e1510]:
+    - text: This example shows that Booleans and integers are treated differently by
+    - code [ref=f5e1511]: numpy
+    - text: .
+  - paragraph [ref=f5e1512]:
+    - text: We again make use of the
+    - code [ref=f5e1513]: np.ix_()
+    - text: function to create a mesh containing the second and fourth rows, and the first, third, and fourth columns. This time, we apply the function to Booleans, rather than lists.
+  - generic [ref=f5e1514]: "In [71]: keep_cols = np.zeros(A.shape[1], bool) keep_cols[[0, 2, 3]] = True idx_bool = np.ix_(keep_rows, keep_cols) A[idx_bool]"
+  - generic [ref=f5e1516]: "Out[71]: array([[ 4, 6, 7], [12, 14, 15]])"
+  - paragraph [ref=f5e1518]: We can also mix a list with an array of Booleans in the arguments to
+  - generic [ref=f5e1519]: "np.ix_():"
+  - generic [ref=f5e1521]: "In [72]: idx_mixed = np.ix_([1,3], keep_cols) A[idx_mixed]"
+  - generic [ref=f5e1523]: "Out[72]: array([[ 4, 6, 7], [12, 14, 15]])"
+  - paragraph [ref=f5e1525]:
+    - text: For more details on indexing in
+    - code [ref=f5e1526]: numpy
+    - text: ", readers are referred to the"
+    - code [ref=f5e1527]: numpy
+    - text: tutorial mentioned earlier.
+  - heading "2.3.7 Loading Data" [level=3] [ref=f5e1528]
+  - paragraph [ref=f5e1529]:
+    - text: Data sets often contain different types of data, and may have names associated with the rows or columns. For these reasons, they typically are best accommodated using a
+    - emphasis [ref=f5e1530]: data frame
+    - text: . We can think of a data frame as a sequence of arrays of identical length; these are the columns. Entries in the different arrays can be combined to form a row. The
+    - code [ref=f5e1531]: pandas
+    - text: library can be used to create and work with data frame objects.
+  - paragraph [ref=f5e1532]: data frame
+  - heading "Reading in a Data Set" [level=4] [ref=f5e1533]
+  - paragraph [ref=f5e1534]:
+    - text: The first step of most analyses involves importing a data set into
+    - code [ref=f5e1535]: Python
+    - text: . Before attempting to load a data set, we must make sure that
+    - code [ref=f5e1536]: Python
+    - text: knows where to find the file containing it. If the file is in the same location as this notebook file, then we are all set. Otherwise, the command
+    - code [ref=f5e1537]: os.chdir()
+    - text: can be used to
+    - emphasis [ref=f5e1538]: change directory
+    - text: . (You will need to call
+    - code [ref=f5e1539]: import os
+    - text: before calling
+    - code [ref=f5e1540]: os.chdir()
+    - text: .)
+  - paragraph [ref=f5e1541]:
+    - code [ref=f5e1542]: os.chdir()
+  - paragraph [ref=f5e1543]:
+    - text: We will begin by reading in
+    - code [ref=f5e1544]: Auto.csv
+    - text: ", available on the book website. This is a comma-separated file, and can be read in using"
+    - code [ref=f5e1545]: pd.read_csv()
+    - text: ":"
+  - paragraph [ref=f5e1546]:
+    - code [ref=f5e1547]: pd.read_csv()
+  - generic [ref=f5e1548]: "In [73]: import pandas as pd Auto = pd.read_csv('Auto.csv') Auto"
+  - paragraph [ref=f5e1550]:
+    - text: The book website also has a whitespace-delimited version of this data, called
+    - code [ref=f5e1551]: Auto.data
+    - text: ". This can be read in as follows:"
+  - generic [ref=f5e1552]: "In [74]: Auto = pd.read_csv('Auto.data', delim_whitespace=True)"
+  - paragraph [ref=f5e1554]:
+    - text: Both
+    - code [ref=f5e1555]: Auto.csv
+    - text: and
+    - code [ref=f5e1556]: Auto.data
+    - text: are simply text files. Before loading data into
+    - code [ref=f5e1557]: Python
+    - text: ", it is a good idea to view it using a text editor or other software, such as Microsoft Excel."
+  - paragraph [ref=f5e1558]:
+    - text: We now take a look at the column of
+    - code [ref=f5e1559]: Auto
+    - text: corresponding to the variable
+  - generic [ref=f5e1560]: "horsepower:"
+  - generic [ref=f5e1562]: "In [75]: Auto['horsepower']"
+  - generic [ref=f5e1564]: "Out[75]: 0 130.0 1 165.0 2 150.0 3 150.0 4 140.0 ... 392 86.00 393 52.00 394 84.00 395 79.00 396 82.00 Name: horsepower , Length: 397, dtype: object"
+  - paragraph [ref=f5e1566]:
+    - text: We see that the
+    - code [ref=f5e1567]: dtype
+    - text: of this column is
+    - code [ref=f5e1568]: object
+    - text: . It turns out that all values of the
+    - code [ref=f5e1569]: horsepower
+    - text: column were interpreted as strings when reading in the data. We can find out why by looking at the unique values.
+  - generic [ref=f5e1570]: "In [76]: np.unique(Auto['horsepower'])"
+  - paragraph [ref=f5e1572]:
+    - text: To save space, we have omitted the output of the previous code block. We see the culprit is the value
+    - code [ref=f5e1573]: "?"
+    - text: ", which is being used to encode missing values."
+  - paragraph [ref=f5e1574]:
+    - text: To fix the problem, we must provide
+    - code [ref=f5e1575]: pd.read_csv()
+    - text: with an argument called
+    - code [ref=f5e1576]: na_values
+    - text: . Now, each instance of
+    - code [ref=f5e1577]: "?"
+    - text: in the file is replaced with the value
+    - code [ref=f5e1578]: np.nan
+    - text: ", which means"
+    - emphasis [ref=f5e1579]: not a number
+    - text: ":"
+  - generic [ref=f5e1580]: "In [77]: Auto = pd.read_csv('Auto.data', na_values=['?'], delim_whitespace=True) Auto['horsepower'].sum()"
+  - generic [ref=f5e1582]: "Out[77]: 40952.0"
+  - paragraph [ref=f5e1584]:
+    - text: The
+    - code [ref=f5e1585]: Auto.shape
+    - text: attribute tells us that the data has 397 observations, or rows, and nine variables, or columns.
+  - generic [ref=f5e1586]: "In [78]: Auto.shape"
+  - generic [ref=f5e1588]: "Out[78]: (397, 9)"
+  - paragraph [ref=f5e1590]:
+    - text: There are various ways to deal with missing data. In this case, since only five of the rows contain missing observations, we choose to use the
+    - code [ref=f5e1591]: Auto.dropna()
+    - text: method to simply remove these rows.
+  - paragraph [ref=f5e1592]:
+    - code [ref=f5e1593]: .dropna()
+  - generic [ref=f5e1594]: "In [79]: Auto_new = Auto.dropna() Auto_new.shape"
+  - generic [ref=f5e1596]: "Out[79]: (392, 9)"
+  - heading "Basics of Selecting Rows and Columns" [level=4] [ref=f5e1598]
+  - paragraph [ref=f5e1599]:
+    - text: We can use
+    - code [ref=f5e1600]: Auto.columns
+    - text: to check the variable names.
+  - generic [ref=f5e1601]: "In [80]: Auto = Auto_new # overwrite the previous value Auto.columns"
+  - generic [ref=f5e1603]: "Out[80]: Index(['mpg', 'cylinders', 'displacement', 'horsepower', 'weight', 'acceleration', 'year', 'origin', 'name'], dtype='object')"
+  - paragraph [ref=f5e1605]:
+    - text: Accessing the rows and columns of a data frame is similar, but not identical, to accessing the rows and columns of an array. Recall that the first argument to the
+    - code [ref=f5e1606]: "[]"
+    - text: method is always applied to the rows of the array. Similarly, passing in a slice to the
+    - code [ref=f5e1607]: "[]"
+    - text: method creates a data frame whose
+    - emphasis [ref=f5e1608]: rows
+    - text: "are determined by the slice:"
+  - generic [ref=f5e1609]: "In [81]: Auto[:3]"
+  - generic [ref=f5e1611]: "Out[81]: mpg cylinders displacement horsepower weight ... 0 18.0 8 307.0 130.0 3504.0 ... 1 15.0 8 350.0 165.0 3693.0 ... 2 18.0 8 318.0 150.0 3436.0 ..."
+  - paragraph [ref=f5e1613]: "Similarly, an array of Booleans can be used to subset the rows:"
+  - generic [ref=f5e1614]: "In [82]: idx_80 = Auto['year'] > 80 Auto[idx_80]"
+  - paragraph [ref=f5e1616]:
+    - text: However, if we pass in a list of strings to the
+    - code [ref=f5e1617]: "[]"
+    - text: method, then we obtain a data frame containing the corresponding set of
+    - emphasis [ref=f5e1618]: columns
+    - text: .
+  - generic [ref=f5e1619]: "In [83]: Auto[['mpg', 'horsepower']]"
+  - generic [ref=f5e1621]: "Out[83]: mpg horsepower 0 18.0 130.0 1 15.0 165.0 2 18.0 150.0 3 16.0 150.0 4 17.0 140.0 ... ... ... 392 27.0 86.0 393 44.0 52.0 394 32.0 84.0 395 28.0 79.0 396 31.0 82.0 392 rows x 2 columns"
+  - paragraph [ref=f5e1623]:
+    - text: Since we did not specify an
+    - emphasis [ref=f5e1624]: index
+    - text: column when we loaded our data frame, the rows are labeled using integers 0 to 396.
+  - generic [ref=f5e1625]: "In [84]: Auto.index"
+  - generic [ref=f5e1627]: "Out[84]: Int64Index([ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ... 387, 388, 389, 390, 391, 392, 393, 394, 395, 396], dtype='int64', length=392)"
+  - paragraph [ref=f5e1629]:
+    - text: We can use the
+    - code [ref=f5e1630]: set_index()
+    - text: method to re-name the rows using the contents of
+    - code [ref=f5e1631]: Auto['name']
+    - text: .
+  - paragraph [ref=f5e1632]:
+    - code [ref=f5e1633]: .set_index()
+  - generic [ref=f5e1634]: "In [85]: Auto_re = Auto.set_index('name') Auto_re"
+  - generic [ref=f5e1636]: "Out[85]: mpg cylinders displacement ... name"
+  - generic [ref=f5e1638]: chevrolet chevelle malibu 18.0 8 307.0 ... buick skylark 32 15.0 8 350.0 ... plymouth satellite 18.0 8 318.0 ... amc rebel sst 16.0 8 304.0 ...
+  - generic [ref=f5e1640]: "In [86]: Auto_re.columns"
+  - generic [ref=f5e1642]: "Out[86]: Index(['mpg', 'cylinders', 'displacement', 'horsepower', 'weight', 'acceleration', 'year', 'origin'], dtype='object')"
+  - paragraph [ref=f5e1644]:
+    - text: We see that the column
+    - code [ref=f5e1645]: "'name'"
+    - text: is no longer there.
+  - paragraph [ref=f5e1646]:
+    - text: Now that the index has been set to
+    - code [ref=f5e1647]: name
+    - text: ", we can access rows of the data frame by"
+    - code [ref=f5e1648]: name
+    - text: using the
+    - code [ref=f5e1649]: loc[]
+    - text: method of
+    - code [ref=f5e1650]: Auto
+    - text: ":"
+  - paragraph [ref=f5e1651]:
+    - code [ref=f5e1652]: .loc[]
+  - generic [ref=f5e1653]: "In [87]: rows = ['amc rebel sst', 'ford torino'] Auto_re.loc[rows]"
+  - generic [ref=f5e1655]: "Out[87]: mpg cylinders displacement horsepower ... name amc rebel sst 16.0 8 304.0 150.0 ... ford torino 17.0 8 302.0 140.0 ..."
+  - paragraph [ref=f5e1657]:
+    - text: As an alternative to using the index name, we could retrieve the 4th and 5th rows of
+    - code [ref=f5e1658]: Auto
+    - text: using the
+    - code [ref=f5e1659]: iloc[]
+    - text: "method:"
+  - paragraph [ref=f5e1660]:
+    - code [ref=f5e1661]: .iloc[]
+  - generic [ref=f5e1662]: "In [88]: Auto_re.iloc[[3,4]]"
+  - paragraph [ref=f5e1664]:
+    - text: We can also use it to retrieve the 1st, 3rd and and 4th columns of
+    - code [ref=f5e1665]: Auto_re
+    - text: ":"
+  - generic [ref=f5e1666]: "In [89]: Auto_re.iloc[:,[0,2,3]]"
+  - paragraph [ref=f5e1668]:
+    - text: We can extract the 4th and 5th rows, as well as the 1st, 3rd and 4th columns, using a single call to
+    - code [ref=f5e1669]: iloc[]
+    - text: ":"
+  - generic [ref=f5e1670]: "In [90]: Auto_re.iloc[[3,4],[0,2,3]]"
+  - generic [ref=f5e1672]: "Out[90]: mpg displacement horsepower name amc rebel sst 16.0 304.0 150.0 ford torino 17.0 302.0 140.0"
+  - paragraph [ref=f5e1674]:
+    - text: "Index entries need not be unique: there are several cars in the data frame named"
+    - code [ref=f5e1675]: ford galaxie 500
+    - text: .
+  - generic [ref=f5e1676]: "In [91]: Auto_re.loc['ford galaxie 500', ['mpg', 'origin']]"
+  - generic [ref=f5e1678]: "Out[91]: mpg origin name ford galaxie 500 15.0 1 ford galaxie 500 14.0 1 ford galaxie 500 14.0 1"
+  - heading "More on Selecting Rows and Columns" [level=4] [ref=f5e1680]
+  - paragraph [ref=f5e1681]:
+    - text: Suppose now that we want to create a data frame consisting of the
+    - code [ref=f5e1682]: weight
+    - text: and
+    - code [ref=f5e1683]: origin
+    - text: of the subset of cars with
+    - code [ref=f5e1684]: year
+    - text: greater than 80 — i.e. those built after 1980. To do this, we first create a Boolean array that indexes the rows. The
+    - code [ref=f5e1685]: loc[]
+    - text: "method allows for Boolean entries as well as strings:"
+  - generic [ref=f5e1686]: "In [92]: idx_80 = Auto_re['year'] > 80 Auto_re.loc[idx_80, ['weight', 'origin']]"
+  - paragraph [ref=f5e1688]: To do this more concisely, we can use an anonymous function called a
+  - generic [ref=f5e1689]: "lambda:"
+  - generic [ref=f5e1691]: "In [93]: Auto_re.loc[lambda df: df['year'] > 80, ['weight', 'origin']]"
+  - paragraph [ref=f5e1693]:
+    - text: The
+    - code [ref=f5e1694]: lambda
+    - text: call creates a function that takes a single argument, here
+    - code [ref=f5e1695]: df
+    - text: ", and returns"
+    - code [ref=f5e1696]: df['year']>80
+    - text: . Since it is created inside the
+    - code [ref=f5e1697]: loc[]
+    - text: method for the dataframe
+    - code [ref=f5e1698]: Auto_re
+    - text: ", that dataframe will be the argument supplied. As another example of using a"
+    - code [ref=f5e1699]: lambda
+    - text: ", suppose that we want all cars built after 1980 that achieve greater than 30 miles per gallon:"
+  - paragraph [ref=f5e1700]:
+    - code [ref=f5e1701]: lambda
+  - generic [ref=f5e1702]: "In [94]: Auto_re.loc[lambda df: (df['year'] > 80) & (df['mpg'] > 30), ['weight', 'origin'] ]"
+  - paragraph [ref=f5e1704]:
+    - text: The symbol
+    - code [ref=f5e1705]: "&"
+    - text: computes an element-wise
+    - emphasis [ref=f5e1706]: and
+    - text: operation. As another example, suppose that we want to retrieve all
+    - code [ref=f5e1707]: Ford
+    - text: and
+    - code [ref=f5e1708]: Datsun
+    - text: cars with
+    - code [ref=f5e1709]: displacement
+    - text: less than 300. We check whether each
+    - code [ref=f5e1710]: name
+    - text: entry contains either the string
+    - code [ref=f5e1711]: ford
+    - text: or
+    - code [ref=f5e1712]: datsun
+    - text: using the
+    - code [ref=f5e1713]: str.contains()
+    - text: method of the
+    - code [ref=f5e1714]: index
+    - text: "attribute of of the dataframe:"
+  - paragraph [ref=f5e1715]:
+    - code [ref=f5e1716]: .str. contains()
+  - generic [ref=f5e1717]: "In [95]: Auto_re.loc[lambda df: (df['displacement'] < 300) & (df.index.str.contains('ford') | df.index.str.contains('datsun')), ['weight', 'origin'] ]"
+  - paragraph [ref=f5e1719]:
+    - text: Here, the symbol
+    - code [ref=f5e1720]: "|"
+    - text: computes an element-wise
+    - emphasis [ref=f5e1721]: or
+    - text: operation.
+  - paragraph [ref=f5e1722]:
+    - text: In summary, a powerful set of operations is available to index the rows and columns of data frames. For integer based queries, use the
+    - code [ref=f5e1723]: iloc[]
+    - text: method. For string and Boolean selections, use the
+    - code [ref=f5e1724]: loc[]
+    - text: method. For functional queries that filter rows, use the
+    - code [ref=f5e1725]: loc[]
+    - text: method with a function (typically a
+    - code [ref=f5e1726]: lambda
+    - text: ) in the rows argument.
+  - heading "2.3.8 For Loops" [level=3] [ref=f5e1727]
+  - paragraph [ref=f5e1728]:
+    - text: A
+    - code [ref=f5e1729]: for
+    - text: loop is a standard tool in many languages that repeatedly evaluates some chunk of code while varying different values inside the code. For example, suppose we loop over elements of a list and compute their sum.
+  - paragraph [ref=f5e1730]:
+    - code [ref=f5e1731]: for
+  - generic [ref=f5e1732]: "In [96]: total = 0 for value in [3,2,19]: total += value print('Total is: {0}'.format(total))"
+  - generic [ref=f5e1734]: "Total is: 24"
+  - paragraph [ref=f5e1736]:
+    - text: The indented code beneath the line with the
+    - code [ref=f5e1737]: for
+    - text: statement is run for each value in the sequence specifei d in the
+    - code [ref=f5e1738]: for
+    - text: statement. The loop ends either when the cell ends or when code is indented at the same level as the original
+    - code [ref=f5e1739]: for
+    - text: statement. We see that the final line above which prints the total is executed only once after the for loop has terminated. Loops can be nested by additional indentation.
+  - generic [ref=f5e1740]: "In [97]: total = 0 for value in [2,3,19]: for weight in [3, 2, 1]: total += value * weight print('Total is: {0}'.format(total))"
+  - generic [ref=f5e1742]: "Total is: 144"
+  - paragraph [ref=f5e1744]:
+    - text: Above, we summed over each combination of
+    - code [ref=f5e1745]: value
+    - text: and
+    - code [ref=f5e1746]: weight
+    - text: . We also took advantage of the
+    - emphasis [ref=f5e1747]: increment
+    - text: notation in
+    - code [ref=f5e1748]: Python
+    - text: ": the expression"
+    - code [ref=f5e1749]: a += b
+    - text: is equivalent to
+    - code [ref=f5e1750]: a = a + b
+    - text: . Besides being a convenient notation, this can save time in computationally heavy tasks in which the intermediate value of
+    - code [ref=f5e1751]: a+b
+    - text: need not be explicitly created.
+  - paragraph [ref=f5e1752]: increment
+  - paragraph [ref=f5e1753]:
+    - text: Perhaps a more common task would be to sum over
+    - code [ref=f5e1754]: (value, weight)
+    - text: pairs. For instance, to compute the average value of a random variable that takes on possible values 2, 3 or 19 with probability 0.2, 0.3, 0.5 respectively we would compute the weighted sum. Tasks such as this can often be accomplished using the
+    - code [ref=f5e1755]: zip()
+    - text: function that loops over a sequence of tuples.
+  - paragraph [ref=f5e1756]:
+    - code [ref=f5e1757]: zip()
+  - generic [ref=f5e1758]: "In [98]: total = 0 for value, weight in zip([2,3,19], [0.2,0.3,0.5]): total += weight * value print('Weighted average is: {0}'.format(total))"
+  - generic [ref=f5e1760]: "Weighted average is: 10.8"
+  - heading "String Formatting" [level=4] [ref=f5e1762]
+  - paragraph [ref=f5e1763]:
+    - text: In the code chunk above we also printed a string displaying the total. However, the object
+    - code [ref=f5e1764]: total
+    - text: is an integer and not a string. Inserting the value of something into a string is a common task, made simple using some of the powerful string formatting tools in
+    - code [ref=f5e1765]: Python
+    - text: . Many data cleaning tasks involve manipulating and programmatically producing strings.
+  - paragraph [ref=f5e1766]:
+    - text: For example we may want to loop over the columns of a data frame and print the percent missing in each column. Let’s create a data frame
+    - code [ref=f5e1767]: D
+    - text: with columns in which 20% of the entries are missing i.e. set to
+    - code [ref=f5e1768]: np.nan
+    - text: . We’ll create the values in
+    - code [ref=f5e1769]: D
+    - text: from a normal distribution with mean 0 and variance 1 using
+    - code [ref=f5e1770]: rng.standard_normal()
+    - text: and then overwrite some random entries using
+    - code [ref=f5e1771]: rng.choice()
+    - text: .
+  - paragraph [ref=f5e1772]:
+    - code [ref=f5e1773]: np.nan
+  - generic [ref=f5e1774]: "In [99]: rng = np.random.default_rng(1) A = rng.standard_normal((127, 5)) M = rng.choice([0, np.nan], p=[0.8,0.2], size=A.shape) A += M D = pd.DataFrame(A, columns=['food', 'bar', 'pickle', 'snack', 'popcorn']) D[:3]"
+  - generic [ref=f5e1776]: "Out[99]: food bar pickle snack popcorn 0 0.345584 0.821618 0.330437 -1.303157 NaN 1 NaN -0.536953 0.581118 0.364572 0.294132 2 NaN 0.546713 NaN -0.162910 -0.482119"
+  - generic [ref=f5e1778]: "In [100]: for col in D.columns: template = 'Column \"{0}\" has {1:.2%} missing values' print(template.format(col, np.isnan(D[col]).mean()))"
+  - generic [ref=f5e1780]: Column "food" has 16.54% missing values Column "bar" has 25.98% missing values Column "pickle" has 29.13% missing values Column "snack" has 21.26% missing values Column "popcorn" has 22.83% missing values
+  - paragraph [ref=f5e1782]:
+    - text: We see that the
+    - code [ref=f5e1783]: template.format()
+    - text: method expects two arguments
+    - code [ref=f5e1784]: "{0}"
+    - text: and
+    - code [ref=f5e1785]: "{1:.2%}"
+    - text: ", and the latter includes some formatting information. In particular, it specifies that the second argument should be expressed as a percent with two decimal digits."
+  - paragraph [ref=f5e1786]:
+    - text: The reference
+    - link "docs.python.org/3/library/string.html" [ref=f5e1787] [cursor=pointer]:
+      - /url: https://docs.python.org/3/library/string.html
+    - text: includes many helpful and more complex examples.
+  - heading "2.3.9 Additional Graphical and Numerical Summaries" [level=3] [ref=f5e1788]
+  - paragraph [ref=f5e1789]:
+    - text: We can use the
+    - code [ref=f5e1790]: ax.plot()
+    - text: or
+    - code [ref=f5e1791]: ax.scatter()
+    - text: functions to display the quantitative variables. However, simply typing the variable names will produce an error message, because
+    - code [ref=f5e1792]: Python
+    - text: does not know to look in the
+    - code [ref=f5e1793]: Auto
+    - text: data set for those variables.
+  - generic [ref=f5e1794]: "In [101]: fig, ax = subplots(figsize=(8, 8)) ax.plot(horsepower, mpg, 'o');"
+  - generic [ref=f5e1796]: "NameError: name 'horsepower' is not defined"
+  - paragraph [ref=f5e1798]: "We can address this by accessing the columns directly:"
+  - generic [ref=f5e1799]: "In [102]: fig, ax = subplots(figsize=(8, 8)) ax.plot(Auto['horsepower'], Auto['mpg'], 'o');"
+  - paragraph [ref=f5e1801]:
+    - text: Alternatively, we can use the
+    - code [ref=f5e1802]: plot()
+    - text: method with the call
+    - code [ref=f5e1803]: Auto.plot()
+    - text: ". Using this method, the variables can be accessed by name. The plot methods of a data frame return a familiar object: an axes. We can use it to update the plot as we did previously:"
+  - paragraph [ref=f5e1804]:
+    - code [ref=f5e1805]: .plot()
+  - generic [ref=f5e1806]: "In [103]: ax = Auto.plot.scatter('horsepower', 'mpg'); ax.set_title('Horsepower vs. MPG')"
+  - paragraph [ref=f5e1808]:
+    - text: If we want to save the figure that contains a given axes, we can find the relevant figure by accessing the
+    - code [ref=f5e1809]: figure
+    - text: "attribute:"
+  - generic [ref=f5e1810]: "In [104]: fig = ax.figure fig.savefig('horsepower_mpg.png');"
+  - paragraph [ref=f5e1812]:
+    - text: We can further instruct the data frame to plot to a particular axes object. In this case the corresponding
+    - code [ref=f5e1813]: plot()
+    - text: method will return the modified axes we passed in as an argument. Note that when we request a one-dimensional grid of plots, the object
+    - code [ref=f5e1814]: axes
+    - text: is similarly one-dimensional. We place our scatter plot in the middle plot of a row of three plots within a figure.
+  - generic [ref=f5e1815]: "In [105]: fig, axes = subplots(ncols=3, figsize=(15, 5)) Auto.plot.scatter('horsepower', 'mpg', ax=axes[1]);"
+  - paragraph [ref=f5e1817]:
+    - text: "Note also that the columns of a data frame can be accessed as attributes: try typing in"
+    - code [ref=f5e1818]: Auto.horsepower
+    - text: .
+  - paragraph [ref=f5e1819]:
+    - text: We now consider the
+    - code [ref=f5e1820]: cylinders
+    - text: variable. Typing in
+    - code [ref=f5e1821]: Auto.cylinders.dtype
+    - text: reveals that it is being treated as a quantitative variable. However, since there is only a small number of possible values for this variable, we may wish to treat it as qualitative. Below, we replace the
+    - code [ref=f5e1822]: cylinders
+    - text: column with a categorical version of
+    - code [ref=f5e1823]: Auto.cylinders
+    - text: . The function
+    - code [ref=f5e1824]: pd.Series()
+    - text: owes its name to the fact that
+    - code [ref=f5e1825]: pandas
+    - text: is often used in time series applications.
+  - paragraph [ref=f5e1826]:
+    - code [ref=f5e1827]: pd.Series()
+  - generic [ref=f5e1828]: "In [106]: Auto.cylinders = pd.Series(Auto.cylinders, dtype='category') Auto.cylinders.dtype"
+  - paragraph [ref=f5e1830]:
+    - text: Now that
+    - code [ref=f5e1831]: cylinders
+    - text: is qualitative, we can display it using the
+    - code [ref=f5e1832]: boxplot()
+    - text: method.
+  - paragraph [ref=f5e1833]:
+    - code [ref=f5e1834]: .boxplot()
+  - generic [ref=f5e1835]: "In [107]: fig, ax = subplots(figsize=(8, 8)) Auto.boxplot('mpg', by='cylinders', ax=ax);"
+  - paragraph [ref=f5e1837]:
+    - text: The
+    - code [ref=f5e1838]: hist()
+    - text: method can be used to plot a
+    - emphasis [ref=f5e1839]: histogram
+    - text: .
+  - paragraph [ref=f5e1840]:
+    - code [ref=f5e1841]: .hist()
+  - generic [ref=f5e1842]: "In [108]: fig, ax = subplots(figsize=(8, 8)) Auto.hist('mpg', ax=ax);"
+  - paragraph [ref=f5e1844]: "The color of the bars and the number of bins can be changed:"
+  - generic [ref=f5e1845]: "In [109]: fig, ax = subplots(figsize=(8, 8)) Auto.hist('mpg', color='red', bins=12, ax=ax);"
+  - paragraph [ref=f5e1847]:
+    - text: See
+    - code [ref=f5e1848]: Auto.hist?
+    - text: for more plotting options.
+  - paragraph [ref=f5e1849]:
+    - text: We can use the
+    - code [ref=f5e1850]: pd.plotting.scatter_matrix()
+    - text: function to create a
+    - emphasis [ref=f5e1851]: scat- terplot matrix
+    - text: to visualize all of the pairwise relationships between the columns in a data frame.
+  - paragraph [ref=f5e1852]:
+    - code [ref=f5e1853]: pd.plotting. scatter_ matrix()
+  - generic [ref=f5e1854]: "In [110]: pd.plotting.scatter_matrix(Auto);"
+  - paragraph [ref=f5e1856]: We can also produce scatterplots for a subset of the variables.
+  - generic [ref=f5e1857]: "In [111]: pd.plotting.scatter_matrix(Auto[['mpg', 'displacement', 'weight']]);"
+  - paragraph [ref=f5e1859]:
+    - text: The
+    - code [ref=f5e1860]: describe()
+    - text: method produces a numerical summary of each column in a data frame.
+  - paragraph [ref=f5e1861]:
+    - code [ref=f5e1862]: .describe()
+  - generic [ref=f5e1863]: "In [112]: Auto[['mpg', 'weight']].describe()"
+  - paragraph [ref=f5e1865]: We can also produce a summary of just a single column.
+  - generic [ref=f5e1866]: "In [113]: Auto['cylinders'].describe() Auto['mpg'].describe()"
+  - paragraph [ref=f5e1868]:
+    - text: To exit
+    - code [ref=f5e1869]: Jupyter
+    - text: ", select"
+    - code [ref=f5e1870]: File / Close and Halt
+    - text: .
+  - heading "2.4 Exercises" [level=2] [ref=f5e1871]
+  - heading "Conceptual" [level=3] [ref=f5e1872]
+  - paragraph [ref=f5e1873]: 1. For each of parts (a) through (d), indicate whether we would generally expect the performance of a flexible statistical learning method to be better or worse than an inflexible method. Justify your answer.
+  - paragraph [ref=f5e1874]: (a) The sample size n is extremely large, and the number of predictors p is small.
+  - paragraph [ref=f5e1875]: (b) The number of predictors p is extremely large, and the number of observations n is small.
+  - paragraph [ref=f5e1876]: (c) The relationship between the predictors and response is highly non-linear.
+  - paragraph [ref=f5e1877]:
+    - text: (d) The variance of the error terms, i.e. σ
+    - superscript [ref=f5e1878]: "2"
+    - text: = Var(ϵ), is extremely high.
+  - paragraph [ref=f5e1879]: 2. Explain whether each scenario is a classification or regression problem, and indicate whether we are most interested in inference or prediction. Finally, provide n and p.
+  - paragraph [ref=f5e1880]: (a) We collect a set of data on the top 500 firms in the US. For each firm we record profit, number of employees, industry and the CEO salary. We are interested in understanding which factors affect CEO salary.
+  - paragraph [ref=f5e1881]:
+    - text: (b) We are considering launching a new product and wish to know whether it will be a
+    - emphasis [ref=f5e1882]: success
+    - text: or a
+    - emphasis [ref=f5e1883]: failure
+    - text: . We collect data on 20 similar products that were previously launched. For each product we have recorded whether it was a success or failure, price charged for the product, marketing budget, competition price, and ten other variables.
+  - paragraph [ref=f5e1884]: (c) We are interested in predicting the % change in the USD/Euro exchange rate in relation to the weekly changes in the world stock markets. Hence we collect weekly data for all of 2012. For each week we record the % change in the USD/Euro, the % change in the US market, the % change in the British market, and the % change in the German market.
+  - paragraph [ref=f5e1885]: 3. We now revisit the bias-variance decomposition.
+  - paragraph [ref=f5e1886]: (a) Provide a sketch of typical (squared) bias, variance, training error, test error, and Bayes (or irreducible) error curves, on a single plot, as we go from less flexible statistical learning methods towards more flexible approaches. The x-axis should represent the amount of flexibility in the method, and the y-axis should represent the values for each curve. There should be five curves. Make sure to label each one.
+  - paragraph [ref=f5e1887]: (b) Explain why each of the five curves has the shape displayed in part (a).
+  - paragraph [ref=f5e1888]: 4. You will now think of some real-life applications for statistical learning.
+  - paragraph [ref=f5e1889]:
+    - text: (a) Describe three real-life applications in which
+    - emphasis [ref=f5e1890]: classification
+    - text: might be useful. Describe the response, as well as the predictors. Is the goal of each application inference or prediction? Explain your answer.
+  - paragraph [ref=f5e1891]:
+    - text: (b) Describe three real-life applications in which
+    - emphasis [ref=f5e1892]: regression
+    - text: might be useful. Describe the response, as well as the predictors. Is the goal of each application inference or prediction? Explain your answer.
+  - paragraph [ref=f5e1893]:
+    - text: (c) Describe three real-life applications in which
+    - emphasis [ref=f5e1894]: cluster analysis
+    - text: might be useful.
+  - paragraph [ref=f5e1895]: 5. What are the advantages and disadvantages of a very flexible (versus a less flexible) approach for regression or classification? Under what circumstances might a more flexible approach be preferred to a less flexible approach? When might a less flexible approach be preferred?
+  - paragraph [ref=f5e1896]: 6. Describe the differences between a parametric and a non-parametric statistical learning approach. What are the advantages of a parametric approach to regression or classification (as opposed to a nonparametric approach)? What are its disadvantages?
+  - paragraph [ref=f5e1897]: 7. The table below provides a training data set containing six observations, three predictors, and one qualitative response variable.
+  - 'img "\\begin{array}{c|cccc} \\text{Obs.} & X_1 & X_2 & X_3 & Y \\\\ \\hline 1 & 0 & 3 & 0 & \\text{Red} \\\\ 2 & 2 & 0 & 0 & \\text{Red} \\\\ 3 & 0 & 1 & 3 & \\text{Red} \\\\ 4 & 0 & 1 & 2 & \\text{Green} \\\\ 5 & -1 & 0 & 1 & \\text{Green} \\\\ 6 & 1 & 1 & 1 & \\text{Red} \\end{array}" [ref=f5e1899]'
+  - paragraph [ref=f5e1900]:
+    - text: Suppose we wish to use this data set to make a prediction for Y when X
+    - subscript [ref=f5e1901]: "1"
+    - text: = X
+    - subscript [ref=f5e1902]: "2"
+    - text: = X
+    - subscript [ref=f5e1903]: "3"
+    - text: = 0 using K-nearest neighbors.
+  - paragraph [ref=f5e1904]:
+    - text: (a) Compute the Euclidean distance between each observation and the test point, X
+    - subscript [ref=f5e1905]: "1"
+    - text: = X
+    - subscript [ref=f5e1906]: "2"
+    - text: = X
+    - subscript [ref=f5e1907]: "3"
+    - text: = 0.
+  - paragraph [ref=f5e1908]: (b) What is our prediction with K = 1? Why?
+  - paragraph [ref=f5e1909]: (c) What is our prediction with K = 3? Why?
+  - paragraph [ref=f5e1910]:
+    - text: (d) If the Bayes decision boundary in this problem is highly nonlinear, then would we expect the
+    - emphasis [ref=f5e1911]: best
+    - text: value for K to be large or small? Why?
+  - heading "Applied" [level=3] [ref=f5e1912]
+  - paragraph [ref=f5e1913]:
+    - text: 8. This exercise relates to the
+    - code [ref=f5e1914]: College
+    - text: data set, which can be found in the file
+    - code [ref=f5e1915]: College.csv
+    - text: on the book website. It contains a number of variables for 777 different universities and colleges in the US. The variables are •
+    - code [ref=f5e1916]: Private
+    - text: ": Public/private indicator •"
+    - code [ref=f5e1917]: Apps
+    - text: ": Number of applications received •"
+    - code [ref=f5e1918]: Accept
+    - text: ": Number of applicants accepted •"
+    - code [ref=f5e1919]: Enroll
+    - text: ": Number of new students enrolled •"
+    - code [ref=f5e1920]: Top10perc
+    - text: ": New students from top 10 % of high school class •"
+    - code [ref=f5e1921]: Top25perc
+    - text: ": New students from top 25 % of high school class •"
+    - code [ref=f5e1922]: F.Undergrad
+    - text: ": Number of full-time undergraduates •"
+    - code [ref=f5e1923]: P.Undergrad
+    - text: ": Number of part-time undergraduates •"
+    - code [ref=f5e1924]: Outstate
+    - text: ": Out-of-state tuition •"
+    - code [ref=f5e1925]: Room.Board
+    - text: ": Room and board costs •"
+    - code [ref=f5e1926]: Books
+    - text: ": Estimated book costs •"
+    - code [ref=f5e1927]: Personal
+    - text: ": Estimated personal spending •"
+    - code [ref=f5e1928]: PhD
+    - text: ": Percent of faculty with Ph.D.s •"
+    - code [ref=f5e1929]: Terminal
+    - text: ": Percent of faculty with terminal degree •"
+    - code [ref=f5e1930]: S.F.Ratio
+    - text: ": Student/faculty ratio •"
+    - code [ref=f5e1931]: perc.alumni
+    - text: ": Percent of alumni who donate •"
+    - code [ref=f5e1932]: Expend
+    - text: ": Instructional expenditure per student •"
+    - code [ref=f5e1933]: Grad.Rate
+    - text: ": Graduation rate Before reading the data into"
+    - code [ref=f5e1934]: Python
+    - text: ", it can be viewed in Excel or a text editor."
+  - paragraph [ref=f5e1935]:
+    - text: (a) Use the
+    - code [ref=f5e1936]: pd.read_csv()
+    - text: function to read the data into
+    - code [ref=f5e1937]: Python
+    - text: . Call the loaded data
+    - code [ref=f5e1938]: college
+    - text: . Make sure that you have the directory set to the correct location for the data.
+  - paragraph [ref=f5e1939]:
+    - text: (b) Look at the data used in the notebook by creating and running a new cell with just the code
+    - code [ref=f5e1940]: college
+    - text: in it. You should notice that the first column is just the name of each university in a column named something like
+    - code [ref=f5e1941]: "Unnamed: 0"
+    - text: . We don’t really want
+    - code [ref=f5e1942]: pandas
+    - text: "to treat this as data. However, it may be handy to have these names for later. Try the following commands and similarly look at the resulting data frames:"
+  - generic [ref=f5e1943]: "college2 = pd.read_csv('College.csv', index_col=0) college3 = college.rename({'Unnamed: 0': 'College'}, axis=1) college3 = college3.set_index('College')"
+  - paragraph [ref=f5e1945]:
+    - text: This has used the first column in the file as an
+    - code [ref=f5e1946]: index
+    - text: for the data frame. This means that
+    - code [ref=f5e1947]: pandas
+    - text: has given each row a name corresponding to the appropriate university. Now you should see that the first data column is
+    - code [ref=f5e1948]: Private
+    - text: ". Note that the names of the colleges appear on the left of the table. We also introduced a new python object above: a"
+    - emphasis [ref=f5e1949]: dictionary
+    - text: ", which is specified by"
+    - code [ref=f5e1950]: (key, value)
+    - text: "pairs. Keep your modified version of the data with the following:"
+  - paragraph [ref=f5e1951]: dictionary
+  - generic [ref=f5e1952]: college = college3
+  - paragraph [ref=f5e1954]:
+    - text: (c) Use the
+    - code [ref=f5e1955]: describe()
+    - text: method of to produce a numerical summary of the variables in the data set.
+  - paragraph [ref=f5e1956]:
+    - text: (d) Use the
+    - code [ref=f5e1957]: pd.plotting.scatter_matrix()
+    - text: function to produce a scatterplot matrix of the first columns
+    - code [ref=f5e1958]: "[Top10perc, Apps, Enroll]"
+    - text: . Recall that you can reference a list
+    - code [ref=f5e1959]: C
+    - text: of columns of a data frame
+    - code [ref=f5e1960]: A
+    - text: using
+    - code [ref=f5e1961]: A[C]
+    - text: .
+  - paragraph [ref=f5e1962]:
+    - text: (e) Use the
+    - code [ref=f5e1963]: boxplot()
+    - text: method of
+    - code [ref=f5e1964]: college
+    - text: to produce side-by-side boxplots of
+    - code [ref=f5e1965]: Outstate
+    - text: versus
+    - code [ref=f5e1966]: Private
+    - text: .
+  - paragraph [ref=f5e1967]:
+    - text: (f) Create a new qualitative variable, called
+    - code [ref=f5e1968]: Elite
+    - text: ", by"
+    - emphasis [ref=f5e1969]: binning
+    - text: the
+    - code [ref=f5e1970]: Top10perc
+    - text: variable into two groups based on whether or not the proportion of students coming from the top 10% of their high school classes exceeds 50%.
+  - generic [ref=f5e1971]: college['Elite'] = pd.cut(college['Top10perc'], [0,0.5,1], labels=['No', 'Yes'])
+  - paragraph [ref=f5e1973]:
+    - text: Use the
+    - code [ref=f5e1974]: value_counts()
+    - text: method of
+    - code [ref=f5e1975]: college['Elite']
+    - text: to see how many elite universities there are. Finally, use the
+    - code [ref=f5e1976]: boxplot()
+    - text: method again to produce side-by-side boxplots of
+    - code [ref=f5e1977]: Outstate
+    - text: versus
+    - code [ref=f5e1978]: Elite
+    - text: .
+  - paragraph [ref=f5e1979]:
+    - text: (g) Use the
+    - code [ref=f5e1980]: plot.hist()
+    - text: method of
+    - code [ref=f5e1981]: college
+    - text: to produce some histograms with differing numbers of bins for a few of the quantitative variables. The command
+    - code [ref=f5e1982]: plt.subplots(2, 2)
+    - text: "may be useful: it will divide the plot window into four regions so that four plots can be made simultaneously. By changing the arguments you can divide the screen up in other combinations."
+  - paragraph [ref=f5e1983]: (h) Continue exploring the data, and provide a brief summary of what you discover.
+  - paragraph [ref=f5e1984]:
+    - text: 9. This exercise involves the
+    - code [ref=f5e1985]: Auto
+    - text: data set studied in the lab. Make sure that the missing values have been removed from the data.
+  - paragraph [ref=f5e1986]: (a) Which of the predictors are quantitative, and which are qualitative?
+  - paragraph [ref=f5e1987]:
+    - text: (b) What is the
+    - emphasis [ref=f5e1988]: range
+    - text: of each quantitative predictor? You can answer this using the
+    - code [ref=f5e1989]: min()
+    - text: and
+    - code [ref=f5e1990]: max()
+    - text: methods in
+    - code [ref=f5e1991]: numpy
+    - text: .
+  - paragraph [ref=f5e1992]:
+    - code [ref=f5e1993]: .min() .max()
+  - paragraph [ref=f5e1994]: (c) What is the mean and standard deviation of each quantitative predictor?
+  - paragraph [ref=f5e1995]: (d) Now remove the 10th through 85th observations. What is the range, mean, and standard deviation of each predictor in the subset of the data that remains?
+  - paragraph [ref=f5e1996]: (e) Using the full data set, investigate the predictors graphically, using scatterplots or other tools of your choice. Create some plots highlighting the relationships among the predictors. Comment on your findings.
+  - paragraph [ref=f5e1997]:
+    - text: (f) Suppose that we wish to predict gas mileage (
+    - code [ref=f5e1998]: mpg
+    - text: ) on the basis of the other variables. Do your plots suggest that any of the other variables might be useful in predicting
+    - code [ref=f5e1999]: mpg
+    - text: "? Justify your answer."
+  - paragraph [ref=f5e2000]:
+    - text: 10. This exercise involves the
+    - code [ref=f5e2001]: Boston
+    - text: housing data set.
+  - paragraph [ref=f5e2002]:
+    - text: (a) To begin, load in the
+    - code [ref=f5e2003]: Boston
+    - text: data set, which is part of the
+    - code [ref=f5e2004]: ISLP
+    - text: library.
+  - paragraph [ref=f5e2005]: (b) How many rows are in this data set? How many columns? What do the rows and columns represent?
+  - paragraph [ref=f5e2006]: (c) Make some pairwise scatterplots of the predictors (columns) in this data set. Describe your findings.
+  - paragraph [ref=f5e2007]: (d) Are any of the predictors associated with per capita crime rate? If so, explain the relationship.
+  - paragraph [ref=f5e2008]: (e) Do any of the suburbs of Boston appear to have particularly high crime rates? Tax rates? Pupil-teacher ratios? Comment on the range of each predictor.
+  - paragraph [ref=f5e2009]: (f) How many of the suburbs in this data set bound the Charles river?
+  - paragraph [ref=f5e2010]: (g) What is the median pupil-teacher ratio among the towns in this data set?
+  - paragraph [ref=f5e2011]: (h) Which suburb of Boston has lowest median value of owneroccupied homes? What are the values of the other predictors for that suburb, and how do those values compare to the overall ranges for those predictors? Comment on your findings.
+  - paragraph [ref=f5e2012]: (i) In this data set, how many of the suburbs average more than seven rooms per dwelling? More than eight rooms per dwelling? Comment on the suburbs that average more than eight rooms per dwelling.

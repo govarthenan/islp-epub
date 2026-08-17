@@ -230,7 +230,7 @@ def code_block_text(lines: list[VLine]) -> str:
 
 def _line_html(line: VLine, rules, registry: MathRegistry, chapter: str,
                context: str, page: Page | None = None) -> tuple[str, list[str]]:
-    from .figures import expand_math_bbox
+    from .figures import inline_math_bbox
 
     result = build_inline(line.chars, rules)
     registry.text_runs += result.text_runs
@@ -239,7 +239,7 @@ def _line_html(line: VLine, rules, registry: MathRegistry, chapter: str,
         bbox = run.bbox
         foreign: list = []
         if run.tier.value == "vlm" and page is not None:
-            bbox, foreign = expand_math_bbox(page, bbox, [line.baseline], run.chars)
+            bbox, foreign = inline_math_bbox(page, line, run.chars, rules)
         ident = registry.add(
             tier=run.tier.value,
             latex=run.latex,

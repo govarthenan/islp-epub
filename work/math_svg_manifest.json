@@ -1,5 +1,13 @@
 {
  "manifest": {
+  "m00001": {
+   "file": "m00001.svg",
+   "widthEm": 14.4945,
+   "heightEm": 6.8795,
+   "valignEm": -3.157,
+   "display": true,
+   "tex": "\\mathbf{X} = \\begin{pmatrix} x_{11} & x_{12} & \\cdots & x_{1p} \\\\ x_{21} & x_{22} & \\cdots & x_{2p} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ x_{n1} & x_{n2} & \\cdots & x_{np} \\end{pmatrix}."
+  },
   "m00002": {
    "file": "m00002.svg",
    "widthEm": 6.239,
@@ -15,6 +23,14 @@
    "valignEm": -3.0445,
    "display": true,
    "tex": "\\mathbf{x}_j = \\begin{pmatrix} x_{1j} \\\\ x_{2j} \\\\ \\vdots \\\\ x_{nj} \\end{pmatrix}."
+  },
+  "m00004": {
+   "file": "m00004.svg",
+   "widthEm": 11.9495,
+   "heightEm": 10.682,
+   "valignEm": -5.058,
+   "display": true,
+   "tex": "\\begin{gathered} \\mathbf{X} = \\begin{pmatrix} \\mathbf{x}_1 & \\mathbf{x}_2 & \\cdots & \\mathbf{x}_p \\end{pmatrix}, \\\\[2em] \\mathbf{X} = \\begin{pmatrix} x_1^T \\\\ x_2^T \\\\ \\vdots \\\\ x_n^T \\end{pmatrix}. \\end{gathered}"
   },
   "m00005": {
    "file": "m00005.svg",
@@ -167,6 +183,14 @@
    "valignEm": -0.283,
    "display": false,
    "tex": "\\hat{Y} = \\hat{f}(X)"
+  },
+  "m00024": {
+   "file": "m00024.svg",
+   "widthEm": 18.968,
+   "heightEm": 4.1525,
+   "valignEm": -1.7935,
+   "display": true,
+   "tex": "\\begin{aligned} \\mathrm{E}(Y-\\hat{Y})^2 &= \\mathrm{E}[f(X)+\\epsilon-\\hat{f}(X)]^2 \\\\ &= \\underbrace{[f(X)-\\hat{f}(X)]^2} + \\underbrace{\\mathrm{Var}(\\epsilon)}, \\end{aligned}"
   },
   "m00025": {
    "file": "m00025.svg",
@@ -367,6 +391,14 @@
    "valignEm": -1.5745,
    "display": true,
    "tex": "\\Pr(Y = j \\mid X = x_0) = \\frac{1}{K}\\sum_{i \\in \\mathcal{N}_0} I(y_i = j)."
+  },
+  "m00050": {
+   "file": "m00050.svg",
+   "widthEm": 14.145,
+   "heightEm": 10.7125,
+   "valignEm": -5.0735,
+   "display": true,
+   "tex": "\\begin{array}{c|cccc} \\text{Obs.} & X_1 & X_2 & X_3 & Y \\\\ \\hline 1 & 0 & 3 & 0 & \\text{Red} \\\\ 2 & 2 & 0 & 0 & \\text{Red} \\\\ 3 & 0 & 1 & 3 & \\text{Red} \\\\ 4 & 0 & 1 & 2 & \\text{Green} \\\\ 5 & -1 & 0 & 1 & \\text{Green} \\\\ 6 & 1 & 1 & 1 & \\text{Red} \\end{array}"
   },
   "m00051": {
    "file": "m00051.svg",
@@ -888,6 +920,14 @@
    "display": true,
    "tex": "x_i = \\begin{cases} 1 & \\text{if } i\\text{th person owns a house} \\\\ -1 & \\text{if } i\\text{th person does not own a house} \\end{cases}"
   },
+  "m00116": {
+   "file": "m00116.svg",
+   "widthEm": 20.103,
+   "heightEm": 1.131,
+   "valignEm": -0.283,
+   "display": true,
+   "tex": "\\begin{cases} \\beta_0 + \\beta_1 + \\epsilon_i & \\text{if } i\\text{th person owns a house} \\end{cases}"
+  },
   "m00117": {
    "file": "m00117.svg",
    "widthEm": 22.2555,
@@ -903,6 +943,14 @@
    "valignEm": -1.074,
    "display": true,
    "tex": "x_{i2} = \\begin{cases} 1 & \\text{if } i\\text{th person is from the West} \\\\ 0 & \\text{if } i\\text{th person is not from the West.} \\end{cases}"
+  },
+  "m00119": {
+   "file": "m00119.svg",
+   "widthEm": 22.113,
+   "heightEm": 1.131,
+   "valignEm": -0.283,
+   "display": true,
+   "tex": "\\begin{cases} \\beta_0 + \\beta_1 + \\epsilon_i & \\text{if } i\\text{th person is from the South} \\end{cases}"
   },
   "m00120": {
    "file": "m00120.svg",
@@ -976,6 +1024,22 @@
    "display": false,
    "tex": "(\\hat{\\beta}_{2} + \\hat{\\beta}_{3} \\times"
   },
+  "m00129": {
+   "file": "m00129.svg",
+   "widthEm": 26.479,
+   "heightEm": 2.602,
+   "valignEm": -1.018,
+   "display": true,
+   "tex": "\\begin{aligned} &\\approx \\beta_0 + \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_2 & \\text{if } i\\text{th person is a student} \\end{cases} \\\\ &= \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_0 + \\beta_2 & \\text{if } i\\text{th person is a student} \\end{cases} \\end{aligned}"
+  },
+  "m00130": {
+   "file": "m00130.svg",
+   "widthEm": 27.181,
+   "heightEm": 4.1845,
+   "valignEm": -1.8095,
+   "display": true,
+   "tex": "\\begin{aligned} &\\approx \\beta_0 + \\beta_1 \\times \\texttt{income}_i + \\begin{cases} \\beta_2 + \\beta_3 \\times \\texttt{income}_i & \\text{if student} \\end{cases} \\\\ &= \\begin{cases} (\\beta_0 + \\beta_2) + (\\beta_1 + \\beta_3) \\times \\texttt{income}_i & \\text{if student} \\\\ \\beta_0 + \\beta_1 \\times \\texttt{income}_i & \\text{if not student.} \\end{cases} \\end{aligned}"
+  },
   "m00131": {
    "file": "m00131.svg",
    "widthEm": 3.231,
@@ -983,6 +1047,14 @@
    "valignEm": -0.232,
    "display": false,
    "tex": "y_{i} - \\hat{y}_{i}"
+  },
+  "m00132": {
+   "file": "m00132.svg",
+   "widthEm": 2.243,
+   "heightEm": 1.3155,
+   "valignEm": -0.2195,
+   "display": false,
+   "tex": "\\sqrt{X},"
   },
   "m00133": {
    "file": "m00133.svg",
@@ -1112,6 +1184,14 @@
    "display": false,
    "tex": "\\bar{x} = \\bar{y} = 0"
   },
+  "m00149": {
+   "file": "m00149.svg",
+   "widthEm": 21.83,
+   "heightEm": 1.433,
+   "valignEm": -0.283,
+   "display": true,
+   "tex": "\\log(X), \\sqrt{X}, X^2. \\text{ Comment on your findings.}"
+  },
   "m00150": {
    "file": "m00150.svg",
    "widthEm": 6.0485,
@@ -1199,6 +1279,22 @@
    "valignEm": -0.2195,
    "display": true,
    "tex": "Y = \\beta_0 + \\beta_1 X + \\beta_2 X^2 + \\beta_3 X^3 + \\epsilon."
+  },
+  "m00161": {
+   "file": "m00161.svg",
+   "widthEm": 16.428,
+   "heightEm": 3.846,
+   "valignEm": -1.6405,
+   "display": true,
+   "tex": "Y = \\begin{cases} 1 & \\text{if } \\texttt{stroke}; \\\\ 2 & \\text{if } \\texttt{drug overdose}; \\\\ 3 & \\text{if } \\texttt{epileptic seizure}. \\end{cases}"
+  },
+  "m00162": {
+   "file": "m00162.svg",
+   "widthEm": 16.428,
+   "heightEm": 3.846,
+   "valignEm": -1.6405,
+   "display": true,
+   "tex": "Y = \\begin{cases} 1 & \\text{if } \\texttt{epileptic seizure}; \\\\ 2 & \\text{if } \\texttt{stroke}; \\\\ 3 & \\text{if } \\texttt{drug overdose}, \\end{cases}"
   },
   "m00163": {
    "file": "m00163.svg",
@@ -1368,6 +1464,22 @@
    "display": true,
    "tex": "\\hat{p}(X) = \\frac{e^{-10.869 + 0.00574 \\times 1,500 + 0.003 \\times 40 - 0.6468 \\times 0}}{1 + e^{-10.869 + 0.00574 \\times 1,500 + 0.003 \\times 40 - 0.6468 \\times 0}} = 0.105."
   },
+  "m00184": {
+   "file": "m00184.svg",
+   "widthEm": 27.567,
+   "heightEm": 14.057,
+   "valignEm": -6.7455,
+   "display": true,
+   "tex": "\\begin{gathered} \\mathrm{Pr}(Y = k \\mid X = x) = \\dfrac{e^{\\beta_{k0}+\\beta_{k1}x_1+\\cdots+\\beta_{kp}x_p}}{1 + \\sum_{l=1}^{K-1} e^{\\beta_{l0}+\\beta_{l1}x_1+\\cdots+\\beta_{lp}x_p}} \\\\[2em] \\mathrm{Pr}(Y = K \\mid X = x) = \\dfrac{1}{1 + \\sum_{l=1}^{K-1} e^{\\beta_{l0}+\\beta_{l1}x_1+\\cdots+\\beta_{lp}x_p}}\\,. \\\\[2em] \\log\\left( \\dfrac{\\mathrm{Pr}(Y = k \\mid X = x)}{\\mathrm{Pr}(Y = K \\mid X = x)} \\right) = \\beta_{k0} + \\beta_{k1}x_1 + \\cdots + \\beta_{kp}x_p. \\end{gathered}"
+  },
+  "m00185": {
+   "file": "m00185.svg",
+   "widthEm": 19.122,
+   "heightEm": 2.7375,
+   "valignEm": -1.086,
+   "display": true,
+   "tex": "\\frac{\\mathrm{Pr}(Y = \\texttt{stroke} \\mid X = x)}{\\mathrm{Pr}(Y = \\texttt{epileptic seizure} \\mid X = x)}"
+  },
   "m00186": {
    "file": "m00186.svg",
    "widthEm": 21.501,
@@ -1375,6 +1487,14 @@
    "valignEm": -1.429,
    "display": true,
    "tex": "\\mathrm{Pr}(Y = k|X = x) = \\frac{e^{\\beta_{k0}+\\beta_{k1}x_1+\\cdots+\\beta_{kp}x_p}}{\\sum_{l=1}^{K} e^{\\beta_{l0}+\\beta_{l1}x_1+\\cdots+\\beta_{lp}x_p}}."
+  },
+  "m00187": {
+   "file": "m00187.svg",
+   "widthEm": 13.2285,
+   "heightEm": 2.7375,
+   "valignEm": -1.086,
+   "display": true,
+   "tex": "\\log\\left( \\frac{\\mathrm{Pr}(Y=k\\mid X=x)}{\\mathrm{Pr}(Y=k'\\mid X=x)} \\right)"
   },
   "m00188": {
    "file": "m00188.svg",
@@ -1656,6 +1776,14 @@
    "display": true,
    "tex": "\\log\\left(\\frac{\\Pr(Y = k \\mid X = x)}{\\Pr(Y = K \\mid X = x)}\\right)"
   },
+  "m00223": {
+   "file": "m00223.svg",
+   "widthEm": 60.2395,
+   "heightEm": 24.693,
+   "valignEm": -12.0635,
+   "display": true,
+   "tex": "\\begin{aligned} \\log\\left(\\frac{\\mathrm{Pr}(Y=k\\mid X=x)}{\\mathrm{Pr}(Y=K\\mid X=x)}\\right) &= \\log\\left(\\frac{\\pi_k f_k(x)}{\\pi_K f_K(x)}\\right) \\\\ &= \\log\\left(\\frac{\\pi_k \\exp\\left(-\\frac{1}{2}(x-\\mu_k)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_k)\\right)}{\\pi_K \\exp\\left(-\\frac{1}{2}(x-\\mu_K)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_K)\\right)}\\right) \\\\ &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(x-\\mu_k)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_k) \\\\ &\\quad + \\frac{1}{2}(x-\\mu_K)^T \\mathbf{\\Sigma}^{-1}(x-\\mu_K) \\\\ &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(\\mu_k+\\mu_K)^T \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K) \\\\ &\\quad + x^T \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K) \\\\ &= a_k + \\sum_{j=1}^{p} b_{kj} x_j, \\\\[1em] a_k &= \\log\\left(\\frac{\\pi_k}{\\pi_K}\\right) - \\frac{1}{2}(\\mu_k+\\mu_K)^T \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K), \\quad \\text{and} \\quad b_{kj} \\text{ is the } j\\text{th component of } \\mathbf{\\Sigma}^{-1}(\\mu_k-\\mu_K). \\end{aligned}"
+  },
   "m00224": {
    "file": "m00224.svg",
    "widthEm": 16.948,
@@ -1704,6 +1832,14 @@
    "display": true,
    "tex": "\\log\\left(\\frac{\\mathrm{Pr}(Y = k|X = x)}{\\mathrm{Pr}(Y = K|X = x)}\\right) = \\beta_{k0} + \\sum_{j=1}^{p}\\beta_{kj}x_j."
   },
+  "m00230": {
+   "file": "m00230.svg",
+   "widthEm": 11.6965,
+   "heightEm": 2.7375,
+   "valignEm": -1.086,
+   "display": true,
+   "tex": "\\left( \\frac{\\mathrm{Pr}(Y=k\\mid X=x)}{\\mathrm{Pr}(Y=K\\mid X=x)} \\right)"
+  },
   "m00231": {
    "file": "m00231.svg",
    "widthEm": 9.4665,
@@ -1736,6 +1872,14 @@
    "display": true,
    "tex": "\\mathrm{Pr}(Y = k) = \\frac{e^{-\\lambda}\\lambda^{k}}{k!} \\quad \\text{for } k = 0, 1, 2, \\ldots."
   },
+  "m00235": {
+   "file": "m00235.svg",
+   "widthEm": 3.2005,
+   "heightEm": 2.509,
+   "valignEm": -0.801,
+   "display": true,
+   "tex": "\\frac{e^{-5}5^0}{0!}"
+  },
   "m00236": {
    "file": "m00236.svg",
    "widthEm": 16.7515,
@@ -1743,6 +1887,14 @@
    "valignEm": -0.4095,
    "display": false,
    "tex": "\\mathrm{Pr}(Y = 0) = \\frac{e^{-5}5^{0}}{0!} = e^{-5} = 0.0067"
+  },
+  "m00237": {
+   "file": "m00237.svg",
+   "widthEm": 3.2005,
+   "heightEm": 2.484,
+   "valignEm": -0.776,
+   "display": true,
+   "tex": "\\frac{e^{-5}5^1}{1!}"
   },
   "m00238": {
    "file": "m00238.svg",
@@ -1759,6 +1911,14 @@
    "valignEm": -0.3915,
    "display": false,
    "tex": "\\mathrm{Pr}(Y = 2) = \\frac{e^{-5}5^{2}}{2!} = 0.084"
+  },
+  "m00240": {
+   "file": "m00240.svg",
+   "widthEm": 0.88,
+   "heightEm": 0.81,
+   "valignEm": 0,
+   "display": true,
+   "tex": "2!"
   },
   "m00241": {
    "file": "m00241.svg",
@@ -1951,6 +2111,14 @@
    "valignEm": -0.2195,
    "display": false,
    "tex": "\\hat{\\beta}_{1} = -1"
+  },
+  "m00265": {
+   "file": "m00265.svg",
+   "widthEm": 57.1525,
+   "heightEm": 1.269,
+   "valignEm": -0.353,
+   "display": true,
+   "tex": "\\text{estimates } \\hat{\\alpha}_{\\texttt{orange}0} = 1.2, \\hat{\\alpha}_{\\texttt{orange}1} = -2, \\hat{\\alpha}_{\\texttt{orange}0} = 3, \\hat{\\alpha}_{\\texttt{orange}1} = 0.6. \\text{ What are the coefficient estimates in your model?}"
   },
   "m00266": {
    "file": "m00266.svg",
@@ -2192,6 +2360,14 @@
    "display": true,
    "tex": "Y = \\beta_{0} + \\beta_{1}X_{1} + \\cdots + \\beta_{p}X_{p} + \\epsilon"
   },
+  "m00296": {
+   "file": "m00296.svg",
+   "widthEm": 2.234,
+   "heightEm": 2.714,
+   "valignEm": -1.074,
+   "display": true,
+   "tex": "\\binom{p}{2}"
+  },
   "m00297": {
    "file": "m00297.svg",
    "widthEm": 1.8525,
@@ -2199,6 +2375,14 @@
    "valignEm": -0.1875,
    "display": false,
    "tex": "\\mathcal{M}_{0}"
+  },
+  "m00298": {
+   "file": "m00298.svg",
+   "widthEm": 28.607,
+   "heightEm": 6.898,
+   "valignEm": -3.1665,
+   "display": true,
+   "tex": "\\begin{gathered} \\text{(a) Fit all } \\binom{p}{k} \\text{ models that contain exactly } k \\text{ predictors.} \\\\[1em] \\text{(b) Pick the best among these } \\binom{p}{k} \\text{ models, and call it } \\mathcal{M}_k. \\end{gathered}"
   },
   "m00299": {
    "file": "m00299.svg",
@@ -2416,6 +2600,14 @@
    "display": false,
    "tex": "\\hat{\\beta}_0 = \\bar{y} = \\sum_{i=1}^{n} y_i/n."
   },
+  "m00326": {
+   "file": "m00326.svg",
+   "widthEm": 5.1165,
+   "heightEm": 4.1405,
+   "valignEm": -1.7485,
+   "display": true,
+   "tex": "\\ell_2 \\sqrt{\\sum_{j=1}^{p} \\beta_j^2}"
+  },
   "m00327": {
    "file": "m00327.svg",
    "widthEm": 9.205,
@@ -2520,6 +2712,14 @@
    "display": false,
    "tex": "\\sum^{p}"
   },
+  "m00340": {
+   "file": "m00340.svg",
+   "widthEm": 25.571,
+   "heightEm": 3.8405,
+   "valignEm": -1.6375,
+   "display": true,
+   "tex": "\\operatorname*{minimize}_{\\beta} \\left\\{ \\sum_{i=1}^{n} \\left( y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij} \\right)^2 + \\lambda \\sum_{j=1}^{p} |\\beta_j| \\right\\}"
+  },
   "m00341": {
    "file": "m00341.svg",
    "widthEm": 21.5765,
@@ -2551,6 +2751,14 @@
    "valignEm": -0.333,
    "display": false,
    "tex": "\\beta_j \\neq 0,"
+  },
+  "m00345": {
+   "file": "m00345.svg",
+   "widthEm": 2.234,
+   "heightEm": 2.714,
+   "valignEm": -1.074,
+   "display": true,
+   "tex": "\\binom{p}{s}"
   },
   "m00346": {
    "file": "m00346.svg",
@@ -2984,8 +3192,32 @@
    "display": false,
    "tex": "\\sum_{i=1}^{n} (y_i - g(x_i))^2"
   },
+  "m00400": {
+   "file": "m00400.svg",
+   "widthEm": 1.068,
+   "heightEm": 2.5135,
+   "valignEm": -0.974,
+   "display": true,
+   "tex": "\\int"
+  },
   "m00401": {
    "file": "m00401.svg",
+   "widthEm": 1.068,
+   "heightEm": 2.5135,
+   "valignEm": -0.974,
+   "display": true,
+   "tex": "\\int"
+  },
+  "m00402": {
+   "file": "m00402.svg",
+   "widthEm": 1.068,
+   "heightEm": 2.5135,
+   "valignEm": -0.974,
+   "display": true,
+   "tex": "\\int"
+  },
+  "m00403": {
+   "file": "m00403.svg",
    "widthEm": 1.068,
    "heightEm": 2.5135,
    "valignEm": -0.974,
@@ -2998,6 +3230,14 @@
    "heightEm": 1.257,
    "valignEm": -0.3455,
    "display": false,
+   "tex": "\\int"
+  },
+  "m00405": {
+   "file": "m00405.svg",
+   "widthEm": 1.068,
+   "heightEm": 2.5135,
+   "valignEm": -0.974,
+   "display": true,
    "tex": "\\int"
   },
   "m00406": {
@@ -3272,6 +3512,14 @@
    "display": false,
    "tex": "\\hat{g}_{2}"
   },
+  "m00440": {
+   "file": "m00440.svg",
+   "widthEm": 25.5155,
+   "heightEm": 8.8135,
+   "valignEm": -4.124,
+   "display": true,
+   "tex": "\\begin{aligned}\n\\hat{g}_1 &= \\operatorname*{argmin}_{g}\\left(\\sum_{i=1}^{n}(y_i - g(x_i))^2 + \\lambda \\int \\left[g^{(3)}(x)\\right]^2 dx\\right), \\\\\n\\hat{g}_2 &= \\operatorname*{argmin}_{g}\\left(\\sum_{i=1}^{n}(y_i - g(x_i))^2 + \\lambda \\int \\left[g^{(4)}(x)\\right]^2 dx\\right), \\\\\n&\\text{where } g^{(m)} \\text{ represents the } m\\text{th derivative of } g.\n\\end{aligned}"
+  },
   "m00441": {
    "file": "m00441.svg",
    "widthEm": 4.1985,
@@ -3544,6 +3792,30 @@
    "display": false,
    "tex": "\\hat{f} _{k}^{b}(x)"
   },
+  "m00475": {
+   "file": "m00475.svg",
+   "widthEm": 2.941,
+   "heightEm": 3.392,
+   "valignEm": -1.432,
+   "display": true,
+   "tex": "\\sum_{k=1}^{K}\\hat{f}_{k}^{b}"
+  },
+  "m00476": {
+   "file": "m00476.svg",
+   "widthEm": 9.717,
+   "heightEm": 1.602,
+   "valignEm": -0.3885,
+   "display": false,
+   "tex": "\\hat{f}^{b}(x) = \\sum_{k=1}^{K}\\hat{f}_{k}^{b}(x)"
+  },
+  "m00477": {
+   "file": "m00477.svg",
+   "widthEm": 2.182,
+   "heightEm": 2.3065,
+   "valignEm": -0.7885,
+   "display": true,
+   "tex": "\\frac{1}{nK}"
+  },
   "m00478": {
    "file": "m00478.svg",
    "widthEm": 9.7885,
@@ -3632,6 +3904,14 @@
    "display": true,
    "tex": "\\hat{f}^{b}(x) = \\sum_{k=1}^{K} \\hat{f}^{b}_{k}(x), \\quad\\text{for}\\quad b = 1, 2, \\ldots, B."
   },
+  "m00489": {
+   "file": "m00489.svg",
+   "widthEm": 24.179,
+   "heightEm": 3.177,
+   "valignEm": -1.4095,
+   "display": true,
+   "tex": "\\text{1. Let } \\hat{f}_1^{1}(x) = \\hat{f}_2^{1}(x) = \\cdots = \\hat{f}_K^{1}(x) = \\frac{1}{nK}\\sum_{i=1}^{n} y_i."
+  },
   "m00490": {
    "file": "m00490.svg",
    "widthEm": 16.5195,
@@ -3656,6 +3936,14 @@
    "display": false,
    "tex": "\\hat{f} ^{b-1}(x)"
   },
+  "m00493": {
+   "file": "m00493.svg",
+   "widthEm": 15.537,
+   "heightEm": 3.392,
+   "valignEm": -1.432,
+   "display": true,
+   "tex": "\\text{(b) Compute } \\hat{f}^{b}(x) = \\sum_{k=1}^{K}\\hat{f}_{k}^{b}(x)."
+  },
   "m00494": {
    "file": "m00494.svg",
    "widthEm": 13.038,
@@ -3663,6 +3951,14 @@
    "valignEm": -1.432,
    "display": true,
    "tex": "\\hat{f}(x) = \\frac{1}{B-L}\\sum_{b=L+1}^{B} \\hat{f}^{b}(x)."
+  },
+  "m00495": {
+   "file": "m00495.svg",
+   "widthEm": 3.5095,
+   "heightEm": 2.387,
+   "valignEm": -0.869,
+   "display": true,
+   "tex": "\\frac{1}{B-L}"
   },
   "m00496": {
    "file": "m00496.svg",
@@ -3768,6 +4064,14 @@
    "display": true,
    "tex": "x_1 = \\begin{pmatrix} x_{11} \\\\ \\vdots \\\\ x_{1p} \\end{pmatrix}, \\ldots, x_n = \\begin{pmatrix} x_{n1} \\\\ \\vdots \\\\ x_{np} \\end{pmatrix},"
   },
+  "m00509": {
+   "file": "m00509.svg",
+   "widthEm": 1.581,
+   "heightEm": 1.131,
+   "valignEm": -0.283,
+   "display": true,
+   "tex": "(x_1^{*}"
+  },
   "m00510": {
    "file": "m00510.svg",
    "widthEm": 2.2405,
@@ -3808,6 +4112,14 @@
    "display": false,
    "tex": "x_{1}, . . . , x_{n} \\in \\mathbb{R}^{p}"
   },
+  "m00515": {
+   "file": "m00515.svg",
+   "widthEm": 28.078,
+   "heightEm": 7.1375,
+   "valignEm": -3.286,
+   "display": true,
+   "tex": "\\begin{aligned}\n&\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,M}\\ M\\\\\n&\\text{subject to}\\quad \\sum_{j=1}^{p}\\beta_j^2 = 1,\\\\\n&y_i(\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\cdots+\\beta_px_{ip})\\ge M\\quad\\forall\\, i=1,\\ldots,n.\n\\end{aligned}"
+  },
   "m00516": {
    "file": "m00516.svg",
    "widthEm": 27.7635,
@@ -3831,6 +4143,14 @@
    "valignEm": -0.325,
    "display": true,
    "tex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip})."
+  },
+  "m00519": {
+   "file": "m00519.svg",
+   "widthEm": 24.123,
+   "heightEm": 10.654,
+   "valignEm": -5.044,
+   "display": true,
+   "tex": "\\begin{aligned}\n&\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,\\epsilon_1,\\ldots,\\epsilon_n,\\,M}\\ M\\\\\n&\\text{subject to}\\quad \\sum_{j=1}^{p}\\beta_j^2 = 1,\\\\\n&y_i(\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\cdots+\\beta_px_{ip})\\ge M(1-\\epsilon_i),\\\\\n&\\epsilon_i\\ge 0,\\quad \\sum_{i=1}^{n}\\epsilon_i\\le C,\n\\end{aligned}"
   },
   "m00520": {
    "file": "m00520.svg",
@@ -3895,6 +4215,14 @@
    "valignEm": -1.4095,
    "display": true,
    "tex": "f(x) = \\beta_0 + \\sum_{i=1}^{n} \\alpha_i \\langle x, x_i \\rangle,"
+  },
+  "m00528": {
+   "file": "m00528.svg",
+   "widthEm": 14.2525,
+   "heightEm": 5.767,
+   "valignEm": -2.6005,
+   "display": true,
+   "tex": "\\begin{aligned}\n&\\binom{n}{2}\\ \\left\\langle x_i, x_{i'}\\right\\rangle\\\\\n&\\binom{n}{2}\\ \\text{among a set of } n \\text{ items.)}\n\\end{aligned}"
   },
   "m00529": {
    "file": "m00529.svg",
@@ -3976,6 +4304,14 @@
    "display": false,
    "tex": "\\exp\\left(-\\gamma \\sum_{j=1}^{p} (x_j^* - x_{ij})^2\\right)"
   },
+  "m00539": {
+   "file": "m00539.svg",
+   "widthEm": 2.344,
+   "heightEm": 2.714,
+   "valignEm": -1.074,
+   "display": true,
+   "tex": "\\binom{n}{2}"
+  },
   "m00540": {
    "file": "m00540.svg",
    "widthEm": 19.785,
@@ -3999,6 +4335,22 @@
    "valignEm": -0.283,
    "display": false,
    "tex": "\\hat{f}(X) \\geq t"
+  },
+  "m00543": {
+   "file": "m00543.svg",
+   "widthEm": 2.671,
+   "heightEm": 2.714,
+   "valignEm": -1.074,
+   "display": true,
+   "tex": "\\binom{K}{2}"
+  },
+  "m00544": {
+   "file": "m00544.svg",
+   "widthEm": 2.671,
+   "heightEm": 2.714,
+   "valignEm": -1.074,
+   "display": true,
+   "tex": "\\binom{K}{2}"
   },
   "m00545": {
    "file": "m00545.svg",
@@ -4179,10 +4531,10 @@
   "m00567": {
    "file": "m00567.svg",
    "widthEm": 12.3785,
-   "heightEm": 1.2825,
-   "valignEm": -0.283,
+   "heightEm": 2.905,
+   "valignEm": -1.1695,
    "display": true,
-   "tex": "h_2(X) = (0 + X_1 - X_2)^2."
+   "tex": "\\begin{aligned} h_1(X) &= (0 + X_1 + X_2)^2, \\\\ h_2(X) &= (0 + X_1 - X_2)^2. \\end{aligned}"
   },
   "m00568": {
    "file": "m00568.svg",
@@ -4263,6 +4615,14 @@
    "valignEm": -1.8665,
    "display": true,
    "tex": "\\text{Convolved Image} = \\begin{bmatrix} a\\alpha + b\\beta + d\\gamma + e\\delta & b\\alpha + c\\beta + e\\gamma + f\\delta \\\\ d\\alpha + e\\beta + g\\gamma + h\\delta & e\\alpha + f\\beta + h\\gamma + i\\delta \\\\ g\\alpha + h\\beta + j\\gamma + k\\delta & h\\alpha + i\\beta + k\\gamma + l\\delta \\end{bmatrix}."
+  },
+  "m00578": {
+   "file": "m00578.svg",
+   "widthEm": 18.574,
+   "heightEm": 5.8825,
+   "valignEm": -2.6585,
+   "display": true,
+   "tex": "\\text{Max pool}\\quad \\begin{bmatrix} 1 & 2 & 5 & 3 \\\\ 3 & 0 & 1 & 2 \\\\ 2 & 1 & 3 & 4 \\\\ 1 & 1 & 2 & 0 \\end{bmatrix} \\rightarrow \\begin{bmatrix} 3 & 5 \\\\ 2 & 4 \\end{bmatrix}."
   },
   "m00579": {
    "file": "m00579.svg",
@@ -4688,6 +5048,14 @@
    "display": false,
    "tex": "t < T \\le t + \\Delta t."
   },
+  "m00632": {
+   "file": "m00632.svg",
+   "widthEm": 24.8625,
+   "heightEm": 4.3765,
+   "valignEm": -1.9055,
+   "display": true,
+   "tex": "\\begin{aligned}\nL_i &= \\begin{cases} f(y_i) & \\text{if the } i\\text{th observation is not censored} \\\\ S(y_i) & \\text{if the } i\\text{th observation is censored} \\end{cases} \\\\\n&= f(y_i)^{\\delta_i} S(y_i)^{1-\\delta_i}.\n\\end{aligned}"
+  },
   "m00633": {
    "file": "m00633.svg",
    "widthEm": 1.3505,
@@ -4703,6 +5071,14 @@
    "valignEm": -1.4095,
    "display": true,
    "tex": "L = \\prod_{i=1}^{n} f(y_i)^{\\delta_i} S(y_i)^{1-\\delta_i} = \\prod_{i=1}^{n} h(y_i)^{\\delta_i} S(y_i),"
+  },
+  "m00635": {
+   "file": "m00635.svg",
+   "widthEm": 2.984,
+   "heightEm": 2.035,
+   "valignEm": -0.7345,
+   "display": true,
+   "tex": "\\left(\\sum\\right)"
   },
   "m00636": {
    "file": "m00636.svg",
@@ -4727,6 +5103,14 @@
    "valignEm": -1.507,
    "display": true,
    "tex": "\\exp\\left(\\sum_{j=1}^{p} x_{ij}\\beta_j\\right)"
+  },
+  "m00639": {
+   "file": "m00639.svg",
+   "widthEm": 3.4255,
+   "heightEm": 3.3925,
+   "valignEm": -1.4135,
+   "display": true,
+   "tex": "\\left(\\sum^{p}\\right)"
   },
   "m00640": {
    "file": "m00640.svg",
@@ -4848,6 +5232,14 @@
    "display": true,
    "tex": "1/\\lambda."
   },
+  "m00655": {
+   "file": "m00655.svg",
+   "widthEm": 2.234,
+   "heightEm": 2.714,
+   "valignEm": -1.074,
+   "display": true,
+   "tex": "\\binom{p}{2}"
+  },
   "m00656": {
    "file": "m00656.svg",
    "widthEm": 17.2495,
@@ -4879,6 +5271,14 @@
    "valignEm": -0.4995,
    "display": false,
    "tex": "\\sum_{j=1}^{p} \\phi_{j1}^{2} = 1."
+  },
+  "m00660": {
+   "file": "m00660.svg",
+   "widthEm": 29.9615,
+   "heightEm": 3.8405,
+   "valignEm": -1.6375,
+   "display": true,
+   "tex": "\\operatorname*{maximize}_{\\phi_{11},\\ldots,\\phi_{p1}}\\left\\{\\frac{1}{n}\\sum_{i=1}^{n}\\left(\\sum_{j=1}^{p}\\phi_{j1}x_{ij}\\right)^{2}\\right\\}\\quad\\text{subject to}\\quad\\sum_{j=1}^{p}\\phi_{j1}^{2}=1."
   },
   "m00661": {
    "file": "m00661.svg",
@@ -4983,6 +5383,14 @@
    "valignEm": -1.387,
    "display": true,
    "tex": "\\frac{\\sum_{i=1}^{n}z_{im}^{2}}{\\sum_{j=1}^{p}\\sum_{i=1}^{n}x_{ij}^{2}}=\\frac{\\sum_{i=1}^{n}\\left(\\sum_{j=1}^{p}\\phi_{jm}x_{ij}\\right)^{2}}{\\sum_{j=1}^{p}\\sum_{i=1}^{n}x_{ij}^{2}}."
+  },
+  "m00674": {
+   "file": "m00674.svg",
+   "widthEm": 31.2805,
+   "heightEm": 5.4325,
+   "valignEm": -3.2295,
+   "display": true,
+   "tex": "\\underbrace{\\sum_{j=1}^{p}\\frac{1}{n}\\sum_{i=1}^{n} x_{ij}^{2}}_{\\text{Var. of data}} = \\underbrace{\\sum_{m=1}^{M}\\frac{1}{n}\\sum_{i=1}^{n} z_{im}^{2}}_{\\text{Var. of first } M \\text{ PCs}} + \\underbrace{\\frac{1}{n}\\sum_{j=1}^{p}\\sum_{i=1}^{n}\\left(x_{ij} - \\sum_{m=1}^{M} z_{im}\\phi_{jm}\\right)^{2}}_{\\text{MSE of } M\\text{-dimensional approximation}}"
   },
   "m00675": {
    "file": "m00675.svg",
@@ -5152,6 +5560,14 @@
    "display": true,
    "tex": "\\frac{1}{|C_k|}\\sum_{i,i' \\in C_k}\\sum_{j=1}^{p}(x_{ij}-x_{i'j})^{2} = 2\\sum_{i \\in C_k}\\sum_{j=1}^{p}(x_{ij}-\\bar{x}_{kj})^{2},"
   },
+  "m00696": {
+   "file": "m00696.svg",
+   "widthEm": 2.446,
+   "heightEm": 2.603,
+   "valignEm": -1.085,
+   "display": true,
+   "tex": "\\frac{1}{|C_k|}"
+  },
   "m00697": {
    "file": "m00697.svg",
    "widthEm": 9.626,
@@ -5160,13 +5576,37 @@
    "display": false,
    "tex": "\\bar{x}_{kj}=\\frac{1}{|C_{k}|}\\sum_{i\\in C_{k}}x_{ij}"
   },
+  "m00698": {
+   "file": "m00698.svg",
+   "widthEm": 2.344,
+   "heightEm": 2.714,
+   "valignEm": -1.074,
+   "display": true,
+   "tex": "\\binom{n}{2}"
+  },
+  "m00699": {
+   "file": "m00699.svg",
+   "widthEm": 4.242,
+   "heightEm": 2.714,
+   "valignEm": -1.074,
+   "display": true,
+   "tex": "\\binom{6{,}830}{2}"
+  },
   "m00700": {
    "file": "m00700.svg",
-   "widthEm": 12.602,
+   "widthEm": 12.131,
    "heightEm": 5.8825,
    "valignEm": -2.6585,
    "display": true,
-   "tex": "\\begin{pmatrix} & 0.3 & 0.4 & 0.7\\\\ 0.3 & & 0.5 & 0.8\\\\ 0.4 & 0.5 & & 0.45\\\\ 0.7 & 0.8 & 0.45 & \\end{pmatrix}."
+   "tex": "\\begin{bmatrix} & 0.3 & 0.4 & 0.7\\\\ 0.3 & & 0.5 & 0.8\\\\ 0.4 & 0.5 & & 0.45\\\\ 0.7 & 0.8 & 0.45 & \\end{bmatrix}."
+  },
+  "m00701": {
+   "file": "m00701.svg",
+   "widthEm": 16.1525,
+   "heightEm": 11.7615,
+   "valignEm": -5.598,
+   "display": true,
+   "tex": "\\begin{aligned} T &= \\frac{\\hat{\\mu}_t - \\hat{\\mu}_c}{s\\sqrt{\\dfrac{1}{n_t}+\\dfrac{1}{n_c}}} \\\\ \\hat{\\mu}_t &= \\frac{1}{n_t}\\sum_{i=1}^{n_t} x_{i}^{t}, \\quad \\hat{\\mu}_c = \\frac{1}{n_c}\\sum_{i=1}^{n_c} x_{i}^{c} \\\\ s &= \\sqrt{\\frac{(n_t -1)s_t^{2} + (n_c -1)s_c^{2}}{n_t + n_c -2}} \\end{aligned}"
   },
   "m00702": {
    "file": "m00702.svg",
@@ -5344,6 +5784,14 @@
    "display": false,
    "tex": "\\hat{\\mu}_{Y} = \\frac{1}{n_{Y}} \\sum_{i=1}^{n_{Y}} y_{i}"
   },
+  "m00724": {
+   "file": "m00724.svg",
+   "widthEm": 13.274,
+   "heightEm": 2.806,
+   "valignEm": -0.776,
+   "display": true,
+   "tex": "p\\text{-value} = \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B},"
+  },
   "m00725": {
    "file": "m00725.svg",
    "widthEm": 5.509,
@@ -5351,6 +5799,22 @@
    "valignEm": -0.2895,
    "display": true,
    "tex": "y_1, \\ldots, y_{n_Y}."
+  },
+  "m00726": {
+   "file": "m00726.svg",
+   "widthEm": 20.8855,
+   "heightEm": 2.806,
+   "valignEm": -0.776,
+   "display": true,
+   "tex": "\\text{3. The } p\\text{-value is given by } \\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B}\\text{.}"
+  },
+  "m00727": {
+   "file": "m00727.svg",
+   "widthEm": 12.871,
+   "heightEm": 2.7255,
+   "valignEm": -1.074,
+   "display": true,
+   "tex": "\\mathrm{FDR} = E\\left(\\frac{V}{R}\\right) \\approx \\frac{\\mathrm{E}(V)}{R}."
   },
   "m00728": {
    "file": "m00728.svg",
@@ -5400,6 +5864,14 @@
    "display": false,
    "tex": "R = \\sum_{j=1}^{m} 1_{\\left(|T^{(j)}| \\ge c\\right)}."
   },
+  "m00734": {
+   "file": "m00734.svg",
+   "widthEm": 19.668,
+   "heightEm": 2.9415,
+   "valignEm": -0.776,
+   "display": true,
+   "tex": "\\text{4. Compute } \\widehat{V} = \\frac{\\sum_{b=1}^{B}\\sum_{j=1}^{m} 1_{\\left(|T^{(j),*b}| \\ge c\\right)}}{B}\\text{.}"
+  },
   "m00735": {
    "file": "m00735.svg",
    "widthEm": 2.6085,
@@ -5414,6 +5886,14 @@
    "heightEm": 1.4305,
    "valignEm": -0.3955,
    "display": false,
+   "tex": "\\binom{5}{2}"
+  },
+  "m00737": {
+   "file": "m00737.svg",
+   "widthEm": 2.231,
+   "heightEm": 2.714,
+   "valignEm": -1.074,
+   "display": true,
    "tex": "\\binom{5}{2}"
   },
   "m00738": {

@@ -146,16 +146,28 @@ AUXILIARY_BASELINE_GAP = 10.0
 FULL_WIDTH = 200.0
 
 
-def _covers_math(host: VLine, fragment: VLine) -> bool:
+def _covers_math(host: VLine, fragment: VLine, rules) -> bool:
+    """Whether the fragment sits over mathematics belonging to the host line.
+
+    A fraction leaves nothing on the host's own baseline except its rule, so the numerator and
+    denominator sit over a drawn line rather than over a character. The rule counts."""
     for char in host.chars:
         if char.role not in (Role.MATH_VAR, Role.MATH_UP):
             continue
         if char.x0 <= fragment.x1 + 1 and char.x1 >= fragment.x0 - 1:
             return True
+    for x0, y0, x1, y1 in rules:
+        if y1 - y0 > 2.0 or x1 - x0 > 160:
+            continue
+        if abs(y0 - host.baseline) > 9.0:
+            continue
+        if x0 <= fragment.x1 + 1 and x1 >= fragment.x0 - 1:
+            return True
     return False
 
 
-def _drop_auxiliary_math_lines(tagged: list[TaggedLine]) -> None:
+def _drop_auxiliary_math_lines(tagged: list[TaggedLine], rules,
+                               auxiliary: dict | None = None) -> None:
     """A fraction or a large operator set inside a paragraph puts its numerator, denominator
     and limits on baselines of their own. Those fragments look exactly like little display
     equations, so they are matched back to the paragraph line they belong to and dropped: the
@@ -163,9 +175,13 @@ def _drop_auxiliary_math_lines(tagged: list[TaggedLine]) -> None:
     # A fragment belongs to a paragraph line only if that line actually carries mathematics.
     # Without that test the opening brace of a piecewise definition, which happens to sit
     # close to the paragraph above it, was being thrown away.
+    # A host is a line of body text, recognised by starting at one of the two paragraph
+    # margins. Requiring it to be wide as well missed the last line of a paragraph, which is
+    # short by definition, and left the denominators of its inline fractions stranded as
+    # equations of their own.
     hosts = [entry.line for entry in tagged
              if entry.kind == Kind.PROSE
-             and entry.line.x1 - entry.line.x0 > FULL_WIDTH
+             and (abs(entry.line.x0 - PROSE_LEFT) < 1.6 or abs(entry.line.x0 - PARA_INDENT) < 1.6)
              and any(char.role in (Role.MATH_VAR, Role.MATH_UP) for char in entry.line.chars)]
     ordered = sorted(tagged, key=lambda item: item.line.baseline)
     for position, entry in enumerate(ordered):
@@ -179,8 +195,10 @@ def _drop_auxiliary_math_lines(tagged: list[TaggedLine]) -> None:
             # It belongs to that line only if it sits over the line's own mathematics. The
             # opening brace of a display construct happens to sit close to the paragraph
             # above it, but not above any of that paragraph's symbols.
-            if _covers_math(host, entry.line):
+            if _covers_math(host, entry.line, rules):
                 entry.kind = Kind.OTHER
+                if auxiliary is not None:
+                    auxiliary.setdefault(id(host), []).append(entry.line)
                 break
 
 
@@ -200,7 +218,8 @@ def tag_lines(page: Page) -> list[TaggedLine]:
                 entry.is_new_paragraph = True
             previous_prose = line
         tagged.append(entry)
-    _drop_auxiliary_math_lines(tagged)
+    page.auxiliary = {}
+    _drop_auxiliary_math_lines(tagged, page.drawing_rects, page.auxiliary)
     return tagged
 
 

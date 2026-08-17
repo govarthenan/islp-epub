@@ -35,6 +35,11 @@ The finished book is `output/ISLP.epub`.
 * A `toc.ncx` beside the EPUB 3 navigation document, because Kobo still reads it.
 * Code cells wrap rather than run off the edge, since an e-reader cannot scroll sideways.
 
+Copy `output/ISLP.epub` to the Kobo's `KOBOeReader` volume and it will be picked up on eject.
+Kobo reads a plain EPUB directly. If you want Kobo's own extras — per-chapter page counts and
+dictionary look-up inside the text — convert it to a `.kepub.epub` with Calibre and the
+KoboTouchExtended driver; nothing in this book depends on that.
+
 ## Running it
 
 ```bash

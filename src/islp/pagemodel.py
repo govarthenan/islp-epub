@@ -147,6 +147,8 @@ class Page:
     image_rects: list[tuple[float, float, float, float]] = field(default_factory=list)
     links: list[dict] = field(default_factory=list)
     rotated_rects: list[tuple[float, float, float, float]] = field(default_factory=list)
+    # host line id -> the numerator, denominator and limit fragments that belong to it
+    auxiliary: dict = field(default_factory=dict)
 
 
 def _span_text(span: dict) -> str:

@@ -306,15 +306,17 @@ def _foreign_ink(page: Page, box, kept: set[int],
                 continue
             mathematical = (char.role in (Role.MATH_VAR, Role.MATH_UP)
                             or char.c in DOT_GLYPHS)
-            if mathematical:
-                if not prose_line:
-                    continue
-                if baselines and min(abs(char.oy - base) for base in baselines) <= 6.0:
+            if mathematical and baselines:
+                # Everything the box grew along is already in `kept`, so a mathematics glyph
+                # that is neither kept nor near one of this expression's own baselines
+                # belongs to a different expression: the fraction on the line above, for one.
+                if min(abs(char.oy - base) for base in baselines) <= NEAR_BASELINE:
                     continue
             foreign.append(_ink_box(char))
     return foreign
 
 
+NEAR_BASELINE = 6.0
 ASCENT_SHARE = 0.78
 DESCENT_SHARE = 0.24
 
@@ -364,3 +366,38 @@ def _clamp_to_slot(page: Page, bbox, baselines: list[float]):
     if y1 - y0 < 6:
         return bbox
     return (x0, y0, x1, y1)
+
+
+def inline_math_bbox(page: Page, host, run_chars, rules):
+    """Box an inline expression from the pieces that are known to belong to it.
+
+    Growing a box along whatever mathematics it touches cannot tell this expression's
+    numerator from the one on the line above, and inline fractions on consecutive lines do
+    overlap. The fragments were already matched to their host line when the page was
+    classified, so that assignment is used instead of proximity."""
+    x0 = min(c.x0 for c in run_chars)
+    x1 = max(c.x1 for c in run_chars)
+    kept = {id(char) for char in run_chars}
+    boxes = [(x0, min(c.y0 for c in run_chars), x1, max(c.y1 for c in run_chars))]
+
+    # Two expressions on one line share their fragment lines, so the fragments are filtered
+    # glyph by glyph rather than line by line.
+    for fragment in page.auxiliary.get(id(host), ()):
+        for char in fragment.chars:
+            if char.is_space or char.x1 < x0 - 3 or char.x0 > x1 + 3:
+                continue
+            boxes.append((char.x0, char.y0, char.x1, char.y1))
+            kept.add(id(char))
+
+    for rect in rules:
+        if rect[3] - rect[1] > 2.0 or rect[2] - rect[0] > 160:
+            continue
+        if rect[2] < x0 - 3 or rect[0] > x1 + 3:
+            continue
+        if abs(rect[1] - host.baseline) > 12.0:
+            continue
+        boxes.append(rect)
+
+    bbox = (min(b[0] for b in boxes), min(b[1] for b in boxes),
+            max(b[2] for b in boxes), max(b[3] for b in boxes))
+    return bbox, _foreign_ink(page, bbox, kept, [host.baseline])

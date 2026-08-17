@@ -154,7 +154,6 @@
     <item id="img-figure-10-2-p408-png" href="images/figure-10-2-p408.png" media-type="image/png"/>
     <item id="img-figure-10-3-p410-png" href="images/figure-10-3-p410.png" media-type="image/png"/>
     <item id="img-figure-10-4-p411-png" href="images/figure-10-4-p411.png" media-type="image/png"/>
-    <item id="img-figure-10-5-p413-png" href="images/figure-10-5-p413.png" media-type="image/png"/>
     <item id="img-figure-10-7-p416-png" href="images/figure-10-7-p416.png" media-type="image/png"/>
     <item id="img-figure-10-8-p418-png" href="images/figure-10-8-p418.png" media-type="image/png"/>
     <item id="img-figure-10-10-p420-png" href="images/figure-10-10-p420.png" media-type="image/png"/>
@@ -208,8 +207,10 @@
     <item id="img-figure-13-9-p589-png" href="images/figure-13-9-p589.png" media-type="image/png"/>
     <item id="img-figure-13-10-p594-png" href="images/figure-13-10-p594.png" media-type="image/png"/>
     <item id="img-figure-13-11-p599-png" href="images/figure-13-11-p599.png" media-type="image/png"/>
+    <item id="svg-m00001" href="math/m00001.svg" media-type="image/svg+xml"/>
     <item id="svg-m00002" href="math/m00002.svg" media-type="image/svg+xml"/>
     <item id="svg-m00003" href="math/m00003.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00004" href="math/m00004.svg" media-type="image/svg+xml"/>
     <item id="svg-m00005" href="math/m00005.svg" media-type="image/svg+xml"/>
     <item id="svg-m00006" href="math/m00006.svg" media-type="image/svg+xml"/>
     <item id="svg-m00007" href="math/m00007.svg" media-type="image/svg+xml"/>
@@ -229,6 +230,7 @@
     <item id="svg-m00021" href="math/m00021.svg" media-type="image/svg+xml"/>
     <item id="svg-m00022" href="math/m00022.svg" media-type="image/svg+xml"/>
     <item id="svg-m00023" href="math/m00023.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00024" href="math/m00024.svg" media-type="image/svg+xml"/>
     <item id="svg-m00025" href="math/m00025.svg" media-type="image/svg+xml"/>
     <item id="svg-m00026" href="math/m00026.svg" media-type="image/svg+xml"/>
     <item id="svg-m00027" href="math/m00027.svg" media-type="image/svg+xml"/>
@@ -254,6 +256,7 @@
     <item id="svg-m00047" href="math/m00047.svg" media-type="image/svg+xml"/>
     <item id="svg-m00048" href="math/m00048.svg" media-type="image/svg+xml"/>
     <item id="svg-m00049" href="math/m00049.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00050" href="math/m00050.svg" media-type="image/svg+xml"/>
     <item id="svg-m00051" href="math/m00051.svg" media-type="image/svg+xml"/>
     <item id="svg-m00052" href="math/m00052.svg" media-type="image/svg+xml"/>
     <item id="svg-m00053" href="math/m00053.svg" media-type="image/svg+xml"/>
@@ -319,8 +322,10 @@
     <item id="svg-m00113" href="math/m00113.svg" media-type="image/svg+xml"/>
     <item id="svg-m00114" href="math/m00114.svg" media-type="image/svg+xml"/>
     <item id="svg-m00115" href="math/m00115.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00116" href="math/m00116.svg" media-type="image/svg+xml"/>
     <item id="svg-m00117" href="math/m00117.svg" media-type="image/svg+xml"/>
     <item id="svg-m00118" href="math/m00118.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00119" href="math/m00119.svg" media-type="image/svg+xml"/>
     <item id="svg-m00120" href="math/m00120.svg" media-type="image/svg+xml"/>
     <item id="svg-m00121" href="math/m00121.svg" media-type="image/svg+xml"/>
     <item id="svg-m00122" href="math/m00122.svg" media-type="image/svg+xml"/>
@@ -330,7 +335,10 @@
     <item id="svg-m00126" href="math/m00126.svg" media-type="image/svg+xml"/>
     <item id="svg-m00127" href="math/m00127.svg" media-type="image/svg+xml"/>
     <item id="svg-m00128" href="math/m00128.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00129" href="math/m00129.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00130" href="math/m00130.svg" media-type="image/svg+xml"/>
     <item id="svg-m00131" href="math/m00131.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00132" href="math/m00132.svg" media-type="image/svg+xml"/>
     <item id="svg-m00133" href="math/m00133.svg" media-type="image/svg+xml"/>
     <item id="svg-m00134" href="math/m00134.svg" media-type="image/svg+xml"/>
     <item id="svg-m00135" href="math/m00135.svg" media-type="image/svg+xml"/>
@@ -347,6 +355,7 @@
     <item id="svg-m00146" href="math/m00146.svg" media-type="image/svg+xml"/>
     <item id="svg-m00147" href="math/m00147.svg" media-type="image/svg+xml"/>
     <item id="svg-m00148" href="math/m00148.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00149" href="math/m00149.svg" media-type="image/svg+xml"/>
     <item id="svg-m00150" href="math/m00150.svg" media-type="image/svg+xml"/>
     <item id="svg-m00151" href="math/m00151.svg" media-type="image/svg+xml"/>
     <item id="svg-m00152" href="math/m00152.svg" media-type="image/svg+xml"/>
@@ -358,6 +367,8 @@
     <item id="svg-m00158" href="math/m00158.svg" media-type="image/svg+xml"/>
     <item id="svg-m00159" href="math/m00159.svg" media-type="image/svg+xml"/>
     <item id="svg-m00160" href="math/m00160.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00161" href="math/m00161.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00162" href="math/m00162.svg" media-type="image/svg+xml"/>
     <item id="svg-m00163" href="math/m00163.svg" media-type="image/svg+xml"/>
     <item id="svg-m00164" href="math/m00164.svg" media-type="image/svg+xml"/>
     <item id="svg-m00165" href="math/m00165.svg" media-type="image/svg+xml"/>
@@ -379,7 +390,10 @@
     <item id="svg-m00181" href="math/m00181.svg" media-type="image/svg+xml"/>
     <item id="svg-m00182" href="math/m00182.svg" media-type="image/svg+xml"/>
     <item id="svg-m00183" href="math/m00183.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00184" href="math/m00184.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00185" href="math/m00185.svg" media-type="image/svg+xml"/>
     <item id="svg-m00186" href="math/m00186.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00187" href="math/m00187.svg" media-type="image/svg+xml"/>
     <item id="svg-m00188" href="math/m00188.svg" media-type="image/svg+xml"/>
     <item id="svg-m00189" href="math/m00189.svg" media-type="image/svg+xml"/>
     <item id="svg-m00190" href="math/m00190.svg" media-type="image/svg+xml"/>
@@ -415,19 +429,24 @@
     <item id="svg-m00220" href="math/m00220.svg" media-type="image/svg+xml"/>
     <item id="svg-m00221" href="math/m00221.svg" media-type="image/svg+xml"/>
     <item id="svg-m00222" href="math/m00222.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00223" href="math/m00223.svg" media-type="image/svg+xml"/>
     <item id="svg-m00224" href="math/m00224.svg" media-type="image/svg+xml"/>
     <item id="svg-m00225" href="math/m00225.svg" media-type="image/svg+xml"/>
     <item id="svg-m00226" href="math/m00226.svg" media-type="image/svg+xml"/>
     <item id="svg-m00227" href="math/m00227.svg" media-type="image/svg+xml"/>
     <item id="svg-m00228" href="math/m00228.svg" media-type="image/svg+xml"/>
     <item id="svg-m00229" href="math/m00229.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00230" href="math/m00230.svg" media-type="image/svg+xml"/>
     <item id="svg-m00231" href="math/m00231.svg" media-type="image/svg+xml"/>
     <item id="svg-m00232" href="math/m00232.svg" media-type="image/svg+xml"/>
     <item id="svg-m00233" href="math/m00233.svg" media-type="image/svg+xml"/>
     <item id="svg-m00234" href="math/m00234.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00235" href="math/m00235.svg" media-type="image/svg+xml"/>
     <item id="svg-m00236" href="math/m00236.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00237" href="math/m00237.svg" media-type="image/svg+xml"/>
     <item id="svg-m00238" href="math/m00238.svg" media-type="image/svg+xml"/>
     <item id="svg-m00239" href="math/m00239.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00240" href="math/m00240.svg" media-type="image/svg+xml"/>
     <item id="svg-m00241" href="math/m00241.svg" media-type="image/svg+xml"/>
     <item id="svg-m00242" href="math/m00242.svg" media-type="image/svg+xml"/>
     <item id="svg-m00243" href="math/m00243.svg" media-type="image/svg+xml"/>
@@ -452,6 +471,7 @@
     <item id="svg-m00262" href="math/m00262.svg" media-type="image/svg+xml"/>
     <item id="svg-m00263" href="math/m00263.svg" media-type="image/svg+xml"/>
     <item id="svg-m00264" href="math/m00264.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00265" href="math/m00265.svg" media-type="image/svg+xml"/>
     <item id="svg-m00266" href="math/m00266.svg" media-type="image/svg+xml"/>
     <item id="svg-m00267" href="math/m00267.svg" media-type="image/svg+xml"/>
     <item id="svg-m00268" href="math/m00268.svg" media-type="image/svg+xml"/>
@@ -482,7 +502,9 @@
     <item id="svg-m00293" href="math/m00293.svg" media-type="image/svg+xml"/>
     <item id="svg-m00294" href="math/m00294.svg" media-type="image/svg+xml"/>
     <item id="svg-m00295" href="math/m00295.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00296" href="math/m00296.svg" media-type="image/svg+xml"/>
     <item id="svg-m00297" href="math/m00297.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00298" href="math/m00298.svg" media-type="image/svg+xml"/>
     <item id="svg-m00299" href="math/m00299.svg" media-type="image/svg+xml"/>
     <item id="svg-m00300" href="math/m00300.svg" media-type="image/svg+xml"/>
     <item id="svg-m00301" href="math/m00301.svg" media-type="image/svg+xml"/>
@@ -510,6 +532,7 @@
     <item id="svg-m00323" href="math/m00323.svg" media-type="image/svg+xml"/>
     <item id="svg-m00324" href="math/m00324.svg" media-type="image/svg+xml"/>
     <item id="svg-m00325" href="math/m00325.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00326" href="math/m00326.svg" media-type="image/svg+xml"/>
     <item id="svg-m00327" href="math/m00327.svg" media-type="image/svg+xml"/>
     <item id="svg-m00328" href="math/m00328.svg" media-type="image/svg+xml"/>
     <item id="svg-m00329" href="math/m00329.svg" media-type="image/svg+xml"/>
@@ -523,10 +546,12 @@
     <item id="svg-m00337" href="math/m00337.svg" media-type="image/svg+xml"/>
     <item id="svg-m00338" href="math/m00338.svg" media-type="image/svg+xml"/>
     <item id="svg-m00339" href="math/m00339.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00340" href="math/m00340.svg" media-type="image/svg+xml"/>
     <item id="svg-m00341" href="math/m00341.svg" media-type="image/svg+xml"/>
     <item id="svg-m00342" href="math/m00342.svg" media-type="image/svg+xml"/>
     <item id="svg-m00343" href="math/m00343.svg" media-type="image/svg+xml"/>
     <item id="svg-m00344" href="math/m00344.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00345" href="math/m00345.svg" media-type="image/svg+xml"/>
     <item id="svg-m00346" href="math/m00346.svg" media-type="image/svg+xml"/>
     <item id="svg-m00347" href="math/m00347.svg" media-type="image/svg+xml"/>
     <item id="svg-m00348" href="math/m00348.svg" media-type="image/svg+xml"/>
@@ -581,8 +606,12 @@
     <item id="svg-m00397" href="math/m00397.svg" media-type="image/svg+xml"/>
     <item id="svg-m00398" href="math/m00398.svg" media-type="image/svg+xml"/>
     <item id="svg-m00399" href="math/m00399.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00400" href="math/m00400.svg" media-type="image/svg+xml"/>
     <item id="svg-m00401" href="math/m00401.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00402" href="math/m00402.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00403" href="math/m00403.svg" media-type="image/svg+xml"/>
     <item id="svg-m00404" href="math/m00404.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00405" href="math/m00405.svg" media-type="image/svg+xml"/>
     <item id="svg-m00406" href="math/m00406.svg" media-type="image/svg+xml"/>
     <item id="svg-m00407" href="math/m00407.svg" media-type="image/svg+xml"/>
     <item id="svg-m00408" href="math/m00408.svg" media-type="image/svg+xml"/>
@@ -617,6 +646,7 @@
     <item id="svg-m00437" href="math/m00437.svg" media-type="image/svg+xml"/>
     <item id="svg-m00438" href="math/m00438.svg" media-type="image/svg+xml"/>
     <item id="svg-m00439" href="math/m00439.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00440" href="math/m00440.svg" media-type="image/svg+xml"/>
     <item id="svg-m00441" href="math/m00441.svg" media-type="image/svg+xml"/>
     <item id="svg-m00442" href="math/m00442.svg" media-type="image/svg+xml"/>
     <item id="svg-m00443" href="math/m00443.svg" media-type="image/svg+xml"/>
@@ -651,6 +681,9 @@
     <item id="svg-m00472" href="math/m00472.svg" media-type="image/svg+xml"/>
     <item id="svg-m00473" href="math/m00473.svg" media-type="image/svg+xml"/>
     <item id="svg-m00474" href="math/m00474.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00475" href="math/m00475.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00476" href="math/m00476.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00477" href="math/m00477.svg" media-type="image/svg+xml"/>
     <item id="svg-m00478" href="math/m00478.svg" media-type="image/svg+xml"/>
     <item id="svg-m00479" href="math/m00479.svg" media-type="image/svg+xml"/>
     <item id="svg-m00480" href="math/m00480.svg" media-type="image/svg+xml"/>
@@ -662,10 +695,13 @@
     <item id="svg-m00486" href="math/m00486.svg" media-type="image/svg+xml"/>
     <item id="svg-m00487" href="math/m00487.svg" media-type="image/svg+xml"/>
     <item id="svg-m00488" href="math/m00488.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00489" href="math/m00489.svg" media-type="image/svg+xml"/>
     <item id="svg-m00490" href="math/m00490.svg" media-type="image/svg+xml"/>
     <item id="svg-m00491" href="math/m00491.svg" media-type="image/svg+xml"/>
     <item id="svg-m00492" href="math/m00492.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00493" href="math/m00493.svg" media-type="image/svg+xml"/>
     <item id="svg-m00494" href="math/m00494.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00495" href="math/m00495.svg" media-type="image/svg+xml"/>
     <item id="svg-m00496" href="math/m00496.svg" media-type="image/svg+xml"/>
     <item id="svg-m00497" href="math/m00497.svg" media-type="image/svg+xml"/>
     <item id="svg-m00498" href="math/m00498.svg" media-type="image/svg+xml"/>
@@ -679,14 +715,17 @@
     <item id="svg-m00506" href="math/m00506.svg" media-type="image/svg+xml"/>
     <item id="svg-m00507" href="math/m00507.svg" media-type="image/svg+xml"/>
     <item id="svg-m00508" href="math/m00508.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00509" href="math/m00509.svg" media-type="image/svg+xml"/>
     <item id="svg-m00510" href="math/m00510.svg" media-type="image/svg+xml"/>
     <item id="svg-m00511" href="math/m00511.svg" media-type="image/svg+xml"/>
     <item id="svg-m00512" href="math/m00512.svg" media-type="image/svg+xml"/>
     <item id="svg-m00513" href="math/m00513.svg" media-type="image/svg+xml"/>
     <item id="svg-m00514" href="math/m00514.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00515" href="math/m00515.svg" media-type="image/svg+xml"/>
     <item id="svg-m00516" href="math/m00516.svg" media-type="image/svg+xml"/>
     <item id="svg-m00517" href="math/m00517.svg" media-type="image/svg+xml"/>
     <item id="svg-m00518" href="math/m00518.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00519" href="math/m00519.svg" media-type="image/svg+xml"/>
     <item id="svg-m00520" href="math/m00520.svg" media-type="image/svg+xml"/>
     <item id="svg-m00521" href="math/m00521.svg" media-type="image/svg+xml"/>
     <item id="svg-m00522" href="math/m00522.svg" media-type="image/svg+xml"/>
@@ -695,6 +734,7 @@
     <item id="svg-m00525" href="math/m00525.svg" media-type="image/svg+xml"/>
     <item id="svg-m00526" href="math/m00526.svg" media-type="image/svg+xml"/>
     <item id="svg-m00527" href="math/m00527.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00528" href="math/m00528.svg" media-type="image/svg+xml"/>
     <item id="svg-m00529" href="math/m00529.svg" media-type="image/svg+xml"/>
     <item id="svg-m00530" href="math/m00530.svg" media-type="image/svg+xml"/>
     <item id="svg-m00531" href="math/m00531.svg" media-type="image/svg+xml"/>
@@ -705,9 +745,12 @@
     <item id="svg-m00536" href="math/m00536.svg" media-type="image/svg+xml"/>
     <item id="svg-m00537" href="math/m00537.svg" media-type="image/svg+xml"/>
     <item id="svg-m00538" href="math/m00538.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00539" href="math/m00539.svg" media-type="image/svg+xml"/>
     <item id="svg-m00540" href="math/m00540.svg" media-type="image/svg+xml"/>
     <item id="svg-m00541" href="math/m00541.svg" media-type="image/svg+xml"/>
     <item id="svg-m00542" href="math/m00542.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00543" href="math/m00543.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00544" href="math/m00544.svg" media-type="image/svg+xml"/>
     <item id="svg-m00545" href="math/m00545.svg" media-type="image/svg+xml"/>
     <item id="svg-m00546" href="math/m00546.svg" media-type="image/svg+xml"/>
     <item id="svg-m00547" href="math/m00547.svg" media-type="image/svg+xml"/>
@@ -741,6 +784,7 @@
     <item id="svg-m00575" href="math/m00575.svg" media-type="image/svg+xml"/>
     <item id="svg-m00576" href="math/m00576.svg" media-type="image/svg+xml"/>
     <item id="svg-m00577" href="math/m00577.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00578" href="math/m00578.svg" media-type="image/svg+xml"/>
     <item id="svg-m00579" href="math/m00579.svg" media-type="image/svg+xml"/>
     <item id="svg-m00580" href="math/m00580.svg" media-type="image/svg+xml"/>
     <item id="svg-m00581" href="math/m00581.svg" media-type="image/svg+xml"/>
@@ -794,11 +838,14 @@
     <item id="svg-m00629" href="math/m00629.svg" media-type="image/svg+xml"/>
     <item id="svg-m00630" href="math/m00630.svg" media-type="image/svg+xml"/>
     <item id="svg-m00631" href="math/m00631.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00632" href="math/m00632.svg" media-type="image/svg+xml"/>
     <item id="svg-m00633" href="math/m00633.svg" media-type="image/svg+xml"/>
     <item id="svg-m00634" href="math/m00634.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00635" href="math/m00635.svg" media-type="image/svg+xml"/>
     <item id="svg-m00636" href="math/m00636.svg" media-type="image/svg+xml"/>
     <item id="svg-m00637" href="math/m00637.svg" media-type="image/svg+xml"/>
     <item id="svg-m00638" href="math/m00638.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00639" href="math/m00639.svg" media-type="image/svg+xml"/>
     <item id="svg-m00640" href="math/m00640.svg" media-type="image/svg+xml"/>
     <item id="svg-m00641" href="math/m00641.svg" media-type="image/svg+xml"/>
     <item id="svg-m00642" href="math/m00642.svg" media-type="image/svg+xml"/>
@@ -814,10 +861,12 @@
     <item id="svg-m00652" href="math/m00652.svg" media-type="image/svg+xml"/>
     <item id="svg-m00653" href="math/m00653.svg" media-type="image/svg+xml"/>
     <item id="svg-m00654" href="math/m00654.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00655" href="math/m00655.svg" media-type="image/svg+xml"/>
     <item id="svg-m00656" href="math/m00656.svg" media-type="image/svg+xml"/>
     <item id="svg-m00657" href="math/m00657.svg" media-type="image/svg+xml"/>
     <item id="svg-m00658" href="math/m00658.svg" media-type="image/svg+xml"/>
     <item id="svg-m00659" href="math/m00659.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00660" href="math/m00660.svg" media-type="image/svg+xml"/>
     <item id="svg-m00661" href="math/m00661.svg" media-type="image/svg+xml"/>
     <item id="svg-m00662" href="math/m00662.svg" media-type="image/svg+xml"/>
     <item id="svg-m00663" href="math/m00663.svg" media-type="image/svg+xml"/>
@@ -831,6 +880,7 @@
     <item id="svg-m00671" href="math/m00671.svg" media-type="image/svg+xml"/>
     <item id="svg-m00672" href="math/m00672.svg" media-type="image/svg+xml"/>
     <item id="svg-m00673" href="math/m00673.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00674" href="math/m00674.svg" media-type="image/svg+xml"/>
     <item id="svg-m00675" href="math/m00675.svg" media-type="image/svg+xml"/>
     <item id="svg-m00676" href="math/m00676.svg" media-type="image/svg+xml"/>
     <item id="svg-m00677" href="math/m00677.svg" media-type="image/svg+xml"/>
@@ -852,8 +902,12 @@
     <item id="svg-m00693" href="math/m00693.svg" media-type="image/svg+xml"/>
     <item id="svg-m00694" href="math/m00694.svg" media-type="image/svg+xml"/>
     <item id="svg-m00695" href="math/m00695.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00696" href="math/m00696.svg" media-type="image/svg+xml"/>
     <item id="svg-m00697" href="math/m00697.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00698" href="math/m00698.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00699" href="math/m00699.svg" media-type="image/svg+xml"/>
     <item id="svg-m00700" href="math/m00700.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00701" href="math/m00701.svg" media-type="image/svg+xml"/>
     <item id="svg-m00702" href="math/m00702.svg" media-type="image/svg+xml"/>
     <item id="svg-m00703" href="math/m00703.svg" media-type="image/svg+xml"/>
     <item id="svg-m00704" href="math/m00704.svg" media-type="image/svg+xml"/>
@@ -876,79 +930,24 @@
     <item id="svg-m00721" href="math/m00721.svg" media-type="image/svg+xml"/>
     <item id="svg-m00722" href="math/m00722.svg" media-type="image/svg+xml"/>
     <item id="svg-m00723" href="math/m00723.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00724" href="math/m00724.svg" media-type="image/svg+xml"/>
     <item id="svg-m00725" href="math/m00725.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00726" href="math/m00726.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00727" href="math/m00727.svg" media-type="image/svg+xml"/>
     <item id="svg-m00728" href="math/m00728.svg" media-type="image/svg+xml"/>
     <item id="svg-m00729" href="math/m00729.svg" media-type="image/svg+xml"/>
     <item id="svg-m00730" href="math/m00730.svg" media-type="image/svg+xml"/>
     <item id="svg-m00731" href="math/m00731.svg" media-type="image/svg+xml"/>
     <item id="svg-m00732" href="math/m00732.svg" media-type="image/svg+xml"/>
     <item id="svg-m00733" href="math/m00733.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00734" href="math/m00734.svg" media-type="image/svg+xml"/>
     <item id="svg-m00735" href="math/m00735.svg" media-type="image/svg+xml"/>
     <item id="svg-m00736" href="math/m00736.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00737" href="math/m00737.svg" media-type="image/svg+xml"/>
     <item id="svg-m00738" href="math/m00738.svg" media-type="image/svg+xml"/>
     <item id="svg-m00739" href="math/m00739.svg" media-type="image/svg+xml"/>
     <item id="svg-m00740" href="math/m00740.svg" media-type="image/svg+xml"/>
     <item id="svg-m00741" href="math/m00741.svg" media-type="image/svg+xml"/>
-    <item id="img-m00001" href="images/m00001.png" media-type="image/png"/>
-    <item id="img-m00004" href="images/m00004.png" media-type="image/png"/>
-    <item id="img-m00024" href="images/m00024.png" media-type="image/png"/>
-    <item id="img-m00050" href="images/m00050.png" media-type="image/png"/>
-    <item id="img-m00116" href="images/m00116.png" media-type="image/png"/>
-    <item id="img-m00119" href="images/m00119.png" media-type="image/png"/>
-    <item id="img-m00129" href="images/m00129.png" media-type="image/png"/>
-    <item id="img-m00130" href="images/m00130.png" media-type="image/png"/>
-    <item id="img-m00132" href="images/m00132.png" media-type="image/png"/>
-    <item id="img-m00149" href="images/m00149.png" media-type="image/png"/>
-    <item id="img-m00161" href="images/m00161.png" media-type="image/png"/>
-    <item id="img-m00162" href="images/m00162.png" media-type="image/png"/>
-    <item id="img-m00184" href="images/m00184.png" media-type="image/png"/>
-    <item id="img-m00185" href="images/m00185.png" media-type="image/png"/>
-    <item id="img-m00187" href="images/m00187.png" media-type="image/png"/>
-    <item id="img-m00223" href="images/m00223.png" media-type="image/png"/>
-    <item id="img-m00230" href="images/m00230.png" media-type="image/png"/>
-    <item id="img-m00235" href="images/m00235.png" media-type="image/png"/>
-    <item id="img-m00237" href="images/m00237.png" media-type="image/png"/>
-    <item id="img-m00240" href="images/m00240.png" media-type="image/png"/>
-    <item id="img-m00265" href="images/m00265.png" media-type="image/png"/>
-    <item id="img-m00296" href="images/m00296.png" media-type="image/png"/>
-    <item id="img-m00298" href="images/m00298.png" media-type="image/png"/>
-    <item id="img-m00326" href="images/m00326.png" media-type="image/png"/>
-    <item id="img-m00340" href="images/m00340.png" media-type="image/png"/>
-    <item id="img-m00345" href="images/m00345.png" media-type="image/png"/>
-    <item id="img-m00400" href="images/m00400.png" media-type="image/png"/>
-    <item id="img-m00402" href="images/m00402.png" media-type="image/png"/>
-    <item id="img-m00403" href="images/m00403.png" media-type="image/png"/>
-    <item id="img-m00405" href="images/m00405.png" media-type="image/png"/>
-    <item id="img-m00440" href="images/m00440.png" media-type="image/png"/>
-    <item id="img-m00475" href="images/m00475.png" media-type="image/png"/>
-    <item id="img-m00476" href="images/m00476.png" media-type="image/png"/>
-    <item id="img-m00477" href="images/m00477.png" media-type="image/png"/>
-    <item id="img-m00489" href="images/m00489.png" media-type="image/png"/>
-    <item id="img-m00493" href="images/m00493.png" media-type="image/png"/>
-    <item id="img-m00495" href="images/m00495.png" media-type="image/png"/>
-    <item id="img-m00509" href="images/m00509.png" media-type="image/png"/>
-    <item id="img-m00515" href="images/m00515.png" media-type="image/png"/>
-    <item id="img-m00519" href="images/m00519.png" media-type="image/png"/>
-    <item id="img-m00528" href="images/m00528.png" media-type="image/png"/>
-    <item id="img-m00539" href="images/m00539.png" media-type="image/png"/>
-    <item id="img-m00543" href="images/m00543.png" media-type="image/png"/>
-    <item id="img-m00544" href="images/m00544.png" media-type="image/png"/>
-    <item id="img-m00578" href="images/m00578.png" media-type="image/png"/>
-    <item id="img-m00632" href="images/m00632.png" media-type="image/png"/>
-    <item id="img-m00635" href="images/m00635.png" media-type="image/png"/>
-    <item id="img-m00639" href="images/m00639.png" media-type="image/png"/>
-    <item id="img-m00655" href="images/m00655.png" media-type="image/png"/>
-    <item id="img-m00660" href="images/m00660.png" media-type="image/png"/>
-    <item id="img-m00674" href="images/m00674.png" media-type="image/png"/>
-    <item id="img-m00696" href="images/m00696.png" media-type="image/png"/>
-    <item id="img-m00698" href="images/m00698.png" media-type="image/png"/>
-    <item id="img-m00699" href="images/m00699.png" media-type="image/png"/>
-    <item id="img-m00701" href="images/m00701.png" media-type="image/png"/>
-    <item id="img-m00724" href="images/m00724.png" media-type="image/png"/>
-    <item id="img-m00726" href="images/m00726.png" media-type="image/png"/>
-    <item id="img-m00727" href="images/m00727.png" media-type="image/png"/>
-    <item id="img-m00734" href="images/m00734.png" media-type="image/png"/>
-    <item id="img-m00737" href="images/m00737.png" media-type="image/png"/>
     <item id="ch00" href="text/ch00.xhtml" media-type="application/xhtml+xml"/>
     <item id="ch02" href="text/ch02.xhtml" media-type="application/xhtml+xml"/>
     <item id="ch03" href="text/ch03.xhtml" media-type="application/xhtml+xml"/>
