@@ -387,3 +387,31 @@ in a sample of 45. That is the argument for keeping an independent auditor in th
 argument for a bigger fleet of the same kind.
 
 **Status.** SUCCESS.
+
+---
+
+## 2026-08-17 — Entry 015: Printing an equation twice
+
+**Attempt.** Look for expressions that end up in the EPUB more than once.
+
+**Result.** 26 pairs of near-identical LaTeX on the same page, of which a handful were long
+enough to be genuine duplicates rather than a short symbol repeating.
+
+**Why.** An equation with words set inside it —
+
+    minimize { Σ (y_i − β_0 − Σ β_j x_ij)² }   subject to   Σ I(β_j ≠ 0) ≤ s
+
+— reads to the classifier as a paragraph, because "minimize", "subject to" and the sentence
+that follows are prose. The paragraph's own inline images then hold the whole equation. But
+the same pixels also produced display blocks from the lines that carry only symbols, so the
+equation was typeset twice: once inside the sentence and once as a centred display.
+
+**Fix.** Before anything is registered, the inline expressions on a page are measured, and any
+display block that one of them already covers by 40% or more of its area is dropped. The
+paragraph rendering wins, because it is the one that carries the words.
+
+**Status.** SUCCESS.
+
+**Known limits, recorded honestly.** A handful of expressions that wrap across a line break
+leave a small fragment at the right edge of the column, which renders as a little image of its
+own. There are a few of these in 613 pages and the content is not lost, only set apart.
