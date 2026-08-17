@@ -53,50 +53,68 @@
     <item id="img-table-3-5-p92-png" href="images/table-3-5-p92.png" media-type="image/png"/>
     <item id="img-table-3-6-p94-png" href="images/table-3-6-p94.png" media-type="image/png"/>
     <item id="img-figure-3-5-p98-png" href="images/figure-3-5-p98.png" media-type="image/png"/>
-    <item id="svg-m00010" href="math/m00010.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00011" href="math/m00011.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00012" href="math/m00012.svg" media-type="image/svg+xml"/>
+    <item id="img-figure-3-6-p101-png" href="images/figure-3-6-p101.png" media-type="image/png"/>
+    <item id="img-table-3-7-p102-png" href="images/table-3-7-p102.png" media-type="image/png"/>
+    <item id="img-table-3-8-p103-png" href="images/table-3-8-p103.png" media-type="image/png"/>
+    <item id="img-table-3-9-p105-png" href="images/table-3-9-p105.png" media-type="image/png"/>
+    <item id="img-figure-3-7-p107-png" href="images/figure-3-7-p107.png" media-type="image/png"/>
+    <item id="img-figure-3-8-p108-png" href="images/figure-3-8-p108.png" media-type="image/png"/>
+    <item id="img-table-3-10-p108-png" href="images/table-3-10-p108.png" media-type="image/png"/>
+    <item id="img-figure-3-9-p109-png" href="images/figure-3-9-p109.png" media-type="image/png"/>
+    <item id="img-figure-3-10-p111-png" href="images/figure-3-10-p111.png" media-type="image/png"/>
+    <item id="img-figure-3-11-p112-png" href="images/figure-3-11-p112.png" media-type="image/png"/>
+    <item id="img-figure-3-12-p113-png" href="images/figure-3-12-p113.png" media-type="image/png"/>
+    <item id="img-figure-3-13-p114-png" href="images/figure-3-13-p114.png" media-type="image/png"/>
+    <item id="img-figure-3-14-p115-png" href="images/figure-3-14-p115.png" media-type="image/png"/>
+    <item id="img-figure-3-15-p116-png" href="images/figure-3-15-p116.png" media-type="image/png"/>
+    <item id="img-table-3-11-p117-png" href="images/table-3-11-p117.png" media-type="image/png"/>
     <item id="svg-m00013" href="math/m00013.svg" media-type="image/svg+xml"/>
     <item id="svg-m00014" href="math/m00014.svg" media-type="image/svg+xml"/>
     <item id="svg-m00015" href="math/m00015.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00022" href="math/m00022.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00023" href="math/m00023.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00016" href="math/m00016.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00017" href="math/m00017.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00018" href="math/m00018.svg" media-type="image/svg+xml"/>
     <item id="svg-m00024" href="math/m00024.svg" media-type="image/svg+xml"/>
     <item id="svg-m00025" href="math/m00025.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00026" href="math/m00026.svg" media-type="image/svg+xml"/>
     <item id="svg-m00027" href="math/m00027.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00028" href="math/m00028.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00033" href="math/m00033.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00034" href="math/m00034.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00029" href="math/m00029.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00030" href="math/m00030.svg" media-type="image/svg+xml"/>
     <item id="svg-m00035" href="math/m00035.svg" media-type="image/svg+xml"/>
     <item id="svg-m00036" href="math/m00036.svg" media-type="image/svg+xml"/>
     <item id="svg-m00037" href="math/m00037.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00039" href="math/m00039.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00040" href="math/m00040.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00038" href="math/m00038.svg" media-type="image/svg+xml"/>
     <item id="svg-m00041" href="math/m00041.svg" media-type="image/svg+xml"/>
     <item id="svg-m00043" href="math/m00043.svg" media-type="image/svg+xml"/>
     <item id="svg-m00046" href="math/m00046.svg" media-type="image/svg+xml"/>
     <item id="svg-m00049" href="math/m00049.svg" media-type="image/svg+xml"/>
     <item id="svg-m00052" href="math/m00052.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00055" href="math/m00055.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00059" href="math/m00059.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00057" href="math/m00057.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00058" href="math/m00058.svg" media-type="image/svg+xml"/>
     <item id="svg-m00060" href="math/m00060.svg" media-type="image/svg+xml"/>
     <item id="svg-m00062" href="math/m00062.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00063" href="math/m00063.svg" media-type="image/svg+xml"/>
     <item id="svg-m00064" href="math/m00064.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00065" href="math/m00065.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00066" href="math/m00066.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00074" href="math/m00074.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00070" href="math/m00070.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00071" href="math/m00071.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00072" href="math/m00072.svg" media-type="image/svg+xml"/>
     <item id="svg-m00075" href="math/m00075.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00076" href="math/m00076.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00079" href="math/m00079.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00077" href="math/m00077.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00078" href="math/m00078.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00081" href="math/m00081.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00082" href="math/m00082.svg" media-type="image/svg+xml"/>
     <item id="svg-m00083" href="math/m00083.svg" media-type="image/svg+xml"/>
     <item id="svg-m00084" href="math/m00084.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00088" href="math/m00088.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00089" href="math/m00089.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00090" href="math/m00090.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00091" href="math/m00091.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00107" href="math/m00107.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00114" href="math/m00114.svg" media-type="image/svg+xml"/>
-    <item id="svg-m00124" href="math/m00124.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00099" href="math/m00099.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00106" href="math/m00106.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00118" href="math/m00118.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00135" href="math/m00135.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00136" href="math/m00136.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00138" href="math/m00138.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00139" href="math/m00139.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00145" href="math/m00145.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00150" href="math/m00150.svg" media-type="image/svg+xml"/>
+    <item id="svg-m00151" href="math/m00151.svg" media-type="image/svg+xml"/>
     <item id="img-m00001" href="images/m00001.png" media-type="image/png"/>
     <item id="img-m00002" href="images/m00002.png" media-type="image/png"/>
     <item id="img-m00003" href="images/m00003.png" media-type="image/png"/>
@@ -106,18 +124,21 @@
     <item id="img-m00007" href="images/m00007.png" media-type="image/png"/>
     <item id="img-m00008" href="images/m00008.png" media-type="image/png"/>
     <item id="img-m00009" href="images/m00009.png" media-type="image/png"/>
-    <item id="img-m00016" href="images/m00016.png" media-type="image/png"/>
-    <item id="img-m00017" href="images/m00017.png" media-type="image/png"/>
-    <item id="img-m00018" href="images/m00018.png" media-type="image/png"/>
+    <item id="img-m00010" href="images/m00010.png" media-type="image/png"/>
+    <item id="img-m00011" href="images/m00011.png" media-type="image/png"/>
+    <item id="img-m00012" href="images/m00012.png" media-type="image/png"/>
     <item id="img-m00019" href="images/m00019.png" media-type="image/png"/>
     <item id="img-m00020" href="images/m00020.png" media-type="image/png"/>
     <item id="img-m00021" href="images/m00021.png" media-type="image/png"/>
-    <item id="img-m00026" href="images/m00026.png" media-type="image/png"/>
-    <item id="img-m00029" href="images/m00029.png" media-type="image/png"/>
-    <item id="img-m00030" href="images/m00030.png" media-type="image/png"/>
+    <item id="img-m00022" href="images/m00022.png" media-type="image/png"/>
+    <item id="img-m00023" href="images/m00023.png" media-type="image/png"/>
+    <item id="img-m00028" href="images/m00028.png" media-type="image/png"/>
     <item id="img-m00031" href="images/m00031.png" media-type="image/png"/>
     <item id="img-m00032" href="images/m00032.png" media-type="image/png"/>
-    <item id="img-m00038" href="images/m00038.png" media-type="image/png"/>
+    <item id="img-m00033" href="images/m00033.png" media-type="image/png"/>
+    <item id="img-m00034" href="images/m00034.png" media-type="image/png"/>
+    <item id="img-m00039" href="images/m00039.png" media-type="image/png"/>
+    <item id="img-m00040" href="images/m00040.png" media-type="image/png"/>
     <item id="img-m00042" href="images/m00042.png" media-type="image/png"/>
     <item id="img-m00044" href="images/m00044.png" media-type="image/png"/>
     <item id="img-m00045" href="images/m00045.png" media-type="image/png"/>
@@ -127,26 +148,27 @@
     <item id="img-m00051" href="images/m00051.png" media-type="image/png"/>
     <item id="img-m00053" href="images/m00053.png" media-type="image/png"/>
     <item id="img-m00054" href="images/m00054.png" media-type="image/png"/>
+    <item id="img-m00055" href="images/m00055.png" media-type="image/png"/>
     <item id="img-m00056" href="images/m00056.png" media-type="image/png"/>
-    <item id="img-m00057" href="images/m00057.png" media-type="image/png"/>
-    <item id="img-m00058" href="images/m00058.png" media-type="image/png"/>
+    <item id="img-m00059" href="images/m00059.png" media-type="image/png"/>
     <item id="img-m00061" href="images/m00061.png" media-type="image/png"/>
-    <item id="img-m00063" href="images/m00063.png" media-type="image/png"/>
+    <item id="img-m00065" href="images/m00065.png" media-type="image/png"/>
+    <item id="img-m00066" href="images/m00066.png" media-type="image/png"/>
     <item id="img-m00067" href="images/m00067.png" media-type="image/png"/>
     <item id="img-m00068" href="images/m00068.png" media-type="image/png"/>
     <item id="img-m00069" href="images/m00069.png" media-type="image/png"/>
-    <item id="img-m00070" href="images/m00070.png" media-type="image/png"/>
-    <item id="img-m00071" href="images/m00071.png" media-type="image/png"/>
-    <item id="img-m00072" href="images/m00072.png" media-type="image/png"/>
     <item id="img-m00073" href="images/m00073.png" media-type="image/png"/>
-    <item id="img-m00077" href="images/m00077.png" media-type="image/png"/>
-    <item id="img-m00078" href="images/m00078.png" media-type="image/png"/>
+    <item id="img-m00074" href="images/m00074.png" media-type="image/png"/>
+    <item id="img-m00076" href="images/m00076.png" media-type="image/png"/>
+    <item id="img-m00079" href="images/m00079.png" media-type="image/png"/>
     <item id="img-m00080" href="images/m00080.png" media-type="image/png"/>
-    <item id="img-m00081" href="images/m00081.png" media-type="image/png"/>
-    <item id="img-m00082" href="images/m00082.png" media-type="image/png"/>
     <item id="img-m00085" href="images/m00085.png" media-type="image/png"/>
     <item id="img-m00086" href="images/m00086.png" media-type="image/png"/>
     <item id="img-m00087" href="images/m00087.png" media-type="image/png"/>
+    <item id="img-m00088" href="images/m00088.png" media-type="image/png"/>
+    <item id="img-m00089" href="images/m00089.png" media-type="image/png"/>
+    <item id="img-m00090" href="images/m00090.png" media-type="image/png"/>
+    <item id="img-m00091" href="images/m00091.png" media-type="image/png"/>
     <item id="img-m00092" href="images/m00092.png" media-type="image/png"/>
     <item id="img-m00093" href="images/m00093.png" media-type="image/png"/>
     <item id="img-m00094" href="images/m00094.png" media-type="image/png"/>
@@ -154,35 +176,52 @@
     <item id="img-m00096" href="images/m00096.png" media-type="image/png"/>
     <item id="img-m00097" href="images/m00097.png" media-type="image/png"/>
     <item id="img-m00098" href="images/m00098.png" media-type="image/png"/>
-    <item id="img-m00099" href="images/m00099.png" media-type="image/png"/>
     <item id="img-m00100" href="images/m00100.png" media-type="image/png"/>
     <item id="img-m00101" href="images/m00101.png" media-type="image/png"/>
     <item id="img-m00102" href="images/m00102.png" media-type="image/png"/>
     <item id="img-m00103" href="images/m00103.png" media-type="image/png"/>
     <item id="img-m00104" href="images/m00104.png" media-type="image/png"/>
     <item id="img-m00105" href="images/m00105.png" media-type="image/png"/>
-    <item id="img-m00106" href="images/m00106.png" media-type="image/png"/>
+    <item id="img-m00107" href="images/m00107.png" media-type="image/png"/>
     <item id="img-m00108" href="images/m00108.png" media-type="image/png"/>
     <item id="img-m00109" href="images/m00109.png" media-type="image/png"/>
     <item id="img-m00110" href="images/m00110.png" media-type="image/png"/>
     <item id="img-m00111" href="images/m00111.png" media-type="image/png"/>
     <item id="img-m00112" href="images/m00112.png" media-type="image/png"/>
     <item id="img-m00113" href="images/m00113.png" media-type="image/png"/>
+    <item id="img-m00114" href="images/m00114.png" media-type="image/png"/>
     <item id="img-m00115" href="images/m00115.png" media-type="image/png"/>
     <item id="img-m00116" href="images/m00116.png" media-type="image/png"/>
     <item id="img-m00117" href="images/m00117.png" media-type="image/png"/>
-    <item id="img-m00118" href="images/m00118.png" media-type="image/png"/>
     <item id="img-m00119" href="images/m00119.png" media-type="image/png"/>
     <item id="img-m00120" href="images/m00120.png" media-type="image/png"/>
     <item id="img-m00121" href="images/m00121.png" media-type="image/png"/>
     <item id="img-m00122" href="images/m00122.png" media-type="image/png"/>
     <item id="img-m00123" href="images/m00123.png" media-type="image/png"/>
+    <item id="img-m00124" href="images/m00124.png" media-type="image/png"/>
     <item id="img-m00125" href="images/m00125.png" media-type="image/png"/>
     <item id="img-m00126" href="images/m00126.png" media-type="image/png"/>
     <item id="img-m00127" href="images/m00127.png" media-type="image/png"/>
     <item id="img-m00128" href="images/m00128.png" media-type="image/png"/>
     <item id="img-m00129" href="images/m00129.png" media-type="image/png"/>
     <item id="img-m00130" href="images/m00130.png" media-type="image/png"/>
+    <item id="img-m00131" href="images/m00131.png" media-type="image/png"/>
+    <item id="img-m00132" href="images/m00132.png" media-type="image/png"/>
+    <item id="img-m00133" href="images/m00133.png" media-type="image/png"/>
+    <item id="img-m00134" href="images/m00134.png" media-type="image/png"/>
+    <item id="img-m00137" href="images/m00137.png" media-type="image/png"/>
+    <item id="img-m00140" href="images/m00140.png" media-type="image/png"/>
+    <item id="img-m00141" href="images/m00141.png" media-type="image/png"/>
+    <item id="img-m00142" href="images/m00142.png" media-type="image/png"/>
+    <item id="img-m00143" href="images/m00143.png" media-type="image/png"/>
+    <item id="img-m00144" href="images/m00144.png" media-type="image/png"/>
+    <item id="img-m00146" href="images/m00146.png" media-type="image/png"/>
+    <item id="img-m00147" href="images/m00147.png" media-type="image/png"/>
+    <item id="img-m00148" href="images/m00148.png" media-type="image/png"/>
+    <item id="img-m00149" href="images/m00149.png" media-type="image/png"/>
+    <item id="img-m00152" href="images/m00152.png" media-type="image/png"/>
+    <item id="img-m00153" href="images/m00153.png" media-type="image/png"/>
+    <item id="img-m00154" href="images/m00154.png" media-type="image/png"/>
     <item id="ch00" href="text/ch00.xhtml" media-type="application/xhtml+xml"/>
     <item id="ch02" href="text/ch02.xhtml" media-type="application/xhtml+xml"/>
     <item id="ch03" href="text/ch03.xhtml" media-type="application/xhtml+xml"/>

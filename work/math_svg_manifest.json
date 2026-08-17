@@ -1,1611 +1,381 @@
 {
  "manifest": {
-  "m00010": {
-   "file": "m00010.svg",
+  "m00013": {
+   "file": "m00013.svg",
    "widthEm": 2.798,
    "heightEm": 0.818,
    "valignEm": -0.045,
    "display": false,
    "tex": "a \\in \\mathbb{R}"
   },
-  "m00011": {
-   "file": "m00011.svg",
+  "m00014": {
+   "file": "m00014.svg",
    "widthEm": 3.309,
    "heightEm": 1.011,
    "valignEm": -0.045,
    "display": false,
    "tex": "a \\in \\mathbb{R}^{k}"
   },
-  "m00012": {
-   "file": "m00012.svg",
+  "m00015": {
+   "file": "m00015.svg",
    "widthEm": 3.406,
    "heightEm": 0.818,
    "valignEm": -0.045,
    "display": false,
    "tex": "\\mathbf{a} \\in \\mathbb{R}^{n}"
   },
-  "m00013": {
-   "file": "m00013.svg",
+  "m00016": {
+   "file": "m00016.svg",
    "widthEm": 4.635,
    "heightEm": 0.8485,
    "valignEm": -0.045,
    "display": false,
    "tex": "\\mathbf{A} \\in \\mathbb{R}^{r\\times s}"
   },
-  "m00014": {
-   "file": "m00014.svg",
+  "m00017": {
+   "file": "m00017.svg",
    "widthEm": 4.6755,
    "heightEm": 1.011,
    "valignEm": -0.045,
    "display": false,
    "tex": "\\mathbf{A} \\in \\mathbb{R}^{r\\times d}"
   },
-  "m00015": {
-   "file": "m00015.svg",
+  "m00018": {
+   "file": "m00018.svg",
    "widthEm": 4.6325,
    "heightEm": 1.011,
    "valignEm": -0.045,
    "display": false,
    "tex": "\\mathbf{B} \\in \\mathbb{R}^{d\\times s}"
   },
-  "m00022": {
-   "file": "m00022.svg",
+  "m00024": {
+   "file": "m00024.svg",
    "widthEm": 0.622,
    "heightEm": 1.4455,
    "valignEm": -0.232,
    "display": false,
    "tex": "\\hat{f}"
   },
-  "m00023": {
-   "file": "m00023.svg",
+  "m00025": {
+   "file": "m00025.svg",
    "widthEm": 0.863,
    "heightEm": 1.189,
    "valignEm": 0,
    "display": false,
    "tex": "\\hat{Y}"
   },
-  "m00024": {
-   "file": "m00024.svg",
+  "m00026": {
+   "file": "m00026.svg",
    "widthEm": 4.8375,
    "heightEm": 1.4715,
    "valignEm": -0.283,
    "display": false,
    "tex": "\\hat{Y} = f(X)"
   },
-  "m00025": {
-   "file": "m00025.svg",
+  "m00027": {
+   "file": "m00027.svg",
    "widthEm": 4.8375,
    "heightEm": 1.4965,
    "valignEm": -0.283,
    "display": false,
    "tex": "\\hat{Y} = \\hat{f}(X)"
   },
-  "m00027": {
-   "file": "m00027.svg",
+  "m00029": {
+   "file": "m00029.svg",
    "widthEm": 5.2535,
    "heightEm": 1.4715,
    "valignEm": -0.283,
    "display": false,
    "tex": "\\mathrm{E}(Y - \\hat{Y} )^{2}"
   },
-  "m00028": {
-   "file": "m00028.svg",
+  "m00030": {
+   "file": "m00030.svg",
    "widthEm": 4.8375,
    "heightEm": 1.4965,
    "valignEm": -0.283,
    "display": false,
    "tex": "Y \\approx \\hat{f}(X)"
   },
-  "m00033": {
-   "file": "m00033.svg",
+  "m00035": {
+   "file": "m00035.svg",
    "widthEm": 2.519,
    "heightEm": 1.4965,
    "valignEm": -0.283,
    "display": false,
    "tex": "\\hat{f}(x_{i})"
   },
-  "m00034": {
-   "file": "m00034.svg",
+  "m00036": {
+   "file": "m00036.svg",
    "widthEm": 11.0275,
    "heightEm": 1.4965,
    "valignEm": -0.283,
    "display": false,
    "tex": "\\hat{f}(x_{1}), \\hat{f}(x_{2}), . . . , \\hat{f}(x_{n})"
   },
-  "m00035": {
-   "file": "m00035.svg",
+  "m00037": {
+   "file": "m00037.svg",
    "widthEm": 4.952,
    "heightEm": 1.4965,
    "valignEm": -0.283,
    "display": false,
    "tex": "\\hat{f}(x_{i}) \\approx y_{i}"
   },
-  "m00036": {
-   "file": "m00036.svg",
+  "m00038": {
+   "file": "m00038.svg",
    "widthEm": 2.643,
    "heightEm": 1.4965,
    "valignEm": -0.283,
    "display": false,
    "tex": "\\hat{f}(x_{0})"
   },
-  "m00037": {
-   "file": "m00037.svg",
-   "widthEm": 6.7625,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "(y_{0} - \\hat{f}(x_{0}))^{2},"
-  },
-  "m00039": {
-   "file": "m00039.svg",
-   "widthEm": 7.1325,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "E y_{0} - \\hat{f}(x_{0}) ="
-  },
-  "m00040": {
-   "file": "m00040.svg",
-   "widthEm": 5.2205,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "( \\hat{f}(x_{0})) + ["
-  },
   "m00041": {
    "file": "m00041.svg",
-   "widthEm": 5.2115,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "( \\hat{f}(x_{0}))]^{2} +"
-  },
-  "m00043": {
-   "file": "m00043.svg",
    "widthEm": 5.9385,
    "heightEm": 1.4965,
    "valignEm": -0.283,
    "display": false,
    "tex": "E y_{0} - \\hat{f}(x_{0})"
   },
-  "m00046": {
-   "file": "m00046.svg",
+  "m00043": {
+   "file": "m00043.svg",
    "widthEm": 0.924,
    "heightEm": 1.148,
    "valignEm": -0.232,
    "display": false,
    "tex": "\\hat{y}_{i}"
   },
-  "m00049": {
-   "file": "m00049.svg",
+  "m00046": {
+   "file": "m00046.svg",
    "widthEm": 3.357,
    "heightEm": 1.148,
    "valignEm": -0.232,
    "display": false,
    "tex": "y_{i} = \\hat{y}_{i}"
   },
-  "m00052": {
-   "file": "m00052.svg",
+  "m00049": {
+   "file": "m00049.svg",
    "widthEm": 1.048,
    "heightEm": 1.148,
    "valignEm": -0.232,
    "display": false,
    "tex": "\\hat{y}_{0}"
   },
-  "m00055": {
-   "file": "m00055.svg",
+  "m00052": {
+   "file": "m00052.svg",
    "widthEm": 1.4215,
    "heightEm": 1.08,
    "valignEm": -0.1875,
    "display": false,
    "tex": "\\mathcal{N}_{0}"
   },
-  "m00059": {
-   "file": "m00059.svg",
+  "m00057": {
+   "file": "m00057.svg",
    "widthEm": 1.134,
    "heightEm": 1.4335,
    "valignEm": -0.2195,
    "display": false,
    "tex": "\\hat{\\beta}_{0}"
   },
-  "m00060": {
-   "file": "m00060.svg",
+  "m00058": {
+   "file": "m00058.svg",
    "widthEm": 1.134,
    "heightEm": 1.4335,
    "valignEm": -0.2195,
    "display": false,
    "tex": "\\hat{\\beta}_{1}"
   },
-  "m00062": {
-   "file": "m00062.svg",
+  "m00060": {
+   "file": "m00060.svg",
    "widthEm": 0.5545,
    "heightEm": 1.148,
    "valignEm": -0.232,
    "display": false,
    "tex": "\\hat{y}"
   },
-  "m00064": {
-   "file": "m00064.svg",
+  "m00062": {
+   "file": "m00062.svg",
    "widthEm": 7.1005,
    "heightEm": 1.4455,
    "valignEm": -0.232,
    "display": false,
    "tex": "y_{i} \\approx \\hat{\\beta}_{0} + \\hat{\\beta}_{1}x_{i}"
   },
-  "m00065": {
-   "file": "m00065.svg",
+  "m00063": {
+   "file": "m00063.svg",
    "widthEm": 7.1005,
    "heightEm": 1.4455,
    "valignEm": -0.232,
    "display": false,
    "tex": "\\hat{y}_{i} = \\hat{\\beta}_{0} + \\hat{\\beta}_{1}x_{i}"
   },
-  "m00066": {
-   "file": "m00066.svg",
+  "m00064": {
+   "file": "m00064.svg",
    "widthEm": 5.6365,
    "heightEm": 1.148,
    "valignEm": -0.232,
    "display": false,
    "tex": "e_{i} = y_{i} -\\hat{y}_{i}"
   },
-  "m00074": {
-   "file": "m00074.svg",
+  "m00070": {
+   "file": "m00070.svg",
    "widthEm": 4.654,
    "heightEm": 1.4335,
    "valignEm": -0.2195,
    "display": false,
    "tex": "\\hat{\\beta}_{0} = 7.03"
   },
-  "m00075": {
-   "file": "m00075.svg",
+  "m00071": {
+   "file": "m00071.svg",
    "widthEm": 5.785,
    "heightEm": 1.4335,
    "valignEm": -0.2195,
    "display": false,
    "tex": "\\hat{\\beta}_{1} = 0.0475"
   },
-  "m00076": {
-   "file": "m00076.svg",
+  "m00072": {
+   "file": "m00072.svg",
    "widthEm": 3.6515,
    "heightEm": 1.4965,
    "valignEm": -0.283,
    "display": false,
    "tex": "(\\hat{\\beta}_{0}, \\hat{\\beta}_{1})"
   },
-  "m00079": {
-   "file": "m00079.svg",
+  "m00075": {
+   "file": "m00075.svg",
    "widthEm": 2.745,
    "heightEm": 1.1605,
    "valignEm": -0.2445,
    "display": false,
    "tex": "\\hat{\\mu} = \\bar{y}"
   },
-  "m00083": {
-   "file": "m00083.svg",
+  "m00077": {
+   "file": "m00077.svg",
    "widthEm": 0.682,
    "heightEm": 1.1605,
    "valignEm": -0.2445,
    "display": false,
    "tex": "\\hat{\\mu}"
   },
-  "m00084": {
-   "file": "m00084.svg",
+  "m00078": {
+   "file": "m00078.svg",
    "widthEm": 2.9615,
    "heightEm": 1.199,
    "valignEm": -0.283,
    "display": false,
    "tex": "\\mathrm{SE}(\\hat{\\mu})"
   },
-  "m00088": {
-   "file": "m00088.svg",
+  "m00081": {
+   "file": "m00081.svg",
    "widthEm": 3.4135,
    "heightEm": 1.4965,
    "valignEm": -0.283,
    "display": false,
    "tex": "\\mathrm{SE}(\\hat{\\beta}_{1})"
   },
-  "m00089": {
-   "file": "m00089.svg",
+  "m00082": {
+   "file": "m00082.svg",
    "widthEm": 3.4135,
    "heightEm": 1.4965,
    "valignEm": -0.283,
    "display": false,
    "tex": "\\mathrm{SE}(\\hat{\\beta}_{0})"
   },
-  "m00090": {
-   "file": "m00090.svg",
+  "m00083": {
+   "file": "m00083.svg",
    "widthEm": 0.647,
    "heightEm": 0.7965,
    "valignEm": -0.0125,
    "display": false,
    "tex": "\\bar{x}"
   },
-  "m00091": {
-   "file": "m00091.svg",
+  "m00084": {
+   "file": "m00084.svg",
    "widthEm": 0.5545,
    "heightEm": 1.016,
    "valignEm": -0.232,
    "display": false,
    "tex": "\\bar{y}"
   },
-  "m00107": {
-   "file": "m00107.svg",
+  "m00099": {
+   "file": "m00099.svg",
    "widthEm": 3.357,
    "heightEm": 1.148,
    "valignEm": -0.232,
    "display": false,
    "tex": "\\hat{y}_{i} \\approx y_{i}"
   },
-  "m00114": {
-   "file": "m00114.svg",
+  "m00106": {
+   "file": "m00106.svg",
    "widthEm": 6.423,
    "heightEm": 1.5385,
    "valignEm": -0.325,
    "display": false,
    "tex": "\\hat{\\beta}_{0}, \\hat{\\beta}_{1}, . . . , \\hat{\\beta}_{p}"
   },
-  "m00124": {
-   "file": "m00124.svg",
+  "m00118": {
+   "file": "m00118.svg",
    "widthEm": 3.603,
    "heightEm": 1.4715,
    "valignEm": -0.283,
    "display": false,
    "tex": "(Y, \\hat{Y} )^{2}"
   },
-  "m00141": {
-   "file": "m00141.svg",
+  "m00135": {
+   "file": "m00135.svg",
    "widthEm": 7.724,
    "heightEm": 1.3655,
    "valignEm": -0.2195,
    "display": false,
    "tex": "\\tilde{\\beta}_{1} = \\beta_{1} + \\beta_{3}X_{2}"
   },
-  "m00142": {
-   "file": "m00142.svg",
+  "m00136": {
+   "file": "m00136.svg",
    "widthEm": 1.134,
    "heightEm": 1.3655,
    "valignEm": -0.2195,
    "display": false,
    "tex": "\\tilde{\\beta}_{1}"
   },
-  "m00144": {
-   "file": "m00144.svg",
+  "m00138": {
+   "file": "m00138.svg",
    "widthEm": 4.971,
    "heightEm": 1.4965,
    "valignEm": -0.283,
    "display": false,
    "tex": "(\\hat{\\beta}_{1}+ \\hat{\\beta}_{3}\\times"
   },
-  "m00145": {
-   "file": "m00145.svg",
+  "m00139": {
+   "file": "m00139.svg",
    "widthEm": 4.971,
    "heightEm": 1.4965,
    "valignEm": -0.283,
    "display": false,
    "tex": "(\\hat{\\beta}_{2} + \\hat{\\beta}_{3} \\times"
   },
-  "m00151": {
-   "file": "m00151.svg",
+  "m00145": {
+   "file": "m00145.svg",
    "widthEm": 3.231,
    "heightEm": 1.148,
    "valignEm": -0.232,
    "display": false,
    "tex": "y_{i} - \\hat{y}_{i}"
   },
-  "m00159": {
-   "file": "m00159.svg",
+  "m00150": {
+   "file": "m00150.svg",
    "widthEm": 1.0635,
    "heightEm": 1.5465,
    "valignEm": -0.333,
    "display": false,
    "tex": "\\hat{\\beta}_{j}"
   },
-  "m00160": {
-   "file": "m00160.svg",
+  "m00151": {
+   "file": "m00151.svg",
    "widthEm": 2.2315,
    "heightEm": 1.4335,
    "valignEm": -0.2195,
    "display": false,
    "tex": "\\hat{\\beta}_{\\mathsf{limit}}"
-  },
-  "m00163": {
-   "file": "m00163.svg",
-   "widthEm": 2.466,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}(X)"
-  },
-  "m00170": {
-   "file": "m00170.svg",
-   "widthEm": 2.5845,
-   "heightEm": 1.131,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "(\\bar{x}, \\bar{y})"
-  },
-  "m00171": {
-   "file": "m00171.svg",
-   "widthEm": 4.784,
-   "heightEm": 1.016,
-   "valignEm": -0.232,
-   "display": false,
-   "tex": "\\bar{x} = \\bar{y} = 0"
-  },
-  "m00174": {
-   "file": "m00174.svg",
-   "widthEm": 0.6405,
-   "heightEm": 1.4335,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{\\beta}"
-  },
-  "m00175": {
-   "file": "m00175.svg",
-   "widthEm": 4.1255,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{\\beta}/\\mathrm{SE}(\\hat{\\beta})"
-  },
-  "m00180": {
-   "file": "m00180.svg",
-   "widthEm": 1.134,
-   "heightEm": 1.4335,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{\\beta}_{2}"
-  },
-  "m00190": {
-   "file": "m00190.svg",
-   "widthEm": 3.8175,
-   "heightEm": 1.234,
-   "valignEm": -0.045,
-   "display": false,
-   "tex": "\\hat{Y} > 0.5"
-  },
-  "m00191": {
-   "file": "m00191.svg",
-   "widthEm": 1.604,
-   "heightEm": 1.4335,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "X \\hat{\\beta}"
-  },
-  "m00202": {
-   "file": "m00202.svg",
-   "widthEm": 2.466,
-   "heightEm": 1.199,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{p}(x_{i})"
-  },
-  "m00204": {
-   "file": "m00204.svg",
-   "widthEm": 2.3285,
-   "heightEm": 1.4335,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{\\beta}_{1} ="
-  },
-  "m00205": {
-   "file": "m00205.svg",
-   "widthEm": 5.113,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{\\beta}_{1}/\\mathrm{SE}(\\hat{\\beta}_{1})"
-  },
-  "m00216": {
-   "file": "m00216.svg",
-   "widthEm": 3.607,
-   "heightEm": 1.199,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{p}(X) ="
-  },
-  "m00236": {
-   "file": "m00236.svg",
-   "widthEm": 1.14,
-   "heightEm": 0.956,
-   "valignEm": -0.0125,
-   "display": false,
-   "tex": "\\hat{\\sigma}^{2}"
-  },
-  "m00237": {
-   "file": "m00237.svg",
-   "widthEm": 5.412,
-   "heightEm": 1.199,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{\\pi}_{k} = n_{k}/n."
-  },
-  "m00239": {
-   "file": "m00239.svg",
-   "widthEm": 2.54,
-   "heightEm": 1.51,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{\\delta}_{k}(x)"
-  },
-  "m00240": {
-   "file": "m00240.svg",
-   "widthEm": 3.786,
-   "heightEm": 1.086,
-   "valignEm": -0.1695,
-   "display": false,
-   "tex": "\\hat{\\pi}_{1} = \\hat{\\pi}_{2}"
-  },
-  "m00241": {
-   "file": "m00241.svg",
-   "widthEm": 5.746,
-   "heightEm": 1.199,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "(\\hat{\\mu}_{1} + \\hat{\\mu}_{2})/2"
-  },
-  "m00251": {
-   "file": "m00251.svg",
-   "widthEm": 1.1555,
-   "heightEm": 1.095,
-   "valignEm": -0.1785,
-   "display": false,
-   "tex": "\\hat{\\pi}_{k}"
-  },
-  "m00255": {
-   "file": "m00255.svg",
-   "widthEm": 6.865,
-   "heightEm": 1.5465,
-   "valignEm": -0.333,
-   "display": false,
-   "tex": "\\hat{f}_{kj}(x_{j}) = 0.55"
-  },
-  "m00257": {
-   "file": "m00257.svg",
-   "widthEm": 6.74,
-   "heightEm": 1.086,
-   "valignEm": -0.1695,
-   "display": false,
-   "tex": "\\hat{\\pi}_{1} = \\hat{\\pi}_{2} = 0.5"
-  },
-  "m00258": {
-   "file": "m00258.svg",
-   "widthEm": 1.3945,
-   "heightEm": 1.5465,
-   "valignEm": -0.333,
-   "display": false,
-   "tex": "\\hat{f}_{kj}"
-  },
-  "m00259": {
-   "file": "m00259.svg",
-   "widthEm": 7.8595,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}_{11}(0.4) = 0.368"
-  },
-  "m00260": {
-   "file": "m00260.svg",
-   "widthEm": 7.8595,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}_{12}(1.5) = 0.484"
-  },
-  "m00261": {
-   "file": "m00261.svg",
-   "widthEm": 6.9795,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}_{13}(1) = 0.226"
-  },
-  "m00262": {
-   "file": "m00262.svg",
-   "widthEm": 4.968,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}_{21}(0.4) ="
-  },
-  "m00263": {
-   "file": "m00263.svg",
-   "widthEm": 7.8595,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}_{22}(1.5) = 0.130"
-  },
-  "m00264": {
-   "file": "m00264.svg",
-   "widthEm": 6.9795,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}_{23}(1) = 0.616"
-  },
-  "m00300": {
-   "file": "m00300.svg",
-   "widthEm": 6.504,
-   "heightEm": 1.091,
-   "valignEm": -0.1745,
-   "display": false,
-   "tex": "\\hat{\\pi}_{\\mathtt{Down}} = 0.492"
-  },
-  "m00301": {
-   "file": "m00301.svg",
-   "widthEm": 5.664,
-   "heightEm": 1.2625,
-   "valignEm": -0.3465,
-   "display": false,
-   "tex": "\\hat{\\pi}_{\\mathtt{Up}} = 0.508"
-  },
-  "m00303": {
-   "file": "m00303.svg",
-   "widthEm": 5.813,
-   "heightEm": 1.226,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "_{i=1}(x_{i} - \\bar{x})^{2}"
-  },
-  "m00305": {
-   "file": "m00305.svg",
-   "widthEm": 12.9565,
-   "heightEm": 1.4335,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{\\beta}_{0} = -6, \\hat{\\beta}_{1} = 0.05, \\hat{\\beta}_{2} = 1"
-  },
-  "m00306": {
-   "file": "m00306.svg",
-   "widthEm": 3.6035,
-   "heightEm": 1.1495,
-   "valignEm": -0.093,
-   "display": false,
-   "tex": "\\bar{X} = 10"
-  },
-  "m00307": {
-   "file": "m00307.svg",
-   "widthEm": 3.038,
-   "heightEm": 1.1495,
-   "valignEm": -0.093,
-   "display": false,
-   "tex": "\\bar{X} = 0"
-  },
-  "m00308": {
-   "file": "m00308.svg",
-   "widthEm": 3.7795,
-   "heightEm": 1.036,
-   "valignEm": -0.093,
-   "display": false,
-   "tex": "\\hat{\\sigma}^{2} = 36"
-  },
-  "m00313": {
-   "file": "m00313.svg",
-   "widthEm": 3.1635,
-   "heightEm": 0.818,
-   "valignEm": -0.045,
-   "display": false,
-   "tex": "X \\in \\mathbb{R}"
-  },
-  "m00316": {
-   "file": "m00316.svg",
-   "widthEm": 3.2085,
-   "heightEm": 1.4335,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{\\beta}_{0} = 2"
-  },
-  "m00317": {
-   "file": "m00317.svg",
-   "widthEm": 4.0885,
-   "heightEm": 1.4335,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{\\beta}_{1} = -1"
-  },
-  "m00318": {
-   "file": "m00318.svg",
-   "widthEm": 6.6915,
-   "heightEm": 1.269,
-   "valignEm": -0.353,
-   "display": false,
-   "tex": "\\hat{\\alpha}_{\\mathtt{orange}0} = 1.2"
-  },
-  "m00319": {
-   "file": "m00319.svg",
-   "widthEm": 6.6915,
-   "heightEm": 1.269,
-   "valignEm": -0.353,
-   "display": false,
-   "tex": "\\hat{\\alpha}_{\\mathtt{orange}1} = -2"
-  },
-  "m00320": {
-   "file": "m00320.svg",
-   "widthEm": 5.8115,
-   "heightEm": 1.269,
-   "valignEm": -0.353,
-   "display": false,
-   "tex": "\\hat{\\alpha}_{\\mathtt{orange}0} = 3"
-  },
-  "m00321": {
-   "file": "m00321.svg",
-   "widthEm": 4.932,
-   "heightEm": 1.269,
-   "valignEm": -0.353,
-   "display": false,
-   "tex": "\\hat{\\alpha}_{\\mathtt{orange}1} ="
-  },
-  "m00323": {
-   "file": "m00323.svg",
-   "widthEm": 1.048,
-   "heightEm": 1.148,
-   "valignEm": -0.232,
-   "display": false,
-   "tex": "\\hat{y}_{1}"
-  },
-  "m00324": {
-   "file": "m00324.svg",
-   "widthEm": 4.853,
-   "heightEm": 1.226,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "(y_{1} - \\hat{y}_{1})^{2}"
-  },
-  "m00325": {
-   "file": "m00325.svg",
-   "widthEm": 9.292,
-   "heightEm": 1.226,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\mathrm{MSE}_{2} = (y_{2}-\\hat{y}_{2})^{2}"
-  },
-  "m00335": {
-   "file": "m00335.svg",
-   "widthEm": 1.4215,
-   "heightEm": 1.2825,
-   "valignEm": -0.3395,
-   "display": false,
-   "tex": "\\hat{\\sigma}_{X}^{2}"
-  },
-  "m00336": {
-   "file": "m00336.svg",
-   "widthEm": 1.35,
-   "heightEm": 1.2825,
-   "valignEm": -0.3395,
-   "display": false,
-   "tex": "\\hat{\\sigma}_{Y}^{2}"
-  },
-  "m00337": {
-   "file": "m00337.svg",
-   "widthEm": 2.0315,
-   "heightEm": 1.086,
-   "valignEm": -0.1695,
-   "display": false,
-   "tex": "\\hat{\\sigma}_{XY}"
-  },
-  "m00341": {
-   "file": "m00341.svg",
-   "widthEm": 0.724,
-   "heightEm": 0.9285,
-   "valignEm": -0.0125,
-   "display": false,
-   "tex": "\\hat{\\alpha}"
-  },
-  "m00342": {
-   "file": "m00342.svg",
-   "widthEm": 8.094,
-   "heightEm": 1.241,
-   "valignEm": -0.325,
-   "display": false,
-   "tex": "\\hat{\\alpha}_{1}, \\hat{\\alpha}_{2}, . . . , \\hat{\\alpha}_{1,000}"
-  },
-  "m00345": {
-   "file": "m00345.svg",
-   "widthEm": 7.089,
-   "heightEm": 1.199,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\mathrm{SE}(\\hat{\\alpha}) \\approx 0.083"
-  },
-  "m00346": {
-   "file": "m00346.svg",
-   "widthEm": 3.0035,
-   "heightEm": 1.199,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\mathrm{SE}(\\hat{\\alpha})"
-  },
-  "m00347": {
-   "file": "m00347.svg",
-   "widthEm": 1.618,
-   "heightEm": 0.956,
-   "valignEm": -0.0125,
-   "display": false,
-   "tex": "\\hat{\\alpha}^{*1}"
-  },
-  "m00348": {
-   "file": "m00348.svg",
-   "widthEm": 8.0785,
-   "heightEm": 1.1765,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{\\alpha}^{*1}, \\hat{\\alpha}^{*2}, . . . , \\hat{\\alpha}^{*B}"
-  },
-  "m00350": {
-   "file": "m00350.svg",
-   "widthEm": 3.4135,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\mathrm{SE}(\\hat{\\beta}_{2})"
-  },
-  "m00352": {
-   "file": "m00352.svg",
-   "widthEm": 12.316,
-   "heightEm": 1.199,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "[\\hat{\\mu} - 2\\mathrm{SE}(\\hat{\\mu}), \\hat{\\mu} + 2\\mathrm{SE}(\\hat{\\mu})]"
-  },
-  "m00353": {
-   "file": "m00353.svg",
-   "widthEm": 2.267,
-   "heightEm": 1.1605,
-   "valignEm": -0.2445,
-   "display": false,
-   "tex": "\\hat{\\mu}_{med}"
-  },
-  "m00354": {
-   "file": "m00354.svg",
-   "widthEm": 1.7985,
-   "heightEm": 1.1605,
-   "valignEm": -0.2445,
-   "display": false,
-   "tex": "\\hat{\\mu}_{0.1}"
-  },
-  "m00358": {
-   "file": "m00358.svg",
-   "widthEm": 1.8525,
-   "heightEm": 0.985,
-   "valignEm": -0.1875,
-   "display": false,
-   "tex": "\\mathcal{M}_{0}"
-  },
-  "m00361": {
-   "file": "m00361.svg",
-   "widthEm": 1.869,
-   "heightEm": 0.976,
-   "valignEm": -0.1785,
-   "display": false,
-   "tex": "\\mathcal{M}_{k}"
-  },
-  "m00363": {
-   "file": "m00363.svg",
-   "widthEm": 6.2225,
-   "heightEm": 1.1225,
-   "valignEm": -0.325,
-   "display": false,
-   "tex": "\\mathcal{M}_{0}, . . . , \\mathcal{M}_{p}"
-  },
-  "m00364": {
-   "file": "m00364.svg",
-   "widthEm": 8.578,
-   "heightEm": 1.1225,
-   "valignEm": -0.325,
-   "display": false,
-   "tex": "\\mathcal{M}_{0}, \\mathcal{M}_{1}, . . . , \\mathcal{M}_{p}"
-  },
-  "m00365": {
-   "file": "m00365.svg",
-   "widthEm": 2.8915,
-   "heightEm": 1.033,
-   "valignEm": -0.2355,
-   "display": false,
-   "tex": "\\mathcal{M}_{k+1}"
-  },
-  "m00367": {
-   "file": "m00367.svg",
-   "widthEm": 1.8525,
-   "heightEm": 0.967,
-   "valignEm": -0.1695,
-   "display": false,
-   "tex": "\\mathcal{M}_{1}"
-  },
-  "m00368": {
-   "file": "m00368.svg",
-   "widthEm": 1.8525,
-   "heightEm": 0.967,
-   "valignEm": -0.1695,
-   "display": false,
-   "tex": "\\mathcal{M}_{2}"
-  },
-  "m00369": {
-   "file": "m00369.svg",
-   "widthEm": 7.322,
-   "heightEm": 1.033,
-   "valignEm": -0.2355,
-   "display": false,
-   "tex": "\\mathcal{M}_{0}, . . . , \\mathcal{M}_{n-1}"
-  },
-  "m00370": {
-   "file": "m00370.svg",
-   "widthEm": 1.855,
-   "heightEm": 1.1225,
-   "valignEm": -0.325,
-   "display": false,
-   "tex": "\\mathcal{M}_{p}"
-  },
-  "m00371": {
-   "file": "m00371.svg",
-   "widthEm": 2.8915,
-   "heightEm": 1.033,
-   "valignEm": -0.2355,
-   "display": false,
-   "tex": "\\mathcal{M}_{k-1}"
-  },
-  "m00373": {
-   "file": "m00373.svg",
-   "widthEm": 2.2935,
-   "heightEm": 0.956,
-   "valignEm": -0.0125,
-   "display": false,
-   "tex": "2d\\hat{\\sigma}^{2}"
-  },
-  "m00378": {
-   "file": "m00378.svg",
-   "widthEm": 4.7325,
-   "heightEm": 1.226,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\mathrm{log}(n)d\\hat{\\sigma}^{2}"
-  },
-  "m00386": {
-   "file": "m00386.svg",
-   "widthEm": 1.3415,
-   "heightEm": 1.4335,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{\\beta}^{R}"
-  },
-  "m00389": {
-   "file": "m00389.svg",
-   "widthEm": 5.7975,
-   "heightEm": 1.582,
-   "valignEm": -0.3685,
-   "display": false,
-   "tex": "\\|\\hat{\\beta}_{\\lambda}^{R} \\|_{2}/\\|\\hat{\\beta}\\|_{2}"
-  },
-  "m00390": {
-   "file": "m00390.svg",
-   "widthEm": 1.3415,
-   "heightEm": 1.582,
-   "valignEm": -0.3685,
-   "display": false,
-   "tex": "\\hat{\\beta}_{\\lambda}^{R}"
-  },
-  "m00394": {
-   "file": "m00394.svg",
-   "widthEm": 2.424,
-   "heightEm": 1.5465,
-   "valignEm": -0.333,
-   "display": false,
-   "tex": "X_{j} \\hat{\\beta}_{j}"
-  },
-  "m00398": {
-   "file": "m00398.svg",
-   "widthEm": 1.279,
-   "heightEm": 1.5715,
-   "valignEm": -0.3575,
-   "display": false,
-   "tex": "\\hat{\\beta}_{\\lambda}^{L}"
-  },
-  "m00401": {
-   "file": "m00401.svg",
-   "widthEm": 5.735,
-   "heightEm": 1.5715,
-   "valignEm": -0.3575,
-   "display": false,
-   "tex": "\\|\\hat{\\beta}_{\\lambda}^{L} \\|_{1}/\\|\\hat{\\beta}\\|_{1}"
-  },
-  "m00438": {
-   "file": "m00438.svg",
-   "widthEm": 3.214,
-   "heightEm": 1.036,
-   "valignEm": -0.093,
-   "display": false,
-   "tex": "\\hat{\\sigma}^{2} = 0"
-  },
-  "m00441": {
-   "file": "m00441.svg",
-   "widthEm": 3.2085,
-   "heightEm": 1.4335,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{\\beta}_{0} = 0"
-  },
-  "m00450": {
-   "file": "m00450.svg",
-   "widthEm": 6.361,
-   "heightEm": 1.7075,
-   "valignEm": -0.4935,
-   "display": false,
-   "tex": "_{j=1}(\\beta_{j} - \\hat{\\beta}_{j}^{r} )^{2}"
-  },
-  "m00451": {
-   "file": "m00451.svg",
-   "widthEm": 1.095,
-   "heightEm": 1.7075,
-   "valignEm": -0.4935,
-   "display": false,
-   "tex": "\\hat{\\beta}_{j}^{r}"
-  },
-  "m00455": {
-   "file": "m00455.svg",
-   "widthEm": 2.643,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f} (x_{0})"
-  },
-  "m00456": {
-   "file": "m00456.svg",
-   "widthEm": 0.94,
-   "heightEm": 1.217,
-   "valignEm": -0.0125,
-   "display": false,
-   "tex": "\\hat{\\mathbf{C}}"
-  },
-  "m00458": {
-   "file": "m00458.svg",
-   "widthEm": 5.9095,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "[ \\hat{f}(x_{0})] = \\ell^{T}"
-  },
-  "m00479": {
-   "file": "m00479.svg",
-   "widthEm": 5.0035,
-   "heightEm": 1.1585,
-   "valignEm": -0.2275,
-   "display": false,
-   "tex": "\\hat{\\mathbf{g}}_{\\lambda} = \\mathbf{S}_{\\lambda}\\mathbf{y},"
-  },
-  "m00480": {
-   "file": "m00480.svg",
-   "widthEm": 1.2105,
-   "heightEm": 1.1585,
-   "valignEm": -0.2275,
-   "display": false,
-   "tex": "\\hat{\\mathbf{g}}_{\\lambda}"
-  },
-  "m00485": {
-   "file": "m00485.svg",
-   "widthEm": 4.051,
-   "heightEm": 1.2935,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{g}^{(-i)}(x_{i})"
-  },
-  "m00487": {
-   "file": "m00487.svg",
-   "widthEm": 2.997,
-   "heightEm": 1.199,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{g}_{\\lambda}(x_{i})"
-  },
-  "m00488": {
-   "file": "m00488.svg",
-   "widthEm": 1.1,
-   "heightEm": 1.148,
-   "valignEm": -0.232,
-   "display": false,
-   "tex": "\\hat{g}_{\\lambda}"
-  },
-  "m00489": {
-   "file": "m00489.svg",
-   "widthEm": 2.4365,
-   "heightEm": 1.199,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{g}(x_{i})"
-  },
-  "m00490": {
-   "file": "m00490.svg",
-   "widthEm": 2.1495,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}(x)"
-  },
-  "m00498": {
-   "file": "m00498.svg",
-   "widthEm": 1.8525,
-   "heightEm": 0.985,
-   "valignEm": -0.1875,
-   "display": false,
-   "tex": "\\mathcal{M}_{3}"
-  },
-  "m00506": {
-   "file": "m00506.svg",
-   "widthEm": 0.5395,
-   "heightEm": 1.148,
-   "valignEm": -0.232,
-   "display": false,
-   "tex": "\\hat{g}"
-  },
-  "m00509": {
-   "file": "m00509.svg",
-   "widthEm": 11.511,
-   "heightEm": 1.4335,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{\\beta}_{0} = 1, \\hat{\\beta}_{1} = 1, \\hat{\\beta}_{2} = -2"
-  },
-  "m00512": {
-   "file": "m00512.svg",
-   "widthEm": 10.631,
-   "heightEm": 1.4335,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{\\beta}_{0} = 1, \\hat{\\beta}_{1} = 1, \\hat{\\beta}_{2} = 3"
-  },
-  "m00513": {
-   "file": "m00513.svg",
-   "widthEm": 1.0335,
-   "heightEm": 1.148,
-   "valignEm": -0.232,
-   "display": false,
-   "tex": "\\hat{g}_{1}"
-  },
-  "m00514": {
-   "file": "m00514.svg",
-   "widthEm": 1.0335,
-   "heightEm": 1.148,
-   "valignEm": -0.232,
-   "display": false,
-   "tex": "\\hat{g}_{2}"
-  },
-  "m00521": {
-   "file": "m00521.svg",
-   "widthEm": 1.585,
-   "heightEm": 1.249,
-   "valignEm": -0.333,
-   "display": false,
-   "tex": "\\hat{y}_{Rj}"
-  },
-  "m00523": {
-   "file": "m00523.svg",
-   "widthEm": 1.6555,
-   "heightEm": 1.148,
-   "valignEm": -0.232,
-   "display": false,
-   "tex": "\\hat{y}_{R1}"
-  },
-  "m00524": {
-   "file": "m00524.svg",
-   "widthEm": 1.6555,
-   "heightEm": 1.148,
-   "valignEm": -0.232,
-   "display": false,
-   "tex": "\\hat{y}_{R2}"
-  },
-  "m00526": {
-   "file": "m00526.svg",
-   "widthEm": 1.9575,
-   "heightEm": 1.148,
-   "valignEm": -0.232,
-   "display": false,
-   "tex": "\\hat{y}_{Rm}"
-  },
-  "m00528": {
-   "file": "m00528.svg",
-   "widthEm": 1.782,
-   "heightEm": 1.1355,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{p}_{mk}"
-  },
-  "m00531": {
-   "file": "m00531.svg",
-   "widthEm": 5.9305,
-   "heightEm": 1.1355,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "0 \\leq \\hat{p}_{mk} \\leq 1"
-  },
-  "m00532": {
-   "file": "m00532.svg",
-   "widthEm": 7.964,
-   "heightEm": 1.1495,
-   "valignEm": -0.233,
-   "display": false,
-   "tex": "0 \\leq -\\hat{p}_{mk} \\mathrm{log} \\hat{p}_{mk}"
-  },
-  "m00535": {
-   "file": "m00535.svg",
-   "widthEm": 0.818,
-   "heightEm": 1.0565,
-   "valignEm": 0,
-   "display": false,
-   "tex": "\\bar{Z}"
-  },
-  "m00536": {
-   "file": "m00536.svg",
-   "widthEm": 11.3345,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f} ^{1}(x), \\hat{f} ^{2}(x), . . . , \\hat{f} ^{B}(x)"
-  },
-  "m00540": {
-   "file": "m00540.svg",
-   "widthEm": 3.0465,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f} ^{*b}(x)"
-  },
-  "m00545": {
-   "file": "m00545.svg",
-   "widthEm": 5.074,
-   "heightEm": 1.4455,
-   "valignEm": -0.232,
-   "display": false,
-   "tex": "\\hat{f} ^{1}, . . . , \\hat{f} ^{B}"
-  },
-  "m00546": {
-   "file": "m00546.svg",
-   "widthEm": 4.2235,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}(x) = 0"
-  },
-  "m00547": {
-   "file": "m00547.svg",
-   "widthEm": 1.119,
-   "heightEm": 1.4455,
-   "valignEm": -0.232,
-   "display": false,
-   "tex": "\\hat{f} ^{b}"
-  },
-  "m00551": {
-   "file": "m00551.svg",
-   "widthEm": 2.6465,
-   "heightEm": 1.5795,
-   "valignEm": -0.3655,
-   "display": false,
-   "tex": "\\hat{f} _{k}^{b}(x)"
-  },
-  "m00556": {
-   "file": "m00556.svg",
-   "widthEm": 3.9855,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f} ^{b-1}(X)"
-  },
-  "m00558": {
-   "file": "m00558.svg",
-   "widthEm": 2.963,
-   "heightEm": 1.5795,
-   "valignEm": -0.3655,
-   "display": false,
-   "tex": "\\hat{f} _{k}^{b}(X)"
-  },
-  "m00566": {
-   "file": "m00566.svg",
-   "widthEm": 2.1415,
-   "heightEm": 1.4455,
-   "valignEm": -0.232,
-   "display": false,
-   "tex": "\\hat{f} ^{b-1}"
-  },
-  "m00569": {
-   "file": "m00569.svg",
-   "widthEm": 6.507,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f} ^{b}(x) = _{k}(x),"
-  },
-  "m00575": {
-   "file": "m00575.svg",
-   "widthEm": 3.6685,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f} ^{b-1}(x)"
-  },
-  "m00582": {
-   "file": "m00582.svg",
-   "widthEm": 9.2955,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f} ^{L+1}(x), . . . , \\hat{f} ^{B}(x)"
-  },
-  "m00586": {
-   "file": "m00586.svg",
-   "widthEm": 1.765,
-   "heightEm": 1.1355,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{p}_{m1}"
-  },
-  "m00587": {
-   "file": "m00587.svg",
-   "widthEm": 6.9875,
-   "heightEm": 1.1355,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "\\hat{p}_{m1} = 1 - \\hat{p}_{m2}"
-  },
-  "m00598": {
-   "file": "m00598.svg",
-   "widthEm": 7.573,
-   "heightEm": 0.992,
-   "valignEm": -0.2195,
-   "display": false,
-   "tex": "x_{1}, . . . , x_{n} \\in \\mathbb{R}^{p}"
-  },
-  "m00617": {
-   "file": "m00617.svg",
-   "widthEm": 0.726,
-   "heightEm": 0.8225,
-   "valignEm": -0.025,
-   "display": false,
-   "tex": "\\mathcal{S}"
-  },
-  "m00627": {
-   "file": "m00627.svg",
-   "widthEm": 19.785,
-   "heightEm": 1.5385,
-   "valignEm": -0.325,
-   "display": false,
-   "tex": "\\hat{f}(X) = \\hat{\\beta}_{0} + \\hat{\\beta}_{1}X_{1} + \\hat{\\beta}_{2}X_{2} + \\cdot \\cdot \\cdot + \\hat{\\beta}_{p}X_{p}"
-  },
-  "m00628": {
-   "file": "m00628.svg",
-   "widthEm": 4.383,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}(X) < t"
-  },
-  "m00629": {
-   "file": "m00629.svg",
-   "widthEm": 4.383,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}(X) \\geq t"
-  },
-  "m00642": {
-   "file": "m00642.svg",
-   "widthEm": 14.8675,
-   "heightEm": 1.5385,
-   "valignEm": -0.325,
-   "display": false,
-   "tex": "\\hat{\\beta}_{0} + \\hat{\\beta}_{1}X_{1} + \\hat{\\beta}_{2}X_{2} +. . . + \\hat{\\beta}_{p}X_{p}"
-  },
-  "m00702": {
-   "file": "m00702.svg",
-   "widthEm": 2.908,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}_{d}(X)"
-  },
-  "m00703": {
-   "file": "m00703.svg",
-   "widthEm": 2.892,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}_{8}(X)"
-  },
-  "m00704": {
-   "file": "m00704.svg",
-   "widthEm": 3.292,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}_{20}(X)"
-  },
-  "m00706": {
-   "file": "m00706.svg",
-   "widthEm": 3.292,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}_{42}(X)"
-  },
-  "m00707": {
-   "file": "m00707.svg",
-   "widthEm": 3.292,
-   "heightEm": 1.4965,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "\\hat{f}_{80}(X)"
-  },
-  "m00729": {
-   "file": "m00729.svg",
-   "widthEm": 3.66,
-   "heightEm": 0.818,
-   "valignEm": -0.045,
-   "display": false,
-   "tex": "X \\in \\mathbb{R}^{p}"
-  },
-  "m00755": {
-   "file": "m00755.svg",
-   "widthEm": 3.254,
-   "heightEm": 1.5665,
-   "valignEm": -0.353,
-   "display": false,
-   "tex": "\\hat{\\beta}_{\\mathtt{budget}}"
-  },
-  "m00756": {
-   "file": "m00756.svg",
-   "widthEm": 3.254,
-   "heightEm": 1.5605,
-   "valignEm": -0.3465,
-   "display": false,
-   "tex": "\\hat{\\beta}_{\\mathtt{impact}}"
-  },
-  "m00757": {
-   "file": "m00757.svg",
-   "widthEm": 17.3915,
-   "heightEm": 1.5665,
-   "valignEm": -0.353,
-   "display": false,
-   "tex": "\\mathtt{budget}_{i} \\cdot \\hat{\\beta}_{\\mathtt{budget}} + \\mathtt{impact}_{i} \\cdot \\hat{\\beta}_{\\mathtt{impact}}"
-  },
-  "m00758": {
-   "file": "m00758.svg",
-   "widthEm": 11.7595,
-   "heightEm": 1.5385,
-   "valignEm": -0.325,
-   "display": false,
-   "tex": "\\hat{\\eta}_{i} = \\hat{\\beta}_{1}x_{i1} + \\cdot \\cdot \\cdot + \\hat{\\beta}_{p}x_{ip}"
-  },
-  "m00759": {
-   "file": "m00759.svg",
-   "widthEm": 3.3725,
-   "heightEm": 1.3485,
-   "valignEm": -0.3305,
-   "display": false,
-   "tex": "\\hat{\\eta}_{i}^{'} > \\hat{\\eta}_{i}"
-  },
-  "m00761": {
-   "file": "m00761.svg",
-   "widthEm": 4.823,
-   "heightEm": 1.3485,
-   "valignEm": -0.3305,
-   "display": false,
-   "tex": "I(\\hat{\\eta}_{i}^{'} > \\hat{\\eta}_{i})"
-  },
-  "m00778": {
-   "file": "m00778.svg",
-   "widthEm": 0.983,
-   "heightEm": 1.206,
-   "valignEm": 0,
-   "display": false,
-   "tex": "\\hat{\\mathbf{A}}"
-  },
-  "m00779": {
-   "file": "m00779.svg",
-   "widthEm": 0.9255,
-   "heightEm": 1.1925,
-   "valignEm": 0,
-   "display": false,
-   "tex": "\\hat{\\mathbf{B}}"
-  },
-  "m00780": {
-   "file": "m00780.svg",
-   "widthEm": 4.7775,
-   "heightEm": 1.095,
-   "valignEm": -0.1785,
-   "display": false,
-   "tex": "\\hat{a}_{im} = z_{im}"
-  },
-  "m00781": {
-   "file": "m00781.svg",
-   "widthEm": 4.9195,
-   "heightEm": 1.534,
-   "valignEm": -0.333,
-   "display": false,
-   "tex": "\\hat{b}_{jm} = \\phi_{jm}"
-  },
-  "m00793": {
-   "file": "m00793.svg",
-   "widthEm": 0.9005,
-   "heightEm": 0.8225,
-   "valignEm": -0.025,
-   "display": false,
-   "tex": "\\mathcal{O}"
-  },
-  "m00795": {
-   "file": "m00795.svg",
-   "widthEm": 1.6705,
-   "heightEm": 1.095,
-   "valignEm": -0.1785,
-   "display": false,
-   "tex": "\\hat{a}_{im}"
-  },
-  "m00796": {
-   "file": "m00796.svg",
-   "widthEm": 1.611,
-   "heightEm": 1.534,
-   "valignEm": -0.333,
-   "display": false,
-   "tex": "\\hat{b}_{jm}"
-  },
-  "m00797": {
-   "file": "m00797.svg",
-   "widthEm": 0.983,
-   "heightEm": 1.1245,
-   "valignEm": 0,
-   "display": false,
-   "tex": "\\tilde{\\mathbf{X}}"
-  },
-  "m00799": {
-   "file": "m00799.svg",
-   "widthEm": 4.523,
-   "heightEm": 1.131,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "(i, j) \\in \\mathcal{O}"
-  },
-  "m00801": {
-   "file": "m00801.svg",
-   "widthEm": 1.0705,
-   "heightEm": 1.117,
-   "valignEm": -0.333,
-   "display": false,
-   "tex": "\\bar{x}_{j}"
-  },
-  "m00802": {
-   "file": "m00802.svg",
-   "widthEm": 5.403,
-   "heightEm": 1.131,
-   "valignEm": -0.283,
-   "display": false,
-   "tex": "(i, j) \\in/ \\mathcal{O},"
-  },
-  "m00806": {
-   "file": "m00806.svg",
-   "widthEm": 6.938,
-   "heightEm": 1.1815,
-   "valignEm": -0.333,
-   "display": false,
-   "tex": "\\tilde{x}_{ij}, (i, j) \\in/ \\mathcal{O}"
-  },
-  "m00807": {
-   "file": "m00807.svg",
-   "widthEm": 5.6485,
-   "heightEm": 1.249,
-   "valignEm": -0.333,
-   "display": false,
-   "tex": "\\hat{x}_{ij} = z_{i1}\\phi_{j1}"
-  },
-  "m00808": {
-   "file": "m00808.svg",
-   "widthEm": 1.3465,
-   "heightEm": 1.249,
-   "valignEm": -0.333,
-   "display": false,
-   "tex": "\\hat{x}_{ij}"
   }
  },
- "failures": [
-  {
-   "id": "m00395",
-   "tex": "X_{j} \\hat{\\beta}_{j}^{R}_{,\\lambda}",
-   "error": "Double subscripts: use braces to clarify"
-  }
- ]
+ "failures": []
 }

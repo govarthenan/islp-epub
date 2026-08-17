@@ -63,6 +63,7 @@ class Char:
     size: float
     colour: int
     role: Role
+    link: str = ""
 
     @property
     def is_space(self) -> bool:
@@ -139,6 +140,7 @@ class Page:
     header_text: str = ""
     drawing_rects: list[tuple[float, float, float, float]] = field(default_factory=list)
     image_rects: list[tuple[float, float, float, float]] = field(default_factory=list)
+    links: list[dict] = field(default_factory=list)
 
 
 def _span_text(span: dict) -> str:
@@ -225,9 +227,38 @@ def _split_margin(line: VLine) -> tuple[VLine, VLine | None]:
     return main, margin
 
 
+def _collect_links(page: pymupdf.Page) -> list[dict]:
+    """Internal cross-references, as target keys the document assembler can resolve later.
+    PyMuPDF already reports the destination point in top-left page coordinates."""
+    links = []
+    for link in page.get_links():
+        rect = link.get("from")
+        if rect is None:
+            continue
+        if link.get("kind") == pymupdf.LINK_GOTO and link.get("to") is not None:
+            links.append({"rect": tuple(rect),
+                          "target": f"{link['page']}:{link['to'].y:.0f}"})
+        elif link.get("kind") == pymupdf.LINK_URI and link.get("uri"):
+            links.append({"rect": tuple(rect), "uri": link["uri"]})
+    return links
+
+
+def _tag_links(chars: list[Char], links: list[dict]) -> None:
+    for char in chars:
+        if char.is_space:
+            continue
+        centre_x = (char.x0 + char.x1) / 2
+        for link in links:
+            lx0, ly0, lx1, ly1 = link["rect"]
+            if lx0 <= centre_x <= lx1 and ly0 - 1 <= char.oy <= ly1 + 1:
+                char.link = link.get("target") or ("uri:" + link["uri"])
+                break
+
+
 def load_page(doc: pymupdf.Document, index: int) -> Page:
     page = doc[index]
     raw = page.get_text("rawdict", flags=TEXT_FLAGS)
+    links = _collect_links(page)
 
     groups: list[tuple[float, float, list[Char]]] = []  # (baseline, size, chars)
     image_rects: list[tuple[float, float, float, float]] = []
@@ -261,6 +292,8 @@ def load_page(doc: pymupdf.Document, index: int) -> Page:
                         )
                     )
             if chars:
+                if links:
+                    _tag_links(chars, links)
                 groups.append((baseline, size, chars))
 
     # Merge groups that share a baseline (code cells and prompts arrive as separate blocks).
@@ -314,4 +347,5 @@ def load_page(doc: pymupdf.Document, index: int) -> Page:
         header_text=header_text,
         drawing_rects=drawing_rects,
         image_rects=image_rects,
+        links=links,
     )

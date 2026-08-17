@@ -327,9 +327,14 @@ def _math_html(chars: list[Char], base_size: float, baseline: float) -> str:
 
 
 def _prose_html(chars: list[Char], base_size: float, baseline: float) -> str:
+    """Prose with emphasis, code, sub/superscripts and cross-reference links.
+
+    A link may span emphasised text, so the anchor is the outer element and the style tag is
+    closed and reopened around it."""
     out: list[str] = []
     index = 0
     open_tag: str | None = None
+    open_link: str = ""
 
     def tag_for(char: Char) -> str | None:
         if char.role == Role.PROSE_ITALIC:
@@ -339,6 +344,23 @@ def _prose_html(chars: list[Char], base_size: float, baseline: float) -> str:
         if char.role == Role.MONO:
             return "code"
         return None
+
+    def close_style() -> None:
+        nonlocal open_tag
+        if open_tag:
+            out.append(f"</{open_tag}>")
+            open_tag = None
+
+    def set_link(target: str) -> None:
+        nonlocal open_link
+        if target == open_link:
+            return
+        close_style()
+        if open_link:
+            out.append("</a>")
+        if target:
+            out.append(f'<a href="{link_href(target)}">')
+        open_link = target
 
     while index < len(chars):
         char = chars[index]
@@ -351,23 +373,30 @@ def _prose_html(chars: list[Char], base_size: float, baseline: float) -> str:
                 index += 1
             inner_size, inner_baseline = _dominant(run)
             tag = "sup" if script == 1 else "sub"
-            if open_tag:
-                out.append(f"</{open_tag}>")
-                open_tag = None
+            close_style()
             out.append(f"<{tag}>{_prose_html(run, inner_size, inner_baseline)}</{tag}>")
             continue
+        if not char.is_space:
+            set_link(char.link)
         wanted = tag_for(char) if not char.is_space else open_tag
         if wanted != open_tag:
-            if open_tag:
-                out.append(f"</{open_tag}>")
+            close_style()
             if wanted:
                 out.append(f"<{wanted}>")
             open_tag = wanted
         out.append(escape_html(fix_unicode(char.c)))
         index += 1
-    if open_tag:
-        out.append(f"</{open_tag}>")
+    close_style()
+    if open_link:
+        out.append("</a>")
     return "".join(out)
+
+
+def link_href(target: str) -> str:
+    """Links are written as tokens and resolved once every block has an anchor."""
+    if target.startswith("uri:"):
+        return escape_html(target[4:])
+    return "{{LINK:" + target + "}}"
 
 
 def _run_key(chars: list[Char], latex: str | None) -> str:
@@ -478,6 +507,9 @@ def build_inline(
         run.key = _run_key(core, latex)
         if tier == Tier.TEXT:
             run.html = _math_html(core, base_size, baseline)
+            links = {c.link for c in core if not c.is_space}
+            if len(links) == 1 and (target := links.pop()):
+                run.html = f'<a href="{link_href(target)}">{run.html}</a>'
             html_parts.append(lead + run.html + trail)
         else:
             html_parts.append(lead + f"\x00MATH{len(runs)}\x00" + trail)

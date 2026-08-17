@@ -1,0 +1,126 @@
+{
+  "project": "ISLP PDF to EPUB",
+  "subtitle": "Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB for a Kobo Libra 2",
+  "purpose": "Educational and experimental only. No commercial use. All rights remain with the authors and publisher.",
+  "source": "ISLP_website.pdf, first printing 5 July 2023, from statlearning.com",
+  "stages": [
+    {
+      "id": "probe",
+      "title": "Read the PDF's own structure",
+      "summary": "Fonts, outline, colours and geometry, measured rather than guessed.",
+      "detail": "Prose is set in Latin Modern and mathematics in Computer Modern, two families that never overlap, so every mathematical glyph can be located by font name alone. Span colour separates code, prompts, lab headings and margin notes."
+    },
+    {
+      "id": "page",
+      "title": "Build a page model",
+      "summary": "Split each page into text column, margin notes, prompts, code cells and figures.",
+      "detail": "Main column x 91.0 to 413.8. Margin notes past x 415.5 in grey. Jupyter prompts left of x 90 in blue. Code cells are backed by cream (input) or white (output) rectangles."
+    },
+    {
+      "id": "blocks",
+      "title": "Recover the document",
+      "summary": "Headings, paragraphs, lists, captions, code cells and display equations.",
+      "detail": "Paragraph breaks come from the 9.9 pt first-line indent. Hyphenation is undone using the book's own vocabulary, so 'individ-ual' rejoins while 'non-linear' survives."
+    },
+    {
+      "id": "math",
+      "title": "Triage the mathematics",
+      "summary": "Three routes, chosen by what the character stream can and cannot carry.",
+      "detail": "Plain HTML where sub/superscripts are enough; generated LaTeX where accents and script letters need real typesetting; a vision model only where the structure is genuinely absent from the PDF."
+    },
+    {
+      "id": "verify",
+      "title": "Check the mathematics adversarially",
+      "summary": "Typeset every candidate, put it under the original, and ask whether they agree.",
+      "detail": "A verifier compares the picture from the PDF with the picture produced from the candidate LaTeX. A second, independent model family (OpenAI's codex CLI) audits a sample to give an unbiased accuracy estimate."
+    },
+    {
+      "id": "epub",
+      "title": "Package for the device",
+      "summary": "EPUB 3 with an NCX, 300 ppi grayscale figures, no imposed font.",
+      "detail": "Mathematics is SVG in currentColor sized in em, so it scales with the reader's font size and works in dark mode. Nothing pins the body font, so the Kobo's own typography controls keep working."
+    }
+  ],
+  "attempts": [
+    {
+      "n": 1,
+      "title": "Survey the tooling",
+      "status": "success",
+      "what": "Check what is installed: poppler, qpdf, ghostscript, python, node, codex.",
+      "result": "No pandoc, no calibre, no Java. Decided to write the EPUB directly in Python for full control of the markup, and to write a structural validator because epubcheck needs Java.",
+      "why": ""
+    },
+    {
+      "n": 2,
+      "title": "Probe fonts and outline",
+      "status": "success",
+      "what": "Count every font and character in the file; read the PDF bookmarks.",
+      "result": "309 correct outline entries to build navigation from. Prose in Latin Modern, mathematics in Computer Modern: two disjoint families. Only 44 raster images in the whole book, so nearly every figure is vector art.",
+      "why": ""
+    },
+    {
+      "n": 3,
+      "title": "Extract mathematics as LaTeX from the text layer",
+      "status": "partial",
+      "what": "Try to rebuild LaTeX directly from the PDF character stream.",
+      "result": "Symbols come out correctly, structure does not: x_ij arrives as 'xij', a summation as ')d k=1'. But sub- and superscripts ARE recoverable geometrically, from the font-size drop plus the baseline shift.",
+      "why": "The PDF stores glyphs and pen positions, not mathematical structure. Two-dimensional constructs (fractions, radicals, large operators, matrices) leave no trace in the character stream."
+    },
+    {
+      "n": 4,
+      "title": "Deterministic LaTeX for accents and script letters",
+      "status": "success",
+      "what": "Generate LaTeX from character data for the cases where structure IS recoverable.",
+      "result": "497 occurrences solved with no model call at all, producing exactly right output such as \\hat{Y} = \\hat{f}(X) and \\mathbf{A} \\in \\mathbb{R}^{r\\times s}.",
+      "why": ""
+    },
+    {
+      "n": 5,
+      "title": "First end-to-end EPUB",
+      "status": "partial",
+      "what": "Run the whole chain over the first 100 pages and read the result in a browser at the Kobo's 1264 x 1680 panel size.",
+      "result": "A valid EPUB, but six visible faults: words glued together across spans, a ligature splitting 'fit' into 'f it' inside code, split captions, a column of stacked margin notes, a broken margin-note hyphenation, and paragraph indents that disagreed with the book.",
+      "why": "Every one of them came from trusting a convenient rule instead of what the page actually measures."
+    },
+    {
+      "n": 6,
+      "title": "Crop mathematics: box from one text line",
+      "status": "failed",
+      "what": "Cut each expression out using the bounding box of its text line.",
+      "result": "Fractions came out sliced through the middle: numerator and denominator missing.",
+      "why": "A fraction puts its numerator, rule and denominator on three different baselines, and the extractor files those as three separate lines."
+    },
+    {
+      "n": 7,
+      "title": "Crop mathematics: grow the box greedily",
+      "status": "failed",
+      "what": "Grow the box to absorb any nearby mathematical glyph.",
+      "result": "Crops swallowed the equation number (3.4) and two whole lines of the following paragraph.",
+      "why": "Equation numbers are set in a Computer Modern font, so they count as mathematics; and once the box touches the next line it keeps growing."
+    },
+    {
+      "n": 8,
+      "title": "Crop mathematics: clamp to the neighbouring baselines",
+      "status": "failed",
+      "what": "Stop the box at the baselines of the paragraph lines above and below.",
+      "result": "The denominator and the summation limits were cut off, and two expressions on one line swallowed each other.",
+      "why": "An inline fraction genuinely reaches into the vertical band of the line below it, so no clean horizontal cut exists."
+    },
+    {
+      "n": 9,
+      "title": "Crop mathematics: connected growth plus painted-out ink",
+      "status": "success",
+      "what": "Grow only along connected mathematical glyphs, never sideways along the base line; match stray numerator and limit fragments back to their host paragraph line; then paint over whatever foreign ink remains inside the rectangle.",
+      "result": "Every expression is captured whole, with nothing else in the picture.",
+      "why": ""
+    },
+    {
+      "n": 10,
+      "title": "Painting out foreign ink erased the summation limits",
+      "status": "failed",
+      "what": "Cover each foreign character with its bounding box.",
+      "result": "Half of every summation limit disappeared.",
+      "why": "The extractor reports each character's full em box, about 14.5 pt tall for 10 pt text, which reaches well into the neighbouring lines. Painting only the band from baseline - 0.78 x size to baseline + 0.24 x size fixed it."
+    }
+  ]
+}

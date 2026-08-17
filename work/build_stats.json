@@ -1,0 +1,26 @@
+{
+ "epub_bytes": 2252856,
+ "epub_name": "ISLP-draft.epub",
+ "chapters": 4,
+ "blocks": 998,
+ "paragraphs": 593,
+ "code_cells": 193,
+ "figures": 36,
+ "tables": 12,
+ "equations_display": 85,
+ "images_embedded": 48,
+ "math_items_by_tier": {
+  "display": 85,
+  "vlm": 22,
+  "latex": 47
+ },
+ "math_occurrences_by_tier": {
+  "display": 85,
+  "vlm": 24,
+  "latex": 119
+ },
+ "math_svg": 47,
+ "math_bitmap": 107,
+ "links_resolved": 305,
+ "links_unresolved": 51
+}

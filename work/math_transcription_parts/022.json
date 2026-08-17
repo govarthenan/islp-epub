@@ -1,0 +1,22 @@
+[
+  {"id": "m00739", "latex": "y_1, \\ldots, y_{n_Y}.", "confidence": 0.97, "notes": ""},
+  {"id": "m00740", "latex": "\\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B}", "confidence": 0.95, "notes": ""},
+  {"id": "m00741", "latex": "\\frac{\\sum_{b=1}^{B} 1_{\\left(|T^{*b}| \\ge |T|\\right)}}{B}", "confidence": 0.9, "notes": "image file is byte-identical to m00740 (same crop reused); extracted_characters for this id only captured the denominator 'B', but the full image shows the whole p-value fraction"},
+  {"id": "m00742", "latex": "\\left(\\frac{V}{R}\\right)", "confidence": 0.95, "notes": ""},
+  {"id": "m00743", "latex": "= E\\left(\\frac{V}{R}\\right) \\approx \\frac{\\mathrm{E}(V)}{R}.", "confidence": 0.9, "notes": "book prints the first E italic and the second E (inside E(V)) upright; reproduced that font distinction faithfully"},
+  {"id": "m00744", "latex": "R = \\sum_{j=1}^{m} 1_{\\left(|T_j| \\ge c\\right)}", "confidence": 0.95, "notes": ""},
+  {"id": "m00745", "latex": "\\frac{\\sum_{j'=1}^{m} \\sum_{b=1}^{B} 1_{\\left(|T_{j'}^{*b}| \\ge |T_j|\\right)}}{Bm}", "confidence": 0.9, "notes": ""},
+  {"id": "m00746", "latex": "\\text{and } y_1^{(j)}, \\ldots, y_{n_Y}^{(j)}.", "confidence": 0.95, "notes": ""},
+  {"id": "m00747", "latex": "\\text{servations } y_1^{*(j)}, \\ldots, y_{n_Y}^{*(j)}.", "confidence": 0.8, "notes": "crop shows a stray floating '1' bleeding in from the superscript of the line above (x_{n_X}^{*(j)}); treated as an artifact and not transcribed, per extracted_characters which places it on a separate line"},
+  {"id": "m00748", "latex": "1", "confidence": 0.6, "notes": "tiny isolated glyph (4pt x 7pt); appears to be a stray numeral fragment/bleed-through matching the top of m00747's crop; transcribed literally as printed since deterministic_guess agrees"},
+  {"id": "m00749", "latex": "R = \\sum_{j=1}^{m} 1_{\\left(|T^{(j)}| \\ge c\\right)}.", "confidence": 0.8, "notes": "crop bleeds a stray '1' above and a fraction fragment below (from neighboring equations m00748/m00750); transcribed only the R= sum expression per extracted_characters"},
+  {"id": "m00750", "latex": "\\frac{\\sum_{b=1}^{B} \\sum_{j=1}^{m} 1_{\\left(|T^{(j),*b}| \\ge c\\right)}}{B}", "confidence": 0.9, "notes": ""},
+  {"id": "m00751", "latex": "\\hat{V} =", "confidence": 0.9, "notes": ""},
+  {"id": "m00752", "latex": "\\frac{\\sum_{b=1}^{B} \\sum_{j=1}^{m} 1_{\\left(|T^{(j),*b}| \\ge c\\right)}}{B}", "confidence": 0.9, "notes": ""},
+  {"id": "m00753", "latex": "\\hat{V}/R.", "confidence": 0.85, "notes": "a stray horizontal rule appears below the glyphs in the crop, bleeding from an adjacent fraction bar; not transcribed as it is not part of this expression"},
+  {"id": "m00754", "latex": "\\binom{5}{2}", "confidence": 0.95, "notes": ""},
+  {"id": "m00755", "latex": "\\hat{V}", "confidence": 0.85, "notes": "a stray period appears below in the crop, bleeding from surrounding body text; not transcribed"},
+  {"id": "m00756", "latex": "\\mathrm{Pr}(A)\\,\\mathrm{Pr}(B).", "confidence": 0.95, "notes": ""},
+  {"id": "m00757", "latex": "0.05?", "confidence": 0.97, "notes": ""},
+  {"id": "m00758", "latex": "0.001?", "confidence": 0.97, "notes": ""}
+]

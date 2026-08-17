@@ -368,14 +368,16 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                 if block.meta.get("heading_kind") == "chapter_number":
                     continue
                 heading = DocBlock(kind="heading", html=_strip_emphasis(text), page=page.index,
-                                   level=block.level, anchor="")
+                                   level=block.level, anchor="",
+                                   bbox=block.bbox, meta={"y0": block.bbox[1]})
                 chapter.blocks.append(heading)
                 last_para = None
                 continue
 
             if block.kind == "code":
                 chapter.blocks.append(DocBlock(kind="code", html=code_block_text(block.lines),
-                                               page=page.index, code_kind=block.code_kind))
+                                               page=page.index, code_kind=block.code_kind,
+                                               bbox=block.bbox, meta={"y0": block.bbox[1]}))
                 last_para = None
                 continue
 
@@ -402,7 +404,8 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                 registry.items[ident].meta_guess = "\n".join(guesses) if complete else ""
                 registry.items[ident].foreign_ink = display_foreign
                 chapter.blocks.append(DocBlock(kind="display", math_id=ident, page=page.index,
-                                               eq_number=block.eq_number, bbox=display_bbox))
+                                               eq_number=block.eq_number, bbox=display_bbox,
+                                               meta={"y0": block.bbox[1]}))
                 last_para = None
                 continue
 
@@ -413,7 +416,8 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                 region = region_by_number.get((caption_type, block.number))
                 media = DocBlock(kind=caption_type, page=page.index, number=block.number,
                                  html=text, caption_type=caption_type,
-                                 bbox=region.bbox if region else (0, 0, 0, 0))
+                                 bbox=region.bbox if region else (0, 0, 0, 0),
+                                 meta={"y0": (region.bbox[1] if region else block.bbox[1])})
                 chapter.blocks.append(media)
                 last_para = None
                 continue
@@ -440,7 +444,8 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                     left = min(line.x0 for line in body_lines)
                     doc_block = DocBlock(kind="para", html=html, page=page.index,
                                          list_marker=marker,
-                                         meta={"left": round(left, 1), "indented": indented})
+                                         meta={"left": round(left, 1), "indented": indented,
+                                               "y0": block.bbox[1]})
                     chapter.blocks.append(doc_block)
                     last_para = doc_block
                 previous_context = _strip_tags(html)

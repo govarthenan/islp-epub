@@ -39,6 +39,7 @@ GREY_LEVELS = 16
 BODY_POINT_SIZE = 10.0  # the book's body size; used to convert PDF points to em
 
 MATH_TOKEN_RE = re.compile(r"\{\{MATH:(m\d+)\}\}")
+LINK_ANCHOR_RE = re.compile(r'<a href="\{\{LINK:(\d+):(-?\d+)\}\}">(.*?)</a>', re.S)
 
 TITLE = "An Introduction to Statistical Learning with Applications in Python"
 AUTHORS = ["Gareth James", "Daniela Witten", "Trevor Hastie", "Robert Tibshirani",
@@ -114,11 +115,38 @@ def render_svgs(jobs: list[dict]) -> dict[str, dict]:
 
 class Renderer:
     def __init__(self, document: Document, svg_manifest: dict, math_images: dict,
-                 figure_images: dict) -> None:
+                 figure_images: dict, targets: dict | None = None) -> None:
         self.document = document
         self.svg_manifest = svg_manifest
         self.math_images = math_images
         self.figure_images = figure_images
+        self.targets = targets or {}
+        self.unresolved = 0
+        self.resolved = 0
+
+    def resolve_link(self, page: int, y: float) -> str:
+        """Point a cross-reference at the nearest block on the destination page."""
+        entries = self.targets.get(page)
+        if not entries:
+            self.unresolved += 1
+            return ""
+        for y0, y1, href in entries:
+            if y0 - 8 <= y <= y1 + 8:
+                self.resolved += 1
+                return href
+        following = [entry for entry in entries if entry[0] >= y - 8]
+        chosen = following[0] if following else entries[-1]
+        self.resolved += 1
+        return chosen[2]
+
+    def expand_links(self, html: str) -> str:
+        """Resolve a cross-reference, or drop the anchor entirely when its destination is not
+        in this build: a dead link is worse than plain text."""
+        def replace(match: re.Match) -> str:
+            href = self.resolve_link(int(match.group(1)), float(match.group(2)))
+            text = match.group(3)
+            return f'<a href="{href}">{text}</a>' if href else text
+        return LINK_ANCHOR_RE.sub(replace, html)
 
     def inline_math(self, ident: str) -> str:
         item = self.document.math.items[ident]
@@ -140,7 +168,8 @@ class Renderer:
         return _escape(item.raw_text)
 
     def expand(self, html: str) -> str:
-        return MATH_TOKEN_RE.sub(lambda m: self.inline_math(m.group(1)), html)
+        html = MATH_TOKEN_RE.sub(lambda m: self.inline_math(m.group(1)), html)
+        return self.expand_links(html)
 
     def display_math(self, ident: str, eq_number: str) -> str:
         item = self.document.math.items[ident]
@@ -186,9 +215,11 @@ def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint],
     title_written = False
 
     for block in chapter.blocks:
+        anchor_id = block.anchor or ""
+        extra_anchor = f'<span id="{anchor_id}"></span>' if anchor_id else ""
         if block.kind == "heading":
             heading_counter[0] += 1
-            anchor = f"h{heading_counter[0]}"
+            anchor = block.anchor or f"h{heading_counter[0]}"
             text = renderer.expand(block.html)
             if block.level <= 1 and not title_written:
                 title_written = True
@@ -210,7 +241,8 @@ def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint],
             marker = (f'<span class="marker">{_escape(block.list_marker)}</span> '
                       if block.list_marker else "")
             attribute = f' class="{css}"' if css else ""
-            parts.append(f"<p{attribute}>{marker}{renderer.expand(block.html)}</p>")
+            ident = f' id="{anchor_id}"' if anchor_id else ""
+            parts.append(f"<p{attribute}{ident}>{marker}{renderer.expand(block.html)}</p>")
             notes = [renderer.expand(note) for note in block.meta.get("margin_notes", [])]
             if notes:
                 # The printed book scatters these terms down the outer margin. A 7 inch page
@@ -220,12 +252,13 @@ def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint],
             continue
 
         if block.kind == "display":
-            parts.append(renderer.display_math(block.math_id, block.eq_number))
+            parts.append(extra_anchor + renderer.display_math(block.math_id, block.eq_number))
             continue
 
         if block.kind == "code":
             css = "input" if block.code_kind == "input" else "output"
-            parts.append(f'<div class="codeblock"><pre class="{css}">'
+            ident = f' id="{anchor_id}"' if anchor_id else ""
+            parts.append(f'<div class="codeblock"{ident}><pre class="{css}">'
                          f"{_escape(block.html)}</pre></div>")
             continue
 
@@ -236,8 +269,9 @@ def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint],
                              r'<span class="label">\2\3</span>', caption, count=1)
             image = (f'<img src="../images/{name}" alt="{block.kind} {_escape(block.number)}"/>'
                      if name else "")
-            anchor = f'{block.kind[0]}{block.number.replace(".", "-")}'
-            parts.append(f'<div class="figure" id="{anchor}">{image}'
+            named = f'{block.kind[0]}{block.number.replace(".", "-")}'
+            ident = f' id="{anchor_id}"' if anchor_id else ""
+            parts.append(f'<div class="figure"{ident}><span id="{named}"></span>{image}'
                          f'<p class="caption">{caption}</p></div>')
             continue
 
@@ -340,9 +374,25 @@ def main() -> None:
     print(f"    {len(svg_manifest)} equations as SVG, {len(math_images)} as cropped images",
           flush=True)
 
+    # --- cross-reference targets ---------------------------------------------------------
+    # Every block gets an anchor, so any of the book's 4,000 internal references can land on
+    # the nearest thing to the point the PDF pointed at.
+    targets: dict[int, list[tuple[float, float, str]]] = {}
+    for chapter in document.chapters:
+        if not chapter.blocks:
+            continue
+        for position, block in enumerate(chapter.blocks):
+            block.anchor = f"b{position}"
+            y0 = block.meta.get("y0", block.bbox[1] if block.bbox != (0, 0, 0, 0) else 0.0)
+            y1 = block.bbox[3] if block.bbox != (0, 0, 0, 0) else y0 + 12
+            targets.setdefault(block.page, []).append(
+                (float(y0), float(max(y1, y0 + 4)), f"{chapter.ident}.xhtml#{block.anchor}"))
+    for entries in targets.values():
+        entries.sort()
+
     # --- chapters ----------------------------------------------------------------------
     print("4/4 writing XHTML ...", flush=True)
-    renderer = Renderer(document, svg_manifest, math_images, figure_images)
+    renderer = Renderer(document, svg_manifest, math_images, figure_images, targets)
     for index, chapter in enumerate(document.chapters):
         if not chapter.blocks:
             continue
@@ -365,7 +415,35 @@ def main() -> None:
     target = OUTPUT / args.out
     builder.write(target)
     size = target.stat().st_size
+
+    tiers: dict[str, int] = {}
+    occurrences: dict[str, int] = {}
+    for item in document.math.items.values():
+        tiers[item.tier] = tiers.get(item.tier, 0) + 1
+        occurrences[item.tier] = occurrences.get(item.tier, 0) + item.occurrences
+    stats = {
+        "epub_bytes": size,
+        "epub_name": args.out,
+        "chapters": sum(1 for chapter in document.chapters if chapter.blocks),
+        "blocks": sum(len(chapter.blocks) for chapter in document.chapters),
+        "paragraphs": sum(1 for c in document.chapters for b in c.blocks if b.kind == "para"),
+        "code_cells": sum(1 for c in document.chapters for b in c.blocks if b.kind == "code"),
+        "figures": sum(1 for c in document.chapters for b in c.blocks if b.kind == "figure"),
+        "tables": sum(1 for c in document.chapters for b in c.blocks if b.kind == "table"),
+        "equations_display": sum(1 for c in document.chapters for b in c.blocks
+                                 if b.kind == "display"),
+        "images_embedded": len(figure_images),
+        "math_items_by_tier": tiers,
+        "math_occurrences_by_tier": occurrences,
+        "math_svg": len(svg_manifest),
+        "math_bitmap": len(math_images),
+        "links_resolved": renderer.resolved,
+        "links_unresolved": renderer.unresolved,
+    }
+    (WORK / "build_stats.json").write_text(json.dumps(stats, indent=1))
     print(f"wrote {target} ({size / 1024 / 1024:.1f} MB)")
+    print(f"cross-references: {renderer.resolved} resolved, {renderer.unresolved} unresolved")
+    print(f"stats: {WORK / 'build_stats.json'}")
 
 
 if __name__ == "__main__":

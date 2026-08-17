@@ -1,0 +1,152 @@
+[
+  {
+    "id": "m00146",
+    "latex": "\\sqrt{X},",
+    "confidence": 0.85,
+    "notes": "Crop bleeds unrelated text from the line above ('ach n'); target is sqrt(X) plus the trailing comma from the list 'such as sqrt X, X^2, and log X'."
+  },
+  {
+    "id": "m00147",
+    "latex": "n",
+    "confidence": 0.85,
+    "notes": "Crop bleeds the following line's sqrt(2) at the bottom; per extracted_characters and context ('...for the n samples') the actual target is just n."
+  },
+  {
+    "id": "m00148",
+    "latex": "\\sqrt{2}",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00149",
+    "latex": "h_i = \\frac{1}{n} + \\frac{(x_i - \\bar{x})^2}{\\sum_{i'=1}^{n}(x_{i'} - \\bar{x})^2}.",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00152",
+    "latex": "\\mathrm{VIF}(\\hat{\\beta}_j) = \\frac{1}{1 - R^2_{X_j|X_{-j}}},",
+    "confidence": 0.92,
+    "notes": ""
+  },
+  {
+    "id": "m00153",
+    "latex": "(0.043, 0.049) \\text{ for } \\texttt{TV}, (0.172, 0.206) \\text{ for } \\texttt{radio}, \\text{ and } (-0.013, 0.011) \\text{ for}",
+    "confidence": 0.9,
+    "notes": "Crop ends mid-sentence at 'for'; next word (balance) is outside this crop."
+  },
+  {
+    "id": "m00154",
+    "latex": "\\hat{f}(x_0) = \\frac{1}{K}\\sum_{x_i \\in \\mathcal{N}_0} y_i.",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00156",
+    "latex": "\\hat{\\beta}_0 = 50, \\hat{\\beta}_1 = 20, \\hat{\\beta}_2 = 0.07, \\hat{\\beta}_3 = 35, \\hat{\\beta}_4 = 0.01, \\hat{\\beta}_5 = -10.",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00157",
+    "latex": "\\beta_0 + \\beta_1 X + \\beta_2 X^2 + \\beta_3 X^3 + \\epsilon.",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00158",
+    "latex": "\\hat{y}_i = x_i \\hat{\\beta},",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00159",
+    "latex": "\\hat{\\beta} = \\left(\\sum_{i=1}^{n} x_i y_i\\right) \\Big/ \\left(\\sum_{i'=1}^{n} x_{i'}^2\\right).",
+    "confidence": 0.9,
+    "notes": ""
+  },
+  {
+    "id": "m00160",
+    "latex": "\\left(\\sum_{i=1}^{n} x_i y_i\\right) \\Big/ \\left(\\sum_{i'=1}^{n} x_{i'}^2\\right).",
+    "confidence": 0.7,
+    "notes": "Visually near-identical to m00159 but narrower (missing the leading beta-hat =); likely a second occurrence of the same formula (3.38) restated, transcribed as printed without the assignment prefix."
+  },
+  {
+    "id": "m00161",
+    "latex": "\\hat{y}_i = \\sum_{i'=1}^{n} a_{i'} y_{i'}.",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00164",
+    "latex": "H_0 : \\beta_j = 0?",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00167",
+    "latex": "\\mathrm{SE}(\\hat{\\beta}) = \\sqrt{\\frac{\\sum_{i=1}^{n}(y_i - x_i\\hat{\\beta})^2}{(n-1)\\sum_{i'=1}^{n} x_{i'}^2}}.",
+    "confidence": 0.93,
+    "notes": ""
+  },
+  {
+    "id": "m00168",
+    "latex": "\\frac{\\left(\\sqrt{n-1}\\right)\\sum_{i=1}^{n} x_i y_i}{\\sqrt{\\left(\\sum_{i=1}^{n} x_i^2\\right)\\left(\\sum_{i'=1}^{n} y_{i'}^2\\right) - \\left(\\sum_{i'=1}^{n} x_{i'} y_{i'}\\right)^2}}.",
+    "confidence": 0.9,
+    "notes": ""
+  },
+  {
+    "id": "m00169",
+    "latex": "Y = -1 + 0.5X + \\epsilon.",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00170",
+    "latex": "\\beta_1?",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00172",
+    "latex": "H_0 : \\beta_1 = 0?",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00173",
+    "latex": "H_0 : \\beta_1 = 0?",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00174",
+    "latex": "Y = \\beta_0 + \\beta_1 X + \\beta_2 X^2 + \\beta_3 X^3 + \\epsilon.",
+    "confidence": 0.95,
+    "notes": ""
+  },
+  {
+    "id": "m00175",
+    "latex": "\\{",
+    "confidence": 0.5,
+    "notes": "Narrow, empty-extraction crop; almost certainly one piece (top curl) of the large extensible left brace used for the Y = {1 if stroke; 2 if drug overdose; 3 if epileptic seizure. case list, built from TeX font-extension glyphs the text layer could not encode."
+  },
+  {
+    "id": "m00176",
+    "latex": "1",
+    "confidence": 0.7,
+    "notes": "First case value; brace visible in crop is bleed from the adjacent extensible-brace glyph pieces (see m00175/m00177/m00178), not distinct content here."
+  },
+  {
+    "id": "m00177",
+    "latex": "\\{",
+    "confidence": 0.5,
+    "notes": "Another piece of the same extensible left brace (appears after '1 if stroke;' in reading order); no extractable text in this crop."
+  },
+  {
+    "id": "m00178",
+    "latex": "\\{",
+    "confidence": 0.5,
+    "notes": "Final piece (bottom curl) of the same extensible left brace, appearing after '2 if drug overdose;'; no extractable text in this crop."
+  }
+]

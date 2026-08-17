@@ -1,0 +1,152 @@
+[
+ {
+  "id": "m00506",
+  "latex": "\\sqrt{p}",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ {
+  "id": "m00507",
+  "latex": "f(X) = \\sum_{j=1}^{p} f_j(X_j).",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ {
+  "id": "m00510",
+  "latex": "0.1, 0.15, 0.2, 0.2, 0.55, 0.6, 0.6, 0.65, 0.7, \\text{ and } 0.75.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ {
+  "id": "m00511",
+  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 = 0",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ {
+  "id": "m00512",
+  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p = 0",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ {
+  "id": "m00513",
+  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p > 0.",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ {
+  "id": "m00514",
+  "latex": "\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_p X_p < 0,",
+  "confidence": 0.98,
+  "notes": ""
+ },
+ {
+  "id": "m00515",
+  "latex": "x_1 = \\begin{pmatrix} x_{11} \\\\ \\vdots \\\\ x_{1p} \\end{pmatrix}, \\ldots, x_n = \\begin{pmatrix} x_{n1} \\\\ \\vdots \\\\ x_{np} \\end{pmatrix},",
+  "confidence": 0.96,
+  "notes": ""
+ },
+ {
+  "id": "m00516",
+  "latex": "x_p^{*})^{T}",
+  "confidence": 0.4,
+  "notes": "Image is a very narrow crop showing only the tail of a larger inline expression (subscript p, superscript asterisk, closing paren, superscript T). Based on ISLR context (the test observation vector introduced just before Eq. 9.6, x* = (x_1^*, ..., x_p^*)^T), the base symbol x is inferred but not fully visible in the crop."
+ },
+ {
+  "id": "m00517",
+  "latex": "\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} > 0 \\text{ if } y_i = 1,",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ {
+  "id": "m00518",
+  "latex": "\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip} < 0 \\text{ if } y_i = -1.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ {
+  "id": "m00519",
+  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}) > 0",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ {
+  "id": "m00521",
+  "latex": "\\begin{aligned} &\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,M}\\ M\\\\ &\\sum_{j=1}^{p} \\end{aligned}",
+  "confidence": 0.7,
+  "notes": "Crop for Eq. 9.9 (maximize M) also captures, at its foot, the bare summation symbol that begins the Eq. 9.10 constraint (subject to sum beta_j^2 = 1); the constraint text itself is not part of this narrow image and is supplied instead as plain context text, so it is omitted here as not printed in this crop."
+ },
+ {
+  "id": "m00522",
+  "latex": "\\begin{aligned} &\\sum_{j=1}^{p}\\\\ &y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}) \\geq M \\quad \\forall\\, i = 1, \\ldots, n. \\end{aligned}",
+  "confidence": 0.75,
+  "notes": "Image repeats the bare summation symbol (tail of Eq. 9.10, whose constraint text is given as plain context, not part of this image) above the Eq. 9.11 inequality. The printed '(9.11)' equation-number label at the end of the image is omitted per instructions."
+ },
+ {
+  "id": "m00523",
+  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}) \\geq M \\quad \\forall\\, i = 1, \\ldots, n",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ {
+  "id": "m00524",
+  "latex": "k \\neq 0.",
+  "confidence": 0.9,
+  "notes": "Trailing period confirmed present in crop."
+ },
+ {
+  "id": "m00525",
+  "latex": "y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}).",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ {
+  "id": "m00526",
+  "latex": "\\begin{aligned} &\\operatorname*{maximize}_{\\beta_0,\\beta_1,\\ldots,\\beta_p,\\epsilon_1,\\ldots,\\epsilon_n,\\,M}\\ M\\\\ &\\sum_{j=1}^{p} \\end{aligned}",
+  "confidence": 0.7,
+  "notes": "Analogous to m00521 (Eq. 9.12): the maximize line is followed by the bare summation symbol beginning the next (unnumbered-in-this-crop) constraint line; its constraint text is not part of this image."
+ },
+ {
+  "id": "m00527",
+  "latex": "\\begin{aligned} &\\sum_{j=1}^{p}\\\\ &y_i(\\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\cdots + \\beta_p x_{ip}) \\geq M(1-\\epsilon_i),\\\\ &\\epsilon_i \\geq 0, \\quad \\sum_{i=1}^{n} \\epsilon_i \\leq C, \\end{aligned}",
+  "confidence": 0.85,
+  "notes": "Printed '(9.14)' and '(9.15)' equation-number labels visible at the right of the last two lines are omitted per instructions."
+ },
+ {
+  "id": "m00528",
+  "latex": "\\sum_{i=1}^{n} \\epsilon_i \\leq C",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00529",
+  "latex": "X_1, X_2, \\ldots, X_p,",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ {
+  "id": "m00530",
+  "latex": "X_1, X_1^{2}, X_2, X_2^{2}, \\ldots, X_p, X_p^{2}.",
+  "confidence": 0.97,
+  "notes": ""
+ },
+ {
+  "id": "m00531",
+  "latex": "\\begin{aligned} &\\operatorname*{maximize}_{\\beta_0,\\beta_{11},\\beta_{12},\\ldots,\\beta_{p1},\\beta_{p2},\\epsilon_1,\\ldots,\\epsilon_n,\\,M}\\ M\\\\ &\\text{subject to } y_i\\left(\\beta_0 + \\sum_{j=1}^{p}\\beta_{j1}x_{ij} + \\sum_{j=1}^{p}\\beta_{j2}x_{ij}^{2}\\right) \\geq M(1-\\epsilon_i),\\\\ &\\sum_{i=1}^{n}\\epsilon_i \\leq C, \\quad \\epsilon_i \\geq 0, \\quad \\sum_{j=1}^{p}\\sum_{k=1}^{2}\\beta_{jk}^{2} = 1. \\end{aligned}",
+  "confidence": 0.94,
+  "notes": ""
+ },
+ {
+  "id": "m00532",
+  "latex": "j \\neq j'",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00533",
+  "latex": "\\langle a, b \\rangle = \\sum_{i=1}^{r} a_i b_i.",
+  "confidence": 0.93,
+  "notes": "A faint partial fragment of the next formula (⟨x_i, x_i'⟩) bleeds into the bottom of the crop; not part of this expression and omitted."
+ }
+]

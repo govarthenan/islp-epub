@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ISLP to EPUB</title>
+<style>
+:root {
+  --bg: #fbfaf8; --surface: #ffffff; --ink: #1b1a18; --muted: #6b6862;
+  --line: #e3e0d9; --accent: #7a4f2a; --accent-soft: #f2e8de;
+  --ok: #2f6b45; --ok-soft: #e2f0e7;
+  --bad: #9a3226; --bad-soft: #f8e5e2;
+  --mid: #8a6a1f; --mid-soft: #f7eed6;
+  --svg-card: #ffffff; --svg-line: #d9d5cc;
+  --seg-text: #7a4f2a; --seg-latex: #b08147; --seg-vlm: #2f6b45; --seg-display: #3f6d8f;
+  --shadow: 0 1px 2px rgba(0,0,0,.05), 0 8px 24px -12px rgba(0,0,0,.18);
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171614; --surface: #201f1c; --ink: #ece9e3; --muted: #a29d94;
+    --line: #333029; --accent: #d9a76c; --accent-soft: #2c261f;
+    --ok: #6fbf8e; --ok-soft: #1e2c23;
+    --bad: #e28c7f; --bad-soft: #2e211f;
+    --mid: #d9bb6d; --mid-soft: #2c2718;
+    --svg-card: #201f1c; --svg-line: #3d3931;
+    --seg-text: #d9a76c; --seg-latex: #b08147; --seg-vlm: #6fbf8e; --seg-display: #7fa9c6;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #171614; --surface: #201f1c; --ink: #ece9e3; --muted: #a29d94;
+  --line: #333029; --accent: #d9a76c; --accent-soft: #2c261f;
+  --ok: #6fbf8e; --ok-soft: #1e2c23;
+  --bad: #e28c7f; --bad-soft: #2e211f;
+  --mid: #d9bb6d; --mid-soft: #2c2718;
+  --svg-card: #201f1c; --svg-line: #3d3931;
+  --seg-text: #d9a76c; --seg-latex: #b08147; --seg-vlm: #6fbf8e; --seg-display: #7fa9c6;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.6 ui-serif, Georgia, "Times New Roman", serif;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px 96px; }
+header { padding: 72px 0 40px; border-bottom: 1px solid var(--line); }
+.eyebrow {
+  font: 600 12px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 18px;
+}
+h1 { font-size: clamp(30px, 4.6vw, 50px); line-height: 1.1; margin: 0 0 14px; letter-spacing: -.01em; }
+.lede { font-size: 19px; color: var(--muted); max-width: 62ch; margin: 0 0 22px; }
+.pill {
+  display: inline-block; font: 600 12px/1 var(--mono); letter-spacing: .08em;
+  text-transform: uppercase; padding: 7px 12px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+}
+h2 { font-size: 26px; margin: 64px 0 6px; letter-spacing: -.01em; }
+h2 + .sub { color: var(--muted); margin: 0 0 26px; max-width: 70ch; }
+h3 { font-size: 17px; margin: 0; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-top: 34px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; box-shadow: var(--shadow); }
+.tile-value { font: 700 27px/1.1 var(--mono); letter-spacing: -.02em; }
+.tile-label { margin-top: 6px; font-size: 14px; }
+.tile-note { margin-top: 3px; font-size: 12.5px; color: var(--muted); }
+
+.pipeline { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px 6px; box-shadow: var(--shadow); overflow-x: auto; }
+.pipeline svg { display: block; min-width: 1080px; width: 100%; height: auto; }
+.svg-step { font: 700 12px var(--mono); fill: var(--accent); }
+.svg-body { font: 13px/1.35 ui-serif, Georgia, serif; color: var(--ink); }
+.svg-body b { font-size: 13.5px; }
+
+.bar { display: flex; height: 30px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+.seg-text { background: var(--seg-text); } .seg-latex { background: var(--seg-latex); }
+.seg-vlm { background: var(--seg-vlm); } .seg-display { background: var(--seg-display); }
+.legend { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.legend li { display: flex; gap: 10px; align-items: flex-start; }
+.swatch { width: 13px; height: 13px; border-radius: 3px; margin-top: 5px; flex: none; }
+.swatch-text { background: var(--seg-text); } .swatch-latex { background: var(--seg-latex); }
+.swatch-vlm { background: var(--seg-vlm); } .swatch-display { background: var(--seg-display); }
+.legend-note { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+
+.attempts { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.attempt { background: var(--surface); border: 1px solid var(--line); border-left-width: 4px; border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow); }
+.attempt-success { border-left-color: var(--ok); }
+.attempt-failed { border-left-color: var(--bad); }
+.attempt-partial { border-left-color: var(--mid); }
+.attempt-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.num { font: 700 13px var(--mono); color: var(--muted); }
+.badge { margin-left: auto; font: 600 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; }
+.badge-success { background: var(--ok-soft); color: var(--ok); }
+.badge-failed { background: var(--bad-soft); color: var(--bad); }
+.badge-partial { background: var(--mid-soft); color: var(--mid); }
+.attempt p { margin: 6px 0; font-size: 15px; }
+.field, .why-label { font: 600 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 8px; }
+.why { color: var(--muted); }
+
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+.shot { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; box-shadow: var(--shadow); }
+.shot img { width: 100%; height: auto; display: block; background: #fff; border-radius: 6px; }
+.shot figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); }
+.shot.bad { border-color: color-mix(in srgb, var(--bad) 45%, var(--line)); }
+.shot.good { border-color: color-mix(in srgb, var(--ok) 45%, var(--line)); }
+.shot b { color: var(--ink); }
+
+.callout { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-top: 22px; }
+.callout h3 { margin-bottom: 8px; }
+.callout p { margin: 0; font-size: 15px; }
+
+code { font-family: var(--mono); font-size: .92em; background: var(--accent-soft); padding: 1px 5px; border-radius: 4px; }
+pre { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font: 13px/1.6 var(--mono); }
+footer { margin-top: 72px; padding-top: 26px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+th { font: 600 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">PDF &rarr; EPUB &middot; build log</div>
+  <h1>ISLP PDF to EPUB</h1>
+  <p class="lede">Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB for a Kobo Libra 2</p>
+  <span class="pill">Built and packaged; verification pass in progress.</span>
+  <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">0</div><div class="tile-label">documents in the spine</div><div class="tile-note">13 chapters plus matter</div></div><div class="tile"><div class="tile-value">0</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">0</div><div class="tile-label">figures and tables</div><div class="tile-note">re-rendered at 300 ppi</div></div><div class="tile"><div class="tile-value">0</div><div class="tile-label">display equations</div><div class="tile-note">each one verified</div></div><div class="tile"><div class="tile-value">0</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">0.0 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div></div>
+</header>
+
+<h2>How the book is taken apart</h2>
+<p class="sub">Six stages. Nothing here guesses at the layout: every rule below was measured
+from the file itself before it was written down.</p>
+<div class="pipeline"><svg viewBox="0 0 1180 252" role="img" aria-label="Conversion pipeline in 6 stages"><title>Conversion pipeline</title>
+    <g>
+      <rect x="12" y="40" width="163" height="176" rx="10"
+            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <text x="28" y="70" class="svg-step">1</text>
+      <foreignObject x="26" y="80" width="135" height="130">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
+          <b>Read the PDF&#x27;s own structure</b><br/>Fonts, outline, colours and geometry, measured rather than guessed.
+        </div>
+      </foreignObject>
+    </g><path d="M179 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>
+    <g>
+      <rect x="209" y="40" width="163" height="176" rx="10"
+            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <text x="225" y="70" class="svg-step">2</text>
+      <foreignObject x="223" y="80" width="135" height="130">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
+          <b>Build a page model</b><br/>Split each page into text column, margin notes, prompts, code cells and figures.
+        </div>
+      </foreignObject>
+    </g><path d="M375 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>
+    <g>
+      <rect x="405" y="40" width="163" height="176" rx="10"
+            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <text x="421" y="70" class="svg-step">3</text>
+      <foreignObject x="419" y="80" width="135" height="130">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
+          <b>Recover the document</b><br/>Headings, paragraphs, lists, captions, code cells and display equations.
+        </div>
+      </foreignObject>
+    </g><path d="M572 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>
+    <g>
+      <rect x="602" y="40" width="163" height="176" rx="10"
+            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <text x="618" y="70" class="svg-step">4</text>
+      <foreignObject x="616" y="80" width="135" height="130">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
+          <b>Triage the mathematics</b><br/>Three routes, chosen by what the character stream can and cannot carry.
+        </div>
+      </foreignObject>
+    </g><path d="M769 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>
+    <g>
+      <rect x="799" y="40" width="163" height="176" rx="10"
+            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <text x="815" y="70" class="svg-step">5</text>
+      <foreignObject x="813" y="80" width="135" height="130">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
+          <b>Check the mathematics adversarially</b><br/>Typeset every candidate, put it under the original, and ask whether they agree.
+        </div>
+      </foreignObject>
+    </g><path d="M965 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>
+    <g>
+      <rect x="995" y="40" width="163" height="176" rx="10"
+            fill="var(--svg-card)" stroke="var(--svg-line)" stroke-width="1.5"/>
+      <text x="1011" y="70" class="svg-step">6</text>
+      <foreignObject x="1009" y="80" width="135" height="130">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
+          <b>Package for the device</b><br/>EPUB 3 with an NCX, 300 ppi grayscale figures, no imposed font.
+        </div>
+      </foreignObject>
+    </g></svg></div>
+
+<h2>The mathematics, triaged</h2>
+<p class="sub">The starting assumption was that no mathematics could be recovered as LaTeX and
+that all of it would have to be read back out of images. That turned out to be true for only
+part of it. Sub- and superscripts are recorded in the PDF as a font-size drop plus a baseline
+shift, so most inline mathematics can be rebuilt exactly, for free, and stays as reflowing
+text. A vision model is spent only where the structure is genuinely absent.</p>
+<div class="bar"></div><ul class="legend"></ul>
+
+<h2>Where the crops went wrong</h2>
+<p class="sub">Cutting an expression out of the page was the hardest single problem in this
+conversion, and it took four attempts. A fraction is not on one line: its numerator, its rule
+and its denominator sit on three different baselines, and the text layer files them as three
+unrelated lines.</p>
+<div class="gallery">
+  <figure class="shot bad">
+      <img src="assets/crop-1-line-box.png" alt="&lt;b&gt;Attempt 1.&lt;/b&gt; Box taken from the text line. The fraction is sliced through the middle."/>
+      <figcaption><b>Attempt 1.</b> Box taken from the text line. The fraction is sliced through the middle.</figcaption>
+    </figure>
+  <figure class="shot bad">
+      <img src="assets/crop-2-greedy.png" alt="&lt;b&gt;Attempt 2.&lt;/b&gt; Box grown greedily. It swallows the equation number and the next paragraph."/>
+      <figcaption><b>Attempt 2.</b> Box grown greedily. It swallows the equation number and the next paragraph.</figcaption>
+    </figure>
+  <figure class="shot good">
+      <img src="assets/crop-3-grown.png" alt="&lt;b&gt;Attempt 4.&lt;/b&gt; Growth restricted to connected mathematics glyphs, never sideways along the base line."/>
+      <figcaption><b>Attempt 4.</b> Growth restricted to connected mathematics glyphs, never sideways along the base line.</figcaption>
+    </figure>
+  <figure class="shot bad">
+      <img src="assets/crop-4-unmasked.png" alt="A fraction inside a sentence. No rectangle can hold it without also catching the line below."/>
+      <figcaption>A fraction inside a sentence. No rectangle can hold it without also catching the line below.</figcaption>
+    </figure>
+  <figure class="shot good">
+      <img src="assets/crop-5-masked.png" alt="&lt;b&gt;The answer.&lt;/b&gt; Keep the rectangle, paint the foreign ink out. Only prose is painted, so no glyph of the expression can be lost."/>
+      <figcaption><b>The answer.</b> Keep the rectangle, paint the foreign ink out. Only prose is painted, so no glyph of the expression can be lost.</figcaption>
+    </figure>
+</div>
+
+<h2>Every attempt, in order</h2>
+<p class="sub">4 worked, 2 partly worked, 4 failed outright. The failures
+are the interesting ones: each was caused by a rule that sounded reasonable and did not survive
+contact with the page.</p>
+<ul class="attempts">
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">01</span>
+        <h3>Survey the tooling</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Check what is installed: poppler, qpdf, ghostscript, python, node, codex.</p>
+      <p class="result"><span class="field">Result</span> No pandoc, no calibre, no Java. Decided to write the EPUB directly in Python for full control of the markup, and to write a structural validator because epubcheck needs Java.</p>
+      
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">02</span>
+        <h3>Probe fonts and outline</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Count every font and character in the file; read the PDF bookmarks.</p>
+      <p class="result"><span class="field">Result</span> 309 correct outline entries to build navigation from. Prose in Latin Modern, mathematics in Computer Modern: two disjoint families. Only 44 raster images in the whole book, so nearly every figure is vector art.</p>
+      
+    </li>
+    <li class="attempt attempt-partial">
+      <div class="attempt-head">
+        <span class="num">03</span>
+        <h3>Extract mathematics as LaTeX from the text layer</h3>
+        <span class="badge badge-partial">partly worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Try to rebuild LaTeX directly from the PDF character stream.</p>
+      <p class="result"><span class="field">Result</span> Symbols come out correctly, structure does not: x_ij arrives as &#x27;xij&#x27;, a summation as &#x27;)d k=1&#x27;. But sub- and superscripts ARE recoverable geometrically, from the font-size drop plus the baseline shift.</p>
+      <p class="why"><span class="why-label">Why</span> The PDF stores glyphs and pen positions, not mathematical structure. Two-dimensional constructs (fractions, radicals, large operators, matrices) leave no trace in the character stream.</p>
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">04</span>
+        <h3>Deterministic LaTeX for accents and script letters</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Generate LaTeX from character data for the cases where structure IS recoverable.</p>
+      <p class="result"><span class="field">Result</span> 497 occurrences solved with no model call at all, producing exactly right output such as \hat{Y} = \hat{f}(X) and \mathbf{A} \in \mathbb{R}^{r\times s}.</p>
+      
+    </li>
+    <li class="attempt attempt-partial">
+      <div class="attempt-head">
+        <span class="num">05</span>
+        <h3>First end-to-end EPUB</h3>
+        <span class="badge badge-partial">partly worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Run the whole chain over the first 100 pages and read the result in a browser at the Kobo&#x27;s 1264 x 1680 panel size.</p>
+      <p class="result"><span class="field">Result</span> A valid EPUB, but six visible faults: words glued together across spans, a ligature splitting &#x27;fit&#x27; into &#x27;f it&#x27; inside code, split captions, a column of stacked margin notes, a broken margin-note hyphenation, and paragraph indents that disagreed with the book.</p>
+      <p class="why"><span class="why-label">Why</span> Every one of them came from trusting a convenient rule instead of what the page actually measures.</p>
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">06</span>
+        <h3>Crop mathematics: box from one text line</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Cut each expression out using the bounding box of its text line.</p>
+      <p class="result"><span class="field">Result</span> Fractions came out sliced through the middle: numerator and denominator missing.</p>
+      <p class="why"><span class="why-label">Why</span> A fraction puts its numerator, rule and denominator on three different baselines, and the extractor files those as three separate lines.</p>
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">07</span>
+        <h3>Crop mathematics: grow the box greedily</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Grow the box to absorb any nearby mathematical glyph.</p>
+      <p class="result"><span class="field">Result</span> Crops swallowed the equation number (3.4) and two whole lines of the following paragraph.</p>
+      <p class="why"><span class="why-label">Why</span> Equation numbers are set in a Computer Modern font, so they count as mathematics; and once the box touches the next line it keeps growing.</p>
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">08</span>
+        <h3>Crop mathematics: clamp to the neighbouring baselines</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Stop the box at the baselines of the paragraph lines above and below.</p>
+      <p class="result"><span class="field">Result</span> The denominator and the summation limits were cut off, and two expressions on one line swallowed each other.</p>
+      <p class="why"><span class="why-label">Why</span> An inline fraction genuinely reaches into the vertical band of the line below it, so no clean horizontal cut exists.</p>
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">09</span>
+        <h3>Crop mathematics: connected growth plus painted-out ink</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Grow only along connected mathematical glyphs, never sideways along the base line; match stray numerator and limit fragments back to their host paragraph line; then paint over whatever foreign ink remains inside the rectangle.</p>
+      <p class="result"><span class="field">Result</span> Every expression is captured whole, with nothing else in the picture.</p>
+      
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">10</span>
+        <h3>Painting out foreign ink erased the summation limits</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Cover each foreign character with its bounding box.</p>
+      <p class="result"><span class="field">Result</span> Half of every summation limit disappeared.</p>
+      <p class="why"><span class="why-label">Why</span> The extractor reports each character&#x27;s full em box, about 14.5 pt tall for 10 pt text, which reaches well into the neighbouring lines. Painting only the band from baseline - 0.78 x size to baseline + 0.24 x size fixed it.</p>
+    </li></ul>
+
+
+<h2>Choices made for the Kobo Libra 2</h2>
+<table>
+  <tr><th>Decision</th><th>Reason</th></tr>
+  <tr><td>No embedded font, no font size on <code>body</code></td>
+      <td>The reader's own typography controls keep working.</td></tr>
+  <tr><td>Mathematics as SVG in <code>currentColor</code>, sized in <code>em</code></td>
+      <td>It grows with the text instead of staying pinned to pixels, and it inverts correctly
+          in dark mode.</td></tr>
+  <tr><td>Figures at 300 ppi, 16 levels of grey</td>
+      <td>Matches the panel exactly: 1264 x 1680 at 300 ppi, 16 greys.</td></tr>
+  <tr><td>Margin notes collapsed to one quiet line</td>
+      <td>A 7 inch page has no margin to spare; stacked in a column they took a third of the
+          screen.</td></tr>
+  <tr><td>Lab cells as <code>pre</code> with wrapping</td>
+      <td>An e-reader cannot scroll sideways, so a long line must wrap rather than be cut off.</td></tr>
+  <tr><td>A <code>toc.ncx</code> beside the EPUB 3 navigation document</td>
+      <td>Kobo still reads the older navigation file.</td></tr>
+</table>
+
+<h2>Reproducing this</h2>
+<pre>uv sync &amp;&amp; npm install
+uv run python src/extract_math_jobs.py     # cut every expression out as an image
+uv run python src/build_epub.py            # assemble and package
+uv run python src/validate_epub.py output/ISLP.epub</pre>
+
+<footer>
+  <p>Educational and experimental only. No commercial use. All rights remain with the authors and publisher.</p>
+  <p>Source: ISLP_website.pdf, first printing 5 July 2023, from statlearning.com. Built 2026-08-17.</p>
+</footer>
+
+</div>
+</body>
+</html>

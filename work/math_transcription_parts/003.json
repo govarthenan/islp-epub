@@ -1,0 +1,152 @@
+[
+ {
+  "id": "m00115",
+  "latex": "H_0 : \\beta_{p-q+1} = \\beta_{p-q+2} = \\cdots = \\beta_p = 0,",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00116",
+  "latex": "F = \\frac{(\\mathrm{RSS}_0 - \\mathrm{RSS})/q}{\\mathrm{RSS}/(n-p-1)}.",
+  "confidence": 0.9,
+  "notes": "image crop shows the full fraction including the F = prefix"
+ },
+ {
+  "id": "m00117",
+  "latex": "\\frac{(\\mathrm{RSS}_0 - \\mathrm{RSS})/q}{\\mathrm{RSS}/(n-p-1)}.",
+  "confidence": 0.85,
+  "notes": "duplicate crop of the same fraction as m00116, but without the leading F ="
+ },
+ {
+  "id": "m00119",
+  "latex": "\\mathrm{RSE} = \\sqrt{\\frac{1}{n-p-1}\\mathrm{RSS}},",
+  "confidence": 0.9,
+  "notes": "square root bar covers both the fraction and RSS, per the book's standard RSE definition"
+ },
+ {
+  "id": "m00120",
+  "latex": "\\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 X_1 + \\cdots + \\hat{\\beta}_p X_p",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00121",
+  "latex": "f(X) = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00122",
+  "latex": "\\Bigg\\{",
+  "confidence": 0.55,
+  "notes": "crop contains only a large left brace (opening delimiter of the piecewise definition in eq. 3.26); case text is plain body text outside the math zone"
+ },
+ {
+  "id": "m00123",
+  "latex": "\\Bigg\\{",
+  "confidence": 0.55,
+  "notes": "crop contains only a large left brace; likely a duplicate extraction of the same brace region as m00122/adjacent equation's opening delimiter"
+ },
+ {
+  "id": "m00124",
+  "latex": "y_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i =",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ {
+  "id": "m00125",
+  "latex": "\\Bigg\\{",
+  "confidence": 0.5,
+  "notes": "crop contains only a large left brace with a faint stray mark near the bottom (likely bleed from adjacent line text), no other legible math content"
+ },
+ {
+  "id": "m00126",
+  "latex": "x_i =",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ {
+  "id": "m00127",
+  "latex": "\\Bigg\\{",
+  "confidence": 0.55,
+  "notes": "crop contains only a large left brace (opening delimiter of eq. 3.28's piecewise definition)"
+ },
+ {
+  "id": "m00128",
+  "latex": "\\Bigg\\{",
+  "confidence": 0.55,
+  "notes": "crop contains only a large left brace, same region as m00127"
+ },
+ {
+  "id": "m00129",
+  "latex": "\\Bigg\\{",
+  "confidence": 0.5,
+  "notes": "crop shows a large left brace plus faint fragments of adjacent italic text (likely partial 'if'), only the brace is confidently legible"
+ },
+ {
+  "id": "m00130",
+  "latex": "\\beta_0 + \\beta_1 + \\epsilon_i",
+  "confidence": 0.85,
+  "notes": "inline snippet for the first case of eq. 3.30's piecewise definition; crop also shows the enclosing brace but extracted_characters indicates only this formula is the intended content"
+ },
+ {
+  "id": "m00131",
+  "latex": "\\Bigg\\{",
+  "confidence": 0.5,
+  "notes": "tall crop (three case rows) containing only a large left brace, plus faint fragments of adjacent italic text; only the brace is confidently legible"
+ },
+ {
+  "id": "m00132",
+  "latex": "Y = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\epsilon.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00133",
+  "latex": "Y = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\beta_3 X_1 X_2 + \\epsilon.",
+  "confidence": 0.95,
+  "notes": ""
+ },
+ {
+  "id": "m00134",
+  "latex": "\\begin{aligned} Y &= \\beta_0 + (\\beta_1 + \\beta_3 X_2)X_1 + \\beta_2 X_2 + \\epsilon \\\\ &= \\beta_0 + \\tilde{\\beta}_1 X_1 + \\beta_2 X_2 + \\epsilon \\end{aligned}",
+  "confidence": 0.9,
+  "notes": ""
+ },
+ {
+  "id": "m00137",
+  "latex": "H_a : \\beta_3 \\neq 0.",
+  "confidence": 0.85,
+  "notes": "trailing period as shown in the crop"
+ },
+ {
+  "id": "m00140",
+  "latex": "\\Bigg\\{",
+  "confidence": 0.55,
+  "notes": "crop contains only a large left brace (opening delimiter of the additive balance model, eq. region before 3.34)"
+ },
+ {
+  "id": "m00141",
+  "latex": "\\Bigg\\{",
+  "confidence": 0.5,
+  "notes": "crop shows a large left brace plus faint fragments of adjacent italic text; only the brace is confidently legible"
+ },
+ {
+  "id": "m00142",
+  "latex": "\\Bigg\\{",
+  "confidence": 0.55,
+  "notes": "crop contains only a large left brace (opening delimiter of the interaction model before eq. 3.34/3.35)"
+ },
+ {
+  "id": "m00143",
+  "latex": "\\Bigg\\{",
+  "confidence": 0.5,
+  "notes": "crop shows a large left brace plus faint fragments of adjacent italic text; only the brace is confidently legible"
+ },
+ {
+  "id": "m00144",
+  "latex": "=",
+  "confidence": 0.9,
+  "notes": ""
+ }
+]
