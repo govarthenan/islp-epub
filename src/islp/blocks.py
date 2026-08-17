@@ -199,6 +199,37 @@ DISPLAY_GAP = 24.0
 MARGIN_NOTE_GAP = 16.0
 
 
+EQUATION_BODY_MAX_X = 402.0
+
+
+EQUATION_ARM_MAX_WIDTH = 260.0
+
+
+def _inside_equation(line: VLine, run: list[VLine]) -> bool:
+    """A line of words that belongs to an equation rather than to a paragraph.
+
+    The arms of a piecewise definition ("if ith person owns a house") sit to the right of the
+    brace, so they start further in than any part of the equation itself. A paragraph line
+    that happens to be indented starts at or left of it, and is refused."""
+    left_edge = min(other.x0 for other in run)
+    return (line.x0 >= max(DISPLAY_MIN_X, left_edge + 8.0)
+            and abs(line.x0 - PARA_INDENT) > 1.6
+            and line.x1 <= EQUATION_BODY_MAX_X
+            and line.x1 - line.x0 <= EQUATION_ARM_MAX_WIDTH)
+
+
+def _display_follows(tagged: list[TaggedLine], start: int, baseline: float) -> bool:
+    for entry in tagged[start:]:
+        if entry.line.baseline - baseline > DISPLAY_GAP:
+            return False
+        if entry.kind == Kind.DISPLAY:
+            return True
+        if entry.kind in (Kind.EQNUM, Kind.MARGIN, Kind.PROSE):
+            continue
+        return False
+    return False
+
+
 def _detach_equation_number(lines: list[VLine]) -> str:
     """An equation number typeset on the same baseline as the equation is merged into it by
     the extractor. Split it back off so it does not land inside the cropped image."""
@@ -298,18 +329,41 @@ def assemble(page: Page) -> list[Block]:
 
         if kind == Kind.DISPLAY:
             run = [entry.line]
+            eq_number = ""
+            side_notes: list[VLine] = []
             index += 1
-            while index < len(tagged) and tagged[index].kind in (Kind.DISPLAY, Kind.EQNUM):
-                candidate = tagged[index].line
-                if candidate.baseline - run[-1].baseline > DISPLAY_GAP:
+            while index < len(tagged):
+                following = tagged[index]
+                if following.line.baseline - run[-1].baseline > DISPLAY_GAP:
                     break
-                if tagged[index].kind == Kind.EQNUM:
-                    break
-                run.append(candidate)
-                index += 1
+                if following.kind == Kind.DISPLAY:
+                    run.append(following.line)
+                    index += 1
+                    continue
+                if following.kind == Kind.EQNUM:
+                    # The number sits on a baseline of its own, often between the numerator
+                    # and the denominator of the equation it labels. Absorbing it instead of
+                    # stopping there keeps the equation in one piece.
+                    eq_number = EQNUM_RE.match(following.line.text.strip()).group(1)
+                    index += 1
+                    continue
+                if following.kind == Kind.MARGIN:
+                    side_notes.append(following.line)
+                    index += 1
+                    continue
+                if following.kind == Kind.PROSE and _inside_equation(following.line, run) \
+                        and _display_follows(tagged, index + 1, following.line.baseline):
+                    # The "if ..." arms of a piecewise definition are ordinary words set
+                    # inside the equation. They belong to it.
+                    run.append(following.line)
+                    index += 1
+                    continue
+                break
             block = Block(kind="display", page=page.index, lines=run)
-            block.eq_number = _detach_equation_number(run)
+            block.eq_number = eq_number or _detach_equation_number(run)
             push(block)
+            for note in side_notes:
+                push(Block(kind="margin", page=page.index, lines=[note]))
             continue
 
         if kind == Kind.FOOTNOTE:

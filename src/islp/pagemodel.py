@@ -15,6 +15,7 @@ Colours carry meaning:
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from enum import Enum
 
@@ -239,6 +240,26 @@ def _zone_for(line: VLine, page_height: float, footnote_y: float | None = None) 
     return Zone.MAIN
 
 
+EQUATION_NUMBER_X = 378.0
+EQUATION_NUMBER_RE = re.compile(r"^\(\d+\.\d+\)$")
+
+
+def _split_equation_number(line: VLine) -> tuple[VLine, VLine | None]:
+    """An equation number shares its baseline with the equation, so the extractor glues the
+    two together. Left joined, the number dilutes the line's mathematics and stretches it to
+    the full column width, and the line then reads as prose."""
+    tail = [c for c in line.chars if c.x0 >= EQUATION_NUMBER_X]
+    if not tail or len(tail) == len(line.chars):
+        return line, None
+    if not EQUATION_NUMBER_RE.match("".join(c.c for c in tail).strip()):
+        return line, None
+    body = [c for c in line.chars if c.x0 < EQUATION_NUMBER_X]
+    if not body:
+        return line, None
+    return (VLine(body, line.zone, line.baseline, line.size, line.page, line.cell_fill),
+            VLine(tail, line.zone, line.baseline, line.size, line.page, line.cell_fill))
+
+
 def _split_margin(line: VLine) -> tuple[VLine, VLine | None]:
     """The extractor glues right-margin notes onto main text lines. Split them apart."""
     def is_margin(char: Char) -> bool:
@@ -353,6 +374,9 @@ def load_page(doc: pymupdf.Document, index: int, two_column: bool = False) -> Pa
             line.zone = _zone_for(line, page.rect.height, footnote_y)
             if margin is not None:
                 lines.append(margin)
+            line, number = _split_equation_number(line)
+            if number is not None:
+                lines.append(number)
         # Jupyter prompt plus code content live on one baseline; tag the whole line as code.
         if line.zone == Zone.MAIN and line.role_fraction(Role.MONO) > 0.6:
             for cell in code_cells:
