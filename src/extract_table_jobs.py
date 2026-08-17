@@ -31,6 +31,7 @@ DPI = 320
 
 def strip_tags(html: str) -> str:
     import re
+
     return re.sub(r"<[^>]+>", "", html)
 
 
@@ -47,16 +48,18 @@ def main() -> None:
             key = f"t{block.number.replace('.', '-')}-p{block.page + 1}"
             crop = CROPS / f"{key}.png"
             crop.write_bytes(render_crop(pdf[block.page], block.bbox, DPI, pad=3.0))
-            jobs.append({
-                "key": key,
-                "image": str(crop.relative_to(ROOT)),
-                "number": block.number,
-                "page_pdf": block.page + 1,
-                "chapter": chapter.title,
-                "caption": strip_tags(block.html)[:400],
-                "width_pt": round(block.bbox[2] - block.bbox[0], 1),
-                "height_pt": round(block.bbox[3] - block.bbox[1], 1),
-            })
+            jobs.append(
+                {
+                    "key": key,
+                    "image": str(crop.relative_to(ROOT)),
+                    "number": block.number,
+                    "page_pdf": block.page + 1,
+                    "chapter": chapter.title,
+                    "caption": strip_tags(block.html)[:400],
+                    "width_pt": round(block.bbox[2] - block.bbox[0], 1),
+                    "height_pt": round(block.bbox[3] - block.bbox[1], 1),
+                }
+            )
 
     (WORK / "table_jobs.json").write_text(json.dumps(jobs, indent=1, ensure_ascii=False))
     print(f"{len(jobs)} tables cropped to {CROPS}")

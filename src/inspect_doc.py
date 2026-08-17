@@ -22,19 +22,21 @@ def main() -> None:
             elif block.kind == "para":
                 notes = block.meta.get("margin_notes")
                 marker = f"({block.list_marker}) " if block.list_marker else ""
-                print(f"\n[P p{block.page+1}] {marker}{block.html}")
+                print(f"\n[P p{block.page + 1}] {marker}{block.html}")
                 if notes:
                     print(f"     [margin] {notes}")
             elif block.kind == "display":
                 item = document.math.items[block.math_id]
-                print(f"\n[EQ {block.eq_number or '-'} p{block.page+1}] raw={item.raw_text!r}")
+                print(f"\n[EQ {block.eq_number or '-'} p{block.page + 1}] raw={item.raw_text!r}")
                 print(f"     guess={item.meta_guess!r}")
             elif block.kind == "code":
                 print(f"\n[CODE {block.code_kind}]")
                 for line in block.html.split("\n"):
                     print("    " + line)
             elif block.kind in ("figure", "table"):
-                print(f"\n[{block.kind.upper()} {block.number} bbox={tuple(round(v) for v in block.bbox)}] {block.html[:150]}")
+                print(
+                    f"\n[{block.kind.upper()} {block.number} bbox={tuple(round(v) for v in block.bbox)}] {block.html[:150]}"
+                )
     print(f"\n--- math registry: {len(document.math.items)} items ---")
 
 

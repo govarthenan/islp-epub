@@ -15,10 +15,10 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from enum import Enum
+from enum import StrEnum
 
 from .fonts import Role, is_extension_font
-from .pagemodel import Char, Page, VLine, Zone
+from .pagemodel import Page, VLine, Zone
 
 PROSE_LEFT = 91.0
 PARA_INDENT = 100.9
@@ -36,7 +36,7 @@ LIST_MARKER_RE = re.compile(r"^\s*(\(?[a-z]\)|\(?[ivxlcdm]+[.)]|\d+\.)\s")
 PROSE_WORD_RE = re.compile(r"[A-Za-zÀ-ɏ]{2,}")
 
 
-class Kind(str, Enum):
+class Kind(StrEnum):
     CHAPTER_NUMBER = "chapter_number"
     CHAPTER_TITLE = "chapter_title"
     SECTION = "section"
@@ -135,8 +135,7 @@ def classify_line(line: VLine) -> Kind:
     # A display equation is set away from both paragraph margins and is nearly all
     # mathematics. Small words inside one ("and", "if", "otherwise") are allowed, which is why
     # the test is a proportion rather than the absence of prose.
-    indented_past_margins = (line.x0 >= DISPLAY_MIN_X
-                             and abs(line.x0 - PARA_INDENT) > 1.6)
+    indented_past_margins = line.x0 >= DISPLAY_MIN_X and abs(line.x0 - PARA_INDENT) > 1.6
     if indented_past_margins and not LIST_MARKER_RE.match(text):
         share = math_fraction(line)
         if share > 0.6 or _all_dots(line) or (_has_extension(line) and share > 0.35):
@@ -168,12 +167,12 @@ def _covers_math(host: VLine, fragment: VLine, rules) -> bool:
     return False
 
 
-def _drop_auxiliary_math_lines(tagged: list[TaggedLine], rules,
-                               auxiliary: dict | None = None) -> None:
+def _drop_auxiliary_math_lines(tagged: list[TaggedLine], rules, auxiliary: dict | None = None) -> None:
     """A fraction or a large operator set inside a paragraph puts its numerator, denominator
     and limits on baselines of their own. Those fragments look exactly like little display
     equations, so they are matched back to the paragraph line they belong to and dropped: the
     cropped image of that line's mathematics already contains them."""
+
     # A fragment belongs to a paragraph line only if that line actually carries mathematics.
     # Without that test the opening brace of a piecewise definition, which happens to sit
     # close to the paragraph above it, was being thrown away.
@@ -185,7 +184,7 @@ def _drop_auxiliary_math_lines(tagged: list[TaggedLine], rules,
         if entry.kind not in (Kind.PROSE, Kind.FOOTNOTE):
             return False
         line = entry.line
-        at_margin = (abs(line.x0 - PROSE_LEFT) < 1.6 or abs(line.x0 - PARA_INDENT) < 1.6)
+        at_margin = abs(line.x0 - PROSE_LEFT) < 1.6 or abs(line.x0 - PARA_INDENT) < 1.6
         if not at_margin and line.x1 - line.x0 <= FULL_WIDTH:
             return False
         return any(char.role in (Role.MATH_VAR, Role.MATH_UP) for char in line.chars)
@@ -200,7 +199,7 @@ def _drop_auxiliary_math_lines(tagged: list[TaggedLine], rules,
     hosts = [entry.line for entry in tagged if is_host(entry)]
 
     ordered = sorted(tagged, key=lambda item: item.line.baseline)
-    for position, entry in enumerate(ordered):
+    for entry in ordered:
         if not is_fragment(entry):
             continue
         for host in hosts:
@@ -220,7 +219,6 @@ def _drop_auxiliary_math_lines(tagged: list[TaggedLine], rules,
 
 def tag_lines(page: Page) -> list[TaggedLine]:
     tagged: list[TaggedLine] = []
-    previous_prose: VLine | None = None
     for line in page.lines:
         kind = classify_line(line)
         entry = TaggedLine(line=line, kind=kind)
@@ -232,7 +230,6 @@ def tag_lines(page: Page) -> list[TaggedLine]:
                 entry.is_new_paragraph = True
             elif indent_start:
                 entry.is_new_paragraph = True
-            previous_prose = line
         tagged.append(entry)
     page.auxiliary = {}
     _drop_auxiliary_math_lines(tagged, page.drawing_rects, page.auxiliary)
@@ -268,10 +265,12 @@ def _inside_equation(line: VLine, run: list[VLine]) -> bool:
     they are short and set in from both paragraph margins."""
     if not any(char.role in (Role.MATH_VAR, Role.MATH_UP) for char in line.chars):
         return False
-    return (line.x0 >= DISPLAY_MIN_X
-            and abs(line.x0 - PARA_INDENT) > 1.6
-            and line.x1 <= EQUATION_BODY_MAX_X
-            and line.x1 - line.x0 <= EQUATION_ARM_MAX_WIDTH)
+    return (
+        line.x0 >= DISPLAY_MIN_X
+        and abs(line.x0 - PARA_INDENT) > 1.6
+        and line.x1 <= EQUATION_BODY_MAX_X
+        and line.x1 - line.x0 <= EQUATION_ARM_MAX_WIDTH
+    )
 
 
 def _detach_equation_number(lines: list[VLine]) -> str:
@@ -398,9 +397,11 @@ def assemble(page: Page) -> list[Block]:
                     side_notes.append(following.line)
                     index += 1
                     continue
-                if (following.kind == Kind.PROSE
-                        and following.line.baseline - run[-1].baseline <= EQUATION_ARM_GAP
-                        and _inside_equation(following.line, run)):
+                if (
+                    following.kind == Kind.PROSE
+                    and following.line.baseline - run[-1].baseline <= EQUATION_ARM_GAP
+                    and _inside_equation(following.line, run)
+                ):
                     # The "if ..." arms of a piecewise definition are ordinary words set
                     # inside the equation. They belong to it.
                     run.append(following.line)
@@ -421,8 +422,7 @@ def assemble(page: Page) -> list[Block]:
                 candidate = tagged[index].line
                 # a new note starts with its own raised number
                 solid = [c for c in candidate.chars if not c.is_space]
-                starts_note = bool(solid) and solid[0].size < candidate.size * 0.92 \
-                    and solid[0].c.isdigit()
+                starts_note = bool(solid) and solid[0].size < candidate.size * 0.92 and solid[0].c.isdigit()
                 if starts_note:
                     break
                 run.append(candidate)
@@ -433,23 +433,35 @@ def assemble(page: Page) -> list[Block]:
         if kind == Kind.CAPTION:
             run = [entry.line]
             index += 1
-            while index < len(tagged) and tagged[index].kind == Kind.PROSE and \
-                    abs(tagged[index].line.size - run[-1].size) < 0.6 and \
-                    tagged[index].line.baseline - run[-1].baseline < 16 and \
-                    not tagged[index].is_new_paragraph:
+            while (
+                index < len(tagged)
+                and tagged[index].kind == Kind.PROSE
+                and abs(tagged[index].line.size - run[-1].size) < 0.6
+                and tagged[index].line.baseline - run[-1].baseline < 16
+                and not tagged[index].is_new_paragraph
+            ):
                 run.append(tagged[index].line)
                 index += 1
             match = CAPTION_RE.match(run[0].text.strip())
-            push(Block(kind="caption", page=page.index, lines=run,
-                       meta={"caption_type": match.group(1).lower()}, number=match.group(2)))
+            push(
+                Block(
+                    kind="caption",
+                    page=page.index,
+                    lines=run,
+                    meta={"caption_type": match.group(1).lower()},
+                    number=match.group(2),
+                )
+            )
             continue
 
-        if kind in (Kind.CHAPTER_NUMBER, Kind.CHAPTER_TITLE, Kind.SECTION, Kind.SUBSECTION,
-                    Kind.LAB_HEADING):
+        if kind in (Kind.CHAPTER_NUMBER, Kind.CHAPTER_TITLE, Kind.SECTION, Kind.SUBSECTION, Kind.LAB_HEADING):
             run = [entry.line]
             index += 1
-            while index < len(tagged) and tagged[index].kind == kind and \
-                    tagged[index].line.baseline - run[-1].baseline < 26:
+            while (
+                index < len(tagged)
+                and tagged[index].kind == kind
+                and tagged[index].line.baseline - run[-1].baseline < 26
+            ):
                 run.append(tagged[index].line)
                 index += 1
             level = {
@@ -459,8 +471,7 @@ def assemble(page: Page) -> list[Block]:
                 Kind.LAB_HEADING: 4,
                 Kind.CHAPTER_NUMBER: 0,
             }[kind]
-            push(Block(kind="heading", page=page.index, lines=run, level=level,
-                       meta={"heading_kind": kind.value}))
+            push(Block(kind="heading", page=page.index, lines=run, level=level, meta={"heading_kind": kind.value}))
             continue
 
         # prose: gather until the next new paragraph or a different kind
@@ -470,8 +481,7 @@ def assemble(page: Page) -> list[Block]:
         while index < len(tagged):
             following = tagged[index]
             if following.kind == Kind.MARGIN:
-                blocks.append(Block(kind="margin", page=page.index,
-                                    lines=following.group or [following.line]))
+                blocks.append(Block(kind="margin", page=page.index, lines=following.group or [following.line]))
                 index += 1
                 continue
             if following.kind != Kind.PROSE or following.is_new_paragraph:

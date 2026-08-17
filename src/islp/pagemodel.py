@@ -17,11 +17,11 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from enum import Enum
+from enum import StrEnum
 
 import pymupdf
 
-from .fonts import Role, classify, family
+from .fonts import Role, classify
 
 MAIN_X0 = 88.0
 MAIN_X1 = 415.0
@@ -29,9 +29,9 @@ MARGIN_X0 = 415.5
 HEADER_Y = 50.0
 FOOTER_Y = 648.0
 PROMPT_X1 = 90.0
-COLUMN_GAP = 200.0        # body pages: effectively no limit
-INDEX_COLUMN_GAP = 28.0   # the index is set in two columns that share baselines
-INDEX_GUTTER_X = 252.0    # nothing crosses the gutter between those two columns
+COLUMN_GAP = 200.0  # body pages: effectively no limit
+INDEX_COLUMN_GAP = 28.0  # the index is set in two columns that share baselines
+INDEX_GUTTER_X = 252.0  # nothing crosses the gutter between those two columns
 
 COLOUR_PROSE = 0x000000
 COLOUR_CODE = 0x984100
@@ -40,11 +40,10 @@ COLOUR_MARGIN = 0x595959
 
 # Ligatures are kept as single glyphs so that each glyph keeps one honest pen position;
 # they are expanded to plain letters later, when the text is written out.
-TEXT_FLAGS = (pymupdf.TEXT_PRESERVE_WHITESPACE | pymupdf.TEXT_MEDIABOX_CLIP
-              | pymupdf.TEXT_PRESERVE_LIGATURES)
+TEXT_FLAGS = pymupdf.TEXT_PRESERVE_WHITESPACE | pymupdf.TEXT_MEDIABOX_CLIP | pymupdf.TEXT_PRESERVE_LIGATURES
 
 
-class Zone(str, Enum):
+class Zone(StrEnum):
     HEADER = "header"
     FOOTNOTE = "footnote"
     FOOTER = "footer"
@@ -260,12 +259,15 @@ def _split_equation_number(line: VLine) -> tuple[VLine, VLine | None]:
     body = [c for c in line.chars if c.x0 < EQUATION_NUMBER_X]
     if not body:
         return line, None
-    return (VLine(body, line.zone, line.baseline, line.size, line.page, line.cell_fill),
-            VLine(tail, line.zone, line.baseline, line.size, line.page, line.cell_fill))
+    return (
+        VLine(body, line.zone, line.baseline, line.size, line.page, line.cell_fill),
+        VLine(tail, line.zone, line.baseline, line.size, line.page, line.cell_fill),
+    )
 
 
 def _split_margin(line: VLine) -> tuple[VLine, VLine | None]:
     """The extractor glues right-margin notes onto main text lines. Split them apart."""
+
     def is_margin(char: Char) -> bool:
         return (char.x0 >= MARGIN_X0 and char.size <= 8.6) or char.colour == COLOUR_MARGIN
 
@@ -287,8 +289,7 @@ def _collect_links(page: pymupdf.Page) -> list[dict]:
         if rect is None:
             continue
         if link.get("kind") == pymupdf.LINK_GOTO and link.get("to") is not None:
-            links.append({"rect": tuple(rect),
-                          "target": f"{link['page']}:{link['to'].y:.0f}"})
+            links.append({"rect": tuple(rect), "target": f"{link['page']}:{link['to'].y:.0f}"})
         elif link.get("kind") == pymupdf.LINK_URI and link.get("uri"):
             links.append({"rect": tuple(rect), "uri": link["uri"]})
     return links
@@ -361,10 +362,12 @@ def load_page(doc: pymupdf.Document, index: int, two_column: bool = False) -> Pa
     merged: list[tuple[float, float, list[Char]]] = []
     for baseline, size, chars in groups:
         start = min(c.x0 for c in chars)
-        joins = (merged
-                 and abs(merged[-1][0] - baseline) <= 1.5
-                 and abs(merged[-1][1] - size) < 0.6
-                 and start - max(c.x1 for c in merged[-1][2]) < gap_limit)
+        joins = (
+            merged
+            and abs(merged[-1][0] - baseline) <= 1.5
+            and abs(merged[-1][1] - size) < 0.6
+            and start - max(c.x1 for c in merged[-1][2]) < gap_limit
+        )
         if joins and two_column:
             previous_start = min(c.x0 for c in merged[-1][2])
             joins = (previous_start >= INDEX_GUTTER_X) == (start >= INDEX_GUTTER_X)
@@ -407,10 +410,7 @@ def load_page(doc: pymupdf.Document, index: int, two_column: bool = False) -> Pa
     lines.sort(key=lambda ln: (round(ln.baseline, 1), ln.x0))
 
     header_text = " ".join(ln.text.strip() for ln in lines if ln.zone == Zone.HEADER).strip()
-    drawing_rects = [
-        (d["rect"].x0, d["rect"].y0, d["rect"].x1, d["rect"].y1)
-        for d in page.get_drawings()
-    ]
+    drawing_rects = [(d["rect"].x0, d["rect"].y0, d["rect"].x1, d["rect"].y1) for d in page.get_drawings()]
 
     return Page(
         index=index,

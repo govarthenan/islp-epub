@@ -45,8 +45,9 @@ def main() -> None:
         counts[verdict["verdict"] if verdict else "unchecked"] += 1
         final[ident] = dict(entry)
         if verdict and verdict.get("verdict") == "wrong" and verdict.get("corrected_latex"):
-            proposed.append({"id": ident, "latex": verdict["corrected_latex"].strip(),
-                             "issue": verdict.get("issue", "")})
+            proposed.append(
+                {"id": ident, "latex": verdict["corrected_latex"].strip(), "issue": verdict.get("issue", "")}
+            )
 
     failures = {failure["id"] for failure in check(proposed)} if proposed else set()
     for entry in proposed:
@@ -83,7 +84,9 @@ def main() -> None:
         "independent_audit": {
             "sampled": audit.get("answered"),
             "agreement": round(audit.get("agreement", 0.0), 1),
-        } if audit else {},
+        }
+        if audit
+        else {},
     }
     (WORK / "math_verification.json").write_text(json.dumps(report, indent=1, ensure_ascii=False))
 

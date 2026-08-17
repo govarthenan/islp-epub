@@ -14,7 +14,7 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-WRAPPER = "<root xmlns:epub=\"http://www.idpf.org/2007/ops\">{0}</root>"
+WRAPPER = '<root xmlns:epub="http://www.idpf.org/2007/ops">{0}</root>'
 
 
 def row_widths(table: ET.Element) -> list[int]:
@@ -57,7 +57,8 @@ def main() -> None:
             if len(set(widths)) > 1:
                 problems.append(
                     f"{key}: table {index + 1} rows have different widths {sorted(set(widths))}; "
-                    "add the missing cells or use colspan")
+                    "add the missing cells or use colspan"
+                )
 
     if problems:
         print(f"{len(problems)} problems:")

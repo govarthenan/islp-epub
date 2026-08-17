@@ -1,6 +1,6 @@
 """Merge the per-batch table markup into one file the build can read.
 
-    uv run python src/merge_tables.py
+uv run python src/merge_tables.py
 """
 
 from __future__ import annotations

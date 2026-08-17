@@ -5,10 +5,10 @@ mathematics. Because the two families never overlap, a span's font name alone te
 whether it is text or mathematics.
 """
 
-from enum import Enum
+from enum import StrEnum
 
 
-class Role(str, Enum):
+class Role(StrEnum):
     """What a span of characters is."""
 
     PROSE = "prose"

@@ -15,11 +15,11 @@ from pathlib import Path
 
 import pymupdf
 
-from .blocks import Block, Kind, assemble, classify_line
+from .blocks import assemble
 from .fonts import Role
 from .inline import Tier, build_inline
-from .symbols import fix_unicode
 from .pagemodel import Page, VLine, Zone, load_page
+from .symbols import fix_unicode
 
 WORD_RE = re.compile(r"[A-Za-z][A-Za-z'’]*")
 TRAILING_HYPHEN_RE = re.compile(r"[-‐]((?:</[a-z]+>)*)$")
@@ -52,9 +52,21 @@ class MathRegistry:
     counter: int = 0
     text_runs: int = 0  # solved as plain HTML: no image, no model call
 
-    def add(self, *, tier: str, latex: str, page: int, bbox, raw_text: str, reason: str,
-            display: bool, key: str, eq_number: str = "", context: str = "",
-            chapter: str = "") -> str:
+    def add(
+        self,
+        *,
+        tier: str,
+        latex: str,
+        page: int,
+        bbox,
+        raw_text: str,
+        reason: str,
+        display: bool,
+        key: str,
+        eq_number: str = "",
+        context: str = "",
+        chapter: str = "",
+    ) -> str:
         if not display and key in self.by_key:
             ident = self.by_key[key]
             self.items[ident].occurrences += 1
@@ -62,8 +74,17 @@ class MathRegistry:
         self.counter += 1
         ident = f"m{self.counter:05d}"
         self.items[ident] = MathItem(
-            ident=ident, tier=tier, latex=latex, page=page, bbox=tuple(bbox), raw_text=raw_text,
-            reason=reason, display=display, key=key, eq_number=eq_number, context=context,
+            ident=ident,
+            tier=tier,
+            latex=latex,
+            page=page,
+            bbox=tuple(bbox),
+            raw_text=raw_text,
+            reason=reason,
+            display=display,
+            key=key,
+            eq_number=eq_number,
+            context=context,
             chapter=chapter,
         )
         if not display:
@@ -108,14 +129,14 @@ class Document:
 # hyphenation
 # ------------------------------------------------------------------------------------------
 
+
 def build_vocabulary(pages: list[Page]) -> Counter[str]:
     vocabulary: Counter[str] = Counter()
     for page in pages:
         for line in page.lines:
             if line.zone != Zone.MAIN:
                 continue
-            text = "".join(c.c for c in line.chars
-                           if c.role in (Role.PROSE, Role.PROSE_ITALIC, Role.PROSE_BOLD))
+            text = "".join(c.c for c in line.chars if c.role in (Role.PROSE, Role.PROSE_ITALIC, Role.PROSE_BOLD))
             words = WORD_RE.findall(text)
             if text.rstrip().endswith("-") and words:
                 words = words[:-1]  # the last word is broken across the line
@@ -191,7 +212,7 @@ def code_block_text(lines: list[VLine]) -> str:
     deltas: list[float] = []
     for line in lines:
         ordered = sorted((c for c in line.chars if not _is_prompt(c)), key=lambda c: c.ox)
-        for left, right in zip(ordered, ordered[1:]):
+        for left, right in zip(ordered, ordered[1:], strict=False):
             gap = right.ox - left.ox
             if 2.0 < gap < 9.0:
                 deltas.append(gap)
@@ -199,13 +220,15 @@ def code_block_text(lines: list[VLine]) -> str:
     advance = deltas[len(deltas) // 2] if deltas else 4.74
     origin = min(c.ox for c in content_chars)
 
-    prompts = ["".join(c.c for c in sorted((ch for ch in line.chars if _is_prompt(ch)),
-                                           key=lambda ch: ch.ox)).strip() for line in lines]
+    prompts = [
+        "".join(c.c for c in sorted((ch for ch in line.chars if _is_prompt(ch)), key=lambda ch: ch.ox)).strip()
+        for line in lines
+    ]
     prompt_width = max((len(p) for p in prompts if p), default=0)
     prompt_width = prompt_width + 1 if prompt_width else 0
 
     rendered: list[str] = []
-    for line, prompt in zip(lines, prompts):
+    for line, prompt in zip(lines, prompts, strict=True):
         ordered = sorted((c for c in line.chars if not _is_prompt(c)), key=lambda c: c.ox)
         while ordered and ordered[0].is_space:
             ordered.pop(0)  # the gap after the prompt is already in prompt_width
@@ -228,8 +251,10 @@ def code_block_text(lines: list[VLine]) -> str:
 # document assembly
 # ------------------------------------------------------------------------------------------
 
-def _line_html(line: VLine, rules, registry: MathRegistry, chapter: str,
-               context: str, page: Page | None = None) -> tuple[str, list[str]]:
+
+def _line_html(
+    line: VLine, rules, registry: MathRegistry, chapter: str, context: str, page: Page | None = None
+) -> tuple[str, list[str]]:
     from .figures import inline_math_bbox
 
     result = build_inline(line.chars, rules)
@@ -282,7 +307,7 @@ def _chapter_spans(toc: list) -> list[tuple[int, int, str, str]]:
     level_one = [(page - 1, title) for level, title, page in toc if level == 1]
     spans = []
     for position, (start, title) in enumerate(level_one):
-        end = level_one[position + 1][0] if position + 1 < len(level_one) else 10 ** 9
+        end = level_one[position + 1][0] if position + 1 < len(level_one) else 10**9
         match = re.match(r"^(\d+)\s+(.*)$", title)
         number, name = (match.group(1), match.group(2)) if match else ("", title)
         spans.append((start, end, number, name))
@@ -297,11 +322,11 @@ def _sanitize(html: str) -> str:
     html = html.replace("­", "")
     html = re.sub(r"\s+", " ", html)
     for _ in range(3):
-        html = re.sub(r"(\s+)(</(?:%s)>)" % INLINE_TAGS, r"\2\1", html)
-        html = re.sub(r"(<(?:%s)>)(\s+)" % INLINE_TAGS, r"\2\1", html)
-    html = re.sub(r"<(%s)>\s*</\1>" % INLINE_TAGS, " ", html)
+        html = re.sub(rf"(\s+)(</(?:{INLINE_TAGS})>)", r"\2\1", html)
+        html = re.sub(rf"(<(?:{INLINE_TAGS})>)(\s+)", r"\2\1", html)
+    html = re.sub(rf"<({INLINE_TAGS})>\s*</\1>", " ", html)
     for tag in ("em", "strong", "code", "i"):
-        html = re.sub(r"</%s>(\s*)<%s>" % (tag, tag), r"\1", html)
+        html = re.sub(rf"</{tag}>(\s*)<{tag}>", r"\1", html)
     return re.sub(r"\s{2,}", " ", html).strip()
 
 
@@ -325,13 +350,14 @@ def _overlap_share(first, second) -> float:
     areas = [(box[2] - box[0]) * (box[3] - box[1]) for box in (first, second)]
     smallest = min(areas)
     return intersection / smallest if smallest else 0.0
+
+
 COLUMN_SPLIT_X = 250.0
 SUB_ENTRY_INDENT = 14.0
 CONTINUATION_INDENT = 32.0
 
 
-def index_blocks(page: Page, rules, registry: MathRegistry, chapter_ident: str,
-                 vocabulary) -> list[DocBlock]:
+def index_blocks(page: Page, rules, registry: MathRegistry, chapter_ident: str, vocabulary) -> list[DocBlock]:
     """The index is set in two columns, so reading it in baseline order interleaves them.
     Read the left column top to bottom, then the right, and rebuild each entry from its own
     hanging indent."""
@@ -354,13 +380,19 @@ def index_blocks(page: Page, rules, registry: MathRegistry, chapter_ident: str,
         def flush(run: list[VLine], depth: int) -> None:
             if not run:
                 return
-            parts = [_line_html(line, rules, registry, chapter_ident, "", page)[0]
-                     for line in run]
+            parts = [_line_html(line, rules, registry, chapter_ident, "", page)[0] for line in run]
             html = _sanitize(join_lines(parts, vocabulary))
             if html:
-                blocks.append(DocBlock(kind="index-entry", html=html, page=page.index,
-                                       level=depth, bbox=run[0].bbox,
-                                       meta={"y0": run[0].y0}))
+                blocks.append(
+                    DocBlock(
+                        kind="index-entry",
+                        html=html,
+                        page=page.index,
+                        level=depth,
+                        bbox=run[0].bbox,
+                        meta={"y0": run[0].y0},
+                    )
+                )
 
         for line in entries:
             offset = line.x0 - origin
@@ -376,8 +408,7 @@ def index_blocks(page: Page, rules, registry: MathRegistry, chapter_ident: str,
     return blocks
 
 
-def assemble_document(pdf_path: Path, progress: bool = False,
-                      first: int = 0, last: int | None = None) -> Document:
+def assemble_document(pdf_path: Path, progress: bool = False, first: int = 0, last: int | None = None) -> Document:
     from .figures import consume_lines, detect_regions
 
     pdf = pymupdf.open(pdf_path)
@@ -436,8 +467,7 @@ def assemble_document(pdf_path: Path, progress: bool = False,
         rules = page.drawing_rects
         page_display_boxes = []
         if page.index >= INDEX_START:
-            chapter.blocks.extend(
-                index_blocks(page, rules, registry, chapter.ident, vocabulary))
+            chapter.blocks.extend(index_blocks(page, rules, registry, chapter.ident, vocabulary))
             last_para = None
             continue
 
@@ -447,8 +477,9 @@ def assemble_document(pdf_path: Path, progress: bool = False,
 
         for block in blocks:
             if block.kind == "margin":
-                parts = [_line_html(line, rules, registry, chapter.ident, previous_context, page)[0]
-                         for line in block.lines]
+                parts = [
+                    _line_html(line, rules, registry, chapter.ident, previous_context, page)[0] for line in block.lines
+                ]
                 pending_margins.append(_sanitize(join_lines(parts, vocabulary)))
                 continue
 
@@ -457,9 +488,15 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                 text = _sanitize(" ".join(parts))
                 if block.meta.get("heading_kind") == "chapter_number":
                     continue
-                heading = DocBlock(kind="heading", html=_strip_emphasis(text), page=page.index,
-                                   level=block.level, anchor="",
-                                   bbox=block.bbox, meta={"y0": block.bbox[1]})
+                heading = DocBlock(
+                    kind="heading",
+                    html=_strip_emphasis(text),
+                    page=page.index,
+                    level=block.level,
+                    anchor="",
+                    bbox=block.bbox,
+                    meta={"y0": block.bbox[1]},
+                )
                 chapter.blocks.append(heading)
                 last_para = None
                 continue
@@ -468,9 +505,15 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                 code_text = code_block_text(block.lines)
                 if re.sub(r"(?m)^\s*(In|Out)\s*\[\d+\]:\s*$", "", code_text).strip():
                     chapter.blocks.append(
-                        DocBlock(kind="code", html=code_text, page=page.index,
-                                 code_kind=block.code_kind, bbox=block.bbox,
-                                 meta={"y0": block.bbox[1]}))
+                        DocBlock(
+                            kind="code",
+                            html=code_text,
+                            page=page.index,
+                            code_kind=block.code_kind,
+                            bbox=block.bbox,
+                            meta={"y0": block.bbox[1]},
+                        )
+                    )
                 last_para = None
                 continue
 
@@ -484,42 +527,56 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                         complete = False
                     guesses.append(_strip_tags(result.html))
                 from .figures import expand_math_bbox
+
                 display_chars = [char for ln in block.lines for char in ln.chars]
                 # A display block already spans its own numerator, rule and denominator, so
                 # it needs almost no growing. A generous cap here lets one equation reach
                 # into the next.
                 display_bbox, display_foreign = expand_math_bbox(
-                    page, block.bbox, [ln.baseline for ln in block.lines], display_chars,
-                    max_growth=DISPLAY_MAX_GROWTH)
-                if any(_overlap_share(display_bbox, seen) > DUPLICATE_OVERLAP
-                       for seen in page_display_boxes):
+                    page, block.bbox, [ln.baseline for ln in block.lines], display_chars, max_growth=DISPLAY_MAX_GROWTH
+                )
+                if any(_overlap_share(display_bbox, seen) > DUPLICATE_OVERLAP for seen in page_display_boxes):
                     # Two fragments of one equation that both grew back into the same
                     # rectangle. Rendering it twice would be worse than dropping one.
                     continue
                 page_display_boxes.append(display_bbox)
                 ident = registry.add(
-                    tier="display", latex="", page=page.index, bbox=display_bbox,
-                    raw_text=raw, reason="display-equation", display=True,
+                    tier="display",
+                    latex="",
+                    page=page.index,
+                    bbox=display_bbox,
+                    raw_text=raw,
+                    reason="display-equation",
+                    display=True,
                     key=f"disp-{page.index}-{round(block.bbox[1])}",
-                    eq_number=block.eq_number, context=previous_context[-600:],
+                    eq_number=block.eq_number,
+                    context=previous_context[-600:],
                     chapter=chapter.ident,
                 )
                 registry.items[ident].meta_guess = "\n".join(guesses) if complete else ""
                 registry.items[ident].foreign_ink = display_foreign
-                chapter.blocks.append(DocBlock(kind="display", math_id=ident, page=page.index,
-                                               eq_number=block.eq_number, bbox=display_bbox,
-                                               meta={"y0": block.bbox[1]}))
+                chapter.blocks.append(
+                    DocBlock(
+                        kind="display",
+                        math_id=ident,
+                        page=page.index,
+                        eq_number=block.eq_number,
+                        bbox=display_bbox,
+                        meta={"y0": block.bbox[1]},
+                    )
+                )
                 last_para = None
                 continue
 
             if block.kind == "footnote":
-                parts = [_line_html(line, rules, registry, chapter.ident, "", page)[0]
-                         for line in block.lines]
+                parts = [_line_html(line, rules, registry, chapter.ident, "", page)[0] for line in block.lines]
                 html = _sanitize(join_lines(parts, vocabulary))
                 if html:
-                    chapter.blocks.append(DocBlock(kind="footnote", html=html, page=page.index,
-                                                   bbox=block.bbox,
-                                                   meta={"y0": block.bbox[1]}))
+                    chapter.blocks.append(
+                        DocBlock(
+                            kind="footnote", html=html, page=page.index, bbox=block.bbox, meta={"y0": block.bbox[1]}
+                        )
+                    )
                 continue
 
             if block.kind == "caption":
@@ -527,10 +584,15 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                 text = _sanitize(" ".join(parts))
                 caption_type = block.meta.get("caption_type", "figure")
                 region = region_by_number.get((caption_type, block.number))
-                media = DocBlock(kind=caption_type, page=page.index, number=block.number,
-                                 html=text, caption_type=caption_type,
-                                 bbox=region.bbox if region else (0, 0, 0, 0),
-                                 meta={"y0": (region.bbox[1] if region else block.bbox[1])})
+                media = DocBlock(
+                    kind=caption_type,
+                    page=page.index,
+                    number=block.number,
+                    html=text,
+                    caption_type=caption_type,
+                    bbox=region.bbox if region else (0, 0, 0, 0),
+                    meta={"y0": (region.bbox[1] if region else block.bbox[1])},
+                )
                 chapter.blocks.append(media)
                 last_para = None
                 continue
@@ -548,17 +610,26 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                 first = block.lines[0]
                 indented = abs(first.x0 - PARA_INDENT_X) < 1.6
                 marker = block.list_marker
-                if (not indented and not marker and last_para is not None
-                        and last_para.kind == "para" and not last_para.list_marker
-                        and chapter.blocks and chapter.blocks[-1] is last_para):
+                if (
+                    not indented
+                    and not marker
+                    and last_para is not None
+                    and last_para.kind == "para"
+                    and not last_para.list_marker
+                    and chapter.blocks
+                    and chapter.blocks[-1] is last_para
+                ):
                     last_para.html = join_lines([last_para.html, html], vocabulary)
                 else:
                     body_lines = block.lines[1:] if len(block.lines) > 1 else block.lines
                     left = min(line.x0 for line in body_lines)
-                    doc_block = DocBlock(kind="para", html=html, page=page.index,
-                                         list_marker=marker,
-                                         meta={"left": round(left, 1), "indented": indented,
-                                               "y0": block.bbox[1]})
+                    doc_block = DocBlock(
+                        kind="para",
+                        html=html,
+                        page=page.index,
+                        list_marker=marker,
+                        meta={"left": round(left, 1), "indented": indented, "y0": block.bbox[1]},
+                    )
                     chapter.blocks.append(doc_block)
                     last_para = doc_block
                 previous_context = _strip_tags(html)

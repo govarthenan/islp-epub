@@ -45,9 +45,11 @@ def main() -> None:
                 entries = [{"id": k, **v} for k, v in entries.items()]
             for entry in entries:
                 if entry.get("id") and entry.get("latex"):
-                    previous[entry["id"]] = {"latex": entry["latex"].strip(),
-                                             "confidence": entry.get("confidence", 1.0),
-                                             "notes": entry.get("notes", "")}
+                    previous[entry["id"]] = {
+                        "latex": entry["latex"].strip(),
+                        "confidence": entry.get("confidence", 1.0),
+                        "notes": entry.get("notes", ""),
+                    }
 
     by_hash: dict[str, dict] = {}
     if PREVIOUS_CROPS.exists():
@@ -73,14 +75,12 @@ def main() -> None:
     BATCHES.mkdir(parents=True)
     remaining.sort(key=lambda job: (job["page_pdf"], job["id"]))
     for start in range(0, len(remaining), BATCH_SIZE):
-        chunk = remaining[start:start + BATCH_SIZE]
-        (BATCHES / f"batch_{start // BATCH_SIZE:03d}.json").write_text(
-            json.dumps(chunk, indent=1, ensure_ascii=False))
+        chunk = remaining[start : start + BATCH_SIZE]
+        (BATCHES / f"batch_{start // BATCH_SIZE:03d}.json").write_text(json.dumps(chunk, indent=1, ensure_ascii=False))
 
     print(f"expressions now : {len(jobs)}")
     print(f"carried over    : {len(carried)}")
-    print(f"still to read   : {len(remaining)} in "
-          f"{len(list(BATCHES.glob('*.json')))} batches")
+    print(f"still to read   : {len(remaining)} in {len(list(BATCHES.glob('*.json')))} batches")
 
 
 if __name__ == "__main__":

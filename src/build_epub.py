@@ -42,13 +42,13 @@ MATH_TOKEN_RE = re.compile(r"\{\{MATH:(m\d+)\}\}")
 LINK_ANCHOR_RE = re.compile(r'<a href="\{\{LINK:(\d+):(-?\d+)\}\}">(.*?)</a>', re.S)
 
 TITLE = "An Introduction to Statistical Learning with Applications in Python"
-AUTHORS = ["Gareth James", "Daniela Witten", "Trevor Hastie", "Robert Tibshirani",
-           "Jonathan Taylor"]
+AUTHORS = ["Gareth James", "Daniela Witten", "Trevor Hastie", "Robert Tibshirani", "Jonathan Taylor"]
 
 
 # ---------------------------------------------------------------------------------------
 # image helpers
 # ---------------------------------------------------------------------------------------
+
 
 def pixmap_to_png(pix: pymupdf.Pixmap, levels: int = GREY_LEVELS) -> bytes:
     image = Image.frombytes("L", (pix.width, pix.height), pix.samples)
@@ -59,8 +59,7 @@ def pixmap_to_png(pix: pymupdf.Pixmap, levels: int = GREY_LEVELS) -> bytes:
     return buffer.getvalue()
 
 
-def render_crop(pdf_page: pymupdf.Page, bbox, dpi: int, pad: float = 1.0,
-                foreign_ink: list | None = None) -> bytes:
+def render_crop(pdf_page: pymupdf.Page, bbox, dpi: int, pad: float = 1.0, foreign_ink: list | None = None) -> bytes:
     box = (bbox[0] - pad, bbox[1] - pad, bbox[2] + pad, bbox[3] + pad)
     pix = render_region(pdf_page, box, dpi=dpi)
     image = Image.frombytes("L", (pix.width, pix.height), pix.samples)
@@ -69,8 +68,7 @@ def render_crop(pdf_page: pymupdf.Page, bbox, dpi: int, pad: float = 1.0,
         painter = ImageDraw.Draw(image)
         for fx0, fy0, fx1, fy1 in foreign_ink:
             painter.rectangle(
-                [((fx0 - box[0]) * scale, (fy0 - box[1]) * scale),
-                 ((fx1 - box[0]) * scale, (fy1 - box[1]) * scale)],
+                [((fx0 - box[0]) * scale, (fy0 - box[1]) * scale), ((fx1 - box[0]) * scale, (fy1 - box[1]) * scale)],
                 fill=255,
             )
     quantised = image.quantize(colors=GREY_LEVELS, method=Image.MEDIANCUT)
@@ -82,6 +80,7 @@ def render_crop(pdf_page: pymupdf.Page, bbox, dpi: int, pad: float = 1.0,
 # ---------------------------------------------------------------------------------------
 # mathematics
 # ---------------------------------------------------------------------------------------
+
 
 def load_table_html() -> dict[str, str]:
     path = WORK / "tables_html.json"
@@ -108,9 +107,9 @@ def render_svgs(jobs: list[dict]) -> dict[str, dict]:
     manifest_path = WORK / "math_svg_manifest.json"
     jobs_path.write_text(json.dumps(jobs))
     subprocess.run(
-        ["node", str(ROOT / "src" / "render_math.cjs"), str(jobs_path), str(out_dir),
-         str(manifest_path)],
-        check=True, cwd=ROOT,
+        ["node", str(ROOT / "src" / "render_math.cjs"), str(jobs_path), str(out_dir), str(manifest_path)],
+        check=True,
+        cwd=ROOT,
     )
     payload = json.loads(manifest_path.read_text())
     if payload["failures"]:
@@ -122,10 +121,17 @@ def render_svgs(jobs: list[dict]) -> dict[str, dict]:
 # XHTML rendering
 # ---------------------------------------------------------------------------------------
 
+
 class Renderer:
-    def __init__(self, document: Document, svg_manifest: dict, math_images: dict,
-                 figure_images: dict, targets: dict | None = None,
-                 table_html: dict | None = None) -> None:
+    def __init__(
+        self,
+        document: Document,
+        svg_manifest: dict,
+        math_images: dict,
+        figure_images: dict,
+        targets: dict | None = None,
+        table_html: dict | None = None,
+    ) -> None:
         self.document = document
         self.svg_manifest = svg_manifest
         self.math_images = math_images
@@ -153,10 +159,12 @@ class Renderer:
     def expand_links(self, html: str) -> str:
         """Resolve a cross-reference, or drop the anchor entirely when its destination is not
         in this build: a dead link is worse than plain text."""
+
         def replace(match: re.Match) -> str:
             href = self.resolve_link(int(match.group(1)), float(match.group(2)))
             text = match.group(3)
             return f'<a href="{href}">{text}</a>' if href else text
+
         return LINK_ANCHOR_RE.sub(replace, html)
 
     def inline_math(self, ident: str) -> str:
@@ -166,16 +174,20 @@ class Renderer:
             height = entry["heightEm"] or 1.0
             valign = entry["valignEm"] or 0.0
             alt = _escape(entry["tex"])
-            return (f'<img class="mi" src="../math/{entry["file"]}" alt="{alt}" '
-                    f'style="height:{height:.3f}em;vertical-align:{valign:.3f}em"/>')
+            return (
+                f'<img class="mi" src="../math/{entry["file"]}" alt="{alt}" '
+                f'style="height:{height:.3f}em;vertical-align:{valign:.3f}em"/>'
+            )
         name = self.math_images.get(ident)
         if name:
             x0, y0, x1, y1 = item.bbox
             width = (x1 - x0) / BODY_POINT_SIZE
             height = (y1 - y0) / BODY_POINT_SIZE
             alt = _escape(item.raw_text.strip() or "mathematical expression")
-            return (f'<img class="mi" src="../images/{name}" alt="{alt}" '
-                    f'style="width:{width:.3f}em;height:{height:.3f}em"/>')
+            return (
+                f'<img class="mi" src="../images/{name}" alt="{alt}" '
+                f'style="width:{width:.3f}em;height:{height:.3f}em"/>'
+            )
         return _escape(item.raw_text)
 
     def expand(self, html: str) -> str:
@@ -188,8 +200,7 @@ class Renderer:
         if entry:
             width = entry["widthEm"] or 1.0
             alt = _escape(entry["tex"])
-            body = (f'<img src="../math/{entry["file"]}" alt="{alt}" '
-                    f'style="width:{width:.3f}em"/>')
+            body = f'<img src="../math/{entry["file"]}" alt="{alt}" style="width:{width:.3f}em"/>'
         else:
             name = self.math_images.get(ident)
             if not name:
@@ -244,8 +255,7 @@ def paragraph_class(block) -> str:
     return "" if block.meta.get("indented", False) else "noindent"
 
 
-def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint],
-                   href_base: str) -> str:
+def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint], href_base: str) -> str:
     parts: list[str] = []
     heading_counter = [0]
     title_written = False
@@ -259,23 +269,20 @@ def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint],
             text = renderer.expand(block.html)
             if block.level <= 1 and not title_written:
                 title_written = True
-                number = f'<span class="chapnum">Chapter {_escape(chapter.number)}</span>' \
-                    if chapter.number else ""
+                number = f'<span class="chapnum">Chapter {_escape(chapter.number)}</span>' if chapter.number else ""
                 parts.append(f'<h1 id="{anchor}">{number}{text}</h1>')
             else:
                 level = min(max(block.level, 2), 5)
                 parts.append(f'<h{level} id="{anchor}">{text}</h{level}>')
                 if block.level in (2, 3):
                     nav_children.append(
-                        NavPoint(title=re.sub(r"<[^>]+>", "", text), level=block.level,
-                                 href=f"{href_base}#{anchor}")
+                        NavPoint(title=re.sub(r"<[^>]+>", "", text), level=block.level, href=f"{href_base}#{anchor}")
                     )
             continue
 
         if block.kind == "para":
             css = paragraph_class(block)
-            marker = (f'<span class="marker">{_escape(block.list_marker)}</span> '
-                      if block.list_marker else "")
+            marker = f'<span class="marker">{_escape(block.list_marker)}</span> ' if block.list_marker else ""
             attribute = f' class="{css}"' if css else ""
             ident = f' id="{anchor_id}"' if anchor_id else ""
             parts.append(f"<p{attribute}{ident}>{marker}{renderer.expand(block.html)}</p>")
@@ -294,31 +301,30 @@ def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint],
         if block.kind == "code":
             css = "input" if block.code_kind == "input" else "output"
             ident = f' id="{anchor_id}"' if anchor_id else ""
-            parts.append(f'<div class="codeblock"{ident}><pre class="{css}">'
-                         f"{_escape(block.html)}</pre></div>")
+            parts.append(f'<div class="codeblock"{ident}><pre class="{css}">{_escape(block.html)}</pre></div>')
             continue
 
         if block.kind in ("figure", "table"):
             name = renderer.figure_images.get((block.page, block.kind, block.number))
             caption = renderer.expand(block.html)
-            caption = re.sub(r"^(<strong>)(FIGURE|TABLE)([^<]*)(</strong>)",
-                             r'<span class="label">\2\3</span>', caption, count=1)
+            caption = re.sub(
+                r"^(<strong>)(FIGURE|TABLE)([^<]*)(</strong>)", r'<span class="label">\2\3</span>', caption, count=1
+            )
             markup = renderer.table_html.get(table_key(block)) if block.kind == "table" else None
             if markup:
                 image = markup
             else:
-                image = (f'<img src="../images/{name}" alt="{block.kind} '
-                         f'{_escape(block.number)}"/>' if name else "")
-            named = f'{block.kind[0]}{block.number.replace(".", "-")}'
+                image = f'<img src="../images/{name}" alt="{block.kind} {_escape(block.number)}"/>' if name else ""
+            named = f"{block.kind[0]}{block.number.replace('.', '-')}"
             ident = f' id="{anchor_id}"' if anchor_id else ""
-            parts.append(f'<div class="figure"{ident}><span id="{named}"></span>{image}'
-                         f'<p class="caption">{caption}</p></div>')
+            parts.append(
+                f'<div class="figure"{ident}><span id="{named}"></span>{image}<p class="caption">{caption}</p></div>'
+            )
             continue
 
         if block.kind == "footnote":
             ident = f' id="{anchor_id}"' if anchor_id else ""
-            parts.append(f'<aside class="footnote" epub:type="footnote"{ident}>'
-                         f"{renderer.expand(block.html)}</aside>")
+            parts.append(f'<aside class="footnote" epub:type="footnote"{ident}>{renderer.expand(block.html)}</aside>')
             continue
 
         if block.kind == "index-entry":
@@ -334,6 +340,7 @@ def render_chapter(chapter, renderer: Renderer, nav_children: list[NavPoint],
 # front matter
 # ---------------------------------------------------------------------------------------
 
+
 def dedication_html(pdf: pymupdf.Document) -> str:
     lines = [line.strip() for line in pdf[1].get_text().splitlines() if line.strip()]
     return "\n".join(f'<p class="dedication">{_escape(line)}</p>' for line in lines)
@@ -342,6 +349,7 @@ def dedication_html(pdf: pymupdf.Document) -> str:
 # ---------------------------------------------------------------------------------------
 # main
 # ---------------------------------------------------------------------------------------
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -356,26 +364,25 @@ def main() -> None:
     document = assemble_document(PDF, progress=True, last=args.limit)
 
     pdf = pymupdf.open(PDF)
-    builder = EpubBuilder(identifier="urn:uuid:islp-python-1st-edition-reflow",
-                          title=TITLE)
+    builder = EpubBuilder(identifier="urn:uuid:islp-python-1st-edition-reflow", title=TITLE)
     builder.authors = AUTHORS
     builder.publisher = "Springer"
     builder.source = "ISLP_website.pdf (statlearning.com), first printing July 5 2023"
-    builder.rights = ("Converted from the freely distributed PDF for personal, educational "
-                      "and non-commercial use only. All rights remain with the authors and "
-                      "publisher.")
-    builder.description = ("A reflowable conversion of the ISLP textbook, prepared for "
-                           "reading on a 7 inch e-ink screen.")
+    builder.rights = (
+        "Converted from the freely distributed PDF for personal, educational "
+        "and non-commercial use only. All rights remain with the authors and "
+        "publisher."
+    )
+    builder.description = "A reflowable conversion of the ISLP textbook, prepared for reading on a 7 inch e-ink screen."
 
     # --- cover -------------------------------------------------------------------------
     print("2/4 rendering figures and tables ...", flush=True)
-    cover = pixmap_to_png(pdf[0].get_pixmap(dpi=170, colorspace=pymupdf.csGRAY, alpha=False),
-                          levels=16)
+    cover = pixmap_to_png(pdf[0].get_pixmap(dpi=170, colorspace=pymupdf.csGRAY, alpha=False), levels=16)
     builder.add_resource("images/cover.png", "image/png", cover, "cover-image", "cover-image")
     builder.set_cover("cover-image")
-    builder.add_document("cover.xhtml", "Cover",
-                         '<div class="cover"><img src="../images/cover.png" alt="Cover"/></div>',
-                         "cover")
+    builder.add_document(
+        "cover.xhtml", "Cover", '<div class="cover"><img src="../images/cover.png" alt="Cover"/></div>', "cover"
+    )
     builder.nav.append(NavPoint("Cover", "text/cover.xhtml", 1))
 
     builder.add_document("dedication.xhtml", "Dedication", dedication_html(pdf), "dedication")
@@ -394,8 +401,7 @@ def main() -> None:
                 continue  # markup replaces the picture
             name = f"{block.kind}-{block.number.replace('.', '-')}-p{block.page + 1}.png"
             data = render_crop(pdf[block.page], block.bbox, FIGURE_DPI, pad=2.0)
-            builder.add_resource(f"images/{name}", "image/png", data,
-                                 f"img-{name.replace('.', '-')}")
+            builder.add_resource(f"images/{name}", "image/png", data, f"img-{name.replace('.', '-')}")
             figure_images[(block.page, block.kind, block.number)] = name
     print(f"    {len(figure_images)} figures and tables", flush=True)
 
@@ -422,8 +428,7 @@ def main() -> None:
         data = render_crop(pdf[item.page], item.bbox, MATH_DPI, pad=0.8)
         builder.add_resource(f"images/{name}", "image/png", data, f"img-{ident}")
         math_images[ident] = name
-    print(f"    {len(svg_manifest)} equations as SVG, {len(math_images)} as cropped images",
-          flush=True)
+    print(f"    {len(svg_manifest)} equations as SVG, {len(math_images)} as cropped images", flush=True)
 
     # --- cross-reference targets ---------------------------------------------------------
     # Every block gets an anchor, so any of the book's 4,000 internal references can land on
@@ -437,7 +442,8 @@ def main() -> None:
             y0 = block.meta.get("y0", block.bbox[1] if block.bbox != (0, 0, 0, 0) else 0.0)
             y1 = block.bbox[3] if block.bbox != (0, 0, 0, 0) else y0 + 12
             targets.setdefault(block.page, []).append(
-                (float(y0), float(max(y1, y0 + 4)), f"{chapter.ident}.xhtml#{block.anchor}"))
+                (float(y0), float(max(y1, y0 + 4)), f"{chapter.ident}.xhtml#{block.anchor}")
+            )
     for entries in targets.values():
         entries.sort()
 
@@ -445,17 +451,20 @@ def main() -> None:
     print("4/4 writing XHTML ...", flush=True)
     table_html = load_table_html()
     renderer = Renderer(document, svg_manifest, math_images, figure_images, targets, table_html)
-    print(f"    {len(table_html)} tables as markup, "
-          f"{sum(1 for c in document.chapters for b in c.blocks if b.kind == 'table') - len(table_html)}"
-          " as images", flush=True)
-    for index, chapter in enumerate(document.chapters):
+    print(
+        f"    {len(table_html)} tables as markup, "
+        f"{sum(1 for c in document.chapters for b in c.blocks if b.kind == 'table') - len(table_html)}"
+        " as images",
+        flush=True,
+    )
+    for chapter in document.chapters:
         if not chapter.blocks:
             continue
         name = f"{chapter.ident}.xhtml"
         href = f"text/{name}"
         children: list[NavPoint] = []
         body = render_chapter(chapter, renderer, children, href)
-        label = (f"{chapter.number}. {chapter.title}" if chapter.number else chapter.title)
+        label = f"{chapter.number}. {chapter.title}" if chapter.number else chapter.title
         builder.add_document(name, label, body, chapter.ident)
         if not builder.bodymatter_href:
             builder.bodymatter_href = href
@@ -485,8 +494,7 @@ def main() -> None:
         "code_cells": sum(1 for c in document.chapters for b in c.blocks if b.kind == "code"),
         "figures": sum(1 for c in document.chapters for b in c.blocks if b.kind == "figure"),
         "tables": sum(1 for c in document.chapters for b in c.blocks if b.kind == "table"),
-        "equations_display": sum(1 for c in document.chapters for b in c.blocks
-                                 if b.kind == "display"),
+        "equations_display": sum(1 for c in document.chapters for b in c.blocks if b.kind == "display"),
         "images_embedded": len(figure_images),
         "tables_as_markup": len(table_html),
         "math_items_by_tier": tiers,

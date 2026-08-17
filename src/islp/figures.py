@@ -105,17 +105,23 @@ def detect_regions(page: Page, pdf_page: pymupdf.Page) -> list[Region]:
         for other in page.lines:
             if other is line or other.zone != Zone.MAIN:
                 continue
-            if other.y1 <= caption_top - 2 and other.y1 > floor:
-                if other.x0 <= 102.5 and other.x1 - other.x0 > 200 and other.size >= 9.5:
-                    floor = max(floor, other.y1)
+            if (
+                floor < other.y1 <= caption_top - 2
+                and other.x0 <= 102.5
+                and other.x1 - other.x0 > 200
+                and other.size >= 9.5
+            ):
+                floor = max(floor, other.y1)
 
         if kind == "table":
             # A table's row labels sit near the left margin and its descriptions run the
             # width of the column, so a row can look exactly like a line of body text. The
             # rules the table is drawn with do not lie: the topmost one is its top.
-            rule_tops = [rect[1] for rect in page.drawing_rects
-                         if rect[3] - rect[1] <= 2.0 and rect[2] - rect[0] > 150
-                         and caption_floor < rect[1] < caption_top - 4]
+            rule_tops = [
+                rect[1]
+                for rect in page.drawing_rects
+                if rect[3] - rect[1] <= 2.0 and rect[2] - rect[0] > 150 and caption_floor < rect[1] < caption_top - 4
+            ]
             if rule_tops and min(rule_tops) - 3 < floor:
                 floor = max(caption_floor, min(rule_tops) - 3)
 
@@ -127,9 +133,14 @@ def detect_regions(page: Page, pdf_page: pymupdf.Page) -> list[Region]:
         # Overlap, not containment: a header row whose glyph boxes start a little above the
         # band still belongs to the table, and testing containment clipped it away.
         for rect in page.drawing_rects + page.image_rects + page.rotated_rects:
-            if rect[3] > band[0] and rect[1] < band[1] and rect[0] >= CONTENT_X0:
-                if rect[2] - rect[0] > 0.2 and rect[3] - rect[1] > 0.2:
-                    pieces.append(rect)
+            if (
+                rect[3] > band[0]
+                and rect[1] < band[1]
+                and rect[0] >= CONTENT_X0
+                and rect[2] - rect[0] > 0.2
+                and rect[3] - rect[1] > 0.2
+            ):
+                pieces.append(rect)
         for other in page.lines:
             if other is line:
                 continue
@@ -152,8 +163,7 @@ def detect_regions(page: Page, pdf_page: pymupdf.Page) -> list[Region]:
         )
         if bbox[2] - bbox[0] < 20 or bbox[3] - bbox[1] < 12:
             continue
-        regions.append(Region(kind=kind, number=number, bbox=bbox,
-                              caption_bbox=line.bbox, page=page.index))
+        regions.append(Region(kind=kind, number=number, bbox=bbox, caption_bbox=line.bbox, page=page.index))
     return regions
 
 
@@ -175,8 +185,7 @@ def consume_lines(page: Page, regions: list[Region]) -> None:
                 break
 
 
-def render_region(pdf_page: pymupdf.Page, bbox, dpi: int = 300,
-                  colour: bool = False) -> pymupdf.Pixmap:
+def render_region(pdf_page: pymupdf.Page, bbox, dpi: int = 300, colour: bool = False) -> pymupdf.Pixmap:
     clip = pymupdf.Rect(*bbox)
     colorspace = pymupdf.csRGB if colour else pymupdf.csGRAY
     return pdf_page.get_pixmap(dpi=dpi, clip=clip, colorspace=colorspace, alpha=False)
@@ -202,15 +211,17 @@ def _is_equation_number(line) -> bool:
 
 
 def _has_prose_word(line) -> bool:
-    text = "".join(c.c for c in line.chars
-                   if c.role in (Role.PROSE, Role.PROSE_ITALIC, Role.PROSE_BOLD))
+    text = "".join(c.c for c in line.chars if c.role in (Role.PROSE, Role.PROSE_ITALIC, Role.PROSE_BOLD))
     return bool(re.search(r"[A-Za-z]{2,}", text))
 
 
-def expand_math_bbox(page: Page, bbox: tuple[float, float, float, float],
-                     baselines: list[float] | None = None,
-                     own_chars: list | None = None,
-                     max_growth: float = MAX_VERTICAL_GROWTH):
+def expand_math_bbox(
+    page: Page,
+    bbox: tuple[float, float, float, float],
+    baselines: list[float] | None = None,
+    own_chars: list | None = None,
+    max_growth: float = MAX_VERTICAL_GROWTH,
+):
     """Grow a box until it holds the whole expression.
 
     A fraction, a radical or a large operator puts glyphs on baselines of their own, and the
@@ -245,8 +256,7 @@ def expand_math_bbox(page: Page, bbox: tuple[float, float, float, float],
                 continue
             candidates.append((char, on_own_baseline))
 
-    rules = [rect for rect in page.drawing_rects
-             if rect[3] - rect[1] <= 2.0 and rect[2] - rect[0] <= 220]
+    rules = [rect for rect in page.drawing_rects if rect[3] - rect[1] <= 2.0 and rect[2] - rect[0] <= 220]
 
     for _ in range(8):
         changed = False
@@ -284,8 +294,7 @@ def expand_math_bbox(page: Page, bbox: tuple[float, float, float, float],
     return box, _foreign_ink(page, box, kept, own_baselines)
 
 
-def _foreign_ink(page: Page, box, kept: set[int],
-                 baselines: list[float]) -> list[tuple[float, float, float, float]]:
+def _foreign_ink(page: Page, box, kept: set[int], baselines: list[float]) -> list[tuple[float, float, float, float]]:
     """Boxes of ink that fall inside the crop but belong to something else.
 
     An inline fraction reaches into the vertical band of the line below it, so a rectangle
@@ -298,20 +307,17 @@ def _foreign_ink(page: Page, box, kept: set[int],
     x0, y0, x1, y1 = box
     foreign: list[tuple[float, float, float, float]] = []
     for line in page.lines:
-        prose_line = _has_prose_word(line)
         for char in line.chars:
             if char.is_space or id(char) in kept:
                 continue
             if char.x1 <= x0 or char.x0 >= x1 or char.y1 <= y0 or char.y0 >= y1:
                 continue
-            mathematical = (char.role in (Role.MATH_VAR, Role.MATH_UP)
-                            or char.c in DOT_GLYPHS)
-            if mathematical and baselines:
-                # Everything the box grew along is already in `kept`, so a mathematics glyph
-                # that is neither kept nor near one of this expression's own baselines
-                # belongs to a different expression: the fraction on the line above, for one.
-                if min(abs(char.oy - base) for base in baselines) <= NEAR_BASELINE:
-                    continue
+            mathematical = char.role in (Role.MATH_VAR, Role.MATH_UP) or char.c in DOT_GLYPHS
+            # Everything the box grew along is already in `kept`, so a mathematics glyph that
+            # is neither kept nor near one of this expression's own baselines belongs to a
+            # different expression: the fraction on the line above, for one.
+            if mathematical and baselines and min(abs(char.oy - base) for base in baselines) <= NEAR_BASELINE:
+                continue
             foreign.append(_ink_box(char))
     return foreign
 
@@ -352,12 +358,16 @@ def _clamp_to_slot(page: Page, bbox, baselines: list[float]):
     top_baseline, bottom_baseline = min(baselines), max(baselines)
     # Clamp to the ink of the neighbouring paragraph lines, not their baselines, so that no
     # sliver of the next line's ascenders is left in the picture.
-    above = [line.y1 for line in page.lines
-             if line.zone == Zone.MAIN and _has_prose_word(line)
-             and line.baseline < top_baseline - SLOT_MARGIN]
-    below = [line.y0 for line in page.lines
-             if line.zone == Zone.MAIN and _has_prose_word(line)
-             and line.baseline > bottom_baseline + SLOT_MARGIN]
+    above = [
+        line.y1
+        for line in page.lines
+        if line.zone == Zone.MAIN and _has_prose_word(line) and line.baseline < top_baseline - SLOT_MARGIN
+    ]
+    below = [
+        line.y0
+        for line in page.lines
+        if line.zone == Zone.MAIN and _has_prose_word(line) and line.baseline > bottom_baseline + SLOT_MARGIN
+    ]
     x0, y0, x1, y1 = bbox
     if above:
         y0 = max(y0, max(above) + 0.5)
@@ -398,6 +408,5 @@ def inline_math_bbox(page: Page, host, run_chars, rules):
             continue
         boxes.append(rect)
 
-    bbox = (min(b[0] for b in boxes), min(b[1] for b in boxes),
-            max(b[2] for b in boxes), max(b[3] for b in boxes))
+    bbox = (min(b[0] for b in boxes), min(b[1] for b in boxes), max(b[2] for b in boxes), max(b[3] for b in boxes))
     return bbox, _foreign_ink(page, bbox, kept, [host.baseline])

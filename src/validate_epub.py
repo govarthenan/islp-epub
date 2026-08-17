@@ -53,7 +53,7 @@ def validate(path: Path) -> int:
             if ident not in manifest:
                 problems.append(f"spine refers to missing manifest id {ident}")
 
-        packaged = {name[len("OEBPS/"):] for name in names if name.startswith("OEBPS/")}
+        packaged = {name[len("OEBPS/") :] for name in names if name.startswith("OEBPS/")}
         for ident, href in manifest.items():
             if unquote(href) not in packaged:
                 problems.append(f"manifest item {ident} points at missing file {href}")
@@ -68,8 +68,7 @@ def validate(path: Path) -> int:
         for href in documents:
             data = archive.read(f"OEBPS/{href}")
             if len(data) > MAX_DOCUMENT_BYTES:
-                notes.append(f"{href} is {len(data) // 1024} KB; "
-                             "large documents can be slow to page on e-ink")
+                notes.append(f"{href} is {len(data) // 1024} KB; large documents can be slow to page on e-ink")
             try:
                 ET.fromstring(data)
             except ET.ParseError as error:
@@ -79,8 +78,11 @@ def validate(path: Path) -> int:
             for target in REFERENCE_RE.findall(data.decode("utf-8")):
                 if target.startswith(("http://", "https://", "data:", "mailto:")):
                     continue
-                resolved = str((base / unquote(target)).resolve().relative_to(Path.cwd().root)) \
-                    if target.startswith("/") else str((base / unquote(target)))
+                resolved = (
+                    str((base / unquote(target)).resolve().relative_to(Path.cwd().root))
+                    if target.startswith("/")
+                    else str(base / unquote(target))
+                )
                 resolved = str(Path(resolved).as_posix())
                 while "/../" in resolved:
                     resolved = re.sub(r"[^/]+/\.\./", "", resolved, count=1)

@@ -226,7 +226,7 @@ class NavPoint:
     title: str
     href: str
     level: int
-    children: list["NavPoint"] = field(default_factory=list)
+    children: list[NavPoint] = field(default_factory=list)
 
 
 class EpubBuilder:
@@ -246,8 +246,7 @@ class EpubBuilder:
         self.cover_id: str | None = None
         self.bodymatter_href: str = ""
 
-    def add_document(self, name: str, title: str, body: str, ident: str,
-                     spine: bool = True) -> str:
+    def add_document(self, name: str, title: str, body: str, ident: str, spine: bool = True) -> str:
         path = f"text/{name}"
         data = XHTML_HEAD.format(title=_escape(title), body=body).encode("utf-8")
         self.resources.append(Resource(path, "application/xhtml+xml", data, ident))
@@ -255,8 +254,7 @@ class EpubBuilder:
             self.spine.append(ident)
         return path
 
-    def add_resource(self, path: str, media_type: str, data: bytes, ident: str,
-                     properties: str = "") -> None:
+    def add_resource(self, path: str, media_type: str, data: bytes, ident: str, properties: str = "") -> None:
         self.resources.append(Resource(path, media_type, data, ident, properties))
 
     def set_cover(self, ident: str) -> None:
@@ -277,8 +275,7 @@ class EpubBuilder:
             f'    <dc:creator id="creator{index}">{_escape(name)}</dc:creator>'
             for index, name in enumerate(self.authors)
         )
-        cover_meta = (f'    <meta name="cover" content="{self.cover_id}"/>\n'
-                      if self.cover_id else "")
+        cover_meta = f'    <meta name="cover" content="{self.cover_id}"/>\n' if self.cover_id else ""
         return f"""<?xml version="1.0" encoding="UTF-8"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid" \
 xml:lang="{self.language}">
@@ -323,9 +320,7 @@ xml:lang="{self.language}">
 <li><a epub:type="bodymatter" href="{start}">Begin reading</a></li>
 </ol>
 </nav>"""
-        return XHTML_HEAD.format(title="Contents", body=body).replace(
-            'href="../css/style.css"', 'href="css/style.css"'
-        )
+        return XHTML_HEAD.format(title="Contents", body=body).replace('href="../css/style.css"', 'href="css/style.css"')
 
     def _ncx(self) -> str:
         counter = [0]
@@ -359,18 +354,16 @@ xml:lang="{self.language}">
     def write(self, target: Path) -> None:
         self.add_resource("css/style.css", "text/css", STYLESHEET.encode("utf-8"), "css")
         self.resources.append(
-            Resource("nav.xhtml", "application/xhtml+xml", self._nav_document().encode("utf-8"),
-                     "nav", "nav")
+            Resource("nav.xhtml", "application/xhtml+xml", self._nav_document().encode("utf-8"), "nav", "nav")
         )
-        self.resources.append(
-            Resource("toc.ncx", "application/x-dtbncx+xml", self._ncx().encode("utf-8"), "ncx")
-        )
+        self.resources.append(Resource("toc.ncx", "application/x-dtbncx+xml", self._ncx().encode("utf-8"), "ncx"))
         target.parent.mkdir(parents=True, exist_ok=True)
         if target.exists():
             target.unlink()
         with zipfile.ZipFile(target, "w") as archive:
             archive.writestr(
-                zipfile.ZipInfo("mimetype"), "application/epub+zip",
+                zipfile.ZipInfo("mimetype"),
+                "application/epub+zip",
                 compress_type=zipfile.ZIP_STORED,
             )
             archive.writestr("META-INF/container.xml", CONTAINER, zipfile.ZIP_DEFLATED)
@@ -380,5 +373,4 @@ xml:lang="{self.language}">
 
 
 def _escape(text: str) -> str:
-    return (text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-            .replace('"', "&quot;"))
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")

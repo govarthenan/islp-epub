@@ -37,8 +37,7 @@ def main() -> None:
     print("assembling document ...", flush=True)
     document = assemble_document(PDF, progress=True)
 
-    chapter_titles = {chapter.ident: (chapter.number, chapter.title)
-                      for chapter in document.chapters}
+    chapter_titles = {chapter.ident: (chapter.number, chapter.title) for chapter in document.chapters}
 
     pdf = pymupdf.open(PDF)
     jobs = []
@@ -49,24 +48,25 @@ def main() -> None:
             continue  # already solved deterministically
         number, title = chapter_titles.get(item.chapter, ("", ""))
         crop = CROPS / f"{ident}.png"
-        crop.write_bytes(render_crop(pdf[item.page], item.bbox, MATH_DPI, pad=1.0,
-                                     foreign_ink=item.foreign_ink))
-        jobs.append({
-            "id": ident,
-            "image": str(crop.relative_to(ROOT)),
-            "kind": "display" if item.display else "inline",
-            "page_pdf": item.page + 1,
-            "chapter_number": number,
-            "chapter_title": title,
-            "equation_number": item.eq_number,
-            "extracted_characters": item.raw_text,
-            "deterministic_guess": item.meta_guess or item.latex,
-            "why_model_needed": item.reason,
-            "context_before": item.context[-400:],
-            "occurrences": item.occurrences,
-            "width_pt": round(item.bbox[2] - item.bbox[0], 1),
-            "height_pt": round(item.bbox[3] - item.bbox[1], 1),
-        })
+        crop.write_bytes(render_crop(pdf[item.page], item.bbox, MATH_DPI, pad=1.0, foreign_ink=item.foreign_ink))
+        jobs.append(
+            {
+                "id": ident,
+                "image": str(crop.relative_to(ROOT)),
+                "kind": "display" if item.display else "inline",
+                "page_pdf": item.page + 1,
+                "chapter_number": number,
+                "chapter_title": title,
+                "equation_number": item.eq_number,
+                "extracted_characters": item.raw_text,
+                "deterministic_guess": item.meta_guess or item.latex,
+                "why_model_needed": item.reason,
+                "context_before": item.context[-400:],
+                "occurrences": item.occurrences,
+                "width_pt": round(item.bbox[2] - item.bbox[0], 1),
+                "height_pt": round(item.bbox[3] - item.bbox[1], 1),
+            }
+        )
 
     (WORK / "math_jobs_vlm.json").write_text(json.dumps(jobs, indent=1, ensure_ascii=False))
     display_count = sum(1 for job in jobs if job["kind"] == "display")

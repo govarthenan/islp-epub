@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from enum import Enum
+from enum import StrEnum
 
 from .fonts import Role, family, is_extension_font
 from .pagemodel import Char
@@ -36,7 +36,7 @@ SCRIPT_SIZE_RATIO = 0.92
 SCRIPT_SHIFT = 0.45
 
 
-class Tier(str, Enum):
+class Tier(StrEnum):
     TEXT = "text"
     LATEX = "latex"
     VLM = "vlm"
@@ -105,7 +105,7 @@ def attach_accents(chars: list[Char]) -> tuple[list[Char], dict[int, str], bool]
             elif following is not None and _x_overlaps(char, chars[following]):
                 filtered.append(chars[following])
                 target_char, target_index = chars[following], len(filtered) - 1
-                chars = chars[:following] + chars[following + 1:]
+                chars = chars[:following] + chars[following + 1 :]
             if target_char is not None and target_index is not None:
                 if (char.x1 - char.x0) > 1.6 * max(target_char.x1 - target_char.x0, 0.1):
                     wide = True
@@ -128,8 +128,7 @@ def _dominant(chars: list[Char]) -> tuple[float, float]:
     return size, same[len(same) // 2].oy
 
 
-def _horizontal_rules(rules: list[tuple[float, float, float, float]],
-                      bbox: tuple[float, float, float, float]) -> bool:
+def _horizontal_rules(rules: list[tuple[float, float, float, float]], bbox: tuple[float, float, float, float]) -> bool:
     """True if a thin horizontal rule (a fraction bar or a radical bar) crosses this run."""
     x0, y0, x1, y1 = bbox
     for rx0, ry0, rx1, ry1 in rules:
@@ -143,6 +142,7 @@ def _horizontal_rules(rules: list[tuple[float, float, float, float]],
 # --------------------------------------------------------------------------------------
 # LaTeX generation from character data
 # --------------------------------------------------------------------------------------
+
 
 def _latex_atom(char: Char) -> str | None:
     text = fix_unicode(char.c)
@@ -228,8 +228,7 @@ def chars_to_latex(
                     index += 1
                 run = [chars[i] for i in run_indices]
                 inner_size, inner_baseline = _dominant(run)
-                inner_accents = {position: accents[i]
-                                 for position, i in enumerate(run_indices) if i in accents}
+                inner_accents = {position: accents[i] for position, i in enumerate(run_indices) if i in accents}
                 inner = chars_to_latex(run, inner_size, inner_baseline, inner_accents)
                 if inner is None:
                     return None
@@ -282,6 +281,7 @@ def _join_tokens(tokens: list[str]) -> str:
 # --------------------------------------------------------------------------------------
 # HTML generation
 # --------------------------------------------------------------------------------------
+
 
 def _math_html(chars: list[Char], base_size: float, baseline: float) -> str:
     out: list[str] = []
@@ -403,8 +403,7 @@ def link_href(target: str) -> str:
 def _run_key(chars: list[Char], latex: str | None) -> str:
     if latex:
         return latex
-    return "".join(f"{family(c.font)}:{c.c}:{round(c.size, 1)}:{round(c.oy - chars[0].oy, 1)}"
-                   for c in chars)
+    return "".join(f"{family(c.font)}:{c.c}:{round(c.size, 1)}:{round(c.oy - chars[0].oy, 1)}" for c in chars)
 
 
 def insert_gap_spaces(chars: list[Char]) -> list[Char]:
@@ -419,9 +418,21 @@ def insert_gap_spaces(chars: list[Char]) -> list[Char]:
         if not previous.is_space and not char.is_space:
             threshold = max(1.2, 0.2 * min(previous.size, char.size))
             if char.x0 - previous.x1 > threshold and abs(char.oy - previous.oy) < 2.5:
-                out.append(Char(" ", previous.x1, previous.y0, char.x0, previous.y1,
-                                previous.x1, previous.oy, previous.font, previous.size,
-                                previous.colour, previous.role))
+                out.append(
+                    Char(
+                        " ",
+                        previous.x1,
+                        previous.y0,
+                        char.x0,
+                        previous.y1,
+                        previous.x1,
+                        previous.oy,
+                        previous.font,
+                        previous.size,
+                        previous.colour,
+                        previous.role,
+                    )
+                )
         out.append(char)
     return out
 
@@ -441,9 +452,7 @@ def build_inline(
     segments: list[tuple[bool, list[Char]]] = []
     for char in chars:
         math = char.role in (Role.MATH_VAR, Role.MATH_UP)
-        if segments and segments[-1][0] == math:
-            segments[-1][1].append(char)
-        elif char.is_space and segments:
+        if segments and segments[-1][0] == math or char.is_space and segments:
             segments[-1][1].append(char)
         else:
             segments.append((math, [char]))
@@ -459,7 +468,7 @@ def build_inline(
         lead = "".join(c.c for c in group[: len(group) - len(_lstrip(group))])
         core = _strip(group)
         trail_count = len(group) - len(lead) - len(core)
-        trail = "".join(c.c for c in group[len(group) - trail_count:]) if trail_count > 0 else ""
+        trail = "".join(c.c for c in group[len(group) - trail_count :]) if trail_count > 0 else ""
         if not core:
             html_parts.append(escape_html("".join(c.c for c in group)))
             continue

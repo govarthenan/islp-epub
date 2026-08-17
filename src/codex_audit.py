@@ -48,9 +48,11 @@ def ask(ident: str, timeout: int = 300) -> dict:
         return {"id": ident, "status": "no-image"}
     try:
         finished = subprocess.run(
-            ["codex", "exec", "--skip-git-repo-check", "-s", "read-only",
-             "-i", str(image), "--", PROMPT],
-            capture_output=True, text=True, timeout=timeout, cwd=ROOT,
+            ["codex", "exec", "--skip-git-repo-check", "-s", "read-only", "-i", str(image), "--", PROMPT],
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            cwd=ROOT,
         )
     except subprocess.TimeoutExpired:
         return {"id": ident, "status": "timeout"}
@@ -63,8 +65,7 @@ def ask(ident: str, timeout: int = 300) -> dict:
         payload = json.loads(match)
     except json.JSONDecodeError:
         return {"id": ident, "status": "unparsed", "raw": match}
-    return {"id": ident, "status": "ok", "match": bool(payload.get("match")),
-            "issue": payload.get("issue", "")}
+    return {"id": ident, "status": "ok", "match": bool(payload.get("match")), "issue": payload.get("issue", "")}
 
 
 def main() -> None:
@@ -90,8 +91,7 @@ def main() -> None:
         "problems": [r for r in results if r["status"] != "ok"],
     }
     (WORK / "codex_audit.json").write_text(json.dumps(report, indent=1, ensure_ascii=False))
-    print(f"answered {len(answered)}, agreed {len(agreed)} "
-          f"({report['agreement']:.1f}%)")
+    print(f"answered {len(answered)}, agreed {len(agreed)} ({report['agreement']:.1f}%)")
     for entry in report["disagreements"][:15]:
         print(f"  {entry['id']}: {entry['issue']}")
 

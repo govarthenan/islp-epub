@@ -41,15 +41,19 @@ def main() -> None:
         regions = detect_regions(page, pdf[index])
         consume_lines(page, regions)
 
-        interesting = [line for line in page.lines
-                       if line.zone in (Zone.MAIN, Zone.CODE, Zone.FOOTNOTE, Zone.MARGIN)
-                       and line.text.strip()]
+        interesting = [
+            line
+            for line in page.lines
+            if line.zone in (Zone.MAIN, Zone.CODE, Zone.FOOTNOTE, Zone.MARGIN) and line.text.strip()
+        ]
         counts["lines"] += len(interesting)
 
         if index >= INDEX_START:
-            used = {id(line) for block in index_blocks(page, page.drawing_rects, _Registry(),
-                                                       "index", Counter())
-                    for line in []}
+            used = {
+                id(line)
+                for block in index_blocks(page, page.drawing_rects, _Registry(), "index", Counter())
+                for line in []
+            }
             # index_blocks does not hand back its lines; count the column lines as used
             counts["index_lines"] += len(interesting)
             continue
@@ -58,15 +62,17 @@ def main() -> None:
         for line in interesting:
             if id(line) not in used:
                 counts["dropped"] += 1
-                dropped.append({
-                    "page_pdf": index + 1,
-                    "zone": line.zone.value,
-                    "x0": round(line.x0, 1),
-                    "x1": round(line.x1, 1),
-                    "baseline": round(line.baseline, 1),
-                    "size": round(line.size, 1),
-                    "text": line.text.strip()[:120],
-                })
+                dropped.append(
+                    {
+                        "page_pdf": index + 1,
+                        "zone": line.zone.value,
+                        "x0": round(line.x0, 1),
+                        "x1": round(line.x1, 1),
+                        "baseline": round(line.baseline, 1),
+                        "size": round(line.size, 1),
+                        "text": line.text.strip()[:120],
+                    }
+                )
         if index % 100 == 0:
             print(f"  page {index + 1}", flush=True)
 
@@ -82,8 +88,7 @@ def main() -> None:
     print(f"lines considered : {summary['lines_considered']}")
     print(f"lines dropped    : {summary['lines_dropped']} ({summary['share_dropped']}%)")
     for entry in dropped[:25]:
-        print(f"  p{entry['page_pdf']} [{entry['zone']}] x{entry['x0']}-{entry['x1']} "
-              f"{entry['text']!r}")
+        print(f"  p{entry['page_pdf']} [{entry['zone']}] x{entry['x0']}-{entry['x1']} {entry['text']!r}")
 
 
 class _Registry:

@@ -28,8 +28,10 @@ def load(path: Path, default):
 
 def tile(value: str, label: str, note: str = "") -> str:
     extra = f'<div class="tile-note">{escape(note)}</div>' if note else ""
-    return (f'<div class="tile"><div class="tile-value">{value}</div>'
-            f'<div class="tile-label">{escape(label)}</div>{extra}</div>')
+    return (
+        f'<div class="tile"><div class="tile-value">{value}</div>'
+        f'<div class="tile-label">{escape(label)}</div>{extra}</div>'
+    )
 
 
 def pipeline_svg(stages: list[dict]) -> str:
@@ -54,43 +56,60 @@ def pipeline_svg(stages: list[dict]) -> str:
             arrow_x = x + box_width + 4
             boxes.append(
                 f'<path d="M{arrow_x:.0f} 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" '
-                f'stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>')
-    return (f'<svg viewBox="0 0 {width} {height}" role="img" '
-            f'aria-label="Conversion pipeline in {len(stages)} stages">'
-            f'<title>Conversion pipeline</title>{"".join(boxes)}</svg>')
+                f'stroke="var(--svg-line)" stroke-width="1.8" stroke-linecap="round"/>'
+            )
+    return (
+        f'<svg viewBox="0 0 {width} {height}" role="img" '
+        f'aria-label="Conversion pipeline in {len(stages)} stages">'
+        f"<title>Conversion pipeline</title>{''.join(boxes)}</svg>"
+    )
 
 
 def math_bar(counts: dict[str, int]) -> str:
     order = [
-        ("text", "Plain HTML", "Sub- and superscripts recovered from glyph geometry. "
-                               "Reflows and scales; costs nothing."),
-        ("latex", "LaTeX from the character stream", "Accents and script letters, generated "
-                                                     "deterministically, then typeset by MathJax."),
-        ("vlm", "Read by a vision model", "Fractions, radicals and large operators: structure "
-                                          "the PDF simply does not record."),
-        ("display", "Display equations", "Every centred equation, read from an image and "
-                                         "verified against a re-typeset copy."),
+        (
+            "text",
+            "Plain HTML",
+            "Sub- and superscripts recovered from glyph geometry. Reflows and scales; costs nothing.",
+        ),
+        (
+            "latex",
+            "LaTeX from the character stream",
+            "Accents and script letters, generated deterministically, then typeset by MathJax.",
+        ),
+        (
+            "vlm",
+            "Read by a vision model",
+            "Fractions, radicals and large operators: structure the PDF simply does not record.",
+        ),
+        (
+            "display",
+            "Display equations",
+            "Every centred equation, read from an image and verified against a re-typeset copy.",
+        ),
     ]
     total = sum(counts.get(key, 0) for key, _, _ in order) or 1
     segments, legend = [], []
-    for index, (key, label, note) in enumerate(order):
+    for key, label, note in order:
         value = counts.get(key, 0)
         if not value:
             continue
         share = value / total * 100
-        segments.append(f'<div class="seg seg-{key}" style="width:{share:.2f}%" '
-                        f'title="{escape(label)}: {value}"></div>')
-        legend.append(f'''<li><span class="swatch swatch-{key}"></span>
+        segments.append(
+            f'<div class="seg seg-{key}" style="width:{share:.2f}%" title="{escape(label)}: {value}"></div>'
+        )
+        legend.append(f"""<li><span class="swatch swatch-{key}"></span>
           <div><b>{value:,}</b> &middot; {escape(label)}
-          <div class="legend-note">{escape(note)}</div></div></li>''')
+          <div class="legend-note">{escape(note)}</div></div></li>""")
     return f'<div class="bar">{"".join(segments)}</div><ul class="legend">{"".join(legend)}</ul>'
 
 
 def attempt_card(attempt: dict) -> str:
     status = attempt["status"]
-    why = (f'<p class="why"><span class="why-label">Why</span> {escape(attempt["why"])}</p>'
-           if attempt.get("why") else "")
-    return f'''
+    why = (
+        f'<p class="why"><span class="why-label">Why</span> {escape(attempt["why"])}</p>' if attempt.get("why") else ""
+    )
+    return f"""
     <li class="attempt attempt-{status}">
       <div class="attempt-head">
         <span class="num">{attempt["n"]:02d}</span>
@@ -100,7 +119,7 @@ def attempt_card(attempt: dict) -> str:
       <p class="what"><span class="field">Tried</span> {escape(attempt["what"])}</p>
       <p class="result"><span class="field">Result</span> {escape(attempt["result"])}</p>
       {why}
-    </li>'''
+    </li>"""
 
 
 def figure(src: str, caption: str, tone: str = "") -> str:
@@ -116,7 +135,6 @@ def build() -> str:
     verification = load(WORK / "math_verification.json", {})
 
     tiers = dict(stats.get("math_items_by_tier", {}))
-    occurrences = dict(stats.get("math_occurrences_by_tier", {}))
     epub_mb = stats.get("epub_bytes", 0) / 1024 / 1024
 
     accuracy = verification.get("accuracy")
@@ -132,11 +150,11 @@ def build() -> str:
         tile(f"{epub_mb:.1f} MB", "finished EPUB", "reflowable, EPUB 3"),
     ]
     if accuracy is not None:
-        tiles.append(tile(f"{accuracy:.1f}%", "mathematics agreed",
-                          "candidate matched the printed page"))
+        tiles.append(tile(f"{accuracy:.1f}%", "mathematics agreed", "candidate matched the printed page"))
 
-    status_note = ("Verified and packaged." if accuracy is not None
-                   else "Built and packaged; verification pass in progress.")
+    status_note = (
+        "Verified and packaged." if accuracy is not None else "Built and packaged; verification pass in progress."
+    )
 
     attempts = data.get("attempts", [])
     worked = sum(1 for a in attempts if a["status"] == "success")
@@ -145,16 +163,16 @@ def build() -> str:
 
     audit_block = ""
     if audit:
-        audit_block = f'''
+        audit_block = f"""
       <div class="callout">
         <h3>An independent second opinion</h3>
         <p>A sample of {audit.get("sampled", 0)} expressions was re-read by a different model
         family entirely, through OpenAI's <code>codex</code> command line tool, with no sight of
         the first answer. It agreed with the packaged LaTeX on
         <b>{audit.get("agreement", 0):.1f}%</b> of them.</p>
-      </div>'''
+      </div>"""
 
-    return f'''<!doctype html>
+    return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -351,7 +369,7 @@ uv run python src/validate_epub.py output/ISLP.epub</pre>
 </div>
 </body>
 </html>
-'''
+"""
 
 
 def main() -> None:

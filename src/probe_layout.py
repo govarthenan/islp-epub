@@ -31,8 +31,10 @@ def dump_page(doc: pymupdf.Document, page_index: int) -> None:
             for span in line["spans"]:
                 text = "".join(ch["c"] for ch in span["chars"])
                 parts.append(f"<{family(span['font'])}|{span['size']:.1f}|o{span['origin'][1]:.1f}>{text}")
-            print(f"    L y={line['bbox'][1]:.1f}-{line['bbox'][3]:.1f} x={line['bbox'][0]:.1f}-{line['bbox'][2]:.1f} "
-                  f"dir={line['dir']}")
+            print(
+                f"    L y={line['bbox'][1]:.1f}-{line['bbox'][3]:.1f} x={line['bbox'][0]:.1f}-{line['bbox'][2]:.1f} "
+                f"dir={line['dir']}"
+            )
             print("      " + " ".join(parts))
 
 

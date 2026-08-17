@@ -18,8 +18,9 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 def check(entries: list[dict]) -> list[dict]:
-    jobs = [{"id": entry["id"], "tex": entry.get("latex", ""), "display": True}
-            for entry in entries if entry.get("latex")]
+    jobs = [
+        {"id": entry["id"], "tex": entry.get("latex", ""), "display": True} for entry in entries if entry.get("latex")
+    ]
     if not jobs:
         return []
     with tempfile.TemporaryDirectory() as scratch:
@@ -28,9 +29,16 @@ def check(entries: list[dict]) -> list[dict]:
         manifest_path = scratch_path / "manifest.json"
         jobs_path.write_text(json.dumps(jobs))
         subprocess.run(
-            ["node", str(ROOT / "src" / "render_math.cjs"), str(jobs_path),
-             str(scratch_path / "svg"), str(manifest_path)],
-            check=True, cwd=ROOT, capture_output=True,
+            [
+                "node",
+                str(ROOT / "src" / "render_math.cjs"),
+                str(jobs_path),
+                str(scratch_path / "svg"),
+                str(manifest_path),
+            ],
+            check=True,
+            cwd=ROOT,
+            capture_output=True,
         )
         return json.loads(manifest_path.read_text())["failures"]
 

@@ -33,7 +33,7 @@ def main() -> None:
                 reasons[run.reason] += 1
                 keys[run.tier.value][run.key] += 1
                 if len(samples[run.tier.value]) < 25:
-                    samples[run.tier.value].append(f"p{index+1} {run.raw_text!r} -> {run.latex!r}")
+                    samples[run.tier.value].append(f"p{index + 1} {run.raw_text!r} -> {run.latex!r}")
             # TEXT-tier runs are inlined, count them by re-walking
     print("tiers:", dict(tiers))
     print("reasons:", dict(reasons))
@@ -41,11 +41,18 @@ def main() -> None:
         print(f"\n{tier}: {tiers[tier]} occurrences, {len(keys[tier])} distinct")
         for sample in samples[tier][:20]:
             print("   ", sample)
-    Path("work/tier_census.json").write_text(json.dumps(
-        {"tiers": dict(tiers), "reasons": dict(reasons),
-         "distinct": {k: len(v) for k, v in keys.items()},
-         "top_latex": keys["latex"].most_common(40),
-         "top_vlm": keys["vlm"].most_common(40)}, indent=2))
+    Path("work/tier_census.json").write_text(
+        json.dumps(
+            {
+                "tiers": dict(tiers),
+                "reasons": dict(reasons),
+                "distinct": {k: len(v) for k, v in keys.items()},
+                "top_latex": keys["latex"].most_common(40),
+                "top_vlm": keys["vlm"].most_common(40),
+            },
+            indent=2,
+        )
+    )
 
 
 if __name__ == "__main__":

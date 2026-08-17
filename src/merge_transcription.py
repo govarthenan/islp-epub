@@ -1,6 +1,6 @@
 """Merge the per-batch transcription files into one, and report what is missing.
 
-    uv run python src/merge_transcription.py
+uv run python src/merge_transcription.py
 """
 
 from __future__ import annotations

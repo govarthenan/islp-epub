@@ -41,15 +41,14 @@ def load_candidates(path: Path) -> dict[str, str]:
 
 
 def render_svgs(candidates: dict[str, str], display: dict[str, bool]) -> dict[str, dict]:
-    jobs = [{"id": ident, "tex": latex, "display": display.get(ident, True)}
-            for ident, latex in candidates.items()]
+    jobs = [{"id": ident, "tex": latex, "display": display.get(ident, True)} for ident, latex in candidates.items()]
     jobs_path = WORK / "math_candidate_jobs.json"
     manifest_path = WORK / "math_candidate_manifest.json"
     jobs_path.write_text(json.dumps(jobs))
     subprocess.run(
-        ["node", str(ROOT / "src" / "render_math.cjs"), str(jobs_path), str(CANDIDATE_SVG),
-         str(manifest_path)],
-        check=True, cwd=ROOT,
+        ["node", str(ROOT / "src" / "render_math.cjs"), str(jobs_path), str(CANDIDATE_SVG), str(manifest_path)],
+        check=True,
+        cwd=ROOT,
     )
     payload = json.loads(manifest_path.read_text())
     (WORK / "math_render_failures.json").write_text(json.dumps(payload["failures"], indent=1))
@@ -60,8 +59,7 @@ def rasterise(svg_path: Path, target_width: int) -> Image.Image:
     document = pymupdf.open(str(svg_path))
     page = document[0]
     zoom = max(0.2, min(12.0, target_width / max(page.rect.width, 1.0)))
-    pixmap = page.get_pixmap(matrix=pymupdf.Matrix(zoom, zoom), colorspace=pymupdf.csGRAY,
-                             alpha=False)
+    pixmap = page.get_pixmap(matrix=pymupdf.Matrix(zoom, zoom), colorspace=pymupdf.csGRAY, alpha=False)
     return Image.frombytes("L", (pixmap.width, pixmap.height), pixmap.samples)
 
 
@@ -81,8 +79,7 @@ def main() -> None:
     source = Path(sys.argv[1]) if len(sys.argv) > 1 else WORK / "math_transcription.json"
     candidates = load_candidates(source)
     jobs = {job["id"]: job for job in json.loads((WORK / "math_jobs_vlm.json").read_text())}
-    display = {ident: jobs.get(ident, {}).get("kind", "display") == "display"
-               for ident in candidates}
+    display = {ident: jobs.get(ident, {}).get("kind", "display") == "display" for ident in candidates}
 
     print(f"typesetting {len(candidates)} candidates ...", flush=True)
     manifest = render_svgs(candidates, display)
@@ -96,13 +93,11 @@ def main() -> None:
         original = Image.open(crop_path).convert("L")
         scale = min(1.0, MAX_WIDTH / original.width)
         if scale < 1.0:
-            original = original.resize(
-                (int(original.width * scale), int(original.height * scale)), Image.LANCZOS)
+            original = original.resize((int(original.width * scale), int(original.height * scale)), Image.LANCZOS)
         rendered = rasterise(CANDIDATE_SVG / entry["file"], original.width)
         if rendered.width > MAX_WIDTH:
             factor = MAX_WIDTH / rendered.width
-            rendered = rendered.resize(
-                (MAX_WIDTH, max(1, int(rendered.height * factor))), Image.LANCZOS)
+            rendered = rendered.resize((MAX_WIDTH, max(1, int(rendered.height * factor))), Image.LANCZOS)
         compose(original, rendered).save(COMPARE / f"{ident}.png", optimize=True)
         built += 1
 

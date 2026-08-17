@@ -24,8 +24,8 @@ from islp.pagemodel import load_page  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "assets"
-SLICE_PAGE = 84   # zero based: printed page 75, the t-statistic, a tall fraction
-MASK_PAGE = 80    # zero based: printed page 71, a fraction set inside a sentence
+SLICE_PAGE = 84  # zero based: printed page 75, the t-statistic, a tall fraction
+MASK_PAGE = 80  # zero based: printed page 71, a fraction set inside a sentence
 
 
 def save(data: bytes, name: str) -> None:
@@ -79,8 +79,7 @@ def main() -> None:
     line, run = pick_in_sentence(page)
     grown, foreign = expand_math_bbox(page, run.bbox, [line.baseline], run.chars)
     save(render_crop(pdf[MASK_PAGE], grown, 300, pad=1), "crop-4-unmasked.png")
-    save(render_crop(pdf[MASK_PAGE], grown, 300, pad=1, foreign_ink=foreign),
-         "crop-5-masked.png")
+    save(render_crop(pdf[MASK_PAGE], grown, 300, pad=1, foreign_ink=foreign), "crop-5-masked.png")
 
 
 if __name__ == "__main__":
