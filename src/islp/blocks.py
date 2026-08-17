@@ -128,14 +128,40 @@ def classify_line(line: VLine) -> Kind:
     if solid and all(c.colour == COLOUR_ACCENT for c in solid) and line.x0 < 95 and len(text) < 70:
         return Kind.LAB_HEADING
 
-    if _has_extension(line):
-        return Kind.DISPLAY
-    if line.x0 >= DISPLAY_MIN_X and not has_prose_word(line) and not LIST_MARKER_RE.match(text):
-        if math_fraction(line) > 0.6 or _all_dots(line):
+    # A display equation is set away from both paragraph margins and is nearly all
+    # mathematics. Small words inside one ("and", "if", "otherwise") are allowed, which is why
+    # the test is a proportion rather than the absence of prose.
+    indented_past_margins = (line.x0 >= DISPLAY_MIN_X
+                             and abs(line.x0 - PARA_INDENT) > 1.6)
+    if indented_past_margins and not LIST_MARKER_RE.match(text):
+        share = math_fraction(line)
+        if share > 0.6 or _all_dots(line) or (_has_extension(line) and share > 0.35):
             return Kind.DISPLAY
     if size < 9.5 and line.y0 > 520 and not has_prose_word(line):
         return Kind.OTHER
     return Kind.PROSE
+
+
+AUXILIARY_BASELINE_GAP = 10.0
+FULL_WIDTH = 200.0
+
+
+def _drop_auxiliary_math_lines(tagged: list[TaggedLine]) -> None:
+    """A fraction or a large operator set inside a paragraph puts its numerator, denominator
+    and limits on baselines of their own. Those fragments look exactly like little display
+    equations, so they are matched back to the paragraph line they belong to and dropped: the
+    cropped image of that line's mathematics already contains them."""
+    hosts = [entry.line for entry in tagged
+             if entry.kind == Kind.PROSE and entry.line.x1 - entry.line.x0 > FULL_WIDTH]
+    for entry in tagged:
+        if entry.kind != Kind.DISPLAY:
+            continue
+        for host in hosts:
+            if abs(host.baseline - entry.line.baseline) >= AUXILIARY_BASELINE_GAP:
+                continue
+            if host.x0 - 2 <= entry.line.x0 and entry.line.x1 <= host.x1 + 2:
+                entry.kind = Kind.OTHER
+                break
 
 
 def tag_lines(page: Page) -> list[TaggedLine]:
@@ -154,6 +180,7 @@ def tag_lines(page: Page) -> list[TaggedLine]:
                 entry.is_new_paragraph = True
             previous_prose = line
         tagged.append(entry)
+    _drop_auxiliary_math_lines(tagged)
     return tagged
 
 

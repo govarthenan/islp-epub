@@ -38,6 +38,7 @@ class MathItem:
     display: bool
     key: str
     meta_guess: str = ""
+    foreign_ink: list = field(default_factory=list)
     eq_number: str = ""
     context: str = ""
     chapter: str = ""
@@ -214,15 +215,21 @@ def code_block_text(lines: list[VLine]) -> str:
 # ------------------------------------------------------------------------------------------
 
 def _line_html(line: VLine, rules, registry: MathRegistry, chapter: str,
-               context: str) -> tuple[str, list[str]]:
+               context: str, page: Page | None = None) -> tuple[str, list[str]]:
+    from .figures import expand_math_bbox
+
     result = build_inline(line.chars, rules)
     ids: list[str] = []
     for run in result.math_runs:
+        bbox = run.bbox
+        foreign: list = []
+        if run.tier.value == "vlm" and page is not None:
+            bbox, foreign = expand_math_bbox(page, bbox, [line.baseline], run.chars)
         ident = registry.add(
             tier=run.tier.value,
             latex=run.latex,
             page=line.page,
-            bbox=run.bbox,
+            bbox=bbox,
             raw_text=run.raw_text,
             reason=run.reason,
             display=False,
@@ -230,6 +237,7 @@ def _line_html(line: VLine, rules, registry: MathRegistry, chapter: str,
             context=context,
             chapter=chapter,
         )
+        registry.items[ident].foreign_ink = foreign
         ids.append(ident)
     html = MATH_PLACEHOLDER_RE.sub(lambda m: "{{MATH:" + ids[int(m.group(1))] + "}}", result.html)
     return html, ids
@@ -349,13 +357,13 @@ def assemble_document(pdf_path: Path, progress: bool = False,
 
         for block in blocks:
             if block.kind == "margin":
-                parts = [_line_html(line, rules, registry, chapter.ident, previous_context)[0]
+                parts = [_line_html(line, rules, registry, chapter.ident, previous_context, page)[0]
                          for line in block.lines]
                 pending_margins.append(_sanitize(join_lines(parts, vocabulary)))
                 continue
 
             if block.kind == "heading":
-                parts = [_line_html(line, rules, registry, chapter.ident, "")[0] for line in block.lines]
+                parts = [_line_html(line, rules, registry, chapter.ident, "", page)[0] for line in block.lines]
                 text = _sanitize(" ".join(parts))
                 if block.meta.get("heading_kind") == "chapter_number":
                     continue
@@ -380,21 +388,26 @@ def assemble_document(pdf_path: Path, progress: bool = False,
                     if any(run.tier != Tier.TEXT for run in result.math_runs):
                         complete = False
                     guesses.append(_strip_tags(result.html))
+                from .figures import expand_math_bbox
+                display_chars = [char for ln in block.lines for char in ln.chars]
+                display_bbox, display_foreign = expand_math_bbox(
+                    page, block.bbox, [ln.baseline for ln in block.lines], display_chars)
                 ident = registry.add(
-                    tier="display", latex="", page=page.index, bbox=block.bbox,
+                    tier="display", latex="", page=page.index, bbox=display_bbox,
                     raw_text=raw, reason="display-equation", display=True,
                     key=f"disp-{page.index}-{round(block.bbox[1])}",
                     eq_number=block.eq_number, context=previous_context[-600:],
                     chapter=chapter.ident,
                 )
                 registry.items[ident].meta_guess = "\n".join(guesses) if complete else ""
+                registry.items[ident].foreign_ink = display_foreign
                 chapter.blocks.append(DocBlock(kind="display", math_id=ident, page=page.index,
-                                               eq_number=block.eq_number, bbox=block.bbox))
+                                               eq_number=block.eq_number, bbox=display_bbox))
                 last_para = None
                 continue
 
             if block.kind == "caption":
-                parts = [_line_html(line, rules, registry, chapter.ident, "")[0] for line in block.lines]
+                parts = [_line_html(line, rules, registry, chapter.ident, "", page)[0] for line in block.lines]
                 text = _sanitize(" ".join(parts))
                 caption_type = block.meta.get("caption_type", "figure")
                 region = region_by_number.get((caption_type, block.number))
@@ -408,7 +421,7 @@ def assemble_document(pdf_path: Path, progress: bool = False,
             if block.kind == "para":
                 parts = []
                 for line in block.lines:
-                    fragment, _ = _line_html(line, rules, registry, chapter.ident, previous_context)
+                    fragment, _ = _line_html(line, rules, registry, chapter.ident, previous_context, page)
                     parts.append(fragment)
                 html = _sanitize(join_lines(parts, vocabulary))
                 if block.list_marker:

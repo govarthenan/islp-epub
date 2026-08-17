@@ -211,21 +211,33 @@ def chars_to_latex(
                 continue
             return None
 
-        script = _script_of(char, base_size, baseline)
-        if script != 0:
-            run_indices = [index]
-            index += 1
-            while index < len(chars) and _script_of(chars[index], base_size, baseline) == script:
-                run_indices.append(index)
-                index += 1
-            run = [chars[i] for i in run_indices]
-            inner_size, inner_baseline = _dominant(run)
-            inner_accents = {position: accents[i] for position, i in enumerate(run_indices) if i in accents}
-            inner = chars_to_latex(run, inner_size, inner_baseline, inner_accents)
-            if inner is None:
-                return None
+        if _script_of(char, base_size, baseline) != 0:
+            # A base can carry a subscript, then a superscript, then more subscript, because
+            # the characters are read left to right. LaTeX allows only one of each, so the
+            # pieces are collected and emitted once: _{j,\lambda}^{R}, not _{j}^{R}_{,\lambda}.
+            subscripts: list[str] = []
+            superscripts: list[str] = []
+            while index < len(chars):
+                script = _script_of(chars[index], base_size, baseline)
+                if script == 0:
+                    break
+                run_indices = []
+                while index < len(chars) and _script_of(chars[index], base_size, baseline) == script:
+                    run_indices.append(index)
+                    index += 1
+                run = [chars[i] for i in run_indices]
+                inner_size, inner_baseline = _dominant(run)
+                inner_accents = {position: accents[i]
+                                 for position, i in enumerate(run_indices) if i in accents}
+                inner = chars_to_latex(run, inner_size, inner_baseline, inner_accents)
+                if inner is None:
+                    return None
+                (superscripts if script == 1 else subscripts).append(inner.strip())
             flush_style()
-            out.append(("^" if script == 1 else "_") + "{" + inner.strip() + "}")
+            if subscripts:
+                out.append("_{" + "".join(subscripts) + "}")
+            if superscripts:
+                out.append("^{" + "".join(superscripts) + "}")
             continue
 
         atom = _latex_atom(char)
@@ -285,16 +297,24 @@ def _math_html(chars: list[Char], base_size: float, baseline: float) -> str:
                 out.append(escape_html(NEGATED[following]))
                 index += 2
                 continue
-        script = _script_of(char, base_size, baseline)
-        if script != 0:
-            run = [char]
-            index += 1
-            while index < len(chars) and _script_of(chars[index], base_size, baseline) == script:
-                run.append(chars[index])
-                index += 1
-            inner_size, inner_baseline = _dominant(run)
-            tag = "sup" if script == 1 else "sub"
-            out.append(f"<{tag}>{_math_html(run, inner_size, inner_baseline)}</{tag}>")
+        if _script_of(char, base_size, baseline) != 0:
+            subscript_parts: list[str] = []
+            superscript_parts: list[str] = []
+            while index < len(chars):
+                script = _script_of(chars[index], base_size, baseline)
+                if script == 0:
+                    break
+                run = []
+                while index < len(chars) and _script_of(chars[index], base_size, baseline) == script:
+                    run.append(chars[index])
+                    index += 1
+                inner_size, inner_baseline = _dominant(run)
+                rendered = _math_html(run, inner_size, inner_baseline)
+                (superscript_parts if script == 1 else subscript_parts).append(rendered)
+            if subscript_parts:
+                out.append("<sub>" + "".join(subscript_parts) + "</sub>")
+            if superscript_parts:
+                out.append("<sup>" + "".join(superscript_parts) + "</sup>")
             continue
         text = escape_html(fix_unicode(char.c))
         if char.role == Role.MATH_VAR and char.c.isalpha():

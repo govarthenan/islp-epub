@@ -49,7 +49,8 @@ def main() -> None:
             continue  # already solved deterministically
         number, title = chapter_titles.get(item.chapter, ("", ""))
         crop = CROPS / f"{ident}.png"
-        crop.write_bytes(render_crop(pdf[item.page], item.bbox, MATH_DPI, pad=1.0))
+        crop.write_bytes(render_crop(pdf[item.page], item.bbox, MATH_DPI, pad=1.0,
+                                     foreign_ink=item.foreign_ink))
         jobs.append({
             "id": ident,
             "image": str(crop.relative_to(ROOT)),

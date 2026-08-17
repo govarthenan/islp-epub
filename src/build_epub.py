@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 
 import pymupdf
-from PIL import Image
+from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -58,9 +58,24 @@ def pixmap_to_png(pix: pymupdf.Pixmap, levels: int = GREY_LEVELS) -> bytes:
     return buffer.getvalue()
 
 
-def render_crop(pdf_page: pymupdf.Page, bbox, dpi: int, pad: float = 1.0) -> bytes:
+def render_crop(pdf_page: pymupdf.Page, bbox, dpi: int, pad: float = 1.0,
+                foreign_ink: list | None = None) -> bytes:
     box = (bbox[0] - pad, bbox[1] - pad, bbox[2] + pad, bbox[3] + pad)
-    return pixmap_to_png(render_region(pdf_page, box, dpi=dpi))
+    pix = render_region(pdf_page, box, dpi=dpi)
+    image = Image.frombytes("L", (pix.width, pix.height), pix.samples)
+    if foreign_ink:
+        scale = dpi / 72.0
+        painter = ImageDraw.Draw(image)
+        for fx0, fy0, fx1, fy1 in foreign_ink:
+            painter.rectangle(
+                [((fx0 - box[0]) * scale, (fy0 - box[1]) * scale),
+                 ((fx1 - box[0]) * scale, (fy1 - box[1]) * scale)],
+                fill=255,
+            )
+    quantised = image.quantize(colors=GREY_LEVELS, method=Image.MEDIANCUT)
+    buffer = io.BytesIO()
+    quantised.save(buffer, "PNG", optimize=True)
+    return buffer.getvalue()
 
 
 # ---------------------------------------------------------------------------------------

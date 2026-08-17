@@ -161,3 +161,50 @@ So the friend's diagnosis was right, but only for the third group. Roughly two t
 character stream.
 
 **Status.** SUCCESS.
+
+---
+
+## 2026-08-17 — Entry 008: Cropping mathematics correctly (the hardest part so far)
+
+**Attempt.** Cut each expression that needs a vision model out of the page as an image.
+
+**What went wrong, in four rounds.**
+
+*Round 1 — boxes too small.* A math run's box came from one text line, but a fraction puts
+its numerator, its rule and its denominator on three different baselines, which the extractor
+files as three separate lines. Crops showed the middle of a fraction with the top and bottom
+sliced off. **FAILED.**
+
+*Round 2 — boxes too greedy.* Growing the box to include neighbouring mathematics glyphs
+pulled in the equation number `(3.4)` from the following paragraph line, because `(3.4)` is
+set in a Computer Modern font and so counts as mathematics. One crop contained two lines of
+prose. **FAILED.**
+
+*Round 3 — clipping.* Clamping the box to the neighbouring lines' baselines removed the
+prose but also cut off the denominator, because an inline fraction genuinely reaches into the
+vertical band of the line below it. Two expressions on one line also swallowed each other.
+**FAILED.**
+
+*Round 4 — what worked.* Three separate rules, each fixing one failure:
+1. **Connected, mathematics-only growth.** A glyph joins the box only if it touches the box
+   already found, is a mathematics glyph, and does not sit on the expression's own baseline
+   (so a box can never creep sideways into the next expression on the same line).
+2. **Auxiliary lines are matched back to their host.** A fragment such as a lone `n` or
+   `i=1` that lies within 10 pt of a full-width paragraph line, and inside that line
+   horizontally, is not a display equation; it belongs to that paragraph's inline
+   mathematics and is dropped from the block stream.
+3. **Foreign ink is painted out rather than clipped.** Whatever else falls inside the
+   rectangle is covered with white before the crop is saved. Only prose is painted, plus
+   mathematics that sits on a prose line more than 6 pt from the expression's own baselines,
+   so a glyph of the expression can never be erased.
+
+**One more trap.** The first version of the painting erased half of every summation limit.
+The extractor reports each character's **full em box**, about 14.5 pt tall for 10 pt text,
+not the ink. Painting that box out covered everything between the lines. Painting only the
+band from `baseline - 0.78 x size` to `baseline + 0.24 x size` fixed it.
+
+**Status.** SUCCESS after four rounds. Also fixed here: a display equation may contain a
+small word ("and", "if", "otherwise"), so the display test became a proportion of
+mathematics rather than the absence of prose; and interleaved sub/superscripts
+(`_{j}^{R}_{,\lambda}`) are now merged into a single `_{...}^{...}` pair, which removed the
+only LaTeX rendering failure in the book.
