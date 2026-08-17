@@ -19,4 +19,5 @@ src = ["src"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
-ignore = ["E501"]
+# SIM108 turns a commented if/else into an unreadable one-liner; the comment is the point.
+ignore = ["E501", "SIM108"]
