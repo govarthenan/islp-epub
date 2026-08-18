@@ -15,9 +15,18 @@ This project takes the PDF apart and puts the book back together as real text �
 that reflow, mathematics that scales with the font, tables that wrap, and 3,686 working
 cross-references. The output is `output/ISLP.epub`, and it is committed to this repository.
 
-> **Read the story first.** [`index.html`](index.html) walks through how the conversion
-> works, with pictures of each stage — including the parts that failed and why.
-> [`journal/JOURNAL.md`](journal/JOURNAL.md) is the long-form engineering log.
+## Start here
+
+Two documents explain the problem and the answer. Read either one before the code.
+
+| | What it gives you | Length |
+|---|---|---|
+| **[The conversion, explained →](docs/conversion-story.pdf)** | Why a PDF textbook fails on a small screen, and how each of the six stages fixes it. Pictures of the four cropping attempts, including the two that failed. **GitHub shows this PDF in the browser** — no download needed. | 10 pages |
+| **[Engineering journal →](journal/JOURNAL.md)** | The same work in order, as it happened: 18 dated entries, with the dead ends and the corrections left in. | 498 lines |
+
+The PDF is rendered from [`index.html`](index.html), the interactive version of the same
+story. Read it live at **[govarthenan.github.io/islp-epub](https://govarthenan.github.io/islp-epub/)**.
+Opening `index.html` from the file list here shows raw markup, not the page.
 
 ---
 
@@ -30,8 +39,10 @@ James, Daniela Witten, Trevor Hastie, Robert Tibshirani and Jonathan Taylor
 To run the pipeline, download the PDF yourself and put it in the repository root as
 `ISLP_website.pdf`. It is in `.gitignore` and it will never be committed.
 
+Download it from the site, then:
+
 ```bash
-curl -o ISLP_website.pdf https://www.statlearning.com/  # see the site for the current link
+mv ~/Downloads/ISLP_website.pdf .
 ```
 
 ---
@@ -54,6 +65,7 @@ uv run python src/extract_math_jobs.py      # crop every expression a model must
 # transcription and verification write work/math_final.json
 uv run python src/build_epub.py --out ISLP.epub
 uv run python src/build_index.py            # regenerate the story page
+./src/make_story_pdf.sh                     # and its PDF, for reading on GitHub
 ```
 
 ---
@@ -127,6 +139,7 @@ src/               pipeline entry points and checks
 src/workflows/     multi-agent verification workflow scripts
 work/              intermediate artefacts, and the audit records
 output/            the finished EPUB
+docs/              the story page as a PDF, for reading on GitHub
 journal/           the engineering log
 assets/            illustrations for the story page
 ```
