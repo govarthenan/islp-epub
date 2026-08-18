@@ -338,6 +338,7 @@ def _line_html(
         )
         registry.items[ident].foreign_ink = foreign
         ids.append(ident)
+
     def substitute(match: re.Match) -> str:
         ident = ids[int(match.group(1))]
         return "{{MATH:" + ident + "}}" if ident else ""
@@ -544,13 +545,16 @@ def assemble_document(pdf_path: Path, progress: bool = False, first: int = 0, la
         for block in blocks:
             if block.kind == "margin":
                 parts = [
-                    _line_html(line, rules, registry, chapter.ident, previous_context, page, display_boxes)[0] for line in block.lines
+                    _line_html(line, rules, registry, chapter.ident, previous_context, page, display_boxes)[0]
+                    for line in block.lines
                 ]
                 pending_margins.append(_sanitize(join_lines(parts, vocabulary)))
                 continue
 
             if block.kind == "heading":
-                parts = [_line_html(line, rules, registry, chapter.ident, "", page, display_boxes)[0] for line in block.lines]
+                parts = [
+                    _line_html(line, rules, registry, chapter.ident, "", page, display_boxes)[0] for line in block.lines
+                ]
                 text = _sanitize(" ".join(parts))
                 if block.meta.get("heading_kind") == "chapter_number":
                     continue
@@ -635,7 +639,9 @@ def assemble_document(pdf_path: Path, progress: bool = False, first: int = 0, la
                 continue
 
             if block.kind == "footnote":
-                parts = [_line_html(line, rules, registry, chapter.ident, "", page, display_boxes)[0] for line in block.lines]
+                parts = [
+                    _line_html(line, rules, registry, chapter.ident, "", page, display_boxes)[0] for line in block.lines
+                ]
                 html = _sanitize(join_lines(parts, vocabulary))
                 if html:
                     chapter.blocks.append(
@@ -646,7 +652,9 @@ def assemble_document(pdf_path: Path, progress: bool = False, first: int = 0, la
                 continue
 
             if block.kind == "caption":
-                parts = [_line_html(line, rules, registry, chapter.ident, "", page, display_boxes)[0] for line in block.lines]
+                parts = [
+                    _line_html(line, rules, registry, chapter.ident, "", page, display_boxes)[0] for line in block.lines
+                ]
                 text = _sanitize(" ".join(parts))
                 caption_type = block.meta.get("caption_type", "figure")
                 region = region_by_number.get((caption_type, block.number))
@@ -666,7 +674,9 @@ def assemble_document(pdf_path: Path, progress: bool = False, first: int = 0, la
             if block.kind == "para":
                 parts = []
                 for line in block.lines:
-                    fragment, _ = _line_html(line, rules, registry, chapter.ident, previous_context, page, display_boxes)
+                    fragment, _ = _line_html(
+                        line, rules, registry, chapter.ident, previous_context, page, display_boxes
+                    )
                     parts.append(fragment)
                 html = _sanitize(join_lines(parts, vocabulary))
                 if block.list_marker:

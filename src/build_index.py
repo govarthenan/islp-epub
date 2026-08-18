@@ -206,8 +206,8 @@ def build() -> str:
     audit_block = ""
     if checks:
         cards = "".join(
-            f'''<div class="check"><div class="check-value">{value}</div>
-             <div class="check-label">{escape(label)}</div><p>{escape(note)}</p></div>'''
+            f"""<div class="check"><div class="check-value">{value}</div>
+             <div class="check-label">{escape(label)}</div><p>{escape(note)}</p></div>"""
             for value, label, note in checks
         )
         audit_block = (
