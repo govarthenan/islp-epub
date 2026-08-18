@@ -25,10 +25,6 @@ work/test_svg/
 # Source book: supply your own copy from statlearning.com. Never commit it.
 ISLP_website.pdf
 
-# Lock files: resolved fresh from pyproject.toml and package.json.
-uv.lock
-package-lock.json
-
 # Tool caches and editor state.
 .ruff_cache/
 .idea/
