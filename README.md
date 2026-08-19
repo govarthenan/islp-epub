@@ -21,7 +21,7 @@ Two documents explain the problem and the answer. Read either one before the cod
 
 | | What it gives you | Length |
 |---|---|---|
-| **[The conversion, explained →](docs/conversion-story.pdf)** | Why a PDF textbook fails on a small screen, and how each of the six stages fixes it. Pictures of the four cropping attempts, including the two that failed. **GitHub shows this PDF in the browser** — no download needed. | 10 pages |
+| **[The conversion, explained →](docs/conversion-story.pdf)** | Why a PDF textbook fails on a small screen, and how each of the six stages fixes it. Pictures of the four cropping attempts, including the three that failed. **GitHub shows this PDF in the browser** — no download needed. | 10 pages |
 | **[Engineering journal →](docs/JOURNAL.md)** | The same work in order, as it happened: 18 dated entries, with the dead ends and the corrections left in. | 498 lines |
 
 The PDF is rendered from [`index.html`](index.html), the interactive version of the same

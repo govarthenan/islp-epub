@@ -258,23 +258,27 @@ and its denominator sit on three different baselines, and the text layer files t
 unrelated lines.</p>
 <div class="gallery">
   <figure class="shot bad">
-      <img src="assets/crop-1-line-box.png" alt="&lt;b&gt;Attempt 1.&lt;/b&gt; Box taken from the text line. The fraction is sliced through the middle."/>
+      <img src="assets/crop-1-line-box.png" alt="Attempt 1. Box taken from the text line. The fraction is sliced through the middle."/>
       <figcaption><b>Attempt 1.</b> Box taken from the text line. The fraction is sliced through the middle.</figcaption>
     </figure>
   <figure class="shot bad">
-      <img src="assets/crop-2-greedy.png" alt="&lt;b&gt;Attempt 2.&lt;/b&gt; Box grown greedily. It swallows the equation number and the next paragraph."/>
+      <img src="assets/crop-2-greedy.png" alt="Attempt 2. Box grown greedily. It swallows the equation number and the next paragraph."/>
       <figcaption><b>Attempt 2.</b> Box grown greedily. It swallows the equation number and the next paragraph.</figcaption>
     </figure>
+  <figure class="shot bad">
+      <img src="assets/crop-3-clamped.png" alt="Attempt 3. Box clamped to the baselines above and below. The clamp lands inside the expression: here it cuts the numerator off."/>
+      <figcaption><b>Attempt 3.</b> Box clamped to the baselines above and below. The clamp lands inside the expression: here it cuts the numerator off.</figcaption>
+    </figure>
   <figure class="shot good">
-      <img src="assets/crop-3-grown.png" alt="&lt;b&gt;Attempt 4.&lt;/b&gt; Growth restricted to connected mathematics glyphs, never sideways along the base line."/>
+      <img src="assets/crop-4-grown.png" alt="Attempt 4. Growth restricted to connected mathematics glyphs, never sideways along the base line."/>
       <figcaption><b>Attempt 4.</b> Growth restricted to connected mathematics glyphs, never sideways along the base line.</figcaption>
     </figure>
   <figure class="shot bad">
-      <img src="assets/crop-4-unmasked.png" alt="A fraction inside a sentence. No rectangle can hold it without also catching the line below."/>
+      <img src="assets/crop-5-unmasked.png" alt="A fraction inside a sentence. No rectangle can hold it without also catching the line below."/>
       <figcaption>A fraction inside a sentence. No rectangle can hold it without also catching the line below.</figcaption>
     </figure>
   <figure class="shot good">
-      <img src="assets/crop-5-masked.png" alt="&lt;b&gt;The answer.&lt;/b&gt; Keep the rectangle, paint the foreign ink out. Only prose is painted, so no glyph of the expression can be lost."/>
+      <img src="assets/crop-6-masked.png" alt="The answer. Keep the rectangle, paint the foreign ink out. Only prose is painted, so no glyph of the expression can be lost."/>
       <figcaption><b>The answer.</b> Keep the rectangle, paint the foreign ink out. Only prose is painted, so no glyph of the expression can be lost.</figcaption>
     </figure>
 </div>
@@ -516,7 +520,7 @@ uv run python src/validate_epub.py output/ISLP.epub</pre>
 
 <footer>
   <p>Educational and experimental only. No commercial use. All rights remain with the authors and publisher.</p>
-  <p>Source: ISLP_website.pdf, first printing 5 July 2023, from statlearning.com. Built 2026-08-17.</p>
+  <p>Source: ISLP_website.pdf, first printing 5 July 2023, from statlearning.com. Built 2026-08-19.</p>
 </footer>
 
 </div>

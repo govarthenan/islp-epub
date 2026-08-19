@@ -9,6 +9,7 @@ work/math_verification.json for the numbers, so the page never drifts from the b
 from __future__ import annotations
 
 import json
+import re
 import sys
 from datetime import date
 from html import escape
@@ -126,8 +127,12 @@ def attempt_card(attempt: dict) -> str:
 
 
 def figure(src: str, caption: str, tone: str = "") -> str:
+    """One picture with its caption. The caption may carry markup; the alt text may not,
+    so the tags are stripped rather than escaped -- escaping made a reader announce a
+    literal "<b>"."""
+    alt = re.sub(r"<[^>]+>", "", caption)
     return f'''<figure class="shot {tone}">
-      <img src="{src}" alt="{escape(caption)}"/>
+      <img src="{src}" alt="{escape(alt)}"/>
       <figcaption>{caption}</figcaption>
     </figure>'''
 
@@ -399,9 +404,10 @@ unrelated lines.</p>
 <div class="gallery">
   {figure("assets/crop-1-line-box.png", "<b>Attempt 1.</b> Box taken from the text line. The fraction is sliced through the middle.", "bad")}
   {figure("assets/crop-2-greedy.png", "<b>Attempt 2.</b> Box grown greedily. It swallows the equation number and the next paragraph.", "bad")}
-  {figure("assets/crop-3-grown.png", "<b>Attempt 4.</b> Growth restricted to connected mathematics glyphs, never sideways along the base line.", "good")}
-  {figure("assets/crop-4-unmasked.png", "A fraction inside a sentence. No rectangle can hold it without also catching the line below.", "bad")}
-  {figure("assets/crop-5-masked.png", "<b>The answer.</b> Keep the rectangle, paint the foreign ink out. Only prose is painted, so no glyph of the expression can be lost.", "good")}
+  {figure("assets/crop-3-clamped.png", "<b>Attempt 3.</b> Box clamped to the baselines above and below. The clamp lands inside the expression: here it cuts the numerator off.", "bad")}
+  {figure("assets/crop-4-grown.png", "<b>Attempt 4.</b> Growth restricted to connected mathematics glyphs, never sideways along the base line.", "good")}
+  {figure("assets/crop-5-unmasked.png", "A fraction inside a sentence. No rectangle can hold it without also catching the line below.", "bad")}
+  {figure("assets/crop-6-masked.png", "<b>The answer.</b> Keep the rectangle, paint the foreign ink out. Only prose is painted, so no glyph of the expression can be lost.", "good")}
 </div>
 
 <h2>Every attempt, in order</h2>

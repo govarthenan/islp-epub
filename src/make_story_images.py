@@ -2,8 +2,9 @@
 
     uv run python src/make_story_images.py
 
-Renders the same inline fraction three ways: the box taken from one text line, a box grown
-greedily, and the box the finished pipeline produces.
+Renders the same inline fraction four ways -- the box taken from one text line, a box grown
+greedily, a box clamped to the neighbouring baselines, and the box the finished pipeline
+produces -- then the masking pair that shows why a rectangle alone is not enough.
 """
 
 from __future__ import annotations
@@ -64,6 +65,18 @@ def pick_in_sentence(page):
     return None
 
 
+def clamp_to_neighbours(page, line, bbox):
+    """Attempt 3: stop the box at the baselines of the lines above and below.
+
+    The extractor files a fraction's numerator, rule and denominator as three separate
+    lines, so "the line below" is the denominator's own baseline and the cut lands inside
+    the expression.
+    """
+    above = max((v.baseline for v in page.lines if v.baseline < line.baseline), default=bbox[1])
+    below = min((v.baseline for v in page.lines if v.baseline > line.baseline), default=bbox[3])
+    return (bbox[0], max(bbox[1], above), bbox[2], min(bbox[3], below))
+
+
 def main() -> None:
     ASSETS.mkdir(exist_ok=True)
     pdf = pymupdf.open(ROOT / "ISLP_website.pdf")
@@ -74,14 +87,16 @@ def main() -> None:
     greedy = (run.bbox[0] - 4, run.bbox[1] - 22, run.bbox[2] + 60, run.bbox[3] + 22)
     save(render_crop(pdf[SLICE_PAGE], greedy, 300, pad=1), "crop-2-greedy.png")
     grown, _ = expand_math_bbox(page, run.bbox, [line.baseline], run.chars)
-    save(render_crop(pdf[SLICE_PAGE], grown, 300, pad=1), "crop-3-grown.png")
+    clamped = clamp_to_neighbours(page, line, grown)
+    save(render_crop(pdf[SLICE_PAGE], clamped, 300, pad=1), "crop-3-clamped.png")
+    save(render_crop(pdf[SLICE_PAGE], grown, 300, pad=1), "crop-4-grown.png")
 
     page = load_page(pdf, MASK_PAGE)
     assemble(page)  # fills page.auxiliary, the fragment-to-host assignment
     line, run = pick_in_sentence(page)
     grown, foreign = inline_math_bbox(page, line, run.chars, page.drawing_rects)
-    save(render_crop(pdf[MASK_PAGE], grown, 300, pad=1), "crop-4-unmasked.png")
-    save(render_crop(pdf[MASK_PAGE], grown, 300, pad=1, foreign_ink=foreign), "crop-5-masked.png")
+    save(render_crop(pdf[MASK_PAGE], grown, 300, pad=1), "crop-5-unmasked.png")
+    save(render_crop(pdf[MASK_PAGE], grown, 300, pad=1, foreign_ink=foreign), "crop-6-masked.png")
 
 
 if __name__ == "__main__":
