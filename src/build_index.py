@@ -2,7 +2,7 @@
 
     uv run python src/build_index.py
 
-Reads journal/attempts.json for the narrative and work/build_stats.json plus
+Reads docs/attempts.json for the narrative and work/build_stats.json plus
 work/math_verification.json for the numbers, so the page never drifts from the build.
 """
 
@@ -133,7 +133,7 @@ def figure(src: str, caption: str, tone: str = "") -> str:
 
 
 def build() -> str:
-    data = load(ROOT / "journal" / "attempts.json", {})
+    data = load(ROOT / "docs" / "attempts.json", {})
     stats = load(WORK / "build_stats.json", {})
     verification = load(WORK / "math_verification.json", {})
 
