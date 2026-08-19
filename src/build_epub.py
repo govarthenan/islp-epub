@@ -4,7 +4,7 @@
 
 Stages:
   1. assemble the document model from the PDF
-  2. render figures and tables to 300 ppi grayscale PNG
+  2. render figures and tables to 300 ppi PNG, in colour
   3. render mathematics: LaTeX to SVG where LaTeX is known, cropped PNG otherwise
   4. write XHTML and package the EPUB
 """
@@ -37,6 +37,12 @@ OUTPUT = ROOT / "output"
 FIGURE_DPI = 300
 MATH_DPI = 400
 GREY_LEVELS = 16
+# The book plots one series in orange (152, 65, 0) and the next in blue (0, 104, 180). The
+# two have almost the same luminance, 84 and 82 of 255, so a grey rendering paints them the
+# same shade and the reader cannot tell the series apart. Figures therefore keep their
+# colour, at a cost of about a fifth of the image bytes. A grey screen converts them itself,
+# which is no worse than what a grey rendering gave it.
+COLOUR_LEVELS = 64
 BODY_POINT_SIZE = 10.0  # the book's body size; used to convert PDF points to em
 
 MATH_TOKEN_RE = re.compile(r"\{\{MATH:(m\d+)\}\}")
@@ -52,7 +58,7 @@ AUTHORS = ["Gareth James", "Daniela Witten", "Trevor Hastie", "Robert Tibshirani
 
 
 def pixmap_to_png(pix: pymupdf.Pixmap, levels: int = GREY_LEVELS) -> bytes:
-    image = Image.frombytes("L", (pix.width, pix.height), pix.samples)
+    image = Image.frombytes("RGB" if pix.n >= 3 else "L", (pix.width, pix.height), pix.samples)
     if levels and levels < 256:
         image = image.quantize(colors=levels, method=Image.MEDIANCUT)
     buffer = io.BytesIO()
@@ -60,19 +66,26 @@ def pixmap_to_png(pix: pymupdf.Pixmap, levels: int = GREY_LEVELS) -> bytes:
     return buffer.getvalue()
 
 
-def render_crop(pdf_page: pymupdf.Page, bbox, dpi: int, pad: float = 1.0, foreign_ink: list | None = None) -> bytes:
+def render_crop(
+    pdf_page: pymupdf.Page,
+    bbox,
+    dpi: int,
+    pad: float = 1.0,
+    foreign_ink: list | None = None,
+    colour: bool = False,
+) -> bytes:
     box = (bbox[0] - pad, bbox[1] - pad, bbox[2] + pad, bbox[3] + pad)
-    pix = render_region(pdf_page, box, dpi=dpi)
-    image = Image.frombytes("L", (pix.width, pix.height), pix.samples)
+    pix = render_region(pdf_page, box, dpi=dpi, colour=colour)
+    image = Image.frombytes("RGB" if colour else "L", (pix.width, pix.height), pix.samples)
     if foreign_ink:
         scale = dpi / 72.0
         painter = ImageDraw.Draw(image)
         for fx0, fy0, fx1, fy1 in foreign_ink:
             painter.rectangle(
                 [((fx0 - box[0]) * scale, (fy0 - box[1]) * scale), ((fx1 - box[0]) * scale, (fy1 - box[1]) * scale)],
-                fill=255,
+                fill=(255, 255, 255) if colour else 255,
             )
-    quantised = image.quantize(colors=GREY_LEVELS, method=Image.MEDIANCUT)
+    quantised = image.quantize(colors=COLOUR_LEVELS if colour else GREY_LEVELS, method=Image.MEDIANCUT)
     buffer = io.BytesIO()
     quantised.save(buffer, "PNG", optimize=True)
     return buffer.getvalue()
@@ -371,7 +384,10 @@ def main() -> None:
     document = assemble_document(PDF, progress=True, last=args.limit)
 
     pdf = pymupdf.open(PDF)
-    builder = EpubBuilder(identifier="urn:uuid:islp-python-1st-edition-reflow", title=TITLE)
+    # A urn:uuid identifier has to hold a real UUID, or a catalogue cannot key on it. This
+    # one is uuid5 of the repository URL, so every rebuild produces the same book identity
+    # and a reader keeps its bookmarks across an update.
+    builder = EpubBuilder(identifier="urn:uuid:990f1b6d-ee55-5049-8e97-87eaa392518e", title=TITLE)
     builder.authors = AUTHORS
     builder.publisher = "Springer"
     builder.source = "ISLP_website.pdf (statlearning.com), first printing July 5 2023"
@@ -380,11 +396,21 @@ def main() -> None:
         "and non-commercial use only. All rights remain with the authors and "
         "publisher."
     )
-    builder.description = "A reflowable conversion of the ISLP textbook, prepared for reading on a 7 inch e-ink screen."
+    builder.description = (
+        "A reflowable conversion of the ISLP textbook: real paragraphs, scalable mathematics "
+        "and reflowing tables, for any e-reader, tablet or phone."
+    )
+    builder.accessibility_summary = (
+        "The whole book is reflowable text, with chapter, section and index navigation. "
+        "Tables are table markup, not pictures. Mathematics is scalable SVG whose alternative "
+        "text carries the LaTeX source, so a screen reader speaks the LaTeX rather than the "
+        "expression; there is no MathML. Figures are images with a short alternative text, "
+        "followed by the printed caption as text. No audio, no video and nothing that flashes."
+    )
 
     # --- cover -------------------------------------------------------------------------
     print("2/4 rendering figures and tables ...", flush=True)
-    cover = pixmap_to_png(pdf[0].get_pixmap(dpi=170, colorspace=pymupdf.csGRAY, alpha=False), levels=16)
+    cover = pixmap_to_png(pdf[0].get_pixmap(dpi=170, colorspace=pymupdf.csRGB, alpha=False), levels=COLOUR_LEVELS)
     builder.add_resource("images/cover.png", "image/png", cover, "cover-image", "cover-image")
     builder.set_cover("cover-image")
     builder.add_document(
@@ -407,7 +433,7 @@ def main() -> None:
             if block.kind == "table" and table_key(block) in available_tables:
                 continue  # markup replaces the picture
             name = f"{block.kind}-{block.number.replace('.', '-')}-p{block.page + 1}.png"
-            data = render_crop(pdf[block.page], block.bbox, FIGURE_DPI, pad=2.0)
+            data = render_crop(pdf[block.page], block.bbox, FIGURE_DPI, pad=2.0, colour=True)
             builder.add_resource(f"images/{name}", "image/png", data, f"img-{name.replace('.', '-')}")
             figure_images[(block.page, block.kind, block.number)] = name
     print(f"    {len(figure_images)} figures and tables", flush=True)

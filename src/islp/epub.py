@@ -1,13 +1,18 @@
-"""Write an EPUB 3 package that reads well on a Kobo Libra 2.
+"""Write an EPUB 3 package that reads well on any reflowable reader.
 
-Choices made for that device:
+The book was first made for a Kobo Libra 2, but nothing here depends on that panel:
 
   * No font is embedded and no body font size is set, so the reader's own font and size
     controls keep working.
-  * Mathematics is SVG drawn in `currentColor` and sized in `em`, so it grows with the text
-    and stays correct in both light and dark mode.
-  * Figures are 300 ppi grayscale, matching the panel's 300 ppi and 16 grey levels.
-  * A toc.ncx is written next to the EPUB 3 navigation document, because Kobo still reads it.
+  * Mathematics is SVG sized in `em`, so it grows with the text. Each file carries its own
+    two-line stylesheet, so the ink follows the reader's colour scheme; an `<img>` cannot
+    inherit `currentColor` from the page that holds it.
+  * Every colour in the stylesheet is declared as a foreground and background pair, and every
+    pair has a dark-scheme counterpart. A reader that recolours the page with CSS can then
+    never leave dark text on a light block.
+  * Lengths are relative, so the layout holds from a 6 inch panel to a desktop window.
+  * A toc.ncx is written next to the EPUB 3 navigation document, because Kobo and older
+    Adobe-based readers still use it.
 """
 
 from __future__ import annotations
@@ -39,10 +44,19 @@ CONTAINER = """<?xml version="1.0" encoding="UTF-8"?>
 </container>
 """
 
-STYLESHEET = """/* ISLP - reflowable EPUB tuned for a 7 inch e-ink screen.
-   No font-family and no absolute font-size on body: the reader stays in control. */
+STYLESHEET = """/* ISLP - a reflowable EPUB that holds its shape from a 6 inch panel to a
+   desktop window. No font-family and no absolute font-size on body: the reader stays in
+   control. Lengths are relative, and no colour is set without its partner. */
 
-html { -webkit-hyphens: auto; hyphens: auto; }
+/* Four spellings of one property. Kobo and Apple Books read the -webkit- form, Adobe-based
+   readers (PocketBook, Tolino, Nook) read adobe-hyphenate, and without hyphenation a
+   justified narrow column opens rivers of white space. */
+html {
+  -webkit-hyphens: auto;
+  -epub-hyphens: auto;
+  adobe-hyphenate: auto;
+  hyphens: auto;
+}
 
 body {
   margin: 0 0.35em;
@@ -58,6 +72,8 @@ h1, h2, h3, h4, h5 {
   page-break-after: avoid;
   break-after: avoid;
   -webkit-hyphens: none;
+  -epub-hyphens: none;
+  adobe-hyphenate: none;
   hyphens: none;
 }
 
@@ -110,7 +126,9 @@ div.figure {
   page-break-inside: avoid;
   break-inside: avoid;
 }
-div.figure img { max-width: 100%; height: auto; }
+/* max-height keeps a figure inside one page on a short or landscape screen. Readers that
+   do not understand vh ignore it and fall back on the width rule. */
+div.figure img { max-width: 100%; max-height: 85vh; height: auto; }
 p.caption {
   font-size: 0.82em;
   font-style: italic;
@@ -129,7 +147,7 @@ div.codeblock {
 }
 pre {
   font-family: monospace;
-  font-size: 0.68em;
+  font-size: 0.8em;
   line-height: 1.32;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -138,12 +156,23 @@ pre {
   padding: 0.4em 0.5em;
   text-align: left;
   -webkit-hyphens: none;
+  -epub-hyphens: none;
+  adobe-hyphenate: none;
   hyphens: none;
 }
-pre.input  { border-left: 3px solid #999; background: #f4f4f4; }
+/* A background is never set without a foreground. A reader that repaints the page with its
+   own colours can then not leave dark text on a light block. */
+pre.input  { border-left: 3px solid #999; background: #f4f4f4; color: #111; }
 pre.output { border-left: 3px solid #ddd; }
 
-code { font-family: monospace; font-size: 0.88em; -webkit-hyphens: none; hyphens: none; }
+code {
+  font-family: monospace;
+  font-size: 0.88em;
+  -webkit-hyphens: none;
+  -epub-hyphens: none;
+  adobe-hyphenate: none;
+  hyphens: none;
+}
 
 /* Margin notes become small asides, since a 7 inch page has no margin to spare */
 p.marginnote {
@@ -152,9 +181,11 @@ p.marginnote {
   text-align: right;
   text-indent: 0;
   margin: 0.15em 0 0.5em;
-  color: #555;
+  opacity: 0.75;  /* quieter than the text in any theme; a fixed grey fails on a dark page */
   line-height: 1.3;
   -webkit-hyphens: none;
+  -epub-hyphens: none;
+  adobe-hyphenate: none;
   hyphens: none;
 }
 
@@ -176,6 +207,8 @@ table {
   font-size: 0.82em;
   line-height: 1.35;
   -webkit-hyphens: none;
+  -epub-hyphens: none;
+  adobe-hyphenate: none;
   hyphens: none;
 }
 th, td {
@@ -206,9 +239,21 @@ p.index-entry { text-indent: -1em; margin-left: 1em;   text-align: left; font-si
 p.index-sub   { text-indent: -1em; margin-left: 2.2em; text-align: left; font-size: 0.92em; }
 
 div.cover { text-align: center; margin: 0; padding: 0; }
-div.cover img { max-width: 100%; max-height: 100%; }
+div.cover img { max-width: 100%; max-height: 95vh; height: auto; }
 
 p.dedication { text-align: center; text-indent: 0; margin: 0.4em 0; font-style: italic; }
+
+/* Readers that repaint the page with CSS and declare a dark colour scheme - Thorium,
+   Apple Books, Calibre's viewer - get the author colours turned over here. Readers that
+   invert the whole screen instead, which is what most e-ink devices do, never match this
+   rule; they keep the light values and invert them themselves. */
+@media (prefers-color-scheme: dark) {
+  pre.input { background: #1c1c1c; color: #e6e6e6; border-left-color: #777; }
+  pre.output { border-left-color: #555; }
+  aside.footnote { border-top-color: #555; }
+  thead th { border-bottom-color: #888; }
+  tr.grouphead th, tr.grouphead td { border-bottom-color: #444; }
+}
 """
 
 
@@ -239,6 +284,7 @@ class EpubBuilder:
         self.publisher = ""
         self.source = ""
         self.rights = ""
+        self.accessibility_summary = ""
         self.modified = "2026-08-17T00:00:00Z"
         self.resources: list[Resource] = []
         self.spine: list[str] = []
@@ -276,6 +322,20 @@ class EpubBuilder:
             for index, name in enumerate(self.authors)
         )
         cover_meta = f'    <meta name="cover" content="{self.cover_id}"/>\n' if self.cover_id else ""
+        access = "\n".join(
+            [
+                '    <meta property="schema:accessMode">textual</meta>',
+                '    <meta property="schema:accessMode">visual</meta>',
+                '    <meta property="schema:accessModeSufficient">textual,visual</meta>',
+                '    <meta property="schema:accessibilityFeature">structuralNavigation</meta>',
+                '    <meta property="schema:accessibilityFeature">tableOfContents</meta>',
+                '    <meta property="schema:accessibilityFeature">readingOrder</meta>',
+                '    <meta property="schema:accessibilityFeature">alternativeText</meta>',
+                '    <meta property="schema:accessibilityFeature">describedMath</meta>',
+                '    <meta property="schema:accessibilityHazard">none</meta>',
+                f'    <meta property="schema:accessibilitySummary">{_escape(self.accessibility_summary)}</meta>',
+            ]
+        )
         return f"""<?xml version="1.0" encoding="UTF-8"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid" \
 xml:lang="{self.language}">
@@ -289,6 +349,7 @@ xml:lang="{self.language}">
     <dc:rights>{_escape(self.rights)}</dc:rights>
     <dc:description>{_escape(self.description)}</dc:description>
     <meta property="dcterms:modified">{self.modified}</meta>
+{access}
 {cover_meta}  </metadata>
   <manifest>
 {chr(10).join(items)}

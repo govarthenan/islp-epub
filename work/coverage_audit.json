@@ -1,8 +1,8 @@
 {
- "lines_considered": 25605,
- "index_lines": 912,
- "lines_dropped": 393,
- "share_dropped": 1.535,
+ "lines_considered": 25720,
+ "index_lines": 998,
+ "lines_dropped": 367,
+ "share_dropped": 1.427,
  "dropped": [
   {
    "page_pdf": 20,
@@ -129,15 +129,6 @@
    "baseline": 133.8,
    "size": 10.0,
    "text": "(2.12)"
-  },
-  {
-   "page_pdf": 62,
-   "zone": "main",
-   "x0": 109.0,
-   "x1": 251.6,
-   "baseline": 647.8,
-   "size": 8.0,
-   "text": "together with shapes (2,) (3,)"
   },
   {
    "page_pdf": 79,
@@ -311,6 +302,15 @@
    "text": "(3.18)"
   },
   {
+   "page_pdf": 88,
+   "zone": "footnote",
+   "x0": 232.0,
+   "x1": 250.6,
+   "baseline": 635.5,
+   "size": 8.0,
+   "text": "�"
+  },
+  {
    "page_pdf": 90,
    "zone": "main",
    "x0": 388.3,
@@ -381,15 +381,6 @@
    "baseline": 496.1,
    "size": 10.0,
    "text": "(3.27)"
-  },
-  {
-   "page_pdf": 101,
-   "zone": "main",
-   "x0": 180.7,
-   "x1": 188.8,
-   "baseline": 623.3,
-   "size": 10.0,
-   "text": "�"
   },
   {
    "page_pdf": 102,
@@ -527,15 +518,6 @@
    "text": "(3.38)"
   },
   {
-   "page_pdf": 139,
-   "zone": "main",
-   "x0": 173.5,
-   "x1": 181.8,
-   "baseline": 207.3,
-   "size": 10.0,
-   "text": "√"
-  },
-  {
    "page_pdf": 141,
    "zone": "main",
    "x0": 388.3,
@@ -592,15 +574,6 @@
   {
    "page_pdf": 149,
    "zone": "main",
-   "x0": 204.0,
-   "x1": 260.0,
-   "baseline": 327.2,
-   "size": 10.0,
-   "text": "��"
-  },
-  {
-   "page_pdf": 149,
-   "zone": "main",
    "x0": 393.3,
    "x1": 413.8,
    "baseline": 341.3,
@@ -642,15 +615,6 @@
    "baseline": 471.1,
    "size": 10.0,
    "text": "�"
-  },
-  {
-   "page_pdf": 151,
-   "zone": "main",
-   "x0": 172.3,
-   "x1": 228.3,
-   "baseline": 588.3,
-   "size": 10.0,
-   "text": "��"
   },
   {
    "page_pdf": 151,
@@ -907,6 +871,15 @@
   {
    "page_pdf": 171,
    "zone": "main",
+   "x0": 105.5,
+   "x1": 191.8,
+   "baseline": 86.0,
+   "size": 10.0,
+   "text": "�Pr(Y = k|X = x)"
+  },
+  {
+   "page_pdf": 171,
+   "zone": "main",
    "x0": 397.8,
    "x1": 423.2,
    "baseline": 252.1,
@@ -966,15 +939,6 @@
    "baseline": 624.3,
    "size": 7.0,
    "text": "πKfKj(xj)"
-  },
-  {
-   "page_pdf": 172,
-   "zone": "main",
-   "x0": 105.5,
-   "x1": 174.3,
-   "baseline": 550.5,
-   "size": 10.0,
-   "text": "��"
   },
   {
    "page_pdf": 172,
@@ -1112,6 +1076,33 @@
    "text": "(4.42)"
   },
   {
+   "page_pdf": 192,
+   "zone": "footnote",
+   "x0": 143.5,
+   "x1": 253.8,
+   "baseline": 631.8,
+   "size": 8.0,
+   "text": "�n�n"
+  },
+  {
+   "page_pdf": 192,
+   "zone": "footnote",
+   "x0": 136.8,
+   "x1": 232.5,
+   "baseline": 634.6,
+   "size": 6.0,
+   "text": "11"
+  },
+  {
+   "page_pdf": 192,
+   "zone": "footnote",
+   "x0": 136.3,
+   "x1": 237.7,
+   "baseline": 640.9,
+   "size": 6.0,
+   "text": "nn−1"
+  },
+  {
    "page_pdf": 204,
    "zone": "main",
    "x0": 170.5,
@@ -1227,60 +1218,6 @@
    "baseline": 329.6,
    "size": 10.0,
    "text": "(6.1)"
-  },
-  {
-   "page_pdf": 239,
-   "zone": "main",
-   "x0": 256.1,
-   "x1": 269.3,
-   "baseline": 171.5,
-   "size": 10.0,
-   "text": "�p�"
-  },
-  {
-   "page_pdf": 239,
-   "zone": "main",
-   "x0": 260.7,
-   "x1": 264.7,
-   "baseline": 183.0,
-   "size": 7.0,
-   "text": "2"
-  },
-  {
-   "page_pdf": 239,
-   "zone": "main",
-   "x0": 168.1,
-   "x1": 181.6,
-   "baseline": 331.7,
-   "size": 10.0,
-   "text": "�p�"
-  },
-  {
-   "page_pdf": 239,
-   "zone": "main",
-   "x0": 172.7,
-   "x1": 176.9,
-   "baseline": 343.2,
-   "size": 7.0,
-   "text": "k"
-  },
-  {
-   "page_pdf": 239,
-   "zone": "main",
-   "x0": 253.8,
-   "x1": 267.3,
-   "baseline": 348.6,
-   "size": 10.0,
-   "text": "�p�"
-  },
-  {
-   "page_pdf": 239,
-   "zone": "main",
-   "x0": 258.4,
-   "x1": 262.6,
-   "baseline": 360.1,
-   "size": 7.0,
-   "text": "k"
   },
   {
    "page_pdf": 244,
@@ -1445,24 +1382,6 @@
    "text": "(6.10)"
   },
   {
-   "page_pdf": 254,
-   "zone": "main",
-   "x0": 400.5,
-   "x1": 413.8,
-   "baseline": 383.7,
-   "size": 10.0,
-   "text": "�p�"
-  },
-  {
-   "page_pdf": 254,
-   "zone": "main",
-   "x0": 405.3,
-   "x1": 409.0,
-   "baseline": 395.2,
-   "size": 7.0,
-   "text": "s"
-  },
-  {
    "page_pdf": 257,
    "zone": "main",
    "x0": 388.3,
@@ -1598,6 +1517,15 @@
    "text": "(7.2)"
   },
   {
+   "page_pdf": 299,
+   "zone": "footnote",
+   "x0": 144.0,
+   "x1": 166.9,
+   "baseline": 645.7,
+   "size": 8.0,
+   "text": "0 Cˆℓ0."
+  },
+  {
    "page_pdf": 300,
    "zone": "main",
    "x0": 393.3,
@@ -1677,51 +1605,6 @@
    "baseline": 534.8,
    "size": 10.0,
    "text": "(7.11)"
-  },
-  {
-   "page_pdf": 308,
-   "zone": "main",
-   "x0": 289.4,
-   "x1": 294.1,
-   "baseline": 615.8,
-   "size": 10.0,
-   "text": "�"
-  },
-  {
-   "page_pdf": 309,
-   "zone": "main",
-   "x0": 111.5,
-   "x1": 116.2,
-   "baseline": 119.7,
-   "size": 10.0,
-   "text": "�"
-  },
-  {
-   "page_pdf": 309,
-   "zone": "main",
-   "x0": 227.7,
-   "x1": 232.4,
-   "baseline": 131.7,
-   "size": 10.0,
-   "text": "�"
-  },
-  {
-   "page_pdf": 309,
-   "zone": "main",
-   "x0": 248.0,
-   "x1": 252.7,
-   "baseline": 155.6,
-   "size": 10.0,
-   "text": "�"
-  },
-  {
-   "page_pdf": 309,
-   "zone": "main",
-   "x0": 353.8,
-   "x1": 358.5,
-   "baseline": 179.5,
-   "size": 10.0,
-   "text": "�"
   },
   {
    "page_pdf": 310,
@@ -1978,6 +1861,15 @@
   {
    "page_pdf": 358,
    "zone": "main",
+   "x0": 116.4,
+   "x1": 120.3,
+   "baseline": 347.1,
+   "size": 6.0,
+   "text": "k"
+  },
+  {
+   "page_pdf": 358,
+   "zone": "main",
    "x0": 362.5,
    "x1": 389.0,
    "baseline": 367.8,
@@ -2131,15 +2023,6 @@
   {
    "page_pdf": 376,
    "zone": "main",
-   "x0": 323.3,
-   "x1": 337.7,
-   "baseline": 296.9,
-   "size": 10.0,
-   "text": "�x∗"
-  },
-  {
-   "page_pdf": 376,
-   "zone": "main",
    "x0": 333.6,
    "x1": 379.5,
    "baseline": 307.2,
@@ -2257,42 +2140,6 @@
   {
    "page_pdf": 387,
    "zone": "main",
-   "x0": 115.9,
-   "x1": 129.9,
-   "baseline": 103.3,
-   "size": 10.0,
-   "text": "�n�"
-  },
-  {
-   "page_pdf": 387,
-   "zone": "main",
-   "x0": 120.9,
-   "x1": 124.9,
-   "baseline": 114.8,
-   "size": 7.0,
-   "text": "2"
-  },
-  {
-   "page_pdf": 387,
-   "zone": "main",
-   "x0": 180.6,
-   "x1": 194.7,
-   "baseline": 116.3,
-   "size": 10.0,
-   "text": "�n�"
-  },
-  {
-   "page_pdf": 387,
-   "zone": "main",
-   "x0": 185.7,
-   "x1": 189.7,
-   "baseline": 127.8,
-   "size": 7.0,
-   "text": "2"
-  },
-  {
-   "page_pdf": 387,
-   "zone": "main",
    "x0": 388.3,
    "x1": 413.8,
    "baseline": 238.2,
@@ -2345,40 +2192,13 @@
    "text": "(9.24)"
   },
   {
-   "page_pdf": 389,
-   "zone": "main",
-   "x0": 263.9,
-   "x1": 278.0,
-   "baseline": 336.4,
-   "size": 10.0,
-   "text": "�n�"
-  },
-  {
-   "page_pdf": 389,
-   "zone": "main",
-   "x0": 269.0,
-   "x1": 272.9,
-   "baseline": 347.9,
-   "size": 7.0,
-   "text": "2"
-  },
-  {
    "page_pdf": 391,
-   "zone": "main",
-   "x0": 397.4,
-   "x1": 413.8,
-   "baseline": 89.8,
-   "size": 10.0,
-   "text": "�K�"
-  },
-  {
-   "page_pdf": 391,
-   "zone": "main",
-   "x0": 403.6,
-   "x1": 407.6,
-   "baseline": 101.3,
-   "size": 7.0,
-   "text": "2"
+   "zone": "margin",
+   "x0": 419.7,
+   "x1": 432.4,
+   "baseline": 111.4,
+   "size": 8.0,
+   "text": "one"
   },
   {
    "page_pdf": 391,
@@ -2388,15 +2208,6 @@
    "baseline": 125.6,
    "size": 10.0,
    "text": "�K�"
-  },
-  {
-   "page_pdf": 391,
-   "zone": "main",
-   "x0": 337.5,
-   "x1": 341.5,
-   "baseline": 137.1,
-   "size": 7.0,
-   "text": "2"
   },
   {
    "page_pdf": 391,
@@ -2415,6 +2226,15 @@
    "baseline": 148.6,
    "size": 10.0,
    "text": "(9.26)"
+  },
+  {
+   "page_pdf": 401,
+   "zone": "margin",
+   "x0": 419.7,
+   "x1": 470.5,
+   "baseline": 244.7,
+   "size": 8.0,
+   "text": "Regression()"
   },
   {
    "page_pdf": 407,
@@ -2968,15 +2788,6 @@
   {
    "page_pdf": 483,
    "zone": "main",
-   "x0": 160.8,
-   "x1": 168.8,
-   "baseline": 485.9,
-   "size": 10.0,
-   "text": "�"
-  },
-  {
-   "page_pdf": 483,
-   "zone": "main",
    "x0": 383.3,
    "x1": 413.8,
    "baseline": 528.3,
@@ -2995,29 +2806,11 @@
   {
    "page_pdf": 484,
    "zone": "main",
-   "x0": 239.4,
-   "x1": 322.6,
-   "baseline": 284.5,
-   "size": 10.0,
-   "text": "��"
-  },
-  {
-   "page_pdf": 484,
-   "zone": "main",
    "x0": 383.3,
    "x1": 413.8,
    "baseline": 492.7,
    "size": 10.0,
    "text": "(11.14)"
-  },
-  {
-   "page_pdf": 486,
-   "zone": "main",
-   "x0": 135.7,
-   "x1": 196.6,
-   "baseline": 209.3,
-   "size": 10.0,
-   "text": "��p�"
   },
   {
    "page_pdf": 486,
@@ -3054,15 +2847,6 @@
    "baseline": 215.4,
    "size": 10.0,
    "text": "�p�"
-  },
-  {
-   "page_pdf": 511,
-   "zone": "main",
-   "x0": 217.5,
-   "x1": 221.5,
-   "baseline": 226.9,
-   "size": 7.0,
-   "text": "2"
   },
   {
    "page_pdf": 511,
@@ -3281,42 +3065,6 @@
    "text": "|Ck|"
   },
   {
-   "page_pdf": 535,
-   "zone": "main",
-   "x0": 187.8,
-   "x1": 201.8,
-   "baseline": 89.6,
-   "size": 10.0,
-   "text": "�n�"
-  },
-  {
-   "page_pdf": 535,
-   "zone": "main",
-   "x0": 192.8,
-   "x1": 196.8,
-   "baseline": 101.1,
-   "size": 7.0,
-   "text": "2"
-  },
-  {
-   "page_pdf": 554,
-   "zone": "main",
-   "x0": 266.1,
-   "x1": 291.4,
-   "baseline": 279.8,
-   "size": 9.0,
-   "text": "�6,830�"
-  },
-  {
-   "page_pdf": 554,
-   "zone": "main",
-   "x0": 276.9,
-   "x1": 280.6,
-   "baseline": 290.1,
-   "size": 6.0,
-   "text": "2"
-  },
-  {
    "page_pdf": 566,
    "zone": "main",
    "x0": 388.3,
@@ -3324,6 +3072,33 @@
    "baseline": 303.7,
    "size": 10.0,
    "text": "(13.1)"
+  },
+  {
+   "page_pdf": 566,
+   "zone": "main",
+   "x0": 154.8,
+   "x1": 250.4,
+   "baseline": 330.1,
+   "size": 10.0,
+   "text": "�nt�nc"
+  },
+  {
+   "page_pdf": 566,
+   "zone": "main",
+   "x0": 145.9,
+   "x1": 226.6,
+   "baseline": 333.7,
+   "size": 7.0,
+   "text": "11"
+  },
+  {
+   "page_pdf": 566,
+   "zone": "main",
+   "x0": 143.8,
+   "x1": 228.4,
+   "baseline": 341.0,
+   "size": 7.0,
+   "text": "ntnc"
   },
   {
    "page_pdf": 566,
@@ -3531,15 +3306,6 @@
    "baseline": 229.8,
    "size": 7.0,
    "text": "1"
-  },
-  {
-   "page_pdf": 593,
-   "zone": "main",
-   "x0": 95.5,
-   "x1": 99.5,
-   "baseline": 325.6,
-   "size": 7.0,
-   "text": "2"
   }
  ]
 }

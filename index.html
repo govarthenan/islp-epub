@@ -177,12 +177,12 @@ a { color: var(--link); }
 <header>
   <div class="eyebrow">PDF &rarr; EPUB &middot; build log</div>
   <h1>ISLP PDF to EPUB</h1>
-  <p class="lede">Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB for a Kobo Libra 2</p>
+  <p class="lede">Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB that reads on any e-reader</p>
   <span class="pill">Verified and packaged.</span>
-  <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">3,297</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">191</div><div class="tile-label">figures re-rendered</div><div class="tile-note">300 ppi, 16 greys</div></div><div class="tile"><div class="tile-value">36</div><div class="tile-label">tables as markup</div><div class="tile-note">they reflow, not pictures</div></div><div class="tile"><div class="tile-value">409</div><div class="tile-label">display equations</div><div class="tile-note">every one checked</div></div><div class="tile"><div class="tile-value">1,137</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">3,686</div><div class="tile-label">cross-references</div><div class="tile-note">all of them resolved</div></div><div class="tile"><div class="tile-value">8.2 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div><div class="tile"><div class="tile-value">99.8%</div><div class="tile-label">mathematics agreed</div><div class="tile-note">candidate matched the printed page</div></div></div>
+  <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">3,297</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">191</div><div class="tile-label">figures re-rendered</div><div class="tile-note">300 ppi, in colour</div></div><div class="tile"><div class="tile-value">36</div><div class="tile-label">tables as markup</div><div class="tile-note">they reflow, not pictures</div></div><div class="tile"><div class="tile-value">409</div><div class="tile-label">display equations</div><div class="tile-note">every one checked</div></div><div class="tile"><div class="tile-value">1,137</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">3,686</div><div class="tile-label">cross-references</div><div class="tile-note">all of them resolved</div></div><div class="tile"><div class="tile-value">9.1 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div><div class="tile"><div class="tile-value">99.8%</div><div class="tile-label">mathematics agreed</div><div class="tile-note">candidate matched the printed page</div></div></div>
   <nav class="contents" aria-label="Contents">
     <div class="contents-label">Contents</div>
-    <ol><li><a href="#taken-apart">How the book is taken apart</a></li><li><a href="#triaged">The mathematics, triaged</a></li><li><a href="#crops">Where the crops went wrong</a></li><li><a href="#attempts">Every attempt, in order</a></li><li><a href="#checks">Three checks, three kinds of evidence</a></li><li><a href="#choices">Choices made for the Kobo Libra 2</a></li><li><a href="#reproducing">Reproducing this</a></li></ol>
+    <ol><li><a href="#taken-apart">How the book is taken apart</a></li><li><a href="#triaged">The mathematics, triaged</a></li><li><a href="#crops">Where the crops went wrong</a></li><li><a href="#attempts">Every attempt, in order</a></li><li><a href="#checks">Three checks, three kinds of evidence</a></li><li><a href="#choices">Choices made for the reader, not for one device</a></li><li><a href="#reproducing">Reproducing this</a></li></ol>
   </nav>
 </header>
 
@@ -258,7 +258,7 @@ below was measured from the file itself before it was written down.</p>
       <text x="1011" y="70" class="svg-step">6</text>
       <foreignObject x="1009" y="80" width="135" height="130">
         <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
-          <b>Package for the device</b><br/>EPUB 3 with an NCX, 300 ppi grayscale figures, no imposed font.
+          <b>Package it for any reader</b><br/>EPUB 3 with an NCX, 300 ppi colour figures, no imposed font.
         </div>
       </foreignObject>
     </g></svg></div>
@@ -331,7 +331,7 @@ below was measured from the file itself before it was written down.</p>
       <text x="421" y="276" class="svg-step">6</text>
       <foreignObject x="419" y="286" width="135" height="130">
         <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
-          <b>Package for the device</b><br/>EPUB 3 with an NCX, 300 ppi grayscale figures, no imposed font.
+          <b>Package it for any reader</b><br/>EPUB 3 with an NCX, 300 ppi colour figures, no imposed font.
         </div>
       </foreignObject>
     </g></svg></div>
@@ -594,16 +594,23 @@ contact with the page.</p>
              <div class="check-label">agree with the page</div><p>Every one of the 531 expressions was typeset, put under the crop from the PDF, and handed to an agent told to find the difference. 481 identical, 49 differing only in spacing or delimiter size, 1 genuinely wrong and corrected.</p></div><div class="check"><div class="check-value">100%</div>
              <div class="check-label">confirmed from outside</div><p>A sample of 50 of the same comparisons was re-read by a different model family entirely, through OpenAI&#x27;s codex command line tool, with no sight of the earlier answers. This is the only figure here not produced by the model that did the work.</p></div></div>
 
-<h2 id="choices">Choices made for the Kobo Libra 2</h2>
+<h2 id="choices">Choices made for the reader, not for one device</h2>
 <table>
   <tr><th>Decision</th><th>Reason</th></tr>
   <tr><td>No embedded font, no font size on <code>body</code></td>
       <td>The reader's own typography controls keep working.</td></tr>
-  <tr><td>Mathematics as SVG in <code>currentColor</code>, sized in <code>em</code></td>
-      <td>It grows with the text instead of staying pinned to pixels, and it inverts correctly
-          in dark mode.</td></tr>
-  <tr><td>Figures at 300 ppi, 16 levels of grey</td>
-      <td>Matches the panel exactly: 1264 &times; 1680 at 300 ppi, 16 greys.</td></tr>
+  <tr><td>Mathematics as SVG sized in <code>em</code>, each file carrying its own
+          colour scheme</td>
+      <td>It grows with the text instead of staying pinned to pixels. An <code>&lt;img&gt;</code>
+          is a separate document, so <code>currentColor</code> alone always painted the
+          mathematics black; the two rules inside each file let it follow a dark theme.</td></tr>
+  <tr><td>Figures at 300 ppi, in colour</td>
+      <td>The book draws one series in orange and the next in blue, and the two have almost the
+          same luminance. A grey rendering painted them the same shade, and the series could not
+          be told apart. A grey screen converts the colour itself.</td></tr>
+  <tr><td>No colour set without its partner, and a dark-scheme block</td>
+      <td>A reader that repaints the page with its own colours cannot then leave dark text on a
+          light block.</td></tr>
   <tr><td>Margin notes collapsed to one quiet line</td>
       <td>A 7 inch page has no margin to spare; stacked in a column they took a third of the
           screen.</td></tr>

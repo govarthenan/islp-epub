@@ -177,7 +177,7 @@ def build() -> str:
     tiles = [
         tile("613", "pages read", "the whole book"),
         tile(f"{stats.get('paragraphs', 0):,}", "paragraphs rebuilt", "hyphenation undone"),
-        tile(f"{stats.get('images_embedded', 0)}", "figures re-rendered", "300 ppi, 16 greys"),
+        tile(f"{stats.get('images_embedded', 0)}", "figures re-rendered", "300 ppi, in colour"),
         tile(f"{stats.get('tables_as_markup', 0)}", "tables as markup", "they reflow, not pictures"),
         tile(f"{stats.get('equations_display', 0)}", "display equations", "every one checked"),
         tile(f"{stats.get('code_cells', 0):,}", "lab code cells", "input and output kept apart"),
@@ -244,7 +244,7 @@ def build() -> str:
     if checks:
         count = NUMBER_WORD[len(checks)]
         sections.append(("checks", f"{count} checks, {count.lower()} kinds of evidence"))
-    sections += [("choices", "Choices made for the Kobo Libra 2"), ("reproducing", "Reproducing this")]
+    sections += [("choices", "Choices made for the reader, not for one device"), ("reproducing", "Reproducing this")]
     titles = dict(sections)
 
     def heading(key: str) -> str:
@@ -494,11 +494,18 @@ contact with the page.</p>
   <tr><th>Decision</th><th>Reason</th></tr>
   <tr><td>No embedded font, no font size on <code>body</code></td>
       <td>The reader's own typography controls keep working.</td></tr>
-  <tr><td>Mathematics as SVG in <code>currentColor</code>, sized in <code>em</code></td>
-      <td>It grows with the text instead of staying pinned to pixels, and it inverts correctly
-          in dark mode.</td></tr>
-  <tr><td>Figures at 300 ppi, 16 levels of grey</td>
-      <td>Matches the panel exactly: 1264 &times; 1680 at 300 ppi, 16 greys.</td></tr>
+  <tr><td>Mathematics as SVG sized in <code>em</code>, each file carrying its own
+          colour scheme</td>
+      <td>It grows with the text instead of staying pinned to pixels. An <code>&lt;img&gt;</code>
+          is a separate document, so <code>currentColor</code> alone always painted the
+          mathematics black; the two rules inside each file let it follow a dark theme.</td></tr>
+  <tr><td>Figures at 300 ppi, in colour</td>
+      <td>The book draws one series in orange and the next in blue, and the two have almost the
+          same luminance. A grey rendering painted them the same shade, and the series could not
+          be told apart. A grey screen converts the colour itself.</td></tr>
+  <tr><td>No colour set without its partner, and a dark-scheme block</td>
+      <td>A reader that repaints the page with its own colours cannot then leave dark text on a
+          light block.</td></tr>
   <tr><td>Margin notes collapsed to one quiet line</td>
       <td>A 7 inch page has no margin to spare; stacked in a column they took a third of the
           screen.</td></tr>

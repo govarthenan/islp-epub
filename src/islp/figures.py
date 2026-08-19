@@ -2,8 +2,8 @@
 
 Almost every figure in this book is vector art, so nothing useful comes out of
 `pdfimages`. Instead each figure is found as the graphic region directly above its caption
-and re-rendered from the PDF at a resolution suited to the Kobo Libra 2 screen
-(1264 x 1680 px, 300 ppi).
+and re-rendered from the PDF at 300 ppi, which is enough for a 7 inch e-ink panel and for a
+high-resolution phone or tablet.
 
 Tables are handled the same way. Their rows are ordinary text, so if they were left in the
 text stream they would come out as nonsense paragraphs; the region is claimed first and the

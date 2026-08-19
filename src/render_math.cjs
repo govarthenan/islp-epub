@@ -5,10 +5,19 @@
  *
  * jobs.json is [{ "id": "m00001", "tex": "\\hat{f}", "display": false }, ...]
  *
- * Each SVG is self-contained (fontCache "local"), uses currentColor so it follows the
- * reader's text colour in both light and dark mode, and is sized in em so it scales with
- * the reader's font size instead of being pinned to pixels.
+ * Each SVG is self-contained (fontCache "local") and sized in em, so it scales with the
+ * reader's font size instead of being pinned to pixels.
+ *
+ * MathJax draws in currentColor, but these files are referenced with <img>, and an <img>
+ * is a separate document: currentColor there resolves against the SVG's own root, not
+ * against the page, so it always came out black. Each file therefore carries the two rules
+ * below. A reader that declares a dark colour scheme passes that scheme down to the image,
+ * and the mathematics turns white with the rest of the text. A reader that instead inverts
+ * the whole screen, which is what e-ink devices do, matches neither rule, keeps the black,
+ * and inverts it itself.
  */
+const COLOUR_SCHEME_STYLE =
+  '<style>svg{color:#000}@media (prefers-color-scheme:dark){svg{color:#fff}}</style>';
 
 const fs = require('fs');
 const path = require('path');
@@ -104,7 +113,7 @@ function main() {
       },
     );
     const title = job.tex.replace(/[&<>]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[ch]));
-    markup = markup.replace('>', `><title>${title}</title>`);
+    markup = markup.replace('>', `>${COLOUR_SCHEME_STYLE}<title>${title}</title>`);
     const file = path.join(outDir, `${job.id}.svg`);
     fs.writeFileSync(file, `<?xml version="1.0" encoding="UTF-8"?>\n${markup}\n`);
     manifest[job.id] = {

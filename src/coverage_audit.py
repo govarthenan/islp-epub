@@ -98,6 +98,7 @@ class _Registry:
         return "m0"
 
     items: dict = {}
+    text_runs: int = 0  # document._line_html counts plain-HTML runs here
 
 
 if __name__ == "__main__":

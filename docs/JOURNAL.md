@@ -1,8 +1,8 @@
 # ISLP PDF to EPUB — Engineering Journal
 
 Purpose: convert `ISLP_website.pdf` (613 pages, *An Introduction to Statistical Learning with
-Applications in Python*) into a reflowable EPUB that reads well on a Kobo Libra 2 (7 inch,
-1264 x 1680 px e-ink).
+Applications in Python*) into a reflowable EPUB. It was built first for a Kobo Libra 2
+(7 inch, 1264 x 1680 px e-ink), then audited in entry 019 against readers that are not it.
 
 Scope: educational and experimental only. No commercial use.
 
@@ -496,3 +496,59 @@ region finder had nothing to find.
    paragraph rather than at the term itself is coarser than the printed page reference.
 3. A `.kepub.epub` variant would give Kobo its own per-chapter page counts. The plain EPUB
    reads correctly without it.
+
+---
+
+## 2026-08-19 — Entry 019: A device audit before publishing
+
+The book was built for one Kobo Libra 2. Before putting it in front of other people, every
+choice made for that panel was measured against readers that are not it.
+
+**Finding 1 — the mathematics was always black.** Each expression is a file referenced with
+`<img src="…svg">`, and MathJax draws in `currentColor`. An `<img>` is a separate document,
+so `currentColor` resolves against the SVG's own root and not against the page. Measured in
+a browser, on a page painted `#1b1b1b` with `#e8e8e8` text, the ink came back `rgb(0,0,0)`:
+a contrast ratio of **1.22:1**. The e-ink devices never showed this, because they invert the
+whole screen rather than repaint it with CSS; a reader that themes with CSS — Thorium,
+Apple Books, Calibre's viewer — showed invisible mathematics.
+
+*Fixed* by giving each SVG two rules of its own:
+`svg{color:#000}` and `@media (prefers-color-scheme:dark){svg{color:#fff}}`. An SVG used as
+an image takes its colour scheme from the element that holds it, so this works where the
+page-level rule cannot reach. Re-measured: `rgb(255,255,255)`, **17.22:1**. A reader that
+inverts the screen matches neither rule, keeps the black, and inverts it as before.
+
+**Finding 2 — the code cells disappeared with it.** `pre.input` set `background: #f4f4f4`
+and no `color`. In a CSS-themed dark reader the inherited text colour became near-white on
+a near-white block: **1.11:1**, across 1,137 code cells. *Fixed* by never setting a
+background without its foreground, and by adding a `prefers-color-scheme` block. Re-measured
+at **17.17:1**. Margin notes had the same fault at `color: #555` (**2.31:1** on a dark page)
+and now use `opacity` instead, which is correct in any theme.
+
+**Finding 3 — grey figures destroyed the series.** The book plots one series in orange
+`rgb(152,65,0)` and the next in blue `rgb(0,104,180)`. Their luminances are 84 and 82 of
+255. Quantised to 16 greys both landed on the same value — sampled on figure 10.10, blue and
+orange both came back as grey 101. Every two-colour plot in the book was a single shade.
+
+*Fixed* by rendering figures in colour with a 64-entry adaptive palette. The cost is small,
+because these are line drawings on white: images 5.5 MB → 6.5 MB, the EPUB 8.2 MB → 9.1 MB.
+A grey e-ink screen converts the colour itself and is no worse off than before; every colour
+device now gets the figures as printed. 187 of the 192 images carry colour; five were
+monochrome to begin with.
+
+**Smaller things.** Code was set at `0.68em`. Measured against the book's own content — the
+longest line is 89 characters, the median 41 — that size fits 159 characters across a Kobo
+column, more than twice what is needed. Raised to `0.8em`, which still fits 84 characters at
+the largest Kobo font and is far kinder on a phone. Hyphenation is now asked for in four
+spellings, so Adobe-based readers hyphenate too rather than opening rivers in a justified
+narrow column. Figures and the cover take a `max-height` in `vh`, so a short or landscape
+screen cannot push one off the page. The identifier was `urn:uuid:islp-python-1st-edition-reflow`,
+which is not a UUID; it is now a real uuid5 of the repository URL, fixed so that a rebuild
+keeps the same book identity. EPUB Accessibility 1.1 metadata was added, and its summary
+says plainly that the mathematics carries LaTeX in its alternative text rather than MathML.
+
+**Still open.** The mathematics is SVG, and Amazon's Send-to-Kindle converter does not always
+keep SVG. That needs a real Kindle to settle. Dark mode on the Libra 2 itself should be
+checked once after this change, to confirm Kobo inverts the screen rather than declaring a
+dark colour scheme; if it declares one, the mathematics would invert twice and the two rules
+inside the SVG files should come out again.

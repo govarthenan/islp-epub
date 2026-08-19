@@ -1,206 +1,206 @@
 {
-  "project": "ISLP PDF to EPUB",
-  "subtitle": "Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB for a Kobo Libra 2",
-  "purpose": "Educational and experimental only. No commercial use. All rights remain with the authors and publisher.",
-  "source": "ISLP_website.pdf, first printing 5 July 2023, from statlearning.com",
-  "stages": [
-    {
-      "id": "probe",
-      "title": "Read the PDF's own structure",
-      "summary": "Fonts, outline, colours and geometry, measured rather than guessed.",
-      "detail": "Prose is set in Latin Modern and mathematics in Computer Modern, two families that never overlap, so every mathematical glyph can be located by font name alone. Span colour separates code, prompts, lab headings and margin notes."
-    },
-    {
-      "id": "page",
-      "title": "Build a page model",
-      "summary": "Split each page into text column, margin notes, prompts, code cells and figures.",
-      "detail": "Main column x 91.0 to 413.8. Margin notes past x 415.5 in grey. Jupyter prompts left of x 90 in blue. Code cells are backed by cream (input) or white (output) rectangles."
-    },
-    {
-      "id": "blocks",
-      "title": "Recover the document",
-      "summary": "Headings, paragraphs, lists, captions, code cells and display equations.",
-      "detail": "Paragraph breaks come from the 9.9 pt first-line indent. Hyphenation is undone using the book's own vocabulary, so 'individ-ual' rejoins while 'non-linear' survives."
-    },
-    {
-      "id": "math",
-      "title": "Triage the mathematics",
-      "summary": "Three routes, chosen by what the character stream can and cannot carry.",
-      "detail": "Plain HTML where sub/superscripts are enough; generated LaTeX where accents and script letters need real typesetting; a vision model only where the structure is genuinely absent from the PDF."
-    },
-    {
-      "id": "verify",
-      "title": "Check the mathematics adversarially",
-      "summary": "Typeset every candidate, put it under the original, and ask whether they agree.",
-      "detail": "A verifier compares the picture from the PDF with the picture produced from the candidate LaTeX. A second, independent model family (OpenAI's codex CLI) audits a sample to give an unbiased accuracy estimate."
-    },
-    {
-      "id": "epub",
-      "title": "Package for the device",
-      "summary": "EPUB 3 with an NCX, 300 ppi grayscale figures, no imposed font.",
-      "detail": "Mathematics is SVG in currentColor sized in em, so it scales with the reader's font size and works in dark mode. Nothing pins the body font, so the Kobo's own typography controls keep working."
-    }
-  ],
-  "attempts": [
-    {
-      "n": 1,
-      "title": "Survey the tooling",
-      "status": "success",
-      "what": "Check what is installed: poppler, qpdf, ghostscript, python, node, codex.",
-      "result": "No pandoc, no calibre, no Java. Decided to write the EPUB directly in Python for full control of the markup, and to write a structural validator because epubcheck needs Java.",
-      "why": ""
-    },
-    {
-      "n": 2,
-      "title": "Probe fonts and outline",
-      "status": "success",
-      "what": "Count every font and character in the file; read the PDF bookmarks.",
-      "result": "309 correct outline entries to build navigation from. Prose in Latin Modern, mathematics in Computer Modern: two disjoint families. Only 44 raster images in the whole book, so nearly every figure is vector art.",
-      "why": ""
-    },
-    {
-      "n": 3,
-      "title": "Extract mathematics as LaTeX from the text layer",
-      "status": "partial",
-      "what": "Try to rebuild LaTeX directly from the PDF character stream.",
-      "result": "Symbols come out correctly, structure does not: x_ij arrives as 'xij', a summation as ')d k=1'. But sub- and superscripts ARE recoverable geometrically, from the font-size drop plus the baseline shift.",
-      "why": "The PDF stores glyphs and pen positions, not mathematical structure. Two-dimensional constructs (fractions, radicals, large operators, matrices) leave no trace in the character stream."
-    },
-    {
-      "n": 4,
-      "title": "Deterministic LaTeX for accents and script letters",
-      "status": "success",
-      "what": "Generate LaTeX from character data for the cases where structure IS recoverable.",
-      "result": "497 occurrences solved with no model call at all, producing exactly right output such as \\hat{Y} = \\hat{f}(X) and \\mathbf{A} \\in \\mathbb{R}^{r\\times s}.",
-      "why": ""
-    },
-    {
-      "n": 5,
-      "title": "First end-to-end EPUB",
-      "status": "partial",
-      "what": "Run the whole chain over the first 100 pages and read the result in a browser at the Kobo's 1264 × 1680 panel size.",
-      "result": "A valid EPUB, but six visible faults: words glued together across spans, a ligature splitting 'fit' into 'f it' inside code, split captions, a column of stacked margin notes, a broken margin-note hyphenation, and paragraph indents that disagreed with the book.",
-      "why": "Every one of them came from trusting a convenient rule instead of what the page actually measures."
-    },
-    {
-      "n": 6,
-      "title": "Crop mathematics: box from one text line",
-      "status": "failed",
-      "what": "Cut each expression out using the bounding box of its text line.",
-      "result": "Fractions came out sliced through the middle: numerator and denominator missing.",
-      "why": "A fraction puts its numerator, rule and denominator on three different baselines, and the extractor files those as three separate lines."
-    },
-    {
-      "n": 7,
-      "title": "Crop mathematics: grow the box greedily",
-      "status": "failed",
-      "what": "Grow the box to absorb any nearby mathematical glyph.",
-      "result": "Crops swallowed the equation number (3.4) and two whole lines of the following paragraph.",
-      "why": "Equation numbers are set in a Computer Modern font, so they count as mathematics; and once the box touches the next line it keeps growing."
-    },
-    {
-      "n": 8,
-      "title": "Crop mathematics: clamp to the neighbouring baselines",
-      "status": "failed",
-      "what": "Stop the box at the baselines of the paragraph lines above and below.",
-      "result": "The denominator and the summation limits were cut off, and two expressions on one line swallowed each other.",
-      "why": "An inline fraction genuinely reaches into the vertical band of the line below it, so no clean horizontal cut exists."
-    },
-    {
-      "n": 9,
-      "title": "Crop mathematics: connected growth plus painted-out ink",
-      "status": "success",
-      "what": "Grow only along connected mathematical glyphs, never sideways along the base line; match stray numerator and limit fragments back to their host paragraph line; then paint over whatever foreign ink remains inside the rectangle.",
-      "result": "Every expression is captured whole, with nothing else in the picture.",
-      "why": ""
-    },
-    {
-      "n": 10,
-      "title": "Painting out foreign ink erased the summation limits",
-      "status": "failed",
-      "what": "Cover each foreign character with its bounding box.",
-      "result": "Half of every summation limit disappeared.",
-      "why": "The extractor reports each character's full em box, about 14.5 pt tall for 10 pt text, which reaches well into the neighbouring lines. Painting only the band from baseline - 0.78 x size to baseline + 0.24 x size fixed it."
-    },
-    {
-      "n": 11,
-      "title": "Read the mathematics with a fleet of agents",
-      "status": "success",
-      "what": "23 agents in parallel, 25 cropped expressions each, each given the characters the PDF gave up, the deterministic guess where one existed, and the sentence before the expression. Each agent then ran the LaTeX through MathJax and fixed anything it refused.",
-      "result": "570 expressions transcribed, zero typesetting failures.",
-      "why": ""
-    },
-    {
-      "n": 12,
-      "title": "The agents' doubts were worth more than their answers",
-      "status": "success",
-      "what": "Read the 40-odd cases the agents flagged as uncertain instead of only their LaTeX.",
-      "result": "Three extraction faults surfaced that no amount of reading the LaTeX would have shown: 'crop is only a large left brace', repeated a dozen times; 'this crop is pixel-identical to another one'; and matrices cut in half.",
-      "why": ""
-    },
-    {
-      "n": 13,
-      "title": "Equation numbers were splitting equations in two",
-      "status": "failed",
-      "what": "Group a display equation from the lines that make it up.",
-      "result": "Fractions came out as two separate equations, both of which then grew back into the same rectangle and rendered twice.",
-      "why": "An equation number sits on a baseline between the numerator and the denominator of the fraction it labels, so it fell in the middle of the run and broke it. The number is now split off its line before anything is classified."
-    },
-    {
-      "n": 14,
-      "title": "Piecewise definitions kept coming apart",
-      "status": "partial",
-      "what": "Absorb the 'if ...' arms of a cases block into the equation they belong to.",
-      "result": "Fixed in three rounds. Requiring the arm to start further in than the equation failed where the arm carries the brace glyph itself; requiring a display line to follow failed for the last arm; matching a stray brace back to the paragraph above threw away the opening delimiter.",
-      "why": "The final rules: an arm is absorbed when it carries mathematics, is short and is set in from both paragraph margins; overlapping display blocks are merged; and a fragment belongs to a paragraph line only if it sits over that line's own symbols."
-    },
-    {
-      "n": 15,
-      "title": "Tables as markup rather than pictures",
-      "status": "success",
-      "what": "Read the 36 tables back as XHTML so they reflow with the reader's font, each agent checking its own markup parses and every row is the same width.",
-      "result": "36 of 36 converted, faithful to the printed minus signs and to '< 0.0001' with a space in one chapter and without one in another. Two agents reported their crop was wrong and re-rendered the page themselves; both were real region-detection faults, now fixed.",
-      "why": ""
-    },
-    {
-      "n": 16,
-      "title": "Audit what the conversion drops",
-      "status": "success",
-      "what": "Walk all 613 pages, work out which text lines no block consumed, and read them.",
-      "result": "25,605 lines considered, 393 unconsumed. All but ten are equation numbers folded into their equation, or numerator and limit fragments already inside a mathematics crop. The ten were cell output that spilled past its shaded rectangle.",
-      "why": ""
-    },
-    {
-      "n": 17,
-      "title": "Check every expression against the printed page",
-      "status": "success",
-      "what": "In the third round, typeset all 555 transcriptions with MathJax, rasterise them, stack each under the crop from the PDF, and give 23 agents one instruction: find where the transcription is wrong.",
-      "result": "500 same, 53 cosmetic, 2 genuinely wrong: 99.6% of that round agreed with the page. The two errors were a dropped first row of a two-row equation, and square brackets typeset as round ones. Later rounds changed the crops, so the final figure is the 99.8% reported below.",
-      "why": ""
-    },
-    {
-      "n": 18,
-      "title": "An independent second opinion found what the family missed",
-      "status": "success",
-      "what": "Hand 45 of the same comparison images to OpenAI's codex CLI, a different model family with no sight of the earlier answers.",
-      "result": "In that round, 44 of 45 agreed. The one disagreement was right and mattered: a crop had captured a fraction's denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction. The final audit, run after those fixes, sampled 50 and found no disagreement.",
-      "why": "Every other check here was Claude checking Claude. The only check from outside the family found the fault, in a sample of 45."
-    },
-    {
-      "n": 19,
-      "title": "Iterate until the extraction stops changing",
-      "status": "success",
-      "what": "Each round of fixes changes the crops, so re-extract, carry over every transcription whose image is byte for byte identical, and read only the rest.",
-      "result": "Five rounds: 570 expressions read, then 61, then 32, then 59, then 15, then 0. The last re-extraction produced 531 crops of which 531 were unchanged. Those 531 are the expressions the three checks below report on.",
-      "why": ""
-    },
-    {
-      "n": 20,
-      "title": "Printing an equation twice",
-      "status": "failed",
-      "what": "Let display equations and inline expressions be found independently.",
-      "result": "An equation with words in it ('minimize ... subject to ...') reads as a paragraph, so its inline images already held the whole equation, while the symbol-only lines also produced a display block. The equation was typeset twice.",
-      "why": "Fixed by measuring the inline expressions on a page first and dropping any display block that one of them already covers."
-    }
-  ]
+ "project": "ISLP PDF to EPUB",
+ "subtitle": "Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB that reads on any e-reader",
+ "purpose": "Educational and experimental only. No commercial use. All rights remain with the authors and publisher.",
+ "source": "ISLP_website.pdf, first printing 5 July 2023, from statlearning.com",
+ "stages": [
+  {
+   "id": "probe",
+   "title": "Read the PDF's own structure",
+   "summary": "Fonts, outline, colours and geometry, measured rather than guessed.",
+   "detail": "Prose is set in Latin Modern and mathematics in Computer Modern, two families that never overlap, so every mathematical glyph can be located by font name alone. Span colour separates code, prompts, lab headings and margin notes."
+  },
+  {
+   "id": "page",
+   "title": "Build a page model",
+   "summary": "Split each page into text column, margin notes, prompts, code cells and figures.",
+   "detail": "Main column x 91.0 to 413.8. Margin notes past x 415.5 in grey. Jupyter prompts left of x 90 in blue. Code cells are backed by cream (input) or white (output) rectangles."
+  },
+  {
+   "id": "blocks",
+   "title": "Recover the document",
+   "summary": "Headings, paragraphs, lists, captions, code cells and display equations.",
+   "detail": "Paragraph breaks come from the 9.9 pt first-line indent. Hyphenation is undone using the book's own vocabulary, so 'individ-ual' rejoins while 'non-linear' survives."
+  },
+  {
+   "id": "math",
+   "title": "Triage the mathematics",
+   "summary": "Three routes, chosen by what the character stream can and cannot carry.",
+   "detail": "Plain HTML where sub/superscripts are enough; generated LaTeX where accents and script letters need real typesetting; a vision model only where the structure is genuinely absent from the PDF."
+  },
+  {
+   "id": "verify",
+   "title": "Check the mathematics adversarially",
+   "summary": "Typeset every candidate, put it under the original, and ask whether they agree.",
+   "detail": "A verifier compares the picture from the PDF with the picture produced from the candidate LaTeX. A second, independent model family (OpenAI's codex CLI) audits a sample to give an unbiased accuracy estimate."
+  },
+  {
+   "id": "epub",
+   "title": "Package it for any reader",
+   "summary": "EPUB 3 with an NCX, 300 ppi colour figures, no imposed font.",
+   "detail": "Mathematics is SVG sized in em, so it scales with the reader's font size. Each file carries two rules of its own, because an <img> is a separate document and cannot inherit currentColor from the page, which is what left the mathematics black on a dark theme. Nothing pins the body font, and no colour is set without its partner, so a reader that repaints the page cannot leave dark text on a light block."
+  }
+ ],
+ "attempts": [
+  {
+   "n": 1,
+   "title": "Survey the tooling",
+   "status": "success",
+   "what": "Check what is installed: poppler, qpdf, ghostscript, python, node, codex.",
+   "result": "No pandoc, no calibre, no Java. Decided to write the EPUB directly in Python for full control of the markup, and to write a structural validator because epubcheck needs Java.",
+   "why": ""
+  },
+  {
+   "n": 2,
+   "title": "Probe fonts and outline",
+   "status": "success",
+   "what": "Count every font and character in the file; read the PDF bookmarks.",
+   "result": "309 correct outline entries to build navigation from. Prose in Latin Modern, mathematics in Computer Modern: two disjoint families. Only 44 raster images in the whole book, so nearly every figure is vector art.",
+   "why": ""
+  },
+  {
+   "n": 3,
+   "title": "Extract mathematics as LaTeX from the text layer",
+   "status": "partial",
+   "what": "Try to rebuild LaTeX directly from the PDF character stream.",
+   "result": "Symbols come out correctly, structure does not: x_ij arrives as 'xij', a summation as ')d k=1'. But sub- and superscripts ARE recoverable geometrically, from the font-size drop plus the baseline shift.",
+   "why": "The PDF stores glyphs and pen positions, not mathematical structure. Two-dimensional constructs (fractions, radicals, large operators, matrices) leave no trace in the character stream."
+  },
+  {
+   "n": 4,
+   "title": "Deterministic LaTeX for accents and script letters",
+   "status": "success",
+   "what": "Generate LaTeX from character data for the cases where structure IS recoverable.",
+   "result": "497 occurrences solved with no model call at all, producing exactly right output such as \\hat{Y} = \\hat{f}(X) and \\mathbf{A} \\in \\mathbb{R}^{r\\times s}.",
+   "why": ""
+  },
+  {
+   "n": 5,
+   "title": "First end-to-end EPUB",
+   "status": "partial",
+   "what": "Run the whole chain over the first 100 pages and read the result in a browser at the Kobo's 1264 × 1680 panel size.",
+   "result": "A valid EPUB, but six visible faults: words glued together across spans, a ligature splitting 'fit' into 'f it' inside code, split captions, a column of stacked margin notes, a broken margin-note hyphenation, and paragraph indents that disagreed with the book.",
+   "why": "Every one of them came from trusting a convenient rule instead of what the page actually measures."
+  },
+  {
+   "n": 6,
+   "title": "Crop mathematics: box from one text line",
+   "status": "failed",
+   "what": "Cut each expression out using the bounding box of its text line.",
+   "result": "Fractions came out sliced through the middle: numerator and denominator missing.",
+   "why": "A fraction puts its numerator, rule and denominator on three different baselines, and the extractor files those as three separate lines."
+  },
+  {
+   "n": 7,
+   "title": "Crop mathematics: grow the box greedily",
+   "status": "failed",
+   "what": "Grow the box to absorb any nearby mathematical glyph.",
+   "result": "Crops swallowed the equation number (3.4) and two whole lines of the following paragraph.",
+   "why": "Equation numbers are set in a Computer Modern font, so they count as mathematics; and once the box touches the next line it keeps growing."
+  },
+  {
+   "n": 8,
+   "title": "Crop mathematics: clamp to the neighbouring baselines",
+   "status": "failed",
+   "what": "Stop the box at the baselines of the paragraph lines above and below.",
+   "result": "The denominator and the summation limits were cut off, and two expressions on one line swallowed each other.",
+   "why": "An inline fraction genuinely reaches into the vertical band of the line below it, so no clean horizontal cut exists."
+  },
+  {
+   "n": 9,
+   "title": "Crop mathematics: connected growth plus painted-out ink",
+   "status": "success",
+   "what": "Grow only along connected mathematical glyphs, never sideways along the base line; match stray numerator and limit fragments back to their host paragraph line; then paint over whatever foreign ink remains inside the rectangle.",
+   "result": "Every expression is captured whole, with nothing else in the picture.",
+   "why": ""
+  },
+  {
+   "n": 10,
+   "title": "Painting out foreign ink erased the summation limits",
+   "status": "failed",
+   "what": "Cover each foreign character with its bounding box.",
+   "result": "Half of every summation limit disappeared.",
+   "why": "The extractor reports each character's full em box, about 14.5 pt tall for 10 pt text, which reaches well into the neighbouring lines. Painting only the band from baseline - 0.78 x size to baseline + 0.24 x size fixed it."
+  },
+  {
+   "n": 11,
+   "title": "Read the mathematics with a fleet of agents",
+   "status": "success",
+   "what": "23 agents in parallel, 25 cropped expressions each, each given the characters the PDF gave up, the deterministic guess where one existed, and the sentence before the expression. Each agent then ran the LaTeX through MathJax and fixed anything it refused.",
+   "result": "570 expressions transcribed, zero typesetting failures.",
+   "why": ""
+  },
+  {
+   "n": 12,
+   "title": "The agents' doubts were worth more than their answers",
+   "status": "success",
+   "what": "Read the 40-odd cases the agents flagged as uncertain instead of only their LaTeX.",
+   "result": "Three extraction faults surfaced that no amount of reading the LaTeX would have shown: 'crop is only a large left brace', repeated a dozen times; 'this crop is pixel-identical to another one'; and matrices cut in half.",
+   "why": ""
+  },
+  {
+   "n": 13,
+   "title": "Equation numbers were splitting equations in two",
+   "status": "failed",
+   "what": "Group a display equation from the lines that make it up.",
+   "result": "Fractions came out as two separate equations, both of which then grew back into the same rectangle and rendered twice.",
+   "why": "An equation number sits on a baseline between the numerator and the denominator of the fraction it labels, so it fell in the middle of the run and broke it. The number is now split off its line before anything is classified."
+  },
+  {
+   "n": 14,
+   "title": "Piecewise definitions kept coming apart",
+   "status": "partial",
+   "what": "Absorb the 'if ...' arms of a cases block into the equation they belong to.",
+   "result": "Fixed in three rounds. Requiring the arm to start further in than the equation failed where the arm carries the brace glyph itself; requiring a display line to follow failed for the last arm; matching a stray brace back to the paragraph above threw away the opening delimiter.",
+   "why": "The final rules: an arm is absorbed when it carries mathematics, is short and is set in from both paragraph margins; overlapping display blocks are merged; and a fragment belongs to a paragraph line only if it sits over that line's own symbols."
+  },
+  {
+   "n": 15,
+   "title": "Tables as markup rather than pictures",
+   "status": "success",
+   "what": "Read the 36 tables back as XHTML so they reflow with the reader's font, each agent checking its own markup parses and every row is the same width.",
+   "result": "36 of 36 converted, faithful to the printed minus signs and to '< 0.0001' with a space in one chapter and without one in another. Two agents reported their crop was wrong and re-rendered the page themselves; both were real region-detection faults, now fixed.",
+   "why": ""
+  },
+  {
+   "n": 16,
+   "title": "Audit what the conversion drops",
+   "status": "success",
+   "what": "Walk all 613 pages, work out which text lines no block consumed, and read them.",
+   "result": "25,605 lines considered, 393 unconsumed. All but ten are equation numbers folded into their equation, or numerator and limit fragments already inside a mathematics crop. The ten were cell output that spilled past its shaded rectangle.",
+   "why": ""
+  },
+  {
+   "n": 17,
+   "title": "Check every expression against the printed page",
+   "status": "success",
+   "what": "In the third round, typeset all 555 transcriptions with MathJax, rasterise them, stack each under the crop from the PDF, and give 23 agents one instruction: find where the transcription is wrong.",
+   "result": "500 same, 53 cosmetic, 2 genuinely wrong: 99.6% of that round agreed with the page. The two errors were a dropped first row of a two-row equation, and square brackets typeset as round ones. Later rounds changed the crops, so the final figure is the 99.8% reported below.",
+   "why": ""
+  },
+  {
+   "n": 18,
+   "title": "An independent second opinion found what the family missed",
+   "status": "success",
+   "what": "Hand 45 of the same comparison images to OpenAI's codex CLI, a different model family with no sight of the earlier answers.",
+   "result": "In that round, 44 of 45 agreed. The one disagreement was right and mattered: a crop had captured a fraction's denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction. The final audit, run after those fixes, sampled 50 and found no disagreement.",
+   "why": "Every other check here was Claude checking Claude. The only check from outside the family found the fault, in a sample of 45."
+  },
+  {
+   "n": 19,
+   "title": "Iterate until the extraction stops changing",
+   "status": "success",
+   "what": "Each round of fixes changes the crops, so re-extract, carry over every transcription whose image is byte for byte identical, and read only the rest.",
+   "result": "Five rounds: 570 expressions read, then 61, then 32, then 59, then 15, then 0. The last re-extraction produced 531 crops of which 531 were unchanged. Those 531 are the expressions the three checks below report on.",
+   "why": ""
+  },
+  {
+   "n": 20,
+   "title": "Printing an equation twice",
+   "status": "failed",
+   "what": "Let display equations and inline expressions be found independently.",
+   "result": "An equation with words in it ('minimize ... subject to ...') reads as a paragraph, so its inline images already held the whole equation, while the symbol-only lines also produced a display block. The equation was typeset twice.",
+   "why": "Fixed by measuring the inline expressions on a page first and dropping any display block that one of them already covers."
+  }
+ ]
 }
