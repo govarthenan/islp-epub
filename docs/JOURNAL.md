@@ -606,7 +606,8 @@ nested `<svg>` with its own viewport, and scaling that piece to the height it ne
 ```
 
 MuPDF puts that viewport in the wrong place. CairoSVG draws it the way a browser does, so the
-raster book is drawn by CairoSVG now. 40 of the 716 equations stretch a bracket that way.
+raster book is drawn by CairoSVG now. 40 of the 716 equations stretch a bracket that way, and
+all 40 were checked by eye on one sheet. A third photograph from the phone confirmed the fix.
 
 The lesson is about the checks, not the renderer. All three compared a renderer against
 itself, so all three passed while every matrix bracket was broken. Drawing each equation a
