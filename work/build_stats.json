@@ -1,5 +1,5 @@
 {
- "epub_bytes": 9144570,
+ "epub_bytes": 9144543,
  "epub_name": "ISLP.epub",
  "chapters": 15,
  "blocks": 6442,
@@ -23,7 +23,19 @@
   "vlm": 140
  },
  "math_svg": 716,
+ "math_png": 716,
  "math_bitmap": 0,
+ "math_png_pixels_per_em": 48,
+ "variants": {
+  "ISLP.epub": {
+   "bytes": 9144543,
+   "mathematics": "SVG"
+  },
+  "ISLP-raster.epub": {
+   "bytes": 12475064,
+   "mathematics": "PNG"
+  }
+ },
  "links_resolved": 3686,
  "links_unresolved": 0
 }

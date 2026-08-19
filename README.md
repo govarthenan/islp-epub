@@ -53,9 +53,24 @@ mv ~/Downloads/ISLP_website.pdf .
 uv sync          # Python dependencies
 npm install      # MathJax, for typesetting the mathematics
 
-uv run python src/build_epub.py --out ISLP.epub
+uv run python src/build_epub.py
 uv run python src/validate_epub.py output/ISLP.epub
+uv run python src/validate_epub.py output/ISLP-raster.epub
 ```
+
+### Which file do you want?
+
+One build makes two books from one pass over the PDF. Both hold the same words, the same
+figures and the same equations. They differ only in how the mathematics is drawn.
+
+| File | Take it if | Mathematics | Size |
+|---|---|---|---|
+| `output/ISLP.epub` | Kobo, Apple Books, Thorium, KOReader, Calibre | SVG. Sharp at every font size, and the ink follows the reader's colour scheme. | 8.7 MB |
+| `output/ISLP-raster.epub` | **Moon+ Reader**, Send-to-Kindle, or anything that shows a box marked SVG | The same equations as PNG at 48 pixels for one em, drawn from the same SVG files | 11.9 MB |
+
+Moon+ Reader on Android draws no SVG at all, in an image, inline, or as a page. It shows a
+small box with the label SVG where the equation should be. It has no MathML either. A raster
+image is the only form it draws, which is why the second book exists.
 
 The full pipeline, from a fresh PDF:
 
@@ -77,8 +92,9 @@ uv run python src/build_index.py            # regenerate the story page
 |---|---|
 | Prose | Rebuilt paragraph by paragraph from the character stream; hyphenation undone against the book's own vocabulary |
 | Inline mathematics | Sub- and superscripts recovered from glyph geometry, so most of it stays reflowing HTML text |
-| Accents, script letters | LaTeX generated from the character data, typeset to SVG by MathJax |
-| Fractions, radicals, matrices | Cropped from the page, read by a vision model, checked against the page, typeset to SVG |
+| Accents, script letters | LaTeX generated from the character data, typeset by MathJax |
+| Fractions, radicals, matrices | Cropped from the page, read by a vision model, checked against the page, typeset by MathJax |
+| Every typeset expression | SVG in one book, and the same file drawn as a PNG in the other |
 | Figures | Re-rendered from the vector art at 300 ppi, in colour |
 | Tables | Read back as real HTML, so they reflow with the reader's font |
 | Lab code | Jupyter input and output cells kept apart, alignment preserved |
@@ -96,10 +112,10 @@ uv run python src/build_index.py            # regenerate the story page
 | Tables | 36, all as reflowable markup — none as pictures |
 | Display equations | 409 |
 | Mathematics kept as **text** | 5,974 of 6,690 occurrences (89%) |
-| Mathematics as SVG | 716 |
-| Mathematics as bitmap | **0** |
+| Mathematics typeset by MathJax | 716 expressions, 926 places |
+| Mathematics cropped from the page | **0** |
 | Internal links resolved | 3,686 of 3,686 |
-| EPUB size | 9.1 MB |
+| EPUB size | 8.7 MB with SVG, 11.9 MB with PNG |
 
 Every one of the 531 model-read expressions was checked a second time, independently,
 against the printed page: **481 identical, 49 cosmetic differences, 1 wrong** — 99.8%
@@ -114,9 +130,12 @@ Kindle, a colour Kobo, a phone, a tablet or a desktop window.
 
 * **No embedded font, no font size on `body`** — the reader's own typography controls stay in
   charge. Every length in the stylesheet is relative.
-* **Mathematics is SVG sized in `em`**, so it grows with the text. This is why nothing is a
-  bitmap. Each file carries two rules of its own that follow a dark theme: an `<img>` is a
-  separate document, so `currentColor` alone cannot reach it from the page.
+* **Mathematics is sized in `em` in both books**, so it grows with the text. This is why
+  nothing is cropped from the page. In the SVG book each file carries two rules of its own
+  that follow a dark theme, because an `<img>` is a separate document and `currentColor`
+  alone cannot reach it from the page. A PNG can carry no rules, so the raster book turns its
+  mathematics over with `filter: invert(1)` in the page stylesheet instead. Figures are left
+  out of that rule: a photograph must not be inverted.
 * **No colour is set without its partner, and there is a dark-scheme block.** A reader that
   repaints the page with its own colours cannot leave dark text on a light block.
 * **Figures at 300 ppi, in colour.** The book draws one series in orange and the next in
@@ -134,11 +153,15 @@ Kobo reads a plain EPUB directly. For Kobo's own extras, per-chapter page counts
 dictionary look-up, convert it to `.kepub.epub` with Calibre and the KoboTouchExtended
 driver. Nothing in the book depends on that.
 
-**Kindle** — send the EPUB to your Send-to-Kindle address; Amazon converts it. The
-mathematics is SVG, which that converter does not always keep, so check a chapter with heavy
-mathematics before you rely on it.
+**Kindle** — send `output/ISLP-raster.epub` to your Send-to-Kindle address. Amazon's
+converter does not always keep SVG, and it keeps a PNG.
 
-**Apple Books, Google Play Books, Thorium, KOReader, Calibre** — open the EPUB directly.
+**Moon+ Reader on Android** — use `output/ISLP-raster.epub`. In the night theme the
+mathematics may come out black on a dark page, because Moon+ neither declares a dark colour
+scheme to the page nor inverts the screen. Moon+ has a setting that inverts images at night.
+
+**Apple Books, Google Play Books, Thorium, KOReader, Calibre** — open `output/ISLP.epub`
+directly.
 
 ---
 

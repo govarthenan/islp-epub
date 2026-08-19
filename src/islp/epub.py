@@ -4,9 +4,13 @@ The book was first made for a Kobo Libra 2, but nothing here depends on that pan
 
   * No font is embedded and no body font size is set, so the reader's own font and size
     controls keep working.
-  * Mathematics is SVG sized in `em`, so it grows with the text. Each file carries its own
-    two-line stylesheet, so the ink follows the reader's colour scheme; an `<img>` cannot
-    inherit `currentColor` from the page that holds it.
+  * Mathematics is sized in `em`, so it grows with the text. Two books are written from one
+    build: one carries each expression as SVG, and one carries the same expression as a PNG
+    drawn from that SVG, for Moon+ Reader and the Send-to-Kindle converter, which draw no
+    SVG at all. An SVG file carries its own two-line stylesheet, so its ink follows the
+    reader's colour scheme; an `<img>` cannot inherit `currentColor` from the page that holds
+    it. A PNG can carry no stylesheet, so the raster book adds `filter: invert(1)` to its
+    dark-scheme block here instead, on the mathematics only and never on a figure.
   * Every colour in the stylesheet is declared as a foreground and background pair, and every
     pair has a dark-scheme counterpart. A reader that recolours the page with CSS can then
     never leave dark text on a light block.
@@ -114,7 +118,7 @@ div.eq {
   page-break-inside: avoid;
   break-inside: avoid;
 }
-div.eq img, div.eq svg { max-width: 100%; height: auto; vertical-align: middle; }
+div.eq img { max-width: 100%; height: auto; vertical-align: middle; }
 div.eq .eqno { font-size: 0.85em; margin-left: 0.7em; vertical-align: middle; }
 
 img.mi { vertical-align: baseline; max-width: 100%; }
@@ -285,6 +289,9 @@ class EpubBuilder:
         self.source = ""
         self.rights = ""
         self.accessibility_summary = ""
+        # Rules appended to the shared stylesheet by one build only. The raster build needs a
+        # dark-scheme rule for its mathematics that would invert the SVG build's ink twice.
+        self.extra_css = ""
         self.modified = "2026-08-17T00:00:00Z"
         self.resources: list[Resource] = []
         self.spine: list[str] = []
@@ -292,10 +299,12 @@ class EpubBuilder:
         self.cover_id: str | None = None
         self.bodymatter_href: str = ""
 
-    def add_document(self, name: str, title: str, body: str, ident: str, spine: bool = True) -> str:
+    def add_document(
+        self, name: str, title: str, body: str, ident: str, spine: bool = True, properties: str = ""
+    ) -> str:
         path = f"text/{name}"
         data = XHTML_HEAD.format(title=_escape(title), body=body).encode("utf-8")
-        self.resources.append(Resource(path, "application/xhtml+xml", data, ident))
+        self.resources.append(Resource(path, "application/xhtml+xml", data, ident, properties))
         if spine:
             self.spine.append(ident)
         return path
@@ -413,7 +422,7 @@ xml:lang="{self.language}">
 """
 
     def write(self, target: Path) -> None:
-        self.add_resource("css/style.css", "text/css", STYLESHEET.encode("utf-8"), "css")
+        self.add_resource("css/style.css", "text/css", (STYLESHEET + self.extra_css).encode("utf-8"), "css")
         self.resources.append(
             Resource("nav.xhtml", "application/xhtml+xml", self._nav_document().encode("utf-8"), "nav", "nav")
         )

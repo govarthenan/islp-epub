@@ -552,3 +552,77 @@ keep SVG. That needs a real Kindle to settle. Dark mode on the Libra 2 itself sh
 checked once after this change, to confirm Kobo inverts the screen rather than declaring a
 dark colour scheme; if it declares one, the mathematics would invert twice and the two rules
 inside the SVG files should come out again.
+
+---
+
+## 2026-08-19 — Entry 020: The reader that draws no SVG
+
+Entry 019 closed with the mathematics as SVG and one worry written down: Amazon's converter
+does not always keep SVG. The worry was too narrow. A photograph came back from a Samsung
+phone running Moon+ Reader, opened at "Notation and Simple Matrix Algebra". Where the matrix
+should be there was a small box with the label `SVG`.
+
+**Finding — Moon+ Reader draws no SVG at all.** Not in an `<img>`, not inline, not as a page
+of its own. The DAISY EPUB 3 support grid records all three as "Not Supported", and the
+reader does not use a browser engine, which is why. That is 716 files, referenced 926 times:
+409 display equations and 517 inline expressions. The 5,974 runs the pipeline already writes
+as HTML text were drawn correctly, which is why the words around the hole looked right.
+
+**No markup fixes this.** MathML is the EPUB 3 standard for mathematics, and the same grid
+marks every MathML test for this reader "Not Tested", so it was tested here instead: it came
+out as flat text, `A∈ℝr×d`, with no layout at all. LaTeX source is typeset by no reader.
+MathJax as a script does not run, because readers switch scripting off. And even a reader
+that did draw MathML would not settle it, because the Kobo Libra 2 this book was built for
+draws SVG and not MathML, and one EPUB cannot choose its markup per reader.
+
+**A probe before a rebuild.** Rather than guess, a one-page EPUB was built with the same
+expression drawn eight ways, each row labelled, and opened on the phone. One photograph
+settled everything. The SVG row failed, as expected. A PNG forced to one em and the same file
+forced to three em came out at the right sizes, which was the answer that mattered: **Moon+
+does obey a size in `em` on an image**, so a PNG still grows with the reader's font. A
+transparent background blended into the cream page where a white one showed as a bright
+block. The wide matrix fitted the page. An inline PNG sat on the line of text.
+
+**Two books, not one.** The SVG book is not broken; it is sharp at every font size and its
+ink follows the reader's colour scheme. So the build now writes both from one pass over the
+PDF: `ISLP.epub` with SVG, and `ISLP-raster.epub` with the same expressions drawn as PNG at
+48 pixels for one em. The PNG is made from the SVG, never from the page, so the two books
+cannot disagree about what an equation says.
+
+**The bracket bug, and the check that missed it.** The first raster book was drawn with
+MuPDF, which the project already depended on. Three checks passed: every one of the 716
+equations carried ink; replacing each `<use>` with the glyph it points at changed nothing;
+removing the glyph definitions emptied the image. Then the phone came back with a second
+photograph, and the brackets around the matrices were wrong — a hook, a straight bar that did
+not join it, and another hook.
+
+The cause is one construct. MathJax stretches a tall bracket by putting its middle piece in a
+nested `<svg>` with its own viewport, and scaling that piece to the height it needs:
+
+```xml
+<svg width="875" height="2369.2" y="-934.6" x="0" viewBox="0 535 875 2369.2">
+  <use xlink:href="#MJX-2-TEX-S4-239F" transform="scale(1,5.732)"/>
+</svg>
+```
+
+MuPDF puts that viewport in the wrong place. CairoSVG draws it the way a browser does, so the
+raster book is drawn by CairoSVG now. 40 of the 716 equations stretch a bracket that way.
+
+The lesson is about the checks, not the renderer. All three compared a renderer against
+itself, so all three passed while every matrix bracket was broken. Drawing each equation a
+second time with MuPDF and comparing the two was tried as an automatic test and dropped: over
+60 equations, ordinary ones differ from each other by as much as 0.82 of their ink, only from
+how the two renderers smooth an edge, while the broken brackets differed by 0.13 to 0.33. A
+test that reports 58 faults out of 60 hides the one that is real. What replaced it is smaller
+and honest: every equation that stretches a bracket is drawn onto one sheet for a person to
+look at. A person found this bug; a person is what the check now asks for.
+
+**Cost.** The raster book is 11.9 MB against 8.7 MB. The PNG files are 5.5 MB against 6.2 MB
+of SVG, and the gap widens in the archive because SVG is text and compresses while a PNG does
+not.
+
+**Still open.** Moon+ Reader's night theme. It neither declares a dark colour scheme to the
+page nor inverts the screen, so the `filter: invert(1)` that serves Thorium, Apple Books and
+Calibre may not reach it, and the mathematics would read black on a dark page. Moon+ has a
+setting that inverts images at night. This needs one more look at the phone. Dark mode on the
+Libra 2 is still unchecked, as entry 019 left it.

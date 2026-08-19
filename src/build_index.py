@@ -494,11 +494,12 @@ contact with the page.</p>
   <tr><th>Decision</th><th>Reason</th></tr>
   <tr><td>No embedded font, no font size on <code>body</code></td>
       <td>The reader's own typography controls keep working.</td></tr>
-  <tr><td>Mathematics as SVG sized in <code>em</code>, each file carrying its own
-          colour scheme</td>
+  <tr><td>Mathematics sized in <code>em</code>, in two books: one with SVG, one with PNG</td>
       <td>It grows with the text instead of staying pinned to pixels. An <code>&lt;img&gt;</code>
           is a separate document, so <code>currentColor</code> alone always painted the
-          mathematics black; the two rules inside each file let it follow a dark theme.</td></tr>
+          mathematics black; the two rules inside each SVG file let it follow a dark theme.
+          Moon+ Reader on Android draws no SVG at all and shows a box marked SVG in its place,
+          so the same expressions are drawn as PNG for a second book, from the same files.</td></tr>
   <tr><td>Figures at 300 ppi, in colour</td>
       <td>The book draws one series in orange and the next in blue, and the two have almost the
           same luminance. A grey rendering painted them the same shade, and the series could not

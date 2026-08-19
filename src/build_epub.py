@@ -6,17 +6,28 @@ Stages:
   1. assemble the document model from the PDF
   2. render figures and tables to 300 ppi PNG, in colour
   3. render mathematics: LaTeX to SVG where LaTeX is known, cropped PNG otherwise
-  4. write XHTML and package the EPUB
+  4. write XHTML and package the EPUB, once for each variant
+  5. write the build statistics
+
+Two books come out of one pass over the PDF:
+
+  output/ISLP.epub         mathematics as SVG. Sharp at every font size, and the ink follows
+                           the reader's colour scheme.
+  output/ISLP-raster.epub  the same mathematics as PNG, drawn from the same SVG files. For
+                           Moon+ Reader and the Send-to-Kindle converter, which do not draw
+                           SVG at all.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import io
 import json
 import re
 import subprocess
 import sys
+from dataclasses import dataclass
 from html import unescape
 from pathlib import Path
 
@@ -28,6 +39,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from islp.document import Document, assemble_document
 from islp.epub import EpubBuilder, NavPoint, _escape
 from islp.figures import render_region
+from islp.mathraster import RASTER_RENDERER, svg_to_png
 
 ROOT = Path(__file__).resolve().parent.parent
 PDF = ROOT / "ISLP_website.pdf"
@@ -36,6 +48,9 @@ OUTPUT = ROOT / "output"
 
 FIGURE_DPI = 300
 MATH_DPI = 400
+# Pixels for one CSS em in the raster book. At 48 the mathematics stays sharp up to a large
+# reading font, and the PNG costs about as many bytes as the SVG it stands in for.
+MATH_PNG_PX_PER_EM = 48
 GREY_LEVELS = 16
 # The book plots one series in orange (152, 65, 0) and the next in blue (0, 104, 180). The
 # two have almost the same luminance, 84 and 82 of 255, so a grey rendering paints them the
@@ -140,14 +155,14 @@ class Renderer:
     def __init__(
         self,
         document: Document,
-        svg_manifest: dict,
+        math_manifest: dict,
         math_images: dict,
         figure_images: dict,
         targets: dict | None = None,
         table_html: dict | None = None,
     ) -> None:
         self.document = document
-        self.svg_manifest = svg_manifest
+        self.math_manifest = math_manifest
         self.math_images = math_images
         self.figure_images = figure_images
         self.table_html = table_html or {}
@@ -183,7 +198,7 @@ class Renderer:
 
     def inline_math(self, ident: str) -> str:
         item = self.document.math.items[ident]
-        entry = self.svg_manifest.get(ident)
+        entry = self.math_manifest.get(ident)
         if entry:
             height = entry["heightEm"] or 1.0
             valign = entry["valignEm"] or 0.0
@@ -210,7 +225,7 @@ class Renderer:
 
     def display_math(self, ident: str, eq_number: str) -> str:
         item = self.document.math.items[ident]
-        entry = self.svg_manifest.get(ident)
+        entry = self.math_manifest.get(ident)
         if entry:
             width = entry["widthEm"] or 1.0
             alt = _escape(entry["tex"])
@@ -367,26 +382,162 @@ def dedication_html(pdf: pymupdf.Document) -> str:
 
 
 # ---------------------------------------------------------------------------------------
-# main
+# the two books
 # ---------------------------------------------------------------------------------------
 
+SVG_SUMMARY = (
+    "The whole book is reflowable text, with chapter, section and index navigation. "
+    "Tables are table markup, not pictures. Mathematics is scalable SVG whose alternative "
+    "text carries the LaTeX source, so a screen reader speaks the LaTeX rather than the "
+    "expression; there is no MathML. Figures are images with a short alternative text, "
+    "followed by the printed caption as text. No audio, no video and nothing that flashes."
+)
 
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=None, help="stop after this PDF page")
-    parser.add_argument("--out", default="ISLP.epub")
-    args = parser.parse_args()
+RASTER_SUMMARY = (
+    "The whole book is reflowable text, with chapter, section and index navigation. "
+    "Tables are table markup, not pictures. Mathematics is a picture sized in em, so it "
+    "grows with the text, and its alternative text carries the LaTeX source, so a screen "
+    "reader speaks the LaTeX rather than the expression; there is no MathML. Figures are "
+    "images with a short alternative text, followed by the printed caption as text. "
+    "No audio, no video and nothing that flashes."
+)
 
-    WORK.mkdir(exist_ok=True)
-    OUTPUT.mkdir(exist_ok=True)
+# An SVG used as an image carries its own colour rules, written into every file by
+# src/render_math.cjs. A PNG cannot carry a stylesheet, so the rule for the raster book
+# lives here instead. A reader that repaints the page with CSS turns the ink over. A reader
+# that inverts the whole screen, which is what e-ink devices do, matches nothing here and
+# inverts the black itself, as it did before. Figures are left out of this rule on purpose:
+# a photograph or a coloured plot must not be inverted.
+RASTER_CSS = """
+@media (prefers-color-scheme: dark) {
+  div.eq img, img.mi { filter: invert(1); }
+}
+"""
 
-    print("1/4 assembling document model ...", flush=True)
-    document = assemble_document(PDF, progress=True, last=args.limit)
 
-    pdf = pymupdf.open(PDF)
-    # A urn:uuid identifier has to hold a real UUID, or a catalogue cannot key on it. This
-    # one is uuid5 of the repository URL, so every rebuild produces the same book identity
-    # and a reader keeps its bookmarks across an update.
+@dataclass(frozen=True)
+class Variant:
+    """One of the books. They differ only in how the mathematics is carried.
+
+    The SVG book is sharp at every font size and its ink follows the reader's colour scheme.
+    Moon+ Reader on Android cannot draw SVG at all, and the Send-to-Kindle converter does not
+    always keep it, so the raster book carries the same equations as PNG instead.
+    """
+
+    name: str
+    out: str
+    mathematics: str
+    media_type: str
+    source: Path
+    prefix: str
+    extra_css: str
+    accessibility_summary: str
+
+
+VARIANTS = {
+    "svg": Variant(
+        name="svg",
+        out="ISLP.epub",
+        mathematics="SVG",
+        media_type="image/svg+xml",
+        source=WORK / "math_svg",
+        prefix="svg",
+        extra_css="",
+        accessibility_summary=SVG_SUMMARY,
+    ),
+    "raster": Variant(
+        name="raster",
+        out="ISLP-raster.epub",
+        mathematics="PNG",
+        media_type="image/png",
+        source=WORK / "math_png",
+        prefix="png",
+        extra_css=RASTER_CSS,
+        accessibility_summary=RASTER_SUMMARY,
+    ),
+}
+
+
+@dataclass
+class SharedAssets:
+    """Everything that costs a pass over the PDF and is the same in both books."""
+
+    resources: list[tuple[str, str, bytes, str, str]]
+    dedication: str
+    figure_images: dict[tuple, str]
+    math_images: dict[str, str]
+    targets: dict[int, list[tuple[float, float, str]]]
+    table_html: dict[str, str]
+
+
+def rasterise_math(svg_manifest: dict[str, dict], pixels_per_em: int) -> dict[str, dict]:
+    """Draw every equation SVG as a PNG, and remember which ones are already drawn.
+
+    `work/math_svg/` stays the one source of truth: the PNG is made from the SVG, never from
+    the page, so the two books can never disagree about what an equation says. The cache is
+    keyed by a hash of the SVG bytes, so an equation that did not change is not drawn again.
+
+    A failure drops that identifier from the returned manifest. The caller then falls back to
+    a crop of the printed page, exactly as it already does for an equation with no LaTeX.
+
+    Args:
+        svg_manifest: The manifest written by `render_svgs`.
+        pixels_per_em: Pixels to use for one CSS em of the reader's text.
+
+    Returns:
+        The same manifest, with each `file` name pointing at the PNG.
+    """
+    out_dir = WORK / "math_png"
+    out_dir.mkdir(exist_ok=True)
+    cache_path = WORK / "math_png_cache.json"
+    cached = json.loads(cache_path.read_text()) if cache_path.exists() else {}
+    # The cache is thrown away when the size changes, and also when the renderer changes: the
+    # drawing depends on both, and a PNG drawn by an older renderer must not survive.
+    if cached.get("pixels_per_em") != pixels_per_em or cached.get("renderer") != RASTER_RENDERER:
+        cached = {"pixels_per_em": pixels_per_em, "renderer": RASTER_RENDERER, "files": {}}
+    digests: dict[str, str] = cached["files"]
+
+    manifest: dict[str, dict] = {}
+    failures: list[dict] = []
+    drawn = 0
+    for ident, entry in svg_manifest.items():
+        svg_bytes = (WORK / "math_svg" / entry["file"]).read_bytes()
+        digest = hashlib.sha256(svg_bytes).hexdigest()[:16]
+        png_path = out_dir / f"{ident}.png"
+        if digests.get(ident) != digest or not png_path.exists():
+            try:
+                png_path.write_bytes(svg_to_png(svg_bytes, pixels_per_em))
+            except Exception as error:  # noqa: BLE001 - a failure here must not pass unseen
+                failures.append({"id": ident, "file": entry["file"], "error": str(error)})
+                continue
+            digests[ident] = digest
+            drawn += 1
+        manifest[ident] = {**entry, "file": f"{ident}.png"}
+
+    cache_path.write_text(
+        json.dumps({"pixels_per_em": pixels_per_em, "renderer": RASTER_RENDERER, "files": digests}, indent=1)
+    )
+    failure_path = WORK / "math_png_failures.json"
+    failure_path.write_text(json.dumps(failures, indent=1))
+    total = sum(path.stat().st_size for path in out_dir.glob("*.png"))
+    print(
+        f"    {len(manifest)} equations as PNG at {pixels_per_em} px/em "
+        f"({drawn} drawn now, {total / 1024 / 1024:.1f} MB)",
+        flush=True,
+    )
+    if failures:
+        print(f"    WARNING: {len(failures)} equations failed to draw; see {failure_path}", flush=True)
+    return manifest
+
+
+def write_book(
+    document: Document,
+    variant: Variant,
+    out_name: str,
+    math_manifest: dict[str, dict],
+    assets: SharedAssets,
+) -> tuple[Renderer, int]:
+    """Package one of the two books and return its renderer and its size in bytes."""
     builder = EpubBuilder(identifier="urn:uuid:990f1b6d-ee55-5049-8e97-87eaa392518e", title=TITLE)
     builder.authors = AUTHORS
     builder.publisher = "Springer"
@@ -400,95 +551,26 @@ def main() -> None:
         "A reflowable conversion of the ISLP textbook: real paragraphs, scalable mathematics "
         "and reflowing tables, for any e-reader, tablet or phone."
     )
-    builder.accessibility_summary = (
-        "The whole book is reflowable text, with chapter, section and index navigation. "
-        "Tables are table markup, not pictures. Mathematics is scalable SVG whose alternative "
-        "text carries the LaTeX source, so a screen reader speaks the LaTeX rather than the "
-        "expression; there is no MathML. Figures are images with a short alternative text, "
-        "followed by the printed caption as text. No audio, no video and nothing that flashes."
-    )
+    builder.accessibility_summary = variant.accessibility_summary
+    builder.extra_css = variant.extra_css
 
-    # --- cover -------------------------------------------------------------------------
-    print("2/4 rendering figures and tables ...", flush=True)
-    cover = pixmap_to_png(pdf[0].get_pixmap(dpi=170, colorspace=pymupdf.csRGB, alpha=False), levels=COLOUR_LEVELS)
-    builder.add_resource("images/cover.png", "image/png", cover, "cover-image", "cover-image")
+    for path, media_type, data, ident, properties in assets.resources:
+        builder.add_resource(path, media_type, data, ident, properties)
     builder.set_cover("cover-image")
+
+    for ident, entry in math_manifest.items():
+        data = (variant.source / entry["file"]).read_bytes()
+        builder.add_resource(f"math/{entry['file']}", variant.media_type, data, f"{variant.prefix}-{ident}")
+
     builder.add_document(
         "cover.xhtml", "Cover", '<div class="cover"><img src="../images/cover.png" alt="Cover"/></div>', "cover"
     )
     builder.nav.append(NavPoint("Cover", "text/cover.xhtml", 1))
-
-    builder.add_document("dedication.xhtml", "Dedication", dedication_html(pdf), "dedication")
+    builder.add_document("dedication.xhtml", "Dedication", assets.dedication, "dedication")
     builder.nav.append(NavPoint("Dedication", "text/dedication.xhtml", 1))
 
-    # --- figures -----------------------------------------------------------------------
-    figure_images: dict[tuple, str] = {}
-    available_tables = set(load_table_html())
-    for chapter in document.chapters:
-        for block in chapter.blocks:
-            if block.kind not in ("figure", "table"):
-                continue
-            if block.bbox == (0, 0, 0, 0):
-                continue
-            if block.kind == "table" and table_key(block) in available_tables:
-                continue  # markup replaces the picture
-            name = f"{block.kind}-{block.number.replace('.', '-')}-p{block.page + 1}.png"
-            data = render_crop(pdf[block.page], block.bbox, FIGURE_DPI, pad=2.0, colour=True)
-            builder.add_resource(f"images/{name}", "image/png", data, f"img-{name.replace('.', '-')}")
-            figure_images[(block.page, block.kind, block.number)] = name
-    print(f"    {len(figure_images)} figures and tables", flush=True)
-
-    # --- mathematics -------------------------------------------------------------------
-    print("3/4 rendering mathematics ...", flush=True)
-    verified = load_verified_latex()
-    jobs: list[dict] = []
-    for ident, item in document.math.items.items():
-        latex = verified.get(ident) or (item.latex if item.tier == "latex" else "")
-        if latex:
-            jobs.append({"id": ident, "tex": latex, "display": item.display})
-    svg_manifest = render_svgs(jobs)
-    for ident, entry in svg_manifest.items():
-        data = (WORK / "math_svg" / entry["file"]).read_bytes()
-        builder.add_resource(f"math/{entry['file']}", "image/svg+xml", data, f"svg-{ident}")
-
-    math_images: dict[str, str] = {}
-    for ident, item in document.math.items.items():
-        if ident in svg_manifest:
-            continue
-        if item.tier == "text":
-            continue
-        name = f"{ident}.png"
-        data = render_crop(pdf[item.page], item.bbox, MATH_DPI, pad=0.8)
-        builder.add_resource(f"images/{name}", "image/png", data, f"img-{ident}")
-        math_images[ident] = name
-    print(f"    {len(svg_manifest)} equations as SVG, {len(math_images)} as cropped images", flush=True)
-
-    # --- cross-reference targets ---------------------------------------------------------
-    # Every block gets an anchor, so any of the book's 4,000 internal references can land on
-    # the nearest thing to the point the PDF pointed at.
-    targets: dict[int, list[tuple[float, float, str]]] = {}
-    for chapter in document.chapters:
-        if not chapter.blocks:
-            continue
-        for position, block in enumerate(chapter.blocks):
-            block.anchor = f"b{position}"
-            y0 = block.meta.get("y0", block.bbox[1] if block.bbox != (0, 0, 0, 0) else 0.0)
-            y1 = block.bbox[3] if block.bbox != (0, 0, 0, 0) else y0 + 12
-            targets.setdefault(block.page, []).append(
-                (float(y0), float(max(y1, y0 + 4)), f"{chapter.ident}.xhtml#{block.anchor}")
-            )
-    for entries in targets.values():
-        entries.sort()
-
-    # --- chapters ----------------------------------------------------------------------
-    print("4/4 writing XHTML ...", flush=True)
-    table_html = load_table_html()
-    renderer = Renderer(document, svg_manifest, math_images, figure_images, targets, table_html)
-    print(
-        f"    {len(table_html)} tables as markup, "
-        f"{sum(1 for c in document.chapters for b in c.blocks if b.kind == 'table') - len(table_html)}"
-        " as images",
-        flush=True,
+    renderer = Renderer(
+        document, math_manifest, assets.math_images, assets.figure_images, assets.targets, assets.table_html
     )
     for chapter in document.chapters:
         if not chapter.blocks:
@@ -509,18 +591,144 @@ def main() -> None:
                 point.children[-1].children.append(child)
         builder.nav.append(point)
 
-    target = OUTPUT / args.out
+    target = OUTPUT / out_name
     builder.write(target)
-    size = target.stat().st_size
+    return renderer, target.stat().st_size
 
+
+# ---------------------------------------------------------------------------------------
+# main
+# ---------------------------------------------------------------------------------------
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit", type=int, default=None, help="stop after this PDF page")
+    parser.add_argument("--out", default=None, help="write one book under this name; needs a single variant")
+    parser.add_argument(
+        "--variants",
+        default="svg,raster",
+        help="which books to write: svg, raster, or both, separated by a comma",
+    )
+    parser.add_argument("--pixels-per-em", type=int, default=MATH_PNG_PX_PER_EM)
+    args = parser.parse_args()
+
+    chosen = [name.strip() for name in args.variants.split(",") if name.strip()]
+    unknown = [name for name in chosen if name not in VARIANTS]
+    if unknown:
+        parser.error(f"unknown variant {unknown[0]!r}; choose from {', '.join(VARIANTS)}")
+    if args.out and len(chosen) != 1:
+        parser.error("--out names one file, so name one variant with --variants as well")
+
+    WORK.mkdir(exist_ok=True)
+    OUTPUT.mkdir(exist_ok=True)
+
+    print("1/5 assembling document model ...", flush=True)
+    document = assemble_document(PDF, progress=True, last=args.limit)
+    pdf = pymupdf.open(PDF)
+
+    # --- the parts that cost a pass over the PDF, and are the same in both books ----------
+    print("2/5 rendering figures and tables ...", flush=True)
+    resources: list[tuple[str, str, bytes, str, str]] = []
+    cover = pixmap_to_png(pdf[0].get_pixmap(dpi=170, colorspace=pymupdf.csRGB, alpha=False), levels=COLOUR_LEVELS)
+    resources.append(("images/cover.png", "image/png", cover, "cover-image", "cover-image"))
+
+    figure_images: dict[tuple, str] = {}
+    available_tables = set(load_table_html())
+    for chapter in document.chapters:
+        for block in chapter.blocks:
+            if block.kind not in ("figure", "table"):
+                continue
+            if block.bbox == (0, 0, 0, 0):
+                continue
+            if block.kind == "table" and table_key(block) in available_tables:
+                continue  # markup replaces the picture
+            name = f"{block.kind}-{block.number.replace('.', '-')}-p{block.page + 1}.png"
+            data = render_crop(pdf[block.page], block.bbox, FIGURE_DPI, pad=2.0, colour=True)
+            resources.append((f"images/{name}", "image/png", data, f"img-{name.replace('.', '-')}", ""))
+            figure_images[(block.page, block.kind, block.number)] = name
+    print(f"    {len(figure_images)} figures and tables", flush=True)
+
+    # --- mathematics ---------------------------------------------------------------------
+    print("3/5 rendering mathematics ...", flush=True)
+    verified = load_verified_latex()
+    jobs: list[dict] = []
+    for ident, item in document.math.items.items():
+        latex = verified.get(ident) or (item.latex if item.tier == "latex" else "")
+        if latex:
+            jobs.append({"id": ident, "tex": latex, "display": item.display})
+    svg_manifest = render_svgs(jobs)
+    manifests = {"svg": svg_manifest}
+    if "raster" in chosen:
+        manifests["raster"] = rasterise_math(svg_manifest, args.pixels_per_em)
+
+    math_images: dict[str, str] = {}
+    for ident, item in document.math.items.items():
+        if ident in svg_manifest:
+            continue
+        if item.tier == "text":
+            continue
+        name = f"{ident}.png"
+        data = render_crop(pdf[item.page], item.bbox, MATH_DPI, pad=0.8)
+        resources.append((f"images/{name}", "image/png", data, f"img-{ident}", ""))
+        math_images[ident] = name
+    print(f"    {len(svg_manifest)} equations from LaTeX, {len(math_images)} as cropped images", flush=True)
+
+    # --- cross-reference targets ---------------------------------------------------------
+    # Every block gets an anchor, so any of the book's 4,000 internal references can land on
+    # the nearest thing to the point the PDF pointed at.
+    targets: dict[int, list[tuple[float, float, str]]] = {}
+    for chapter in document.chapters:
+        if not chapter.blocks:
+            continue
+        for position, block in enumerate(chapter.blocks):
+            block.anchor = f"b{position}"
+            y0 = block.meta.get("y0", block.bbox[1] if block.bbox != (0, 0, 0, 0) else 0.0)
+            y1 = block.bbox[3] if block.bbox != (0, 0, 0, 0) else y0 + 12
+            targets.setdefault(block.page, []).append(
+                (float(y0), float(max(y1, y0 + 4)), f"{chapter.ident}.xhtml#{block.anchor}")
+            )
+    for entries in targets.values():
+        entries.sort()
+
+    table_html = load_table_html()
+    print(
+        f"    {len(table_html)} tables as markup, "
+        f"{sum(1 for c in document.chapters for b in c.blocks if b.kind == 'table') - len(table_html)}"
+        " as images",
+        flush=True,
+    )
+    assets = SharedAssets(
+        resources=resources,
+        dedication=dedication_html(pdf),
+        figure_images=figure_images,
+        math_images=math_images,
+        targets=targets,
+        table_html=table_html,
+    )
+
+    # --- one book per variant --------------------------------------------------------------
+    print(f"4/5 writing {len(chosen)} book(s) ...", flush=True)
+    written: dict[str, dict] = {}
+    renderer: Renderer | None = None
+    for name in chosen:
+        variant = VARIANTS[name]
+        out_name = args.out or variant.out
+        renderer, size = write_book(document, variant, out_name, manifests[name], assets)
+        written[out_name] = {"bytes": size, "mathematics": variant.mathematics}
+        print(f"    output/{out_name}: {size / 1024 / 1024:.1f} MB, mathematics as {variant.mathematics}", flush=True)
+
+    # --- statistics -------------------------------------------------------------------------
+    print("5/5 writing statistics ...", flush=True)
+    primary = args.out or VARIANTS[chosen[0]].out
     tiers: dict[str, int] = {"text": document.math.text_runs}
     occurrences: dict[str, int] = {"text": document.math.text_runs}
     for item in document.math.items.values():
         tiers[item.tier] = tiers.get(item.tier, 0) + 1
         occurrences[item.tier] = occurrences.get(item.tier, 0) + item.occurrences
     stats = {
-        "epub_bytes": size,
-        "epub_name": args.out,
+        "epub_bytes": written[primary]["bytes"],
+        "epub_name": primary,
         "chapters": sum(1 for chapter in document.chapters if chapter.blocks),
         "blocks": sum(len(chapter.blocks) for chapter in document.chapters),
         "paragraphs": sum(1 for c in document.chapters for b in c.blocks if b.kind == "para"),
@@ -533,12 +741,14 @@ def main() -> None:
         "math_items_by_tier": tiers,
         "math_occurrences_by_tier": occurrences,
         "math_svg": len(svg_manifest),
+        "math_png": len(manifests.get("raster", {})),
         "math_bitmap": len(math_images),
+        "math_png_pixels_per_em": args.pixels_per_em,
+        "variants": written,
         "links_resolved": renderer.resolved,
         "links_unresolved": renderer.unresolved,
     }
     (WORK / "build_stats.json").write_text(json.dumps(stats, indent=1))
-    print(f"wrote {target} ({size / 1024 / 1024:.1f} MB)")
     print(f"cross-references: {renderer.resolved} resolved, {renderer.unresolved} unresolved")
     print(f"stats: {WORK / 'build_stats.json'}")
 
