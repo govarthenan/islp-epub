@@ -78,7 +78,7 @@
       "n": 5,
       "title": "First end-to-end EPUB",
       "status": "partial",
-      "what": "Run the whole chain over the first 100 pages and read the result in a browser at the Kobo's 1264 x 1680 panel size.",
+      "what": "Run the whole chain over the first 100 pages and read the result in a browser at the Kobo's 1264 × 1680 panel size.",
       "result": "A valid EPUB, but six visible faults: words glued together across spans, a ligature splitting 'fit' into 'f it' inside code, split captions, a column of stacked margin notes, a broken margin-note hyphenation, and paragraph indents that disagreed with the book.",
       "why": "Every one of them came from trusting a convenient rule instead of what the page actually measures."
     },
@@ -174,8 +174,8 @@
       "n": 17,
       "title": "Check every expression against the printed page",
       "status": "success",
-      "what": "Typeset all 555 transcriptions with MathJax, rasterise them, stack each under the crop from the PDF, and give 23 agents one instruction: find where the transcription is wrong.",
-      "result": "500 same, 53 cosmetic, 2 genuinely wrong. 99.6% of the mathematics agrees with the page. The two errors were a dropped first row of a two-row equation, and square brackets typeset as round ones.",
+      "what": "In the third round, typeset all 555 transcriptions with MathJax, rasterise them, stack each under the crop from the PDF, and give 23 agents one instruction: find where the transcription is wrong.",
+      "result": "500 same, 53 cosmetic, 2 genuinely wrong: 99.6% of that round agreed with the page. The two errors were a dropped first row of a two-row equation, and square brackets typeset as round ones. Later rounds changed the crops, so the final figure is the 99.8% reported below.",
       "why": ""
     },
     {
@@ -183,15 +183,15 @@
       "title": "An independent second opinion found what the family missed",
       "status": "success",
       "what": "Hand 45 of the same comparison images to OpenAI's codex CLI, a different model family with no sight of the earlier answers.",
-      "result": "44 of 45 agreed. The one disagreement was right and mattered: a crop had captured a fraction's denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction.",
-      "why": "Every other check here was Claude checking Claude. The only check from outside the family found the fault in a sample of 45."
+      "result": "In that round, 44 of 45 agreed. The one disagreement was right and mattered: a crop had captured a fraction's denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction. The final audit, run after those fixes, sampled 50 and found no disagreement.",
+      "why": "Every other check here was Claude checking Claude. The only check from outside the family found the fault, in a sample of 45."
     },
     {
       "n": 19,
       "title": "Iterate until the extraction stops changing",
       "status": "success",
       "what": "Each round of fixes changes the crops, so re-extract, carry over every transcription whose image is byte for byte identical, and read only the rest.",
-      "result": "Five rounds: 570 expressions read, then 61, then 32, then 59, then 15, then 0. The last re-extraction produced 531 crops of which 531 were unchanged.",
+      "result": "Five rounds: 570 expressions read, then 61, then 32, then 59, then 15, then 0. The last re-extraction produced 531 crops of which 531 were unchanged. Those 531 are the expressions the three checks below report on.",
       "why": ""
     },
     {

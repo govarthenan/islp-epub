@@ -155,12 +155,12 @@ a { color: var(--link); }
   <h1>ISLP PDF to EPUB</h1>
   <p class="lede">Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB for a Kobo Libra 2</p>
   <span class="pill">Verified and packaged.</span>
-  <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">3,297</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">191</div><div class="tile-label">figures re-rendered</div><div class="tile-note">300 ppi, 16 greys</div></div><div class="tile"><div class="tile-value">36</div><div class="tile-label">tables as markup</div><div class="tile-note">they reflow, not pictures</div></div><div class="tile"><div class="tile-value">409</div><div class="tile-label">display equations</div><div class="tile-note">every one checked</div></div><div class="tile"><div class="tile-value">1,137</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">3,686</div><div class="tile-label">cross-references</div><div class="tile-note">all of them resolved</div></div><div class="tile"><div class="tile-value">7.9 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div><div class="tile"><div class="tile-value">99.8%</div><div class="tile-label">mathematics agreed</div><div class="tile-note">candidate matched the printed page</div></div></div>
+  <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">3,297</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">191</div><div class="tile-label">figures re-rendered</div><div class="tile-note">300 ppi, 16 greys</div></div><div class="tile"><div class="tile-value">36</div><div class="tile-label">tables as markup</div><div class="tile-note">they reflow, not pictures</div></div><div class="tile"><div class="tile-value">409</div><div class="tile-label">display equations</div><div class="tile-note">every one checked</div></div><div class="tile"><div class="tile-value">1,137</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">3,686</div><div class="tile-label">cross-references</div><div class="tile-note">all of them resolved</div></div><div class="tile"><div class="tile-value">8.2 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div><div class="tile"><div class="tile-value">99.8%</div><div class="tile-label">mathematics agreed</div><div class="tile-note">candidate matched the printed page</div></div></div>
 </header>
 
 <h2>How the book is taken apart</h2>
-<p class="sub">Six stages. Nothing here guesses at the layout: every rule below was measured
-from the file itself before it was written down.</p>
+<p class="sub">Six stages. Nothing here guesses at the layout: every rule
+below was measured from the file itself before it was written down.</p>
 <div class="pipeline"><svg viewBox="0 0 1180 252" role="img" aria-label="Conversion pipeline in 6 stages"><title>Conversion pipeline</title>
     <g>
       <rect x="12" y="40" width="163" height="176"
@@ -334,7 +334,7 @@ contact with the page.</p>
         <h3>First end-to-end EPUB</h3>
         <span class="badge badge-partial">partly worked</span>
       </div>
-      <p class="what"><span class="field">Tried</span> Run the whole chain over the first 100 pages and read the result in a browser at the Kobo&#x27;s 1264 x 1680 panel size.</p>
+      <p class="what"><span class="field">Tried</span> Run the whole chain over the first 100 pages and read the result in a browser at the Kobo&#x27;s 1264 × 1680 panel size.</p>
       <p class="result"><span class="field">Result</span> A valid EPUB, but six visible faults: words glued together across spans, a ligature splitting &#x27;fit&#x27; into &#x27;f it&#x27; inside code, split captions, a column of stacked margin notes, a broken margin-note hyphenation, and paragraph indents that disagreed with the book.</p>
       <p class="why"><span class="why-label">Why</span> Every one of them came from trusting a convenient rule instead of what the page actually measures.</p>
     </li>
@@ -454,8 +454,8 @@ contact with the page.</p>
         <h3>Check every expression against the printed page</h3>
         <span class="badge badge-success">worked</span>
       </div>
-      <p class="what"><span class="field">Tried</span> Typeset all 555 transcriptions with MathJax, rasterise them, stack each under the crop from the PDF, and give 23 agents one instruction: find where the transcription is wrong.</p>
-      <p class="result"><span class="field">Result</span> 500 same, 53 cosmetic, 2 genuinely wrong. 99.6% of the mathematics agrees with the page. The two errors were a dropped first row of a two-row equation, and square brackets typeset as round ones.</p>
+      <p class="what"><span class="field">Tried</span> In the third round, typeset all 555 transcriptions with MathJax, rasterise them, stack each under the crop from the PDF, and give 23 agents one instruction: find where the transcription is wrong.</p>
+      <p class="result"><span class="field">Result</span> 500 same, 53 cosmetic, 2 genuinely wrong: 99.6% of that round agreed with the page. The two errors were a dropped first row of a two-row equation, and square brackets typeset as round ones. Later rounds changed the crops, so the final figure is the 99.8% reported below.</p>
       
     </li>
     <li class="attempt attempt-success">
@@ -465,8 +465,8 @@ contact with the page.</p>
         <span class="badge badge-success">worked</span>
       </div>
       <p class="what"><span class="field">Tried</span> Hand 45 of the same comparison images to OpenAI&#x27;s codex CLI, a different model family with no sight of the earlier answers.</p>
-      <p class="result"><span class="field">Result</span> 44 of 45 agreed. The one disagreement was right and mattered: a crop had captured a fraction&#x27;s denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction.</p>
-      <p class="why"><span class="why-label">Why</span> Every other check here was Claude checking Claude. The only check from outside the family found the fault in a sample of 45.</p>
+      <p class="result"><span class="field">Result</span> In that round, 44 of 45 agreed. The one disagreement was right and mattered: a crop had captured a fraction&#x27;s denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction. The final audit, run after those fixes, sampled 50 and found no disagreement.</p>
+      <p class="why"><span class="why-label">Why</span> Every other check here was Claude checking Claude. The only check from outside the family found the fault, in a sample of 45.</p>
     </li>
     <li class="attempt attempt-success">
       <div class="attempt-head">
@@ -475,7 +475,7 @@ contact with the page.</p>
         <span class="badge badge-success">worked</span>
       </div>
       <p class="what"><span class="field">Tried</span> Each round of fixes changes the crops, so re-extract, carry over every transcription whose image is byte for byte identical, and read only the rest.</p>
-      <p class="result"><span class="field">Result</span> Five rounds: 570 expressions read, then 61, then 32, then 59, then 15, then 0. The last re-extraction produced 531 crops of which 531 were unchanged.</p>
+      <p class="result"><span class="field">Result</span> Five rounds: 570 expressions read, then 61, then 32, then 59, then 15, then 0. The last re-extraction produced 531 crops of which 531 were unchanged. Those 531 are the expressions the three checks below report on.</p>
       
     </li>
     <li class="attempt attempt-failed">
@@ -502,7 +502,7 @@ contact with the page.</p>
       <td>It grows with the text instead of staying pinned to pixels, and it inverts correctly
           in dark mode.</td></tr>
   <tr><td>Figures at 300 ppi, 16 levels of grey</td>
-      <td>Matches the panel exactly: 1264 x 1680 at 300 ppi, 16 greys.</td></tr>
+      <td>Matches the panel exactly: 1264 &times; 1680 at 300 ppi, 16 greys.</td></tr>
   <tr><td>Margin notes collapsed to one quiet line</td>
       <td>A 7 inch page has no margin to spare; stacked in a column they took a third of the
           screen.</td></tr>
@@ -514,9 +514,14 @@ contact with the page.</p>
 
 <h2>Reproducing this</h2>
 <pre>uv sync &amp;&amp; npm install
-uv run python src/extract_math_jobs.py     # cut every expression out as an image
-uv run python src/build_epub.py            # assemble and package
-uv run python src/validate_epub.py output/ISLP.epub</pre>
+
+uv run python src/probe_structure.py        # find the chapters, the index, the page zones
+uv run python src/extract_math_jobs.py      # crop every expression a model must read
+# transcription and verification write work/math_final.json
+uv run python src/build_epub.py --out ISLP.epub
+uv run python src/validate_epub.py output/ISLP.epub
+uv run python src/build_index.py            # regenerate this page
+./src/make_story_pdf.sh                     # and its PDF</pre>
 
 <footer>
   <p>Educational and experimental only. No commercial use. All rights remain with the authors and publisher.</p>

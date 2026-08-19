@@ -20,6 +20,10 @@ WORK = ROOT / "work"
 
 STATUS_LABEL = {"success": "worked", "failed": "failed", "partial": "partly worked"}
 
+# The page counts its own stages and checks, so a heading cannot fall out of step with
+# the JSON it is built from.
+NUMBER_WORD = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight"}
+
 
 def load(path: Path, default):
     try:
@@ -137,13 +141,21 @@ def figure(src: str, caption: str, tone: str = "") -> str:
     </figure>'''
 
 
+def input_date(paths: list[Path]) -> str:
+    """The date of the newest input file. The footer used today's date, which rewrote
+    index.html and the whole PDF on every rebuild even when no input had changed."""
+    stamps = [path.stat().st_mtime for path in paths if path.exists()]
+    return date.fromtimestamp(max(stamps)).isoformat() if stamps else date.today().isoformat()
+
+
 def build() -> str:
-    data = load(ROOT / "docs" / "attempts.json", {})
-    stats = load(WORK / "build_stats.json", {})
-    verification = load(WORK / "math_verification.json", {})
+    inputs = [ROOT / "docs" / "attempts.json", WORK / "build_stats.json", WORK / "math_verification.json"]
+    data = load(inputs[0], {})
+    stats = load(inputs[1], {})
+    verification = load(inputs[2], {})
 
     tiers = dict(stats.get("math_items_by_tier", {}))
-    epub_mb = stats.get("epub_bytes", 0) / 1024 / 1024
+    epub_mb = stats.get("epub_bytes", 0) / 1e6  # decimal MB, as a file manager and GitHub report it
 
     accuracy = verification.get("accuracy")
     audit = verification.get("independent_audit", {})
@@ -165,6 +177,7 @@ def build() -> str:
         "Verified and packaged." if accuracy is not None else "Built and packaged; verification pass in progress."
     )
 
+    stages = data.get("stages", [])
     attempts = data.get("attempts", [])
     worked = sum(1 for a in attempts if a["status"] == "success")
     failed = sum(1 for a in attempts if a["status"] == "failed")
@@ -215,8 +228,9 @@ def build() -> str:
              <div class="check-label">{escape(label)}</div><p>{escape(note)}</p></div>"""
             for value, label, note in checks
         )
+        count = NUMBER_WORD[len(checks)]
         audit_block = (
-            "<h2>Three checks, three kinds of evidence</h2>"
+            f"<h2>{count} checks, {count.lower()} kinds of evidence</h2>"
             '<p class="sub">One model marking its own work is not evidence. These are '
             "deliberately different in kind: one costs nothing and cannot be talked round, one "
             "looks at the pictures, and one comes from outside the family.</p>"
@@ -384,9 +398,9 @@ a {{ color: var(--link); }}
 </header>
 
 <h2>How the book is taken apart</h2>
-<p class="sub">Six stages. Nothing here guesses at the layout: every rule below was measured
-from the file itself before it was written down.</p>
-<div class="pipeline">{pipeline_svg(data.get("stages", []))}</div>
+<p class="sub">{NUMBER_WORD[len(stages)]} stages. Nothing here guesses at the layout: every rule
+below was measured from the file itself before it was written down.</p>
+<div class="pipeline">{pipeline_svg(stages)}</div>
 
 <h2>The mathematics, triaged</h2>
 <p class="sub">The starting assumption was that no mathematics could be recovered as LaTeX and
@@ -426,7 +440,7 @@ contact with the page.</p>
       <td>It grows with the text instead of staying pinned to pixels, and it inverts correctly
           in dark mode.</td></tr>
   <tr><td>Figures at 300 ppi, 16 levels of grey</td>
-      <td>Matches the panel exactly: 1264 x 1680 at 300 ppi, 16 greys.</td></tr>
+      <td>Matches the panel exactly: 1264 &times; 1680 at 300 ppi, 16 greys.</td></tr>
   <tr><td>Margin notes collapsed to one quiet line</td>
       <td>A 7 inch page has no margin to spare; stacked in a column they took a third of the
           screen.</td></tr>
@@ -438,13 +452,18 @@ contact with the page.</p>
 
 <h2>Reproducing this</h2>
 <pre>uv sync &amp;&amp; npm install
-uv run python src/extract_math_jobs.py     # cut every expression out as an image
-uv run python src/build_epub.py            # assemble and package
-uv run python src/validate_epub.py output/ISLP.epub</pre>
+
+uv run python src/probe_structure.py        # find the chapters, the index, the page zones
+uv run python src/extract_math_jobs.py      # crop every expression a model must read
+# transcription and verification write work/math_final.json
+uv run python src/build_epub.py --out ISLP.epub
+uv run python src/validate_epub.py output/ISLP.epub
+uv run python src/build_index.py            # regenerate this page
+./src/make_story_pdf.sh                     # and its PDF</pre>
 
 <footer>
   <p>{escape(data.get("purpose", ""))}</p>
-  <p>Source: {escape(data.get("source", ""))}. Built {date.today().isoformat()}.</p>
+  <p>Source: {escape(data.get("source", ""))}. Built {input_date(inputs)}.</p>
 </footer>
 
 </div>

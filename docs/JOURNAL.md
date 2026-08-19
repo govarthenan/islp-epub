@@ -479,7 +479,7 @@ region finder had nothing to find.
 | Mathematics as SVG | 716 expressions |
 | Mathematics as a bitmap | 0 |
 | Cross-references resolved | 3,686 of 3,686 |
-| EPUB | 7.5 MB, EPUB 3 with NCX, structurally valid |
+| EPUB | 8.2 MB, EPUB 3 with NCX, structurally valid |
 
 **Accuracy of the mathematics**
 
