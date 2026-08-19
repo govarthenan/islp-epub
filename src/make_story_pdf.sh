@@ -51,16 +51,20 @@ PRINT_CSS = """
   html, body { background: #fff !important; }
   .wrap { max-width: none !important; padding: 0 !important; }
   header { padding: 0 0 14px !important; }
+  footer { margin-top: 34px !important; }
   h1 { font-size: 25px !important; }
   h2 { font-size: 17px !important; }
   h2, h3 { break-after: avoid; page-break-after: avoid; }
-  /* Hold the small blocks together. A whole section is too big to keep on one page. */
-  figure, table, pre, .tile, .attempt, .svg-step, .shot, .check, .why, li {
+  /* Hold the small blocks together. A whole attempt card is too big to keep whole: doing
+     that left the bottom third of several pages empty, so it is allowed to split. */
+  figure, table, pre, .tile, .svg-step, .shot, .check, .why {
     break-inside: avoid; page-break-inside: avoid;
   }
-  /* Paper cannot scroll: show every sideways-scrolling box in full. */
+  .attempt { orphans: 3; widows: 3; }
+  .attempt-head { break-inside: avoid; break-after: avoid; }
+  /* Paper cannot scroll: show every sideways-scrolling box in full. The wide diagram is
+     hidden for print and the wrapped one shown, so neither needs a width override. */
   .pipeline { overflow: visible !important; }
-  .pipeline svg { min-width: 0 !important; width: 100% !important; }
   pre { overflow: visible !important; white-space: pre-wrap !important; word-break: break-word; }
   img, svg { max-width: 100% !important; height: auto !important; }
   a { text-decoration: none; color: inherit !important; }
@@ -81,4 +85,26 @@ PY
     "file://$TMP" >/dev/null 2>&1
 
 [ -s "$OUT" ] || { echo "make_story_pdf: Chrome wrote nothing to $OUT" >&2; exit 1; }
-echo "wrote $OUT ($(du -h "$OUT" | cut -f1))"
+
+# Headless Chrome only prints page numbers through its own header and footer, which stamps
+# the temporary file:// path across the top. So they are written afterwards instead.
+uv run python - "$OUT" <<'NUMBERS'
+import sys
+
+import pymupdf
+
+doc = pymupdf.open(sys.argv[1])
+for number, page in enumerate(doc, start=1):
+    label = f"{number} / {doc.page_count}"
+    width = pymupdf.get_text_length(label, fontname="helv", fontsize=8)
+    page.insert_text(
+        (page.rect.width / 2 - width / 2, page.rect.height - 24),
+        label,
+        fontname="helv",
+        fontsize=8,
+        color=(0.42, 0.42, 0.42),
+    )
+doc.saveIncr()
+NUMBERS
+
+echo "wrote $OUT ($(du -h "$OUT" | cut -f1), $(pdfinfo "$OUT" | awk '/^Pages/ {print $2}') pages)"

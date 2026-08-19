@@ -64,6 +64,7 @@ uv run python src/probe_structure.py        # find the chapters, the index, the 
 uv run python src/extract_math_jobs.py      # crop every expression a model must read
 # transcription and verification write work/math_final.json
 uv run python src/build_epub.py --out ISLP.epub
+uv run python src/validate_epub.py output/ISLP.epub
 uv run python src/build_index.py            # regenerate the story page
 ./src/make_story_pdf.sh                     # and its PDF, for reading on GitHub
 ```

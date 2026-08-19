@@ -40,34 +40,48 @@ def tile(value: str, label: str, note: str = "") -> str:
     )
 
 
-def pipeline_svg(stages: list[dict]) -> str:
-    width, height = 1180, 252
-    step = width / len(stages)
+def pipeline_svg(stages: list[dict], per_row: int = 0) -> str:
+    """The stages as boxes joined by arrows.
+
+    per_row wraps them onto more than one row. A single row of six is right on a screen
+    that scrolls sideways; on A4 it squeezes to a third of a millimetre per character, so
+    the printed page uses two rows of three. The box pitch is the same either way, so the
+    two drawings are the same size on the page.
+    """
+    per_row = per_row or len(stages)
+    rows = -(-len(stages) // per_row)
+    step = 1180 / 6  # the box pitch, one row or several
+    top, box_height, row_gap, bottom = 40, 176, 30, 36
+    width = step * per_row
+    height = top + rows * box_height + (rows - 1) * row_gap + bottom
+    box_width = step - 34
     boxes = []
     for index, stage in enumerate(stages):
-        x = index * step + 12
-        box_width = step - 34
+        column, row = index % per_row, index // per_row
+        x = column * step + 12
+        y = top + row * (box_height + row_gap)
         boxes.append(f'''
     <g>
-      <rect x="{x:.0f}" y="40" width="{box_width:.0f}" height="176"
+      <rect x="{x:.0f}" y="{y:.0f}" width="{box_width:.0f}" height="{box_height:.0f}"
             fill="var(--svg-card)" stroke="var(--rule)" stroke-width="1"/>
-      <rect x="{x:.0f}" y="40" width="{box_width:.0f}" height="2" fill="var(--link)"
+      <rect x="{x:.0f}" y="{y:.0f}" width="{box_width:.0f}" height="2" fill="var(--link)"
             opacity="0.35"/>
-      <text x="{x + 16:.0f}" y="70" class="svg-step">{index + 1}</text>
-      <foreignObject x="{x + 14:.0f}" y="80" width="{box_width - 28:.0f}" height="130">
+      <text x="{x + 16:.0f}" y="{y + 30:.0f}" class="svg-step">{index + 1}</text>
+      <foreignObject x="{x + 14:.0f}" y="{y + 40:.0f}" width="{box_width - 28:.0f}" height="130">
         <div xmlns="http://www.w3.org/1999/xhtml" class="svg-body">
           <b>{escape(stage["title"])}</b><br/>{escape(stage["summary"])}
         </div>
       </foreignObject>
     </g>''')
-        if index < len(stages) - 1:
-            arrow_x = x + box_width + 4
+        # An arrow joins two boxes on one row. At a row break there is none: the numbers
+        # carry the order, and an arrow pointing off the edge would mislead.
+        if index < len(stages) - 1 and column < per_row - 1:
             boxes.append(
-                f'<path d="M{arrow_x:.0f} 128 l14 0 m-5 -5 l5 5 l-5 5" fill="none" '
+                f'<path d="M{x + box_width + 4:.0f} {y + box_height / 2:.0f} l14 0 m-5 -5 l5 5 l-5 5" fill="none" '
                 f'stroke="var(--rule-strong)" stroke-width="1.4" stroke-linecap="square"/>'
             )
     return (
-        f'<svg viewBox="0 0 {width} {height}" role="img" '
+        f'<svg viewBox="0 0 {width:.0f} {height:.0f}" role="img" '
         f'aria-label="Conversion pipeline in {len(stages)} stages">'
         f"<title>Conversion pipeline</title>{''.join(boxes)}</svg>"
     )
@@ -221,6 +235,23 @@ def build() -> str:
             )
         )
 
+    sections = [
+        ("taken-apart", "How the book is taken apart"),
+        ("triaged", "The mathematics, triaged"),
+        ("crops", "Where the crops went wrong"),
+        ("attempts", "Every attempt, in order"),
+    ]
+    if checks:
+        count = NUMBER_WORD[len(checks)]
+        sections.append(("checks", f"{count} checks, {count.lower()} kinds of evidence"))
+    sections += [("choices", "Choices made for the Kobo Libra 2"), ("reproducing", "Reproducing this")]
+    titles = dict(sections)
+
+    def heading(key: str) -> str:
+        return f'<h2 id="{key}">{escape(titles[key])}</h2>'
+
+    contents = "".join(f'<li><a href="#{key}">{escape(title)}</a></li>' for key, title in sections)
+
     audit_block = ""
     if checks:
         cards = "".join(
@@ -228,10 +259,8 @@ def build() -> str:
              <div class="check-label">{escape(label)}</div><p>{escape(note)}</p></div>"""
             for value, label, note in checks
         )
-        count = NUMBER_WORD[len(checks)]
         audit_block = (
-            f"<h2>{count} checks, {count.lower()} kinds of evidence</h2>"
-            '<p class="sub">One model marking its own work is not evidence. These are '
+            heading("checks") + '<p class="sub">One model marking its own work is not evidence. These are '
             "deliberately different in kind: one costs nothing and cannot be talked round, one "
             "looks at the pictures, and one comes from outside the family.</p>"
             f'<div class="checks">{cards}</div>'
@@ -325,6 +354,23 @@ h2::before {{
 h2 + .sub {{ color: var(--muted); margin: 0 0 28px; max-width: 68ch; font-size: 16.5px; }}
 h3 {{ font-size: 17px; margin: 0; }}
 
+.contents {{ margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--rule); }}
+.contents-label {{
+  font: 600 10.5px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 12px;
+}}
+.contents ol {{
+  list-style: none; padding: 0; margin: 0; counter-reset: toc;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(252px, 1fr)); gap: 5px 26px;
+}}
+.contents li {{ counter-increment: toc; font-size: 15px; }}
+.contents li::before {{
+  content: counter(toc, decimal-leading-zero) "  ";
+  font: 600 11.5px var(--mono); color: var(--muted);
+}}
+.contents a {{ text-decoration: none; }}
+.contents a:hover {{ text-decoration: underline; }}
+
 .tiles {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); gap: 0; margin-top: 40px; border-top: 1px solid var(--rule); }}
 .tile {{ padding: 18px 20px 20px 0; border-bottom: 1px solid var(--rule); }}
 .tile-value {{ font: 600 27px/1.05 var(--mono); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }}
@@ -332,7 +378,14 @@ h3 {{ font-size: 17px; margin: 0; }}
 .tile-note {{ margin-top: 2px; font-size: 12.5px; color: var(--muted); }}
 
 .pipeline {{ border: 1px solid var(--rule); padding: 8px 4px; overflow-x: auto; }}
-.pipeline svg {{ display: block; min-width: 1060px; width: 100%; height: auto; }}
+.pipeline svg {{ display: block; width: 100%; height: auto; }}
+/* Six across needs a scroll bar on a narrow screen; two rows of three fit A4. */
+.pipeline-wide svg {{ min-width: 1060px; }}
+.pipeline-tall {{ display: none; }}
+@media print {{
+  .pipeline-wide {{ display: none; }}
+  .pipeline-tall {{ display: block; }}
+}}
 .svg-step {{ font: 600 11px var(--mono); fill: var(--link); }}
 .svg-body {{ font: 13px/1.36 var(--serif); color: var(--ink); }}
 .svg-body b {{ font-size: 13.5px; }}
@@ -395,14 +448,19 @@ a {{ color: var(--link); }}
   <p class="lede">{escape(data.get("subtitle", ""))}</p>
   <span class="pill">{escape(status_note)}</span>
   <div class="tiles">{"".join(tiles)}</div>
+  <nav class="contents" aria-label="Contents">
+    <div class="contents-label">Contents</div>
+    <ol>{contents}</ol>
+  </nav>
 </header>
 
-<h2>How the book is taken apart</h2>
+{heading("taken-apart")}
 <p class="sub">{NUMBER_WORD[len(stages)]} stages. Nothing here guesses at the layout: every rule
 below was measured from the file itself before it was written down.</p>
-<div class="pipeline">{pipeline_svg(stages)}</div>
+<div class="pipeline pipeline-wide">{pipeline_svg(stages)}</div>
+<div class="pipeline pipeline-tall">{pipeline_svg(stages, per_row=3)}</div>
 
-<h2>The mathematics, triaged</h2>
+{heading("triaged")}
 <p class="sub">The starting assumption was that no mathematics could be recovered as LaTeX and
 that all of it would have to be read back out of images. That turned out to be true for only
 part of it. Sub- and superscripts are recorded in the PDF as a font-size drop plus a baseline
@@ -410,7 +468,7 @@ shift, so most inline mathematics can be rebuilt exactly, for free, and stays as
 text. A vision model is spent only where the structure is genuinely absent.</p>
 {math_bar(tiers)}
 
-<h2>Where the crops went wrong</h2>
+{heading("crops")}
 <p class="sub">Cutting an expression out of the page was the hardest single problem in this
 conversion, and it took four attempts. A fraction is not on one line: its numerator, its rule
 and its denominator sit on three different baselines, and the text layer files them as three
@@ -424,14 +482,14 @@ unrelated lines.</p>
   {figure("assets/crop-6-masked.png", "<b>The answer.</b> Keep the rectangle, paint the foreign ink out. Only prose is painted, so no glyph of the expression can be lost.", "good")}
 </div>
 
-<h2>Every attempt, in order</h2>
+{heading("attempts")}
 <p class="sub">{worked} worked, {partial} partly worked, {failed} failed outright. The failures
 are the interesting ones: each was caused by a rule that sounded reasonable and did not survive
 contact with the page.</p>
 <ul class="attempts">{"".join(attempt_card(a) for a in attempts)}</ul>
 {audit_block}
 
-<h2>Choices made for the Kobo Libra 2</h2>
+{heading("choices")}
 <table>
   <tr><th>Decision</th><th>Reason</th></tr>
   <tr><td>No embedded font, no font size on <code>body</code></td>
@@ -450,16 +508,16 @@ contact with the page.</p>
       <td>Kobo still reads the older navigation file.</td></tr>
 </table>
 
-<h2>Reproducing this</h2>
+{heading("reproducing")}
 <pre>uv sync &amp;&amp; npm install
 
-uv run python src/probe_structure.py        # find the chapters, the index, the page zones
-uv run python src/extract_math_jobs.py      # crop every expression a model must read
+uv run python src/probe_structure.py     # chapters, index, page zones
+uv run python src/extract_math_jobs.py   # crop every expression to read
 # transcription and verification write work/math_final.json
 uv run python src/build_epub.py --out ISLP.epub
 uv run python src/validate_epub.py output/ISLP.epub
-uv run python src/build_index.py            # regenerate this page
-./src/make_story_pdf.sh                     # and its PDF</pre>
+uv run python src/build_index.py         # regenerate this page
+./src/make_story_pdf.sh                  # and its PDF</pre>
 
 <footer>
   <p>{escape(data.get("purpose", ""))}</p>
