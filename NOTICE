@@ -1,0 +1,74 @@
+================================================================================
+NOTICE - the rights in the book
+================================================================================
+
+This repository contains a converted copy of a book that somebody else wrote.
+This file says who holds the rights in it. Read it before you use, copy or
+redistribute anything in output/.
+
+--------------------------------------------------------------------------------
+The book
+--------------------------------------------------------------------------------
+
+    An Introduction to Statistical Learning, with Applications in Python
+
+    Gareth James
+    Daniela Witten
+    Trevor Hastie
+    Robert Tibshirani
+    Jonathan Taylor
+
+    Springer, 2023. First printing, 5 July 2023.
+    https://www.statlearning.com/
+
+All rights in the text, the figures, the tables, the mathematics, the exercises
+and the lab code of that book stay with the authors and with Springer Nature.
+
+The authors give the PDF away free of charge at https://www.statlearning.com/.
+Download the book from that site. It is the authority, and this conversion is
+not.
+
+--------------------------------------------------------------------------------
+What this repository does, and what it does not do
+--------------------------------------------------------------------------------
+
+This repository changes the format of the book. It turns a fixed-page PDF into a
+reflowable EPUB, so that the book can be read on a small screen.
+
+It claims nothing over the content of the book.
+It grants no rights over the content of the book.
+
+The two files in output/ are derived from the book. They are supplied for
+personal, educational and non-commercial use only. Nothing in this repository
+gives you permission to sell them, to include them in a product that you sell,
+or to present the content as your own.
+
+If you redistribute a copy of either EPUB file:
+
+  * keep the "About this conversion" page that is inside the file;
+  * keep this NOTICE with it;
+  * do not sell it, and do not charge for access to it.
+
+--------------------------------------------------------------------------------
+Takedown
+--------------------------------------------------------------------------------
+
+If you hold rights in the book and you want output/ISLP.epub and
+output/ISLP-raster.epub removed from this repository, open an issue at
+
+    https://github.com/govarthenan/islp-epub/issues
+
+or write to dev@dreamspace.tech. They will be removed. No argument will be made.
+
+--------------------------------------------------------------------------------
+What this NOTICE does not cover
+--------------------------------------------------------------------------------
+
+The conversion pipeline in src/  ..............  see LICENSE      (MIT)
+The writing in README.md, docs/, index.html  ..  see LICENSE-DOCS (CC BY 4.0)
+
+Those two are the original work of Govarthenan Rajadurai and are licensed. This
+NOTICE covers the book, which is not.
+
+The full statement, including the caution about machine-read mathematics, is in
+DISCLAIMER.md.

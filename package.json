@@ -1,4 +1,14 @@
 {
+  "name": "islp-epub",
+  "version": "1.0.0",
+  "description": "MathJax typesetting for the ISLP PDF to EPUB conversion",
+  "private": true,
+  "license": "MIT",
+  "author": "Govarthenan Rajadurai <dev@dreamspace.tech>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/govarthenan/islp-epub.git"
+  },
   "dependencies": {
     "mathjax-full": "^3.2.1"
   }

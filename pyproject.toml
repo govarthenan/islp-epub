@@ -1,7 +1,12 @@
 [project]
 name = "islp"
 version = "0.1.0"
+description = "Rebuild the ISLP textbook PDF into a reflowable EPUB 3"
+readme = "README.md"
 requires-python = ">=3.14"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Govarthenan Rajadurai", email = "dev@dreamspace.tech" }]
 dependencies = [
     "cairosvg>=2.9.0",
     "pillow>=12.3.0",
