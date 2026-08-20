@@ -288,6 +288,9 @@ class EpubBuilder:
         self.publisher = ""
         self.source = ""
         self.rights = ""
+        # (name, MARC relator) for the people who made this edition rather than the book:
+        # "trc" is transcriber. dc:creator stays with the book's own authors.
+        self.contributors: list[tuple[str, str]] = []
         self.accessibility_summary = ""
         # Rules appended to the shared stylesheet by one build only. The raster build needs a
         # dark-scheme rule for its mathematics that would invert the SVG build's ink twice.
@@ -330,6 +333,13 @@ class EpubBuilder:
             f'    <dc:creator id="creator{index}">{_escape(name)}</dc:creator>'
             for index, name in enumerate(self.authors)
         )
+        contributors = "\n".join(
+            # marc: is a reserved prefix in EPUB 3, so the package element need not declare it.
+            f'    <dc:contributor id="contributor{index}">{_escape(name)}</dc:contributor>\n'
+            f'    <meta refines="#contributor{index}" property="role" '
+            f'scheme="marc:relators">{role}</meta>'
+            for index, (name, role) in enumerate(self.contributors)
+        )
         cover_meta = f'    <meta name="cover" content="{self.cover_id}"/>\n' if self.cover_id else ""
         access = "\n".join(
             [
@@ -353,6 +363,7 @@ xml:lang="{self.language}">
     <dc:title>{_escape(self.title)}</dc:title>
     <dc:language>{self.language}</dc:language>
 {creators}
+{contributors}
     <dc:publisher>{_escape(self.publisher)}</dc:publisher>
     <dc:source>{_escape(self.source)}</dc:source>
     <dc:rights>{_escape(self.rights)}</dc:rights>

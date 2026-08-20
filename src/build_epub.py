@@ -66,6 +66,59 @@ LINK_ANCHOR_RE = re.compile(r'<a href="\{\{LINK:(\d+):(-?\d+)\}\}">(.*?)</a>', r
 TITLE = "An Introduction to Statistical Learning with Applications in Python"
 AUTHORS = ["Gareth James", "Daniela Witten", "Trevor Hastie", "Robert Tibshirani", "Jonathan Taylor"]
 
+CONVERTED_BY = "Govarthenan Rajadurai"
+REPOSITORY = "https://github.com/govarthenan/islp-epub"
+
+# A README stays on GitHub; this file goes to the device. So the rights statement and the
+# caution about the machine-read mathematics are carried inside the book itself, on a page
+# the reader meets before the first chapter. Only the classes already in the stylesheet are
+# used here, so the page follows the reader's own typography and colour scheme like any other.
+ABOUT_PAGE = f"""<h1>About this conversion</h1>
+
+<p class="noindent">This is not the original book. It is a change of format: the publisher's
+PDF, rebuilt as a reflowable EPUB so that it can be read on a small screen. The words, the
+figures and the mathematics are the authors'.</p>
+
+<h2>The book</h2>
+<p class="noindent"><i>An Introduction to Statistical Learning, with Applications in
+Python</i>, by {", ".join(AUTHORS[:-1])} and {AUTHORS[-1]}. Springer, 2023.</p>
+<p><b>All rights in the text, the figures, the tables and the mathematics
+remain with the authors and with Springer Nature.</b> They give the PDF away free of charge at
+statlearning.com. Download it from there. It is the authority, and this conversion is not.</p>
+<p>This edition is supplied for personal, educational and non-commercial use
+only. Do not sell it, and do not charge for access to it. If you pass it on, keep this page
+with it.</p>
+
+<h2>Part of the mathematics was read by AI models</h2>
+<p class="noindent">Most of the mathematics in this book was rebuilt by measurement, from the
+character data in the PDF. But 531 expressions hold structure that a PDF does not record —
+fractions, radicals, matrices, integrals — and those were cropped from the page and
+transcribed by AI vision models.</p>
+<p>Every one of the 531 was checked a second time against the printed page:
+481 identical, 49 cosmetic differences, 1 wrong. The error was corrected. A sample was then
+audited by a different model family, which found one further error that no check inside the
+pipeline had caught.</p>
+<p><b>That measured the error rate. It did not remove it.</b> Check any
+equation against the free PDF before you rely on it for study, for an examination or for work.
+If you find one that is wrong, please report it at the address below.</p>
+<p>The figures and the tables were not transcribed this way. The figures are
+re-rendered from the vector art in the PDF, and the tables were converted to text and checked
+against the page.</p>
+
+<h2>No warranty</h2>
+<p class="noindent">This edition is supplied as it is. No promise is made that any expression,
+figure, table or cross-reference is correct, or that this file opens correctly in any given
+application.</p>
+
+<h2>The conversion</h2>
+<p class="noindent">The conversion was made by {CONVERTED_BY}. The pipeline, the engineering
+journal and the full statement of rights are at:</p>
+<p class="noindent">{REPOSITORY}</p>
+<p>Corrections, and reports of a page that reads wrongly on your device, are
+welcome there. If you hold rights in the book and you want this edition withdrawn, open an
+issue at that address and it will be removed.</p>
+"""
+
 
 # ---------------------------------------------------------------------------------------
 # image helpers
@@ -540,12 +593,17 @@ def write_book(
     """Package one of the two books and return its renderer and its size in bytes."""
     builder = EpubBuilder(identifier="urn:uuid:990f1b6d-ee55-5049-8e97-87eaa392518e", title=TITLE)
     builder.authors = AUTHORS
+    # The five authors keep dc:creator. The conversion is a contribution to this edition,
+    # not authorship of the book, so it is recorded as a transcriber instead.
+    builder.contributors = [(CONVERTED_BY, "trc")]
     builder.publisher = "Springer"
     builder.source = "ISLP_website.pdf (statlearning.com), first printing July 5 2023"
     builder.rights = (
         "Converted from the freely distributed PDF for personal, educational "
         "and non-commercial use only. All rights remain with the authors and "
-        "publisher."
+        "publisher. Part of the mathematics was transcribed by AI vision models "
+        "and verified against the printed page; check any equation against the "
+        "original PDF before relying on it. See the About this conversion page."
     )
     builder.description = (
         "A reflowable conversion of the ISLP textbook: real paragraphs, scalable mathematics "
@@ -566,6 +624,8 @@ def write_book(
         "cover.xhtml", "Cover", '<div class="cover"><img src="../images/cover.png" alt="Cover"/></div>', "cover"
     )
     builder.nav.append(NavPoint("Cover", "text/cover.xhtml", 1))
+    builder.add_document("about.xhtml", "About this conversion", ABOUT_PAGE, "about")
+    builder.nav.append(NavPoint("About this conversion", "text/about.xhtml", 1))
     builder.add_document("dedication.xhtml", "Dedication", assets.dedication, "dedication")
     builder.nav.append(NavPoint("Dedication", "text/dedication.xhtml", 1))
 
