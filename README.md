@@ -106,8 +106,8 @@ Two documents explain the problem and the answer. Read either one before the cod
 
 | | What it gives you | Length |
 |---|---|---|
-| **[The conversion, explained →](docs/conversion-story.pdf)** | Why a PDF textbook fails on a small screen, and how each of the six stages fixes it. Pictures of the four cropping attempts, including the three that failed. **GitHub shows this PDF in the browser** — no download needed. | 11 pages |
-| **[Engineering journal →](docs/JOURNAL.md)** | The same work in order, as it happened: 19 dated entries, with the dead ends and the corrections left in. The last one is the cross-device audit. | 554 lines |
+| **[The conversion, explained →](docs/conversion-story.pdf)** | Why a PDF textbook fails on a small screen, and how each of the six stages fixes it. Pictures of the four cropping attempts, including the three that failed. **GitHub shows this PDF in the browser** — no download needed. | 12 pages |
+| **[Engineering journal →](docs/JOURNAL.md)** | The same work in order, as it happened: 20 dated entries, with the dead ends and the corrections left in. The last two are the cross-device audit and the reader that draws no SVG. | 663 lines |
 
 The PDF is rendered from [`index.html`](index.html), the interactive version of the same
 story. Read it live at **[govarthenan.github.io/islp-epub](https://govarthenan.github.io/islp-epub/)**.
