@@ -1,0 +1,100 @@
+name: Device report — my reader shows this wrong
+description: A page, an equation, a figure or a table does not appear correctly on your device.
+title: "[device] "
+labels: ["device-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This is the most useful report this project can receive.**
+
+        The conversion was measured on two devices only: a Kobo Libra 2 and a Samsung Galaxy
+        S23 running Moon+ Reader. Every other reader is expected to work, not confirmed to
+        work. A photograph from your device is evidence that no test here can produce.
+
+        You do not need to know how the pipeline works to fill this in.
+
+  - type: dropdown
+    id: file
+    attributes:
+      label: Which file are you reading?
+      options:
+        - "output/ISLP.epub (the SVG book)"
+        - "output/ISLP-raster.epub (the PNG book)"
+        - "I converted it myself (kepub, mobi, azw3 or other)"
+        - "I do not know"
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      description: The make and the model, and the screen size if you know it.
+      placeholder: "Kobo Libra 2, 7 inch e-ink / Samsung Galaxy S23 / iPad Air 11 inch"
+    validations:
+      required: true
+
+  - type: input
+    id: application
+    attributes:
+      label: Reading application and version
+      placeholder: "Moon+ Reader 8.4 / Apple Books 6.0 / Thorium 3.1 / KOReader 2024.11"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      description: Several known faults appear only in a dark or night theme.
+      options:
+        - "Light / day"
+        - "Dark / night"
+        - "Both"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong?
+      description: |
+        Say where in the book it happens (chapter and section, or the heading at the top of
+        the page), and what you see instead of what you expect.
+      placeholder: |
+        Chapter 3, "Simple Linear Regression". Every equation appears as a small empty box
+        with the letters SVG in it. The prose and the figures are correct.
+    validations:
+      required: true
+
+  - type: textarea
+    id: photograph
+    attributes:
+      label: A photograph or a screenshot
+      description: |
+        Drag the image into this box. A photograph of the screen taken with a phone is fine —
+        it does not have to be a clean screenshot.
+
+        If the fault is in the mathematics, a photograph of the same page in the free PDF from
+        statlearning.com beside it is even better.
+    validations:
+      required: true
+
+  - type: textarea
+    id: anything-else
+    attributes:
+      label: Anything else
+      description: Optional. Font size, margins, or any setting you had changed.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you send this
+      options:
+        - label: "I have read DISCLAIMER.md."
+          required: true
+        - label: "If the equations appear as empty boxes, I have tried output/ISLP-raster.epub, which exists for exactly that fault."
+          required: false

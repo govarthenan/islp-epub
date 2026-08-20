@@ -1,0 +1,87 @@
+name: Equation error — this does not match the book
+description: An expression in the EPUB is not the same as the expression in the printed PDF.
+title: "[math] "
+labels: ["math-error"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Errors are expected, and reporting one is welcome.**
+
+        531 expressions in this book were cropped from the page and read back by AI vision
+        models. Every one was checked a second time and one error was found and corrected.
+        The checks measured the error rate. They did not remove it. See
+        [§3 of the disclaimer](../../blob/main/DISCLAIMER.md#3-the-mathematics-was-read-by-ai-models).
+
+        **Please check the free PDF at https://www.statlearning.com/ first**, so that
+        something the book itself does is not reported as a fault in the conversion.
+
+        You do not need to know LaTeX, and you do not need to propose a correction.
+
+  - type: input
+    id: where
+    attributes:
+      label: Where is it?
+      description: The chapter and the section, and the equation number if it has one.
+      placeholder: "Chapter 6, section 6.2.1, equation (6.7)"
+    validations:
+      required: true
+
+  - type: input
+    id: page
+    attributes:
+      label: Page number in the free PDF
+      description: The number printed on the page, from ISLP_website.pdf at statlearning.com.
+      placeholder: "241"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: file
+    attributes:
+      label: Which file are you reading?
+      options:
+        - "output/ISLP.epub (the SVG book)"
+        - "output/ISLP-raster.epub (the PNG book)"
+        - "Both"
+    validations:
+      required: true
+
+  - type: textarea
+    id: difference
+    attributes:
+      label: What is different?
+      description: Describe it in words. This does not have to be exact.
+      placeholder: |
+        The book has a sum from i = 1 to n. The EPUB shows the sum with no upper limit at all.
+    validations:
+      required: true
+
+  - type: textarea
+    id: photograph
+    attributes:
+      label: A photograph of both
+      description: |
+        Drag the images into this box. The printed page from the PDF, and the same expression
+        on your screen. Two pictures side by side settle this faster than any description.
+    validations:
+      required: true
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: The correct LaTeX
+      description: Optional. Only if you already know it. Leave this empty otherwise.
+      render: latex
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you send this
+      options:
+        - label: "I have compared it against the free PDF at statlearning.com, not against memory."
+          required: true
+        - label: "I understand that a different but equivalent way of writing the same thing is recorded as cosmetic, not as an error."
+          required: false

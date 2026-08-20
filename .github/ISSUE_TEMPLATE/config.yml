@@ -1,0 +1,19 @@
+blank_issues_enabled: false
+contact_links:
+  - name: The book itself — free from the authors
+    url: https://www.statlearning.com/
+    about: >-
+      This repository only changes the format. For the book, for its errata, and for
+      anything about its content, go to the authors. The PDF is free.
+
+  - name: Read the disclaimer first
+    url: https://github.com/govarthenan/islp-epub/blob/main/DISCLAIMER.md
+    about: >-
+      Educational use only, the rights in the book, and why the machine-read mathematics
+      must be checked before you rely on it.
+
+  - name: How to contribute
+    url: https://github.com/govarthenan/islp-epub/blob/main/CONTRIBUTING.md
+    about: >-
+      What this project needs, the three open questions that need a device, and how to run
+      the pipeline.
