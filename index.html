@@ -210,7 +210,7 @@ a { color: var(--link); }
   <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">3,297</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">191</div><div class="tile-label">figures re-rendered</div><div class="tile-note">300 ppi, in colour</div></div><div class="tile"><div class="tile-value">36</div><div class="tile-label">tables as markup</div><div class="tile-note">they reflow, not pictures</div></div><div class="tile"><div class="tile-value">409</div><div class="tile-label">display equations</div><div class="tile-note">every one checked</div></div><div class="tile"><div class="tile-value">1,137</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">3,686</div><div class="tile-label">cross-references</div><div class="tile-note">all of them resolved</div></div><div class="tile"><div class="tile-value">9.1 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div><div class="tile"><div class="tile-value">99.8%</div><div class="tile-label">mathematics agreed</div><div class="tile-note">candidate matched the printed page</div></div></div>
   <nav class="contents" aria-label="Contents">
     <div class="contents-label">Contents</div>
-    <ol><li><a href="#taken-apart">How the book is taken apart</a></li><li><a href="#triaged">The mathematics, triaged</a></li><li><a href="#crops">Where the crops went wrong</a></li><li><a href="#attempts">Every attempt, in order</a></li><li><a href="#checks">Three checks, three kinds of evidence</a></li><li><a href="#choices">Choices made for the reader, not for one device</a></li><li><a href="#reproducing">Reproducing this</a></li></ol>
+    <ol><li><a href="#taken-apart">How the book is taken apart</a></li><li><a href="#triaged">The mathematics, triaged</a></li><li><a href="#crops">Where the crops went wrong</a></li><li><a href="#attempts">Every attempt, in order</a></li><li><a href="#checks">Four checks, four kinds of evidence</a></li><li><a href="#choices">Choices made for the reader, not for one device</a></li><li><a href="#reproducing">Reproducing this</a></li></ol>
   </nav>
 </header>
 
@@ -413,7 +413,7 @@ unrelated lines.</p>
 </div>
 
 <h2 id="attempts">Every attempt, in order</h2>
-<p class="sub">11 worked, 3 partly worked, 6 failed outright. The failures
+<p class="sub">13 worked, 3 partly worked, 7 failed outright. The failures
 are the interesting ones: each was caused by a rule that sounded reasonable and did not survive
 contact with the page.</p>
 <ul class="attempts">
@@ -593,9 +593,9 @@ contact with the page.</p>
         <h3>An independent second opinion found what the family missed</h3>
         <span class="badge badge-success">worked</span>
       </div>
-      <p class="what"><span class="field">Tried</span> Hand 45 of the same comparison images to OpenAI&#x27;s codex CLI, a different model family with no sight of the earlier answers.</p>
-      <p class="result"><span class="field">Result</span> In that round, 44 of 45 agreed. The one disagreement was right and mattered: a crop had captured a fraction&#x27;s denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction. The final audit, run after those fixes, sampled 50 and found no disagreement.</p>
-      <p class="why"><span class="why-label">Why</span> Every other check here was Claude checking Claude. The only check from outside the family found the fault, in a sample of 45.</p>
+      <p class="what"><span class="field">Tried</span> Hand the comparison images to OpenAI&#x27;s codex CLI, a different model family with no sight of the earlier answers. First a sample of 45, then a sample of 50, and finally all 531.</p>
+      <p class="result"><span class="field">Result</span> The sample of 45 gave 44 agreements. The one disagreement was right and mattered: a crop had captured a fraction&#x27;s denominator and nothing else, and every check inside the pipeline had passed it because the transcription faithfully matched the picture. The picture was the problem. Fixing it took three changes to the extraction. A repeat sample of 50 then found no disagreement, which is exactly what a sample is bad at: the full audit of all 531 found 11.</p>
+      <p class="why"><span class="why-label">Why</span> Every other check here was Claude checking Claude. The only check from outside the family found the fault, and a sample of 50 was small enough to report a clean sheet over a book that still had faults in it.</p>
     </li>
     <li class="attempt attempt-success">
       <div class="attempt-head">
@@ -616,11 +616,42 @@ contact with the page.</p>
       <p class="what"><span class="field">Tried</span> Let display equations and inline expressions be found independently.</p>
       <p class="result"><span class="field">Result</span> An equation with words in it (&#x27;minimize ... subject to ...&#x27;) reads as a paragraph, so its inline images already held the whole equation, while the symbol-only lines also produced a display block. The equation was typeset twice.</p>
       <p class="why"><span class="why-label">Why</span> Fixed by measuring the inline expressions on a page first and dropping any display block that one of them already covers.</p>
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">21</span>
+        <h3>Audit every expression, not a sample of them</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Put all 531 comparisons through OpenAI&#x27;s codex CLI instead of a sample, and settle every disagreement by hand against the printed page.</p>
+      <p class="result"><span class="field">Result</span> 520 agreed, 11 did not. Nine of the eleven were the auditor reading a crop that was short or loose: the sum limits, the binomial delimiters or the radical bar sat on another visual line and the crop cut them off, so the auditor saw less than the page prints. Two were plain misreadings, a hat taken for a tilde and a stray mark taken for a prime. The printed pages confirm all eleven transcriptions. Two other expressions, on pages 485 and 486, are genuinely faulty: the crop tore the stretched bracket and the sigma out of an inline expression and made a block of them, so the book prints a stray fragment and demotes the sum&#x27;s lower limit to a subscript of exp.</p>
+      <p class="why"><span class="why-label">Why</span> A sample of 50 had reported a clean sheet twice. The full audit is 10 times the work and the only thing that found these.</p>
+    </li>
+    <li class="attempt attempt-failed">
+      <div class="attempt-head">
+        <span class="num">22</span>
+        <h3>The audit was shown pictures its own tools had broken</h3>
+        <span class="badge badge-failed">failed</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Draw the typeset candidate for the comparison images with MuPDF, as the comparison script had always done.</p>
+      <p class="result"><span class="field">Result</span> MuPDF misplaces the nested viewport MathJax uses to stretch a tall bracket, a fault this repository had already recorded and worked around when building the book, but not in the script that makes the evidence. 104 of the 531 candidates carry a stretched delimiter, so for a fifth of the book the auditor was shown a bracket drawn as a hook, a bar and another hook, and honestly reported a delimiter the book does not have.</p>
+      <p class="why"><span class="why-label">Why</span> Fixed by drawing the comparison images with CairoSVG, the renderer the book itself uses. Re-running the whole audit on the corrected pictures moved agreement from 97.7% to 97.9% and removed every matrix complaint. A check is only as good as the evidence it is shown.</p>
+    </li>
+    <li class="attempt attempt-success">
+      <div class="attempt-head">
+        <span class="num">23</span>
+        <h3>A check that reads no picture</h3>
+        <span class="badge badge-success">worked</span>
+      </div>
+      <p class="what"><span class="field">Tried</span> Ask of each transcription&#x27;s LaTeX alone, with no crop and no model, whether it is a whole expression: a big operator with something to sum over, and brackets that close.</p>
+      <p class="result"><span class="field">Result</span> 13 of 531 are not. Six are a bare integral sign on pages 308 and 309, where the book prints the integral of a squared second derivative. Others are a sum with only its upper limit, or half of a bracketed vector. The running text of the book reads &#x27;1 + k=0(p-k)&#x27; where the page prints a sum from k=0 to p-1.</p>
+      <p class="why"><span class="why-label">Why</span> The three checks before this one all compare a transcription against its crop, so all three are blind to a crop that cut the expression in half: the reading matches the picture, and the picture is wrong. Only a check that never looks at the picture can see it. It is deterministic and it costs nothing.</p>
     </li></ul>
-<h2 id="checks">Three checks, three kinds of evidence</h2><p class="sub">One model marking its own work is not evidence. These are deliberately different in kind: one costs nothing and cannot be talked round, one looks at the pictures, and one comes from outside the family.</p><div class="checks"><div class="check"><div class="check-value">71.5%</div>
+<h2 id="checks">Four checks, four kinds of evidence</h2><p class="sub">One model marking its own work is not evidence. These are deliberately different in kind: one costs nothing and cannot be talked round, one looks at the pictures, one comes from outside the family, and one looks at no picture at all, because the first three share a blind spot.</p><div class="checks"><div class="check"><div class="check-value">71.5%</div>
              <div class="check-label">lose no symbol</div><p>Deterministic and free. The PDF&#x27;s text layer loses structure but not symbols, so the symbols a transcription claims can be compared against the symbols the page holds. 484 expressions had enough symbols to score; mean agreement 0.951.</p></div><div class="check"><div class="check-value">99.8%</div>
-             <div class="check-label">agree with the page</div><p>Every one of the 531 expressions was typeset, put under the crop from the PDF, and handed to an agent told to find the difference. 481 identical, 49 differing only in spacing or delimiter size, 1 genuinely wrong and corrected.</p></div><div class="check"><div class="check-value">100%</div>
-             <div class="check-label">confirmed from outside</div><p>A sample of 50 of the same comparisons was re-read by a different model family entirely, through OpenAI&#x27;s codex command line tool, with no sight of the earlier answers. This is the only figure here not produced by the model that did the work.</p></div></div>
+             <div class="check-label">agree with the page</div><p>Every one of the 531 expressions was typeset, put under the crop from the PDF, and handed to an agent told to find the difference. 481 identical, 49 differing only in spacing or delimiter size, 1 genuinely wrong and corrected.</p></div><div class="check"><div class="check-value">97.9%</div>
+             <div class="check-label">confirmed from outside</div><p>Every one of the 531 comparisons was re-read by a different model family entirely, through OpenAI&#x27;s codex command line tool, with no sight of the earlier answers. This is the only figure here not produced by the model that did the work. Its 11 disagreements were each settled against the printed page.</p></div><div class="check"><div class="check-value">97.6%</div>
+             <div class="check-label">are a whole expression</div><p>The other three checks all compare a transcription against its crop, so none of them can see a crop that cut the expression in half: the reading matches the picture, and the picture is wrong. This one reads no picture. It asks of the LaTeX alone whether it is a whole expression, and finds 13 that are not - a big operator with nothing to sum over, or a bracket that never closes.</p></div></div>
 
 <h2 id="choices">Choices made for the reader, not for one device</h2>
 <table>

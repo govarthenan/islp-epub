@@ -14,13 +14,17 @@ Outputs:
 
 from __future__ import annotations
 
+import io
 import json
 import subprocess
 import sys
 from pathlib import Path
 
-import pymupdf
 from PIL import Image, ImageDraw
+
+sys.path.insert(0, str(Path(__file__).parent))
+
+from islp.mathraster import size_in_em, svg_to_png_on_white  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 WORK = ROOT / "work"
@@ -56,11 +60,11 @@ def render_svgs(candidates: dict[str, str], display: dict[str, bool]) -> dict[st
 
 
 def rasterise(svg_path: Path, target_width: int) -> Image.Image:
-    document = pymupdf.open(str(svg_path))
-    page = document[0]
-    zoom = max(0.2, min(12.0, target_width / max(page.rect.width, 1.0)))
-    pixmap = page.get_pixmap(matrix=pymupdf.Matrix(zoom, zoom), colorspace=pymupdf.csGRAY, alpha=False)
-    return Image.frombytes("L", (pixmap.width, pixmap.height), pixmap.samples)
+    """Draw the candidate to `target_width`, the way the raster book draws it."""
+    svg_bytes = svg_path.read_bytes()
+    width_em, _ = size_in_em(svg_bytes)
+    pixels_per_em = max(4, min(400, round(target_width / max(width_em, 0.01))))
+    return Image.open(io.BytesIO(svg_to_png_on_white(svg_bytes, pixels_per_em))).convert("L")
 
 
 def compose(original: Image.Image, rendered: Image.Image) -> Image.Image:

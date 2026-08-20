@@ -107,7 +107,7 @@ Two documents explain the problem and the answer. Read either one before the cod
 | | What it gives you | Length |
 |---|---|---|
 | **[The conversion, explained →](docs/conversion-story.pdf)** | Why a PDF textbook fails on a small screen, and how each of the six stages fixes it. Pictures of the four cropping attempts, including the three that failed. **GitHub shows this PDF in the browser** — no download needed. | 12 pages |
-| **[Engineering journal →](docs/JOURNAL.md)** | The same work in order, as it happened: 20 dated entries, with the dead ends and the corrections left in. The last two are the cross-device audit and the reader that draws no SVG. | 663 lines |
+| **[Engineering journal →](docs/JOURNAL.md)** | The same work in order, as it happened: 23 dated entries, with the dead ends and the corrections left in. The last three are the full independent audit, the broken evidence it was shown, and the check that reads no picture. | 779 lines |
 
 The PDF is rendered from [`index.html`](index.html), the interactive version of the same
 story. Read it live at **[govarthenan.github.io/islp-epub](https://govarthenan.github.io/islp-epub/)**.
@@ -234,11 +234,31 @@ uv run python src/build_index.py            # regenerate the story page
 
 Every one of the 531 model-read expressions was checked a second time, independently,
 against the printed page: **481 identical, 49 cosmetic differences, 1 wrong** — 99.8%
-agreement. The single error was corrected. A sample was then audited by a different model
-family, through OpenAI's `codex` command line tool: 44 of 45 agreed, and **the one
-disagreement was real and mattered** — no check inside the pipeline had caught it. Three
-faults in the extraction were fixed because of it, and a repeat audit of 50 found no
-disagreement. `work/math_verification.json` has the detail, and journal entry 014 has the
+agreement. The single error was corrected.
+
+**All 531 were then audited by a different model family**, through OpenAI's `codex` command
+line tool, with no sight of the earlier answers: **520 agreed, 11 did not — 97.9%**. Every one
+of the 11 was settled by hand against the printed page. Nine were the auditor reading a crop
+that was short or loose, where a sum's limits or a binomial's delimiters sat on another visual
+line and the crop cut them off; two were plain misreadings, a hat taken for a tilde and a stray
+mark taken for a prime. The printed pages confirm all 11 transcriptions. Two other expressions,
+on pages 485 and 486, are genuinely faulty: the crop tore a stretched bracket and its sigma out
+of an inline expression, so the book prints a stray fragment.
+
+Earlier rounds audited only a sample — 44 of 45 agreed, and **that one disagreement was real
+and mattered**, since no check inside the pipeline had caught it; three faults in the extraction
+were fixed because of it. A repeat sample of 50 then reported no disagreement at all, which is
+exactly what a sample of 50 is bad at. Auditing all 531 is ten times the work and is the only
+thing that found the rest.
+
+**A fourth check reads no picture.** The three checks above all compare a transcription against
+its crop, so none of them can see a crop that cut the expression in half: the reading matches
+the picture, and the picture is wrong. `src/fragment_check.py` asks of the LaTeX alone whether
+it is a whole expression, and finds **13 of 531 that are not** — a big operator with nothing to
+sum over, or a bracket that never closes. Six are a bare integral sign on pages 308 and 309.
+These are known and not yet fixed; see journal entry 023.
+
+`work/math_verification.json` has the numbers, and journal entries 014 and 021 have the
 argument.
 
 **None of that makes the mathematics certain.** See [`DISCLAIMER.md`](DISCLAIMER.md).

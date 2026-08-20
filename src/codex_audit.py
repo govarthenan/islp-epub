@@ -1,28 +1,42 @@
 """Independent audit of the transcribed mathematics, using a different model family.
 
-    uv run python src/codex_audit.py [sample_size]
+    uv run python src/codex_audit.py             # the reproducible sample of 50
+    uv run python src/codex_audit.py all         # every comparison image
+    uv run python src/codex_audit.py all --workers 8 --fresh
 
 Everything else in this pipeline is Claude reading Claude's work, so the accuracy figure it
 produces is not independent. This script hands the same evidence to OpenAI's `codex` command
 line tool: the comparison image, with the page's own typesetting above and the typeset
 candidate below, and asks a single question - do these two say the same thing?
 
-The sample is spread evenly across the book rather than drawn at random, so the result is
-reproducible and covers every chapter.
+A sample is spread evenly across the book rather than drawn at random, so the result is
+reproducible and covers every chapter. `all` audits the whole population instead; one answer
+takes about 9 seconds, so 531 of them take about 10 minutes at 8 workers.
+
+Answers are cached in work/codex_audit_cache.json under the identifier and the SHA-256 of the
+comparison image. A re-run therefore costs nothing for an image that has not changed, and
+re-asks by itself for one that has. `--fresh` ignores the cache.
+
+Outputs:
+  work/codex_audit.json         the report apply_verdicts.py reads
+  work/codex_audit_cache.json   one answer per image digest
 """
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import subprocess
 import sys
+import threading
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 WORK = ROOT / "work"
 COMPARE = WORK / "math_compare"
+CACHE_PATH = WORK / "codex_audit_cache.json"
 
 PROMPT = """The picture has two halves separated by a horizontal rule.
 
@@ -40,6 +54,12 @@ Answer with one line of JSON and nothing else:
 """
 
 JSON_RE = re.compile(r"\{[^{}]*\"match\"[^{}]*\}")
+
+_print_lock = threading.Lock()
+
+
+def digest(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def ask(ident: str, timeout: int = 300) -> dict:
@@ -68,21 +88,100 @@ def ask(ident: str, timeout: int = 300) -> dict:
     return {"id": ident, "status": "ok", "match": bool(payload.get("match")), "issue": payload.get("issue", "")}
 
 
+def load_cache(use_cache: bool) -> dict[str, dict]:
+    if not use_cache or not CACHE_PATH.exists():
+        return {}
+    return json.loads(CACHE_PATH.read_text())
+
+
+def run(sample: list[str], cache: dict[str, dict], workers: int) -> list[dict]:
+    """Answer every identifier in `sample`, taking from the cache what it already holds."""
+    done: dict[str, dict] = {}
+    pending: list[str] = []
+    for ident in sample:
+        image = COMPARE / f"{ident}.png"
+        cached = cache.get(digest(image)) if image.exists() else None
+        if cached and cached.get("status") == "ok":
+            done[ident] = {"id": ident, **{k: v for k, v in cached.items() if k != "id"}}
+        else:
+            pending.append(ident)
+
+    if done:
+        print(f"{len(done)} answers reused from the cache, {len(pending)} to ask", flush=True)
+
+    counter = {"n": 0}
+
+    def answer(ident: str) -> dict:
+        result = ask(ident)
+        with _print_lock:
+            counter["n"] += 1
+            if counter["n"] % 25 == 0 or counter["n"] == len(pending):
+                print(f"  {counter['n']}/{len(pending)} asked", flush=True)
+        return result
+
+    if pending:
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            for result in pool.map(answer, pending):
+                done[result["id"]] = result
+
+    return [done[ident] for ident in sample]
+
+
+def retry(results: list[dict], cache: dict[str, dict], workers: int) -> list[dict]:
+    """Ask once more for anything that timed out or came back unreadable."""
+    stuck = [entry["id"] for entry in results if entry["status"] in ("timeout", "unparsed")]
+    if not stuck:
+        return results
+    print(f"re-asking {len(stuck)} that timed out or came back unreadable", flush=True)
+    second = {entry["id"]: entry for entry in run(stuck, cache, workers)}
+    return [second.get(entry["id"], entry) for entry in results]
+
+
+def save_cache(cache: dict[str, dict], results: list[dict]) -> None:
+    for entry in results:
+        if entry["status"] != "ok":
+            continue
+        image = COMPARE / f"{entry['id']}.png"
+        if image.exists():
+            cache[digest(image)] = entry
+    CACHE_PATH.write_text(json.dumps(cache, indent=1, ensure_ascii=False))
+
+
 def main() -> None:
-    sample_size = int(sys.argv[1]) if len(sys.argv) > 1 else 40
+    arguments = sys.argv[1:]
+    use_cache = "--fresh" not in arguments
+    arguments = [a for a in arguments if a != "--fresh"]
+    workers = 4
+    if "--workers" in arguments:
+        index = arguments.index("--workers")
+        workers = int(arguments[index + 1])
+        del arguments[index : index + 2]
+
     candidates = sorted(path.stem for path in COMPARE.glob("*.png"))
     if not candidates:
         raise SystemExit("no comparison images; run render_candidates.py first")
-    step = max(1, len(candidates) // sample_size)
-    sample = candidates[::step][:sample_size]
+
+    request = arguments[0] if arguments else "50"
+    if request in ("all", "full"):
+        sample = candidates
+        mode = "full"
+    else:
+        size = int(request)
+        step = max(1, len(candidates) // size)
+        sample = candidates[::step][:size]
+        mode = "sample"
+
     print(f"auditing {len(sample)} of {len(candidates)} expressions with codex", flush=True)
 
-    with ThreadPoolExecutor(max_workers=4) as pool:
-        results = list(pool.map(ask, sample))
+    cache = load_cache(use_cache)
+    results = retry(run(sample, cache, workers), cache, workers)
+    save_cache(cache, results)
 
     answered = [r for r in results if r["status"] == "ok"]
     agreed = [r for r in answered if r["match"]]
     report = {
+        "mode": mode,
+        "population": len(candidates),
         "sampled": len(sample),
         "answered": len(answered),
         "agreed": len(agreed),

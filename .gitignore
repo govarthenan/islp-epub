@@ -20,6 +20,13 @@ work/*.png
 work/*.log
 # A build cache of hashes, not a result.
 work/math_png_cache.json
+# Answers cached under each comparison image's digest, so a re-audit costs nothing for a
+# picture that has not changed. The result is work/codex_audit.json.
+work/codex_audit_cache.json
+# Side-by-side pairs for a person to look at; regenerate with review_disagreements.py.
+work/math_disagreements/
+# An intermediate handed to render_math.cjs.
+work/math_candidate_jobs.json
 
 # Screenshots taken while checking pages in a browser.
 /*.png

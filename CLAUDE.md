@@ -41,7 +41,12 @@ uv run python src/validate_epub.py output/ISLP.epub
 uv run python src/validate_epub.py output/ISLP-raster.epub
 uv run python src/coverage_audit.py                  # page lines that no block consumed
 uv run python src/symbol_check.py                    # symbols claimed vs symbols on the page
+uv run python src/fragment_check.py                  # LaTeX that is half an expression
 uv run python src/check_math_raster.py --sample 60 --contact-sheet
+
+# The independent audit, through a different model family. `all` is about 45 minutes.
+uv run python src/codex_audit.py all --workers 8
+uv run python src/review_disagreements.py            # its disagreements, side by side, for a person
 
 # Lint and format. Required before every commit.
 uv run ruff check src/ && uv run ruff format --check src/
@@ -105,9 +110,19 @@ src/render_candidates.py     typeset each candidate, stack it under the original
 src/symbol_check.py          free deterministic cross-check, no model
   -> src/workflows/verify_math.js (a Workflow script) fans out one refuting agent per
      batch over the comparison images -> work/math_verdicts/
-src/codex_audit.py           independent audit through a different model family
+src/codex_audit.py           independent audit through a different model family, over all 531
+src/review_disagreements.py  its disagreements as side-by-side pairs, for a person to settle
 src/apply_verdicts.py        -> work/math_final.json, work/math_verification.json
 ```
+
+Every check above compares a transcription against its crop, so all of them are blind to a
+crop that cut the expression in half: the reading matches the picture, and the picture is
+wrong. `src/fragment_check.py` reads no picture and finds that class. 13 of 531 are still
+fragments; see journal entries 021 to 023 before touching them.
+
+`render_candidates.py` and `review_disagreements.py` draw with CairoSVG, never MuPDF, for the
+same reason the raster book does. A comparison image drawn by MuPDF shows a broken bracket,
+and an auditor honestly reports a delimiter the book does not have.
 
 `build_epub.py` reads `work/math_final.json` when it exists and falls back to
 `work/math_transcription.json`. Tables follow the same shape:
@@ -159,7 +174,7 @@ the build. `src/make_probe_epub.py` must be given `--out` outside `output/`.
 * **Measure, do not guess.** Every threshold in this pipeline came from a measurement of the
   PDF. If you add one, say in a comment where the number came from. The existing comments
   name page coordinates, font sizes and colours; keep that style.
-* **Write down what failed.** `docs/JOURNAL.md` keeps 20 dated entries with the dead ends
+* **Write down what failed.** `docs/JOURNAL.md` keeps 23 dated entries with the dead ends
   left in. Add an entry when an attempt fails, not only when one succeeds.
 * **Never remove a rights statement**, a takedown offer or the AI disclaimer from
   `README.md`, `index.html`, `NOTICE`, `DISCLAIMER.md`, or the "About this conversion" page

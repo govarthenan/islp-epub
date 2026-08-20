@@ -1,0 +1,99 @@
+{
+ "source": "math_final.json",
+ "expressions": 531,
+ "fragments": 13,
+ "share": 2.4,
+ "detail": [
+  {
+   "id": "m00176",
+   "latex": ") = \\frac{e^{-3.5041+0.4049\\times1}}{1+e^{-3.5041+0.4049\\times1}} = 0.0431,",
+   "fault": "1 unmatched parenthesis",
+   "page_pdf": 151,
+   "kind": "inline"
+  },
+  {
+   "id": "m00292",
+   "latex": "\\sum^{p-1}",
+   "fault": "\\sum with nothing to sum over",
+   "page_pdf": 241,
+   "kind": "inline"
+  },
+  {
+   "id": "m00327",
+   "latex": "\\sum^{p}",
+   "fault": "\\sum with nothing to sum over",
+   "page_pdf": 254,
+   "kind": "inline"
+  },
+  {
+   "id": "m00365",
+   "latex": "\\sqrt{\\sum^{p}}",
+   "fault": "\\sum with nothing to sum over",
+   "page_pdf": 295,
+   "kind": "display"
+  },
+  {
+   "id": "m00386",
+   "latex": "\\int",
+   "fault": "\\int with nothing to sum over",
+   "page_pdf": 308,
+   "kind": "display"
+  },
+  {
+   "id": "m00387",
+   "latex": "\\int",
+   "fault": "\\int with nothing to sum over",
+   "page_pdf": 309,
+   "kind": "display"
+  },
+  {
+   "id": "m00388",
+   "latex": "\\int",
+   "fault": "\\int with nothing to sum over",
+   "page_pdf": 309,
+   "kind": "display"
+  },
+  {
+   "id": "m00389",
+   "latex": "\\int",
+   "fault": "\\int with nothing to sum over",
+   "page_pdf": 309,
+   "kind": "display"
+  },
+  {
+   "id": "m00390",
+   "latex": "\\int",
+   "fault": "\\int with nothing to sum over",
+   "page_pdf": 309,
+   "kind": "inline"
+  },
+  {
+   "id": "m00391",
+   "latex": "\\int",
+   "fault": "\\int with nothing to sum over",
+   "page_pdf": 309,
+   "kind": "display"
+  },
+  {
+   "id": "m00491",
+   "latex": "(x_1^{*}",
+   "fault": "1 unmatched parenthesis",
+   "page_pdf": 376,
+   "kind": "display"
+  },
+  {
+   "id": "m00492",
+   "latex": ")^{T}",
+   "fault": "1 unmatched parenthesis",
+   "page_pdf": 376,
+   "kind": "inline"
+  },
+  {
+   "id": "m00617",
+   "latex": "\\left(\\sum^{p}\\right)",
+   "fault": "\\sum with nothing to sum over",
+   "page_pdf": 486,
+   "kind": "display"
+  }
+ ]
+}

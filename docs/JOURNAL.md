@@ -487,7 +487,11 @@ region finder had nothing to find.
 |---|---|---|
 | symbol census (deterministic) | 484 scorable | mean agreement 0.951; 71.5% lose no symbol |
 | adversarial verification | all 531 | 99.8% agree with the page |
-| independent audit via OpenAI codex | sample of 50 | 50 of 50 agree |
+| independent audit via OpenAI codex | all 531 | 520 of 531 agree; 11 settled by hand |
+| fragment check (deterministic) | all 531 | 13 are not a whole expression |
+
+When this entry was written the third line read "sample of 50, 50 of 50 agree" and the fourth
+line did not exist. Both were corrected on 2026-08-20; see entries 021 to 023.
 
 **What would be worth doing next**, in order of value:
 1. A handful of expressions that wrap across a line break leave a small fragment rendered as
@@ -661,3 +665,115 @@ twenty minutes.
 
 This is a change to the character-level code, not to the packaging, so it belongs in its own
 piece of work. It would improve both books and shrink the raster one.
+
+---
+
+## 2026-08-20 — Entry 021: Auditing all 531, not a sample of them
+
+**Attempt.** Every earlier independent audit was a sample: 45 the first time, then 50. Put all
+531 comparisons through OpenAI's `codex` command line tool instead, and settle every
+disagreement by hand against the printed page.
+
+**Result.** 520 agreed, 11 did not — 97.9%. Every one of the 11 was looked at:
+
+| id | what the auditor said | what the printed page says |
+|---|---|---|
+| `m00131` | bottom shows only `n` | the crop's box reaches into the line below and shows `√2!` as well. The expression is the italic `n` of "for the *n* samples"; the `√2` is `m00132`. Correct. |
+| `m00142` | top has a tilde over `y_i` | both are hats, and the page's own characters read `yˆi = xi βˆ`. Misread. |
+| `m00186` | bottom omits a subscript `i` on `k` | page 156 prints `Pr(Y = k|X = x)`. Misread. |
+| `m00328` | bottom adds limits `i=1..n`, `j=1..p` | formulation (6.10) on page 254 prints them; the crop lost them. Correct. |
+| `m00329` | bottom adds limits `j=1..p` | same. Correct. |
+| `m00348` | bottom is missing the bar over `ad` | both have the bar. Misread. |
+| `m00527` | bottom adds a subscript `2` to `K` | page 391 prints `(K choose 2)`; the crop cut the `2` off. Correct. |
+| `m00598` | top has `K′` | page 481 prints `K`. A mark from the line above, misread as a prime. |
+| `m00602` | bottom adds limits `k=1..K` | equation (11.7) prints them; the crop lost them. Correct. |
+| `m00616` | top holds two bracketed sums, bottom one | **real fault.** See below. |
+| `m00673` | top has `P`, bottom `p` | identity (12.18) on page 529 prints lowercase `p`. Misread. |
+
+**Nine of the eleven are the auditor reading a bad crop, and two are plain misreadings.** All
+eleven transcriptions are confirmed by the printed page. That is the shape of this check: it
+compares a candidate against a crop, so it reports a short crop as a wrong transcription, and it
+cannot report a short crop that the transcription faithfully copied.
+
+**The one real fault, and its neighbour.** On page 485 the running text prints the factor
+`exp(Σ_{j=1}^{p} x_ij β_j)` twice, and on page 486 once more. The extraction tore the stretched
+bracket and the sigma out of those inline expressions and made display blocks of them:
+
+* `m00616` holds **two** torn brackets in one crop, and the transcription wrote one expression;
+* `m00617` is the bare fragment `\left(\sum^{p}\right)`, printed as a block of its own, while
+  the paragraph around it demotes the sum's lower limit to a subscript of `exp`.
+
+`m00617` was found only because the auditor happened to quibble about where the `p` sat. Nothing
+else in the pipeline had reported it, and neither sample audit had ever shown it a picture of it.
+
+**Why this entry matters.** The repeat sample of 50 reported 50 of 50, twice over, on a book that
+still had these faults in it. A clean sheet from a sample of 50 is not evidence that a population
+of 531 is clean; it is evidence that 50 of them are. The full audit costs about ten times as
+much — roughly 45 minutes of wall clock at 8 workers — and it is the only thing that found these.
+
+**Status.** SUCCESS.
+
+---
+
+## 2026-08-20 — Entry 022: The audit was shown pictures its own tools had broken
+
+**Attempt.** None — this is a fault found while doing entry 021.
+
+**Result.** The first full audit came back at 97.7%, and one complaint was that a matrix's
+parentheses had become vertical bars. They had. `src/render_candidates.py` drew the typeset
+candidate with MuPDF, and `src/islp/mathraster.py` has carried a docstring since the book was
+built explaining that **MuPDF misplaces the nested `<svg>` viewport MathJax uses to stretch a
+tall bracket**, so every bracket around a matrix comes out as a hook, a straight bar and another
+hook. The book was fixed for this. The script that makes the evidence was not.
+
+**Scope.** 104 of the 531 candidates carry a `\left … \right` pair and 17 carry a matrix
+environment. For a fifth of the book the auditor was shown a bracket the book does not have, and
+honestly reported it.
+
+*Fixed* by drawing the comparison images with CairoSVG, the same renderer the raster book uses.
+Re-running the whole audit on the corrected pictures: **520 of 531, 97.9%**, with every matrix
+complaint gone. Four of the earlier complaints disappeared and four new ones appeared, which is a
+useful reminder that this auditor is a model and not a measurement: run it twice and it does not
+answer identically.
+
+**The lesson is not about MuPDF.** A check is only as good as the evidence it is shown, and the
+evidence had a known fault in it, recorded in this repository, in a file two directories away.
+
+**Status.** SUCCESS.
+
+---
+
+## 2026-08-20 — Entry 023: A check that reads no picture
+
+**Attempt.** Every check in this pipeline compares a transcription against its crop. All of them
+therefore share one blind spot: a crop that cut the expression in half passes every time, because
+the reading really does match the picture. Entry 014 found one of those by luck, and entry 021
+found two more the same way. Look for the rest without any picture at all.
+
+**Method.** `src/fragment_check.py` reads the LaTeX and nothing else, and asks whether it is a
+whole expression. Two faults are deterministic enough to name: a big operator with nothing to
+operate on, and delimiters that do not balance. No model, no crop, no cost.
+
+**Result: 13 of 531 are not a whole expression.**
+
+| what | where |
+|---|---|
+| six bare `\int` | pages 308 and 309, where the page prints the integral of a squared second derivative |
+| `\sum^{p-1}`, `\sum^{p}`, `\sqrt{\sum^{p}}`, `\left(\sum^{p}\right)` | pages 241, 254, 295, 486 |
+| `(x_1^{*}` and `)^{T}`, two halves of one vector | page 376 |
+| a fraction that begins with a stray `)` | page 151 |
+
+In the built book this reads as `1 + k=0(p−k)` where page 241 prints a sum from `k=0` to `p−1`,
+and as `g′′(t)²dt` where page 309 prints an integral.
+
+**Two false starts, both worth recording.** Counting `\left` against `\right` by substring also
+counts `\leftarrow`, which put six correct expressions on the list. Counting parentheses without
+first removing `\text{…}` groups flagged one more, because the page really does print
+"(among a set of *n* items.)" inside an expression. The check is 13 after both were fixed.
+
+**Not yet fixed.** This is the class entry 018 named as the first thing worth doing next: an
+expression that wraps across a line break leaves a fragment rendered as its own image. Fixing it
+means changing how a box is grown around an inline expression, which changes every crop, which
+means re-reading whatever no longer matches by digest. That is its own piece of work.
+
+**Status.** SUCCESS as a check. The 13 remain.

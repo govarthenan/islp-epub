@@ -66,6 +66,8 @@ def main() -> None:
     audit = json.loads(audit_path.read_text()) if audit_path.exists() else {}
     symbols_path = WORK / "symbol_check.json"
     symbols = json.loads(symbols_path.read_text()) if symbols_path.exists() else {}
+    fragments_path = WORK / "fragment_check.json"
+    fragments = json.loads(fragments_path.read_text()) if fragments_path.exists() else {}
 
     report = {
         "expressions": len(transcription),
@@ -81,8 +83,19 @@ def main() -> None:
             "no_symbol_lost_share": symbols.get("share_no_symbol_lost"),
             "mean_agreement": symbols.get("mean_agreement"),
         },
+        # A fragment is a transcription that matches its crop and still says nothing, because
+        # the crop cut the expression in half. No picture-based check can find one.
+        "fragment_check": {
+            "fragments": fragments.get("fragments"),
+            "whole_share": round(100 - fragments.get("share", 0.0), 1) if fragments else None,
+        },
         "independent_audit": {
+            # "full" means every comparison image was audited, not a sample of them.
+            "mode": audit.get("mode", "sample"),
+            "population": audit.get("population"),
             "sampled": audit.get("answered"),
+            "agreed": audit.get("agreed"),
+            "disagreements": len(audit.get("disagreements", [])),
             "agreement": round(audit.get("agreement", 0.0), 1),
         }
         if audit

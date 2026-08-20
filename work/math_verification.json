@@ -22,8 +22,16 @@
   "no_symbol_lost_share": 71.5,
   "mean_agreement": 0.951
  },
+ "fragment_check": {
+  "fragments": 13,
+  "whole_share": 97.6
+ },
  "independent_audit": {
-  "sampled": 50,
-  "agreement": 100.0
+  "mode": "full",
+  "population": 531,
+  "sampled": 531,
+  "agreed": 520,
+  "disagreements": 11,
+  "agreement": 97.9
  }
 }

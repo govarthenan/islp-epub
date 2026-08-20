@@ -226,14 +226,35 @@ def build() -> str:
             )
         )
     if audit:
+        # The audit started as a sample and now covers every expression. The page says which
+        # of the two it is reporting, so a later sample run cannot read as a full one.
+        if audit.get("mode") == "full":
+            scope = f"Every one of the {audit.get('sampled', 0)} comparisons was"
+        else:
+            scope = f"A sample of {audit.get('sampled', 0)} of the same comparisons was"
         checks.append(
             (
-                f"{audit.get('agreement', 0):.0f}%",
+                f"{audit.get('agreement', 0):.1f}%",
                 "confirmed from outside",
-                f"A sample of {audit.get('sampled', 0)} of the same comparisons was re-read by a "
-                "different model family entirely, through OpenAI's codex command line tool, with "
-                "no sight of the earlier answers. This is the only figure here not produced by "
-                "the model that did the work.",
+                f"{scope} re-read by a different model family entirely, through OpenAI's codex "
+                "command line tool, with no sight of the earlier answers. This is the only "
+                f"figure here not produced by the model that did the work. Its "
+                f"{audit.get('disagreements', 0)} disagreements were each settled against the "
+                "printed page.",
+            )
+        )
+    fragments = verification.get("fragment_check", {})
+    if fragments.get("fragments") is not None:
+        checks.append(
+            (
+                f"{fragments['whole_share']}%",
+                "are a whole expression",
+                "The other three checks all compare a transcription against its crop, so none of "
+                "them can see a crop that cut the expression in half: the reading matches the "
+                "picture, and the picture is wrong. This one reads no picture. It asks of the "
+                f"LaTeX alone whether it is a whole expression, and finds {fragments['fragments']} "
+                "that are not - a big operator with nothing to sum over, or a bracket that never "
+                "closes.",
             )
         )
 
@@ -279,7 +300,8 @@ def build() -> str:
         audit_block = (
             heading("checks") + '<p class="sub">One model marking its own work is not evidence. These are '
             "deliberately different in kind: one costs nothing and cannot be talked round, one "
-            "looks at the pictures, and one comes from outside the family.</p>"
+            "looks at the pictures, one comes from outside the family, and one looks at no "
+            "picture at all, because the first three share a blind spot.</p>"
             f'<div class="checks">{cards}</div>'
         )
 

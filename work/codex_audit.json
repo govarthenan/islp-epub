@@ -1,8 +1,77 @@
 {
- "sampled": 50,
- "answered": 50,
- "agreed": 50,
- "agreement": 100.0,
- "disagreements": [],
+ "mode": "full",
+ "population": 531,
+ "sampled": 531,
+ "answered": 531,
+ "agreed": 520,
+ "agreement": 97.92843691148776,
+ "disagreements": [
+  {
+   "id": "m00131",
+   "status": "ok",
+   "match": false,
+   "issue": "BOTTOM shows only n, while TOP includes e^n divided by a square-root expression."
+  },
+  {
+   "id": "m00142",
+   "status": "ok",
+   "match": false,
+   "issue": "BOTTOM adds a hat to y_i, while TOP has an unaccented y_i"
+  },
+  {
+   "id": "m00186",
+   "status": "ok",
+   "match": false,
+   "issue": "BOTTOM omits the subscript i on k in Pr(Y = k_i | X = x)."
+  },
+  {
+   "id": "m00328",
+   "status": "ok",
+   "match": false,
+   "issue": "The TOP sums have no displayed limits, while the BOTTOM adds i=1 to n and j=1 to p."
+  },
+  {
+   "id": "m00329",
+   "status": "ok",
+   "match": false,
+   "issue": "BOTTOM adds summation limits j=1 to p, which are not present in TOP."
+  },
+  {
+   "id": "m00348",
+   "status": "ok",
+   "match": false,
+   "issue": "BOTTOM is missing the bar accent over ad."
+  },
+  {
+   "id": "m00527",
+   "status": "ok",
+   "match": false,
+   "issue": "BOTTOM adds a subscript 2 to K"
+  },
+  {
+   "id": "m00598",
+   "status": "ok",
+   "match": false,
+   "issue": "The top sum has upper limit K′, while the bottom has K."
+  },
+  {
+   "id": "m00602",
+   "status": "ok",
+   "match": false,
+   "issue": "BOTTOM adds limits k=1 to K to each summation, which are not present in TOP."
+  },
+  {
+   "id": "m00616",
+   "status": "ok",
+   "match": false,
+   "issue": "The top contains two parenthesized summation expressions, while the bottom contains only one."
+  },
+  {
+   "id": "m00673",
+   "status": "ok",
+   "match": false,
+   "issue": "The left-hand inner sum has upper limit P in the TOP but p in the BOTTOM."
+  }
+ ],
  "problems": []
 }
