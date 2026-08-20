@@ -58,6 +58,27 @@ uv run python src/validate_epub.py output/ISLP.epub
 uv run python src/validate_epub.py output/ISLP-raster.epub
 ```
 
+Useful options on `src/build_epub.py`:
+
+| Option | What it does |
+|---|---|
+| `--variants svg` | Write only `ISLP.epub`, and draw no PNG at all |
+| `--variants raster` | Write only `ISLP-raster.epub` |
+| `--pixels-per-em 32` | Draw the raster mathematics smaller. 48 is the default and costs 5.5 MB; 32 saves about 2 MB and stays sharp at a normal font, but not at a large one. The cache in `work/` names the size it was drawn at, so it throws itself away when this changes |
+| `--limit 40` | Stop after 40 pages of the PDF. For a quick check of a change |
+
+Check the drawing after any change to the raster path:
+
+```bash
+uv run python src/check_math_raster.py --sample 60 --contact-sheet
+```
+
+It confirms that every equation carries ink and that the glyph references are followed, and
+it draws the 40 equations that stretch a bracket onto `work/math_stretchy_sheet.png`. Look at
+that sheet with your own eyes: a stretched bracket is the thing a renderer gets wrong, and no
+automatic test in this repository separates a broken one from ordinary differences between
+renderers. See journal entry 020.
+
 ### Which file do you want?
 
 One build makes two books from one pass over the PDF. Both hold the same words, the same
@@ -196,6 +217,36 @@ uv run ruff check src/ && uv run ruff format --check src/
 
 `src/make_preview.sh output/ISLP.epub` unpacks the book and adds a browser-only stylesheet
 that mimics the panel's reading conditions, for checking pages at 1264 × 1680.
+
+```bash
+uv run python src/check_math_raster.py --sample 60 --contact-sheet
+```
+
+checks the raster mathematics, and `src/make_probe_epub.py --out <path>` writes a one-page
+EPUB that shows the same expression drawn eight ways. Open that on a device and one
+photograph tells you what the device can and cannot draw. It is how the Moon+ Reader
+questions in journal entry 020 were settled.
+
+---
+
+## Known, and not yet done
+
+* **Moon+ Reader's night theme is unchecked.** It neither declares a dark colour scheme to the
+  page nor inverts the screen, so the `filter: invert(1)` that serves Thorium, Apple Books and
+  Calibre may not reach it, and the mathematics may read black on a dark page. Moon+ has a
+  setting that inverts images at night. Dark mode on the Kobo Libra 2 is unchecked too.
+* **547 of the 926 places that use an image do not need one.** 349 of the 716 expressions hold
+  no two-dimensional structure at all — `\hat{f}`, `A ∈ ℝ^{r×s}` — and 411 of those places are
+  inline, inside a sentence. They are images only because one condition in
+  `src/islp/inline.py` sends a run with an accent or a script letter down the image path.
+  Unicode can show both: `x̂` is `x` with U+0302, `ℝ` is U+211D. Moving them would give real
+  reflowing text in **both** books and shrink the raster one. The risks — an accent sitting off
+  centre, a rare script letter with no glyph in a device font — need measuring on a device
+  first, with the probe above.
+* **48 pixels for one em has not been tested at a large reading font on a real device.** It is
+  the safer choice until it is; `--pixels-per-em 32` would save about 2 MB.
+
+Journal entry 020 has the measurements behind all three.
 
 ---
 

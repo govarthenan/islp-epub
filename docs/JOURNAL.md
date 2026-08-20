@@ -627,3 +627,37 @@ page nor inverts the screen, so the `filter: invert(1)` that serves Thorium, App
 Calibre may not reach it, and the mathematics would read black on a dark page. Moon+ has a
 setting that inverts images at night. This needs one more look at the phone. Dark mode on the
 Libra 2 is still unchecked, as entry 019 left it.
+
+**Open: is 48 pixels for one em the right size?** It was chosen before the probe and kept
+after it. The probe showed the phone puts one em at about 16 CSS pixels at its default font,
+so 48 gives three pixels for each one drawn, which is right for a screen of that density and
+leaves room to enlarge the text. It costs 5.5 MB of the raster book's 11.9 MB. 32 pixels for
+one em would save about 2 MB and would still be sharp at the default font, but not at a large
+one. `--pixels-per-em` takes the number, and `work/math_png_cache.json` names the size it was
+drawn at, so the cache throws itself away when the number changes. Nothing has been measured
+on a large font on a real device; until it is, the larger number is the safer one.
+
+**Open, and the larger prize: 547 of the 926 places need no image at all.** Measured from
+`work/math_svg_manifest.json` against the built book, 349 of the 716 expressions hold no
+two-dimensional structure whatever — no matrix, no fraction, no radical, no big operator, no
+stretched bracket. They are flat: `\hat{f}`, used 20 times, `\hat{Y} = \hat{f}(X)`,
+`A \in \mathbb{R}^{r\times s}`. Between them they account for 547 of the 926 places an image
+is used, and 411 of those are inline, in the middle of a sentence, where a failed image does
+the most damage.
+
+They are images only because of one condition in `src/islp/inline.py`: a run goes to the
+image path when it holds an accent or a script letter, which the module docstring calls
+something "HTML cannot show honestly". Unicode can show both. `x̂` is `x` followed by U+0302.
+`ℝ` is U+211D, and `ℱ` is U+2131, both in the Letterlike Symbols block that almost every font
+carries. Widening that one condition would move those 547 places into real text: text that
+reflows, that scales with no loss at any size, that can be searched and copied, and that
+needs no image in either book.
+
+The risks are real and must be measured on a device before the change, not after. A combining
+accent can sit off centre over an italic letter. A script letter with no Letterlike form —
+`\mathcal{N}`, `\mathcal{O}`, `\mathcal{S}` fall to the plane-1 block — can come out as an
+empty box on a phone font. The probe of this entry is the way to settle both, and it took
+twenty minutes.
+
+This is a change to the character-level code, not to the packaging, so it belongs in its own
+piece of work. It would improve both books and shrink the raster one.
