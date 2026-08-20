@@ -130,6 +130,27 @@ Download it from the site, then:
 mv ~/Downloads/ISLP_website.pdf .
 ```
 
+### The copy this was converted
+
+The pipeline was run against one printing of the PDF. Check that your download is the same
+one:
+
+```bash
+sha256sum ISLP_website.pdf          # macOS: shasum -a 256 ISLP_website.pdf
+```
+
+| Property | Value |
+|---|---|
+| SHA-256 | `278d3bdd49a8a480c2ff8e03245822caad8a3a48e81afd6d039c52c8fc13ad60` |
+| Size | 20,053,984 bytes |
+| Pages | 613 |
+| Made | 14 August 2023, Adobe InDesign 17.4 |
+
+If the checksum agrees, the numbers in this README apply to your build. If it does not, you
+have a different printing. The build still runs, but each expression is cropped by its page
+and its position on that page, so run the full pipeline again from `src/probe_structure.py`
+and do not carry over an old `work/math_final.json`. The counts in this README can move.
+
 ---
 
 ## Quick start
