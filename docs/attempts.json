@@ -2,6 +2,11 @@
  "project": "ISLP PDF to EPUB",
  "subtitle": "Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB that reads on any e-reader",
  "purpose": "Educational and experimental only. No commercial use. All rights remain with the authors and publisher.",
+ "disclaimer": {
+  "use": "Educational and experimental only. No commercial use.",
+  "rights": "The book is not mine. All rights in the text, the figures and the mathematics of An Introduction to Statistical Learning remain with Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, Jonathan Taylor and Springer Nature, who give the PDF away free at statlearning.com. This project changes the format only, and claims nothing over the content.",
+  "math": "531 expressions were cropped from the page and read back by AI vision models. Every one was checked a second time and a sample was audited by a different model family: 99.8% agreement, one error found and corrected. That measured the error rate; it did not remove it. Check any equation against the free PDF before you rely on it."
+ },
  "source": "ISLP_website.pdf, first printing 5 July 2023, from statlearning.com",
  "stages": [
   {

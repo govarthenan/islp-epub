@@ -75,6 +75,25 @@ h1 { font-size: clamp(33px, 5vw, 54px); line-height: 1.06; margin: 0 0 16px; let
   text-transform: uppercase; padding: 7px 12px; border: 1px solid var(--rule-strong);
   color: var(--muted);
 }
+
+/* The rights block. --mid and --mid-soft are the palette's caution pair and are defined in
+   the light, the dark-media and the data-theme=dark blocks alike, so no colour here is set
+   without its partner. The print script pins the light palette, and this block prints. */
+.disclaimer {
+  /* The box is held to the measure of its own text. It carries a background, so letting it
+     run the full width of the page would leave half of it visibly empty. */
+  margin: 34px 0 0; padding: 20px 24px; max-width: 86ch;
+  background: var(--mid-soft); color: var(--ink);
+  border-left: 3px solid var(--mid);
+}
+.disclaimer-label {
+  font: 600 11px/1 var(--mono); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--mid); margin-bottom: 12px;
+}
+.disclaimer p { margin: 0 0 9px; font-size: 15px; }
+.disclaimer p:last-child { margin-bottom: 0; }
+.disclaimer b { font-weight: 700; }
+.disclaimer .links { font: 500 13px/1.5 var(--mono); margin-top: 13px; }
 h2 {
   font-size: 27px; margin: 76px 0 6px; letter-spacing: -.012em; text-wrap: balance;
   padding-top: 16px; border-top: 1px solid var(--rule); position: relative;
@@ -179,6 +198,15 @@ a { color: var(--link); }
   <h1>ISLP PDF to EPUB</h1>
   <p class="lede">Turning a 613-page LaTeX-set statistics textbook into a reflowable EPUB that reads on any e-reader</p>
   <span class="pill">Verified and packaged.</span>
+  <div class="disclaimer">
+    <div class="disclaimer-label">Read this first</div>
+    <p><b>Educational and experimental only. No commercial use.</b></p>
+    <p>The book is not mine. All rights in the text, the figures and the mathematics of An Introduction to Statistical Learning remain with Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, Jonathan Taylor and Springer Nature, who give the PDF away free at statlearning.com. This project changes the format only, and claims nothing over the content.</p>
+    <p>531 expressions were cropped from the page and read back by AI vision models. Every one was checked a second time and a sample was audited by a different model family: 99.8% agreement, one error found and corrected. That measured the error rate; it did not remove it. Check any equation against the free PDF before you rely on it.</p>
+    <p class="links"><a href="https://github.com/govarthenan/islp-epub/blob/main/DISCLAIMER.md">Full disclaimer</a> &middot;
+       <a href="https://github.com/govarthenan/islp-epub/blob/main/NOTICE">Rights in the book</a> &middot;
+       <a href="https://github.com/govarthenan/islp-epub/blob/main/LICENSE">Licence</a></p>
+  </div>
   <div class="tiles"><div class="tile"><div class="tile-value">613</div><div class="tile-label">pages read</div><div class="tile-note">the whole book</div></div><div class="tile"><div class="tile-value">3,297</div><div class="tile-label">paragraphs rebuilt</div><div class="tile-note">hyphenation undone</div></div><div class="tile"><div class="tile-value">191</div><div class="tile-label">figures re-rendered</div><div class="tile-note">300 ppi, in colour</div></div><div class="tile"><div class="tile-value">36</div><div class="tile-label">tables as markup</div><div class="tile-note">they reflow, not pictures</div></div><div class="tile"><div class="tile-value">409</div><div class="tile-label">display equations</div><div class="tile-note">every one checked</div></div><div class="tile"><div class="tile-value">1,137</div><div class="tile-label">lab code cells</div><div class="tile-note">input and output kept apart</div></div><div class="tile"><div class="tile-value">3,686</div><div class="tile-label">cross-references</div><div class="tile-note">all of them resolved</div></div><div class="tile"><div class="tile-value">9.1 MB</div><div class="tile-label">finished EPUB</div><div class="tile-note">reflowable, EPUB 3</div></div><div class="tile"><div class="tile-value">99.8%</div><div class="tile-label">mathematics agreed</div><div class="tile-note">candidate matched the printed page</div></div></div>
   <nav class="contents" aria-label="Contents">
     <div class="contents-label">Contents</div>
@@ -633,8 +661,12 @@ uv run python src/build_index.py         # regenerate this page
 ./src/make_story_pdf.sh                  # and its PDF</pre>
 
 <footer>
-  <p>Educational and experimental only. No commercial use. All rights remain with the authors and publisher.</p>
-  <p>Source: ISLP_website.pdf, first printing 5 July 2023, from statlearning.com. Built 2026-08-19.</p>
+  <p>Educational and experimental only. No commercial use. All rights remain with the authors and publisher.
+     <a href="https://github.com/govarthenan/islp-epub/blob/main/DISCLAIMER.md">Full disclaimer</a> &middot;
+     <a href="https://github.com/govarthenan/islp-epub/blob/main/NOTICE">Rights in the book</a> &middot;
+     <a href="https://github.com/govarthenan/islp-epub/blob/main/LICENSE">Code: MIT</a> &middot;
+     <a href="https://github.com/govarthenan/islp-epub/blob/main/LICENSE-DOCS">This page: CC BY 4.0</a></p>
+  <p>Source: ISLP_website.pdf, first printing 5 July 2023, from statlearning.com. Built 2026-08-20.</p>
 </footer>
 
 </div>

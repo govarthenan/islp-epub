@@ -20,6 +20,8 @@ WORK = ROOT / "work"
 
 STATUS_LABEL = {"success": "worked", "failed": "failed", "partial": "partly worked"}
 
+REPO = "https://github.com/govarthenan/islp-epub"
+
 # The page counts its own stages and checks, so a heading cannot fall out of step with
 # the JSON it is built from.
 NUMBER_WORD = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight"}
@@ -252,6 +254,21 @@ def build() -> str:
 
     contents = "".join(f'<li><a href="#{key}">{escape(title)}</a></li>' for key, title in sections)
 
+    # Every word of this comes from docs/attempts.json, so the page cannot state one thing
+    # while DISCLAIMER.md states another.
+    disclaimer = data.get("disclaimer", {})
+    disclaimer_block = ""
+    if disclaimer:
+        disclaimer_block = f"""<div class="disclaimer">
+    <div class="disclaimer-label">Read this first</div>
+    <p><b>{escape(disclaimer.get("use", ""))}</b></p>
+    <p>{escape(disclaimer.get("rights", ""))}</p>
+    <p>{escape(disclaimer.get("math", ""))}</p>
+    <p class="links"><a href="{REPO}/blob/main/DISCLAIMER.md">Full disclaimer</a> &middot;
+       <a href="{REPO}/blob/main/NOTICE">Rights in the book</a> &middot;
+       <a href="{REPO}/blob/main/LICENSE">Licence</a></p>
+  </div>"""
+
     audit_block = ""
     if checks:
         cards = "".join(
@@ -343,6 +360,25 @@ h1 {{ font-size: clamp(33px, 5vw, 54px); line-height: 1.06; margin: 0 0 16px; le
   text-transform: uppercase; padding: 7px 12px; border: 1px solid var(--rule-strong);
   color: var(--muted);
 }}
+
+/* The rights block. --mid and --mid-soft are the palette's caution pair and are defined in
+   the light, the dark-media and the data-theme=dark blocks alike, so no colour here is set
+   without its partner. The print script pins the light palette, and this block prints. */
+.disclaimer {{
+  /* The box is held to the measure of its own text. It carries a background, so letting it
+     run the full width of the page would leave half of it visibly empty. */
+  margin: 34px 0 0; padding: 20px 24px; max-width: 86ch;
+  background: var(--mid-soft); color: var(--ink);
+  border-left: 3px solid var(--mid);
+}}
+.disclaimer-label {{
+  font: 600 11px/1 var(--mono); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--mid); margin-bottom: 12px;
+}}
+.disclaimer p {{ margin: 0 0 9px; font-size: 15px; }}
+.disclaimer p:last-child {{ margin-bottom: 0; }}
+.disclaimer b {{ font-weight: 700; }}
+.disclaimer .links {{ font: 500 13px/1.5 var(--mono); margin-top: 13px; }}
 h2 {{
   font-size: 27px; margin: 76px 0 6px; letter-spacing: -.012em; text-wrap: balance;
   padding-top: 16px; border-top: 1px solid var(--rule); position: relative;
@@ -447,6 +483,7 @@ a {{ color: var(--link); }}
   <h1>{escape(data.get("project", "PDF to EPUB"))}</h1>
   <p class="lede">{escape(data.get("subtitle", ""))}</p>
   <span class="pill">{escape(status_note)}</span>
+  {disclaimer_block}
   <div class="tiles">{"".join(tiles)}</div>
   <nav class="contents" aria-label="Contents">
     <div class="contents-label">Contents</div>
@@ -528,7 +565,11 @@ uv run python src/build_index.py         # regenerate this page
 ./src/make_story_pdf.sh                  # and its PDF</pre>
 
 <footer>
-  <p>{escape(data.get("purpose", ""))}</p>
+  <p>{escape(data.get("purpose", ""))}
+     <a href="{REPO}/blob/main/DISCLAIMER.md">Full disclaimer</a> &middot;
+     <a href="{REPO}/blob/main/NOTICE">Rights in the book</a> &middot;
+     <a href="{REPO}/blob/main/LICENSE">Code: MIT</a> &middot;
+     <a href="{REPO}/blob/main/LICENSE-DOCS">This page: CC BY 4.0</a></p>
   <p>Source: {escape(data.get("source", ""))}. Built {input_date(inputs)}.</p>
 </footer>
 

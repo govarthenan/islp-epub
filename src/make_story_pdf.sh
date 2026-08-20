@@ -57,7 +57,7 @@ PRINT_CSS = """
   h2, h3 { break-after: avoid; page-break-after: avoid; }
   /* Hold the small blocks together. A whole attempt card is too big to keep whole: doing
      that left the bottom third of several pages empty, so it is allowed to split. */
-  figure, table, pre, .tile, .svg-step, .shot, .check, .why {
+  figure, table, pre, .tile, .svg-step, .shot, .check, .why, .disclaimer {
     break-inside: avoid; page-break-inside: avoid;
   }
   .attempt { orphans: 3; widows: 3; }
@@ -69,6 +69,9 @@ PRINT_CSS = """
   img, svg { max-width: 100% !important; height: auto !important; }
   a { text-decoration: none; color: inherit !important; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9px; color: #5a5a5a; }
+  /* The rights block names three files in this repository. Printing all three URLs inside
+     it breaks the line four times over; the footer prints the same URLs in full anyway. */
+  .disclaimer .links a[href^="http"]::after { content: none; }
 }
 </style>
 </head>"""
