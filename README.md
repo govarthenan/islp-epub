@@ -5,7 +5,92 @@
 ![Python](https://img.shields.io/badge/python-3.14-3776AB?logo=python&logoColor=white)
 ![EPUB](https://img.shields.io/badge/EPUB-3.0-85B735)
 ![uv](https://img.shields.io/badge/managed%20with-uv-DE5FE9)
+![Code](https://img.shields.io/badge/code-MIT-blue)
+![Docs](https://img.shields.io/badge/docs-CC%20BY%204.0-blue)
 ![Status](https://img.shields.io/badge/status-complete-success)
+
+> ## ⚠ Read this first
+>
+> **Educational and experimental use only. No commercial use.**
+>
+> **The book is not mine.** This repository converts *An Introduction to Statistical Learning,
+> with Applications in Python*. All rights in its text, figures, tables and mathematics stay
+> with Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, Jonathan Taylor and
+> Springer Nature. The authors give the PDF away free at
+> [statlearning.com](https://www.statlearning.com/). This project changes the format only. It
+> claims nothing over the content, and it grants no rights over the content. If you hold
+> rights in the book and you want the EPUB files removed, open an issue and they will be
+> removed.
+>
+> **Part of the mathematics was read by AI models.** 531 expressions were cropped from the
+> page and transcribed by AI vision models. Every one was checked a second time, and a sample
+> was audited by a different model family — 99.8% agreement, one error found and corrected.
+> That measured the error rate. It did not remove it. **Check any equation before you rely on
+> it for study, for an examination or for work.** The free PDF is the authority, not this
+> conversion.
+>
+> **No warranty.** Nothing here is promised to be correct, and nothing is promised to open on
+> your device.
+>
+> **[Full disclaimer →](DISCLAIMER.md)** · **[Rights in the book →](NOTICE)** ·
+> **[Licence →](LICENSE)** · **[Contributing →](CONTRIBUTING.md)**
+
+---
+
+## Download the book
+
+One build makes two books from one pass over the PDF. Both hold the same words, the same
+figures and the same equations. They differ only in how the mathematics is drawn.
+
+| Take this file | If you read with | Mathematics | Size |
+|---|---|---|---|
+| **[`output/ISLP.epub`](output/ISLP.epub)** | Kobo, Apple Books, Google Play Books, Thorium, KOReader, Calibre | SVG. Sharp at every font size, and the ink follows the reader's colour scheme. | 8.7 MB |
+| **[`output/ISLP-raster.epub`](output/ISLP-raster.epub)** | **Moon+ Reader**, Send-to-Kindle, or anything that shows a box marked SVG | The same equations as PNG at 48 pixels for one em, drawn from the same SVG files. | 11.9 MB |
+
+**If you do not know which one you want, take the first one.** If the equations appear as
+small empty boxes, take the second one.
+
+Moon+ Reader on Android draws no SVG at all, in an image, inline, or as a page. It shows a
+small box with the label SVG where the equation should be. It has no MathML either. A raster
+image is the only form it draws, which is why the second book exists.
+
+**Kobo** — copy `output/ISLP.epub` to the `KOBOeReader` volume; it is picked up on eject.
+Kobo reads a plain EPUB directly. For Kobo's own extras, per-chapter page counts and in-text
+dictionary look-up, convert it to `.kepub.epub` with Calibre and the KoboTouchExtended
+driver. Nothing in the book depends on that.
+
+**Kindle** — send `output/ISLP-raster.epub` to your Send-to-Kindle address. Amazon's
+converter does not always keep SVG, and it keeps a PNG.
+
+**Moon+ Reader on Android** — use `output/ISLP-raster.epub`. In the night theme the
+mathematics may come out black on a dark page, because Moon+ neither declares a dark colour
+scheme to the page nor inverts the screen. Moon+ has a setting that inverts images at night.
+
+**Apple Books, Google Play Books, Thorium, KOReader, Calibre** — open `output/ISLP.epub`
+directly.
+
+### The devices this was tested on
+
+The book was built first for one **Kobo Libra 2**, a 7-inch e-ink reader, and every early
+decision was measured against that one panel at 1264 × 1680.
+
+That was not enough. A photograph came back from a **Samsung Galaxy S23 running Moon+
+Reader**, opened at "Notation and Simple Matrix Algebra". Where a matrix should have been
+there was a small empty box. That one photograph is the reason the second book exists, and it
+is the reason `src/make_probe_epub.py` was written: it builds a one-page EPUB that shows the
+same expression drawn eight different ways, so that a single photograph from any device
+answers what that device can and cannot draw.
+
+So "reads on any e-reader" means this: **measured on a Kobo Libra 2 and on a Galaxy S23 with
+Moon+ Reader, and reasoned about for everything else.** Every other reader named above is
+expected to work. None of them is confirmed to work.
+
+**If your reader shows something wrong, send a photograph.** It is the most useful thing
+anybody can give this project — see
+[device report](https://github.com/govarthenan/islp-epub/issues/new?template=device-report.yml)
+and [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+---
 
 A PDF is a picture of a page. It has one width, one font size, and no idea what a paragraph
 is. On a 7-inch panel that is close to unreadable: you either squint at the whole page or you
@@ -13,7 +98,7 @@ pan around a zoomed fragment.
 
 This project takes the PDF apart and puts the book back together as real text — paragraphs
 that reflow, mathematics that scales with the font, tables that wrap, and 3,686 working
-cross-references. The output is `output/ISLP.epub`, and it is committed to this repository.
+cross-references.
 
 ## Start here
 
@@ -79,20 +164,6 @@ that sheet with your own eyes: a stretched bracket is the thing a renderer gets 
 automatic test in this repository separates a broken one from ordinary differences between
 renderers. See journal entry 020.
 
-### Which file do you want?
-
-One build makes two books from one pass over the PDF. Both hold the same words, the same
-figures and the same equations. They differ only in how the mathematics is drawn.
-
-| File | Take it if | Mathematics | Size |
-|---|---|---|---|
-| `output/ISLP.epub` | Kobo, Apple Books, Thorium, KOReader, Calibre | SVG. Sharp at every font size, and the ink follows the reader's colour scheme. | 8.7 MB |
-| `output/ISLP-raster.epub` | **Moon+ Reader**, Send-to-Kindle, or anything that shows a box marked SVG | The same equations as PNG at 48 pixels for one em, drawn from the same SVG files | 11.9 MB |
-
-Moon+ Reader on Android draws no SVG at all, in an image, inline, or as a page. It shows a
-small box with the label SVG where the equation should be. It has no MathML either. A raster
-image is the only form it draws, which is why the second book exists.
-
 The full pipeline, from a fresh PDF:
 
 ```bash
@@ -114,7 +185,7 @@ uv run python src/build_index.py            # regenerate the story page
 | Prose | Rebuilt paragraph by paragraph from the character stream; hyphenation undone against the book's own vocabulary |
 | Inline mathematics | Sub- and superscripts recovered from glyph geometry, so most of it stays reflowing HTML text |
 | Accents, script letters | LaTeX generated from the character data, typeset by MathJax |
-| Fractions, radicals, matrices | Cropped from the page, read by a vision model, checked against the page, typeset by MathJax |
+| Fractions, radicals, matrices | Cropped from the page, read by an AI vision model, checked against the page, typeset by MathJax |
 | Every typeset expression | SVG in one book, and the same file drawn as a PNG in the other |
 | Figures | Re-rendered from the vector art at 300 ppi, in colour |
 | Tables | Read back as real HTML, so they reflow with the reader's font |
@@ -132,22 +203,31 @@ uv run python src/build_index.py            # regenerate the story page
 | Figures | 191, all re-rendered at 300 ppi |
 | Tables | 36, all as reflowable markup — none as pictures |
 | Display equations | 409 |
-| Mathematics kept as **text** | 5,974 of 6,690 occurrences (89%) |
+| Mathematics kept as **text** | 5,974 of 6,690 items (89%) |
 | Mathematics typeset by MathJax | 716 expressions, 926 places |
-| Mathematics cropped from the page | **0** |
+| — of those, generated by rule, with no model | 185 |
+| — of those, read from the page by an AI model | 531 |
+| Mathematics left as a picture of the page | **0** |
 | Internal links resolved | 3,686 of 3,686 |
 | EPUB size | 8.7 MB with SVG, 11.9 MB with PNG |
 
 Every one of the 531 model-read expressions was checked a second time, independently,
 against the printed page: **481 identical, 49 cosmetic differences, 1 wrong** — 99.8%
-agreement. The single error was corrected. `work/math_verification.json` has the detail.
+agreement. The single error was corrected. A sample was then audited by a different model
+family, through OpenAI's `codex` command line tool: 44 of 45 agreed, and **the one
+disagreement was real and mattered** — no check inside the pipeline had caught it. Three
+faults in the extraction were fixed because of it, and a repeat audit of 50 found no
+disagreement. `work/math_verification.json` has the detail, and journal entry 014 has the
+argument.
+
+**None of that makes the mathematics certain.** See [`DISCLAIMER.md`](DISCLAIMER.md).
 
 ---
 
 ## Choices made for the reader, not for one device
 
-The book was first built for a Kobo Libra 2, but every decision below holds on a 6-inch
-Kindle, a colour Kobo, a phone, a tablet or a desktop window.
+Every decision below holds on a 6-inch Kindle, a colour Kobo, a phone, a tablet or a desktop
+window, and not only on the panel it was first measured against.
 
 * **No embedded font, no font size on `body`** — the reader's own typography controls stay in
   charge. Every length in the stylesheet is relative.
@@ -168,21 +248,9 @@ Kindle, a colour Kobo, a phone, a tablet or a desktop window.
 * **A `toc.ncx` beside the EPUB 3 navigation document**, because Kobo and older Adobe-based
   readers still use it.
 * **Code cells wrap** rather than run off the edge, since an e-reader cannot scroll sideways.
-
-**Kobo** — copy `output/ISLP.epub` to the `KOBOeReader` volume; it is picked up on eject.
-Kobo reads a plain EPUB directly. For Kobo's own extras, per-chapter page counts and in-text
-dictionary look-up, convert it to `.kepub.epub` with Calibre and the KoboTouchExtended
-driver. Nothing in the book depends on that.
-
-**Kindle** — send `output/ISLP-raster.epub` to your Send-to-Kindle address. Amazon's
-converter does not always keep SVG, and it keeps a PNG.
-
-**Moon+ Reader on Android** — use `output/ISLP-raster.epub`. In the night theme the
-mathematics may come out black on a dark page, because Moon+ neither declares a dark colour
-scheme to the page nor inverts the screen. Moon+ has a setting that inverts images at night.
-
-**Apple Books, Google Play Books, Thorium, KOReader, Calibre** — open `output/ISLP.epub`
-directly.
+* **An "About this conversion" page after the cover**, in both books, because the rights
+  statement and the caution about the mathematics must travel with the file. A README stays
+  on GitHub; the file goes to the device.
 
 ---
 
@@ -204,6 +272,13 @@ work/              intermediate artefacts, and the audit records
 output/            the finished EPUB
 docs/              the story as a PDF, the engineering log, and the data behind both
 assets/            illustrations for the story page
+.github/           issue forms for device reports and equation errors
+
+DISCLAIMER.md      the full statement: purpose, rights, the AI mathematics, no warranty
+NOTICE             the rights in the book, and the takedown offer
+LICENSE            MIT, for the pipeline in src/
+LICENSE-DOCS       CC BY 4.0, for the writing
+CONTRIBUTING.md    what this project needs, and how to run it
 ```
 
 ## Checks
@@ -246,26 +321,54 @@ questions in journal entry 020 were settled.
 * **48 pixels for one em has not been tested at a large reading font on a real device.** It is
   the safer choice until it is; `--pixels-per-em 32` would save about 2 MB.
 
-Journal entry 020 has the measurements behind all three.
+Journal entry 020 has the measurements behind all three. Each one needs a person with a
+device rather than a person with a keyboard — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ---
 
-## Rights
+## Contributing
+
+Issues and pull requests are welcome, and so is redistribution of the books within the limits
+in [`NOTICE`](NOTICE).
+
+**The single most useful thing you can send is a photograph of a page that is wrong on your
+device.** The conversion was measured on two devices; everything else is reasoned about. No
+test in this repository can produce that evidence, and the second book exists only because
+one photograph arrived.
+
+* [Report a device fault](https://github.com/govarthenan/islp-epub/issues/new?template=device-report.yml)
+* [Report an equation that does not match the book](https://github.com/govarthenan/islp-epub/issues/new?template=math-error.yml)
+* [`CONTRIBUTING.md`](CONTRIBUTING.md) — the three open questions, how to run the pipeline, and
+  the house rules
+
+---
+
+## Licence and rights
 
 **For personal, educational and experimental use only. No commercial use.**
+
+| What | Terms | |
+|---|---|---|
+| The conversion pipeline in `src/` | MIT | [`LICENSE`](LICENSE) |
+| The writing: `README.md`, `docs/`, `index.html`, `assets/` | CC BY 4.0 | [`LICENSE-DOCS`](LICENSE-DOCS) |
+| The book, and the two EPUB files derived from it | **Not licensed.** All rights reserved by the authors and Springer Nature. | [`NOTICE`](NOTICE) |
 
 All rights in the text, the figures and the mathematics of *An Introduction to Statistical
 Learning* remain with the authors and with Springer Nature. The authors distribute the PDF
 free of charge at [statlearning.com](https://www.statlearning.com/). This repository only
 changes its format; it claims nothing over the content.
 
-If you hold rights in the book and you want `output/ISLP.epub` taken down, open an issue and
-it will be removed.
+If you hold rights in the book and you want `output/ISLP.epub` and `output/ISLP-raster.epub`
+taken down, open an issue or write to <dev@dreamspace.tech>, and they will be removed.
 
-The conversion code in `src/` is the original work of the author of this repository. Note that
-it depends on **PyMuPDF**, which is licensed AGPL-3.0 unless a commercial licence is bought;
-plan accordingly if you reuse this code in your own project.
+**If you reuse the code:** it depends on **PyMuPDF**, which is licensed AGPL-3.0 unless a
+commercial licence is bought. MIT on this source is compatible with that, but a combined work
+you distribute is subject to the AGPL. [`LICENSE`](LICENSE) explains it.
+
+The full statement, including the caution about the machine-read mathematics, is in
+[`DISCLAIMER.md`](DISCLAIMER.md).
 
 ## Author
 
-Govarthenan Rajadurai
+The conversion is the work of **Govarthenan Rajadurai**.
+The book is the work of its authors, and stays theirs.
